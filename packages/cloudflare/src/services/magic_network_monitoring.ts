@@ -241,7 +241,7 @@ export interface CreateRuleRequest {
   type: RulesCreateRequestType | (string & {});
   /** The number of bits per second for the rule. When this value is exceeded for the set duration, an alert notification is sent. Minimum of 1 and no maximum. */
   bandwidthThreshold?: number;
-  /** The amount of time that the rule threshold must be exceeded to send an alert notification. The final value must be equivalent to one of the following 8 values ["1m","5m","10m","15m","20m","30m","45m","60m"]. */
+  /** The amount of time that the rule threshold must be exceeded to send an alert notification. The final value must be equivalent to one of the following 8 values [“1m”,“5m”,“10m”,“15m”,“20m”,“30m”,“45m”,“60m”]. */
   duration?: RulesCreateRequestDuration | (string & {});
   /** The number of packets per second for the rule. When this value is exceeded for the set duration, an alert notification is sent. Minimum of 1 and no maximum. */
   packetThreshold?: number;
@@ -327,7 +327,7 @@ export interface CreateRuleResponse {
   type: RulesCreateResponseType;
   /** The number of bits per second for the rule. When this value is exceeded for the set duration, an alert notification is sent. Minimum of 1 and no maximum. */
   bandwidthThreshold?: number | null;
-  /** The amount of time that the rule threshold must be exceeded to send an alert notification. The final value must be equivalent to one of the following 8 values ["1m","5m","10m","15m","20m","30m","45m","60m"]. */
+  /** The amount of time that the rule threshold must be exceeded to send an alert notification. The final value must be equivalent to one of the following 8 values [“1m”,“5m”,“10m”,“15m”,“20m”,“30m”,“45m”,“60m”]. */
   duration?: RulesCreateResponseDuration | null;
   /** The number of packets per second for the rule. When this value is exceeded for the set duration, an alert notification is sent. Minimum of 1 and no maximum. */
   packetThreshold?: number | null;
@@ -514,7 +514,7 @@ export interface DeleteRuleResponse {
   type: RulesDeleteResponseType;
   /** The number of bits per second for the rule. When this value is exceeded for the set duration, an alert notification is sent. Minimum of 1 and no maximum. */
   bandwidthThreshold?: number | null;
-  /** The amount of time that the rule threshold must be exceeded to send an alert notification. The final value must be equivalent to one of the following 8 values ["1m","5m","10m","15m","20m","30m","45m","60m"]. */
+  /** The amount of time that the rule threshold must be exceeded to send an alert notification. The final value must be equivalent to one of the following 8 values [“1m”,“5m”,“10m”,“15m”,“20m”,“30m”,“45m”,“60m”]. */
   duration?: RulesDeleteResponseDuration | null;
   /** The number of packets per second for the rule. When this value is exceeded for the set duration, an alert notification is sent. Minimum of 1 and no maximum. */
   packetThreshold?: number | null;
@@ -728,7 +728,7 @@ export interface GetRuleResponse {
   type: RulesGetResponseType;
   /** The number of bits per second for the rule. When this value is exceeded for the set duration, an alert notification is sent. Minimum of 1 and no maximum. */
   bandwidthThreshold?: number | null;
-  /** The amount of time that the rule threshold must be exceeded to send an alert notification. The final value must be equivalent to one of the following 8 values ["1m","5m","10m","15m","20m","30m","45m","60m"]. */
+  /** The amount of time that the rule threshold must be exceeded to send an alert notification. The final value must be equivalent to one of the following 8 values [“1m”,“5m”,“10m”,“15m”,“20m”,“30m”,“45m”,“60m”]. */
   duration?: RulesGetResponseDuration | null;
   /** The number of packets per second for the rule. When this value is exceeded for the set duration, an alert notification is sent. Minimum of 1 and no maximum. */
   packetThreshold?: number | null;
@@ -828,7 +828,7 @@ export interface RulesListResultItem {
   type: RulesListResultItemType;
   /** The number of bits per second for the rule. When this value is exceeded for the set duration, an alert notification is sent. Minimum of 1 and no maximum. */
   bandwidthThreshold?: number | null;
-  /** The amount of time that the rule threshold must be exceeded to send an alert notification. The final value must be equivalent to one of the following 8 values ["1m","5m","10m","15m","20m","30m","45m","60m"]. */
+  /** The amount of time that the rule threshold must be exceeded to send an alert notification. The final value must be equivalent to one of the following 8 values [“1m”,“5m”,“10m”,“15m”,“20m”,“30m”,“45m”,“60m”]. */
   duration?: RulesListResultItemDuration | null;
   /** The number of packets per second for the rule. When this value is exceeded for the set duration, an alert notification is sent. Minimum of 1 and no maximum. */
   packetThreshold?: number | null;
@@ -1017,7 +1017,7 @@ export interface PatchRuleRequest {
   type: RulesEditRequestType | (string & {});
   /** The number of bits per second for the rule. When this value is exceeded for the set duration, an alert notification is sent. Minimum of 1 and no maximum. */
   bandwidthThreshold?: number;
-  /** The amount of time that the rule threshold must be exceeded to send an alert notification. The final value must be equivalent to one of the following 8 values ["1m","5m","10m","15m","20m","30m","45m","60m"]. */
+  /** The amount of time that the rule threshold must be exceeded to send an alert notification. The final value must be equivalent to one of the following 8 values [“1m”,“5m”,“10m”,“15m”,“20m”,“30m”,“45m”,“60m”]. */
   duration?: RulesEditRequestDuration | (string & {});
   /** The number of packets per second for the rule. When this value is exceeded for the set duration, an alert notification is sent. Minimum of 1 and no maximum. */
   packetThreshold?: number;
@@ -1104,7 +1104,7 @@ export interface PatchRuleResponse {
   type: RulesEditResponseType;
   /** The number of bits per second for the rule. When this value is exceeded for the set duration, an alert notification is sent. Minimum of 1 and no maximum. */
   bandwidthThreshold?: number | null;
-  /** The amount of time that the rule threshold must be exceeded to send an alert notification. The final value must be equivalent to one of the following 8 values ["1m","5m","10m","15m","20m","30m","45m","60m"]. */
+  /** The amount of time that the rule threshold must be exceeded to send an alert notification. The final value must be equivalent to one of the following 8 values [“1m”,“5m”,“10m”,“15m”,“20m”,“30m”,“45m”,“60m”]. */
   duration?: RulesEditResponseDuration | null;
   /** The number of packets per second for the rule. When this value is exceeded for the set duration, an alert notification is sent. Minimum of 1 and no maximum. */
   packetThreshold?: number | null;
@@ -1306,7 +1306,7 @@ export interface UpdateRuleRequest {
   type: RulesUpdateRequestType | (string & {});
   /** The number of bits per second for the rule. When this value is exceeded for the set duration, an alert notification is sent. Minimum of 1 and no maximum. */
   bandwidthThreshold?: number;
-  /** The amount of time that the rule threshold must be exceeded to send an alert notification. The final value must be equivalent to one of the following 8 values ["1m","5m","10m","15m","20m","30m","45m","60m"]. */
+  /** The amount of time that the rule threshold must be exceeded to send an alert notification. The final value must be equivalent to one of the following 8 values [“1m”,“5m”,“10m”,“15m”,“20m”,“30m”,“45m”,“60m”]. */
   duration?: RulesUpdateRequestDuration | (string & {});
   /** The number of packets per second for the rule. When this value is exceeded for the set duration, an alert notification is sent. Minimum of 1 and no maximum. */
   packetThreshold?: number;
@@ -1392,7 +1392,7 @@ export interface UpdateRuleResponse {
   type: RulesUpdateResponseType;
   /** The number of bits per second for the rule. When this value is exceeded for the set duration, an alert notification is sent. Minimum of 1 and no maximum. */
   bandwidthThreshold?: number | null;
-  /** The amount of time that the rule threshold must be exceeded to send an alert notification. The final value must be equivalent to one of the following 8 values ["1m","5m","10m","15m","20m","30m","45m","60m"]. */
+  /** The amount of time that the rule threshold must be exceeded to send an alert notification. The final value must be equivalent to one of the following 8 values [“1m”,“5m”,“10m”,“15m”,“20m”,“30m”,“45m”,“60m”]. */
   duration?: RulesUpdateResponseDuration | null;
   /** The number of packets per second for the rule. When this value is exceeded for the set duration, an alert notification is sent. Minimum of 1 and no maximum. */
   packetThreshold?: number | null;

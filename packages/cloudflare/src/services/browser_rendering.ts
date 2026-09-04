@@ -25,6 +25,142 @@ const KEY_DICTIONARY: Record<string, string | ReadonlyArray<string>> = {
   webKitVersion: "WebKit-Version",
 };
 
+export interface AccessibilityTreeCreateRequest {
+  /** Account ID. */
+  accountId: string;
+}
+export const AccessibilityTreeCreateRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/browser-rendering/accessibilityTree",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+).annotate({
+  identifier: "AccessibilityTreeCreateRequest",
+}) as any as S.Schema<AccessibilityTreeCreateRequest>;
+
+export type AccessibilityTreeCreateResponseAccessibilityTreeChecked = "mixed";
+export const AccessibilityTreeCreateResponseAccessibilityTreeChecked =
+  /*@__PURE__*/ S.String;
+
+export type AccessibilityTreeCreateResponseAccessibilityTreeChecked2 =
+  | AccessibilityTreeCreateResponseAccessibilityTreeChecked
+  | boolean;
+export const AccessibilityTreeCreateResponseAccessibilityTreeChecked2 =
+  /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], []]));
+
+export type AccessibilityTreeCreateResponseAccessibilityTreeChildrenList =
+  Array<unknown>;
+export const AccessibilityTreeCreateResponseAccessibilityTreeChildrenList =
+  /*@__PURE__*/ S.Array(
+    S.Unknown,
+  ) as any as S.Schema<AccessibilityTreeCreateResponseAccessibilityTreeChildrenList>;
+
+export type AccessibilityTreeCreateResponseAccessibilityTreePressed = "mixed";
+export const AccessibilityTreeCreateResponseAccessibilityTreePressed =
+  /*@__PURE__*/ S.String;
+
+export type AccessibilityTreeCreateResponseAccessibilityTreePressed2 =
+  | AccessibilityTreeCreateResponseAccessibilityTreePressed
+  | boolean;
+export const AccessibilityTreeCreateResponseAccessibilityTreePressed2 =
+  /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], []]));
+
+export type AccessibilityTreeCreateResponseAccessibilityTreeValue =
+  | string
+  | number;
+export const AccessibilityTreeCreateResponseAccessibilityTreeValue =
+  /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], []]));
+
+export interface AccessibilityTreeCreateResponseAccessibilityTree {
+  role: string;
+  autocomplete?: string | null;
+  checked?: AccessibilityTreeCreateResponseAccessibilityTreeChecked2 | null;
+  children?: AccessibilityTreeCreateResponseAccessibilityTreeChildrenList | null;
+  description?: string | null;
+  disabled?: boolean | null;
+  expanded?: boolean | null;
+  focused?: boolean | null;
+  haspopup?: string | null;
+  invalid?: string | null;
+  keyshortcuts?: string | null;
+  level?: number | null;
+  modal?: boolean | null;
+  multiline?: boolean | null;
+  multiselectable?: boolean | null;
+  name?: string | null;
+  orientation?: string | null;
+  pressed?: AccessibilityTreeCreateResponseAccessibilityTreePressed2 | null;
+  readonly?: boolean | null;
+  required?: boolean | null;
+  roledescription?: string | null;
+  selected?: boolean | null;
+  value?: AccessibilityTreeCreateResponseAccessibilityTreeValue | null;
+  valuemax?: number | null;
+  valuemin?: number | null;
+  valuetext?: string | null;
+}
+export const AccessibilityTreeCreateResponseAccessibilityTree =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      role: S.String,
+      autocomplete: S.optional(S.NullOr(S.String)),
+      checked: S.optional(
+        S.NullOr(AccessibilityTreeCreateResponseAccessibilityTreeChecked2),
+      ),
+      children: S.optional(
+        S.NullOr(AccessibilityTreeCreateResponseAccessibilityTreeChildrenList),
+      ),
+      description: S.optional(S.NullOr(S.String)),
+      disabled: S.optional(S.NullOr(S.Boolean)),
+      expanded: S.optional(S.NullOr(S.Boolean)),
+      focused: S.optional(S.NullOr(S.Boolean)),
+      haspopup: S.optional(S.NullOr(S.String)),
+      invalid: S.optional(S.NullOr(S.String)),
+      keyshortcuts: S.optional(S.NullOr(S.String)),
+      level: S.optional(S.NullOr(S.Number)),
+      modal: S.optional(S.NullOr(S.Boolean)),
+      multiline: S.optional(S.NullOr(S.Boolean)),
+      multiselectable: S.optional(S.NullOr(S.Boolean)),
+      name: S.optional(S.NullOr(S.String)),
+      orientation: S.optional(S.NullOr(S.String)),
+      pressed: S.optional(
+        S.NullOr(AccessibilityTreeCreateResponseAccessibilityTreePressed2),
+      ),
+      readonly: S.optional(S.NullOr(S.Boolean)),
+      required: S.optional(S.NullOr(S.Boolean)),
+      roledescription: S.optional(S.NullOr(S.String)),
+      selected: S.optional(S.NullOr(S.Boolean)),
+      value: S.optional(
+        S.NullOr(AccessibilityTreeCreateResponseAccessibilityTreeValue),
+      ),
+      valuemax: S.optional(S.NullOr(S.Number)),
+      valuemin: S.optional(S.NullOr(S.Number)),
+      valuetext: S.optional(S.NullOr(S.String)),
+    }),
+  ).annotate({
+    identifier: "AccessibilityTreeCreateResponseAccessibilityTree",
+  }) as any as S.Schema<AccessibilityTreeCreateResponseAccessibilityTree>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface AccessibilityTreeCreateResponse {
+  /** Accessibility tree node */
+  accessibilityTree: AccessibilityTreeCreateResponseAccessibilityTree;
+}
+export const AccessibilityTreeCreateResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accessibilityTree: AccessibilityTreeCreateResponseAccessibilityTree,
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+).annotate({
+  identifier: "AccessibilityTreeCreateResponse",
+}) as any as S.Schema<AccessibilityTreeCreateResponse>;
+
 export interface ActivateDevtoolBrowserTargetRequest {
   /** Account ID. */
   accountId: string;
@@ -51,15 +187,24 @@ export const ActivateDevtoolBrowserTargetRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ActivateDevtoolBrowserTargetRequest",
 }) as any as S.Schema<ActivateDevtoolBrowserTargetRequest>;
 
+export type DevtoolsBrowserTargetsActivateResponseMessage = "message";
+export const DevtoolsBrowserTargetsActivateResponseMessage =
+  /*@__PURE__*/ S.String;
+
 /** Raw response payload (operation does not use the standard v4 result envelope). */
 export interface ActivateDevtoolBrowserTargetResponse {
   /** Target activated. */
   message: string;
+  /** } */
+  message_2: DevtoolsBrowserTargetsActivateResponseMessage;
 }
 export const ActivateDevtoolBrowserTargetResponse = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       message: S.String,
+      message_2: DevtoolsBrowserTargetsActivateResponseMessage.pipe(
+        T.Body("message"),
+      ),
     }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ActivateDevtoolBrowserTargetResponse",
@@ -91,14 +236,23 @@ export const CloseDevtoolBrowserTargetRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CloseDevtoolBrowserTargetRequest",
 }) as any as S.Schema<CloseDevtoolBrowserTargetRequest>;
 
+export type DevtoolsBrowserTargetsCloseResponseMessage = "message";
+export const DevtoolsBrowserTargetsCloseResponseMessage =
+  /*@__PURE__*/ S.String;
+
 /** Raw response payload (operation does not use the standard v4 result envelope). */
 export interface CloseDevtoolBrowserTargetResponse {
   /** Target is closing. */
   message: string;
+  /** } */
+  message_2: DevtoolsBrowserTargetsCloseResponseMessage;
 }
 export const CloseDevtoolBrowserTargetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     message: S.String,
+    message_2: DevtoolsBrowserTargetsCloseResponseMessage.pipe(
+      T.Body("message"),
+    ),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CloseDevtoolBrowserTargetResponse",
@@ -114,6 +268,8 @@ export interface ConnectDevtoolBrowserRequest {
   /** Use experimental browser. */
   lab?: boolean;
   recording?: boolean;
+  /** Optional base64url-encoded JSON connection guardrails (mode) */
+  cfBrapiGuardrails?: string;
 }
 export const ConnectDevtoolBrowserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -122,6 +278,9 @@ export const ConnectDevtoolBrowserRequest = /*@__PURE__*/ S.suspend(() =>
     keepAlive: S.optional(S.Number.pipe(T.Query("keep_alive"))),
     lab: S.optional(S.Boolean.pipe(T.Query())),
     recording: S.optional(S.Boolean.pipe(T.Query())),
+    cfBrapiGuardrails: S.optional(
+      S.String.pipe(T.Header("cf-brapi-guardrails")),
+    ),
   })
     .pipe(
       T.Http({
@@ -146,6 +305,7 @@ export interface ContentCreateRequestAddScriptTagItem {
   id?: string;
   content?: string;
   type?: string;
+  /** formaturi */
   url?: string;
 }
 export const ContentCreateRequestAddScriptTagItem = /*@__PURE__*/ S.suspend(
@@ -168,6 +328,7 @@ export const ContentCreateRequestAddScriptTagList = /*@__PURE__*/ S.Array(
 
 export interface ContentCreateRequestAddStyleTagItem {
   content?: string;
+  /** formaturi */
   url?: string;
 }
 export const ContentCreateRequestAddStyleTagItem = /*@__PURE__*/ S.suspend(() =>
@@ -221,7 +382,9 @@ export const ContentCreateRequestAllowResourceTypesList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<ContentCreateRequestAllowResourceTypesList>;
 
 export interface ContentCreateRequestAuthenticate {
+  /** minLength1 */
   password: string;
+  /** minLength1 */
   username: string;
 }
 export const ContentCreateRequestAuthenticate = /*@__PURE__*/ S.suspend(() =>
@@ -246,105 +409,46 @@ export type ContentCreateRequestCookiesItemSourceScheme =
 export const ContentCreateRequestCookiesItemSourceScheme =
   /*@__PURE__*/ S.String;
 
-export interface ContentCreateRequestCookiesItem {
-  /** Cookie name. */
-  name: string;
-  value: string;
-  domain?: string;
-  expires?: number;
-  httpOnly?: boolean;
-  partitionKey?: string;
-  path?: string;
-  priority?: ContentCreateRequestCookiesItemPriority | (string & {});
-  sameParty?: boolean;
-  sameSite?: ContentCreateRequestCookiesItemSameSite | (string & {});
-  secure?: boolean;
-  sourcePort?: number;
-  sourceScheme?: ContentCreateRequestCookiesItemSourceScheme | (string & {});
-  url?: string;
-}
-export const ContentCreateRequestCookiesItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    value: S.String,
-    domain: S.optional(S.String),
-    expires: S.optional(S.Number),
-    httpOnly: S.optional(S.Boolean),
-    partitionKey: S.optional(S.String),
-    path: S.optional(S.String),
-    priority: S.optional(ContentCreateRequestCookiesItemPriority),
-    sameParty: S.optional(S.Boolean),
-    sameSite: S.optional(ContentCreateRequestCookiesItemSameSite),
-    secure: S.optional(S.Boolean),
-    sourcePort: S.optional(S.Number),
-    sourceScheme: S.optional(ContentCreateRequestCookiesItemSourceScheme),
-    url: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ContentCreateRequestCookiesItem",
-}) as any as S.Schema<ContentCreateRequestCookiesItem>;
-
-export type ContentCreateRequestCookiesList =
-  Array<ContentCreateRequestCookiesItem>;
-export const ContentCreateRequestCookiesList = /*@__PURE__*/ S.Array(
-  ContentCreateRequestCookiesItem,
-) as any as S.Schema<ContentCreateRequestCookiesList>;
-
-export type ContentCreateRequestGotoOptionsWaitUntilCase0 =
+export type ContentCreateRequestCookiesItemGotoOptionsWaitUntil =
   | "load"
   | "domcontentloaded"
   | "networkidle0"
   | "networkidle2";
-export const ContentCreateRequestGotoOptionsWaitUntilCase0 =
+export const ContentCreateRequestCookiesItemGotoOptionsWaitUntil =
   /*@__PURE__*/ S.String;
 
-export type ContentCreateRequestGotoOptionsWaitUntilCase1Item =
-  | "load"
-  | "domcontentloaded"
-  | "networkidle0"
-  | "networkidle2";
-export const ContentCreateRequestGotoOptionsWaitUntilCase1Item =
-  /*@__PURE__*/ S.String;
-
-export type ContentCreateRequestGotoOptionsWaitUntilCase1List = Array<
-  ContentCreateRequestGotoOptionsWaitUntilCase1Item | (string & {})
->;
-export const ContentCreateRequestGotoOptionsWaitUntilCase1List =
-  /*@__PURE__*/ S.Array(
-    ContentCreateRequestGotoOptionsWaitUntilCase1Item,
-  ) as any as S.Schema<ContentCreateRequestGotoOptionsWaitUntilCase1List>;
-
-export type ContentCreateRequestGotoOptionsWaitUntil =
-  | ContentCreateRequestGotoOptionsWaitUntilCase0
-  | (string & {})
-  | ContentCreateRequestGotoOptionsWaitUntilCase1List;
-export const ContentCreateRequestGotoOptionsWaitUntil =
-  /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], []]));
-
-export interface ContentCreateRequestGotoOptions {
+export interface ContentCreateRequestCookiesItemGotoOptions {
   referer?: string;
   referrerPolicy?: string;
+  /** maximum60000 */
   timeout?: number;
-  waitUntil?: ContentCreateRequestGotoOptionsWaitUntil;
+  /** "load" or "domcontentloaded" or "networkidle0" or "networkidle2" */
+  waitUntil?:
+    | ContentCreateRequestCookiesItemGotoOptionsWaitUntil
+    | (string & {});
 }
-export const ContentCreateRequestGotoOptions = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    referer: S.optional(S.String),
-    referrerPolicy: S.optional(S.String),
-    timeout: S.optional(S.Number),
-    waitUntil: S.optional(ContentCreateRequestGotoOptionsWaitUntil),
-  }),
-).annotate({
-  identifier: "ContentCreateRequestGotoOptions",
-}) as any as S.Schema<ContentCreateRequestGotoOptions>;
+export const ContentCreateRequestCookiesItemGotoOptions =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      referer: S.optional(S.String),
+      referrerPolicy: S.optional(S.String),
+      timeout: S.optional(S.Number),
+      waitUntil: S.optional(
+        ContentCreateRequestCookiesItemGotoOptionsWaitUntil,
+      ),
+    }),
+  ).annotate({
+    identifier: "ContentCreateRequestCookiesItemGotoOptions",
+  }) as any as S.Schema<ContentCreateRequestCookiesItemGotoOptions>;
 
-export type ContentCreateRequestRejectRequestPatternList = Array<string>;
-export const ContentCreateRequestRejectRequestPatternList =
+export type ContentCreateRequestCookiesItemRejectRequestPatternList =
+  Array<string>;
+export const ContentCreateRequestCookiesItemRejectRequestPatternList =
   /*@__PURE__*/ S.Array(
     S.String,
-  ) as any as S.Schema<ContentCreateRequestRejectRequestPatternList>;
+  ) as any as S.Schema<ContentCreateRequestCookiesItemRejectRequestPatternList>;
 
-export type ContentCreateRequestRejectResourceTypesItem =
+export type ContentCreateRequestCookiesItemRejectResourceTypesItem =
   | "document"
   | "stylesheet"
   | "image"
@@ -363,111 +467,177 @@ export type ContentCreateRequestRejectResourceTypesItem =
   | "cspviolationreport"
   | "preflight"
   | "other";
-export const ContentCreateRequestRejectResourceTypesItem =
+export const ContentCreateRequestCookiesItemRejectResourceTypesItem =
   /*@__PURE__*/ S.String;
 
-export type ContentCreateRequestRejectResourceTypesList = Array<
-  ContentCreateRequestRejectResourceTypesItem | (string & {})
+export type ContentCreateRequestCookiesItemRejectResourceTypesList = Array<
+  ContentCreateRequestCookiesItemRejectResourceTypesItem | (string & {})
 >;
-export const ContentCreateRequestRejectResourceTypesList =
+export const ContentCreateRequestCookiesItemRejectResourceTypesList =
   /*@__PURE__*/ S.Array(
-    ContentCreateRequestRejectResourceTypesItem,
-  ) as any as S.Schema<ContentCreateRequestRejectResourceTypesList>;
+    ContentCreateRequestCookiesItemRejectResourceTypesItem,
+  ) as any as S.Schema<ContentCreateRequestCookiesItemRejectResourceTypesList>;
 
-export type ContentCreateRequestSetExtraHTTPHeadersMap = {
+export type ContentCreateRequestCookiesItemSetExtraHTTPHeadersMap = {
   [key: string]: string | undefined;
 };
-export const ContentCreateRequestSetExtraHTTPHeadersMap =
+export const ContentCreateRequestCookiesItemSetExtraHTTPHeadersMap =
   /*@__PURE__*/ S.Record(
     S.String,
     S.String,
-  ) as any as S.Schema<ContentCreateRequestSetExtraHTTPHeadersMap>;
+  ) as any as S.Schema<ContentCreateRequestCookiesItemSetExtraHTTPHeadersMap>;
 
-export interface ContentCreateRequestViewport {
+export interface ContentCreateRequestCookiesItemViewportWaitForSelector {
+  selector: string;
+  hidden?: boolean;
+  /** maximum120000 */
+  timeout?: number;
+  visible?: boolean;
+}
+export const ContentCreateRequestCookiesItemViewportWaitForSelector =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      selector: S.String,
+      hidden: S.optional(S.Boolean),
+      timeout: S.optional(S.Number),
+      visible: S.optional(S.Boolean),
+    }),
+  ).annotate({
+    identifier: "ContentCreateRequestCookiesItemViewportWaitForSelector",
+  }) as any as S.Schema<ContentCreateRequestCookiesItemViewportWaitForSelector>;
+
+export interface ContentCreateRequestCookiesItemViewport {
   height: number;
   width: number;
   deviceScaleFactor?: number;
   hasTouch?: boolean;
   isLandscape?: boolean;
   isMobile?: boolean;
+  /** Wait for the selector to appear in page. Check options. */
+  waitForSelector?: ContentCreateRequestCookiesItemViewportWaitForSelector;
+  /** Waits for a specified timeout before continuing. */
+  waitForTimeout?: number;
 }
-export const ContentCreateRequestViewport = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    height: S.Number,
-    width: S.Number,
-    deviceScaleFactor: S.optional(S.Number),
-    hasTouch: S.optional(S.Boolean),
-    isLandscape: S.optional(S.Boolean),
-    isMobile: S.optional(S.Boolean),
-  }),
+export const ContentCreateRequestCookiesItemViewport = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      height: S.Number,
+      width: S.Number,
+      deviceScaleFactor: S.optional(S.Number),
+      hasTouch: S.optional(S.Boolean),
+      isLandscape: S.optional(S.Boolean),
+      isMobile: S.optional(S.Boolean),
+      waitForSelector: S.optional(
+        ContentCreateRequestCookiesItemViewportWaitForSelector,
+      ),
+      waitForTimeout: S.optional(S.Number),
+    }),
 ).annotate({
-  identifier: "ContentCreateRequestViewport",
-}) as any as S.Schema<ContentCreateRequestViewport>;
+  identifier: "ContentCreateRequestCookiesItemViewport",
+}) as any as S.Schema<ContentCreateRequestCookiesItemViewport>;
 
-export interface ContentCreateRequestWaitForSelector {
-  selector: string;
-  hidden?: boolean;
-  timeout?: number;
-  visible?: boolean;
+export interface ContentCreateRequestCookiesItem {
+  /** Cookie name. */
+  name: string;
+  value: string;
+  domain?: string;
+  expires?: number;
+  httpOnly?: boolean;
+  partitionKey?: string;
+  path?: string;
+  priority?: ContentCreateRequestCookiesItemPriority | (string & {});
+  sameParty?: boolean;
+  sameSite?: ContentCreateRequestCookiesItemSameSite | (string & {});
+  secure?: boolean;
+  sourcePort?: number;
+  sourceScheme?: ContentCreateRequestCookiesItemSourceScheme | (string & {});
+  url?: string;
+  emulateMediaType?: string;
+  /** Check options. */
+  gotoOptions?: ContentCreateRequestCookiesItemGotoOptions;
+  /** Set the content of the page, eg: `<h1>Hello World!!</h1>`. Either `html` or `url` must be set. */
+  html?: string;
+  /** Block undesired requests that match the provided regex patterns, eg. ’/^.*.(css)’. */
+  rejectRequestPattern?: ContentCreateRequestCookiesItemRejectRequestPatternList;
+  /** Block undesired requests that match the provided resource types, eg. ‘image’ or ‘script’. */
+  rejectResourceTypes?: ContentCreateRequestCookiesItemRejectResourceTypesList;
+  setExtraHTTPHeaders?: ContentCreateRequestCookiesItemSetExtraHTTPHeadersMap;
+  setJavaScriptEnabled?: boolean;
+  /** URL to navigate to, eg. `https://example.com`. */
+  url_2?: string;
+  userAgent?: string;
+  /** Check options. */
+  viewport?: ContentCreateRequestCookiesItemViewport;
 }
-export const ContentCreateRequestWaitForSelector = /*@__PURE__*/ S.suspend(() =>
+export const ContentCreateRequestCookiesItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    selector: S.String,
-    hidden: S.optional(S.Boolean),
-    timeout: S.optional(S.Number),
-    visible: S.optional(S.Boolean),
+    name: S.String,
+    value: S.String,
+    domain: S.optional(S.String),
+    expires: S.optional(S.Number),
+    httpOnly: S.optional(S.Boolean),
+    partitionKey: S.optional(S.String),
+    path: S.optional(S.String),
+    priority: S.optional(ContentCreateRequestCookiesItemPriority),
+    sameParty: S.optional(S.Boolean),
+    sameSite: S.optional(ContentCreateRequestCookiesItemSameSite),
+    secure: S.optional(S.Boolean),
+    sourcePort: S.optional(S.Number),
+    sourceScheme: S.optional(ContentCreateRequestCookiesItemSourceScheme),
+    url: S.optional(S.String),
+    emulateMediaType: S.optional(S.String),
+    gotoOptions: S.optional(ContentCreateRequestCookiesItemGotoOptions),
+    html: S.optional(S.String),
+    rejectRequestPattern: S.optional(
+      ContentCreateRequestCookiesItemRejectRequestPatternList,
+    ),
+    rejectResourceTypes: S.optional(
+      ContentCreateRequestCookiesItemRejectResourceTypesList,
+    ),
+    setExtraHTTPHeaders: S.optional(
+      ContentCreateRequestCookiesItemSetExtraHTTPHeadersMap,
+    ),
+    setJavaScriptEnabled: S.optional(S.Boolean),
+    url_2: S.optional(S.String.pipe(T.Body("url"))),
+    userAgent: S.optional(S.String),
+    viewport: S.optional(ContentCreateRequestCookiesItemViewport),
   }),
 ).annotate({
-  identifier: "ContentCreateRequestWaitForSelector",
-}) as any as S.Schema<ContentCreateRequestWaitForSelector>;
+  identifier: "ContentCreateRequestCookiesItem",
+}) as any as S.Schema<ContentCreateRequestCookiesItem>;
+
+export type ContentCreateRequestCookiesList =
+  Array<ContentCreateRequestCookiesItem>;
+export const ContentCreateRequestCookiesList = /*@__PURE__*/ S.Array(
+  ContentCreateRequestCookiesItem,
+) as any as S.Schema<ContentCreateRequestCookiesList>;
 
 export interface CreateContentRequest {
   /** Account ID. */
   accountId: string;
   /** Cache TTL default is 5s. Set to 0 to disable. */
   cacheTTL?: number;
-  /** URL to navigate to, eg. `https://example.com`. */
-  url?: string;
   /** The maximum duration allowed for the browser action to complete after the page has loaded (such as taking screenshots, extracting content, or generating PDFs). If this time limit is exceeded, the action stops and returns a timeout error. */
   actionTimeout?: number;
   /** Adds a `<script>` tag into the page with the desired URL or content. */
   addScriptTag?: ContentCreateRequestAddScriptTagList;
   /** Adds a `<link rel="stylesheet">` tag into the page with the desired URL or a `<style type="text/css">` tag with the content. */
   addStyleTag?: ContentCreateRequestAddStyleTagList;
-  /** Only allow requests that match the provided regex patterns, eg. '/^.*.(css)'. */
+  /** Only allow requests that match the provided regex patterns, eg. ’/^.*.(css)’. Reject rules are applied first. */
   allowRequestPattern?: ContentCreateRequestAllowRequestPatternList;
-  /** Only allow requests that match the provided resource types, eg. 'image' or 'script'. */
+  /** Only allow requests that match the provided resource types, eg. ‘image’ or ‘script’. Reject rules are applied first. */
   allowResourceTypes?: ContentCreateRequestAllowResourceTypesList;
   /** Provide credentials for HTTP authentication. */
   authenticate?: ContentCreateRequestAuthenticate;
-  /** Attempt to proceed when 'awaited' events fail or timeout. */
+  /** Attempt to proceed when ‘awaited’ events fail or timeout. */
   bestAttempt?: boolean;
-  /** Check [options](https://pptr.dev/api/puppeteer.page.setcookie). */
+  /** Check options. */
   cookies?: ContentCreateRequestCookiesList;
-  emulateMediaType?: string;
-  /** Check [options](https://pptr.dev/api/puppeteer.gotooptions). */
-  gotoOptions?: ContentCreateRequestGotoOptions;
-  /** Block undesired requests that match the provided regex patterns, eg. '/^.*.(css)'. */
-  rejectRequestPattern?: ContentCreateRequestRejectRequestPatternList;
-  /** Block undesired requests that match the provided resource types, eg. 'image' or 'script'. */
-  rejectResourceTypes?: ContentCreateRequestRejectResourceTypesList;
-  setExtraHTTPHeaders?: ContentCreateRequestSetExtraHTTPHeadersMap;
-  setJavaScriptEnabled?: boolean;
-  userAgent?: string;
-  /** Check [options](https://pptr.dev/api/puppeteer.page.setviewport). */
-  viewport?: ContentCreateRequestViewport;
-  /** Wait for the selector to appear in page. Check [options](https://pptr.dev/api/puppeteer.page.waitforselector). */
-  waitForSelector?: ContentCreateRequestWaitForSelector;
-  /** Waits for a specified timeout before continuing. */
-  waitForTimeout?: number;
-  /** Set the content of the page, eg: `<h1>Hello World!!</h1>`. Either `html` or `url` must be set. */
-  html?: string;
 }
 export const CreateContentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     cacheTTL: S.optional(S.Number.pipe(T.Query())),
-    url: S.optional(S.String),
     actionTimeout: S.optional(S.Number),
     addScriptTag: S.optional(ContentCreateRequestAddScriptTagList),
     addStyleTag: S.optional(ContentCreateRequestAddStyleTagList),
@@ -478,21 +648,6 @@ export const CreateContentRequest = /*@__PURE__*/ S.suspend(() =>
     authenticate: S.optional(ContentCreateRequestAuthenticate),
     bestAttempt: S.optional(S.Boolean),
     cookies: S.optional(ContentCreateRequestCookiesList),
-    emulateMediaType: S.optional(S.String),
-    gotoOptions: S.optional(ContentCreateRequestGotoOptions),
-    rejectRequestPattern: S.optional(
-      ContentCreateRequestRejectRequestPatternList,
-    ),
-    rejectResourceTypes: S.optional(
-      ContentCreateRequestRejectResourceTypesList,
-    ),
-    setExtraHTTPHeaders: S.optional(ContentCreateRequestSetExtraHTTPHeadersMap),
-    setJavaScriptEnabled: S.optional(S.Boolean),
-    userAgent: S.optional(S.String),
-    viewport: S.optional(ContentCreateRequestViewport),
-    waitForSelector: S.optional(ContentCreateRequestWaitForSelector),
-    waitForTimeout: S.optional(S.Number),
-    html: S.optional(S.String),
   })
     .pipe(
       T.Http({
@@ -513,428 +668,13 @@ export const CreateContentResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateContentResponse",
 }) as any as S.Schema<CreateContentResponse>;
 
-export type CrawlCreateRequestAddScriptTagItem =
-  ContentCreateRequestAddScriptTagItem;
-export const CrawlCreateRequestAddScriptTagItem =
-  ContentCreateRequestAddScriptTagItem;
-
-export type CrawlCreateRequestAddScriptTagList =
-  Array<ContentCreateRequestAddScriptTagItem>;
-export const CrawlCreateRequestAddScriptTagList = /*@__PURE__*/ S.Array(
-  ContentCreateRequestAddScriptTagItem,
-) as any as S.Schema<CrawlCreateRequestAddScriptTagList>;
-
-export type CrawlCreateRequestAddStyleTagItem =
-  ContentCreateRequestAddStyleTagItem;
-export const CrawlCreateRequestAddStyleTagItem =
-  ContentCreateRequestAddStyleTagItem;
-
-export type CrawlCreateRequestAddStyleTagList =
-  Array<ContentCreateRequestAddStyleTagItem>;
-export const CrawlCreateRequestAddStyleTagList = /*@__PURE__*/ S.Array(
-  ContentCreateRequestAddStyleTagItem,
-) as any as S.Schema<CrawlCreateRequestAddStyleTagList>;
-
-export type CrawlCreateRequestAllowRequestPatternList = Array<string>;
-export const CrawlCreateRequestAllowRequestPatternList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CrawlCreateRequestAllowRequestPatternList>;
-
-export type CrawlCreateRequestAllowResourceTypesItem =
-  | "document"
-  | "stylesheet"
-  | "image"
-  | "media"
-  | "font"
-  | "script"
-  | "texttrack"
-  | "xhr"
-  | "fetch"
-  | "prefetch"
-  | "eventsource"
-  | "websocket"
-  | "manifest"
-  | "signedexchange"
-  | "ping"
-  | "cspviolationreport"
-  | "preflight"
-  | "other";
-export const CrawlCreateRequestAllowResourceTypesItem = /*@__PURE__*/ S.String;
-
-export type CrawlCreateRequestAllowResourceTypesList = Array<
-  CrawlCreateRequestAllowResourceTypesItem | (string & {})
->;
-export const CrawlCreateRequestAllowResourceTypesList = /*@__PURE__*/ S.Array(
-  CrawlCreateRequestAllowResourceTypesItem,
-) as any as S.Schema<CrawlCreateRequestAllowResourceTypesList>;
-
-export type CrawlCreateRequestAuthenticate = ContentCreateRequestAuthenticate;
-export const CrawlCreateRequestAuthenticate = ContentCreateRequestAuthenticate;
-
-export type CrawlCreateRequestCookiesItemPriority = "Low" | "Medium" | "High";
-export const CrawlCreateRequestCookiesItemPriority = /*@__PURE__*/ S.String;
-
-export type CrawlCreateRequestCookiesItemSameSite = "Strict" | "Lax" | "None";
-export const CrawlCreateRequestCookiesItemSameSite = /*@__PURE__*/ S.String;
-
-export type CrawlCreateRequestCookiesItemSourceScheme =
-  | "Unset"
-  | "NonSecure"
-  | "Secure";
-export const CrawlCreateRequestCookiesItemSourceScheme = /*@__PURE__*/ S.String;
-
-export interface CrawlCreateRequestCookiesItem {
-  /** Cookie name. */
-  name: string;
-  value: string;
-  domain?: string;
-  expires?: number;
-  httpOnly?: boolean;
-  partitionKey?: string;
-  path?: string;
-  priority?: CrawlCreateRequestCookiesItemPriority | (string & {});
-  sameParty?: boolean;
-  sameSite?: CrawlCreateRequestCookiesItemSameSite | (string & {});
-  secure?: boolean;
-  sourcePort?: number;
-  sourceScheme?: CrawlCreateRequestCookiesItemSourceScheme | (string & {});
-  url?: string;
-}
-export const CrawlCreateRequestCookiesItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    value: S.String,
-    domain: S.optional(S.String),
-    expires: S.optional(S.Number),
-    httpOnly: S.optional(S.Boolean),
-    partitionKey: S.optional(S.String),
-    path: S.optional(S.String),
-    priority: S.optional(CrawlCreateRequestCookiesItemPriority),
-    sameParty: S.optional(S.Boolean),
-    sameSite: S.optional(CrawlCreateRequestCookiesItemSameSite),
-    secure: S.optional(S.Boolean),
-    sourcePort: S.optional(S.Number),
-    sourceScheme: S.optional(CrawlCreateRequestCookiesItemSourceScheme),
-    url: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CrawlCreateRequestCookiesItem",
-}) as any as S.Schema<CrawlCreateRequestCookiesItem>;
-
-export type CrawlCreateRequestCookiesList =
-  Array<CrawlCreateRequestCookiesItem>;
-export const CrawlCreateRequestCookiesList = /*@__PURE__*/ S.Array(
-  CrawlCreateRequestCookiesItem,
-) as any as S.Schema<CrawlCreateRequestCookiesList>;
-
-export type CrawlCreateRequestCrawlPurposesItem =
-  | "search"
-  | "ai-input"
-  | "ai-train";
-export const CrawlCreateRequestCrawlPurposesItem = /*@__PURE__*/ S.String;
-
-export type CrawlCreateRequestCrawlPurposesList = Array<
-  CrawlCreateRequestCrawlPurposesItem | (string & {})
->;
-export const CrawlCreateRequestCrawlPurposesList = /*@__PURE__*/ S.Array(
-  CrawlCreateRequestCrawlPurposesItem,
-) as any as S.Schema<CrawlCreateRequestCrawlPurposesList>;
-
-export type CrawlCreateRequestFormatsItem = "html" | "markdown" | "json";
-export const CrawlCreateRequestFormatsItem = /*@__PURE__*/ S.String;
-
-export type CrawlCreateRequestFormatsList = Array<
-  CrawlCreateRequestFormatsItem | (string & {})
->;
-export const CrawlCreateRequestFormatsList = /*@__PURE__*/ S.Array(
-  CrawlCreateRequestFormatsItem,
-) as any as S.Schema<CrawlCreateRequestFormatsList>;
-
-export type CrawlCreateRequestGotoOptionsWaitUntilCase0 =
-  | "load"
-  | "domcontentloaded"
-  | "networkidle0"
-  | "networkidle2";
-export const CrawlCreateRequestGotoOptionsWaitUntilCase0 =
-  /*@__PURE__*/ S.String;
-
-export type CrawlCreateRequestGotoOptionsWaitUntilCase1Item =
-  | "load"
-  | "domcontentloaded"
-  | "networkidle0"
-  | "networkidle2";
-export const CrawlCreateRequestGotoOptionsWaitUntilCase1Item =
-  /*@__PURE__*/ S.String;
-
-export type CrawlCreateRequestGotoOptionsWaitUntilCase1List = Array<
-  CrawlCreateRequestGotoOptionsWaitUntilCase1Item | (string & {})
->;
-export const CrawlCreateRequestGotoOptionsWaitUntilCase1List =
-  /*@__PURE__*/ S.Array(
-    CrawlCreateRequestGotoOptionsWaitUntilCase1Item,
-  ) as any as S.Schema<CrawlCreateRequestGotoOptionsWaitUntilCase1List>;
-
-export type CrawlCreateRequestGotoOptionsWaitUntil =
-  | CrawlCreateRequestGotoOptionsWaitUntilCase0
-  | (string & {})
-  | CrawlCreateRequestGotoOptionsWaitUntilCase1List;
-export const CrawlCreateRequestGotoOptionsWaitUntil =
-  /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], []]));
-
-export interface CrawlCreateRequestGotoOptions {
-  referer?: string;
-  referrerPolicy?: string;
-  timeout?: number;
-  waitUntil?: CrawlCreateRequestGotoOptionsWaitUntil;
-}
-export const CrawlCreateRequestGotoOptions = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    referer: S.optional(S.String),
-    referrerPolicy: S.optional(S.String),
-    timeout: S.optional(S.Number),
-    waitUntil: S.optional(CrawlCreateRequestGotoOptionsWaitUntil),
-  }),
-).annotate({
-  identifier: "CrawlCreateRequestGotoOptions",
-}) as any as S.Schema<CrawlCreateRequestGotoOptions>;
-
-export interface CrawlCreateRequestJsonOptionsCustomAiItem {
-  /** AI model to use for the request. Must be formed as `<provider>/<model_name>`, e.g. `workers-ai/@cf/meta/llama-3.3-70b-instruct-fp8-fast`. */
-  model: string;
-  /** Authorization token for the AI model: `Bearer <token>`. Not needed for workers-ai models. */
-  authorization?: string;
-}
-export const CrawlCreateRequestJsonOptionsCustomAiItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      model: S.String,
-      authorization: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "CrawlCreateRequestJsonOptionsCustomAiItem",
-  }) as any as S.Schema<CrawlCreateRequestJsonOptionsCustomAiItem>;
-
-export type CrawlCreateRequestJsonOptionsCustomAiList =
-  Array<CrawlCreateRequestJsonOptionsCustomAiItem>;
-export const CrawlCreateRequestJsonOptionsCustomAiList = /*@__PURE__*/ S.Array(
-  CrawlCreateRequestJsonOptionsCustomAiItem,
-) as any as S.Schema<CrawlCreateRequestJsonOptionsCustomAiList>;
-
-export interface CrawlCreateRequestJsonOptionsResponseFormat {
-  type: string;
-  /** Schema for the response format. More information here: https://developers.cloudflare.com/workers-ai/json-mode/ */
-  jsonSchema?: unknown;
-}
-export const CrawlCreateRequestJsonOptionsResponseFormat =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      type: S.String,
-      jsonSchema: S.optional(S.Unknown.pipe(T.Body("json_schema"))),
-    }),
-  ).annotate({
-    identifier: "CrawlCreateRequestJsonOptionsResponseFormat",
-  }) as any as S.Schema<CrawlCreateRequestJsonOptionsResponseFormat>;
-
-export interface CrawlCreateRequestJsonOptions {
-  /** Optional list of custom AI models to use for the request. The models will be tried in the order provided, and in case a model returns an error, the next one will be used as fallback. */
-  customAi?: CrawlCreateRequestJsonOptionsCustomAiList;
-  prompt?: string;
-  responseFormat?: CrawlCreateRequestJsonOptionsResponseFormat;
-}
-export const CrawlCreateRequestJsonOptions = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    customAi: S.optional(
-      CrawlCreateRequestJsonOptionsCustomAiList.pipe(T.Body("custom_ai")),
-    ),
-    prompt: S.optional(S.String),
-    responseFormat: S.optional(
-      CrawlCreateRequestJsonOptionsResponseFormat.pipe(
-        T.Body("response_format"),
-      ),
-    ),
-  }),
-).annotate({
-  identifier: "CrawlCreateRequestJsonOptions",
-}) as any as S.Schema<CrawlCreateRequestJsonOptions>;
-
-export type CrawlCreateRequestOptionsExcludePatternsList = Array<string>;
-export const CrawlCreateRequestOptionsExcludePatternsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CrawlCreateRequestOptionsExcludePatternsList>;
-
-export type CrawlCreateRequestOptionsIncludePatternsList = Array<string>;
-export const CrawlCreateRequestOptionsIncludePatternsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CrawlCreateRequestOptionsIncludePatternsList>;
-
-export interface CrawlCreateRequestOptions {
-  /** Exclude links matching the provided wildcard patterns in the crawl job. Example: 'https://example.com/privacy/**'. */
-  excludePatterns?: CrawlCreateRequestOptionsExcludePatternsList;
-  /** Include external links in the crawl job. If set to true, includeSubdomains is ignored. */
-  includeExternalLinks?: boolean;
-  /** Include only links matching the provided wildcard patterns in the crawl job. Include patterns are evaluated before exclude patterns. URLs that match any of the specified include patterns will be included in the crawl job. Example: 'https://example.com/blog/**'. */
-  includePatterns?: CrawlCreateRequestOptionsIncludePatternsList;
-  /** Include links to subdomains in the crawl job. This option is ignored if includeExternalLinks is true. */
-  includeSubdomains?: boolean;
-}
-export const CrawlCreateRequestOptions = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    excludePatterns: S.optional(CrawlCreateRequestOptionsExcludePatternsList),
-    includeExternalLinks: S.optional(S.Boolean),
-    includePatterns: S.optional(CrawlCreateRequestOptionsIncludePatternsList),
-    includeSubdomains: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "CrawlCreateRequestOptions",
-}) as any as S.Schema<CrawlCreateRequestOptions>;
-
-export type CrawlCreateRequestRejectRequestPatternList = Array<string>;
-export const CrawlCreateRequestRejectRequestPatternList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CrawlCreateRequestRejectRequestPatternList>;
-
-export type CrawlCreateRequestRejectResourceTypesItem =
-  | "document"
-  | "stylesheet"
-  | "image"
-  | "media"
-  | "font"
-  | "script"
-  | "texttrack"
-  | "xhr"
-  | "fetch"
-  | "prefetch"
-  | "eventsource"
-  | "websocket"
-  | "manifest"
-  | "signedexchange"
-  | "ping"
-  | "cspviolationreport"
-  | "preflight"
-  | "other";
-export const CrawlCreateRequestRejectResourceTypesItem = /*@__PURE__*/ S.String;
-
-export type CrawlCreateRequestRejectResourceTypesList = Array<
-  CrawlCreateRequestRejectResourceTypesItem | (string & {})
->;
-export const CrawlCreateRequestRejectResourceTypesList = /*@__PURE__*/ S.Array(
-  CrawlCreateRequestRejectResourceTypesItem,
-) as any as S.Schema<CrawlCreateRequestRejectResourceTypesList>;
-
-export type CrawlCreateRequestSetExtraHTTPHeadersMap = {
-  [key: string]: string | undefined;
-};
-export const CrawlCreateRequestSetExtraHTTPHeadersMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CrawlCreateRequestSetExtraHTTPHeadersMap>;
-
-export type CrawlCreateRequestSource = "sitemaps" | "links" | "all";
-export const CrawlCreateRequestSource = /*@__PURE__*/ S.String;
-
-export type CrawlCreateRequestViewport = ContentCreateRequestViewport;
-export const CrawlCreateRequestViewport = ContentCreateRequestViewport;
-
-export type CrawlCreateRequestWaitForSelector =
-  ContentCreateRequestWaitForSelector;
-export const CrawlCreateRequestWaitForSelector =
-  ContentCreateRequestWaitForSelector;
-
 export interface CreateCrawlRequest {
   /** Account ID. */
   accountId: string;
-  /** Cache TTL default is 5s. Set to 0 to disable. */
-  cacheTTL?: number;
-  /** URL to navigate to, eg. `https://example.com`. */
-  url: string;
-  /** The maximum duration allowed for the browser action to complete after the page has loaded (such as taking screenshots, extracting content, or generating PDFs). If this time limit is exceeded, the action stops and returns a timeout error. */
-  actionTimeout?: number;
-  /** Adds a `<script>` tag into the page with the desired URL or content. */
-  addScriptTag?: CrawlCreateRequestAddScriptTagList;
-  /** Adds a `<link rel="stylesheet">` tag into the page with the desired URL or a `<style type="text/css">` tag with the content. */
-  addStyleTag?: CrawlCreateRequestAddStyleTagList;
-  /** Only allow requests that match the provided regex patterns, eg. '/^.*.(css)'. */
-  allowRequestPattern?: CrawlCreateRequestAllowRequestPatternList;
-  /** Only allow requests that match the provided resource types, eg. 'image' or 'script'. */
-  allowResourceTypes?: CrawlCreateRequestAllowResourceTypesList;
-  /** Provide credentials for HTTP authentication. */
-  authenticate?: ContentCreateRequestAuthenticate;
-  /** Attempt to proceed when 'awaited' events fail or timeout. */
-  bestAttempt?: boolean;
-  /** Check [options](https://pptr.dev/api/puppeteer.page.setcookie). */
-  cookies?: CrawlCreateRequestCookiesList;
-  /** List of crawl purposes to respect Content-Signal directives in robots.txt. Allowed values: 'search', 'ai-input', 'ai-train'. Learn more: https://contentsignals.org/. Default: ['search', 'ai-input', 'ai-train']. */
-  crawlPurposes?: CrawlCreateRequestCrawlPurposesList;
-  /** Maximum number of levels deep the crawler will traverse from the starting URL. */
-  depth?: number;
-  emulateMediaType?: string;
-  /** Formats to return. Default is `html`. */
-  formats?: CrawlCreateRequestFormatsList;
-  /** Check [options](https://pptr.dev/api/puppeteer.gotooptions). */
-  gotoOptions?: CrawlCreateRequestGotoOptions;
-  /** Options for JSON extraction. */
-  jsonOptions?: CrawlCreateRequestJsonOptions;
-  /** Maximum number of URLs to crawl. */
-  limit?: number;
-  /** Maximum age of a resource that can be returned from cache in seconds. Default is 1 day. */
-  maxAge?: number;
-  /** Unix timestamp (seconds since epoch) indicating to only crawl pages that were modified since this time. For sitemap URLs with a lastmod field, this is compared directly. For other URLs, the crawler will use If-Modified-Since header when fetching. URLs without modification information (no lastmod in sitemap and no Last-Modified header support) will be crawled. Note: This works in conjunction with maxAge - both filters must pass for a cached resource to be used. Must be within the last year and not in the future. */
-  modifiedSince?: number;
-  /** Additional options for the crawler. */
-  options?: CrawlCreateRequestOptions;
-  /** Block undesired requests that match the provided regex patterns, eg. '/^.*.(css)'. */
-  rejectRequestPattern?: CrawlCreateRequestRejectRequestPatternList;
-  /** Block undesired requests that match the provided resource types, eg. 'image' or 'script'. */
-  rejectResourceTypes?: CrawlCreateRequestRejectResourceTypesList;
-  /** Whether to render the page or fetch static content. True by default. */
-  render?: boolean;
-  setExtraHTTPHeaders?: CrawlCreateRequestSetExtraHTTPHeadersMap;
-  setJavaScriptEnabled?: boolean;
-  /** Source of links to crawl. 'sitemaps' - only crawl URLs from sitemaps, 'links' - only crawl URLs scraped from pages, 'all' - crawl both sitemap and scraped links (default). */
-  source?: CrawlCreateRequestSource | (string & {});
-  /** Check [options](https://pptr.dev/api/puppeteer.page.setviewport). */
-  viewport?: ContentCreateRequestViewport;
-  /** Wait for the selector to appear in page. Check [options](https://pptr.dev/api/puppeteer.page.waitforselector). */
-  waitForSelector?: ContentCreateRequestWaitForSelector;
-  /** Waits for a specified timeout before continuing. */
-  waitForTimeout?: number;
 }
 export const CreateCrawlRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
-    cacheTTL: S.optional(S.Number.pipe(T.Query())),
-    url: S.String,
-    actionTimeout: S.optional(S.Number),
-    addScriptTag: S.optional(CrawlCreateRequestAddScriptTagList),
-    addStyleTag: S.optional(CrawlCreateRequestAddStyleTagList),
-    allowRequestPattern: S.optional(CrawlCreateRequestAllowRequestPatternList),
-    allowResourceTypes: S.optional(CrawlCreateRequestAllowResourceTypesList),
-    authenticate: S.optional(ContentCreateRequestAuthenticate),
-    bestAttempt: S.optional(S.Boolean),
-    cookies: S.optional(CrawlCreateRequestCookiesList),
-    crawlPurposes: S.optional(CrawlCreateRequestCrawlPurposesList),
-    depth: S.optional(S.Number),
-    emulateMediaType: S.optional(S.String),
-    formats: S.optional(CrawlCreateRequestFormatsList),
-    gotoOptions: S.optional(CrawlCreateRequestGotoOptions),
-    jsonOptions: S.optional(CrawlCreateRequestJsonOptions),
-    limit: S.optional(S.Number),
-    maxAge: S.optional(S.Number),
-    modifiedSince: S.optional(S.Number),
-    options: S.optional(CrawlCreateRequestOptions),
-    rejectRequestPattern: S.optional(
-      CrawlCreateRequestRejectRequestPatternList,
-    ),
-    rejectResourceTypes: S.optional(CrawlCreateRequestRejectResourceTypesList),
-    render: S.optional(S.Boolean),
-    setExtraHTTPHeaders: S.optional(CrawlCreateRequestSetExtraHTTPHeadersMap),
-    setJavaScriptEnabled: S.optional(S.Boolean),
-    source: S.optional(CrawlCreateRequestSource),
-    viewport: S.optional(ContentCreateRequestViewport),
-    waitForSelector: S.optional(ContentCreateRequestWaitForSelector),
-    waitForTimeout: S.optional(S.Number),
   })
     .pipe(
       T.Http({
@@ -955,6 +695,40 @@ export const CreateCrawlResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateCrawlResponse",
 }) as any as S.Schema<CreateCrawlResponse>;
 
+export type DevtoolsBrowserCreateRequestGuardrailsAllowedDomainsList =
+  Array<string>;
+export const DevtoolsBrowserCreateRequestGuardrailsAllowedDomainsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<DevtoolsBrowserCreateRequestGuardrailsAllowedDomainsList>;
+
+export type DevtoolsBrowserCreateRequestGuardrailsAllowedDomainSetsList =
+  Array<string>;
+export const DevtoolsBrowserCreateRequestGuardrailsAllowedDomainSetsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<DevtoolsBrowserCreateRequestGuardrailsAllowedDomainSetsList>;
+
+export interface DevtoolsBrowserCreateRequestGuardrails {
+  /** Hostname patterns, max 50. Supports exact hosts (example.com) or a single * wildcard anywhere. Prefer *.example.com (subdomain wildcard) over *example.com (prefix wildcard) to avoid matching overbroad lookalikes like evilexample.com. */
+  allowedDomains?: DevtoolsBrowserCreateRequestGuardrailsAllowedDomainsList;
+  /** Max 4 entries: curated preset names (common-cdns) and/or https URLs of newline-separated hostname lists. */
+  allowedDomainSets?: DevtoolsBrowserCreateRequestGuardrailsAllowedDomainSetsList;
+}
+export const DevtoolsBrowserCreateRequestGuardrails = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      allowedDomains: S.optional(
+        DevtoolsBrowserCreateRequestGuardrailsAllowedDomainsList,
+      ),
+      allowedDomainSets: S.optional(
+        DevtoolsBrowserCreateRequestGuardrailsAllowedDomainSetsList,
+      ),
+    }),
+).annotate({
+  identifier: "DevtoolsBrowserCreateRequestGuardrails",
+}) as any as S.Schema<DevtoolsBrowserCreateRequestGuardrails>;
+
 export interface CreateDevtoolBrowserRequest {
   /** Account ID. */
   accountId: string;
@@ -967,6 +741,7 @@ export interface CreateDevtoolBrowserRequest {
   recording?: boolean;
   /** Include browser targets in response. */
   targets?: boolean;
+  guardrails?: DevtoolsBrowserCreateRequestGuardrails;
 }
 export const CreateDevtoolBrowserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -976,6 +751,7 @@ export const CreateDevtoolBrowserRequest = /*@__PURE__*/ S.suspend(() =>
     liveViewUrlExpiresInMs: S.optional(S.Number.pipe(T.Query())),
     recording: S.optional(S.Boolean.pipe(T.Query())),
     targets: S.optional(S.Boolean.pipe(T.Query())),
+    guardrails: S.optional(DevtoolsBrowserCreateRequestGuardrails),
   })
     .pipe(
       T.Http({
@@ -989,17 +765,30 @@ export const CreateDevtoolBrowserRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateDevtoolBrowserRequest",
 }) as any as S.Schema<CreateDevtoolBrowserRequest>;
 
+export type DevtoolsBrowserCreateResponseWebSocketDebuggerUrl =
+  "webSocketDebuggerUrl";
+export const DevtoolsBrowserCreateResponseWebSocketDebuggerUrl =
+  /*@__PURE__*/ S.String;
+
 /** Raw response payload (operation does not use the standard v4 result envelope). */
 export interface CreateDevtoolBrowserResponse {
   /** Browser session ID. */
   sessionId: string;
   /** WebSocket URL for the session. */
   webSocketDebuggerUrl?: string | null;
+  sessionId_2: unknown;
+  /** } */
+  webSocketDebuggerUrl_2: DevtoolsBrowserCreateResponseWebSocketDebuggerUrl;
 }
 export const CreateDevtoolBrowserResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sessionId: S.String,
     webSocketDebuggerUrl: S.optional(S.NullOr(S.String)),
+    sessionId_2: S.Unknown.pipe(T.Body("sessionId")),
+    webSocketDebuggerUrl_2:
+      DevtoolsBrowserCreateResponseWebSocketDebuggerUrl.pipe(
+        T.Body("webSocketDebuggerUrl"),
+      ),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateDevtoolBrowserResponse",
@@ -1012,6 +801,7 @@ export interface CreateDevtoolBrowserTargetRequest {
   sessionId: string;
   /** How long the live view URL remains valid, in milliseconds (max 60 minutes) */
   liveViewUrlExpiresInMs?: number;
+  /** formaturi */
   url?: string;
 }
 export const CreateDevtoolBrowserTargetRequest = /*@__PURE__*/ S.suspend(() =>
@@ -1033,6 +823,11 @@ export const CreateDevtoolBrowserTargetRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateDevtoolBrowserTargetRequest",
 }) as any as S.Schema<CreateDevtoolBrowserTargetRequest>;
 
+export type DevtoolsBrowserTargetsCreateResponseWebSocketDebuggerUrl =
+  "webSocketDebuggerUrl";
+export const DevtoolsBrowserTargetsCreateResponseWebSocketDebuggerUrl =
+  /*@__PURE__*/ S.String;
+
 /** Raw response payload (operation does not use the standard v4 result envelope). */
 export interface CreateDevtoolBrowserTargetResponse {
   /** Target ID. */
@@ -1049,6 +844,14 @@ export interface CreateDevtoolBrowserTargetResponse {
   title?: string | null;
   /** WebSocket URL for debugging this target. */
   webSocketDebuggerUrl?: string | null;
+  id_2: unknown;
+  type_2: unknown;
+  url_2: unknown;
+  description_2: unknown;
+  devtoolsFrontendUrl_2: unknown;
+  title_2: unknown;
+  /** } */
+  webSocketDebuggerUrl_2: DevtoolsBrowserTargetsCreateResponseWebSocketDebuggerUrl;
 }
 export const CreateDevtoolBrowserTargetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1059,6 +862,16 @@ export const CreateDevtoolBrowserTargetResponse = /*@__PURE__*/ S.suspend(() =>
     devtoolsFrontendUrl: S.optional(S.NullOr(S.String)),
     title: S.optional(S.NullOr(S.String)),
     webSocketDebuggerUrl: S.optional(S.NullOr(S.String)),
+    id_2: S.Unknown.pipe(T.Body("id")),
+    type_2: S.Unknown.pipe(T.Body("type")),
+    url_2: S.Unknown.pipe(T.Body("url")),
+    description_2: S.Unknown.pipe(T.Body("description")),
+    devtoolsFrontendUrl_2: S.Unknown.pipe(T.Body("devtoolsFrontendUrl")),
+    title_2: S.Unknown.pipe(T.Body("title")),
+    webSocketDebuggerUrl_2:
+      DevtoolsBrowserTargetsCreateResponseWebSocketDebuggerUrl.pipe(
+        T.Body("webSocketDebuggerUrl"),
+      ),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateDevtoolBrowserTargetResponse",
@@ -1134,114 +947,64 @@ export type JsonCreateRequestCookiesItemSourceScheme =
   | "Secure";
 export const JsonCreateRequestCookiesItemSourceScheme = /*@__PURE__*/ S.String;
 
-export interface JsonCreateRequestCookiesItem {
-  /** Cookie name. */
-  name: string;
-  value: string;
-  domain?: string;
-  expires?: number;
-  httpOnly?: boolean;
-  partitionKey?: string;
-  path?: string;
-  priority?: JsonCreateRequestCookiesItemPriority | (string & {});
-  sameParty?: boolean;
-  sameSite?: JsonCreateRequestCookiesItemSameSite | (string & {});
-  secure?: boolean;
-  sourcePort?: number;
-  sourceScheme?: JsonCreateRequestCookiesItemSourceScheme | (string & {});
-  url?: string;
+export interface JsonCreateRequestCookiesItemCustomAiItem {
+  /** AI model to use for the request. Must be formed as `<provider>/<model_name>`, e.g. `workers-ai/@cf/meta/llama-3.3-70b-instruct-fp8-fast`. */
+  model: string;
+  /** Authorization token for the AI model: `Bearer <token>`. Not needed for workers-ai models. */
+  authorization?: string;
 }
-export const JsonCreateRequestCookiesItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    value: S.String,
-    domain: S.optional(S.String),
-    expires: S.optional(S.Number),
-    httpOnly: S.optional(S.Boolean),
-    partitionKey: S.optional(S.String),
-    path: S.optional(S.String),
-    priority: S.optional(JsonCreateRequestCookiesItemPriority),
-    sameParty: S.optional(S.Boolean),
-    sameSite: S.optional(JsonCreateRequestCookiesItemSameSite),
-    secure: S.optional(S.Boolean),
-    sourcePort: S.optional(S.Number),
-    sourceScheme: S.optional(JsonCreateRequestCookiesItemSourceScheme),
-    url: S.optional(S.String),
-  }),
+export const JsonCreateRequestCookiesItemCustomAiItem = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      model: S.String,
+      authorization: S.optional(S.String),
+    }),
 ).annotate({
-  identifier: "JsonCreateRequestCookiesItem",
-}) as any as S.Schema<JsonCreateRequestCookiesItem>;
+  identifier: "JsonCreateRequestCookiesItemCustomAiItem",
+}) as any as S.Schema<JsonCreateRequestCookiesItemCustomAiItem>;
 
-export type JsonCreateRequestCookiesList = Array<JsonCreateRequestCookiesItem>;
-export const JsonCreateRequestCookiesList = /*@__PURE__*/ S.Array(
-  JsonCreateRequestCookiesItem,
-) as any as S.Schema<JsonCreateRequestCookiesList>;
+export type JsonCreateRequestCookiesItemCustomAiList =
+  Array<JsonCreateRequestCookiesItemCustomAiItem>;
+export const JsonCreateRequestCookiesItemCustomAiList = /*@__PURE__*/ S.Array(
+  JsonCreateRequestCookiesItemCustomAiItem,
+) as any as S.Schema<JsonCreateRequestCookiesItemCustomAiList>;
 
-export type JsonCreateRequestCustomAiItem =
-  CrawlCreateRequestJsonOptionsCustomAiItem;
-export const JsonCreateRequestCustomAiItem =
-  CrawlCreateRequestJsonOptionsCustomAiItem;
-
-export type JsonCreateRequestCustomAiList =
-  Array<CrawlCreateRequestJsonOptionsCustomAiItem>;
-export const JsonCreateRequestCustomAiList = /*@__PURE__*/ S.Array(
-  CrawlCreateRequestJsonOptionsCustomAiItem,
-) as any as S.Schema<JsonCreateRequestCustomAiList>;
-
-export type JsonCreateRequestGotoOptionsWaitUntilCase0 =
+export type JsonCreateRequestCookiesItemGotoOptionsWaitUntil =
   | "load"
   | "domcontentloaded"
   | "networkidle0"
   | "networkidle2";
-export const JsonCreateRequestGotoOptionsWaitUntilCase0 =
+export const JsonCreateRequestCookiesItemGotoOptionsWaitUntil =
   /*@__PURE__*/ S.String;
 
-export type JsonCreateRequestGotoOptionsWaitUntilCase1Item =
-  | "load"
-  | "domcontentloaded"
-  | "networkidle0"
-  | "networkidle2";
-export const JsonCreateRequestGotoOptionsWaitUntilCase1Item =
-  /*@__PURE__*/ S.String;
-
-export type JsonCreateRequestGotoOptionsWaitUntilCase1List = Array<
-  JsonCreateRequestGotoOptionsWaitUntilCase1Item | (string & {})
->;
-export const JsonCreateRequestGotoOptionsWaitUntilCase1List =
-  /*@__PURE__*/ S.Array(
-    JsonCreateRequestGotoOptionsWaitUntilCase1Item,
-  ) as any as S.Schema<JsonCreateRequestGotoOptionsWaitUntilCase1List>;
-
-export type JsonCreateRequestGotoOptionsWaitUntil =
-  | JsonCreateRequestGotoOptionsWaitUntilCase0
-  | (string & {})
-  | JsonCreateRequestGotoOptionsWaitUntilCase1List;
-export const JsonCreateRequestGotoOptionsWaitUntil =
-  /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], []]));
-
-export interface JsonCreateRequestGotoOptions {
+export interface JsonCreateRequestCookiesItemGotoOptions {
   referer?: string;
   referrerPolicy?: string;
+  /** maximum60000 */
   timeout?: number;
-  waitUntil?: JsonCreateRequestGotoOptionsWaitUntil;
+  /** "load" or "domcontentloaded" or "networkidle0" or "networkidle2" */
+  waitUntil?: JsonCreateRequestCookiesItemGotoOptionsWaitUntil | (string & {});
 }
-export const JsonCreateRequestGotoOptions = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    referer: S.optional(S.String),
-    referrerPolicy: S.optional(S.String),
-    timeout: S.optional(S.Number),
-    waitUntil: S.optional(JsonCreateRequestGotoOptionsWaitUntil),
-  }),
+export const JsonCreateRequestCookiesItemGotoOptions = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      referer: S.optional(S.String),
+      referrerPolicy: S.optional(S.String),
+      timeout: S.optional(S.Number),
+      waitUntil: S.optional(JsonCreateRequestCookiesItemGotoOptionsWaitUntil),
+    }),
 ).annotate({
-  identifier: "JsonCreateRequestGotoOptions",
-}) as any as S.Schema<JsonCreateRequestGotoOptions>;
+  identifier: "JsonCreateRequestCookiesItemGotoOptions",
+}) as any as S.Schema<JsonCreateRequestCookiesItemGotoOptions>;
 
-export type JsonCreateRequestRejectRequestPatternList = Array<string>;
-export const JsonCreateRequestRejectRequestPatternList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<JsonCreateRequestRejectRequestPatternList>;
+export type JsonCreateRequestCookiesItemRejectRequestPatternList =
+  Array<string>;
+export const JsonCreateRequestCookiesItemRejectRequestPatternList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<JsonCreateRequestCookiesItemRejectRequestPatternList>;
 
-export type JsonCreateRequestRejectResourceTypesItem =
+export type JsonCreateRequestCookiesItemRejectResourceTypesItem =
   | "document"
   | "stylesheet"
   | "image"
@@ -1260,87 +1023,178 @@ export type JsonCreateRequestRejectResourceTypesItem =
   | "cspviolationreport"
   | "preflight"
   | "other";
-export const JsonCreateRequestRejectResourceTypesItem = /*@__PURE__*/ S.String;
+export const JsonCreateRequestCookiesItemRejectResourceTypesItem =
+  /*@__PURE__*/ S.String;
 
-export type JsonCreateRequestRejectResourceTypesList = Array<
-  JsonCreateRequestRejectResourceTypesItem | (string & {})
+export type JsonCreateRequestCookiesItemRejectResourceTypesList = Array<
+  JsonCreateRequestCookiesItemRejectResourceTypesItem | (string & {})
 >;
-export const JsonCreateRequestRejectResourceTypesList = /*@__PURE__*/ S.Array(
-  JsonCreateRequestRejectResourceTypesItem,
-) as any as S.Schema<JsonCreateRequestRejectResourceTypesList>;
+export const JsonCreateRequestCookiesItemRejectResourceTypesList =
+  /*@__PURE__*/ S.Array(
+    JsonCreateRequestCookiesItemRejectResourceTypesItem,
+  ) as any as S.Schema<JsonCreateRequestCookiesItemRejectResourceTypesList>;
 
-export type JsonCreateRequestResponseFormat =
-  CrawlCreateRequestJsonOptionsResponseFormat;
-export const JsonCreateRequestResponseFormat =
-  CrawlCreateRequestJsonOptionsResponseFormat;
+export type JsonCreateRequestCookiesItemResponseFormatJsonSchemaMap = {
+  [key: string]: unknown | undefined;
+};
+export const JsonCreateRequestCookiesItemResponseFormatJsonSchemaMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.Unknown,
+  ) as any as S.Schema<JsonCreateRequestCookiesItemResponseFormatJsonSchemaMap>;
 
-export type JsonCreateRequestSetExtraHTTPHeadersMap = {
+export interface JsonCreateRequestCookiesItemResponseFormat {
+  type: string;
+  /** Schema for the response format. More information here: <https://developers.cloudflare.com/workers-ai/json-mode/> */
+  jsonSchema?: JsonCreateRequestCookiesItemResponseFormatJsonSchemaMap;
+}
+export const JsonCreateRequestCookiesItemResponseFormat =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      type: S.String,
+      jsonSchema: S.optional(
+        JsonCreateRequestCookiesItemResponseFormatJsonSchemaMap.pipe(
+          T.Body("json_schema"),
+        ),
+      ),
+    }),
+  ).annotate({
+    identifier: "JsonCreateRequestCookiesItemResponseFormat",
+  }) as any as S.Schema<JsonCreateRequestCookiesItemResponseFormat>;
+
+export type JsonCreateRequestCookiesItemSetExtraHTTPHeadersMap = {
   [key: string]: string | undefined;
 };
-export const JsonCreateRequestSetExtraHTTPHeadersMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<JsonCreateRequestSetExtraHTTPHeadersMap>;
+export const JsonCreateRequestCookiesItemSetExtraHTTPHeadersMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<JsonCreateRequestCookiesItemSetExtraHTTPHeadersMap>;
 
-export type JsonCreateRequestViewport = ContentCreateRequestViewport;
-export const JsonCreateRequestViewport = ContentCreateRequestViewport;
+export type JsonCreateRequestCookiesItemViewportWaitForSelector =
+  ContentCreateRequestCookiesItemViewportWaitForSelector;
+export const JsonCreateRequestCookiesItemViewportWaitForSelector =
+  ContentCreateRequestCookiesItemViewportWaitForSelector;
 
-export type JsonCreateRequestWaitForSelector =
-  ContentCreateRequestWaitForSelector;
-export const JsonCreateRequestWaitForSelector =
-  ContentCreateRequestWaitForSelector;
+export type JsonCreateRequestCookiesItemViewport =
+  ContentCreateRequestCookiesItemViewport;
+export const JsonCreateRequestCookiesItemViewport =
+  ContentCreateRequestCookiesItemViewport;
+
+export interface JsonCreateRequestCookiesItem {
+  /** Cookie name. */
+  name: string;
+  value: string;
+  domain?: string;
+  expires?: number;
+  httpOnly?: boolean;
+  partitionKey?: string;
+  path?: string;
+  priority?: JsonCreateRequestCookiesItemPriority | (string & {});
+  sameParty?: boolean;
+  sameSite?: JsonCreateRequestCookiesItemSameSite | (string & {});
+  secure?: boolean;
+  sourcePort?: number;
+  sourceScheme?: JsonCreateRequestCookiesItemSourceScheme | (string & {});
+  url?: string;
+  /** Optional list of custom AI models to use for the request. The models will be tried in the order provided, and in case a model returns an error, the next one will be used as fallback. */
+  customAi?: JsonCreateRequestCookiesItemCustomAiList;
+  emulateMediaType?: string;
+  /** Check options. */
+  gotoOptions?: JsonCreateRequestCookiesItemGotoOptions;
+  /** Set the content of the page, eg: `<h1>Hello World!!</h1>`. Either `html` or `url` must be set. */
+  html?: string;
+  prompt?: string;
+  /** Block undesired requests that match the provided regex patterns, eg. ’/^.*.(css)’. */
+  rejectRequestPattern?: JsonCreateRequestCookiesItemRejectRequestPatternList;
+  /** Block undesired requests that match the provided resource types, eg. ‘image’ or ‘script’. */
+  rejectResourceTypes?: JsonCreateRequestCookiesItemRejectResourceTypesList;
+  responseFormat?: JsonCreateRequestCookiesItemResponseFormat;
+  setExtraHTTPHeaders?: JsonCreateRequestCookiesItemSetExtraHTTPHeadersMap;
+  setJavaScriptEnabled?: boolean;
+  /** URL to navigate to, eg. `https://example.com`. */
+  url_2?: string;
+  userAgent?: string;
+  /** Check options. */
+  viewport?: ContentCreateRequestCookiesItemViewport;
+}
+export const JsonCreateRequestCookiesItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String,
+    value: S.String,
+    domain: S.optional(S.String),
+    expires: S.optional(S.Number),
+    httpOnly: S.optional(S.Boolean),
+    partitionKey: S.optional(S.String),
+    path: S.optional(S.String),
+    priority: S.optional(JsonCreateRequestCookiesItemPriority),
+    sameParty: S.optional(S.Boolean),
+    sameSite: S.optional(JsonCreateRequestCookiesItemSameSite),
+    secure: S.optional(S.Boolean),
+    sourcePort: S.optional(S.Number),
+    sourceScheme: S.optional(JsonCreateRequestCookiesItemSourceScheme),
+    url: S.optional(S.String),
+    customAi: S.optional(
+      JsonCreateRequestCookiesItemCustomAiList.pipe(T.Body("custom_ai")),
+    ),
+    emulateMediaType: S.optional(S.String),
+    gotoOptions: S.optional(JsonCreateRequestCookiesItemGotoOptions),
+    html: S.optional(S.String),
+    prompt: S.optional(S.String),
+    rejectRequestPattern: S.optional(
+      JsonCreateRequestCookiesItemRejectRequestPatternList,
+    ),
+    rejectResourceTypes: S.optional(
+      JsonCreateRequestCookiesItemRejectResourceTypesList,
+    ),
+    responseFormat: S.optional(
+      JsonCreateRequestCookiesItemResponseFormat.pipe(
+        T.Body("response_format"),
+      ),
+    ),
+    setExtraHTTPHeaders: S.optional(
+      JsonCreateRequestCookiesItemSetExtraHTTPHeadersMap,
+    ),
+    setJavaScriptEnabled: S.optional(S.Boolean),
+    url_2: S.optional(S.String.pipe(T.Body("url"))),
+    userAgent: S.optional(S.String),
+    viewport: S.optional(ContentCreateRequestCookiesItemViewport),
+  }),
+).annotate({
+  identifier: "JsonCreateRequestCookiesItem",
+}) as any as S.Schema<JsonCreateRequestCookiesItem>;
+
+export type JsonCreateRequestCookiesList = Array<JsonCreateRequestCookiesItem>;
+export const JsonCreateRequestCookiesList = /*@__PURE__*/ S.Array(
+  JsonCreateRequestCookiesItem,
+) as any as S.Schema<JsonCreateRequestCookiesList>;
 
 export interface CreateJsonRequest {
   /** Account ID. */
   accountId: string;
   /** Cache TTL default is 5s. Set to 0 to disable. */
   cacheTTL?: number;
-  /** Set the content of the page, eg: `<h1>Hello World!!</h1>`. Either `html` or `url` must be set. */
-  html?: string;
   /** The maximum duration allowed for the browser action to complete after the page has loaded (such as taking screenshots, extracting content, or generating PDFs). If this time limit is exceeded, the action stops and returns a timeout error. */
   actionTimeout?: number;
   /** Adds a `<script>` tag into the page with the desired URL or content. */
   addScriptTag?: JsonCreateRequestAddScriptTagList;
   /** Adds a `<link rel="stylesheet">` tag into the page with the desired URL or a `<style type="text/css">` tag with the content. */
   addStyleTag?: JsonCreateRequestAddStyleTagList;
-  /** Only allow requests that match the provided regex patterns, eg. '/^.*.(css)'. */
+  /** Only allow requests that match the provided regex patterns, eg. ’/^.*.(css)’. Reject rules are applied first. */
   allowRequestPattern?: JsonCreateRequestAllowRequestPatternList;
-  /** Only allow requests that match the provided resource types, eg. 'image' or 'script'. */
+  /** Only allow requests that match the provided resource types, eg. ‘image’ or ‘script’. Reject rules are applied first. */
   allowResourceTypes?: JsonCreateRequestAllowResourceTypesList;
   /** Provide credentials for HTTP authentication. */
   authenticate?: ContentCreateRequestAuthenticate;
-  /** Attempt to proceed when 'awaited' events fail or timeout. */
+  /** Attempt to proceed when ‘awaited’ events fail or timeout. */
   bestAttempt?: boolean;
-  /** Check [options](https://pptr.dev/api/puppeteer.page.setcookie). */
+  /** Check options. */
   cookies?: JsonCreateRequestCookiesList;
-  /** Optional list of custom AI models to use for the request. The models will be tried in the order provided, and in case a model returns an error, the next one will be used as fallback. */
-  customAi?: JsonCreateRequestCustomAiList;
-  emulateMediaType?: string;
-  /** Check [options](https://pptr.dev/api/puppeteer.gotooptions). */
-  gotoOptions?: JsonCreateRequestGotoOptions;
-  prompt?: string;
-  /** Block undesired requests that match the provided regex patterns, eg. '/^.*.(css)'. */
-  rejectRequestPattern?: JsonCreateRequestRejectRequestPatternList;
-  /** Block undesired requests that match the provided resource types, eg. 'image' or 'script'. */
-  rejectResourceTypes?: JsonCreateRequestRejectResourceTypesList;
-  responseFormat?: CrawlCreateRequestJsonOptionsResponseFormat;
-  setExtraHTTPHeaders?: JsonCreateRequestSetExtraHTTPHeadersMap;
-  setJavaScriptEnabled?: boolean;
-  userAgent?: string;
-  /** Check [options](https://pptr.dev/api/puppeteer.page.setviewport). */
-  viewport?: ContentCreateRequestViewport;
-  /** Wait for the selector to appear in page. Check [options](https://pptr.dev/api/puppeteer.page.waitforselector). */
-  waitForSelector?: ContentCreateRequestWaitForSelector;
-  /** Waits for a specified timeout before continuing. */
-  waitForTimeout?: number;
-  /** URL to navigate to, eg. `https://example.com`. */
-  url?: string;
 }
 export const CreateJsonRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     cacheTTL: S.optional(S.Number.pipe(T.Query())),
-    html: S.optional(S.String),
     actionTimeout: S.optional(S.Number),
     addScriptTag: S.optional(JsonCreateRequestAddScriptTagList),
     addStyleTag: S.optional(JsonCreateRequestAddStyleTagList),
@@ -1349,26 +1203,6 @@ export const CreateJsonRequest = /*@__PURE__*/ S.suspend(() =>
     authenticate: S.optional(ContentCreateRequestAuthenticate),
     bestAttempt: S.optional(S.Boolean),
     cookies: S.optional(JsonCreateRequestCookiesList),
-    customAi: S.optional(
-      JsonCreateRequestCustomAiList.pipe(T.Body("custom_ai")),
-    ),
-    emulateMediaType: S.optional(S.String),
-    gotoOptions: S.optional(JsonCreateRequestGotoOptions),
-    prompt: S.optional(S.String),
-    rejectRequestPattern: S.optional(JsonCreateRequestRejectRequestPatternList),
-    rejectResourceTypes: S.optional(JsonCreateRequestRejectResourceTypesList),
-    responseFormat: S.optional(
-      CrawlCreateRequestJsonOptionsResponseFormat.pipe(
-        T.Body("response_format"),
-      ),
-    ),
-    setExtraHTTPHeaders: S.optional(JsonCreateRequestSetExtraHTTPHeadersMap),
-    setJavaScriptEnabled: S.optional(S.Boolean),
-    userAgent: S.optional(S.String),
-    viewport: S.optional(ContentCreateRequestViewport),
-    waitForSelector: S.optional(ContentCreateRequestWaitForSelector),
-    waitForTimeout: S.optional(S.Number),
-    url: S.optional(S.String),
   })
     .pipe(
       T.Http({
@@ -1468,104 +1302,42 @@ export type LinksCreateRequestCookiesItemSourceScheme =
   | "Secure";
 export const LinksCreateRequestCookiesItemSourceScheme = /*@__PURE__*/ S.String;
 
-export interface LinksCreateRequestCookiesItem {
-  /** Cookie name. */
-  name: string;
-  value: string;
-  domain?: string;
-  expires?: number;
-  httpOnly?: boolean;
-  partitionKey?: string;
-  path?: string;
-  priority?: LinksCreateRequestCookiesItemPriority | (string & {});
-  sameParty?: boolean;
-  sameSite?: LinksCreateRequestCookiesItemSameSite | (string & {});
-  secure?: boolean;
-  sourcePort?: number;
-  sourceScheme?: LinksCreateRequestCookiesItemSourceScheme | (string & {});
-  url?: string;
-}
-export const LinksCreateRequestCookiesItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    value: S.String,
-    domain: S.optional(S.String),
-    expires: S.optional(S.Number),
-    httpOnly: S.optional(S.Boolean),
-    partitionKey: S.optional(S.String),
-    path: S.optional(S.String),
-    priority: S.optional(LinksCreateRequestCookiesItemPriority),
-    sameParty: S.optional(S.Boolean),
-    sameSite: S.optional(LinksCreateRequestCookiesItemSameSite),
-    secure: S.optional(S.Boolean),
-    sourcePort: S.optional(S.Number),
-    sourceScheme: S.optional(LinksCreateRequestCookiesItemSourceScheme),
-    url: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "LinksCreateRequestCookiesItem",
-}) as any as S.Schema<LinksCreateRequestCookiesItem>;
-
-export type LinksCreateRequestCookiesList =
-  Array<LinksCreateRequestCookiesItem>;
-export const LinksCreateRequestCookiesList = /*@__PURE__*/ S.Array(
-  LinksCreateRequestCookiesItem,
-) as any as S.Schema<LinksCreateRequestCookiesList>;
-
-export type LinksCreateRequestGotoOptionsWaitUntilCase0 =
+export type LinksCreateRequestCookiesItemGotoOptionsWaitUntil =
   | "load"
   | "domcontentloaded"
   | "networkidle0"
   | "networkidle2";
-export const LinksCreateRequestGotoOptionsWaitUntilCase0 =
+export const LinksCreateRequestCookiesItemGotoOptionsWaitUntil =
   /*@__PURE__*/ S.String;
 
-export type LinksCreateRequestGotoOptionsWaitUntilCase1Item =
-  | "load"
-  | "domcontentloaded"
-  | "networkidle0"
-  | "networkidle2";
-export const LinksCreateRequestGotoOptionsWaitUntilCase1Item =
-  /*@__PURE__*/ S.String;
-
-export type LinksCreateRequestGotoOptionsWaitUntilCase1List = Array<
-  LinksCreateRequestGotoOptionsWaitUntilCase1Item | (string & {})
->;
-export const LinksCreateRequestGotoOptionsWaitUntilCase1List =
-  /*@__PURE__*/ S.Array(
-    LinksCreateRequestGotoOptionsWaitUntilCase1Item,
-  ) as any as S.Schema<LinksCreateRequestGotoOptionsWaitUntilCase1List>;
-
-export type LinksCreateRequestGotoOptionsWaitUntil =
-  | LinksCreateRequestGotoOptionsWaitUntilCase0
-  | (string & {})
-  | LinksCreateRequestGotoOptionsWaitUntilCase1List;
-export const LinksCreateRequestGotoOptionsWaitUntil =
-  /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], []]));
-
-export interface LinksCreateRequestGotoOptions {
+export interface LinksCreateRequestCookiesItemGotoOptions {
   referer?: string;
   referrerPolicy?: string;
+  /** maximum60000 */
   timeout?: number;
-  waitUntil?: LinksCreateRequestGotoOptionsWaitUntil;
+  /** "load" or "domcontentloaded" or "networkidle0" or "networkidle2" */
+  waitUntil?: LinksCreateRequestCookiesItemGotoOptionsWaitUntil | (string & {});
 }
-export const LinksCreateRequestGotoOptions = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    referer: S.optional(S.String),
-    referrerPolicy: S.optional(S.String),
-    timeout: S.optional(S.Number),
-    waitUntil: S.optional(LinksCreateRequestGotoOptionsWaitUntil),
-  }),
+export const LinksCreateRequestCookiesItemGotoOptions = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      referer: S.optional(S.String),
+      referrerPolicy: S.optional(S.String),
+      timeout: S.optional(S.Number),
+      waitUntil: S.optional(LinksCreateRequestCookiesItemGotoOptionsWaitUntil),
+    }),
 ).annotate({
-  identifier: "LinksCreateRequestGotoOptions",
-}) as any as S.Schema<LinksCreateRequestGotoOptions>;
+  identifier: "LinksCreateRequestCookiesItemGotoOptions",
+}) as any as S.Schema<LinksCreateRequestCookiesItemGotoOptions>;
 
-export type LinksCreateRequestRejectRequestPatternList = Array<string>;
-export const LinksCreateRequestRejectRequestPatternList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<LinksCreateRequestRejectRequestPatternList>;
+export type LinksCreateRequestCookiesItemRejectRequestPatternList =
+  Array<string>;
+export const LinksCreateRequestCookiesItemRejectRequestPatternList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<LinksCreateRequestCookiesItemRejectRequestPatternList>;
 
-export type LinksCreateRequestRejectResourceTypesItem =
+export type LinksCreateRequestCookiesItemRejectResourceTypesItem =
   | "document"
   | "stylesheet"
   | "image"
@@ -1584,80 +1356,167 @@ export type LinksCreateRequestRejectResourceTypesItem =
   | "cspviolationreport"
   | "preflight"
   | "other";
-export const LinksCreateRequestRejectResourceTypesItem = /*@__PURE__*/ S.String;
+export const LinksCreateRequestCookiesItemRejectResourceTypesItem =
+  /*@__PURE__*/ S.String;
 
-export type LinksCreateRequestRejectResourceTypesList = Array<
-  LinksCreateRequestRejectResourceTypesItem | (string & {})
+export type LinksCreateRequestCookiesItemRejectResourceTypesList = Array<
+  LinksCreateRequestCookiesItemRejectResourceTypesItem | (string & {})
 >;
-export const LinksCreateRequestRejectResourceTypesList = /*@__PURE__*/ S.Array(
-  LinksCreateRequestRejectResourceTypesItem,
-) as any as S.Schema<LinksCreateRequestRejectResourceTypesList>;
+export const LinksCreateRequestCookiesItemRejectResourceTypesList =
+  /*@__PURE__*/ S.Array(
+    LinksCreateRequestCookiesItemRejectResourceTypesItem,
+  ) as any as S.Schema<LinksCreateRequestCookiesItemRejectResourceTypesList>;
 
-export type LinksCreateRequestSetExtraHTTPHeadersMap = {
+export type LinksCreateRequestCookiesItemSetExtraHTTPHeadersMap = {
   [key: string]: string | undefined;
 };
-export const LinksCreateRequestSetExtraHTTPHeadersMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<LinksCreateRequestSetExtraHTTPHeadersMap>;
+export const LinksCreateRequestCookiesItemSetExtraHTTPHeadersMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<LinksCreateRequestCookiesItemSetExtraHTTPHeadersMap>;
 
-export type LinksCreateRequestViewport = ContentCreateRequestViewport;
-export const LinksCreateRequestViewport = ContentCreateRequestViewport;
+export type LinksCreateRequestCookiesItemViewportWaitForSelector =
+  ContentCreateRequestCookiesItemViewportWaitForSelector;
+export const LinksCreateRequestCookiesItemViewportWaitForSelector =
+  ContentCreateRequestCookiesItemViewportWaitForSelector;
 
-export type LinksCreateRequestWaitForSelector =
-  ContentCreateRequestWaitForSelector;
-export const LinksCreateRequestWaitForSelector =
-  ContentCreateRequestWaitForSelector;
+export interface LinksCreateRequestCookiesItemViewport {
+  height: number;
+  width: number;
+  deviceScaleFactor?: number;
+  hasTouch?: boolean;
+  isLandscape?: boolean;
+  isMobile?: boolean;
+  visibleLinksOnly?: boolean;
+  /** Wait for the selector to appear in page. Check options. */
+  waitForSelector?: ContentCreateRequestCookiesItemViewportWaitForSelector;
+  /** Waits for a specified timeout before continuing. */
+  waitForTimeout?: number;
+}
+export const LinksCreateRequestCookiesItemViewport = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      height: S.Number,
+      width: S.Number,
+      deviceScaleFactor: S.optional(S.Number),
+      hasTouch: S.optional(S.Boolean),
+      isLandscape: S.optional(S.Boolean),
+      isMobile: S.optional(S.Boolean),
+      visibleLinksOnly: S.optional(S.Boolean),
+      waitForSelector: S.optional(
+        ContentCreateRequestCookiesItemViewportWaitForSelector,
+      ),
+      waitForTimeout: S.optional(S.Number),
+    }),
+).annotate({
+  identifier: "LinksCreateRequestCookiesItemViewport",
+}) as any as S.Schema<LinksCreateRequestCookiesItemViewport>;
+
+export interface LinksCreateRequestCookiesItem {
+  /** Cookie name. */
+  name: string;
+  value: string;
+  domain?: string;
+  expires?: number;
+  httpOnly?: boolean;
+  partitionKey?: string;
+  path?: string;
+  priority?: LinksCreateRequestCookiesItemPriority | (string & {});
+  sameParty?: boolean;
+  sameSite?: LinksCreateRequestCookiesItemSameSite | (string & {});
+  secure?: boolean;
+  sourcePort?: number;
+  sourceScheme?: LinksCreateRequestCookiesItemSourceScheme | (string & {});
+  url?: string;
+  emulateMediaType?: string;
+  excludeExternalLinks?: boolean;
+  /** Check options. */
+  gotoOptions?: LinksCreateRequestCookiesItemGotoOptions;
+  /** Set the content of the page, eg: `<h1>Hello World!!</h1>`. Either `html` or `url` must be set. */
+  html?: string;
+  /** Block undesired requests that match the provided regex patterns, eg. ’/^.*.(css)’. */
+  rejectRequestPattern?: LinksCreateRequestCookiesItemRejectRequestPatternList;
+  /** Block undesired requests that match the provided resource types, eg. ‘image’ or ‘script’. */
+  rejectResourceTypes?: LinksCreateRequestCookiesItemRejectResourceTypesList;
+  setExtraHTTPHeaders?: LinksCreateRequestCookiesItemSetExtraHTTPHeadersMap;
+  setJavaScriptEnabled?: boolean;
+  /** URL to navigate to, eg. `https://example.com`. */
+  url_2?: string;
+  userAgent?: string;
+  /** Check options. */
+  viewport?: LinksCreateRequestCookiesItemViewport;
+}
+export const LinksCreateRequestCookiesItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String,
+    value: S.String,
+    domain: S.optional(S.String),
+    expires: S.optional(S.Number),
+    httpOnly: S.optional(S.Boolean),
+    partitionKey: S.optional(S.String),
+    path: S.optional(S.String),
+    priority: S.optional(LinksCreateRequestCookiesItemPriority),
+    sameParty: S.optional(S.Boolean),
+    sameSite: S.optional(LinksCreateRequestCookiesItemSameSite),
+    secure: S.optional(S.Boolean),
+    sourcePort: S.optional(S.Number),
+    sourceScheme: S.optional(LinksCreateRequestCookiesItemSourceScheme),
+    url: S.optional(S.String),
+    emulateMediaType: S.optional(S.String),
+    excludeExternalLinks: S.optional(S.Boolean),
+    gotoOptions: S.optional(LinksCreateRequestCookiesItemGotoOptions),
+    html: S.optional(S.String),
+    rejectRequestPattern: S.optional(
+      LinksCreateRequestCookiesItemRejectRequestPatternList,
+    ),
+    rejectResourceTypes: S.optional(
+      LinksCreateRequestCookiesItemRejectResourceTypesList,
+    ),
+    setExtraHTTPHeaders: S.optional(
+      LinksCreateRequestCookiesItemSetExtraHTTPHeadersMap,
+    ),
+    setJavaScriptEnabled: S.optional(S.Boolean),
+    url_2: S.optional(S.String.pipe(T.Body("url"))),
+    userAgent: S.optional(S.String),
+    viewport: S.optional(LinksCreateRequestCookiesItemViewport),
+  }),
+).annotate({
+  identifier: "LinksCreateRequestCookiesItem",
+}) as any as S.Schema<LinksCreateRequestCookiesItem>;
+
+export type LinksCreateRequestCookiesList =
+  Array<LinksCreateRequestCookiesItem>;
+export const LinksCreateRequestCookiesList = /*@__PURE__*/ S.Array(
+  LinksCreateRequestCookiesItem,
+) as any as S.Schema<LinksCreateRequestCookiesList>;
 
 export interface CreateLinkRequest {
   /** Account ID. */
   accountId: string;
   /** Cache TTL default is 5s. Set to 0 to disable. */
   cacheTTL?: number;
-  /** Set the content of the page, eg: `<h1>Hello World!!</h1>`. Either `html` or `url` must be set. */
-  html?: string;
   /** The maximum duration allowed for the browser action to complete after the page has loaded (such as taking screenshots, extracting content, or generating PDFs). If this time limit is exceeded, the action stops and returns a timeout error. */
   actionTimeout?: number;
   /** Adds a `<script>` tag into the page with the desired URL or content. */
   addScriptTag?: LinksCreateRequestAddScriptTagList;
   /** Adds a `<link rel="stylesheet">` tag into the page with the desired URL or a `<style type="text/css">` tag with the content. */
   addStyleTag?: LinksCreateRequestAddStyleTagList;
-  /** Only allow requests that match the provided regex patterns, eg. '/^.*.(css)'. */
+  /** Only allow requests that match the provided regex patterns, eg. ’/^.*.(css)’. Reject rules are applied first. */
   allowRequestPattern?: LinksCreateRequestAllowRequestPatternList;
-  /** Only allow requests that match the provided resource types, eg. 'image' or 'script'. */
+  /** Only allow requests that match the provided resource types, eg. ‘image’ or ‘script’. Reject rules are applied first. */
   allowResourceTypes?: LinksCreateRequestAllowResourceTypesList;
   /** Provide credentials for HTTP authentication. */
   authenticate?: ContentCreateRequestAuthenticate;
-  /** Attempt to proceed when 'awaited' events fail or timeout. */
+  /** Attempt to proceed when ‘awaited’ events fail or timeout. */
   bestAttempt?: boolean;
-  /** Check [options](https://pptr.dev/api/puppeteer.page.setcookie). */
+  /** Check options. */
   cookies?: LinksCreateRequestCookiesList;
-  emulateMediaType?: string;
-  excludeExternalLinks?: boolean;
-  /** Check [options](https://pptr.dev/api/puppeteer.gotooptions). */
-  gotoOptions?: LinksCreateRequestGotoOptions;
-  /** Block undesired requests that match the provided regex patterns, eg. '/^.*.(css)'. */
-  rejectRequestPattern?: LinksCreateRequestRejectRequestPatternList;
-  /** Block undesired requests that match the provided resource types, eg. 'image' or 'script'. */
-  rejectResourceTypes?: LinksCreateRequestRejectResourceTypesList;
-  setExtraHTTPHeaders?: LinksCreateRequestSetExtraHTTPHeadersMap;
-  setJavaScriptEnabled?: boolean;
-  userAgent?: string;
-  /** Check [options](https://pptr.dev/api/puppeteer.page.setviewport). */
-  viewport?: ContentCreateRequestViewport;
-  visibleLinksOnly?: boolean;
-  /** Wait for the selector to appear in page. Check [options](https://pptr.dev/api/puppeteer.page.waitforselector). */
-  waitForSelector?: ContentCreateRequestWaitForSelector;
-  /** Waits for a specified timeout before continuing. */
-  waitForTimeout?: number;
-  /** URL to navigate to, eg. `https://example.com`. */
-  url?: string;
 }
 export const CreateLinkRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     cacheTTL: S.optional(S.Number.pipe(T.Query())),
-    html: S.optional(S.String),
     actionTimeout: S.optional(S.Number),
     addScriptTag: S.optional(LinksCreateRequestAddScriptTagList),
     addStyleTag: S.optional(LinksCreateRequestAddStyleTagList),
@@ -1666,21 +1525,6 @@ export const CreateLinkRequest = /*@__PURE__*/ S.suspend(() =>
     authenticate: S.optional(ContentCreateRequestAuthenticate),
     bestAttempt: S.optional(S.Boolean),
     cookies: S.optional(LinksCreateRequestCookiesList),
-    emulateMediaType: S.optional(S.String),
-    excludeExternalLinks: S.optional(S.Boolean),
-    gotoOptions: S.optional(LinksCreateRequestGotoOptions),
-    rejectRequestPattern: S.optional(
-      LinksCreateRequestRejectRequestPatternList,
-    ),
-    rejectResourceTypes: S.optional(LinksCreateRequestRejectResourceTypesList),
-    setExtraHTTPHeaders: S.optional(LinksCreateRequestSetExtraHTTPHeadersMap),
-    setJavaScriptEnabled: S.optional(S.Boolean),
-    userAgent: S.optional(S.String),
-    viewport: S.optional(ContentCreateRequestViewport),
-    visibleLinksOnly: S.optional(S.Boolean),
-    waitForSelector: S.optional(ContentCreateRequestWaitForSelector),
-    waitForTimeout: S.optional(S.Number),
-    url: S.optional(S.String),
   })
     .pipe(
       T.Http({
@@ -1791,105 +1635,46 @@ export type MarkdownCreateRequestCookiesItemSourceScheme =
 export const MarkdownCreateRequestCookiesItemSourceScheme =
   /*@__PURE__*/ S.String;
 
-export interface MarkdownCreateRequestCookiesItem {
-  /** Cookie name. */
-  name: string;
-  value: string;
-  domain?: string;
-  expires?: number;
-  httpOnly?: boolean;
-  partitionKey?: string;
-  path?: string;
-  priority?: MarkdownCreateRequestCookiesItemPriority | (string & {});
-  sameParty?: boolean;
-  sameSite?: MarkdownCreateRequestCookiesItemSameSite | (string & {});
-  secure?: boolean;
-  sourcePort?: number;
-  sourceScheme?: MarkdownCreateRequestCookiesItemSourceScheme | (string & {});
-  url?: string;
-}
-export const MarkdownCreateRequestCookiesItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    value: S.String,
-    domain: S.optional(S.String),
-    expires: S.optional(S.Number),
-    httpOnly: S.optional(S.Boolean),
-    partitionKey: S.optional(S.String),
-    path: S.optional(S.String),
-    priority: S.optional(MarkdownCreateRequestCookiesItemPriority),
-    sameParty: S.optional(S.Boolean),
-    sameSite: S.optional(MarkdownCreateRequestCookiesItemSameSite),
-    secure: S.optional(S.Boolean),
-    sourcePort: S.optional(S.Number),
-    sourceScheme: S.optional(MarkdownCreateRequestCookiesItemSourceScheme),
-    url: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "MarkdownCreateRequestCookiesItem",
-}) as any as S.Schema<MarkdownCreateRequestCookiesItem>;
-
-export type MarkdownCreateRequestCookiesList =
-  Array<MarkdownCreateRequestCookiesItem>;
-export const MarkdownCreateRequestCookiesList = /*@__PURE__*/ S.Array(
-  MarkdownCreateRequestCookiesItem,
-) as any as S.Schema<MarkdownCreateRequestCookiesList>;
-
-export type MarkdownCreateRequestGotoOptionsWaitUntilCase0 =
+export type MarkdownCreateRequestCookiesItemGotoOptionsWaitUntil =
   | "load"
   | "domcontentloaded"
   | "networkidle0"
   | "networkidle2";
-export const MarkdownCreateRequestGotoOptionsWaitUntilCase0 =
+export const MarkdownCreateRequestCookiesItemGotoOptionsWaitUntil =
   /*@__PURE__*/ S.String;
 
-export type MarkdownCreateRequestGotoOptionsWaitUntilCase1Item =
-  | "load"
-  | "domcontentloaded"
-  | "networkidle0"
-  | "networkidle2";
-export const MarkdownCreateRequestGotoOptionsWaitUntilCase1Item =
-  /*@__PURE__*/ S.String;
-
-export type MarkdownCreateRequestGotoOptionsWaitUntilCase1List = Array<
-  MarkdownCreateRequestGotoOptionsWaitUntilCase1Item | (string & {})
->;
-export const MarkdownCreateRequestGotoOptionsWaitUntilCase1List =
-  /*@__PURE__*/ S.Array(
-    MarkdownCreateRequestGotoOptionsWaitUntilCase1Item,
-  ) as any as S.Schema<MarkdownCreateRequestGotoOptionsWaitUntilCase1List>;
-
-export type MarkdownCreateRequestGotoOptionsWaitUntil =
-  | MarkdownCreateRequestGotoOptionsWaitUntilCase0
-  | (string & {})
-  | MarkdownCreateRequestGotoOptionsWaitUntilCase1List;
-export const MarkdownCreateRequestGotoOptionsWaitUntil =
-  /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], []]));
-
-export interface MarkdownCreateRequestGotoOptions {
+export interface MarkdownCreateRequestCookiesItemGotoOptions {
   referer?: string;
   referrerPolicy?: string;
+  /** maximum60000 */
   timeout?: number;
-  waitUntil?: MarkdownCreateRequestGotoOptionsWaitUntil;
+  /** "load" or "domcontentloaded" or "networkidle0" or "networkidle2" */
+  waitUntil?:
+    | MarkdownCreateRequestCookiesItemGotoOptionsWaitUntil
+    | (string & {});
 }
-export const MarkdownCreateRequestGotoOptions = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    referer: S.optional(S.String),
-    referrerPolicy: S.optional(S.String),
-    timeout: S.optional(S.Number),
-    waitUntil: S.optional(MarkdownCreateRequestGotoOptionsWaitUntil),
-  }),
-).annotate({
-  identifier: "MarkdownCreateRequestGotoOptions",
-}) as any as S.Schema<MarkdownCreateRequestGotoOptions>;
+export const MarkdownCreateRequestCookiesItemGotoOptions =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      referer: S.optional(S.String),
+      referrerPolicy: S.optional(S.String),
+      timeout: S.optional(S.Number),
+      waitUntil: S.optional(
+        MarkdownCreateRequestCookiesItemGotoOptionsWaitUntil,
+      ),
+    }),
+  ).annotate({
+    identifier: "MarkdownCreateRequestCookiesItemGotoOptions",
+  }) as any as S.Schema<MarkdownCreateRequestCookiesItemGotoOptions>;
 
-export type MarkdownCreateRequestRejectRequestPatternList = Array<string>;
-export const MarkdownCreateRequestRejectRequestPatternList =
+export type MarkdownCreateRequestCookiesItemRejectRequestPatternList =
+  Array<string>;
+export const MarkdownCreateRequestCookiesItemRejectRequestPatternList =
   /*@__PURE__*/ S.Array(
     S.String,
-  ) as any as S.Schema<MarkdownCreateRequestRejectRequestPatternList>;
+  ) as any as S.Schema<MarkdownCreateRequestCookiesItemRejectRequestPatternList>;
 
-export type MarkdownCreateRequestRejectResourceTypesItem =
+export type MarkdownCreateRequestCookiesItemRejectResourceTypesItem =
   | "document"
   | "stylesheet"
   | "image"
@@ -1908,81 +1693,138 @@ export type MarkdownCreateRequestRejectResourceTypesItem =
   | "cspviolationreport"
   | "preflight"
   | "other";
-export const MarkdownCreateRequestRejectResourceTypesItem =
+export const MarkdownCreateRequestCookiesItemRejectResourceTypesItem =
   /*@__PURE__*/ S.String;
 
-export type MarkdownCreateRequestRejectResourceTypesList = Array<
-  MarkdownCreateRequestRejectResourceTypesItem | (string & {})
+export type MarkdownCreateRequestCookiesItemRejectResourceTypesList = Array<
+  MarkdownCreateRequestCookiesItemRejectResourceTypesItem | (string & {})
 >;
-export const MarkdownCreateRequestRejectResourceTypesList =
+export const MarkdownCreateRequestCookiesItemRejectResourceTypesList =
   /*@__PURE__*/ S.Array(
-    MarkdownCreateRequestRejectResourceTypesItem,
-  ) as any as S.Schema<MarkdownCreateRequestRejectResourceTypesList>;
+    MarkdownCreateRequestCookiesItemRejectResourceTypesItem,
+  ) as any as S.Schema<MarkdownCreateRequestCookiesItemRejectResourceTypesList>;
 
-export type MarkdownCreateRequestSetExtraHTTPHeadersMap = {
+export type MarkdownCreateRequestCookiesItemSetExtraHTTPHeadersMap = {
   [key: string]: string | undefined;
 };
-export const MarkdownCreateRequestSetExtraHTTPHeadersMap =
+export const MarkdownCreateRequestCookiesItemSetExtraHTTPHeadersMap =
   /*@__PURE__*/ S.Record(
     S.String,
     S.String,
-  ) as any as S.Schema<MarkdownCreateRequestSetExtraHTTPHeadersMap>;
+  ) as any as S.Schema<MarkdownCreateRequestCookiesItemSetExtraHTTPHeadersMap>;
 
-export type MarkdownCreateRequestViewport = ContentCreateRequestViewport;
-export const MarkdownCreateRequestViewport = ContentCreateRequestViewport;
+export type MarkdownCreateRequestCookiesItemViewportWaitForSelector =
+  ContentCreateRequestCookiesItemViewportWaitForSelector;
+export const MarkdownCreateRequestCookiesItemViewportWaitForSelector =
+  ContentCreateRequestCookiesItemViewportWaitForSelector;
 
-export type MarkdownCreateRequestWaitForSelector =
-  ContentCreateRequestWaitForSelector;
-export const MarkdownCreateRequestWaitForSelector =
-  ContentCreateRequestWaitForSelector;
+export type MarkdownCreateRequestCookiesItemViewport =
+  ContentCreateRequestCookiesItemViewport;
+export const MarkdownCreateRequestCookiesItemViewport =
+  ContentCreateRequestCookiesItemViewport;
+
+export interface MarkdownCreateRequestCookiesItem {
+  /** Cookie name. */
+  name: string;
+  value: string;
+  domain?: string;
+  expires?: number;
+  httpOnly?: boolean;
+  partitionKey?: string;
+  path?: string;
+  priority?: MarkdownCreateRequestCookiesItemPriority | (string & {});
+  sameParty?: boolean;
+  sameSite?: MarkdownCreateRequestCookiesItemSameSite | (string & {});
+  secure?: boolean;
+  sourcePort?: number;
+  sourceScheme?: MarkdownCreateRequestCookiesItemSourceScheme | (string & {});
+  url?: string;
+  emulateMediaType?: string;
+  /** Check options. */
+  gotoOptions?: MarkdownCreateRequestCookiesItemGotoOptions;
+  /** Set the content of the page, eg: `<h1>Hello World!!</h1>`. Either `html` or `url` must be set. */
+  html?: string;
+  /** Block undesired requests that match the provided regex patterns, eg. ’/^.*.(css)’. */
+  rejectRequestPattern?: MarkdownCreateRequestCookiesItemRejectRequestPatternList;
+  /** Block undesired requests that match the provided resource types, eg. ‘image’ or ‘script’. */
+  rejectResourceTypes?: MarkdownCreateRequestCookiesItemRejectResourceTypesList;
+  setExtraHTTPHeaders?: MarkdownCreateRequestCookiesItemSetExtraHTTPHeadersMap;
+  setJavaScriptEnabled?: boolean;
+  /** URL to navigate to, eg. `https://example.com`. */
+  url_2?: string;
+  userAgent?: string;
+  /** Check options. */
+  viewport?: ContentCreateRequestCookiesItemViewport;
+}
+export const MarkdownCreateRequestCookiesItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String,
+    value: S.String,
+    domain: S.optional(S.String),
+    expires: S.optional(S.Number),
+    httpOnly: S.optional(S.Boolean),
+    partitionKey: S.optional(S.String),
+    path: S.optional(S.String),
+    priority: S.optional(MarkdownCreateRequestCookiesItemPriority),
+    sameParty: S.optional(S.Boolean),
+    sameSite: S.optional(MarkdownCreateRequestCookiesItemSameSite),
+    secure: S.optional(S.Boolean),
+    sourcePort: S.optional(S.Number),
+    sourceScheme: S.optional(MarkdownCreateRequestCookiesItemSourceScheme),
+    url: S.optional(S.String),
+    emulateMediaType: S.optional(S.String),
+    gotoOptions: S.optional(MarkdownCreateRequestCookiesItemGotoOptions),
+    html: S.optional(S.String),
+    rejectRequestPattern: S.optional(
+      MarkdownCreateRequestCookiesItemRejectRequestPatternList,
+    ),
+    rejectResourceTypes: S.optional(
+      MarkdownCreateRequestCookiesItemRejectResourceTypesList,
+    ),
+    setExtraHTTPHeaders: S.optional(
+      MarkdownCreateRequestCookiesItemSetExtraHTTPHeadersMap,
+    ),
+    setJavaScriptEnabled: S.optional(S.Boolean),
+    url_2: S.optional(S.String.pipe(T.Body("url"))),
+    userAgent: S.optional(S.String),
+    viewport: S.optional(ContentCreateRequestCookiesItemViewport),
+  }),
+).annotate({
+  identifier: "MarkdownCreateRequestCookiesItem",
+}) as any as S.Schema<MarkdownCreateRequestCookiesItem>;
+
+export type MarkdownCreateRequestCookiesList =
+  Array<MarkdownCreateRequestCookiesItem>;
+export const MarkdownCreateRequestCookiesList = /*@__PURE__*/ S.Array(
+  MarkdownCreateRequestCookiesItem,
+) as any as S.Schema<MarkdownCreateRequestCookiesList>;
 
 export interface CreateMarkdownRequest {
   /** Account ID. */
   accountId: string;
   /** Cache TTL default is 5s. Set to 0 to disable. */
   cacheTTL?: number;
-  /** URL to navigate to, eg. `https://example.com`. */
-  url?: string;
   /** The maximum duration allowed for the browser action to complete after the page has loaded (such as taking screenshots, extracting content, or generating PDFs). If this time limit is exceeded, the action stops and returns a timeout error. */
   actionTimeout?: number;
   /** Adds a `<script>` tag into the page with the desired URL or content. */
   addScriptTag?: MarkdownCreateRequestAddScriptTagList;
   /** Adds a `<link rel="stylesheet">` tag into the page with the desired URL or a `<style type="text/css">` tag with the content. */
   addStyleTag?: MarkdownCreateRequestAddStyleTagList;
-  /** Only allow requests that match the provided regex patterns, eg. '/^.*.(css)'. */
+  /** Only allow requests that match the provided regex patterns, eg. ’/^.*.(css)’. Reject rules are applied first. */
   allowRequestPattern?: MarkdownCreateRequestAllowRequestPatternList;
-  /** Only allow requests that match the provided resource types, eg. 'image' or 'script'. */
+  /** Only allow requests that match the provided resource types, eg. ‘image’ or ‘script’. Reject rules are applied first. */
   allowResourceTypes?: MarkdownCreateRequestAllowResourceTypesList;
   /** Provide credentials for HTTP authentication. */
   authenticate?: ContentCreateRequestAuthenticate;
-  /** Attempt to proceed when 'awaited' events fail or timeout. */
+  /** Attempt to proceed when ‘awaited’ events fail or timeout. */
   bestAttempt?: boolean;
-  /** Check [options](https://pptr.dev/api/puppeteer.page.setcookie). */
+  /** Check options. */
   cookies?: MarkdownCreateRequestCookiesList;
-  emulateMediaType?: string;
-  /** Check [options](https://pptr.dev/api/puppeteer.gotooptions). */
-  gotoOptions?: MarkdownCreateRequestGotoOptions;
-  /** Block undesired requests that match the provided regex patterns, eg. '/^.*.(css)'. */
-  rejectRequestPattern?: MarkdownCreateRequestRejectRequestPatternList;
-  /** Block undesired requests that match the provided resource types, eg. 'image' or 'script'. */
-  rejectResourceTypes?: MarkdownCreateRequestRejectResourceTypesList;
-  setExtraHTTPHeaders?: MarkdownCreateRequestSetExtraHTTPHeadersMap;
-  setJavaScriptEnabled?: boolean;
-  userAgent?: string;
-  /** Check [options](https://pptr.dev/api/puppeteer.page.setviewport). */
-  viewport?: ContentCreateRequestViewport;
-  /** Wait for the selector to appear in page. Check [options](https://pptr.dev/api/puppeteer.page.waitforselector). */
-  waitForSelector?: ContentCreateRequestWaitForSelector;
-  /** Waits for a specified timeout before continuing. */
-  waitForTimeout?: number;
-  /** Set the content of the page, eg: `<h1>Hello World!!</h1>`. Either `html` or `url` must be set. */
-  html?: string;
 }
 export const CreateMarkdownRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     cacheTTL: S.optional(S.Number.pipe(T.Query())),
-    url: S.optional(S.String),
     actionTimeout: S.optional(S.Number),
     addScriptTag: S.optional(MarkdownCreateRequestAddScriptTagList),
     addStyleTag: S.optional(MarkdownCreateRequestAddStyleTagList),
@@ -1993,23 +1835,6 @@ export const CreateMarkdownRequest = /*@__PURE__*/ S.suspend(() =>
     authenticate: S.optional(ContentCreateRequestAuthenticate),
     bestAttempt: S.optional(S.Boolean),
     cookies: S.optional(MarkdownCreateRequestCookiesList),
-    emulateMediaType: S.optional(S.String),
-    gotoOptions: S.optional(MarkdownCreateRequestGotoOptions),
-    rejectRequestPattern: S.optional(
-      MarkdownCreateRequestRejectRequestPatternList,
-    ),
-    rejectResourceTypes: S.optional(
-      MarkdownCreateRequestRejectResourceTypesList,
-    ),
-    setExtraHTTPHeaders: S.optional(
-      MarkdownCreateRequestSetExtraHTTPHeadersMap,
-    ),
-    setJavaScriptEnabled: S.optional(S.Boolean),
-    userAgent: S.optional(S.String),
-    viewport: S.optional(ContentCreateRequestViewport),
-    waitForSelector: S.optional(ContentCreateRequestWaitForSelector),
-    waitForTimeout: S.optional(S.Number),
-    html: S.optional(S.String),
   })
     .pipe(
       T.Http({
@@ -2100,97 +1925,35 @@ export type PdfCreateRequestCookiesItemSourceScheme =
   | "Secure";
 export const PdfCreateRequestCookiesItemSourceScheme = /*@__PURE__*/ S.String;
 
-export interface PdfCreateRequestCookiesItem {
-  /** Cookie name. */
-  name: string;
-  value: string;
-  domain?: string;
-  expires?: number;
-  httpOnly?: boolean;
-  partitionKey?: string;
-  path?: string;
-  priority?: PdfCreateRequestCookiesItemPriority | (string & {});
-  sameParty?: boolean;
-  sameSite?: PdfCreateRequestCookiesItemSameSite | (string & {});
-  secure?: boolean;
-  sourcePort?: number;
-  sourceScheme?: PdfCreateRequestCookiesItemSourceScheme | (string & {});
-  url?: string;
-}
-export const PdfCreateRequestCookiesItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    value: S.String,
-    domain: S.optional(S.String),
-    expires: S.optional(S.Number),
-    httpOnly: S.optional(S.Boolean),
-    partitionKey: S.optional(S.String),
-    path: S.optional(S.String),
-    priority: S.optional(PdfCreateRequestCookiesItemPriority),
-    sameParty: S.optional(S.Boolean),
-    sameSite: S.optional(PdfCreateRequestCookiesItemSameSite),
-    secure: S.optional(S.Boolean),
-    sourcePort: S.optional(S.Number),
-    sourceScheme: S.optional(PdfCreateRequestCookiesItemSourceScheme),
-    url: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "PdfCreateRequestCookiesItem",
-}) as any as S.Schema<PdfCreateRequestCookiesItem>;
-
-export type PdfCreateRequestCookiesList = Array<PdfCreateRequestCookiesItem>;
-export const PdfCreateRequestCookiesList = /*@__PURE__*/ S.Array(
-  PdfCreateRequestCookiesItem,
-) as any as S.Schema<PdfCreateRequestCookiesList>;
-
-export type PdfCreateRequestGotoOptionsWaitUntilCase0 =
+export type PdfCreateRequestCookiesItemGotoOptionsWaitUntil =
   | "load"
   | "domcontentloaded"
   | "networkidle0"
   | "networkidle2";
-export const PdfCreateRequestGotoOptionsWaitUntilCase0 = /*@__PURE__*/ S.String;
-
-export type PdfCreateRequestGotoOptionsWaitUntilCase1Item =
-  | "load"
-  | "domcontentloaded"
-  | "networkidle0"
-  | "networkidle2";
-export const PdfCreateRequestGotoOptionsWaitUntilCase1Item =
+export const PdfCreateRequestCookiesItemGotoOptionsWaitUntil =
   /*@__PURE__*/ S.String;
 
-export type PdfCreateRequestGotoOptionsWaitUntilCase1List = Array<
-  PdfCreateRequestGotoOptionsWaitUntilCase1Item | (string & {})
->;
-export const PdfCreateRequestGotoOptionsWaitUntilCase1List =
-  /*@__PURE__*/ S.Array(
-    PdfCreateRequestGotoOptionsWaitUntilCase1Item,
-  ) as any as S.Schema<PdfCreateRequestGotoOptionsWaitUntilCase1List>;
-
-export type PdfCreateRequestGotoOptionsWaitUntil =
-  | PdfCreateRequestGotoOptionsWaitUntilCase0
-  | (string & {})
-  | PdfCreateRequestGotoOptionsWaitUntilCase1List;
-export const PdfCreateRequestGotoOptionsWaitUntil =
-  /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], []]));
-
-export interface PdfCreateRequestGotoOptions {
+export interface PdfCreateRequestCookiesItemGotoOptions {
   referer?: string;
   referrerPolicy?: string;
+  /** maximum60000 */
   timeout?: number;
-  waitUntil?: PdfCreateRequestGotoOptionsWaitUntil;
+  /** "load" or "domcontentloaded" or "networkidle0" or "networkidle2" */
+  waitUntil?: PdfCreateRequestCookiesItemGotoOptionsWaitUntil | (string & {});
 }
-export const PdfCreateRequestGotoOptions = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    referer: S.optional(S.String),
-    referrerPolicy: S.optional(S.String),
-    timeout: S.optional(S.Number),
-    waitUntil: S.optional(PdfCreateRequestGotoOptionsWaitUntil),
-  }),
+export const PdfCreateRequestCookiesItemGotoOptions = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      referer: S.optional(S.String),
+      referrerPolicy: S.optional(S.String),
+      timeout: S.optional(S.Number),
+      waitUntil: S.optional(PdfCreateRequestCookiesItemGotoOptionsWaitUntil),
+    }),
 ).annotate({
-  identifier: "PdfCreateRequestGotoOptions",
-}) as any as S.Schema<PdfCreateRequestGotoOptions>;
+  identifier: "PdfCreateRequestCookiesItemGotoOptions",
+}) as any as S.Schema<PdfCreateRequestCookiesItemGotoOptions>;
 
-export type PdfCreateRequestPdfOptionsFormat =
+export type PdfCreateRequestCookiesItemPdfOptionsFormat =
   | "letter"
   | "legal"
   | "tabloid"
@@ -2202,115 +1965,63 @@ export type PdfCreateRequestPdfOptionsFormat =
   | "a4"
   | "a5"
   | "a6";
-export const PdfCreateRequestPdfOptionsFormat = /*@__PURE__*/ S.String;
+export const PdfCreateRequestCookiesItemPdfOptionsFormat =
+  /*@__PURE__*/ S.String;
 
-export type PdfCreateRequestPdfOptionsHeight = string | number;
-export const PdfCreateRequestPdfOptionsHeight = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([[], []]),
-);
-
-export type PdfCreateRequestPdfOptionsMarginBottom = string | number;
-export const PdfCreateRequestPdfOptionsMarginBottom =
+export type PdfCreateRequestCookiesItemPdfOptionsHeight = string | number;
+export const PdfCreateRequestCookiesItemPdfOptionsHeight =
   /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], []]));
 
-export type PdfCreateRequestPdfOptionsMarginLeft = string | number;
-export const PdfCreateRequestPdfOptionsMarginLeft =
+export type PdfCreateRequestCookiesItemPdfOptionsMarginBottom = string | number;
+export const PdfCreateRequestCookiesItemPdfOptionsMarginBottom =
   /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], []]));
 
-export type PdfCreateRequestPdfOptionsMarginRight = string | number;
-export const PdfCreateRequestPdfOptionsMarginRight =
+export type PdfCreateRequestCookiesItemPdfOptionsMarginLeft = string | number;
+export const PdfCreateRequestCookiesItemPdfOptionsMarginLeft =
   /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], []]));
 
-export type PdfCreateRequestPdfOptionsMarginTop = string | number;
-export const PdfCreateRequestPdfOptionsMarginTop = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([[], []]),
-);
+export type PdfCreateRequestCookiesItemPdfOptionsMarginRight = string | number;
+export const PdfCreateRequestCookiesItemPdfOptionsMarginRight =
+  /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], []]));
 
-export interface PdfCreateRequestPdfOptionsMargin {
-  bottom?: PdfCreateRequestPdfOptionsMarginBottom;
-  left?: PdfCreateRequestPdfOptionsMarginLeft;
-  right?: PdfCreateRequestPdfOptionsMarginRight;
-  top?: PdfCreateRequestPdfOptionsMarginTop;
+export type PdfCreateRequestCookiesItemPdfOptionsMarginTop = string | number;
+export const PdfCreateRequestCookiesItemPdfOptionsMarginTop =
+  /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], []]));
+
+export interface PdfCreateRequestCookiesItemPdfOptionsMargin {
+  /** string */
+  bottom?: PdfCreateRequestCookiesItemPdfOptionsMarginBottom;
+  /** string */
+  left?: PdfCreateRequestCookiesItemPdfOptionsMarginLeft;
+  /** string */
+  right?: PdfCreateRequestCookiesItemPdfOptionsMarginRight;
+  /** string */
+  top?: PdfCreateRequestCookiesItemPdfOptionsMarginTop;
 }
-export const PdfCreateRequestPdfOptionsMargin = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    bottom: S.optional(PdfCreateRequestPdfOptionsMarginBottom),
-    left: S.optional(PdfCreateRequestPdfOptionsMarginLeft),
-    right: S.optional(PdfCreateRequestPdfOptionsMarginRight),
-    top: S.optional(PdfCreateRequestPdfOptionsMarginTop),
-  }),
-).annotate({
-  identifier: "PdfCreateRequestPdfOptionsMargin",
-}) as any as S.Schema<PdfCreateRequestPdfOptionsMargin>;
+export const PdfCreateRequestCookiesItemPdfOptionsMargin =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      bottom: S.optional(PdfCreateRequestCookiesItemPdfOptionsMarginBottom),
+      left: S.optional(PdfCreateRequestCookiesItemPdfOptionsMarginLeft),
+      right: S.optional(PdfCreateRequestCookiesItemPdfOptionsMarginRight),
+      top: S.optional(PdfCreateRequestCookiesItemPdfOptionsMarginTop),
+    }),
+  ).annotate({
+    identifier: "PdfCreateRequestCookiesItemPdfOptionsMargin",
+  }) as any as S.Schema<PdfCreateRequestCookiesItemPdfOptionsMargin>;
 
-export type PdfCreateRequestPdfOptionsWidth = string | number;
-export const PdfCreateRequestPdfOptionsWidth = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([[], []]),
-);
+export type PdfCreateRequestCookiesItemPdfOptionsWidth = string | number;
+export const PdfCreateRequestCookiesItemPdfOptionsWidth =
+  /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], []]));
 
-export interface PdfCreateRequestPdfOptions {
-  /** Whether to show the header and footer. */
-  displayHeaderFooter?: boolean;
-  /** HTML template for the print footer. */
-  footerTemplate?: string;
-  /** Paper format. Takes priority over width and height if set. */
-  format?: PdfCreateRequestPdfOptionsFormat | (string & {});
-  /** HTML template for the print header. */
-  headerTemplate?: string;
-  /** Sets the height of paper. Can be a number or string with unit. */
-  height?: PdfCreateRequestPdfOptionsHeight;
-  /** Whether to print in landscape orientation. */
-  landscape?: boolean;
-  /** Set the PDF margins. Useful when setting header and footer. */
-  margin?: PdfCreateRequestPdfOptionsMargin;
-  /** Hides default white background and allows generating pdfs with transparency. */
-  omitBackground?: boolean;
-  /** Generate document outline. */
-  outline?: boolean;
-  /** Paper ranges to print, e.g. '1-5, 8, 11-13'. */
-  pageRanges?: string;
-  /** Give CSS @page size priority over other size declarations. */
-  preferCSSPageSize?: boolean;
-  /** Set to true to print background graphics. */
-  printBackground?: boolean;
-  /** Scales the rendering of the web page. Amount must be between 0.1 and 2. */
-  scale?: number;
-  /** Generate tagged (accessible) PDF. */
-  tagged?: boolean;
-  /** Timeout in milliseconds. */
-  timeout?: number;
-  /** Sets the width of paper. Can be a number or string with unit. */
-  width?: PdfCreateRequestPdfOptionsWidth;
-}
-export const PdfCreateRequestPdfOptions = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    displayHeaderFooter: S.optional(S.Boolean),
-    footerTemplate: S.optional(S.String),
-    format: S.optional(PdfCreateRequestPdfOptionsFormat),
-    headerTemplate: S.optional(S.String),
-    height: S.optional(PdfCreateRequestPdfOptionsHeight),
-    landscape: S.optional(S.Boolean),
-    margin: S.optional(PdfCreateRequestPdfOptionsMargin),
-    omitBackground: S.optional(S.Boolean),
-    outline: S.optional(S.Boolean),
-    pageRanges: S.optional(S.String),
-    preferCSSPageSize: S.optional(S.Boolean),
-    printBackground: S.optional(S.Boolean),
-    scale: S.optional(S.Number),
-    tagged: S.optional(S.Boolean),
-    timeout: S.optional(S.Number),
-    width: S.optional(PdfCreateRequestPdfOptionsWidth),
-  }),
-).annotate({
-  identifier: "PdfCreateRequestPdfOptions",
-}) as any as S.Schema<PdfCreateRequestPdfOptions>;
+export type PdfCreateRequestCookiesItemPdfOptionsRejectRequestPatternList =
+  Array<string>;
+export const PdfCreateRequestCookiesItemPdfOptionsRejectRequestPatternList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<PdfCreateRequestCookiesItemPdfOptionsRejectRequestPatternList>;
 
-export type PdfCreateRequestRejectRequestPatternList = Array<string>;
-export const PdfCreateRequestRejectRequestPatternList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PdfCreateRequestRejectRequestPatternList>;
-
-export type PdfCreateRequestRejectResourceTypesItem =
+export type PdfCreateRequestCookiesItemPdfOptionsRejectResourceTypesItem =
   | "document"
   | "stylesheet"
   | "image"
@@ -2329,80 +2040,244 @@ export type PdfCreateRequestRejectResourceTypesItem =
   | "cspviolationreport"
   | "preflight"
   | "other";
-export const PdfCreateRequestRejectResourceTypesItem = /*@__PURE__*/ S.String;
+export const PdfCreateRequestCookiesItemPdfOptionsRejectResourceTypesItem =
+  /*@__PURE__*/ S.String;
 
-export type PdfCreateRequestRejectResourceTypesList = Array<
-  PdfCreateRequestRejectResourceTypesItem | (string & {})
->;
-export const PdfCreateRequestRejectResourceTypesList = /*@__PURE__*/ S.Array(
-  PdfCreateRequestRejectResourceTypesItem,
-) as any as S.Schema<PdfCreateRequestRejectResourceTypesList>;
+export type PdfCreateRequestCookiesItemPdfOptionsRejectResourceTypesList =
+  Array<
+    PdfCreateRequestCookiesItemPdfOptionsRejectResourceTypesItem | (string & {})
+  >;
+export const PdfCreateRequestCookiesItemPdfOptionsRejectResourceTypesList =
+  /*@__PURE__*/ S.Array(
+    PdfCreateRequestCookiesItemPdfOptionsRejectResourceTypesItem,
+  ) as any as S.Schema<PdfCreateRequestCookiesItemPdfOptionsRejectResourceTypesList>;
 
-export type PdfCreateRequestSetExtraHTTPHeadersMap = {
+export type PdfCreateRequestCookiesItemPdfOptionsSetExtraHTTPHeadersMap = {
   [key: string]: string | undefined;
 };
-export const PdfCreateRequestSetExtraHTTPHeadersMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<PdfCreateRequestSetExtraHTTPHeadersMap>;
+export const PdfCreateRequestCookiesItemPdfOptionsSetExtraHTTPHeadersMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<PdfCreateRequestCookiesItemPdfOptionsSetExtraHTTPHeadersMap>;
 
-export type PdfCreateRequestViewport = ContentCreateRequestViewport;
-export const PdfCreateRequestViewport = ContentCreateRequestViewport;
+export type PdfCreateRequestCookiesItemPdfOptionsViewportWaitForSelector =
+  ContentCreateRequestCookiesItemViewportWaitForSelector;
+export const PdfCreateRequestCookiesItemPdfOptionsViewportWaitForSelector =
+  ContentCreateRequestCookiesItemViewportWaitForSelector;
 
-export type PdfCreateRequestWaitForSelector =
-  ContentCreateRequestWaitForSelector;
-export const PdfCreateRequestWaitForSelector =
-  ContentCreateRequestWaitForSelector;
+export type PdfCreateRequestCookiesItemPdfOptionsViewportUrl =
+  "https://www.example.com/";
+export const PdfCreateRequestCookiesItemPdfOptionsViewportUrl =
+  /*@__PURE__*/ S.String;
+
+export interface PdfCreateRequestCookiesItemPdfOptionsViewport {
+  height: number;
+  width: number;
+  deviceScaleFactor?: number;
+  hasTouch?: boolean;
+  isLandscape?: boolean;
+  isMobile?: boolean;
+  /** Wait for the selector to appear in page. Check options. */
+  waitForSelector?: ContentCreateRequestCookiesItemViewportWaitForSelector;
+  /** Waits for a specified timeout before continuing. */
+  waitForTimeout?: number;
+  html: unknown;
+  /** }' */
+  url: PdfCreateRequestCookiesItemPdfOptionsViewportUrl | (string & {});
+}
+export const PdfCreateRequestCookiesItemPdfOptionsViewport =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      height: S.Number,
+      width: S.Number,
+      deviceScaleFactor: S.optional(S.Number),
+      hasTouch: S.optional(S.Boolean),
+      isLandscape: S.optional(S.Boolean),
+      isMobile: S.optional(S.Boolean),
+      waitForSelector: S.optional(
+        ContentCreateRequestCookiesItemViewportWaitForSelector,
+      ),
+      waitForTimeout: S.optional(S.Number),
+      html: S.Unknown,
+      url: PdfCreateRequestCookiesItemPdfOptionsViewportUrl,
+    }),
+  ).annotate({
+    identifier: "PdfCreateRequestCookiesItemPdfOptionsViewport",
+  }) as any as S.Schema<PdfCreateRequestCookiesItemPdfOptionsViewport>;
+
+export interface PdfCreateRequestCookiesItemPdfOptions {
+  /** Whether to show the header and footer. */
+  displayHeaderFooter?: boolean;
+  /** HTML template for the print footer. */
+  footerTemplate?: string;
+  /** Paper format. Takes priority over width and height if set. */
+  format?: PdfCreateRequestCookiesItemPdfOptionsFormat | (string & {});
+  /** HTML template for the print header. */
+  headerTemplate?: string;
+  /** Sets the height of paper. Can be a number or string with unit. */
+  height?: PdfCreateRequestCookiesItemPdfOptionsHeight;
+  /** Whether to print in landscape orientation. */
+  landscape?: boolean;
+  /** Set the PDF margins. Useful when setting header and footer. */
+  margin?: PdfCreateRequestCookiesItemPdfOptionsMargin;
+  /** Hides default white background and allows generating pdfs with transparency. */
+  omitBackground?: boolean;
+  /** Generate document outline. */
+  outline?: boolean;
+  /** Paper ranges to print, e.g. ‘1-5, 8, 11-13’. */
+  pageRanges?: string;
+  /** Give CSS @page size priority over other size declarations. */
+  preferCSSPageSize?: boolean;
+  /** Set to true to print background graphics. */
+  printBackground?: boolean;
+  /** Scales the rendering of the web page. Amount must be between 0.1 and 2. */
+  scale?: number;
+  /** Generate tagged (accessible) PDF. */
+  tagged?: boolean;
+  /** Timeout in milliseconds. */
+  timeout?: number;
+  /** Sets the width of paper. Can be a number or string with unit. */
+  width?: PdfCreateRequestCookiesItemPdfOptionsWidth;
+  /** Block undesired requests that match the provided regex patterns, eg. ’/^.*.(css)’. */
+  rejectRequestPattern?: PdfCreateRequestCookiesItemPdfOptionsRejectRequestPatternList;
+  /** Block undesired requests that match the provided resource types, eg. ‘image’ or ‘script’. */
+  rejectResourceTypes?: PdfCreateRequestCookiesItemPdfOptionsRejectResourceTypesList;
+  setExtraHTTPHeaders?: PdfCreateRequestCookiesItemPdfOptionsSetExtraHTTPHeadersMap;
+  setJavaScriptEnabled?: boolean;
+  /** URL to navigate to, eg. `https://example.com`. */
+  url?: string;
+  userAgent?: string;
+  /** Check options. */
+  viewport?: PdfCreateRequestCookiesItemPdfOptionsViewport;
+}
+export const PdfCreateRequestCookiesItemPdfOptions = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      displayHeaderFooter: S.optional(S.Boolean),
+      footerTemplate: S.optional(S.String),
+      format: S.optional(PdfCreateRequestCookiesItemPdfOptionsFormat),
+      headerTemplate: S.optional(S.String),
+      height: S.optional(PdfCreateRequestCookiesItemPdfOptionsHeight),
+      landscape: S.optional(S.Boolean),
+      margin: S.optional(PdfCreateRequestCookiesItemPdfOptionsMargin),
+      omitBackground: S.optional(S.Boolean),
+      outline: S.optional(S.Boolean),
+      pageRanges: S.optional(S.String),
+      preferCSSPageSize: S.optional(S.Boolean),
+      printBackground: S.optional(S.Boolean),
+      scale: S.optional(S.Number),
+      tagged: S.optional(S.Boolean),
+      timeout: S.optional(S.Number),
+      width: S.optional(PdfCreateRequestCookiesItemPdfOptionsWidth),
+      rejectRequestPattern: S.optional(
+        PdfCreateRequestCookiesItemPdfOptionsRejectRequestPatternList,
+      ),
+      rejectResourceTypes: S.optional(
+        PdfCreateRequestCookiesItemPdfOptionsRejectResourceTypesList,
+      ),
+      setExtraHTTPHeaders: S.optional(
+        PdfCreateRequestCookiesItemPdfOptionsSetExtraHTTPHeadersMap,
+      ),
+      setJavaScriptEnabled: S.optional(S.Boolean),
+      url: S.optional(S.String),
+      userAgent: S.optional(S.String),
+      viewport: S.optional(PdfCreateRequestCookiesItemPdfOptionsViewport),
+    }),
+).annotate({
+  identifier: "PdfCreateRequestCookiesItemPdfOptions",
+}) as any as S.Schema<PdfCreateRequestCookiesItemPdfOptions>;
+
+export interface PdfCreateRequestCookiesItem {
+  /** Cookie name. */
+  name: string;
+  value: string;
+  domain?: string;
+  expires?: number;
+  httpOnly?: boolean;
+  partitionKey?: string;
+  path?: string;
+  priority?: PdfCreateRequestCookiesItemPriority | (string & {});
+  sameParty?: boolean;
+  sameSite?: PdfCreateRequestCookiesItemSameSite | (string & {});
+  secure?: boolean;
+  sourcePort?: number;
+  sourceScheme?: PdfCreateRequestCookiesItemSourceScheme | (string & {});
+  url?: string;
+  emulateMediaType?: string;
+  /** Check options. */
+  gotoOptions?: PdfCreateRequestCookiesItemGotoOptions;
+  /** Set the content of the page, eg: `<h1>Hello World!!</h1>`. Either `html` or `url` must be set. */
+  html?: string;
+  /** Check options. */
+  pdfOptions?: PdfCreateRequestCookiesItemPdfOptions;
+}
+export const PdfCreateRequestCookiesItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String,
+    value: S.String,
+    domain: S.optional(S.String),
+    expires: S.optional(S.Number),
+    httpOnly: S.optional(S.Boolean),
+    partitionKey: S.optional(S.String),
+    path: S.optional(S.String),
+    priority: S.optional(PdfCreateRequestCookiesItemPriority),
+    sameParty: S.optional(S.Boolean),
+    sameSite: S.optional(PdfCreateRequestCookiesItemSameSite),
+    secure: S.optional(S.Boolean),
+    sourcePort: S.optional(S.Number),
+    sourceScheme: S.optional(PdfCreateRequestCookiesItemSourceScheme),
+    url: S.optional(S.String),
+    emulateMediaType: S.optional(S.String),
+    gotoOptions: S.optional(PdfCreateRequestCookiesItemGotoOptions),
+    html: S.optional(S.String),
+    pdfOptions: S.optional(PdfCreateRequestCookiesItemPdfOptions),
+  }),
+).annotate({
+  identifier: "PdfCreateRequestCookiesItem",
+}) as any as S.Schema<PdfCreateRequestCookiesItem>;
+
+export type PdfCreateRequestCookiesList = Array<PdfCreateRequestCookiesItem>;
+export const PdfCreateRequestCookiesList = /*@__PURE__*/ S.Array(
+  PdfCreateRequestCookiesItem,
+) as any as S.Schema<PdfCreateRequestCookiesList>;
+
+export type PdfCreateRequestMessage = "Rate limit exceeded";
+export const PdfCreateRequestMessage = /*@__PURE__*/ S.String;
 
 export interface CreatePdfRequest {
   /** Account ID. */
   accountId: string;
   /** Cache TTL default is 5s. Set to 0 to disable. */
   cacheTTL?: number;
-  /** Set the content of the page, eg: `<h1>Hello World!!</h1>`. Either `html` or `url` must be set. */
-  html?: string;
   /** The maximum duration allowed for the browser action to complete after the page has loaded (such as taking screenshots, extracting content, or generating PDFs). If this time limit is exceeded, the action stops and returns a timeout error. */
   actionTimeout?: number;
   /** Adds a `<script>` tag into the page with the desired URL or content. */
   addScriptTag?: PdfCreateRequestAddScriptTagList;
   /** Adds a `<link rel="stylesheet">` tag into the page with the desired URL or a `<style type="text/css">` tag with the content. */
   addStyleTag?: PdfCreateRequestAddStyleTagList;
-  /** Only allow requests that match the provided regex patterns, eg. '/^.*.(css)'. */
+  /** Only allow requests that match the provided regex patterns, eg. ’/^.*.(css)’. Reject rules are applied first. */
   allowRequestPattern?: PdfCreateRequestAllowRequestPatternList;
-  /** Only allow requests that match the provided resource types, eg. 'image' or 'script'. */
+  /** Only allow requests that match the provided resource types, eg. ‘image’ or ‘script’. Reject rules are applied first. */
   allowResourceTypes?: PdfCreateRequestAllowResourceTypesList;
   /** Provide credentials for HTTP authentication. */
   authenticate?: ContentCreateRequestAuthenticate;
-  /** Attempt to proceed when 'awaited' events fail or timeout. */
+  /** Attempt to proceed when ‘awaited’ events fail or timeout. */
   bestAttempt?: boolean;
-  /** Check [options](https://pptr.dev/api/puppeteer.page.setcookie). */
+  /** Check options. */
   cookies?: PdfCreateRequestCookiesList;
-  emulateMediaType?: string;
-  /** Check [options](https://pptr.dev/api/puppeteer.gotooptions). */
-  gotoOptions?: PdfCreateRequestGotoOptions;
-  /** Check [options](https://pptr.dev/api/puppeteer.pdfoptions). */
-  pdfOptions?: PdfCreateRequestPdfOptions;
-  /** Block undesired requests that match the provided regex patterns, eg. '/^.*.(css)'. */
-  rejectRequestPattern?: PdfCreateRequestRejectRequestPatternList;
-  /** Block undesired requests that match the provided resource types, eg. 'image' or 'script'. */
-  rejectResourceTypes?: PdfCreateRequestRejectResourceTypesList;
-  setExtraHTTPHeaders?: PdfCreateRequestSetExtraHTTPHeadersMap;
-  setJavaScriptEnabled?: boolean;
-  userAgent?: string;
-  /** Check [options](https://pptr.dev/api/puppeteer.page.setviewport). */
-  viewport?: ContentCreateRequestViewport;
-  /** Wait for the selector to appear in page. Check [options](https://pptr.dev/api/puppeteer.page.waitforselector). */
-  waitForSelector?: ContentCreateRequestWaitForSelector;
-  /** Waits for a specified timeout before continuing. */
-  waitForTimeout?: number;
-  /** URL to navigate to, eg. `https://example.com`. */
-  url?: string;
+  /** { */
+  errors: unknown;
+  code: unknown;
+  /** } */
+  message: PdfCreateRequestMessage | (string & {});
+  /** } */
+  success: boolean;
 }
 export const CreatePdfRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     cacheTTL: S.optional(S.Number.pipe(T.Query())),
-    html: S.optional(S.String),
     actionTimeout: S.optional(S.Number),
     addScriptTag: S.optional(PdfCreateRequestAddScriptTagList),
     addStyleTag: S.optional(PdfCreateRequestAddStyleTagList),
@@ -2411,18 +2286,10 @@ export const CreatePdfRequest = /*@__PURE__*/ S.suspend(() =>
     authenticate: S.optional(ContentCreateRequestAuthenticate),
     bestAttempt: S.optional(S.Boolean),
     cookies: S.optional(PdfCreateRequestCookiesList),
-    emulateMediaType: S.optional(S.String),
-    gotoOptions: S.optional(PdfCreateRequestGotoOptions),
-    pdfOptions: S.optional(PdfCreateRequestPdfOptions),
-    rejectRequestPattern: S.optional(PdfCreateRequestRejectRequestPatternList),
-    rejectResourceTypes: S.optional(PdfCreateRequestRejectResourceTypesList),
-    setExtraHTTPHeaders: S.optional(PdfCreateRequestSetExtraHTTPHeadersMap),
-    setJavaScriptEnabled: S.optional(S.Boolean),
-    userAgent: S.optional(S.String),
-    viewport: S.optional(ContentCreateRequestViewport),
-    waitForSelector: S.optional(ContentCreateRequestWaitForSelector),
-    waitForTimeout: S.optional(S.Number),
-    url: S.optional(S.String),
+    errors: S.Unknown,
+    code: S.Unknown,
+    message: PdfCreateRequestMessage,
+    success: S.Boolean,
   })
     .pipe(
       T.Http({
@@ -2531,105 +2398,44 @@ export type ScrapeCreateRequestCookiesItemSourceScheme =
 export const ScrapeCreateRequestCookiesItemSourceScheme =
   /*@__PURE__*/ S.String;
 
-export interface ScrapeCreateRequestCookiesItem {
-  /** Cookie name. */
-  name: string;
-  value: string;
-  domain?: string;
-  expires?: number;
-  httpOnly?: boolean;
-  partitionKey?: string;
-  path?: string;
-  priority?: ScrapeCreateRequestCookiesItemPriority | (string & {});
-  sameParty?: boolean;
-  sameSite?: ScrapeCreateRequestCookiesItemSameSite | (string & {});
-  secure?: boolean;
-  sourcePort?: number;
-  sourceScheme?: ScrapeCreateRequestCookiesItemSourceScheme | (string & {});
-  url?: string;
-}
-export const ScrapeCreateRequestCookiesItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    value: S.String,
-    domain: S.optional(S.String),
-    expires: S.optional(S.Number),
-    httpOnly: S.optional(S.Boolean),
-    partitionKey: S.optional(S.String),
-    path: S.optional(S.String),
-    priority: S.optional(ScrapeCreateRequestCookiesItemPriority),
-    sameParty: S.optional(S.Boolean),
-    sameSite: S.optional(ScrapeCreateRequestCookiesItemSameSite),
-    secure: S.optional(S.Boolean),
-    sourcePort: S.optional(S.Number),
-    sourceScheme: S.optional(ScrapeCreateRequestCookiesItemSourceScheme),
-    url: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ScrapeCreateRequestCookiesItem",
-}) as any as S.Schema<ScrapeCreateRequestCookiesItem>;
-
-export type ScrapeCreateRequestCookiesList =
-  Array<ScrapeCreateRequestCookiesItem>;
-export const ScrapeCreateRequestCookiesList = /*@__PURE__*/ S.Array(
-  ScrapeCreateRequestCookiesItem,
-) as any as S.Schema<ScrapeCreateRequestCookiesList>;
-
-export type ScrapeCreateRequestGotoOptionsWaitUntilCase0 =
+export type ScrapeCreateRequestCookiesItemGotoOptionsWaitUntil =
   | "load"
   | "domcontentloaded"
   | "networkidle0"
   | "networkidle2";
-export const ScrapeCreateRequestGotoOptionsWaitUntilCase0 =
+export const ScrapeCreateRequestCookiesItemGotoOptionsWaitUntil =
   /*@__PURE__*/ S.String;
 
-export type ScrapeCreateRequestGotoOptionsWaitUntilCase1Item =
-  | "load"
-  | "domcontentloaded"
-  | "networkidle0"
-  | "networkidle2";
-export const ScrapeCreateRequestGotoOptionsWaitUntilCase1Item =
-  /*@__PURE__*/ S.String;
-
-export type ScrapeCreateRequestGotoOptionsWaitUntilCase1List = Array<
-  ScrapeCreateRequestGotoOptionsWaitUntilCase1Item | (string & {})
->;
-export const ScrapeCreateRequestGotoOptionsWaitUntilCase1List =
-  /*@__PURE__*/ S.Array(
-    ScrapeCreateRequestGotoOptionsWaitUntilCase1Item,
-  ) as any as S.Schema<ScrapeCreateRequestGotoOptionsWaitUntilCase1List>;
-
-export type ScrapeCreateRequestGotoOptionsWaitUntil =
-  | ScrapeCreateRequestGotoOptionsWaitUntilCase0
-  | (string & {})
-  | ScrapeCreateRequestGotoOptionsWaitUntilCase1List;
-export const ScrapeCreateRequestGotoOptionsWaitUntil =
-  /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], []]));
-
-export interface ScrapeCreateRequestGotoOptions {
+export interface ScrapeCreateRequestCookiesItemGotoOptions {
   referer?: string;
   referrerPolicy?: string;
+  /** maximum60000 */
   timeout?: number;
-  waitUntil?: ScrapeCreateRequestGotoOptionsWaitUntil;
+  /** "load" or "domcontentloaded" or "networkidle0" or "networkidle2" */
+  waitUntil?:
+    | ScrapeCreateRequestCookiesItemGotoOptionsWaitUntil
+    | (string & {});
 }
-export const ScrapeCreateRequestGotoOptions = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    referer: S.optional(S.String),
-    referrerPolicy: S.optional(S.String),
-    timeout: S.optional(S.Number),
-    waitUntil: S.optional(ScrapeCreateRequestGotoOptionsWaitUntil),
-  }),
-).annotate({
-  identifier: "ScrapeCreateRequestGotoOptions",
-}) as any as S.Schema<ScrapeCreateRequestGotoOptions>;
+export const ScrapeCreateRequestCookiesItemGotoOptions =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      referer: S.optional(S.String),
+      referrerPolicy: S.optional(S.String),
+      timeout: S.optional(S.Number),
+      waitUntil: S.optional(ScrapeCreateRequestCookiesItemGotoOptionsWaitUntil),
+    }),
+  ).annotate({
+    identifier: "ScrapeCreateRequestCookiesItemGotoOptions",
+  }) as any as S.Schema<ScrapeCreateRequestCookiesItemGotoOptions>;
 
-export type ScrapeCreateRequestRejectRequestPatternList = Array<string>;
-export const ScrapeCreateRequestRejectRequestPatternList =
+export type ScrapeCreateRequestCookiesItemRejectRequestPatternList =
+  Array<string>;
+export const ScrapeCreateRequestCookiesItemRejectRequestPatternList =
   /*@__PURE__*/ S.Array(
     S.String,
-  ) as any as S.Schema<ScrapeCreateRequestRejectRequestPatternList>;
+  ) as any as S.Schema<ScrapeCreateRequestCookiesItemRejectRequestPatternList>;
 
-export type ScrapeCreateRequestRejectResourceTypesItem =
+export type ScrapeCreateRequestCookiesItemRejectResourceTypesItem =
   | "document"
   | "stylesheet"
   | "image"
@@ -2648,31 +2454,111 @@ export type ScrapeCreateRequestRejectResourceTypesItem =
   | "cspviolationreport"
   | "preflight"
   | "other";
-export const ScrapeCreateRequestRejectResourceTypesItem =
+export const ScrapeCreateRequestCookiesItemRejectResourceTypesItem =
   /*@__PURE__*/ S.String;
 
-export type ScrapeCreateRequestRejectResourceTypesList = Array<
-  ScrapeCreateRequestRejectResourceTypesItem | (string & {})
+export type ScrapeCreateRequestCookiesItemRejectResourceTypesList = Array<
+  ScrapeCreateRequestCookiesItemRejectResourceTypesItem | (string & {})
 >;
-export const ScrapeCreateRequestRejectResourceTypesList = /*@__PURE__*/ S.Array(
-  ScrapeCreateRequestRejectResourceTypesItem,
-) as any as S.Schema<ScrapeCreateRequestRejectResourceTypesList>;
+export const ScrapeCreateRequestCookiesItemRejectResourceTypesList =
+  /*@__PURE__*/ S.Array(
+    ScrapeCreateRequestCookiesItemRejectResourceTypesItem,
+  ) as any as S.Schema<ScrapeCreateRequestCookiesItemRejectResourceTypesList>;
 
-export type ScrapeCreateRequestSetExtraHTTPHeadersMap = {
+export type ScrapeCreateRequestCookiesItemSetExtraHTTPHeadersMap = {
   [key: string]: string | undefined;
 };
-export const ScrapeCreateRequestSetExtraHTTPHeadersMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ScrapeCreateRequestSetExtraHTTPHeadersMap>;
+export const ScrapeCreateRequestCookiesItemSetExtraHTTPHeadersMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<ScrapeCreateRequestCookiesItemSetExtraHTTPHeadersMap>;
 
-export type ScrapeCreateRequestViewport = ContentCreateRequestViewport;
-export const ScrapeCreateRequestViewport = ContentCreateRequestViewport;
+export type ScrapeCreateRequestCookiesItemViewportWaitForSelector =
+  ContentCreateRequestCookiesItemViewportWaitForSelector;
+export const ScrapeCreateRequestCookiesItemViewportWaitForSelector =
+  ContentCreateRequestCookiesItemViewportWaitForSelector;
 
-export type ScrapeCreateRequestWaitForSelector =
-  ContentCreateRequestWaitForSelector;
-export const ScrapeCreateRequestWaitForSelector =
-  ContentCreateRequestWaitForSelector;
+export type ScrapeCreateRequestCookiesItemViewport =
+  ContentCreateRequestCookiesItemViewport;
+export const ScrapeCreateRequestCookiesItemViewport =
+  ContentCreateRequestCookiesItemViewport;
+
+export interface ScrapeCreateRequestCookiesItem {
+  /** Cookie name. */
+  name: string;
+  value: string;
+  domain?: string;
+  expires?: number;
+  httpOnly?: boolean;
+  partitionKey?: string;
+  path?: string;
+  priority?: ScrapeCreateRequestCookiesItemPriority | (string & {});
+  sameParty?: boolean;
+  sameSite?: ScrapeCreateRequestCookiesItemSameSite | (string & {});
+  secure?: boolean;
+  sourcePort?: number;
+  sourceScheme?: ScrapeCreateRequestCookiesItemSourceScheme | (string & {});
+  url?: string;
+  emulateMediaType?: string;
+  /** Check options. */
+  gotoOptions?: ScrapeCreateRequestCookiesItemGotoOptions;
+  /** Set the content of the page, eg: `<h1>Hello World!!</h1>`. Either `html` or `url` must be set. */
+  html?: string;
+  /** Block undesired requests that match the provided regex patterns, eg. ’/^.*.(css)’. */
+  rejectRequestPattern?: ScrapeCreateRequestCookiesItemRejectRequestPatternList;
+  /** Block undesired requests that match the provided resource types, eg. ‘image’ or ‘script’. */
+  rejectResourceTypes?: ScrapeCreateRequestCookiesItemRejectResourceTypesList;
+  setExtraHTTPHeaders?: ScrapeCreateRequestCookiesItemSetExtraHTTPHeadersMap;
+  setJavaScriptEnabled?: boolean;
+  /** URL to navigate to, eg. `https://example.com`. */
+  url_2?: string;
+  userAgent?: string;
+  /** Check options. */
+  viewport?: ContentCreateRequestCookiesItemViewport;
+}
+export const ScrapeCreateRequestCookiesItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String,
+    value: S.String,
+    domain: S.optional(S.String),
+    expires: S.optional(S.Number),
+    httpOnly: S.optional(S.Boolean),
+    partitionKey: S.optional(S.String),
+    path: S.optional(S.String),
+    priority: S.optional(ScrapeCreateRequestCookiesItemPriority),
+    sameParty: S.optional(S.Boolean),
+    sameSite: S.optional(ScrapeCreateRequestCookiesItemSameSite),
+    secure: S.optional(S.Boolean),
+    sourcePort: S.optional(S.Number),
+    sourceScheme: S.optional(ScrapeCreateRequestCookiesItemSourceScheme),
+    url: S.optional(S.String),
+    emulateMediaType: S.optional(S.String),
+    gotoOptions: S.optional(ScrapeCreateRequestCookiesItemGotoOptions),
+    html: S.optional(S.String),
+    rejectRequestPattern: S.optional(
+      ScrapeCreateRequestCookiesItemRejectRequestPatternList,
+    ),
+    rejectResourceTypes: S.optional(
+      ScrapeCreateRequestCookiesItemRejectResourceTypesList,
+    ),
+    setExtraHTTPHeaders: S.optional(
+      ScrapeCreateRequestCookiesItemSetExtraHTTPHeadersMap,
+    ),
+    setJavaScriptEnabled: S.optional(S.Boolean),
+    url_2: S.optional(S.String.pipe(T.Body("url"))),
+    userAgent: S.optional(S.String),
+    viewport: S.optional(ContentCreateRequestCookiesItemViewport),
+  }),
+).annotate({
+  identifier: "ScrapeCreateRequestCookiesItem",
+}) as any as S.Schema<ScrapeCreateRequestCookiesItem>;
+
+export type ScrapeCreateRequestCookiesList =
+  Array<ScrapeCreateRequestCookiesItem>;
+export const ScrapeCreateRequestCookiesList = /*@__PURE__*/ S.Array(
+  ScrapeCreateRequestCookiesItem,
+) as any as S.Schema<ScrapeCreateRequestCookiesList>;
 
 export interface CreateScrapeRequest {
   /** Account ID. */
@@ -2680,49 +2566,28 @@ export interface CreateScrapeRequest {
   /** Cache TTL default is 5s. Set to 0 to disable. */
   cacheTTL?: number;
   elements: ScrapeCreateRequestElementsList;
-  /** Set the content of the page, eg: `<h1>Hello World!!</h1>`. Either `html` or `url` must be set. */
-  html?: string;
   /** The maximum duration allowed for the browser action to complete after the page has loaded (such as taking screenshots, extracting content, or generating PDFs). If this time limit is exceeded, the action stops and returns a timeout error. */
   actionTimeout?: number;
   /** Adds a `<script>` tag into the page with the desired URL or content. */
   addScriptTag?: ScrapeCreateRequestAddScriptTagList;
   /** Adds a `<link rel="stylesheet">` tag into the page with the desired URL or a `<style type="text/css">` tag with the content. */
   addStyleTag?: ScrapeCreateRequestAddStyleTagList;
-  /** Only allow requests that match the provided regex patterns, eg. '/^.*.(css)'. */
+  /** Only allow requests that match the provided regex patterns, eg. ’/^.*.(css)’. Reject rules are applied first. */
   allowRequestPattern?: ScrapeCreateRequestAllowRequestPatternList;
-  /** Only allow requests that match the provided resource types, eg. 'image' or 'script'. */
+  /** Only allow requests that match the provided resource types, eg. ‘image’ or ‘script’. Reject rules are applied first. */
   allowResourceTypes?: ScrapeCreateRequestAllowResourceTypesList;
   /** Provide credentials for HTTP authentication. */
   authenticate?: ContentCreateRequestAuthenticate;
-  /** Attempt to proceed when 'awaited' events fail or timeout. */
+  /** Attempt to proceed when ‘awaited’ events fail or timeout. */
   bestAttempt?: boolean;
-  /** Check [options](https://pptr.dev/api/puppeteer.page.setcookie). */
+  /** Check options. */
   cookies?: ScrapeCreateRequestCookiesList;
-  emulateMediaType?: string;
-  /** Check [options](https://pptr.dev/api/puppeteer.gotooptions). */
-  gotoOptions?: ScrapeCreateRequestGotoOptions;
-  /** Block undesired requests that match the provided regex patterns, eg. '/^.*.(css)'. */
-  rejectRequestPattern?: ScrapeCreateRequestRejectRequestPatternList;
-  /** Block undesired requests that match the provided resource types, eg. 'image' or 'script'. */
-  rejectResourceTypes?: ScrapeCreateRequestRejectResourceTypesList;
-  setExtraHTTPHeaders?: ScrapeCreateRequestSetExtraHTTPHeadersMap;
-  setJavaScriptEnabled?: boolean;
-  userAgent?: string;
-  /** Check [options](https://pptr.dev/api/puppeteer.page.setviewport). */
-  viewport?: ContentCreateRequestViewport;
-  /** Wait for the selector to appear in page. Check [options](https://pptr.dev/api/puppeteer.page.waitforselector). */
-  waitForSelector?: ContentCreateRequestWaitForSelector;
-  /** Waits for a specified timeout before continuing. */
-  waitForTimeout?: number;
-  /** URL to navigate to, eg. `https://example.com`. */
-  url?: string;
 }
 export const CreateScrapeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     cacheTTL: S.optional(S.Number.pipe(T.Query())),
     elements: ScrapeCreateRequestElementsList,
-    html: S.optional(S.String),
     actionTimeout: S.optional(S.Number),
     addScriptTag: S.optional(ScrapeCreateRequestAddScriptTagList),
     addStyleTag: S.optional(ScrapeCreateRequestAddStyleTagList),
@@ -2731,19 +2596,6 @@ export const CreateScrapeRequest = /*@__PURE__*/ S.suspend(() =>
     authenticate: S.optional(ContentCreateRequestAuthenticate),
     bestAttempt: S.optional(S.Boolean),
     cookies: S.optional(ScrapeCreateRequestCookiesList),
-    emulateMediaType: S.optional(S.String),
-    gotoOptions: S.optional(ScrapeCreateRequestGotoOptions),
-    rejectRequestPattern: S.optional(
-      ScrapeCreateRequestRejectRequestPatternList,
-    ),
-    rejectResourceTypes: S.optional(ScrapeCreateRequestRejectResourceTypesList),
-    setExtraHTTPHeaders: S.optional(ScrapeCreateRequestSetExtraHTTPHeadersMap),
-    setJavaScriptEnabled: S.optional(S.Boolean),
-    userAgent: S.optional(S.String),
-    viewport: S.optional(ContentCreateRequestViewport),
-    waitForSelector: S.optional(ContentCreateRequestWaitForSelector),
-    waitForTimeout: S.optional(S.Number),
-    url: S.optional(S.String),
   })
     .pipe(
       T.Http({
@@ -2794,6 +2646,8 @@ export interface ScrapeCreateResultItemResults {
   top: number;
   /** Element width. */
   width: number;
+  /** Selector. */
+  selector: string;
 }
 export const ScrapeCreateResultItemResults = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2804,6 +2658,7 @@ export const ScrapeCreateResultItemResults = /*@__PURE__*/ S.suspend(() =>
     text: S.String,
     top: S.Number,
     width: S.Number,
+    selector: S.String,
   }),
 ).annotate({
   identifier: "ScrapeCreateResultItemResults",
@@ -2811,13 +2666,10 @@ export const ScrapeCreateResultItemResults = /*@__PURE__*/ S.suspend(() =>
 
 export interface ScrapeCreateResultItem {
   results: ScrapeCreateResultItemResults;
-  /** Selector. */
-  selector: string;
 }
 export const ScrapeCreateResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     results: ScrapeCreateResultItemResults,
-    selector: S.String,
   }),
 ).annotate({
   identifier: "ScrapeCreateResultItem",
@@ -2922,6 +2774,180 @@ export type ScreenshotCreateRequestCookiesItemSourceScheme =
 export const ScreenshotCreateRequestCookiesItemSourceScheme =
   /*@__PURE__*/ S.String;
 
+export type ScreenshotCreateRequestCookiesItemGotoOptionsWaitUntil =
+  | "load"
+  | "domcontentloaded"
+  | "networkidle0"
+  | "networkidle2";
+export const ScreenshotCreateRequestCookiesItemGotoOptionsWaitUntil =
+  /*@__PURE__*/ S.String;
+
+export interface ScreenshotCreateRequestCookiesItemGotoOptions {
+  referer?: string;
+  referrerPolicy?: string;
+  /** maximum60000 */
+  timeout?: number;
+  /** "load" or "domcontentloaded" or "networkidle0" or "networkidle2" */
+  waitUntil?:
+    | ScreenshotCreateRequestCookiesItemGotoOptionsWaitUntil
+    | (string & {});
+}
+export const ScreenshotCreateRequestCookiesItemGotoOptions =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      referer: S.optional(S.String),
+      referrerPolicy: S.optional(S.String),
+      timeout: S.optional(S.Number),
+      waitUntil: S.optional(
+        ScreenshotCreateRequestCookiesItemGotoOptionsWaitUntil,
+      ),
+    }),
+  ).annotate({
+    identifier: "ScreenshotCreateRequestCookiesItemGotoOptions",
+  }) as any as S.Schema<ScreenshotCreateRequestCookiesItemGotoOptions>;
+
+export type ScreenshotCreateRequestCookiesItemRejectRequestPatternList =
+  Array<string>;
+export const ScreenshotCreateRequestCookiesItemRejectRequestPatternList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<ScreenshotCreateRequestCookiesItemRejectRequestPatternList>;
+
+export type ScreenshotCreateRequestCookiesItemRejectResourceTypesItem =
+  | "document"
+  | "stylesheet"
+  | "image"
+  | "media"
+  | "font"
+  | "script"
+  | "texttrack"
+  | "xhr"
+  | "fetch"
+  | "prefetch"
+  | "eventsource"
+  | "websocket"
+  | "manifest"
+  | "signedexchange"
+  | "ping"
+  | "cspviolationreport"
+  | "preflight"
+  | "other";
+export const ScreenshotCreateRequestCookiesItemRejectResourceTypesItem =
+  /*@__PURE__*/ S.String;
+
+export type ScreenshotCreateRequestCookiesItemRejectResourceTypesList = Array<
+  ScreenshotCreateRequestCookiesItemRejectResourceTypesItem | (string & {})
+>;
+export const ScreenshotCreateRequestCookiesItemRejectResourceTypesList =
+  /*@__PURE__*/ S.Array(
+    ScreenshotCreateRequestCookiesItemRejectResourceTypesItem,
+  ) as any as S.Schema<ScreenshotCreateRequestCookiesItemRejectResourceTypesList>;
+
+export type ScreenshotCreateRequestCookiesItemScreenshotOptionsClipEncoding =
+  | "binary"
+  | "base64";
+export const ScreenshotCreateRequestCookiesItemScreenshotOptionsClipEncoding =
+  /*@__PURE__*/ S.String;
+
+export type ScreenshotCreateRequestCookiesItemScreenshotOptionsClipType =
+  | "png"
+  | "jpeg"
+  | "webp";
+export const ScreenshotCreateRequestCookiesItemScreenshotOptionsClipType =
+  /*@__PURE__*/ S.String;
+
+export type ScreenshotCreateRequestCookiesItemScreenshotOptionsClipSetExtraHTTPHeadersMap =
+  { [key: string]: string | undefined };
+export const ScreenshotCreateRequestCookiesItemScreenshotOptionsClipSetExtraHTTPHeadersMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<ScreenshotCreateRequestCookiesItemScreenshotOptionsClipSetExtraHTTPHeadersMap>;
+
+export type ScreenshotCreateRequestCookiesItemScreenshotOptionsClipViewportWaitForSelector =
+  ContentCreateRequestCookiesItemViewportWaitForSelector;
+export const ScreenshotCreateRequestCookiesItemScreenshotOptionsClipViewportWaitForSelector =
+  ContentCreateRequestCookiesItemViewportWaitForSelector;
+
+export type ScreenshotCreateRequestCookiesItemScreenshotOptionsClipViewport =
+  ContentCreateRequestCookiesItemViewport;
+export const ScreenshotCreateRequestCookiesItemScreenshotOptionsClipViewport =
+  ContentCreateRequestCookiesItemViewport;
+
+export interface ScreenshotCreateRequestCookiesItemScreenshotOptionsClip {
+  height: number;
+  width: number;
+  x: number;
+  y: number;
+  scale?: number;
+  encoding?:
+    | ScreenshotCreateRequestCookiesItemScreenshotOptionsClipEncoding
+    | (string & {});
+  fromSurface?: boolean;
+  fullPage?: boolean;
+  omitBackground?: boolean;
+  optimizeForSpeed?: boolean;
+  quality?: number;
+  type?:
+    | ScreenshotCreateRequestCookiesItemScreenshotOptionsClipType
+    | (string & {});
+  scrollPage?: boolean;
+  selector?: string;
+  setExtraHTTPHeaders?: ScreenshotCreateRequestCookiesItemScreenshotOptionsClipSetExtraHTTPHeadersMap;
+  setJavaScriptEnabled?: boolean;
+  /** URL to navigate to, eg. `https://example.com`. */
+  url?: string;
+  userAgent?: string;
+  /** Check options. */
+  viewport?: ContentCreateRequestCookiesItemViewport;
+}
+export const ScreenshotCreateRequestCookiesItemScreenshotOptionsClip =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      height: S.Number,
+      width: S.Number,
+      x: S.Number,
+      y: S.Number,
+      scale: S.optional(S.Number),
+      encoding: S.optional(
+        ScreenshotCreateRequestCookiesItemScreenshotOptionsClipEncoding,
+      ),
+      fromSurface: S.optional(S.Boolean),
+      fullPage: S.optional(S.Boolean),
+      omitBackground: S.optional(S.Boolean),
+      optimizeForSpeed: S.optional(S.Boolean),
+      quality: S.optional(S.Number),
+      type: S.optional(
+        ScreenshotCreateRequestCookiesItemScreenshotOptionsClipType,
+      ),
+      scrollPage: S.optional(S.Boolean),
+      selector: S.optional(S.String),
+      setExtraHTTPHeaders: S.optional(
+        ScreenshotCreateRequestCookiesItemScreenshotOptionsClipSetExtraHTTPHeadersMap,
+      ),
+      setJavaScriptEnabled: S.optional(S.Boolean),
+      url: S.optional(S.String),
+      userAgent: S.optional(S.String),
+      viewport: S.optional(ContentCreateRequestCookiesItemViewport),
+    }),
+  ).annotate({
+    identifier: "ScreenshotCreateRequestCookiesItemScreenshotOptionsClip",
+  }) as any as S.Schema<ScreenshotCreateRequestCookiesItemScreenshotOptionsClip>;
+
+export interface ScreenshotCreateRequestCookiesItemScreenshotOptions {
+  captureBeyondViewport?: boolean;
+  clip?: ScreenshotCreateRequestCookiesItemScreenshotOptionsClip;
+}
+export const ScreenshotCreateRequestCookiesItemScreenshotOptions =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      captureBeyondViewport: S.optional(S.Boolean),
+      clip: S.optional(ScreenshotCreateRequestCookiesItemScreenshotOptionsClip),
+    }),
+  ).annotate({
+    identifier: "ScreenshotCreateRequestCookiesItemScreenshotOptions",
+  }) as any as S.Schema<ScreenshotCreateRequestCookiesItemScreenshotOptions>;
+
 export interface ScreenshotCreateRequestCookiesItem {
   /** Cookie name. */
   name: string;
@@ -2938,6 +2964,17 @@ export interface ScreenshotCreateRequestCookiesItem {
   sourcePort?: number;
   sourceScheme?: ScreenshotCreateRequestCookiesItemSourceScheme | (string & {});
   url?: string;
+  emulateMediaType?: string;
+  /** Check options. */
+  gotoOptions?: ScreenshotCreateRequestCookiesItemGotoOptions;
+  /** Set the content of the page, eg: `<h1>Hello World!!</h1>`. Either `html` or `url` must be set. */
+  html?: string;
+  /** Block undesired requests that match the provided regex patterns, eg. ’/^.*.(css)’. */
+  rejectRequestPattern?: ScreenshotCreateRequestCookiesItemRejectRequestPatternList;
+  /** Block undesired requests that match the provided resource types, eg. ‘image’ or ‘script’. */
+  rejectResourceTypes?: ScreenshotCreateRequestCookiesItemRejectResourceTypesList;
+  /** Check options. */
+  screenshotOptions?: ScreenshotCreateRequestCookiesItemScreenshotOptions;
 }
 export const ScreenshotCreateRequestCookiesItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2955,6 +2992,18 @@ export const ScreenshotCreateRequestCookiesItem = /*@__PURE__*/ S.suspend(() =>
     sourcePort: S.optional(S.Number),
     sourceScheme: S.optional(ScreenshotCreateRequestCookiesItemSourceScheme),
     url: S.optional(S.String),
+    emulateMediaType: S.optional(S.String),
+    gotoOptions: S.optional(ScreenshotCreateRequestCookiesItemGotoOptions),
+    html: S.optional(S.String),
+    rejectRequestPattern: S.optional(
+      ScreenshotCreateRequestCookiesItemRejectRequestPatternList,
+    ),
+    rejectResourceTypes: S.optional(
+      ScreenshotCreateRequestCookiesItemRejectResourceTypesList,
+    ),
+    screenshotOptions: S.optional(
+      ScreenshotCreateRequestCookiesItemScreenshotOptions,
+    ),
   }),
 ).annotate({
   identifier: "ScreenshotCreateRequestCookiesItem",
@@ -2966,219 +3015,32 @@ export const ScreenshotCreateRequestCookiesList = /*@__PURE__*/ S.Array(
   ScreenshotCreateRequestCookiesItem,
 ) as any as S.Schema<ScreenshotCreateRequestCookiesList>;
 
-export type ScreenshotCreateRequestGotoOptionsWaitUntilCase0 =
-  | "load"
-  | "domcontentloaded"
-  | "networkidle0"
-  | "networkidle2";
-export const ScreenshotCreateRequestGotoOptionsWaitUntilCase0 =
-  /*@__PURE__*/ S.String;
-
-export type ScreenshotCreateRequestGotoOptionsWaitUntilCase1Item =
-  | "load"
-  | "domcontentloaded"
-  | "networkidle0"
-  | "networkidle2";
-export const ScreenshotCreateRequestGotoOptionsWaitUntilCase1Item =
-  /*@__PURE__*/ S.String;
-
-export type ScreenshotCreateRequestGotoOptionsWaitUntilCase1List = Array<
-  ScreenshotCreateRequestGotoOptionsWaitUntilCase1Item | (string & {})
->;
-export const ScreenshotCreateRequestGotoOptionsWaitUntilCase1List =
-  /*@__PURE__*/ S.Array(
-    ScreenshotCreateRequestGotoOptionsWaitUntilCase1Item,
-  ) as any as S.Schema<ScreenshotCreateRequestGotoOptionsWaitUntilCase1List>;
-
-export type ScreenshotCreateRequestGotoOptionsWaitUntil =
-  | ScreenshotCreateRequestGotoOptionsWaitUntilCase0
-  | (string & {})
-  | ScreenshotCreateRequestGotoOptionsWaitUntilCase1List;
-export const ScreenshotCreateRequestGotoOptionsWaitUntil =
-  /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], []]));
-
-export interface ScreenshotCreateRequestGotoOptions {
-  referer?: string;
-  referrerPolicy?: string;
-  timeout?: number;
-  waitUntil?: ScreenshotCreateRequestGotoOptionsWaitUntil;
-}
-export const ScreenshotCreateRequestGotoOptions = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    referer: S.optional(S.String),
-    referrerPolicy: S.optional(S.String),
-    timeout: S.optional(S.Number),
-    waitUntil: S.optional(ScreenshotCreateRequestGotoOptionsWaitUntil),
-  }),
-).annotate({
-  identifier: "ScreenshotCreateRequestGotoOptions",
-}) as any as S.Schema<ScreenshotCreateRequestGotoOptions>;
-
-export type ScreenshotCreateRequestRejectRequestPatternList = Array<string>;
-export const ScreenshotCreateRequestRejectRequestPatternList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ScreenshotCreateRequestRejectRequestPatternList>;
-
-export type ScreenshotCreateRequestRejectResourceTypesItem =
-  | "document"
-  | "stylesheet"
-  | "image"
-  | "media"
-  | "font"
-  | "script"
-  | "texttrack"
-  | "xhr"
-  | "fetch"
-  | "prefetch"
-  | "eventsource"
-  | "websocket"
-  | "manifest"
-  | "signedexchange"
-  | "ping"
-  | "cspviolationreport"
-  | "preflight"
-  | "other";
-export const ScreenshotCreateRequestRejectResourceTypesItem =
-  /*@__PURE__*/ S.String;
-
-export type ScreenshotCreateRequestRejectResourceTypesList = Array<
-  ScreenshotCreateRequestRejectResourceTypesItem | (string & {})
->;
-export const ScreenshotCreateRequestRejectResourceTypesList =
-  /*@__PURE__*/ S.Array(
-    ScreenshotCreateRequestRejectResourceTypesItem,
-  ) as any as S.Schema<ScreenshotCreateRequestRejectResourceTypesList>;
-
-export interface ScreenshotCreateRequestScreenshotOptionsClip {
-  height: number;
-  width: number;
-  x: number;
-  y: number;
-  scale?: number;
-}
-export const ScreenshotCreateRequestScreenshotOptionsClip =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      height: S.Number,
-      width: S.Number,
-      x: S.Number,
-      y: S.Number,
-      scale: S.optional(S.Number),
-    }),
-  ).annotate({
-    identifier: "ScreenshotCreateRequestScreenshotOptionsClip",
-  }) as any as S.Schema<ScreenshotCreateRequestScreenshotOptionsClip>;
-
-export type ScreenshotCreateRequestScreenshotOptionsEncoding =
-  | "binary"
-  | "base64";
-export const ScreenshotCreateRequestScreenshotOptionsEncoding =
-  /*@__PURE__*/ S.String;
-
-export type ScreenshotCreateRequestScreenshotOptionsType =
-  | "png"
-  | "jpeg"
-  | "webp";
-export const ScreenshotCreateRequestScreenshotOptionsType =
-  /*@__PURE__*/ S.String;
-
-export interface ScreenshotCreateRequestScreenshotOptions {
-  captureBeyondViewport?: boolean;
-  clip?: ScreenshotCreateRequestScreenshotOptionsClip;
-  encoding?: ScreenshotCreateRequestScreenshotOptionsEncoding | (string & {});
-  fromSurface?: boolean;
-  fullPage?: boolean;
-  omitBackground?: boolean;
-  optimizeForSpeed?: boolean;
-  quality?: number;
-  type?: ScreenshotCreateRequestScreenshotOptionsType | (string & {});
-}
-export const ScreenshotCreateRequestScreenshotOptions = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      captureBeyondViewport: S.optional(S.Boolean),
-      clip: S.optional(ScreenshotCreateRequestScreenshotOptionsClip),
-      encoding: S.optional(ScreenshotCreateRequestScreenshotOptionsEncoding),
-      fromSurface: S.optional(S.Boolean),
-      fullPage: S.optional(S.Boolean),
-      omitBackground: S.optional(S.Boolean),
-      optimizeForSpeed: S.optional(S.Boolean),
-      quality: S.optional(S.Number),
-      type: S.optional(ScreenshotCreateRequestScreenshotOptionsType),
-    }),
-).annotate({
-  identifier: "ScreenshotCreateRequestScreenshotOptions",
-}) as any as S.Schema<ScreenshotCreateRequestScreenshotOptions>;
-
-export type ScreenshotCreateRequestSetExtraHTTPHeadersMap = {
-  [key: string]: string | undefined;
-};
-export const ScreenshotCreateRequestSetExtraHTTPHeadersMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<ScreenshotCreateRequestSetExtraHTTPHeadersMap>;
-
-export type ScreenshotCreateRequestViewport = ContentCreateRequestViewport;
-export const ScreenshotCreateRequestViewport = ContentCreateRequestViewport;
-
-export type ScreenshotCreateRequestWaitForSelector =
-  ContentCreateRequestWaitForSelector;
-export const ScreenshotCreateRequestWaitForSelector =
-  ContentCreateRequestWaitForSelector;
-
 export interface CreateScreenshotRequest {
   /** Account ID. */
   accountId: string;
   /** Cache TTL default is 5s. Set to 0 to disable. */
   cacheTTL?: number;
-  /** Set the content of the page, eg: `<h1>Hello World!!</h1>`. Either `html` or `url` must be set. */
-  html?: string;
   /** The maximum duration allowed for the browser action to complete after the page has loaded (such as taking screenshots, extracting content, or generating PDFs). If this time limit is exceeded, the action stops and returns a timeout error. */
   actionTimeout?: number;
   /** Adds a `<script>` tag into the page with the desired URL or content. */
   addScriptTag?: ScreenshotCreateRequestAddScriptTagList;
   /** Adds a `<link rel="stylesheet">` tag into the page with the desired URL or a `<style type="text/css">` tag with the content. */
   addStyleTag?: ScreenshotCreateRequestAddStyleTagList;
-  /** Only allow requests that match the provided regex patterns, eg. '/^.*.(css)'. */
+  /** Only allow requests that match the provided regex patterns, eg. ’/^.*.(css)’. Reject rules are applied first. */
   allowRequestPattern?: ScreenshotCreateRequestAllowRequestPatternList;
-  /** Only allow requests that match the provided resource types, eg. 'image' or 'script'. */
+  /** Only allow requests that match the provided resource types, eg. ‘image’ or ‘script’. Reject rules are applied first. */
   allowResourceTypes?: ScreenshotCreateRequestAllowResourceTypesList;
   /** Provide credentials for HTTP authentication. */
   authenticate?: ContentCreateRequestAuthenticate;
-  /** Attempt to proceed when 'awaited' events fail or timeout. */
+  /** Attempt to proceed when ‘awaited’ events fail or timeout. */
   bestAttempt?: boolean;
-  /** Check [options](https://pptr.dev/api/puppeteer.page.setcookie). */
+  /** Check options. */
   cookies?: ScreenshotCreateRequestCookiesList;
-  emulateMediaType?: string;
-  /** Check [options](https://pptr.dev/api/puppeteer.gotooptions). */
-  gotoOptions?: ScreenshotCreateRequestGotoOptions;
-  /** Block undesired requests that match the provided regex patterns, eg. '/^.*.(css)'. */
-  rejectRequestPattern?: ScreenshotCreateRequestRejectRequestPatternList;
-  /** Block undesired requests that match the provided resource types, eg. 'image' or 'script'. */
-  rejectResourceTypes?: ScreenshotCreateRequestRejectResourceTypesList;
-  /** Check [options](https://pptr.dev/api/puppeteer.screenshotoptions). */
-  screenshotOptions?: ScreenshotCreateRequestScreenshotOptions;
-  scrollPage?: boolean;
-  selector?: string;
-  setExtraHTTPHeaders?: ScreenshotCreateRequestSetExtraHTTPHeadersMap;
-  setJavaScriptEnabled?: boolean;
-  userAgent?: string;
-  /** Check [options](https://pptr.dev/api/puppeteer.page.setviewport). */
-  viewport?: ContentCreateRequestViewport;
-  /** Wait for the selector to appear in page. Check [options](https://pptr.dev/api/puppeteer.page.waitforselector). */
-  waitForSelector?: ContentCreateRequestWaitForSelector;
-  /** Waits for a specified timeout before continuing. */
-  waitForTimeout?: number;
-  /** URL to navigate to, eg. `https://example.com`. */
-  url?: string;
 }
 export const CreateScreenshotRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     cacheTTL: S.optional(S.Number.pipe(T.Query())),
-    html: S.optional(S.String),
     actionTimeout: S.optional(S.Number),
     addScriptTag: S.optional(ScreenshotCreateRequestAddScriptTagList),
     addStyleTag: S.optional(ScreenshotCreateRequestAddStyleTagList),
@@ -3191,26 +3053,6 @@ export const CreateScreenshotRequest = /*@__PURE__*/ S.suspend(() =>
     authenticate: S.optional(ContentCreateRequestAuthenticate),
     bestAttempt: S.optional(S.Boolean),
     cookies: S.optional(ScreenshotCreateRequestCookiesList),
-    emulateMediaType: S.optional(S.String),
-    gotoOptions: S.optional(ScreenshotCreateRequestGotoOptions),
-    rejectRequestPattern: S.optional(
-      ScreenshotCreateRequestRejectRequestPatternList,
-    ),
-    rejectResourceTypes: S.optional(
-      ScreenshotCreateRequestRejectResourceTypesList,
-    ),
-    screenshotOptions: S.optional(ScreenshotCreateRequestScreenshotOptions),
-    scrollPage: S.optional(S.Boolean),
-    selector: S.optional(S.String),
-    setExtraHTTPHeaders: S.optional(
-      ScreenshotCreateRequestSetExtraHTTPHeadersMap,
-    ),
-    setJavaScriptEnabled: S.optional(S.Boolean),
-    userAgent: S.optional(S.String),
-    viewport: S.optional(ContentCreateRequestViewport),
-    waitForSelector: S.optional(ContentCreateRequestWaitForSelector),
-    waitForTimeout: S.optional(S.Number),
-    url: S.optional(S.String),
   })
     .pipe(
       T.Http({
@@ -3224,370 +3066,47 @@ export const CreateScreenshotRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateScreenshotRequest",
 }) as any as S.Schema<CreateScreenshotRequest>;
 
-export interface CreateScreenshotResponse {}
-export const CreateScreenshotResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({
-  identifier: "CreateScreenshotResponse",
-}) as any as S.Schema<CreateScreenshotResponse>;
+export type ScreenshotCreateResponseUrl = "https://www.example.com/";
+export const ScreenshotCreateResponseUrl = /*@__PURE__*/ S.String;
 
-export type SnapshotCreateRequestAddScriptTagItem =
-  ContentCreateRequestAddScriptTagItem;
-export const SnapshotCreateRequestAddScriptTagItem =
-  ContentCreateRequestAddScriptTagItem;
+export type ScreenshotCreateResponseMessage = "message";
+export const ScreenshotCreateResponseMessage = /*@__PURE__*/ S.String;
 
-export type SnapshotCreateRequestAddScriptTagList =
-  Array<ContentCreateRequestAddScriptTagItem>;
-export const SnapshotCreateRequestAddScriptTagList = /*@__PURE__*/ S.Array(
-  ContentCreateRequestAddScriptTagItem,
-) as any as S.Schema<SnapshotCreateRequestAddScriptTagList>;
+export type ScreenshotCreateResponseMessage2 = "Rate limit exceeded";
+export const ScreenshotCreateResponseMessage2 = /*@__PURE__*/ S.String;
 
-export type SnapshotCreateRequestAddStyleTagItem =
-  ContentCreateRequestAddStyleTagItem;
-export const SnapshotCreateRequestAddStyleTagItem =
-  ContentCreateRequestAddStyleTagItem;
-
-export type SnapshotCreateRequestAddStyleTagList =
-  Array<ContentCreateRequestAddStyleTagItem>;
-export const SnapshotCreateRequestAddStyleTagList = /*@__PURE__*/ S.Array(
-  ContentCreateRequestAddStyleTagItem,
-) as any as S.Schema<SnapshotCreateRequestAddStyleTagList>;
-
-export type SnapshotCreateRequestAllowRequestPatternList = Array<string>;
-export const SnapshotCreateRequestAllowRequestPatternList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<SnapshotCreateRequestAllowRequestPatternList>;
-
-export type SnapshotCreateRequestAllowResourceTypesItem =
-  | "document"
-  | "stylesheet"
-  | "image"
-  | "media"
-  | "font"
-  | "script"
-  | "texttrack"
-  | "xhr"
-  | "fetch"
-  | "prefetch"
-  | "eventsource"
-  | "websocket"
-  | "manifest"
-  | "signedexchange"
-  | "ping"
-  | "cspviolationreport"
-  | "preflight"
-  | "other";
-export const SnapshotCreateRequestAllowResourceTypesItem =
-  /*@__PURE__*/ S.String;
-
-export type SnapshotCreateRequestAllowResourceTypesList = Array<
-  SnapshotCreateRequestAllowResourceTypesItem | (string & {})
->;
-export const SnapshotCreateRequestAllowResourceTypesList =
-  /*@__PURE__*/ S.Array(
-    SnapshotCreateRequestAllowResourceTypesItem,
-  ) as any as S.Schema<SnapshotCreateRequestAllowResourceTypesList>;
-
-export type SnapshotCreateRequestAuthenticate =
-  ContentCreateRequestAuthenticate;
-export const SnapshotCreateRequestAuthenticate =
-  ContentCreateRequestAuthenticate;
-
-export type SnapshotCreateRequestCookiesItemPriority =
-  | "Low"
-  | "Medium"
-  | "High";
-export const SnapshotCreateRequestCookiesItemPriority = /*@__PURE__*/ S.String;
-
-export type SnapshotCreateRequestCookiesItemSameSite =
-  | "Strict"
-  | "Lax"
-  | "None";
-export const SnapshotCreateRequestCookiesItemSameSite = /*@__PURE__*/ S.String;
-
-export type SnapshotCreateRequestCookiesItemSourceScheme =
-  | "Unset"
-  | "NonSecure"
-  | "Secure";
-export const SnapshotCreateRequestCookiesItemSourceScheme =
-  /*@__PURE__*/ S.String;
-
-export interface SnapshotCreateRequestCookiesItem {
-  /** Cookie name. */
-  name: string;
-  value: string;
-  domain?: string;
-  expires?: number;
-  httpOnly?: boolean;
-  partitionKey?: string;
-  path?: string;
-  priority?: SnapshotCreateRequestCookiesItemPriority | (string & {});
-  sameParty?: boolean;
-  sameSite?: SnapshotCreateRequestCookiesItemSameSite | (string & {});
-  secure?: boolean;
-  sourcePort?: number;
-  sourceScheme?: SnapshotCreateRequestCookiesItemSourceScheme | (string & {});
-  url?: string;
+/** Raw response payload (operation does not use the standard v4 result envelope). */
+export interface ScreenshotCreateResponse {
+  html: unknown;
+  /** }' */
+  url: ScreenshotCreateResponseUrl;
+  code: unknown;
+  /** } */
+  message: ScreenshotCreateResponseMessage;
+  code_2: unknown;
+  /** } */
+  message_2: ScreenshotCreateResponseMessage2;
 }
-export const SnapshotCreateRequestCookiesItem = /*@__PURE__*/ S.suspend(() =>
+export const ScreenshotCreateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    name: S.String,
-    value: S.String,
-    domain: S.optional(S.String),
-    expires: S.optional(S.Number),
-    httpOnly: S.optional(S.Boolean),
-    partitionKey: S.optional(S.String),
-    path: S.optional(S.String),
-    priority: S.optional(SnapshotCreateRequestCookiesItemPriority),
-    sameParty: S.optional(S.Boolean),
-    sameSite: S.optional(SnapshotCreateRequestCookiesItemSameSite),
-    secure: S.optional(S.Boolean),
-    sourcePort: S.optional(S.Number),
-    sourceScheme: S.optional(SnapshotCreateRequestCookiesItemSourceScheme),
-    url: S.optional(S.String),
-  }),
+    html: S.Unknown,
+    url: ScreenshotCreateResponseUrl,
+    code: S.Unknown,
+    message: ScreenshotCreateResponseMessage,
+    code_2: S.Unknown.pipe(T.Body("code")),
+    message_2: ScreenshotCreateResponseMessage2.pipe(T.Body("message")),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
-  identifier: "SnapshotCreateRequestCookiesItem",
-}) as any as S.Schema<SnapshotCreateRequestCookiesItem>;
-
-export type SnapshotCreateRequestCookiesList =
-  Array<SnapshotCreateRequestCookiesItem>;
-export const SnapshotCreateRequestCookiesList = /*@__PURE__*/ S.Array(
-  SnapshotCreateRequestCookiesItem,
-) as any as S.Schema<SnapshotCreateRequestCookiesList>;
-
-export type SnapshotCreateRequestFormatsItem =
-  | "content"
-  | "screenshot"
-  | "markdown"
-  | "accessibilityTree";
-export const SnapshotCreateRequestFormatsItem = /*@__PURE__*/ S.String;
-
-export type SnapshotCreateRequestFormatsList = Array<
-  SnapshotCreateRequestFormatsItem | (string & {})
->;
-export const SnapshotCreateRequestFormatsList = /*@__PURE__*/ S.Array(
-  SnapshotCreateRequestFormatsItem,
-) as any as S.Schema<SnapshotCreateRequestFormatsList>;
-
-export type SnapshotCreateRequestGotoOptionsWaitUntilCase0 =
-  | "load"
-  | "domcontentloaded"
-  | "networkidle0"
-  | "networkidle2";
-export const SnapshotCreateRequestGotoOptionsWaitUntilCase0 =
-  /*@__PURE__*/ S.String;
-
-export type SnapshotCreateRequestGotoOptionsWaitUntilCase1Item =
-  | "load"
-  | "domcontentloaded"
-  | "networkidle0"
-  | "networkidle2";
-export const SnapshotCreateRequestGotoOptionsWaitUntilCase1Item =
-  /*@__PURE__*/ S.String;
-
-export type SnapshotCreateRequestGotoOptionsWaitUntilCase1List = Array<
-  SnapshotCreateRequestGotoOptionsWaitUntilCase1Item | (string & {})
->;
-export const SnapshotCreateRequestGotoOptionsWaitUntilCase1List =
-  /*@__PURE__*/ S.Array(
-    SnapshotCreateRequestGotoOptionsWaitUntilCase1Item,
-  ) as any as S.Schema<SnapshotCreateRequestGotoOptionsWaitUntilCase1List>;
-
-export type SnapshotCreateRequestGotoOptionsWaitUntil =
-  | SnapshotCreateRequestGotoOptionsWaitUntilCase0
-  | (string & {})
-  | SnapshotCreateRequestGotoOptionsWaitUntilCase1List;
-export const SnapshotCreateRequestGotoOptionsWaitUntil =
-  /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], []]));
-
-export interface SnapshotCreateRequestGotoOptions {
-  referer?: string;
-  referrerPolicy?: string;
-  timeout?: number;
-  waitUntil?: SnapshotCreateRequestGotoOptionsWaitUntil;
-}
-export const SnapshotCreateRequestGotoOptions = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    referer: S.optional(S.String),
-    referrerPolicy: S.optional(S.String),
-    timeout: S.optional(S.Number),
-    waitUntil: S.optional(SnapshotCreateRequestGotoOptionsWaitUntil),
-  }),
-).annotate({
-  identifier: "SnapshotCreateRequestGotoOptions",
-}) as any as S.Schema<SnapshotCreateRequestGotoOptions>;
-
-export type SnapshotCreateRequestRejectRequestPatternList = Array<string>;
-export const SnapshotCreateRequestRejectRequestPatternList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<SnapshotCreateRequestRejectRequestPatternList>;
-
-export type SnapshotCreateRequestRejectResourceTypesItem =
-  | "document"
-  | "stylesheet"
-  | "image"
-  | "media"
-  | "font"
-  | "script"
-  | "texttrack"
-  | "xhr"
-  | "fetch"
-  | "prefetch"
-  | "eventsource"
-  | "websocket"
-  | "manifest"
-  | "signedexchange"
-  | "ping"
-  | "cspviolationreport"
-  | "preflight"
-  | "other";
-export const SnapshotCreateRequestRejectResourceTypesItem =
-  /*@__PURE__*/ S.String;
-
-export type SnapshotCreateRequestRejectResourceTypesList = Array<
-  SnapshotCreateRequestRejectResourceTypesItem | (string & {})
->;
-export const SnapshotCreateRequestRejectResourceTypesList =
-  /*@__PURE__*/ S.Array(
-    SnapshotCreateRequestRejectResourceTypesItem,
-  ) as any as S.Schema<SnapshotCreateRequestRejectResourceTypesList>;
-
-export type SnapshotCreateRequestScreenshotOptionsClip =
-  ScreenshotCreateRequestScreenshotOptionsClip;
-export const SnapshotCreateRequestScreenshotOptionsClip =
-  ScreenshotCreateRequestScreenshotOptionsClip;
-
-export type SnapshotCreateRequestScreenshotOptionsType =
-  | "png"
-  | "jpeg"
-  | "webp";
-export const SnapshotCreateRequestScreenshotOptionsType =
-  /*@__PURE__*/ S.String;
-
-export interface SnapshotCreateRequestScreenshotOptions {
-  captureBeyondViewport?: boolean;
-  clip?: ScreenshotCreateRequestScreenshotOptionsClip;
-  fromSurface?: boolean;
-  fullPage?: boolean;
-  omitBackground?: boolean;
-  optimizeForSpeed?: boolean;
-  quality?: number;
-  type?: SnapshotCreateRequestScreenshotOptionsType | (string & {});
-}
-export const SnapshotCreateRequestScreenshotOptions = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      captureBeyondViewport: S.optional(S.Boolean),
-      clip: S.optional(ScreenshotCreateRequestScreenshotOptionsClip),
-      fromSurface: S.optional(S.Boolean),
-      fullPage: S.optional(S.Boolean),
-      omitBackground: S.optional(S.Boolean),
-      optimizeForSpeed: S.optional(S.Boolean),
-      quality: S.optional(S.Number),
-      type: S.optional(SnapshotCreateRequestScreenshotOptionsType),
-    }),
-).annotate({
-  identifier: "SnapshotCreateRequestScreenshotOptions",
-}) as any as S.Schema<SnapshotCreateRequestScreenshotOptions>;
-
-export type SnapshotCreateRequestSetExtraHTTPHeadersMap = {
-  [key: string]: string | undefined;
-};
-export const SnapshotCreateRequestSetExtraHTTPHeadersMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<SnapshotCreateRequestSetExtraHTTPHeadersMap>;
-
-export type SnapshotCreateRequestViewport = ContentCreateRequestViewport;
-export const SnapshotCreateRequestViewport = ContentCreateRequestViewport;
-
-export type SnapshotCreateRequestWaitForSelector =
-  ContentCreateRequestWaitForSelector;
-export const SnapshotCreateRequestWaitForSelector =
-  ContentCreateRequestWaitForSelector;
+  identifier: "ScreenshotCreateResponse",
+}) as any as S.Schema<ScreenshotCreateResponse>;
 
 export interface CreateSnapshotRequest {
   /** Account ID. */
   accountId: string;
-  /** Cache TTL default is 5s. Set to 0 to disable. */
-  cacheTTL?: number;
-  /** Set the content of the page, eg: `<h1>Hello World!!</h1>`. Either `html` or `url` must be set. */
-  html?: string;
-  /** The maximum duration allowed for the browser action to complete after the page has loaded (such as taking screenshots, extracting content, or generating PDFs). If this time limit is exceeded, the action stops and returns a timeout error. */
-  actionTimeout?: number;
-  /** Adds a `<script>` tag into the page with the desired URL or content. */
-  addScriptTag?: SnapshotCreateRequestAddScriptTagList;
-  /** Adds a `<link rel="stylesheet">` tag into the page with the desired URL or a `<style type="text/css">` tag with the content. */
-  addStyleTag?: SnapshotCreateRequestAddStyleTagList;
-  /** Only allow requests that match the provided regex patterns, eg. '/^.*.(css)'. */
-  allowRequestPattern?: SnapshotCreateRequestAllowRequestPatternList;
-  /** Only allow requests that match the provided resource types, eg. 'image' or 'script'. */
-  allowResourceTypes?: SnapshotCreateRequestAllowResourceTypesList;
-  /** Provide credentials for HTTP authentication. */
-  authenticate?: ContentCreateRequestAuthenticate;
-  /** Attempt to proceed when 'awaited' events fail or timeout. */
-  bestAttempt?: boolean;
-  /** Check [options](https://pptr.dev/api/puppeteer.page.setcookie). */
-  cookies?: SnapshotCreateRequestCookiesList;
-  emulateMediaType?: string;
-  formats?: SnapshotCreateRequestFormatsList;
-  /** Check [options](https://pptr.dev/api/puppeteer.gotooptions). */
-  gotoOptions?: SnapshotCreateRequestGotoOptions;
-  /** Block undesired requests that match the provided regex patterns, eg. '/^.*.(css)'. */
-  rejectRequestPattern?: SnapshotCreateRequestRejectRequestPatternList;
-  /** Block undesired requests that match the provided resource types, eg. 'image' or 'script'. */
-  rejectResourceTypes?: SnapshotCreateRequestRejectResourceTypesList;
-  screenshotOptions?: SnapshotCreateRequestScreenshotOptions;
-  setExtraHTTPHeaders?: SnapshotCreateRequestSetExtraHTTPHeadersMap;
-  setJavaScriptEnabled?: boolean;
-  userAgent?: string;
-  /** Check [options](https://pptr.dev/api/puppeteer.page.setviewport). */
-  viewport?: ContentCreateRequestViewport;
-  /** Wait for the selector to appear in page. Check [options](https://pptr.dev/api/puppeteer.page.waitforselector). */
-  waitForSelector?: ContentCreateRequestWaitForSelector;
-  /** Waits for a specified timeout before continuing. */
-  waitForTimeout?: number;
-  /** URL to navigate to, eg. `https://example.com`. */
-  url?: string;
 }
 export const CreateSnapshotRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
-    cacheTTL: S.optional(S.Number.pipe(T.Query())),
-    html: S.optional(S.String),
-    actionTimeout: S.optional(S.Number),
-    addScriptTag: S.optional(SnapshotCreateRequestAddScriptTagList),
-    addStyleTag: S.optional(SnapshotCreateRequestAddStyleTagList),
-    allowRequestPattern: S.optional(
-      SnapshotCreateRequestAllowRequestPatternList,
-    ),
-    allowResourceTypes: S.optional(SnapshotCreateRequestAllowResourceTypesList),
-    authenticate: S.optional(ContentCreateRequestAuthenticate),
-    bestAttempt: S.optional(S.Boolean),
-    cookies: S.optional(SnapshotCreateRequestCookiesList),
-    emulateMediaType: S.optional(S.String),
-    formats: S.optional(SnapshotCreateRequestFormatsList),
-    gotoOptions: S.optional(SnapshotCreateRequestGotoOptions),
-    rejectRequestPattern: S.optional(
-      SnapshotCreateRequestRejectRequestPatternList,
-    ),
-    rejectResourceTypes: S.optional(
-      SnapshotCreateRequestRejectResourceTypesList,
-    ),
-    screenshotOptions: S.optional(SnapshotCreateRequestScreenshotOptions),
-    setExtraHTTPHeaders: S.optional(
-      SnapshotCreateRequestSetExtraHTTPHeadersMap,
-    ),
-    setJavaScriptEnabled: S.optional(S.Boolean),
-    userAgent: S.optional(S.String),
-    viewport: S.optional(ContentCreateRequestViewport),
-    waitForSelector: S.optional(ContentCreateRequestWaitForSelector),
-    waitForTimeout: S.optional(S.Number),
-    url: S.optional(S.String),
   })
     .pipe(
       T.Http({
@@ -3706,7 +3225,7 @@ export interface CreateSnapshotResponse {
   accessibilityTree?: SnapshotCreateResponseAccessibilityTree | null;
   /** HTML content. */
   content?: string | null;
-  /** Markdown content. */
+  /** Markdown content. Prefixed with YAML frontmatter (e.g. title ) when the page provides that metadata. */
   markdown?: string | null;
   /** Base64 encoded image. */
   screenshot?: string | null;
@@ -3789,17 +3308,178 @@ export const DeleteDevtoolBrowserRequest = /*@__PURE__*/ S.suspend(() =>
 export type DevtoolsBrowserDeleteResponseStatus = "closing" | "closed";
 export const DevtoolsBrowserDeleteResponseStatus = /*@__PURE__*/ S.String;
 
+export type DevtoolsBrowserDeleteResponseStatus2 = "closing";
+export const DevtoolsBrowserDeleteResponseStatus2 = /*@__PURE__*/ S.String;
+
 /** Raw response payload (operation does not use the standard v4 result envelope). */
 export interface DeleteDevtoolBrowserResponse {
+  /** HTTP */
   status: DevtoolsBrowserDeleteResponseStatus;
+  /** } */
+  status_2: DevtoolsBrowserDeleteResponseStatus2;
 }
 export const DeleteDevtoolBrowserResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: DevtoolsBrowserDeleteResponseStatus,
+    status_2: DevtoolsBrowserDeleteResponseStatus2.pipe(T.Body("status")),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteDevtoolBrowserResponse",
 }) as any as S.Schema<DeleteDevtoolBrowserResponse>;
+
+export type DevtoolsBrowserLiveViewCreateRequestGuardrailsMode = "readonly";
+export const DevtoolsBrowserLiveViewCreateRequestGuardrailsMode =
+  /*@__PURE__*/ S.String;
+
+export type DevtoolsBrowserLiveViewCreateRequestGuardrailsMode2 =
+  | "devtools"
+  | "tab"
+  | "full";
+export const DevtoolsBrowserLiveViewCreateRequestGuardrailsMode2 =
+  /*@__PURE__*/ S.String;
+
+export interface DevtoolsBrowserLiveViewCreateRequestGuardrails {
+  mode: DevtoolsBrowserLiveViewCreateRequestGuardrailsMode | (string & {});
+  /** UI mode: ‘devtools’ (Chrome DevTools), ‘tab’ (single tab view), ‘full’ (multi-tab browser) */
+  mode_2?: DevtoolsBrowserLiveViewCreateRequestGuardrailsMode2 | (string & {});
+}
+export const DevtoolsBrowserLiveViewCreateRequestGuardrails =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      mode: DevtoolsBrowserLiveViewCreateRequestGuardrailsMode,
+      mode_2: S.optional(
+        DevtoolsBrowserLiveViewCreateRequestGuardrailsMode2.pipe(
+          T.Body("mode"),
+        ),
+      ),
+    }),
+  ).annotate({
+    identifier: "DevtoolsBrowserLiveViewCreateRequestGuardrails",
+  }) as any as S.Schema<DevtoolsBrowserLiveViewCreateRequestGuardrails>;
+
+export interface DevtoolsBrowserLiveViewCreateRequest {
+  /** Account ID. */
+  accountId: string;
+  /** Browser session ID */
+  sessionId: string;
+  /** How long the live view URLs remain valid, in milliseconds. Default: 5 minutes. Max: 60 minutes. */
+  expiresInMs?: number;
+  /** Connection guardrails. Use `{ mode: 'readonly' }` to generate a view-only link. */
+  guardrails?: DevtoolsBrowserLiveViewCreateRequestGuardrails;
+  /** Target ID (page) to connect to. If omitted, auto-resolves to the first active page. */
+  targetId?: string;
+}
+export const DevtoolsBrowserLiveViewCreateRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      accountId: S.String.pipe(T.Label("account_id")),
+      sessionId: S.String.pipe(T.Label("session_id")),
+      expiresInMs: S.optional(S.Number),
+      guardrails: S.optional(DevtoolsBrowserLiveViewCreateRequestGuardrails),
+      targetId: S.optional(S.String),
+    })
+      .pipe(
+        T.Http({
+          method: "POST",
+          uri: "/accounts/{account_id}/browser-rendering/devtools/browser/{session_id}/live_view",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+).annotate({
+  identifier: "DevtoolsBrowserLiveViewCreateRequest",
+}) as any as S.Schema<DevtoolsBrowserLiveViewCreateRequest>;
+
+export type DevtoolsBrowserLiveViewCreateResponseOptionsMode =
+  | "devtools"
+  | "tab"
+  | "full";
+export const DevtoolsBrowserLiveViewCreateResponseOptionsMode =
+  /*@__PURE__*/ S.String;
+
+export type DevtoolsBrowserLiveViewCreateResponseOptionsGuardrailsMode =
+  "readonly";
+export const DevtoolsBrowserLiveViewCreateResponseOptionsGuardrailsMode =
+  /*@__PURE__*/ S.String;
+
+export interface DevtoolsBrowserLiveViewCreateResponseOptionsGuardrails {
+  mode: DevtoolsBrowserLiveViewCreateResponseOptionsGuardrailsMode;
+}
+export const DevtoolsBrowserLiveViewCreateResponseOptionsGuardrails =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      mode: DevtoolsBrowserLiveViewCreateResponseOptionsGuardrailsMode,
+    }),
+  ).annotate({
+    identifier: "DevtoolsBrowserLiveViewCreateResponseOptionsGuardrails",
+  }) as any as S.Schema<DevtoolsBrowserLiveViewCreateResponseOptionsGuardrails>;
+
+export interface DevtoolsBrowserLiveViewCreateResponseOptions {
+  /** UI mode for the live view */
+  mode: DevtoolsBrowserLiveViewCreateResponseOptionsMode;
+  /** Connection guardrails applied to this link */
+  guardrails?: DevtoolsBrowserLiveViewCreateResponseOptionsGuardrails | null;
+}
+export const DevtoolsBrowserLiveViewCreateResponseOptions =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      mode: DevtoolsBrowserLiveViewCreateResponseOptionsMode,
+      guardrails: S.optional(
+        S.NullOr(DevtoolsBrowserLiveViewCreateResponseOptionsGuardrails),
+      ),
+    }),
+  ).annotate({
+    identifier: "DevtoolsBrowserLiveViewCreateResponseOptions",
+  }) as any as S.Schema<DevtoolsBrowserLiveViewCreateResponseOptions>;
+
+export type DevtoolsBrowserLiveViewCreateResponseMode = "readonly";
+export const DevtoolsBrowserLiveViewCreateResponseMode = /*@__PURE__*/ S.String;
+
+export type DevtoolsBrowserLiveViewCreateResponseWebSocketDebuggerUrl =
+  "https://example.com";
+export const DevtoolsBrowserLiveViewCreateResponseWebSocketDebuggerUrl =
+  /*@__PURE__*/ S.String;
+
+/** Raw response payload (operation does not use the standard v4 result envelope). */
+export interface DevtoolsBrowserLiveViewCreateResponse {
+  /** Target ID */
+  id: string;
+  /** URL to open the live view in a browser */
+  devtoolsFrontendUrl: string;
+  options: DevtoolsBrowserLiveViewCreateResponseOptions;
+  /** WebSocket URL for CDP connection */
+  webSocketDebuggerUrl: string;
+  id_2: unknown;
+  devtoolsFrontendUrl_2: unknown;
+  options_2: unknown;
+  mode: unknown;
+  guardrails: unknown;
+  /** } */
+  mode_2: DevtoolsBrowserLiveViewCreateResponseMode;
+  /** } */
+  webSocketDebuggerUrl_2: DevtoolsBrowserLiveViewCreateResponseWebSocketDebuggerUrl;
+}
+export const DevtoolsBrowserLiveViewCreateResponse = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      id: S.String,
+      devtoolsFrontendUrl: S.String,
+      options: DevtoolsBrowserLiveViewCreateResponseOptions,
+      webSocketDebuggerUrl: S.String,
+      id_2: S.Unknown.pipe(T.Body("id")),
+      devtoolsFrontendUrl_2: S.Unknown.pipe(T.Body("devtoolsFrontendUrl")),
+      options_2: S.Unknown.pipe(T.Body("options")),
+      mode: S.Unknown,
+      guardrails: S.Unknown,
+      mode_2: DevtoolsBrowserLiveViewCreateResponseMode.pipe(T.Body("mode")),
+      webSocketDebuggerUrl_2:
+        DevtoolsBrowserLiveViewCreateResponseWebSocketDebuggerUrl.pipe(
+          T.Body("webSocketDebuggerUrl"),
+        ),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+).annotate({
+  identifier: "DevtoolsBrowserLiveViewCreateResponse",
+}) as any as S.Schema<DevtoolsBrowserLiveViewCreateResponse>;
 
 export type CrawlGetRequestStatus =
   | "queued"
@@ -3845,6 +3525,23 @@ export const GetCrawlRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetCrawlRequest",
 }) as any as S.Schema<GetCrawlRequest>;
 
+export type CrawlGetResponseRecordsItemStatus =
+  | "queued"
+  | "errored"
+  | "completed"
+  | "disallowed"
+  | "skipped"
+  | "cancelled";
+export const CrawlGetResponseRecordsItemStatus = /*@__PURE__*/ S.String;
+
+export type CrawlGetResponseRecordsItemJsonMap = {
+  [key: string]: unknown | undefined;
+};
+export const CrawlGetResponseRecordsItemJsonMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.Unknown,
+) as any as S.Schema<CrawlGetResponseRecordsItemJsonMap>;
+
 export interface CrawlGetResponseRecordsItemMetadata {
   /** HTTP status code of the crawled page. */
   status: number;
@@ -3863,25 +3560,7 @@ export const CrawlGetResponseRecordsItemMetadata = /*@__PURE__*/ S.suspend(() =>
   identifier: "CrawlGetResponseRecordsItemMetadata",
 }) as any as S.Schema<CrawlGetResponseRecordsItemMetadata>;
 
-export type CrawlGetResponseRecordsItemStatus =
-  | "queued"
-  | "errored"
-  | "completed"
-  | "disallowed"
-  | "skipped"
-  | "cancelled";
-export const CrawlGetResponseRecordsItemStatus = /*@__PURE__*/ S.String;
-
-export type CrawlGetResponseRecordsItemJsonMap = {
-  [key: string]: unknown | undefined;
-};
-export const CrawlGetResponseRecordsItemJsonMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<CrawlGetResponseRecordsItemJsonMap>;
-
 export interface CrawlGetResponseRecordsItem {
-  metadata?: CrawlGetResponseRecordsItemMetadata | null;
   /** Current status of the crawled URL. */
   status: CrawlGetResponseRecordsItemStatus;
   /** Crawled URL. */
@@ -3892,15 +3571,29 @@ export interface CrawlGetResponseRecordsItem {
   json?: CrawlGetResponseRecordsItemJsonMap | null;
   /** Markdown of the content of the crawled URL. */
   markdown?: string | null;
+  /** Absent for urls that never reached a fetch. */
+  metadata?: CrawlGetResponseRecordsItemMetadata | null;
+  /** Total number of URLs that were skipped due to include/exclude/subdomain filters. Skipped URLs are included in records but are not counted toward total/finished. */
+  skipped: number;
+  /** Current crawl job status. */
+  status_2: string;
+  /** Total current number of URLs in the crawl job. */
+  total: number;
+  /** Cursor for pagination. */
+  cursor?: string | null;
 }
 export const CrawlGetResponseRecordsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    metadata: S.optional(S.NullOr(CrawlGetResponseRecordsItemMetadata)),
     status: CrawlGetResponseRecordsItemStatus,
     url: S.String,
     html: S.optional(S.NullOr(S.String)),
     json: S.optional(S.NullOr(CrawlGetResponseRecordsItemJsonMap)),
     markdown: S.optional(S.NullOr(S.String)),
+    metadata: S.optional(S.NullOr(CrawlGetResponseRecordsItemMetadata)),
+    skipped: S.Number,
+    status_2: S.String.pipe(T.Body("status")),
+    total: S.Number,
+    cursor: S.optional(S.NullOr(S.String)),
   }),
 ).annotate({
   identifier: "CrawlGetResponseRecordsItem",
@@ -3921,14 +3614,6 @@ export interface GetCrawlResponse {
   finished: number;
   /** List of crawl job records. */
   records: CrawlGetResponseRecordsList;
-  /** Total number of URLs that were skipped due to include/exclude/subdomain filters. Skipped URLs are included in records but are not counted toward total/finished. */
-  skipped: number;
-  /** Current crawl job status. */
-  status: string;
-  /** Total current number of URLs in the crawl job. */
-  total: number;
-  /** Cursor for pagination. */
-  cursor?: number | null;
 }
 export const GetCrawlResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3936,10 +3621,6 @@ export const GetCrawlResponse = /*@__PURE__*/ S.suspend(() =>
     browserSecondsUsed: S.Number,
     finished: S.Number,
     records: CrawlGetResponseRecordsList,
-    skipped: S.Number,
-    status: S.String,
-    total: S.Number,
-    cursor: S.optional(S.NullOr(S.Number)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetCrawlResponse",
@@ -3952,12 +3633,17 @@ export interface GetDevtoolBrowserPageRequest {
   sessionId: string;
   /** Target ID, e.g. page ID. */
   targetId: string;
+  /** Optional base64url-encoded JSON connection guardrails (mode) */
+  cfBrapiGuardrails?: string;
 }
 export const GetDevtoolBrowserPageRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     sessionId: S.String.pipe(T.Label("session_id")),
     targetId: S.String.pipe(T.Label("target_id")),
+    cfBrapiGuardrails: S.optional(
+      S.String.pipe(T.Header("cf-brapi-guardrails")),
+    ),
   })
     .pipe(
       T.Http({
@@ -4004,6 +3690,11 @@ export const GetDevtoolBrowserTargetRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetDevtoolBrowserTargetRequest",
 }) as any as S.Schema<GetDevtoolBrowserTargetRequest>;
 
+export type DevtoolsBrowserTargetsGetResponseWebSocketDebuggerUrl =
+  "webSocketDebuggerUrl";
+export const DevtoolsBrowserTargetsGetResponseWebSocketDebuggerUrl =
+  /*@__PURE__*/ S.String;
+
 /** Raw response payload (operation does not use the standard v4 result envelope). */
 export interface GetDevtoolBrowserTargetResponse {
   /** Target ID. */
@@ -4020,6 +3711,14 @@ export interface GetDevtoolBrowserTargetResponse {
   title?: string | null;
   /** WebSocket URL for debugging this target. */
   webSocketDebuggerUrl?: string | null;
+  id_2: unknown;
+  type_2: unknown;
+  url_2: unknown;
+  description_2: unknown;
+  devtoolsFrontendUrl_2: unknown;
+  title_2: unknown;
+  /** } */
+  webSocketDebuggerUrl_2: DevtoolsBrowserTargetsGetResponseWebSocketDebuggerUrl;
 }
 export const GetDevtoolBrowserTargetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -4030,6 +3729,16 @@ export const GetDevtoolBrowserTargetResponse = /*@__PURE__*/ S.suspend(() =>
     devtoolsFrontendUrl: S.optional(S.NullOr(S.String)),
     title: S.optional(S.NullOr(S.String)),
     webSocketDebuggerUrl: S.optional(S.NullOr(S.String)),
+    id_2: S.Unknown.pipe(T.Body("id")),
+    type_2: S.Unknown.pipe(T.Body("type")),
+    url_2: S.Unknown.pipe(T.Body("url")),
+    description_2: S.Unknown.pipe(T.Body("description")),
+    devtoolsFrontendUrl_2: S.Unknown.pipe(T.Body("devtoolsFrontendUrl")),
+    title_2: S.Unknown.pipe(T.Body("title")),
+    webSocketDebuggerUrl_2:
+      DevtoolsBrowserTargetsGetResponseWebSocketDebuggerUrl.pipe(
+        T.Body("webSocketDebuggerUrl"),
+      ),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetDevtoolBrowserTargetResponse",
@@ -4058,12 +3767,17 @@ export const GetDevtoolSessionRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetDevtoolSessionRequest",
 }) as any as S.Schema<GetDevtoolSessionRequest>;
 
+export type DevtoolsSessionGetResponseWebSocketDebuggerUrl =
+  "webSocketDebuggerUrl";
+export const DevtoolsSessionGetResponseWebSocketDebuggerUrl =
+  /*@__PURE__*/ S.String;
+
 /** Raw response payload (operation does not use the standard v4 result envelope). */
 export interface GetDevtoolSessionResponse {
   /** Session ID. */
   sessionId: string;
-  /** Reason for session closure. */
-  closeReason?: string | null;
+  /** Reason code for session closure. */
+  closeReason?: number | null;
   /** Human-readable close reason. */
   closeReasonText?: string | null;
   /** Connection end time. */
@@ -4082,11 +3796,23 @@ export interface GetDevtoolSessionResponse {
   startTime?: number | null;
   /** WebSocket URL for debugging this target. */
   webSocketDebuggerUrl?: string | null;
+  sessionId_2: unknown;
+  closeReason_2: unknown;
+  closeReasonText_2: unknown;
+  connectionEndTime_2: unknown;
+  connectionId_2: unknown;
+  connectionStartTime_2: unknown;
+  devtoolsFrontendUrl_2: unknown;
+  endTime_2: unknown;
+  lastUpdated_2: unknown;
+  startTime_2: unknown;
+  /** } */
+  webSocketDebuggerUrl_2: DevtoolsSessionGetResponseWebSocketDebuggerUrl;
 }
 export const GetDevtoolSessionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sessionId: S.String,
-    closeReason: S.optional(S.NullOr(S.String)),
+    closeReason: S.optional(S.NullOr(S.Number)),
     closeReasonText: S.optional(S.NullOr(S.String)),
     connectionEndTime: S.optional(S.NullOr(S.Number)),
     connectionId: S.optional(S.NullOr(S.String)),
@@ -4096,6 +3822,19 @@ export const GetDevtoolSessionResponse = /*@__PURE__*/ S.suspend(() =>
     lastUpdated: S.optional(S.NullOr(S.Number)),
     startTime: S.optional(S.NullOr(S.Number)),
     webSocketDebuggerUrl: S.optional(S.NullOr(S.String)),
+    sessionId_2: S.Unknown.pipe(T.Body("sessionId")),
+    closeReason_2: S.Unknown.pipe(T.Body("closeReason")),
+    closeReasonText_2: S.Unknown.pipe(T.Body("closeReasonText")),
+    connectionEndTime_2: S.Unknown.pipe(T.Body("connectionEndTime")),
+    connectionId_2: S.Unknown.pipe(T.Body("connectionId")),
+    connectionStartTime_2: S.Unknown.pipe(T.Body("connectionStartTime")),
+    devtoolsFrontendUrl_2: S.Unknown.pipe(T.Body("devtoolsFrontendUrl")),
+    endTime_2: S.Unknown.pipe(T.Body("endTime")),
+    lastUpdated_2: S.Unknown.pipe(T.Body("lastUpdated")),
+    startTime_2: S.Unknown.pipe(T.Body("startTime")),
+    webSocketDebuggerUrl_2: DevtoolsSessionGetResponseWebSocketDebuggerUrl.pipe(
+      T.Body("webSocketDebuggerUrl"),
+    ),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetDevtoolSessionResponse",
@@ -4109,6 +3848,8 @@ export interface LaunchDevtoolBrowserRequest {
   /** Use experimental browser. */
   lab?: boolean;
   recording?: boolean;
+  /** Optional base64url-encoded JSON session guardrails (allowedDomains and allowedDomainSets) */
+  cfBrapiGuardrails?: string;
 }
 export const LaunchDevtoolBrowserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -4116,6 +3857,9 @@ export const LaunchDevtoolBrowserRequest = /*@__PURE__*/ S.suspend(() =>
     keepAlive: S.optional(S.Number.pipe(T.Query("keep_alive"))),
     lab: S.optional(S.Boolean.pipe(T.Query())),
     recording: S.optional(S.Boolean.pipe(T.Query())),
+    cfBrapiGuardrails: S.optional(
+      S.String.pipe(T.Header("cf-brapi-guardrails")),
+    ),
   })
     .pipe(
       T.Http({
@@ -4162,6 +3906,11 @@ export const ListDevtoolBrowserTargetsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListDevtoolBrowserTargetsRequest",
 }) as any as S.Schema<ListDevtoolBrowserTargetsRequest>;
 
+export type DevtoolsBrowserTargetsListResponseWebSocketDebuggerUrl =
+  "webSocketDebuggerUrl";
+export const DevtoolsBrowserTargetsListResponseWebSocketDebuggerUrl =
+  /*@__PURE__*/ S.String;
+
 /** Raw response payload (operation does not use the standard v4 result envelope). */
 export interface ListDevtoolBrowserTargetsResponse {
   /** Target ID. */
@@ -4178,6 +3927,14 @@ export interface ListDevtoolBrowserTargetsResponse {
   title?: string | null;
   /** WebSocket URL for debugging this target. */
   webSocketDebuggerUrl?: string | null;
+  id_2: unknown;
+  type_2: unknown;
+  url_2: unknown;
+  description_2: unknown;
+  devtoolsFrontendUrl_2: unknown;
+  title_2: unknown;
+  /** } */
+  webSocketDebuggerUrl_2: DevtoolsBrowserTargetsListResponseWebSocketDebuggerUrl;
 }
 export const ListDevtoolBrowserTargetsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -4188,6 +3945,16 @@ export const ListDevtoolBrowserTargetsResponse = /*@__PURE__*/ S.suspend(() =>
     devtoolsFrontendUrl: S.optional(S.NullOr(S.String)),
     title: S.optional(S.NullOr(S.String)),
     webSocketDebuggerUrl: S.optional(S.NullOr(S.String)),
+    id_2: S.Unknown.pipe(T.Body("id")),
+    type_2: S.Unknown.pipe(T.Body("type")),
+    url_2: S.Unknown.pipe(T.Body("url")),
+    description_2: S.Unknown.pipe(T.Body("description")),
+    devtoolsFrontendUrl_2: S.Unknown.pipe(T.Body("devtoolsFrontendUrl")),
+    title_2: S.Unknown.pipe(T.Body("title")),
+    webSocketDebuggerUrl_2:
+      DevtoolsBrowserTargetsListResponseWebSocketDebuggerUrl.pipe(
+        T.Body("webSocketDebuggerUrl"),
+      ),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListDevtoolBrowserTargetsResponse",
@@ -4196,7 +3963,9 @@ export const ListDevtoolBrowserTargetsResponse = /*@__PURE__*/ S.suspend(() =>
 export interface ListDevtoolSessionsRequest {
   /** Account ID. */
   accountId: string;
+  /** maximum200 */
   limit?: number;
+  /** minimum0 */
   offset?: number;
 }
 export const ListDevtoolSessionsRequest = /*@__PURE__*/ S.suspend(() =>
@@ -4217,12 +3986,17 @@ export const ListDevtoolSessionsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListDevtoolSessionsRequest",
 }) as any as S.Schema<ListDevtoolSessionsRequest>;
 
+export type DevtoolsSessionListResponseWebSocketDebuggerUrl =
+  "webSocketDebuggerUrl";
+export const DevtoolsSessionListResponseWebSocketDebuggerUrl =
+  /*@__PURE__*/ S.String;
+
 /** Raw response payload (operation does not use the standard v4 result envelope). */
 export interface ListDevtoolSessionsResponse {
   /** Session ID. */
   sessionId: string;
-  /** Reason for session closure. */
-  closeReason?: string | null;
+  /** Reason code for session closure. */
+  closeReason?: number | null;
   /** Human-readable close reason. */
   closeReasonText?: string | null;
   /** Connection end time. */
@@ -4241,11 +4015,23 @@ export interface ListDevtoolSessionsResponse {
   startTime?: number | null;
   /** WebSocket URL for debugging this target. */
   webSocketDebuggerUrl?: string | null;
+  sessionId_2: unknown;
+  closeReason_2: unknown;
+  closeReasonText_2: unknown;
+  connectionEndTime_2: unknown;
+  connectionId_2: unknown;
+  connectionStartTime_2: unknown;
+  devtoolsFrontendUrl_2: unknown;
+  endTime_2: unknown;
+  lastUpdated_2: unknown;
+  startTime_2: unknown;
+  /** } */
+  webSocketDebuggerUrl_2: DevtoolsSessionListResponseWebSocketDebuggerUrl;
 }
 export const ListDevtoolSessionsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sessionId: S.String,
-    closeReason: S.optional(S.NullOr(S.String)),
+    closeReason: S.optional(S.NullOr(S.Number)),
     closeReasonText: S.optional(S.NullOr(S.String)),
     connectionEndTime: S.optional(S.NullOr(S.Number)),
     connectionId: S.optional(S.NullOr(S.String)),
@@ -4255,6 +4041,20 @@ export const ListDevtoolSessionsResponse = /*@__PURE__*/ S.suspend(() =>
     lastUpdated: S.optional(S.NullOr(S.Number)),
     startTime: S.optional(S.NullOr(S.Number)),
     webSocketDebuggerUrl: S.optional(S.NullOr(S.String)),
+    sessionId_2: S.Unknown.pipe(T.Body("sessionId")),
+    closeReason_2: S.Unknown.pipe(T.Body("closeReason")),
+    closeReasonText_2: S.Unknown.pipe(T.Body("closeReasonText")),
+    connectionEndTime_2: S.Unknown.pipe(T.Body("connectionEndTime")),
+    connectionId_2: S.Unknown.pipe(T.Body("connectionId")),
+    connectionStartTime_2: S.Unknown.pipe(T.Body("connectionStartTime")),
+    devtoolsFrontendUrl_2: S.Unknown.pipe(T.Body("devtoolsFrontendUrl")),
+    endTime_2: S.Unknown.pipe(T.Body("endTime")),
+    lastUpdated_2: S.Unknown.pipe(T.Body("lastUpdated")),
+    startTime_2: S.Unknown.pipe(T.Body("startTime")),
+    webSocketDebuggerUrl_2:
+      DevtoolsSessionListResponseWebSocketDebuggerUrl.pipe(
+        T.Body("webSocketDebuggerUrl"),
+      ),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListDevtoolSessionsResponse",
@@ -4338,6 +4138,26 @@ export const DevtoolsBrowserProtocolResponseDomainsItemTypesList =
     DevtoolsBrowserProtocolResponseDomainsItemTypesItemMap,
   ) as any as S.Schema<DevtoolsBrowserProtocolResponseDomainsItemTypesList>;
 
+export interface DevtoolsBrowserProtocolResponseDomainsItemVersion {
+  /** Major version. */
+  major: string;
+  /** Minor version. */
+  minor: string;
+}
+export const DevtoolsBrowserProtocolResponseDomainsItemVersion =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      major: S.String,
+      minor: S.String,
+    }),
+  ).annotate({
+    identifier: "DevtoolsBrowserProtocolResponseDomainsItemVersion",
+  }) as any as S.Schema<DevtoolsBrowserProtocolResponseDomainsItemVersion>;
+
+export type DevtoolsBrowserProtocolResponseDomainsItemMinor = "minor";
+export const DevtoolsBrowserProtocolResponseDomainsItemMinor =
+  /*@__PURE__*/ S.String;
+
 export interface DevtoolsBrowserProtocolResponseDomainsItem {
   /** Domain name. */
   domain: string;
@@ -4351,6 +4171,30 @@ export interface DevtoolsBrowserProtocolResponseDomainsItem {
   experimental?: boolean | null;
   /** Type definitions. */
   types?: DevtoolsBrowserProtocolResponseDomainsItemTypesList | null;
+  /** Protocol version. */
+  version?: DevtoolsBrowserProtocolResponseDomainsItemVersion | null;
+  /** { */
+  domains: unknown;
+  domain_2: unknown;
+  /** { */
+  commands_2: unknown;
+  /** } */
+  foo: unknown;
+  /** "string" */
+  dependencies_2: unknown;
+  /** { */
+  events_2: unknown;
+  /** } */
+  foo_2: unknown;
+  experimental_2: unknown;
+  /** { */
+  types_2: unknown;
+  /** } */
+  foo_3: unknown;
+  version_2: unknown;
+  major: unknown;
+  /** } */
+  minor: DevtoolsBrowserProtocolResponseDomainsItemMinor;
 }
 export const DevtoolsBrowserProtocolResponseDomainsItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -4369,6 +4213,22 @@ export const DevtoolsBrowserProtocolResponseDomainsItem =
       types: S.optional(
         S.NullOr(DevtoolsBrowserProtocolResponseDomainsItemTypesList),
       ),
+      version: S.optional(
+        S.NullOr(DevtoolsBrowserProtocolResponseDomainsItemVersion),
+      ),
+      domains: S.Unknown,
+      domain_2: S.Unknown.pipe(T.Body("domain")),
+      commands_2: S.Unknown.pipe(T.Body("commands")),
+      foo: S.Unknown,
+      dependencies_2: S.Unknown.pipe(T.Body("dependencies")),
+      events_2: S.Unknown.pipe(T.Body("events")),
+      foo_2: S.Unknown.pipe(T.Body("foo")),
+      experimental_2: S.Unknown.pipe(T.Body("experimental")),
+      types_2: S.Unknown.pipe(T.Body("types")),
+      foo_3: S.Unknown.pipe(T.Body("foo")),
+      version_2: S.Unknown.pipe(T.Body("version")),
+      major: S.Unknown,
+      minor: DevtoolsBrowserProtocolResponseDomainsItemMinor,
     }),
   ).annotate({
     identifier: "DevtoolsBrowserProtocolResponseDomainsItem",
@@ -4380,33 +4240,14 @@ export const DevtoolsBrowserProtocolResponseDomainsList = /*@__PURE__*/ S.Array(
   DevtoolsBrowserProtocolResponseDomainsItem,
 ) as any as S.Schema<DevtoolsBrowserProtocolResponseDomainsList>;
 
-export interface DevtoolsBrowserProtocolResponseVersion {
-  /** Major version. */
-  major: string;
-  /** Minor version. */
-  minor: string;
-}
-export const DevtoolsBrowserProtocolResponseVersion = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      major: S.String,
-      minor: S.String,
-    }),
-).annotate({
-  identifier: "DevtoolsBrowserProtocolResponseVersion",
-}) as any as S.Schema<DevtoolsBrowserProtocolResponseVersion>;
-
 /** Raw response payload (operation does not use the standard v4 result envelope). */
 export interface ProtocolDevtoolBrowserResponse {
   /** List of protocol domains. */
   domains: DevtoolsBrowserProtocolResponseDomainsList;
-  /** Protocol version. */
-  version?: DevtoolsBrowserProtocolResponseVersion | null;
 }
 export const ProtocolDevtoolBrowserResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domains: DevtoolsBrowserProtocolResponseDomainsList,
-    version: S.optional(S.NullOr(DevtoolsBrowserProtocolResponseVersion)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ProtocolDevtoolBrowserResponse",
@@ -4435,6 +4276,11 @@ export const VersionDevtoolBrowserRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "VersionDevtoolBrowserRequest",
 }) as any as S.Schema<VersionDevtoolBrowserRequest>;
 
+export type DevtoolsBrowserVersionResponseWebSocketDebuggerUrl =
+  "webSocketDebuggerUrl";
+export const DevtoolsBrowserVersionResponseWebSocketDebuggerUrl =
+  /*@__PURE__*/ S.String;
+
 /** Raw response payload (operation does not use the standard v4 result envelope). */
 export interface VersionDevtoolBrowserResponse {
   /** Browser name and version. */
@@ -4449,6 +4295,13 @@ export interface VersionDevtoolBrowserResponse {
   webKitVersion: string;
   /** WebSocket URL for debugging the browser. */
   webSocketDebuggerUrl: string;
+  Browser_2: unknown;
+  Protocol_Version_2: unknown;
+  User_Agent_2: unknown;
+  V8_Version_2: unknown;
+  WebKit_Version_2: unknown;
+  /** } */
+  webSocketDebuggerUrl_2: DevtoolsBrowserVersionResponseWebSocketDebuggerUrl;
 }
 export const VersionDevtoolBrowserResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -4458,10 +4311,34 @@ export const VersionDevtoolBrowserResponse = /*@__PURE__*/ S.suspend(() =>
     v8Version: S.String.pipe(T.Body("V8-Version")),
     webKitVersion: S.String.pipe(T.Body("WebKit-Version")),
     webSocketDebuggerUrl: S.String,
+    Browser_2: S.Unknown.pipe(T.Body("Browser")),
+    Protocol_Version_2: S.Unknown.pipe(T.Body("Protocol-Version")),
+    User_Agent_2: S.Unknown.pipe(T.Body("User-Agent")),
+    V8_Version_2: S.Unknown.pipe(T.Body("V8-Version")),
+    WebKit_Version_2: S.Unknown.pipe(T.Body("WebKit-Version")),
+    webSocketDebuggerUrl_2:
+      DevtoolsBrowserVersionResponseWebSocketDebuggerUrl.pipe(
+        T.Body("webSocketDebuggerUrl"),
+      ),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "VersionDevtoolBrowserResponse",
 }) as any as S.Schema<VersionDevtoolBrowserResponse>;
+
+export type AccessibilityTreeCreateError = CloudflareOpError;
+/** Returns the page’s accessibility tree. Use interestingOnly to only return semantically meaningful nodes; use root to scope the tree to a CSS-selector-anchored subtree. Control page loading with gotoOptions and waitFor* options. */
+export const accessibilityTreeCreate: API.OperationMethod<
+  AccessibilityTreeCreateRequest,
+  AccessibilityTreeCreateResponse,
+  AccessibilityTreeCreateError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: AccessibilityTreeCreateRequest,
+  output: AccessibilityTreeCreateResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+  retry: Retry.Retry,
+}));
 
 export type ActivateDevtoolBrowserTargetError = CloudflareOpError;
 /** Activates (brings to front) a specific browser target by its ID. */
@@ -4479,7 +4356,7 @@ export const activateDevtoolBrowserTarget: API.OperationMethod<
 }));
 
 export type CloseDevtoolBrowserTargetError = CloudflareOpError;
-/** Closes a specific browser target (tab, page, etc.) by its ID. Returns 'Target is closing' on success or an error if the target is not found. */
+/** Closes a specific browser target (tab, page, etc.) by its ID. Returns ‘Target is closing’ on success or an error if the target is not found. */
 export const closeDevtoolBrowserTarget: API.OperationMethod<
   CloseDevtoolBrowserTargetRequest,
   CloseDevtoolBrowserTargetResponse,
@@ -4524,7 +4401,7 @@ export const createContent: API.OperationMethod<
 }));
 
 export type CreateCrawlError = CloudflareOpError;
-/** Starts a crawl job for the provided URL and its children. Check available options like `gotoOptions` and `waitFor*` to control page load behaviour. */
+/** Starts a crawl job for the provided URL and its children. Check available options like gotoOptions and waitFor* to control page load behaviour. */
 export const createCrawl: API.OperationMethod<
   CreateCrawlRequest,
   CreateCrawlResponse,
@@ -4539,7 +4416,7 @@ export const createCrawl: API.OperationMethod<
 }));
 
 export type CreateDevtoolBrowserError = CloudflareOpError;
-/** Acquires a browser and returns its session ID and websocket URL. */
+/** Acquires a browser and returns its session ID and websocket URL. Optionally accepts a JSON body with session guardrails to restrict outbound HTTP/S traffic. */
 export const createDevtoolBrowser: API.OperationMethod<
   CreateDevtoolBrowserRequest,
   CreateDevtoolBrowserResponse,
@@ -4647,19 +4524,19 @@ export type CreateScreenshotError = CloudflareOpError;
 /** Takes a screenshot of a webpage from provided URL or HTML. Control page loading with `gotoOptions` and `waitFor*` options. Customize screenshots with `viewport`, `fullPage`, `clip` and others. */
 export const createScreenshot: API.OperationMethod<
   CreateScreenshotRequest,
-  CreateScreenshotResponse,
+  ScreenshotCreateResponse,
   CreateScreenshotError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateScreenshotRequest,
-  output: CreateScreenshotResponse,
+  output: ScreenshotCreateResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
 }));
 
 export type CreateSnapshotError = CloudflareOpError;
-/** Returns the page's HTML content and screenshot. Control page loading with `gotoOptions` and `waitFor*` options. Customize screenshots with `viewport`, `fullPage`, `clip` and others. */
+/** Returns the page’s HTML content and screenshot. Control page loading with gotoOptions and waitFor* options. Customize screenshots with viewport , fullPage , clip and others. */
 export const createSnapshot: API.OperationMethod<
   CreateSnapshotRequest,
   CreateSnapshotResponse,
@@ -4698,6 +4575,21 @@ export const deleteDevtoolBrowser: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteDevtoolBrowserRequest,
   output: DeleteDevtoolBrowserResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+  retry: Retry.Retry,
+}));
+
+export type DevtoolsBrowserLiveViewCreateError = CloudflareOpError;
+/** Generates time-limited URLs to view a remote browser session. Set `guardrails: { mode: 'readonly' }` to create a view-only link. */
+export const devtoolsBrowserLiveViewCreate: API.OperationMethod<
+  DevtoolsBrowserLiveViewCreateRequest,
+  DevtoolsBrowserLiveViewCreateResponse,
+  DevtoolsBrowserLiveViewCreateError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: DevtoolsBrowserLiveViewCreateRequest,
+  output: DevtoolsBrowserLiveViewCreateResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -4764,7 +4656,7 @@ export const getDevtoolSession: API.OperationMethod<
 }));
 
 export type LaunchDevtoolBrowserError = CloudflareOpError;
-/** Acquires and establishes a WebSocket connection to a browser session. */
+/** Acquires and establishes a WebSocket connection to a browser session. Session guardrails may be supplied in the `cf-brapi-guardrails` header as base64url-encoded JSON of the same `guardrails` object the POST body accepts (for example `{"allowedDomains":["*.example.com"]}`). */
 export const launchDevtoolBrowser: API.OperationMethod<
   LaunchDevtoolBrowserRequest,
   LaunchDevtoolBrowserResponse,

@@ -43,7 +43,7 @@ export const GetConfigRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetConfigResponse {
   /** Enables or disables Google Tag Gateway for this zone. */
   enabled: boolean;
-  /** Specifies the endpoint path for proxying Google Tag Manager requests. Use an absolute path starting with '/', with no nested paths and alphanumeric characters only (e.g. /metrics). */
+  /** Specifies the endpoint path for proxying Google Tag Manager requests. Use an absolute path starting with ’/’, with no nested paths and alphanumeric characters only (e.g. /metrics). */
   endpoint: string;
   /** Hides the original client IP address from Google when enabled. */
   hideOriginalIp: boolean;
@@ -69,7 +69,7 @@ export interface PutConfigRequest {
   zoneId: string;
   /** Enables or disables Google Tag Gateway for this zone. */
   enabled: boolean;
-  /** Specifies the endpoint path for proxying Google Tag Manager requests. Use an absolute path starting with '/', with no nested paths and alphanumeric characters only (e.g. /metrics). */
+  /** Specifies the endpoint path for proxying Google Tag Manager requests. Use an absolute path starting with ’/’, with no nested paths and alphanumeric characters only (e.g. /metrics). */
   endpoint: string;
   /** Hides the original client IP address from Google when enabled. */
   hideOriginalIp: boolean;
@@ -101,7 +101,7 @@ export const PutConfigRequest = /*@__PURE__*/ S.suspend(() =>
 export interface PutConfigResponse {
   /** Enables or disables Google Tag Gateway for this zone. */
   enabled: boolean;
-  /** Specifies the endpoint path for proxying Google Tag Manager requests. Use an absolute path starting with '/', with no nested paths and alphanumeric characters only (e.g. /metrics). */
+  /** Specifies the endpoint path for proxying Google Tag Manager requests. Use an absolute path starting with ’/’, with no nested paths and alphanumeric characters only (e.g. /metrics). */
   endpoint: string;
   /** Hides the original client IP address from Google when enabled. */
   hideOriginalIp: boolean;
@@ -109,6 +109,12 @@ export interface PutConfigResponse {
   measurementId: string;
   /** Set up the associated Google Tag on the zone automatically when enabled. */
   setUpTag?: boolean | null;
+  enabled_2: unknown;
+  endpoint_2: unknown;
+  hideOriginalIp_2: unknown;
+  measurementId_2: unknown;
+  /** }' */
+  setUpTag_2: boolean;
 }
 export const PutConfigResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -117,6 +123,11 @@ export const PutConfigResponse = /*@__PURE__*/ S.suspend(() =>
     hideOriginalIp: S.Boolean,
     measurementId: S.String,
     setUpTag: S.optional(S.NullOr(S.Boolean)),
+    enabled_2: S.Unknown.pipe(T.Body("enabled")),
+    endpoint_2: S.Unknown.pipe(T.Body("endpoint")),
+    hideOriginalIp_2: S.Unknown.pipe(T.Body("hideOriginalIp")),
+    measurementId_2: S.Unknown.pipe(T.Body("measurementId")),
+    setUpTag_2: S.Boolean.pipe(T.Body("setUpTag")),
   }),
 ).annotate({
   identifier: "PutConfigResponse",

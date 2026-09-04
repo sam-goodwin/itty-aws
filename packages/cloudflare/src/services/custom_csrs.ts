@@ -35,7 +35,7 @@ export type CreateRequestKeyType = "rsa2048" | "p256v1";
 export const CreateRequestKeyType = /*@__PURE__*/ S.String;
 
 export interface CreateCustomCsrForAccountRequest {
-  /** The Account ID to use for this endpoint. Mutually exclusive with the Zone ID. */
+  /** Identifier. */
   accountId: string;
   /** The common name (domain) for the CSR. Must be at most 64 characters. */
   commonName: string;
@@ -94,6 +94,9 @@ export const CreateResponseSansList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CreateResponseSansList>;
 
+export type CreateResponseOrganizationalUnit = "Engineering";
+export const CreateResponseOrganizationalUnit = /*@__PURE__*/ S.String;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateCustomCsrResponse {
   /** Custom CSR identifier tag. */
@@ -124,6 +127,18 @@ export interface CreateCustomCsrResponse {
   sans?: CreateResponseSansList | null;
   /** State or province name. */
   state?: string | null;
+  common_name_2: unknown;
+  country_2: unknown;
+  locality_2: unknown;
+  organization_2: unknown;
+  /** "example.com", */
+  sans_2: unknown;
+  state_2: unknown;
+  description_2: unknown;
+  key_type_2: unknown;
+  name_2: unknown;
+  /** }' */
+  organizational_unit_2: CreateResponseOrganizationalUnit;
 }
 export const CreateCustomCsrResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -143,13 +158,25 @@ export const CreateCustomCsrResponse = /*@__PURE__*/ S.suspend(() =>
     ),
     sans: S.optional(S.NullOr(CreateResponseSansList)),
     state: S.optional(S.NullOr(S.String)),
+    common_name_2: S.Unknown.pipe(T.Body("common_name")),
+    country_2: S.Unknown.pipe(T.Body("country")),
+    locality_2: S.Unknown.pipe(T.Body("locality")),
+    organization_2: S.Unknown.pipe(T.Body("organization")),
+    sans_2: S.Unknown.pipe(T.Body("sans")),
+    state_2: S.Unknown.pipe(T.Body("state")),
+    description_2: S.Unknown.pipe(T.Body("description")),
+    key_type_2: S.Unknown.pipe(T.Body("key_type")),
+    name_2: S.Unknown.pipe(T.Body("name")),
+    organizational_unit_2: CreateResponseOrganizationalUnit.pipe(
+      T.Body("organizational_unit"),
+    ),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateCustomCsrResponse",
 }) as any as S.Schema<CreateCustomCsrResponse>;
 
 export interface CreateCustomCsrForZoneRequest {
-  /** The Zone ID to use for this endpoint. Mutually exclusive with the Account ID. */
+  /** Identifier. */
   zoneId: string;
   /** The common name (domain) for the CSR. Must be at most 64 characters. */
   commonName: string;
@@ -201,7 +228,7 @@ export const CreateCustomCsrForZoneRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateCustomCsrForZoneRequest>;
 
 export interface DeleteCustomCsrForAccountRequest {
-  /** The Account ID to use for this endpoint. Mutually exclusive with the Zone ID. */
+  /** Identifier. */
   accountId: string;
   /** Custom CSR identifier tag. */
   customCsrId: string;
@@ -237,7 +264,7 @@ export const DeleteCustomCsrResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteCustomCsrResponse>;
 
 export interface DeleteCustomCsrForZoneRequest {
-  /** The Zone ID to use for this endpoint. Mutually exclusive with the Account ID. */
+  /** Identifier. */
   zoneId: string;
   /** Custom CSR identifier tag. */
   customCsrId: string;
@@ -260,7 +287,7 @@ export const DeleteCustomCsrForZoneRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteCustomCsrForZoneRequest>;
 
 export interface GetCustomCsrForAccountRequest {
-  /** The Account ID to use for this endpoint. Mutually exclusive with the Zone ID. */
+  /** Identifier. */
   accountId: string;
   /** Custom CSR identifier tag. */
   customCsrId: string;
@@ -345,7 +372,7 @@ export const GetCustomCsrResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetCustomCsrResponse>;
 
 export interface GetCustomCsrForZoneRequest {
-  /** The Zone ID to use for this endpoint. Mutually exclusive with the Account ID. */
+  /** Identifier. */
   zoneId: string;
   /** Custom CSR identifier tag. */
   customCsrId: string;
@@ -367,9 +394,19 @@ export const GetCustomCsrForZoneRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetCustomCsrForZoneRequest",
 }) as any as S.Schema<GetCustomCsrForZoneRequest>;
 
+export type ListRequestDirection = "asc" | "desc";
+export const ListRequestDirection = /*@__PURE__*/ S.String;
+
+export type ListRequestOrder = "name" | "account_tag" | "created_at";
+export const ListRequestOrder = /*@__PURE__*/ S.String;
+
 export interface ListCustomCsrsForAccountRequest {
-  /** The Account ID to use for this endpoint. Mutually exclusive with the Zone ID. */
+  /** Identifier. */
   accountId: string;
+  /** The direction to sort by. */
+  direction?: ListRequestDirection | (string & {});
+  /** The field to sort the returned custom CSRs by. */
+  order?: ListRequestOrder | (string & {});
   /** Page number of paginated results. */
   page?: number;
   /** Number of custom CSRs per page. */
@@ -378,6 +415,8 @@ export interface ListCustomCsrsForAccountRequest {
 export const ListCustomCsrsForAccountRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
+    direction: S.optional(ListRequestDirection.pipe(T.Query())),
+    order: S.optional(ListRequestOrder.pipe(T.Query())),
     page: S.optional(S.Number.pipe(T.Query())),
     perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
   })
@@ -473,8 +512,12 @@ export const ListCustomCsrsResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListCustomCsrsResponse>;
 
 export interface ListCustomCsrsForZoneRequest {
-  /** The Zone ID to use for this endpoint. Mutually exclusive with the Account ID. */
+  /** Identifier. */
   zoneId: string;
+  /** The direction to sort by. */
+  direction?: ListRequestDirection | (string & {});
+  /** The field to sort the returned custom CSRs by. */
+  order?: ListRequestOrder | (string & {});
   /** Page number of paginated results. */
   page?: number;
   /** Number of custom CSRs per page. */
@@ -483,6 +526,8 @@ export interface ListCustomCsrsForZoneRequest {
 export const ListCustomCsrsForZoneRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
+    direction: S.optional(ListRequestDirection.pipe(T.Query())),
+    order: S.optional(ListRequestOrder.pipe(T.Query())),
     page: S.optional(S.Number.pipe(T.Query())),
     perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
   })

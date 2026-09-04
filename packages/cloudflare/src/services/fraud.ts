@@ -160,7 +160,7 @@ export const GetResponseUsernameExpressionsList = /*@__PURE__*/ S.Array(
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetFraudResponse {
-  /** Configuration for classifying login authentication outcomes based on the origin response. */
+  /** Configuration for classifying login authentication outcomes based on the origin response. Requires `user_profiles` to be enabled. */
   authenticationSettings?: GetResponseAuthenticationSettings | null;
   /** Whether Fraud User Profiles is enabled for the zone. */
   userProfiles?: GetResponseUserProfiles | null;
@@ -285,7 +285,7 @@ export const UpdateRequestUsernameExpressionsList = /*@__PURE__*/ S.Array(
 export interface PutFraudRequest {
   /** Identifier. */
   zoneId: string;
-  /** Configuration for classifying login authentication outcomes based on the origin response. */
+  /** Configuration for classifying login authentication outcomes based on the origin response. Requires `user_profiles` to be enabled. */
   authenticationSettings?: UpdateRequestAuthenticationSettings;
   /** Whether Fraud User Profiles is enabled for the zone. */
   userProfiles?: UpdateRequestUserProfiles | (string & {});
@@ -417,12 +417,15 @@ export const UpdateResponseUsernameExpressionsList = /*@__PURE__*/ S.Array(
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface PutFraudResponse {
-  /** Configuration for classifying login authentication outcomes based on the origin response. */
+  /** Configuration for classifying login authentication outcomes based on the origin response. Requires `user_profiles` to be enabled. */
   authenticationSettings?: UpdateResponseAuthenticationSettings | null;
   /** Whether Fraud User Profiles is enabled for the zone. */
   userProfiles?: UpdateResponseUserProfiles | null;
   /** List of expressions to detect usernames in write HTTP requests. */
   usernameExpressions?: UpdateResponseUsernameExpressionsList | null;
+  user_profiles_2: unknown;
+  /** "string" */
+  username_expressions_2: unknown;
 }
 export const PutFraudResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -439,6 +442,8 @@ export const PutFraudResponse = /*@__PURE__*/ S.suspend(() =>
         T.Body("username_expressions"),
       ),
     ),
+    user_profiles_2: S.Unknown.pipe(T.Body("user_profiles")),
+    username_expressions_2: S.Unknown.pipe(T.Body("username_expressions")),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PutFraudResponse",
@@ -463,7 +468,7 @@ export type PutFraudError =
   | Forbidden
   | FraudDetectionNotEntitled
   | CloudflareOpError;
-/** Update Fraud Detection settings for a zone. Notes on `username_expressions` behavior: - If omitted or set to null, expressions are not modified. - If provided as an empty array `[]`, all expressions will be cleared. */
+/** Update Fraud Detection settings for a zone. Notes on `username_expressions` behavior: * If omitted or set to null, expressions are not modified. * If provided as an empty array `[]`, all expressions will be cleared. */
 export const putFraud: API.OperationMethod<
   PutFraudRequest,
   PutFraudResponse,

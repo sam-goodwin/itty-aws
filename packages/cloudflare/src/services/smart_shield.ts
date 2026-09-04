@@ -30,16 +30,13 @@ export const CacheReserveClearClearRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CacheReserveClearClearRequest",
 }) as any as S.Schema<CacheReserveClearClearRequest>;
 
-export type CacheReserveClearClearResponseId = "cache_reserve_clear";
-export const CacheReserveClearClearResponseId = /*@__PURE__*/ S.String;
-
 export type CacheReserveClearClearResponseState = "In-progress" | "Completed";
 export const CacheReserveClearClearResponseState = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CacheReserveClearClearResponse {
   /** ID of the zone setting. */
-  id: CacheReserveClearClearResponseId;
+  id: unknown;
   /** The time that the latest Cache Reserve Clear operation started. */
   startTs: string;
   /** The current state of the Cache Reserve Clear operation. */
@@ -51,7 +48,7 @@ export interface CacheReserveClearClearResponse {
 }
 export const CacheReserveClearClearResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    id: CacheReserveClearClearResponseId,
+    id: S.Unknown,
     startTs: S.String.pipe(T.Body("start_ts")),
     state: CacheReserveClearClearResponseState,
     endTs: S.optional(S.NullOr(S.String).pipe(T.Body("end_ts"))),
@@ -79,16 +76,13 @@ export const CacheReserveClearStatusRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CacheReserveClearStatusRequest",
 }) as any as S.Schema<CacheReserveClearStatusRequest>;
 
-export type CacheReserveClearStatusResponseId = "cache_reserve_clear";
-export const CacheReserveClearStatusResponseId = /*@__PURE__*/ S.String;
-
 export type CacheReserveClearStatusResponseState = "In-progress" | "Completed";
 export const CacheReserveClearStatusResponseState = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CacheReserveClearStatusResponse {
   /** ID of the zone setting. */
-  id: CacheReserveClearStatusResponseId;
+  id: unknown;
   /** The time that the latest Cache Reserve Clear operation started. */
   startTs: string;
   /** The current state of the Cache Reserve Clear operation. */
@@ -100,7 +94,7 @@ export interface CacheReserveClearStatusResponse {
 }
 export const CacheReserveClearStatusResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    id: CacheReserveClearStatusResponseId,
+    id: S.Unknown,
     startTs: S.String.pipe(T.Body("start_ts")),
     state: CacheReserveClearStatusResponseState,
     endTs: S.optional(S.NullOr(S.String).pipe(T.Body("end_ts"))),
@@ -281,12 +275,33 @@ export const HealthChecksCreateRequestHttpConfigHeaderMap =
 export type HealthChecksCreateRequestHttpConfigMethod = "GET" | "HEAD";
 export const HealthChecksCreateRequestHttpConfigMethod = /*@__PURE__*/ S.String;
 
+export type HealthChecksCreateRequestHttpConfigTcpConfigMethod =
+  "connection_established";
+export const HealthChecksCreateRequestHttpConfigTcpConfigMethod =
+  /*@__PURE__*/ S.String;
+
+export interface HealthChecksCreateRequestHttpConfigTcpConfig {
+  /** The TCP connection method to use for the health check. */
+  method?: HealthChecksCreateRequestHttpConfigTcpConfigMethod | (string & {});
+  /** Port number to connect to for the health check. Defaults to 80. */
+  port?: number;
+}
+export const HealthChecksCreateRequestHttpConfigTcpConfig =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      method: S.optional(HealthChecksCreateRequestHttpConfigTcpConfigMethod),
+      port: S.optional(S.Number),
+    }),
+  ).annotate({
+    identifier: "HealthChecksCreateRequestHttpConfigTcpConfig",
+  }) as any as S.Schema<HealthChecksCreateRequestHttpConfigTcpConfig>;
+
 export interface HealthChecksCreateRequestHttpConfig {
   /** Do not validate the certificate when the health check uses HTTPS. */
   allowInsecure?: boolean;
   /** A case-insensitive sub-string to look for in the response body. If this string is not found, the origin will be marked as unhealthy. */
   expectedBody?: string;
-  /** The expected HTTP response codes (e.g. "200") or code ranges (e.g. "2xx" for all codes starting with 2) of the health check. */
+  /** The expected HTTP response codes (e.g. “200”) or code ranges (e.g. “2xx” for all codes starting with 2) of the health check. */
   expectedCodes?: HealthChecksCreateRequestHttpConfigExpectedCodesList;
   /** Follow redirects if the origin returns a 3xx status code. */
   followRedirects?: boolean;
@@ -298,6 +313,18 @@ export interface HealthChecksCreateRequestHttpConfig {
   path?: string;
   /** Port number to connect to for the health check. Defaults to 80 if type is HTTP or 443 if type is HTTPS. */
   port?: number;
+  /** The interval between each health check. Shorter intervals may give quicker notifications if the origin status changes, but will increase load on the origin as we check from multiple locations. */
+  interval?: number;
+  /** The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately. */
+  retries?: number;
+  /** If suspended, no health checks are sent to the origin. */
+  suspended?: boolean;
+  /** Parameters specific to TCP health check. */
+  tcpConfig?: HealthChecksCreateRequestHttpConfigTcpConfig;
+  /** The timeout (in seconds) before marking the health check as failed. */
+  timeout?: number;
+  /** The protocol to use for the health check. Currently supported protocols are ‘HTTP’, ‘HTTPS’ and ‘TCP’. */
+  type?: string;
 }
 export const HealthChecksCreateRequestHttpConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -313,28 +340,18 @@ export const HealthChecksCreateRequestHttpConfig = /*@__PURE__*/ S.suspend(() =>
     method: S.optional(HealthChecksCreateRequestHttpConfigMethod),
     path: S.optional(S.String),
     port: S.optional(S.Number),
+    interval: S.optional(S.Number),
+    retries: S.optional(S.Number),
+    suspended: S.optional(S.Boolean),
+    tcpConfig: S.optional(
+      HealthChecksCreateRequestHttpConfigTcpConfig.pipe(T.Body("tcp_config")),
+    ),
+    timeout: S.optional(S.Number),
+    type: S.optional(S.String),
   }),
 ).annotate({
   identifier: "HealthChecksCreateRequestHttpConfig",
 }) as any as S.Schema<HealthChecksCreateRequestHttpConfig>;
-
-export type HealthChecksCreateRequestTcpConfigMethod = "connection_established";
-export const HealthChecksCreateRequestTcpConfigMethod = /*@__PURE__*/ S.String;
-
-export interface HealthChecksCreateRequestTcpConfig {
-  /** The TCP connection method to use for the health check. */
-  method?: HealthChecksCreateRequestTcpConfigMethod | (string & {});
-  /** Port number to connect to for the health check. Defaults to 80. */
-  port?: number;
-}
-export const HealthChecksCreateRequestTcpConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    method: S.optional(HealthChecksCreateRequestTcpConfigMethod),
-    port: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "HealthChecksCreateRequestTcpConfig",
-}) as any as S.Schema<HealthChecksCreateRequestTcpConfig>;
 
 export interface HealthChecksCreateRequest {
   /** Identifier. */
@@ -353,18 +370,6 @@ export interface HealthChecksCreateRequest {
   description?: string;
   /** Parameters specific to an HTTP or HTTPS health check. */
   httpConfig?: HealthChecksCreateRequestHttpConfig;
-  /** The interval between each health check. Shorter intervals may give quicker notifications if the origin status changes, but will increase load on the origin as we check from multiple locations. */
-  interval?: number;
-  /** The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately. */
-  retries?: number;
-  /** If suspended, no health checks are sent to the origin. */
-  suspended?: boolean;
-  /** Parameters specific to TCP health check. */
-  tcpConfig?: HealthChecksCreateRequestTcpConfig;
-  /** The timeout (in seconds) before marking the health check as failed. */
-  timeout?: number;
-  /** The protocol to use for the health check. Currently supported protocols are 'HTTP', 'HTTPS' and 'TCP'. */
-  type?: string;
 }
 export const HealthChecksCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -382,14 +387,6 @@ export const HealthChecksCreateRequest = /*@__PURE__*/ S.suspend(() =>
     httpConfig: S.optional(
       HealthChecksCreateRequestHttpConfig.pipe(T.Body("http_config")),
     ),
-    interval: S.optional(S.Number),
-    retries: S.optional(S.Number),
-    suspended: S.optional(S.Boolean),
-    tcpConfig: S.optional(
-      HealthChecksCreateRequestTcpConfig.pipe(T.Body("tcp_config")),
-    ),
-    timeout: S.optional(S.Number),
-    type: S.optional(S.String),
   }).pipe(
     T.Http({
       method: "POST",
@@ -453,12 +450,43 @@ export type HealthChecksCreateResponseHttpConfigMethod = "GET" | "HEAD";
 export const HealthChecksCreateResponseHttpConfigMethod =
   /*@__PURE__*/ S.String;
 
+export type HealthChecksCreateResponseHttpConfigStatus =
+  | "unknown"
+  | "healthy"
+  | "unhealthy"
+  | "suspended";
+export const HealthChecksCreateResponseHttpConfigStatus =
+  /*@__PURE__*/ S.String;
+
+export type HealthChecksCreateResponseHttpConfigTcpConfigMethod =
+  "connection_established";
+export const HealthChecksCreateResponseHttpConfigTcpConfigMethod =
+  /*@__PURE__*/ S.String;
+
+export interface HealthChecksCreateResponseHttpConfigTcpConfig {
+  /** The TCP connection method to use for the health check. */
+  method?: HealthChecksCreateResponseHttpConfigTcpConfigMethod | null;
+  /** Port number to connect to for the health check. Defaults to 80. */
+  port?: number | null;
+}
+export const HealthChecksCreateResponseHttpConfigTcpConfig =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      method: S.optional(
+        S.NullOr(HealthChecksCreateResponseHttpConfigTcpConfigMethod),
+      ),
+      port: S.optional(S.NullOr(S.Number)),
+    }),
+  ).annotate({
+    identifier: "HealthChecksCreateResponseHttpConfigTcpConfig",
+  }) as any as S.Schema<HealthChecksCreateResponseHttpConfigTcpConfig>;
+
 export interface HealthChecksCreateResponseHttpConfig {
   /** Do not validate the certificate when the health check uses HTTPS. */
   allowInsecure?: boolean | null;
   /** A case-insensitive sub-string to look for in the response body. If this string is not found, the origin will be marked as unhealthy. */
   expectedBody?: string | null;
-  /** The expected HTTP response codes (e.g. "200") or code ranges (e.g. "2xx" for all codes starting with 2) of the health check. */
+  /** The expected HTTP response codes (e.g. “200”) or code ranges (e.g. “2xx” for all codes starting with 2) of the health check. */
   expectedCodes?: HealthChecksCreateResponseHttpConfigExpectedCodesList | null;
   /** Follow redirects if the origin returns a 3xx status code. */
   followRedirects?: boolean | null;
@@ -470,6 +498,24 @@ export interface HealthChecksCreateResponseHttpConfig {
   path?: string | null;
   /** Port number to connect to for the health check. Defaults to 80 if type is HTTP or 443 if type is HTTPS. */
   port?: number | null;
+  /** The interval between each health check. Shorter intervals may give quicker notifications if the origin status changes, but will increase load on the origin as we check from multiple locations. */
+  interval?: number | null;
+  /** formatdate-time */
+  modifiedOn?: string | null;
+  /** A short name to identify the health check. Only alphanumeric characters, hyphens and underscores are allowed. */
+  name?: string | null;
+  /** The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately. */
+  retries?: number | null;
+  /** The current status of the origin server according to the health check. */
+  status?: HealthChecksCreateResponseHttpConfigStatus | null;
+  /** If suspended, no health checks are sent to the origin. */
+  suspended?: boolean | null;
+  /** Parameters specific to TCP health check. */
+  tcpConfig?: HealthChecksCreateResponseHttpConfigTcpConfig | null;
+  /** The timeout (in seconds) before marking the health check as failed. */
+  timeout?: number | null;
+  /** The protocol to use for the health check. Currently supported protocols are ‘HTTP’, ‘HTTPS’ and ‘TCP’. */
+  type?: string | null;
 }
 export const HealthChecksCreateResponseHttpConfig = /*@__PURE__*/ S.suspend(
   () =>
@@ -494,36 +540,23 @@ export const HealthChecksCreateResponseHttpConfig = /*@__PURE__*/ S.suspend(
       method: S.optional(S.NullOr(HealthChecksCreateResponseHttpConfigMethod)),
       path: S.optional(S.NullOr(S.String)),
       port: S.optional(S.NullOr(S.Number)),
+      interval: S.optional(S.NullOr(S.Number)),
+      modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
+      name: S.optional(S.NullOr(S.String)),
+      retries: S.optional(S.NullOr(S.Number)),
+      status: S.optional(S.NullOr(HealthChecksCreateResponseHttpConfigStatus)),
+      suspended: S.optional(S.NullOr(S.Boolean)),
+      tcpConfig: S.optional(
+        S.NullOr(HealthChecksCreateResponseHttpConfigTcpConfig).pipe(
+          T.Body("tcp_config"),
+        ),
+      ),
+      timeout: S.optional(S.NullOr(S.Number)),
+      type: S.optional(S.NullOr(S.String)),
     }),
 ).annotate({
   identifier: "HealthChecksCreateResponseHttpConfig",
 }) as any as S.Schema<HealthChecksCreateResponseHttpConfig>;
-
-export type HealthChecksCreateResponseStatus =
-  | "unknown"
-  | "healthy"
-  | "unhealthy"
-  | "suspended";
-export const HealthChecksCreateResponseStatus = /*@__PURE__*/ S.String;
-
-export type HealthChecksCreateResponseTcpConfigMethod =
-  "connection_established";
-export const HealthChecksCreateResponseTcpConfigMethod = /*@__PURE__*/ S.String;
-
-export interface HealthChecksCreateResponseTcpConfig {
-  /** The TCP connection method to use for the health check. */
-  method?: HealthChecksCreateResponseTcpConfigMethod | null;
-  /** Port number to connect to for the health check. Defaults to 80. */
-  port?: number | null;
-}
-export const HealthChecksCreateResponseTcpConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    method: S.optional(S.NullOr(HealthChecksCreateResponseTcpConfigMethod)),
-    port: S.optional(S.NullOr(S.Number)),
-  }),
-).annotate({
-  identifier: "HealthChecksCreateResponseTcpConfig",
-}) as any as S.Schema<HealthChecksCreateResponseTcpConfig>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface HealthChecksCreateResponse {
@@ -537,6 +570,7 @@ export interface HealthChecksCreateResponse {
   consecutiveFails?: number | null;
   /** The number of consecutive successes required from a health check before changing the health to healthy. */
   consecutiveSuccesses?: number | null;
+  /** formatdate-time */
   createdOn?: string | null;
   /** A human-readable description of the health check. */
   description?: string | null;
@@ -544,23 +578,6 @@ export interface HealthChecksCreateResponse {
   failureReason?: string | null;
   /** Parameters specific to an HTTP or HTTPS health check. */
   httpConfig?: HealthChecksCreateResponseHttpConfig | null;
-  /** The interval between each health check. Shorter intervals may give quicker notifications if the origin status changes, but will increase load on the origin as we check from multiple locations. */
-  interval?: number | null;
-  modifiedOn?: string | null;
-  /** A short name to identify the health check. Only alphanumeric characters, hyphens and underscores are allowed. */
-  name?: string | null;
-  /** The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately. */
-  retries?: number | null;
-  /** The current status of the origin server according to the health check. */
-  status?: HealthChecksCreateResponseStatus | null;
-  /** If suspended, no health checks are sent to the origin. */
-  suspended?: boolean | null;
-  /** Parameters specific to TCP health check. */
-  tcpConfig?: HealthChecksCreateResponseTcpConfig | null;
-  /** The timeout (in seconds) before marking the health check as failed. */
-  timeout?: number | null;
-  /** The protocol to use for the health check. Currently supported protocols are 'HTTP', 'HTTPS' and 'TCP'. */
-  type?: string | null;
 }
 export const HealthChecksCreateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -587,17 +604,6 @@ export const HealthChecksCreateResponse = /*@__PURE__*/ S.suspend(() =>
         T.Body("http_config"),
       ),
     ),
-    interval: S.optional(S.NullOr(S.Number)),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-    name: S.optional(S.NullOr(S.String)),
-    retries: S.optional(S.NullOr(S.Number)),
-    status: S.optional(S.NullOr(HealthChecksCreateResponseStatus)),
-    suspended: S.optional(S.NullOr(S.Boolean)),
-    tcpConfig: S.optional(
-      S.NullOr(HealthChecksCreateResponseTcpConfig).pipe(T.Body("tcp_config")),
-    ),
-    timeout: S.optional(S.NullOr(S.Number)),
-    type: S.optional(S.NullOr(S.String)),
   }),
 ).annotate({
   identifier: "HealthChecksCreateResponse",
@@ -685,12 +691,33 @@ export const HealthChecksEditRequestHttpConfigHeaderMap =
 export type HealthChecksEditRequestHttpConfigMethod = "GET" | "HEAD";
 export const HealthChecksEditRequestHttpConfigMethod = /*@__PURE__*/ S.String;
 
+export type HealthChecksEditRequestHttpConfigTcpConfigMethod =
+  "connection_established";
+export const HealthChecksEditRequestHttpConfigTcpConfigMethod =
+  /*@__PURE__*/ S.String;
+
+export interface HealthChecksEditRequestHttpConfigTcpConfig {
+  /** The TCP connection method to use for the health check. */
+  method?: HealthChecksEditRequestHttpConfigTcpConfigMethod | (string & {});
+  /** Port number to connect to for the health check. Defaults to 80. */
+  port?: number;
+}
+export const HealthChecksEditRequestHttpConfigTcpConfig =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      method: S.optional(HealthChecksEditRequestHttpConfigTcpConfigMethod),
+      port: S.optional(S.Number),
+    }),
+  ).annotate({
+    identifier: "HealthChecksEditRequestHttpConfigTcpConfig",
+  }) as any as S.Schema<HealthChecksEditRequestHttpConfigTcpConfig>;
+
 export interface HealthChecksEditRequestHttpConfig {
   /** Do not validate the certificate when the health check uses HTTPS. */
   allowInsecure?: boolean;
   /** A case-insensitive sub-string to look for in the response body. If this string is not found, the origin will be marked as unhealthy. */
   expectedBody?: string;
-  /** The expected HTTP response codes (e.g. "200") or code ranges (e.g. "2xx" for all codes starting with 2) of the health check. */
+  /** The expected HTTP response codes (e.g. “200”) or code ranges (e.g. “2xx” for all codes starting with 2) of the health check. */
   expectedCodes?: HealthChecksEditRequestHttpConfigExpectedCodesList;
   /** Follow redirects if the origin returns a 3xx status code. */
   followRedirects?: boolean;
@@ -702,6 +729,18 @@ export interface HealthChecksEditRequestHttpConfig {
   path?: string;
   /** Port number to connect to for the health check. Defaults to 80 if type is HTTP or 443 if type is HTTPS. */
   port?: number;
+  /** The interval between each health check. Shorter intervals may give quicker notifications if the origin status changes, but will increase load on the origin as we check from multiple locations. */
+  interval?: number;
+  /** The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately. */
+  retries?: number;
+  /** If suspended, no health checks are sent to the origin. */
+  suspended?: boolean;
+  /** Parameters specific to TCP health check. */
+  tcpConfig?: HealthChecksEditRequestHttpConfigTcpConfig;
+  /** The timeout (in seconds) before marking the health check as failed. */
+  timeout?: number;
+  /** The protocol to use for the health check. Currently supported protocols are ‘HTTP’, ‘HTTPS’ and ‘TCP’. */
+  type?: string;
 }
 export const HealthChecksEditRequestHttpConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -717,28 +756,18 @@ export const HealthChecksEditRequestHttpConfig = /*@__PURE__*/ S.suspend(() =>
     method: S.optional(HealthChecksEditRequestHttpConfigMethod),
     path: S.optional(S.String),
     port: S.optional(S.Number),
+    interval: S.optional(S.Number),
+    retries: S.optional(S.Number),
+    suspended: S.optional(S.Boolean),
+    tcpConfig: S.optional(
+      HealthChecksEditRequestHttpConfigTcpConfig.pipe(T.Body("tcp_config")),
+    ),
+    timeout: S.optional(S.Number),
+    type: S.optional(S.String),
   }),
 ).annotate({
   identifier: "HealthChecksEditRequestHttpConfig",
 }) as any as S.Schema<HealthChecksEditRequestHttpConfig>;
-
-export type HealthChecksEditRequestTcpConfigMethod = "connection_established";
-export const HealthChecksEditRequestTcpConfigMethod = /*@__PURE__*/ S.String;
-
-export interface HealthChecksEditRequestTcpConfig {
-  /** The TCP connection method to use for the health check. */
-  method?: HealthChecksEditRequestTcpConfigMethod | (string & {});
-  /** Port number to connect to for the health check. Defaults to 80. */
-  port?: number;
-}
-export const HealthChecksEditRequestTcpConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    method: S.optional(HealthChecksEditRequestTcpConfigMethod),
-    port: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "HealthChecksEditRequestTcpConfig",
-}) as any as S.Schema<HealthChecksEditRequestTcpConfig>;
 
 export interface HealthChecksEditRequest {
   /** Identifier. */
@@ -759,18 +788,6 @@ export interface HealthChecksEditRequest {
   description?: string;
   /** Parameters specific to an HTTP or HTTPS health check. */
   httpConfig?: HealthChecksEditRequestHttpConfig;
-  /** The interval between each health check. Shorter intervals may give quicker notifications if the origin status changes, but will increase load on the origin as we check from multiple locations. */
-  interval?: number;
-  /** The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately. */
-  retries?: number;
-  /** If suspended, no health checks are sent to the origin. */
-  suspended?: boolean;
-  /** Parameters specific to TCP health check. */
-  tcpConfig?: HealthChecksEditRequestTcpConfig;
-  /** The timeout (in seconds) before marking the health check as failed. */
-  timeout?: number;
-  /** The protocol to use for the health check. Currently supported protocols are 'HTTP', 'HTTPS' and 'TCP'. */
-  type?: string;
 }
 export const HealthChecksEditRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -789,14 +806,6 @@ export const HealthChecksEditRequest = /*@__PURE__*/ S.suspend(() =>
     httpConfig: S.optional(
       HealthChecksEditRequestHttpConfig.pipe(T.Body("http_config")),
     ),
-    interval: S.optional(S.Number),
-    retries: S.optional(S.Number),
-    suspended: S.optional(S.Boolean),
-    tcpConfig: S.optional(
-      HealthChecksEditRequestTcpConfig.pipe(T.Body("tcp_config")),
-    ),
-    timeout: S.optional(S.Number),
-    type: S.optional(S.String),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -855,12 +864,42 @@ export const HealthChecksEditResponseHttpConfigHeaderMap =
 export type HealthChecksEditResponseHttpConfigMethod = "GET" | "HEAD";
 export const HealthChecksEditResponseHttpConfigMethod = /*@__PURE__*/ S.String;
 
+export type HealthChecksEditResponseHttpConfigStatus =
+  | "unknown"
+  | "healthy"
+  | "unhealthy"
+  | "suspended";
+export const HealthChecksEditResponseHttpConfigStatus = /*@__PURE__*/ S.String;
+
+export type HealthChecksEditResponseHttpConfigTcpConfigMethod =
+  "connection_established";
+export const HealthChecksEditResponseHttpConfigTcpConfigMethod =
+  /*@__PURE__*/ S.String;
+
+export interface HealthChecksEditResponseHttpConfigTcpConfig {
+  /** The TCP connection method to use for the health check. */
+  method?: HealthChecksEditResponseHttpConfigTcpConfigMethod | null;
+  /** Port number to connect to for the health check. Defaults to 80. */
+  port?: number | null;
+}
+export const HealthChecksEditResponseHttpConfigTcpConfig =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      method: S.optional(
+        S.NullOr(HealthChecksEditResponseHttpConfigTcpConfigMethod),
+      ),
+      port: S.optional(S.NullOr(S.Number)),
+    }),
+  ).annotate({
+    identifier: "HealthChecksEditResponseHttpConfigTcpConfig",
+  }) as any as S.Schema<HealthChecksEditResponseHttpConfigTcpConfig>;
+
 export interface HealthChecksEditResponseHttpConfig {
   /** Do not validate the certificate when the health check uses HTTPS. */
   allowInsecure?: boolean | null;
   /** A case-insensitive sub-string to look for in the response body. If this string is not found, the origin will be marked as unhealthy. */
   expectedBody?: string | null;
-  /** The expected HTTP response codes (e.g. "200") or code ranges (e.g. "2xx" for all codes starting with 2) of the health check. */
+  /** The expected HTTP response codes (e.g. “200”) or code ranges (e.g. “2xx” for all codes starting with 2) of the health check. */
   expectedCodes?: HealthChecksEditResponseHttpConfigExpectedCodesList | null;
   /** Follow redirects if the origin returns a 3xx status code. */
   followRedirects?: boolean | null;
@@ -872,6 +911,24 @@ export interface HealthChecksEditResponseHttpConfig {
   path?: string | null;
   /** Port number to connect to for the health check. Defaults to 80 if type is HTTP or 443 if type is HTTPS. */
   port?: number | null;
+  /** The interval between each health check. Shorter intervals may give quicker notifications if the origin status changes, but will increase load on the origin as we check from multiple locations. */
+  interval?: number | null;
+  /** formatdate-time */
+  modifiedOn?: string | null;
+  /** A short name to identify the health check. Only alphanumeric characters, hyphens and underscores are allowed. */
+  name?: string | null;
+  /** The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately. */
+  retries?: number | null;
+  /** The current status of the origin server according to the health check. */
+  status?: HealthChecksEditResponseHttpConfigStatus | null;
+  /** If suspended, no health checks are sent to the origin. */
+  suspended?: boolean | null;
+  /** Parameters specific to TCP health check. */
+  tcpConfig?: HealthChecksEditResponseHttpConfigTcpConfig | null;
+  /** The timeout (in seconds) before marking the health check as failed. */
+  timeout?: number | null;
+  /** The protocol to use for the health check. Currently supported protocols are ‘HTTP’, ‘HTTPS’ and ‘TCP’. */
+  type?: string | null;
 }
 export const HealthChecksEditResponseHttpConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -891,35 +948,23 @@ export const HealthChecksEditResponseHttpConfig = /*@__PURE__*/ S.suspend(() =>
     method: S.optional(S.NullOr(HealthChecksEditResponseHttpConfigMethod)),
     path: S.optional(S.NullOr(S.String)),
     port: S.optional(S.NullOr(S.Number)),
+    interval: S.optional(S.NullOr(S.Number)),
+    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
+    name: S.optional(S.NullOr(S.String)),
+    retries: S.optional(S.NullOr(S.Number)),
+    status: S.optional(S.NullOr(HealthChecksEditResponseHttpConfigStatus)),
+    suspended: S.optional(S.NullOr(S.Boolean)),
+    tcpConfig: S.optional(
+      S.NullOr(HealthChecksEditResponseHttpConfigTcpConfig).pipe(
+        T.Body("tcp_config"),
+      ),
+    ),
+    timeout: S.optional(S.NullOr(S.Number)),
+    type: S.optional(S.NullOr(S.String)),
   }),
 ).annotate({
   identifier: "HealthChecksEditResponseHttpConfig",
 }) as any as S.Schema<HealthChecksEditResponseHttpConfig>;
-
-export type HealthChecksEditResponseStatus =
-  | "unknown"
-  | "healthy"
-  | "unhealthy"
-  | "suspended";
-export const HealthChecksEditResponseStatus = /*@__PURE__*/ S.String;
-
-export type HealthChecksEditResponseTcpConfigMethod = "connection_established";
-export const HealthChecksEditResponseTcpConfigMethod = /*@__PURE__*/ S.String;
-
-export interface HealthChecksEditResponseTcpConfig {
-  /** The TCP connection method to use for the health check. */
-  method?: HealthChecksEditResponseTcpConfigMethod | null;
-  /** Port number to connect to for the health check. Defaults to 80. */
-  port?: number | null;
-}
-export const HealthChecksEditResponseTcpConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    method: S.optional(S.NullOr(HealthChecksEditResponseTcpConfigMethod)),
-    port: S.optional(S.NullOr(S.Number)),
-  }),
-).annotate({
-  identifier: "HealthChecksEditResponseTcpConfig",
-}) as any as S.Schema<HealthChecksEditResponseTcpConfig>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface HealthChecksEditResponse {
@@ -933,6 +978,7 @@ export interface HealthChecksEditResponse {
   consecutiveFails?: number | null;
   /** The number of consecutive successes required from a health check before changing the health to healthy. */
   consecutiveSuccesses?: number | null;
+  /** formatdate-time */
   createdOn?: string | null;
   /** A human-readable description of the health check. */
   description?: string | null;
@@ -940,23 +986,6 @@ export interface HealthChecksEditResponse {
   failureReason?: string | null;
   /** Parameters specific to an HTTP or HTTPS health check. */
   httpConfig?: HealthChecksEditResponseHttpConfig | null;
-  /** The interval between each health check. Shorter intervals may give quicker notifications if the origin status changes, but will increase load on the origin as we check from multiple locations. */
-  interval?: number | null;
-  modifiedOn?: string | null;
-  /** A short name to identify the health check. Only alphanumeric characters, hyphens and underscores are allowed. */
-  name?: string | null;
-  /** The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately. */
-  retries?: number | null;
-  /** The current status of the origin server according to the health check. */
-  status?: HealthChecksEditResponseStatus | null;
-  /** If suspended, no health checks are sent to the origin. */
-  suspended?: boolean | null;
-  /** Parameters specific to TCP health check. */
-  tcpConfig?: HealthChecksEditResponseTcpConfig | null;
-  /** The timeout (in seconds) before marking the health check as failed. */
-  timeout?: number | null;
-  /** The protocol to use for the health check. Currently supported protocols are 'HTTP', 'HTTPS' and 'TCP'. */
-  type?: string | null;
 }
 export const HealthChecksEditResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -981,17 +1010,6 @@ export const HealthChecksEditResponse = /*@__PURE__*/ S.suspend(() =>
     httpConfig: S.optional(
       S.NullOr(HealthChecksEditResponseHttpConfig).pipe(T.Body("http_config")),
     ),
-    interval: S.optional(S.NullOr(S.Number)),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-    name: S.optional(S.NullOr(S.String)),
-    retries: S.optional(S.NullOr(S.Number)),
-    status: S.optional(S.NullOr(HealthChecksEditResponseStatus)),
-    suspended: S.optional(S.NullOr(S.Boolean)),
-    tcpConfig: S.optional(
-      S.NullOr(HealthChecksEditResponseTcpConfig).pipe(T.Body("tcp_config")),
-    ),
-    timeout: S.optional(S.NullOr(S.Number)),
-    type: S.optional(S.NullOr(S.String)),
   }),
 ).annotate({
   identifier: "HealthChecksEditResponse",
@@ -1065,12 +1083,42 @@ export const HealthChecksGetResponseHttpConfigHeaderMap =
 export type HealthChecksGetResponseHttpConfigMethod = "GET" | "HEAD";
 export const HealthChecksGetResponseHttpConfigMethod = /*@__PURE__*/ S.String;
 
+export type HealthChecksGetResponseHttpConfigStatus =
+  | "unknown"
+  | "healthy"
+  | "unhealthy"
+  | "suspended";
+export const HealthChecksGetResponseHttpConfigStatus = /*@__PURE__*/ S.String;
+
+export type HealthChecksGetResponseHttpConfigTcpConfigMethod =
+  "connection_established";
+export const HealthChecksGetResponseHttpConfigTcpConfigMethod =
+  /*@__PURE__*/ S.String;
+
+export interface HealthChecksGetResponseHttpConfigTcpConfig {
+  /** The TCP connection method to use for the health check. */
+  method?: HealthChecksGetResponseHttpConfigTcpConfigMethod | null;
+  /** Port number to connect to for the health check. Defaults to 80. */
+  port?: number | null;
+}
+export const HealthChecksGetResponseHttpConfigTcpConfig =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      method: S.optional(
+        S.NullOr(HealthChecksGetResponseHttpConfigTcpConfigMethod),
+      ),
+      port: S.optional(S.NullOr(S.Number)),
+    }),
+  ).annotate({
+    identifier: "HealthChecksGetResponseHttpConfigTcpConfig",
+  }) as any as S.Schema<HealthChecksGetResponseHttpConfigTcpConfig>;
+
 export interface HealthChecksGetResponseHttpConfig {
   /** Do not validate the certificate when the health check uses HTTPS. */
   allowInsecure?: boolean | null;
   /** A case-insensitive sub-string to look for in the response body. If this string is not found, the origin will be marked as unhealthy. */
   expectedBody?: string | null;
-  /** The expected HTTP response codes (e.g. "200") or code ranges (e.g. "2xx" for all codes starting with 2) of the health check. */
+  /** The expected HTTP response codes (e.g. “200”) or code ranges (e.g. “2xx” for all codes starting with 2) of the health check. */
   expectedCodes?: HealthChecksGetResponseHttpConfigExpectedCodesList | null;
   /** Follow redirects if the origin returns a 3xx status code. */
   followRedirects?: boolean | null;
@@ -1082,6 +1130,24 @@ export interface HealthChecksGetResponseHttpConfig {
   path?: string | null;
   /** Port number to connect to for the health check. Defaults to 80 if type is HTTP or 443 if type is HTTPS. */
   port?: number | null;
+  /** The interval between each health check. Shorter intervals may give quicker notifications if the origin status changes, but will increase load on the origin as we check from multiple locations. */
+  interval?: number | null;
+  /** formatdate-time */
+  modifiedOn?: string | null;
+  /** A short name to identify the health check. Only alphanumeric characters, hyphens and underscores are allowed. */
+  name?: string | null;
+  /** The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately. */
+  retries?: number | null;
+  /** The current status of the origin server according to the health check. */
+  status?: HealthChecksGetResponseHttpConfigStatus | null;
+  /** If suspended, no health checks are sent to the origin. */
+  suspended?: boolean | null;
+  /** Parameters specific to TCP health check. */
+  tcpConfig?: HealthChecksGetResponseHttpConfigTcpConfig | null;
+  /** The timeout (in seconds) before marking the health check as failed. */
+  timeout?: number | null;
+  /** The protocol to use for the health check. Currently supported protocols are ‘HTTP’, ‘HTTPS’ and ‘TCP’. */
+  type?: string | null;
 }
 export const HealthChecksGetResponseHttpConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1101,35 +1167,23 @@ export const HealthChecksGetResponseHttpConfig = /*@__PURE__*/ S.suspend(() =>
     method: S.optional(S.NullOr(HealthChecksGetResponseHttpConfigMethod)),
     path: S.optional(S.NullOr(S.String)),
     port: S.optional(S.NullOr(S.Number)),
+    interval: S.optional(S.NullOr(S.Number)),
+    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
+    name: S.optional(S.NullOr(S.String)),
+    retries: S.optional(S.NullOr(S.Number)),
+    status: S.optional(S.NullOr(HealthChecksGetResponseHttpConfigStatus)),
+    suspended: S.optional(S.NullOr(S.Boolean)),
+    tcpConfig: S.optional(
+      S.NullOr(HealthChecksGetResponseHttpConfigTcpConfig).pipe(
+        T.Body("tcp_config"),
+      ),
+    ),
+    timeout: S.optional(S.NullOr(S.Number)),
+    type: S.optional(S.NullOr(S.String)),
   }),
 ).annotate({
   identifier: "HealthChecksGetResponseHttpConfig",
 }) as any as S.Schema<HealthChecksGetResponseHttpConfig>;
-
-export type HealthChecksGetResponseStatus =
-  | "unknown"
-  | "healthy"
-  | "unhealthy"
-  | "suspended";
-export const HealthChecksGetResponseStatus = /*@__PURE__*/ S.String;
-
-export type HealthChecksGetResponseTcpConfigMethod = "connection_established";
-export const HealthChecksGetResponseTcpConfigMethod = /*@__PURE__*/ S.String;
-
-export interface HealthChecksGetResponseTcpConfig {
-  /** The TCP connection method to use for the health check. */
-  method?: HealthChecksGetResponseTcpConfigMethod | null;
-  /** Port number to connect to for the health check. Defaults to 80. */
-  port?: number | null;
-}
-export const HealthChecksGetResponseTcpConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    method: S.optional(S.NullOr(HealthChecksGetResponseTcpConfigMethod)),
-    port: S.optional(S.NullOr(S.Number)),
-  }),
-).annotate({
-  identifier: "HealthChecksGetResponseTcpConfig",
-}) as any as S.Schema<HealthChecksGetResponseTcpConfig>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface HealthChecksGetResponse {
@@ -1143,6 +1197,7 @@ export interface HealthChecksGetResponse {
   consecutiveFails?: number | null;
   /** The number of consecutive successes required from a health check before changing the health to healthy. */
   consecutiveSuccesses?: number | null;
+  /** formatdate-time */
   createdOn?: string | null;
   /** A human-readable description of the health check. */
   description?: string | null;
@@ -1150,23 +1205,6 @@ export interface HealthChecksGetResponse {
   failureReason?: string | null;
   /** Parameters specific to an HTTP or HTTPS health check. */
   httpConfig?: HealthChecksGetResponseHttpConfig | null;
-  /** The interval between each health check. Shorter intervals may give quicker notifications if the origin status changes, but will increase load on the origin as we check from multiple locations. */
-  interval?: number | null;
-  modifiedOn?: string | null;
-  /** A short name to identify the health check. Only alphanumeric characters, hyphens and underscores are allowed. */
-  name?: string | null;
-  /** The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately. */
-  retries?: number | null;
-  /** The current status of the origin server according to the health check. */
-  status?: HealthChecksGetResponseStatus | null;
-  /** If suspended, no health checks are sent to the origin. */
-  suspended?: boolean | null;
-  /** Parameters specific to TCP health check. */
-  tcpConfig?: HealthChecksGetResponseTcpConfig | null;
-  /** The timeout (in seconds) before marking the health check as failed. */
-  timeout?: number | null;
-  /** The protocol to use for the health check. Currently supported protocols are 'HTTP', 'HTTPS' and 'TCP'. */
-  type?: string | null;
 }
 export const HealthChecksGetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1191,17 +1229,6 @@ export const HealthChecksGetResponse = /*@__PURE__*/ S.suspend(() =>
     httpConfig: S.optional(
       S.NullOr(HealthChecksGetResponseHttpConfig).pipe(T.Body("http_config")),
     ),
-    interval: S.optional(S.NullOr(S.Number)),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-    name: S.optional(S.NullOr(S.String)),
-    retries: S.optional(S.NullOr(S.Number)),
-    status: S.optional(S.NullOr(HealthChecksGetResponseStatus)),
-    suspended: S.optional(S.NullOr(S.Boolean)),
-    tcpConfig: S.optional(
-      S.NullOr(HealthChecksGetResponseTcpConfig).pipe(T.Body("tcp_config")),
-    ),
-    timeout: S.optional(S.NullOr(S.Number)),
-    type: S.optional(S.NullOr(S.String)),
   }),
 ).annotate({
   identifier: "HealthChecksGetResponse",
@@ -1283,12 +1310,43 @@ export type HealthChecksListResultItemHttpConfigMethod = "GET" | "HEAD";
 export const HealthChecksListResultItemHttpConfigMethod =
   /*@__PURE__*/ S.String;
 
+export type HealthChecksListResultItemHttpConfigStatus =
+  | "unknown"
+  | "healthy"
+  | "unhealthy"
+  | "suspended";
+export const HealthChecksListResultItemHttpConfigStatus =
+  /*@__PURE__*/ S.String;
+
+export type HealthChecksListResultItemHttpConfigTcpConfigMethod =
+  "connection_established";
+export const HealthChecksListResultItemHttpConfigTcpConfigMethod =
+  /*@__PURE__*/ S.String;
+
+export interface HealthChecksListResultItemHttpConfigTcpConfig {
+  /** The TCP connection method to use for the health check. */
+  method?: HealthChecksListResultItemHttpConfigTcpConfigMethod | null;
+  /** Port number to connect to for the health check. Defaults to 80. */
+  port?: number | null;
+}
+export const HealthChecksListResultItemHttpConfigTcpConfig =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      method: S.optional(
+        S.NullOr(HealthChecksListResultItemHttpConfigTcpConfigMethod),
+      ),
+      port: S.optional(S.NullOr(S.Number)),
+    }),
+  ).annotate({
+    identifier: "HealthChecksListResultItemHttpConfigTcpConfig",
+  }) as any as S.Schema<HealthChecksListResultItemHttpConfigTcpConfig>;
+
 export interface HealthChecksListResultItemHttpConfig {
   /** Do not validate the certificate when the health check uses HTTPS. */
   allowInsecure?: boolean | null;
   /** A case-insensitive sub-string to look for in the response body. If this string is not found, the origin will be marked as unhealthy. */
   expectedBody?: string | null;
-  /** The expected HTTP response codes (e.g. "200") or code ranges (e.g. "2xx" for all codes starting with 2) of the health check. */
+  /** The expected HTTP response codes (e.g. “200”) or code ranges (e.g. “2xx” for all codes starting with 2) of the health check. */
   expectedCodes?: HealthChecksListResultItemHttpConfigExpectedCodesList | null;
   /** Follow redirects if the origin returns a 3xx status code. */
   followRedirects?: boolean | null;
@@ -1300,6 +1358,24 @@ export interface HealthChecksListResultItemHttpConfig {
   path?: string | null;
   /** Port number to connect to for the health check. Defaults to 80 if type is HTTP or 443 if type is HTTPS. */
   port?: number | null;
+  /** The interval between each health check. Shorter intervals may give quicker notifications if the origin status changes, but will increase load on the origin as we check from multiple locations. */
+  interval?: number | null;
+  /** formatdate-time */
+  modifiedOn?: string | null;
+  /** A short name to identify the health check. Only alphanumeric characters, hyphens and underscores are allowed. */
+  name?: string | null;
+  /** The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately. */
+  retries?: number | null;
+  /** The current status of the origin server according to the health check. */
+  status?: HealthChecksListResultItemHttpConfigStatus | null;
+  /** If suspended, no health checks are sent to the origin. */
+  suspended?: boolean | null;
+  /** Parameters specific to TCP health check. */
+  tcpConfig?: HealthChecksListResultItemHttpConfigTcpConfig | null;
+  /** The timeout (in seconds) before marking the health check as failed. */
+  timeout?: number | null;
+  /** The protocol to use for the health check. Currently supported protocols are ‘HTTP’, ‘HTTPS’ and ‘TCP’. */
+  type?: string | null;
 }
 export const HealthChecksListResultItemHttpConfig = /*@__PURE__*/ S.suspend(
   () =>
@@ -1324,36 +1400,23 @@ export const HealthChecksListResultItemHttpConfig = /*@__PURE__*/ S.suspend(
       method: S.optional(S.NullOr(HealthChecksListResultItemHttpConfigMethod)),
       path: S.optional(S.NullOr(S.String)),
       port: S.optional(S.NullOr(S.Number)),
+      interval: S.optional(S.NullOr(S.Number)),
+      modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
+      name: S.optional(S.NullOr(S.String)),
+      retries: S.optional(S.NullOr(S.Number)),
+      status: S.optional(S.NullOr(HealthChecksListResultItemHttpConfigStatus)),
+      suspended: S.optional(S.NullOr(S.Boolean)),
+      tcpConfig: S.optional(
+        S.NullOr(HealthChecksListResultItemHttpConfigTcpConfig).pipe(
+          T.Body("tcp_config"),
+        ),
+      ),
+      timeout: S.optional(S.NullOr(S.Number)),
+      type: S.optional(S.NullOr(S.String)),
     }),
 ).annotate({
   identifier: "HealthChecksListResultItemHttpConfig",
 }) as any as S.Schema<HealthChecksListResultItemHttpConfig>;
-
-export type HealthChecksListResultItemStatus =
-  | "unknown"
-  | "healthy"
-  | "unhealthy"
-  | "suspended";
-export const HealthChecksListResultItemStatus = /*@__PURE__*/ S.String;
-
-export type HealthChecksListResultItemTcpConfigMethod =
-  "connection_established";
-export const HealthChecksListResultItemTcpConfigMethod = /*@__PURE__*/ S.String;
-
-export interface HealthChecksListResultItemTcpConfig {
-  /** The TCP connection method to use for the health check. */
-  method?: HealthChecksListResultItemTcpConfigMethod | null;
-  /** Port number to connect to for the health check. Defaults to 80. */
-  port?: number | null;
-}
-export const HealthChecksListResultItemTcpConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    method: S.optional(S.NullOr(HealthChecksListResultItemTcpConfigMethod)),
-    port: S.optional(S.NullOr(S.Number)),
-  }),
-).annotate({
-  identifier: "HealthChecksListResultItemTcpConfig",
-}) as any as S.Schema<HealthChecksListResultItemTcpConfig>;
 
 export interface HealthChecksListResultItem {
   /** Identifier. */
@@ -1366,6 +1429,7 @@ export interface HealthChecksListResultItem {
   consecutiveFails?: number | null;
   /** The number of consecutive successes required from a health check before changing the health to healthy. */
   consecutiveSuccesses?: number | null;
+  /** formatdate-time */
   createdOn?: string | null;
   /** A human-readable description of the health check. */
   description?: string | null;
@@ -1373,23 +1437,6 @@ export interface HealthChecksListResultItem {
   failureReason?: string | null;
   /** Parameters specific to an HTTP or HTTPS health check. */
   httpConfig?: HealthChecksListResultItemHttpConfig | null;
-  /** The interval between each health check. Shorter intervals may give quicker notifications if the origin status changes, but will increase load on the origin as we check from multiple locations. */
-  interval?: number | null;
-  modifiedOn?: string | null;
-  /** A short name to identify the health check. Only alphanumeric characters, hyphens and underscores are allowed. */
-  name?: string | null;
-  /** The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately. */
-  retries?: number | null;
-  /** The current status of the origin server according to the health check. */
-  status?: HealthChecksListResultItemStatus | null;
-  /** If suspended, no health checks are sent to the origin. */
-  suspended?: boolean | null;
-  /** Parameters specific to TCP health check. */
-  tcpConfig?: HealthChecksListResultItemTcpConfig | null;
-  /** The timeout (in seconds) before marking the health check as failed. */
-  timeout?: number | null;
-  /** The protocol to use for the health check. Currently supported protocols are 'HTTP', 'HTTPS' and 'TCP'. */
-  type?: string | null;
 }
 export const HealthChecksListResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1416,17 +1463,6 @@ export const HealthChecksListResultItem = /*@__PURE__*/ S.suspend(() =>
         T.Body("http_config"),
       ),
     ),
-    interval: S.optional(S.NullOr(S.Number)),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-    name: S.optional(S.NullOr(S.String)),
-    retries: S.optional(S.NullOr(S.Number)),
-    status: S.optional(S.NullOr(HealthChecksListResultItemStatus)),
-    suspended: S.optional(S.NullOr(S.Boolean)),
-    tcpConfig: S.optional(
-      S.NullOr(HealthChecksListResultItemTcpConfig).pipe(T.Body("tcp_config")),
-    ),
-    timeout: S.optional(S.NullOr(S.Number)),
-    type: S.optional(S.NullOr(S.String)),
   }),
 ).annotate({
   identifier: "HealthChecksListResultItem",
@@ -1457,6 +1493,7 @@ export const HealthChecksUpdateRequestErrorsItemSource =
   }) as any as S.Schema<HealthChecksUpdateRequestErrorsItemSource>;
 
 export interface HealthChecksUpdateRequestErrorsItem {
+  /** minimum1000 */
   code: number;
   message: string;
   documentationUrl?: string;
@@ -1479,28 +1516,20 @@ export const HealthChecksUpdateRequestErrorsList = /*@__PURE__*/ S.Array(
   HealthChecksUpdateRequestErrorsItem,
 ) as any as S.Schema<HealthChecksUpdateRequestErrorsList>;
 
-export interface HealthChecksUpdateRequestMessagesItem {
-  code: number;
-  message: string;
-  documentationUrl?: string;
-  source?: unknown;
-}
-export const HealthChecksUpdateRequestMessagesItem = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      code: S.Number,
-      message: S.String,
-      documentationUrl: S.optional(S.String.pipe(T.Body("documentation_url"))),
-      source: S.optional(S.Unknown),
-    }),
-).annotate({
-  identifier: "HealthChecksUpdateRequestMessagesItem",
-}) as any as S.Schema<HealthChecksUpdateRequestMessagesItem>;
+export type HealthChecksUpdateRequestMessagesItemSource =
+  HealthChecksUpdateRequestErrorsItemSource;
+export const HealthChecksUpdateRequestMessagesItemSource =
+  HealthChecksUpdateRequestErrorsItemSource;
+
+export type HealthChecksUpdateRequestMessagesItem =
+  HealthChecksUpdateRequestErrorsItem;
+export const HealthChecksUpdateRequestMessagesItem =
+  HealthChecksUpdateRequestErrorsItem;
 
 export type HealthChecksUpdateRequestMessagesList =
-  Array<HealthChecksUpdateRequestMessagesItem>;
+  Array<HealthChecksUpdateRequestErrorsItem>;
 export const HealthChecksUpdateRequestMessagesList = /*@__PURE__*/ S.Array(
-  HealthChecksUpdateRequestMessagesItem,
+  HealthChecksUpdateRequestErrorsItem,
 ) as any as S.Schema<HealthChecksUpdateRequestMessagesList>;
 
 export type HealthChecksUpdateRequestResultCheckRegionsItem =
@@ -1558,12 +1587,45 @@ export type HealthChecksUpdateRequestResultHttpConfigMethod = "GET" | "HEAD";
 export const HealthChecksUpdateRequestResultHttpConfigMethod =
   /*@__PURE__*/ S.String;
 
+export type HealthChecksUpdateRequestResultHttpConfigStatus =
+  | "unknown"
+  | "healthy"
+  | "unhealthy"
+  | "suspended";
+export const HealthChecksUpdateRequestResultHttpConfigStatus =
+  /*@__PURE__*/ S.String;
+
+export type HealthChecksUpdateRequestResultHttpConfigTcpConfigMethod =
+  "connection_established";
+export const HealthChecksUpdateRequestResultHttpConfigTcpConfigMethod =
+  /*@__PURE__*/ S.String;
+
+export interface HealthChecksUpdateRequestResultHttpConfigTcpConfig {
+  /** The TCP connection method to use for the health check. */
+  method?:
+    | HealthChecksUpdateRequestResultHttpConfigTcpConfigMethod
+    | (string & {});
+  /** Port number to connect to for the health check. Defaults to 80. */
+  port?: number;
+}
+export const HealthChecksUpdateRequestResultHttpConfigTcpConfig =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      method: S.optional(
+        HealthChecksUpdateRequestResultHttpConfigTcpConfigMethod,
+      ),
+      port: S.optional(S.Number),
+    }),
+  ).annotate({
+    identifier: "HealthChecksUpdateRequestResultHttpConfigTcpConfig",
+  }) as any as S.Schema<HealthChecksUpdateRequestResultHttpConfigTcpConfig>;
+
 export interface HealthChecksUpdateRequestResultHttpConfig {
   /** Do not validate the certificate when the health check uses HTTPS. */
   allowInsecure?: boolean;
   /** A case-insensitive sub-string to look for in the response body. If this string is not found, the origin will be marked as unhealthy. */
   expectedBody?: string;
-  /** The expected HTTP response codes (e.g. "200") or code ranges (e.g. "2xx" for all codes starting with 2) of the health check. */
+  /** The expected HTTP response codes (e.g. “200”) or code ranges (e.g. “2xx” for all codes starting with 2) of the health check. */
   expectedCodes?: HealthChecksUpdateRequestResultHttpConfigExpectedCodesList;
   /** Follow redirects if the origin returns a 3xx status code. */
   followRedirects?: boolean;
@@ -1575,6 +1637,24 @@ export interface HealthChecksUpdateRequestResultHttpConfig {
   path?: string;
   /** Port number to connect to for the health check. Defaults to 80 if type is HTTP or 443 if type is HTTPS. */
   port?: number;
+  /** The interval between each health check. Shorter intervals may give quicker notifications if the origin status changes, but will increase load on the origin as we check from multiple locations. */
+  interval?: number;
+  /** formatdate-time */
+  modifiedOn?: string;
+  /** A short name to identify the health check. Only alphanumeric characters, hyphens and underscores are allowed. */
+  name?: string;
+  /** The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately. */
+  retries?: number;
+  /** The current status of the origin server according to the health check. */
+  status?: HealthChecksUpdateRequestResultHttpConfigStatus | (string & {});
+  /** If suspended, no health checks are sent to the origin. */
+  suspended?: boolean;
+  /** Parameters specific to TCP health check. */
+  tcpConfig?: HealthChecksUpdateRequestResultHttpConfigTcpConfig;
+  /** The timeout (in seconds) before marking the health check as failed. */
+  timeout?: number;
+  /** The protocol to use for the health check. Currently supported protocols are ‘HTTP’, ‘HTTPS’ and ‘TCP’. */
+  type?: string;
 }
 export const HealthChecksUpdateRequestResultHttpConfig =
   /*@__PURE__*/ S.suspend(() =>
@@ -1591,38 +1671,23 @@ export const HealthChecksUpdateRequestResultHttpConfig =
       method: S.optional(HealthChecksUpdateRequestResultHttpConfigMethod),
       path: S.optional(S.String),
       port: S.optional(S.Number),
+      interval: S.optional(S.Number),
+      modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
+      name: S.optional(S.String),
+      retries: S.optional(S.Number),
+      status: S.optional(HealthChecksUpdateRequestResultHttpConfigStatus),
+      suspended: S.optional(S.Boolean),
+      tcpConfig: S.optional(
+        HealthChecksUpdateRequestResultHttpConfigTcpConfig.pipe(
+          T.Body("tcp_config"),
+        ),
+      ),
+      timeout: S.optional(S.Number),
+      type: S.optional(S.String),
     }),
   ).annotate({
     identifier: "HealthChecksUpdateRequestResultHttpConfig",
   }) as any as S.Schema<HealthChecksUpdateRequestResultHttpConfig>;
-
-export type HealthChecksUpdateRequestResultStatus =
-  | "unknown"
-  | "healthy"
-  | "unhealthy"
-  | "suspended";
-export const HealthChecksUpdateRequestResultStatus = /*@__PURE__*/ S.String;
-
-export type HealthChecksUpdateRequestResultTcpConfigMethod =
-  "connection_established";
-export const HealthChecksUpdateRequestResultTcpConfigMethod =
-  /*@__PURE__*/ S.String;
-
-export interface HealthChecksUpdateRequestResultTcpConfig {
-  /** The TCP connection method to use for the health check. */
-  method?: HealthChecksUpdateRequestResultTcpConfigMethod | (string & {});
-  /** Port number to connect to for the health check. Defaults to 80. */
-  port?: number;
-}
-export const HealthChecksUpdateRequestResultTcpConfig = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      method: S.optional(HealthChecksUpdateRequestResultTcpConfigMethod),
-      port: S.optional(S.Number),
-    }),
-).annotate({
-  identifier: "HealthChecksUpdateRequestResultTcpConfig",
-}) as any as S.Schema<HealthChecksUpdateRequestResultTcpConfig>;
 
 export interface HealthChecksUpdateRequestResult {
   /** Identifier. */
@@ -1635,6 +1700,7 @@ export interface HealthChecksUpdateRequestResult {
   consecutiveFails?: number;
   /** The number of consecutive successes required from a health check before changing the health to healthy. */
   consecutiveSuccesses?: number;
+  /** formatdate-time */
   createdOn?: string;
   /** A human-readable description of the health check. */
   description?: string;
@@ -1642,23 +1708,6 @@ export interface HealthChecksUpdateRequestResult {
   failureReason?: string;
   /** Parameters specific to an HTTP or HTTPS health check. */
   httpConfig?: HealthChecksUpdateRequestResultHttpConfig;
-  /** The interval between each health check. Shorter intervals may give quicker notifications if the origin status changes, but will increase load on the origin as we check from multiple locations. */
-  interval?: number;
-  modifiedOn?: string;
-  /** A short name to identify the health check. Only alphanumeric characters, hyphens and underscores are allowed. */
-  name?: string;
-  /** The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately. */
-  retries?: number;
-  /** The current status of the origin server according to the health check. */
-  status?: HealthChecksUpdateRequestResultStatus | (string & {});
-  /** If suspended, no health checks are sent to the origin. */
-  suspended?: boolean;
-  /** Parameters specific to TCP health check. */
-  tcpConfig?: HealthChecksUpdateRequestResultTcpConfig;
-  /** The timeout (in seconds) before marking the health check as failed. */
-  timeout?: number;
-  /** The protocol to use for the health check. Currently supported protocols are 'HTTP', 'HTTPS' and 'TCP'. */
-  type?: string;
 }
 export const HealthChecksUpdateRequestResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1679,17 +1728,6 @@ export const HealthChecksUpdateRequestResult = /*@__PURE__*/ S.suspend(() =>
     httpConfig: S.optional(
       HealthChecksUpdateRequestResultHttpConfig.pipe(T.Body("http_config")),
     ),
-    interval: S.optional(S.Number),
-    modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
-    name: S.optional(S.String),
-    retries: S.optional(S.Number),
-    status: S.optional(HealthChecksUpdateRequestResultStatus),
-    suspended: S.optional(S.Boolean),
-    tcpConfig: S.optional(
-      HealthChecksUpdateRequestResultTcpConfig.pipe(T.Body("tcp_config")),
-    ),
-    timeout: S.optional(S.Number),
-    type: S.optional(S.String),
   }),
 ).annotate({
   identifier: "HealthChecksUpdateRequestResult",
@@ -1777,12 +1815,43 @@ export type HealthChecksUpdateResponseHttpConfigMethod = "GET" | "HEAD";
 export const HealthChecksUpdateResponseHttpConfigMethod =
   /*@__PURE__*/ S.String;
 
+export type HealthChecksUpdateResponseHttpConfigStatus =
+  | "unknown"
+  | "healthy"
+  | "unhealthy"
+  | "suspended";
+export const HealthChecksUpdateResponseHttpConfigStatus =
+  /*@__PURE__*/ S.String;
+
+export type HealthChecksUpdateResponseHttpConfigTcpConfigMethod =
+  "connection_established";
+export const HealthChecksUpdateResponseHttpConfigTcpConfigMethod =
+  /*@__PURE__*/ S.String;
+
+export interface HealthChecksUpdateResponseHttpConfigTcpConfig {
+  /** The TCP connection method to use for the health check. */
+  method?: HealthChecksUpdateResponseHttpConfigTcpConfigMethod | null;
+  /** Port number to connect to for the health check. Defaults to 80. */
+  port?: number | null;
+}
+export const HealthChecksUpdateResponseHttpConfigTcpConfig =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      method: S.optional(
+        S.NullOr(HealthChecksUpdateResponseHttpConfigTcpConfigMethod),
+      ),
+      port: S.optional(S.NullOr(S.Number)),
+    }),
+  ).annotate({
+    identifier: "HealthChecksUpdateResponseHttpConfigTcpConfig",
+  }) as any as S.Schema<HealthChecksUpdateResponseHttpConfigTcpConfig>;
+
 export interface HealthChecksUpdateResponseHttpConfig {
   /** Do not validate the certificate when the health check uses HTTPS. */
   allowInsecure?: boolean | null;
   /** A case-insensitive sub-string to look for in the response body. If this string is not found, the origin will be marked as unhealthy. */
   expectedBody?: string | null;
-  /** The expected HTTP response codes (e.g. "200") or code ranges (e.g. "2xx" for all codes starting with 2) of the health check. */
+  /** The expected HTTP response codes (e.g. “200”) or code ranges (e.g. “2xx” for all codes starting with 2) of the health check. */
   expectedCodes?: HealthChecksUpdateResponseHttpConfigExpectedCodesList | null;
   /** Follow redirects if the origin returns a 3xx status code. */
   followRedirects?: boolean | null;
@@ -1794,6 +1863,24 @@ export interface HealthChecksUpdateResponseHttpConfig {
   path?: string | null;
   /** Port number to connect to for the health check. Defaults to 80 if type is HTTP or 443 if type is HTTPS. */
   port?: number | null;
+  /** The interval between each health check. Shorter intervals may give quicker notifications if the origin status changes, but will increase load on the origin as we check from multiple locations. */
+  interval?: number | null;
+  /** formatdate-time */
+  modifiedOn?: string | null;
+  /** A short name to identify the health check. Only alphanumeric characters, hyphens and underscores are allowed. */
+  name?: string | null;
+  /** The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately. */
+  retries?: number | null;
+  /** The current status of the origin server according to the health check. */
+  status?: HealthChecksUpdateResponseHttpConfigStatus | null;
+  /** If suspended, no health checks are sent to the origin. */
+  suspended?: boolean | null;
+  /** Parameters specific to TCP health check. */
+  tcpConfig?: HealthChecksUpdateResponseHttpConfigTcpConfig | null;
+  /** The timeout (in seconds) before marking the health check as failed. */
+  timeout?: number | null;
+  /** The protocol to use for the health check. Currently supported protocols are ‘HTTP’, ‘HTTPS’ and ‘TCP’. */
+  type?: string | null;
 }
 export const HealthChecksUpdateResponseHttpConfig = /*@__PURE__*/ S.suspend(
   () =>
@@ -1818,36 +1905,23 @@ export const HealthChecksUpdateResponseHttpConfig = /*@__PURE__*/ S.suspend(
       method: S.optional(S.NullOr(HealthChecksUpdateResponseHttpConfigMethod)),
       path: S.optional(S.NullOr(S.String)),
       port: S.optional(S.NullOr(S.Number)),
+      interval: S.optional(S.NullOr(S.Number)),
+      modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
+      name: S.optional(S.NullOr(S.String)),
+      retries: S.optional(S.NullOr(S.Number)),
+      status: S.optional(S.NullOr(HealthChecksUpdateResponseHttpConfigStatus)),
+      suspended: S.optional(S.NullOr(S.Boolean)),
+      tcpConfig: S.optional(
+        S.NullOr(HealthChecksUpdateResponseHttpConfigTcpConfig).pipe(
+          T.Body("tcp_config"),
+        ),
+      ),
+      timeout: S.optional(S.NullOr(S.Number)),
+      type: S.optional(S.NullOr(S.String)),
     }),
 ).annotate({
   identifier: "HealthChecksUpdateResponseHttpConfig",
 }) as any as S.Schema<HealthChecksUpdateResponseHttpConfig>;
-
-export type HealthChecksUpdateResponseStatus =
-  | "unknown"
-  | "healthy"
-  | "unhealthy"
-  | "suspended";
-export const HealthChecksUpdateResponseStatus = /*@__PURE__*/ S.String;
-
-export type HealthChecksUpdateResponseTcpConfigMethod =
-  "connection_established";
-export const HealthChecksUpdateResponseTcpConfigMethod = /*@__PURE__*/ S.String;
-
-export interface HealthChecksUpdateResponseTcpConfig {
-  /** The TCP connection method to use for the health check. */
-  method?: HealthChecksUpdateResponseTcpConfigMethod | null;
-  /** Port number to connect to for the health check. Defaults to 80. */
-  port?: number | null;
-}
-export const HealthChecksUpdateResponseTcpConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    method: S.optional(S.NullOr(HealthChecksUpdateResponseTcpConfigMethod)),
-    port: S.optional(S.NullOr(S.Number)),
-  }),
-).annotate({
-  identifier: "HealthChecksUpdateResponseTcpConfig",
-}) as any as S.Schema<HealthChecksUpdateResponseTcpConfig>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface HealthChecksUpdateResponse {
@@ -1861,6 +1935,7 @@ export interface HealthChecksUpdateResponse {
   consecutiveFails?: number | null;
   /** The number of consecutive successes required from a health check before changing the health to healthy. */
   consecutiveSuccesses?: number | null;
+  /** formatdate-time */
   createdOn?: string | null;
   /** A human-readable description of the health check. */
   description?: string | null;
@@ -1868,23 +1943,6 @@ export interface HealthChecksUpdateResponse {
   failureReason?: string | null;
   /** Parameters specific to an HTTP or HTTPS health check. */
   httpConfig?: HealthChecksUpdateResponseHttpConfig | null;
-  /** The interval between each health check. Shorter intervals may give quicker notifications if the origin status changes, but will increase load on the origin as we check from multiple locations. */
-  interval?: number | null;
-  modifiedOn?: string | null;
-  /** A short name to identify the health check. Only alphanumeric characters, hyphens and underscores are allowed. */
-  name?: string | null;
-  /** The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately. */
-  retries?: number | null;
-  /** The current status of the origin server according to the health check. */
-  status?: HealthChecksUpdateResponseStatus | null;
-  /** If suspended, no health checks are sent to the origin. */
-  suspended?: boolean | null;
-  /** Parameters specific to TCP health check. */
-  tcpConfig?: HealthChecksUpdateResponseTcpConfig | null;
-  /** The timeout (in seconds) before marking the health check as failed. */
-  timeout?: number | null;
-  /** The protocol to use for the health check. Currently supported protocols are 'HTTP', 'HTTPS' and 'TCP'. */
-  type?: string | null;
 }
 export const HealthChecksUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1911,17 +1969,6 @@ export const HealthChecksUpdateResponse = /*@__PURE__*/ S.suspend(() =>
         T.Body("http_config"),
       ),
     ),
-    interval: S.optional(S.NullOr(S.Number)),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-    name: S.optional(S.NullOr(S.String)),
-    retries: S.optional(S.NullOr(S.Number)),
-    status: S.optional(S.NullOr(HealthChecksUpdateResponseStatus)),
-    suspended: S.optional(S.NullOr(S.Boolean)),
-    tcpConfig: S.optional(
-      S.NullOr(HealthChecksUpdateResponseTcpConfig).pipe(T.Body("tcp_config")),
-    ),
-    timeout: S.optional(S.NullOr(S.Number)),
-    type: S.optional(S.NullOr(S.String)),
   }),
 ).annotate({
   identifier: "HealthChecksUpdateResponse",

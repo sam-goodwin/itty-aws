@@ -123,78 +123,47 @@ export const EntitlementsGetResponseCnameSetupAllowed = /*@__PURE__*/ S.suspend(
   identifier: "EntitlementsGetResponseCnameSetupAllowed",
 }) as any as S.Schema<EntitlementsGetResponseCnameSetupAllowed>;
 
-export type EntitlementsGetResponseCustomEntitlementsItemAllocationOrganizationsAPIMaxCountAllocationType =
+export type EntitlementsGetResponseCustomEntitlementsItemAllocationType =
   "max_count";
-export const EntitlementsGetResponseCustomEntitlementsItemAllocationOrganizationsAPIMaxCountAllocationType =
+export const EntitlementsGetResponseCustomEntitlementsItemAllocationType =
   /*@__PURE__*/ S.String;
 
-export interface EntitlementsGetResponseCustomEntitlementsItemAllocationOrganizationsAPIMaxCountAllocation {
-  type: EntitlementsGetResponseCustomEntitlementsItemAllocationOrganizationsAPIMaxCountAllocationType;
-  value: number;
-}
-export const EntitlementsGetResponseCustomEntitlementsItemAllocationOrganizationsAPIMaxCountAllocation =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      type: EntitlementsGetResponseCustomEntitlementsItemAllocationOrganizationsAPIMaxCountAllocationType,
-      value: S.Number,
-    }),
-  ).annotate({
-    identifier:
-      "EntitlementsGetResponseCustomEntitlementsItemAllocationOrganizationsAPIMaxCountAllocation",
-  }) as any as S.Schema<EntitlementsGetResponseCustomEntitlementsItemAllocationOrganizationsAPIMaxCountAllocation>;
-
-export type EntitlementsGetResponseCustomEntitlementsItemAllocationOrganizationsAPIBoolAllocationType =
+export type EntitlementsGetResponseCustomEntitlementsItemAllocationType2 =
   "bool";
-export const EntitlementsGetResponseCustomEntitlementsItemAllocationOrganizationsAPIBoolAllocationType =
+export const EntitlementsGetResponseCustomEntitlementsItemAllocationType2 =
   /*@__PURE__*/ S.String;
 
-export interface EntitlementsGetResponseCustomEntitlementsItemAllocationOrganizationsAPIBoolAllocation {
-  type: EntitlementsGetResponseCustomEntitlementsItemAllocationOrganizationsAPIBoolAllocationType;
-  value: boolean;
-}
-export const EntitlementsGetResponseCustomEntitlementsItemAllocationOrganizationsAPIBoolAllocation =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      type: EntitlementsGetResponseCustomEntitlementsItemAllocationOrganizationsAPIBoolAllocationType,
-      value: S.Boolean,
-    }),
-  ).annotate({
-    identifier:
-      "EntitlementsGetResponseCustomEntitlementsItemAllocationOrganizationsAPIBoolAllocation",
-  }) as any as S.Schema<EntitlementsGetResponseCustomEntitlementsItemAllocationOrganizationsAPIBoolAllocation>;
-
-export type EntitlementsGetResponseCustomEntitlementsItemAllocationOrganizationsAPINullAllocationType =
-  "";
-export const EntitlementsGetResponseCustomEntitlementsItemAllocationOrganizationsAPINullAllocationType =
+export type EntitlementsGetResponseCustomEntitlementsItemAllocationType3 = "";
+export const EntitlementsGetResponseCustomEntitlementsItemAllocationType3 =
   /*@__PURE__*/ S.String;
 
-export interface EntitlementsGetResponseCustomEntitlementsItemAllocationOrganizationsAPINullAllocation {
-  type: EntitlementsGetResponseCustomEntitlementsItemAllocationOrganizationsAPINullAllocationType;
-  value?: unknown | null;
+export interface EntitlementsGetResponseCustomEntitlementsItemAllocation {
+  type: EntitlementsGetResponseCustomEntitlementsItemAllocationType;
+  /** OrganizationsAPIBoolAllocation object { type, value } */
+  value: number;
+  type_2: EntitlementsGetResponseCustomEntitlementsItemAllocationType2;
+  /** OrganizationsAPINullAllocation object { type, value } */
+  value_2: boolean;
+  type_3: EntitlementsGetResponseCustomEntitlementsItemAllocationType3;
+  value_3?: unknown | null;
 }
-export const EntitlementsGetResponseCustomEntitlementsItemAllocationOrganizationsAPINullAllocation =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      type: EntitlementsGetResponseCustomEntitlementsItemAllocationOrganizationsAPINullAllocationType,
-      value: S.optional(S.NullOr(S.Unknown)),
-    }),
-  ).annotate({
-    identifier:
-      "EntitlementsGetResponseCustomEntitlementsItemAllocationOrganizationsAPINullAllocation",
-  }) as any as S.Schema<EntitlementsGetResponseCustomEntitlementsItemAllocationOrganizationsAPINullAllocation>;
-
-export type EntitlementsGetResponseCustomEntitlementsItemAllocation =
-  | EntitlementsGetResponseCustomEntitlementsItemAllocationOrganizationsAPIMaxCountAllocation
-  | EntitlementsGetResponseCustomEntitlementsItemAllocationOrganizationsAPIBoolAllocation
-  | EntitlementsGetResponseCustomEntitlementsItemAllocationOrganizationsAPINullAllocation;
 export const EntitlementsGetResponseCustomEntitlementsItemAllocation =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["type", "value"],
-      ["type", "value"],
-      ["type", "value"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      type: EntitlementsGetResponseCustomEntitlementsItemAllocationType,
+      value: S.Number,
+      type_2: EntitlementsGetResponseCustomEntitlementsItemAllocationType2.pipe(
+        T.Body("type"),
+      ),
+      value_2: S.Boolean.pipe(T.Body("value")),
+      type_3: EntitlementsGetResponseCustomEntitlementsItemAllocationType3.pipe(
+        T.Body("type"),
+      ),
+      value_3: S.optional(S.NullOr(S.Unknown).pipe(T.Body("value"))),
+    }),
+  ).annotate({
+    identifier: "EntitlementsGetResponseCustomEntitlementsItemAllocation",
+  }) as any as S.Schema<EntitlementsGetResponseCustomEntitlementsItemAllocation>;
 
 export interface EntitlementsGetResponseCustomEntitlementsItemFeature {
   key: string;
@@ -209,6 +178,7 @@ export const EntitlementsGetResponseCustomEntitlementsItemFeature =
   }) as any as S.Schema<EntitlementsGetResponseCustomEntitlementsItemFeature>;
 
 export interface EntitlementsGetResponseCustomEntitlementsItem {
+  /** OrganizationsAPIMaxCountAllocation object { type, value } */
   allocation: EntitlementsGetResponseCustomEntitlementsItemAllocation;
   feature: EntitlementsGetResponseCustomEntitlementsItemFeature;
 }
@@ -377,6 +347,7 @@ export interface GetResponseTenantUnitsItem {
   unitName: string;
   unitStatus: string;
   unitTag: string;
+  customerId?: string | null;
 }
 export const GetResponseTenantUnitsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -387,6 +358,7 @@ export const GetResponseTenantUnitsItem = /*@__PURE__*/ S.suspend(() =>
     unitName: S.String.pipe(T.Body("unit_name")),
     unitStatus: S.String.pipe(T.Body("unit_status")),
     unitTag: S.String.pipe(T.Body("unit_tag")),
+    customerId: S.optional(S.NullOr(S.String).pipe(T.Body("customer_id"))),
   }),
 ).annotate({
   identifier: "GetResponseTenantUnitsItem",
@@ -399,7 +371,9 @@ export const GetResponseTenantUnitsList = /*@__PURE__*/ S.Array(
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetTenantResponse {
+  /** formatdate-time */
   cdate: string;
+  /** formatdate-time */
   edate: string;
   tenantContacts: GetResponseTenantContacts;
   tenantLabels: GetResponseTenantLabelsList;
@@ -410,7 +384,6 @@ export interface GetTenantResponse {
   tenantTag: string;
   tenantType: string;
   tenantUnits: GetResponseTenantUnitsList;
-  customerId?: string | null;
 }
 export const GetTenantResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -425,7 +398,6 @@ export const GetTenantResponse = /*@__PURE__*/ S.suspend(() =>
     tenantTag: S.String.pipe(T.Body("tenant_tag")),
     tenantType: S.String.pipe(T.Body("tenant_type")),
     tenantUnits: GetResponseTenantUnitsList.pipe(T.Body("tenant_units")),
-    customerId: S.optional(S.NullOr(S.String).pipe(T.Body("customer_id"))),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetTenantResponse",
@@ -450,40 +422,56 @@ export const ListAccountsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListAccountsRequest",
 }) as any as S.Schema<ListAccountsRequest>;
 
+export type AccountsListResultItemSettingsType = "standard" | "enterprise";
+export const AccountsListResultItemSettingsType = /*@__PURE__*/ S.String;
+
+export type AccountsListResultItemSettingsTagsMap = {
+  [key: string]: string | undefined;
+};
+export const AccountsListResultItemSettingsTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<AccountsListResultItemSettingsTagsMap>;
+
 export interface AccountsListResultItemSettings {
   abuseContactEmail: string;
+  /** formatdate-time */
   accessApprovalExpiry: string;
   apiAccessEnabled: boolean;
-  /** Use [DNS Settings](https://developers.cloudflare.com/api/operations/dns-settings-for-an-account-list-dns-settings) instead. Deprecated. */
-  defaultNameservers: string;
+  /** Use DNS Settings instead. Deprecated. */
+  deprecateddefaultNameservers: string;
   enforceTwofactor: boolean;
-  /** Use [DNS Settings](https://developers.cloudflare.com/api/operations/dns-settings-for-an-account-list-dns-settings) instead. Deprecated. */
-  useAccountCustomNsByDefault: boolean;
+  /** Use DNS Settings instead. Deprecated. */
+  deprecateduseAccountCustomNsByDefault: boolean;
+  type: AccountsListResultItemSettingsType;
+  /** Account tags, present only when `include_tags=true` is requested. */
+  tags?: AccountsListResultItemSettingsTagsMap | null;
 }
 export const AccountsListResultItemSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     abuseContactEmail: S.String.pipe(T.Body("abuse_contact_email")),
     accessApprovalExpiry: S.String.pipe(T.Body("access_approval_expiry")),
     apiAccessEnabled: S.Boolean.pipe(T.Body("api_access_enabled")),
-    defaultNameservers: S.String.pipe(T.Body("default_nameservers")),
-    enforceTwofactor: S.Boolean.pipe(T.Body("enforce_twofactor")),
-    useAccountCustomNsByDefault: S.Boolean.pipe(
-      T.Body("use_account_custom_ns_by_default"),
+    deprecateddefaultNameservers: S.String.pipe(
+      T.Body("Deprecateddefault_nameservers"),
     ),
+    enforceTwofactor: S.Boolean.pipe(T.Body("enforce_twofactor")),
+    deprecateduseAccountCustomNsByDefault: S.Boolean.pipe(
+      T.Body("Deprecateduse_account_custom_ns_by_default"),
+    ),
+    type: AccountsListResultItemSettingsType,
+    tags: S.optional(S.NullOr(AccountsListResultItemSettingsTagsMap)),
   }),
 ).annotate({
   identifier: "AccountsListResultItemSettings",
 }) as any as S.Schema<AccountsListResultItemSettings>;
 
-export type AccountsListResultItemType = "standard" | "enterprise";
-export const AccountsListResultItemType = /*@__PURE__*/ S.String;
-
 export interface AccountsListResultItem {
   id: string;
+  /** formatdate-time */
   createdOn: string;
   name: string;
   settings: AccountsListResultItemSettings;
-  type: AccountsListResultItemType;
 }
 export const AccountsListResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -491,7 +479,6 @@ export const AccountsListResultItem = /*@__PURE__*/ S.suspend(() =>
     createdOn: S.String.pipe(T.Body("created_on")),
     name: S.String,
     settings: AccountsListResultItemSettings,
-    type: AccountsListResultItemType,
   }),
 ).annotate({
   identifier: "AccountsListResultItem",

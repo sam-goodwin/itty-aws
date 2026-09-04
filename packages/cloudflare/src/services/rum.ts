@@ -157,9 +157,31 @@ export const RulesBulkCreateResponseRulesItemPathsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<RulesBulkCreateResponseRulesItemPathsList>;
 
+export interface RulesBulkCreateResponseRulesItemRuleset {
+  /** The Web Analytics ruleset identifier. */
+  id?: string | null;
+  /** Whether the ruleset is enabled. */
+  enabled?: boolean | null;
+  zoneName?: string | null;
+  /** The zone identifier. */
+  zoneTag?: string | null;
+}
+export const RulesBulkCreateResponseRulesItemRuleset = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      id: S.optional(S.NullOr(S.String)),
+      enabled: S.optional(S.NullOr(S.Boolean)),
+      zoneName: S.optional(S.NullOr(S.String).pipe(T.Body("zone_name"))),
+      zoneTag: S.optional(S.NullOr(S.String).pipe(T.Body("zone_tag"))),
+    }),
+).annotate({
+  identifier: "RulesBulkCreateResponseRulesItemRuleset",
+}) as any as S.Schema<RulesBulkCreateResponseRulesItemRuleset>;
+
 export interface RulesBulkCreateResponseRulesItem {
   /** The Web Analytics rule identifier. */
   id?: string | null;
+  /** formatdate-time */
   created?: string | null;
   /** The hostname the rule will be applied to. */
   host?: string | null;
@@ -170,6 +192,7 @@ export interface RulesBulkCreateResponseRulesItem {
   /** The paths the rule will be applied to. */
   paths?: RulesBulkCreateResponseRulesItemPathsList | null;
   priority?: number | null;
+  ruleset?: RulesBulkCreateResponseRulesItemRuleset | null;
 }
 export const RulesBulkCreateResponseRulesItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -180,6 +203,7 @@ export const RulesBulkCreateResponseRulesItem = /*@__PURE__*/ S.suspend(() =>
     isPaused: S.optional(S.NullOr(S.Boolean).pipe(T.Body("is_paused"))),
     paths: S.optional(S.NullOr(RulesBulkCreateResponseRulesItemPathsList)),
     priority: S.optional(S.NullOr(S.Number)),
+    ruleset: S.optional(S.NullOr(RulesBulkCreateResponseRulesItemRuleset)),
   }),
 ).annotate({
   identifier: "RulesBulkCreateResponseRulesItem",
@@ -191,36 +215,14 @@ export const RulesBulkCreateResponseRulesList = /*@__PURE__*/ S.Array(
   RulesBulkCreateResponseRulesItem,
 ) as any as S.Schema<RulesBulkCreateResponseRulesList>;
 
-export interface RulesBulkCreateResponseRuleset {
-  /** The Web Analytics ruleset identifier. */
-  id?: string | null;
-  /** Whether the ruleset is enabled. */
-  enabled?: boolean | null;
-  zoneName?: string | null;
-  /** The zone identifier. */
-  zoneTag?: string | null;
-}
-export const RulesBulkCreateResponseRuleset = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.NullOr(S.String)),
-    enabled: S.optional(S.NullOr(S.Boolean)),
-    zoneName: S.optional(S.NullOr(S.String).pipe(T.Body("zone_name"))),
-    zoneTag: S.optional(S.NullOr(S.String).pipe(T.Body("zone_tag"))),
-  }),
-).annotate({
-  identifier: "RulesBulkCreateResponseRuleset",
-}) as any as S.Schema<RulesBulkCreateResponseRuleset>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface BulkCreateRulesResponse {
   /** A list of rules. */
   rules?: RulesBulkCreateResponseRulesList | null;
-  ruleset?: RulesBulkCreateResponseRuleset | null;
 }
 export const BulkCreateRulesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     rules: S.optional(S.NullOr(RulesBulkCreateResponseRulesList)),
-    ruleset: S.optional(S.NullOr(RulesBulkCreateResponseRuleset)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "BulkCreateRulesResponse",
@@ -273,6 +275,7 @@ export const RulesCreateResponsePathsList = /*@__PURE__*/ S.Array(
 export interface CreateRuleResponse {
   /** The Web Analytics rule identifier. */
   id?: string | null;
+  /** formatdate-time */
   created?: string | null;
   /** The hostname the rule will be applied to. */
   host?: string | null;
@@ -282,7 +285,12 @@ export interface CreateRuleResponse {
   isPaused?: boolean | null;
   /** The paths the rule will be applied to. */
   paths?: RulesCreateResponsePathsList | null;
+  /** HTTP */
   priority?: number | null;
+  host_2: unknown;
+  inclusive_2: unknown;
+  /** "*" */
+  paths_2: unknown;
 }
 export const CreateRuleResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -293,6 +301,9 @@ export const CreateRuleResponse = /*@__PURE__*/ S.suspend(() =>
     isPaused: S.optional(S.NullOr(S.Boolean).pipe(T.Body("is_paused"))),
     paths: S.optional(S.NullOr(RulesCreateResponsePathsList)),
     priority: S.optional(S.NullOr(S.Number)),
+    host_2: S.Unknown.pipe(T.Body("host")),
+    inclusive_2: S.Unknown.pipe(T.Body("inclusive")),
+    paths_2: S.Unknown.pipe(T.Body("paths")),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateRuleResponse",
@@ -332,9 +343,19 @@ export const SiteInfoCreateResponseRulesItemPathsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SiteInfoCreateResponseRulesItemPathsList>;
 
+export type SiteInfoCreateResponseRulesItemRuleset =
+  RulesBulkCreateResponseRulesItemRuleset;
+export const SiteInfoCreateResponseRulesItemRuleset =
+  RulesBulkCreateResponseRulesItemRuleset;
+
+export type SiteInfoCreateResponseRulesItemZoneTag =
+  "023e105f4ecef8ad9ca31a8372d0c353";
+export const SiteInfoCreateResponseRulesItemZoneTag = /*@__PURE__*/ S.String;
+
 export interface SiteInfoCreateResponseRulesItem {
   /** The Web Analytics rule identifier. */
   id?: string | null;
+  /** formatdate-time */
   created?: string | null;
   /** The hostname the rule will be applied to. */
   host?: string | null;
@@ -345,6 +366,17 @@ export interface SiteInfoCreateResponseRulesItem {
   /** The paths the rule will be applied to. */
   paths?: SiteInfoCreateResponseRulesItemPathsList | null;
   priority?: number | null;
+  ruleset?: RulesBulkCreateResponseRulesItemRuleset | null;
+  /** The Web Analytics site identifier. */
+  siteTag?: string | null;
+  /** The Web Analytics site token. */
+  siteToken?: string | null;
+  /** Encoded JavaScript snippet. */
+  snippet?: string | null;
+  autoInstall: unknown;
+  host_2: unknown;
+  /** }' */
+  zoneTag: SiteInfoCreateResponseRulesItemZoneTag;
 }
 export const SiteInfoCreateResponseRulesItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -355,6 +387,13 @@ export const SiteInfoCreateResponseRulesItem = /*@__PURE__*/ S.suspend(() =>
     isPaused: S.optional(S.NullOr(S.Boolean).pipe(T.Body("is_paused"))),
     paths: S.optional(S.NullOr(SiteInfoCreateResponseRulesItemPathsList)),
     priority: S.optional(S.NullOr(S.Number)),
+    ruleset: S.optional(S.NullOr(RulesBulkCreateResponseRulesItemRuleset)),
+    siteTag: S.optional(S.NullOr(S.String).pipe(T.Body("site_tag"))),
+    siteToken: S.optional(S.NullOr(S.String).pipe(T.Body("site_token"))),
+    snippet: S.optional(S.NullOr(S.String)),
+    autoInstall: S.Unknown.pipe(T.Body("auto_install")),
+    host_2: S.Unknown.pipe(T.Body("host")),
+    zoneTag: SiteInfoCreateResponseRulesItemZoneTag.pipe(T.Body("zone_tag")),
   }),
 ).annotate({
   identifier: "SiteInfoCreateResponseRulesItem",
@@ -366,23 +405,14 @@ export const SiteInfoCreateResponseRulesList = /*@__PURE__*/ S.Array(
   SiteInfoCreateResponseRulesItem,
 ) as any as S.Schema<SiteInfoCreateResponseRulesList>;
 
-export type SiteInfoCreateResponseRuleset = RulesBulkCreateResponseRuleset;
-export const SiteInfoCreateResponseRuleset = RulesBulkCreateResponseRuleset;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateSiteInfoResponse {
   /** If enabled, the JavaScript snippet is automatically injected for orange-clouded sites. */
   autoInstall?: boolean | null;
+  /** formatdate-time */
   created?: string | null;
   /** A list of rules. */
   rules?: SiteInfoCreateResponseRulesList | null;
-  ruleset?: RulesBulkCreateResponseRuleset | null;
-  /** The Web Analytics site identifier. */
-  siteTag?: string | null;
-  /** The Web Analytics site token. */
-  siteToken?: string | null;
-  /** Encoded JavaScript snippet. */
-  snippet?: string | null;
   /** The hostname the site measures (gray-clouded sites). */
   host?: string | null;
 }
@@ -391,10 +421,6 @@ export const CreateSiteInfoResponse = /*@__PURE__*/ S.suspend(() =>
     autoInstall: S.optional(S.NullOr(S.Boolean).pipe(T.Body("auto_install"))),
     created: S.optional(S.NullOr(S.String)),
     rules: S.optional(S.NullOr(SiteInfoCreateResponseRulesList)),
-    ruleset: S.optional(S.NullOr(RulesBulkCreateResponseRuleset)),
-    siteTag: S.optional(S.NullOr(S.String).pipe(T.Body("site_tag"))),
-    siteToken: S.optional(S.NullOr(S.String).pipe(T.Body("site_token"))),
-    snippet: S.optional(S.NullOr(S.String)),
     host: S.optional(S.NullOr(S.String)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
@@ -504,9 +530,15 @@ export const SiteInfoGetResponseRulesItemPathsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SiteInfoGetResponseRulesItemPathsList>;
 
+export type SiteInfoGetResponseRulesItemRuleset =
+  RulesBulkCreateResponseRulesItemRuleset;
+export const SiteInfoGetResponseRulesItemRuleset =
+  RulesBulkCreateResponseRulesItemRuleset;
+
 export interface SiteInfoGetResponseRulesItem {
   /** The Web Analytics rule identifier. */
   id?: string | null;
+  /** formatdate-time */
   created?: string | null;
   /** The hostname the rule will be applied to. */
   host?: string | null;
@@ -517,6 +549,13 @@ export interface SiteInfoGetResponseRulesItem {
   /** The paths the rule will be applied to. */
   paths?: SiteInfoGetResponseRulesItemPathsList | null;
   priority?: number | null;
+  ruleset?: RulesBulkCreateResponseRulesItemRuleset | null;
+  /** The Web Analytics site identifier. */
+  siteTag?: string | null;
+  /** The Web Analytics site token. */
+  siteToken?: string | null;
+  /** Encoded JavaScript snippet. */
+  snippet?: string | null;
 }
 export const SiteInfoGetResponseRulesItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -527,6 +566,10 @@ export const SiteInfoGetResponseRulesItem = /*@__PURE__*/ S.suspend(() =>
     isPaused: S.optional(S.NullOr(S.Boolean).pipe(T.Body("is_paused"))),
     paths: S.optional(S.NullOr(SiteInfoGetResponseRulesItemPathsList)),
     priority: S.optional(S.NullOr(S.Number)),
+    ruleset: S.optional(S.NullOr(RulesBulkCreateResponseRulesItemRuleset)),
+    siteTag: S.optional(S.NullOr(S.String).pipe(T.Body("site_tag"))),
+    siteToken: S.optional(S.NullOr(S.String).pipe(T.Body("site_token"))),
+    snippet: S.optional(S.NullOr(S.String)),
   }),
 ).annotate({
   identifier: "SiteInfoGetResponseRulesItem",
@@ -537,23 +580,14 @@ export const SiteInfoGetResponseRulesList = /*@__PURE__*/ S.Array(
   SiteInfoGetResponseRulesItem,
 ) as any as S.Schema<SiteInfoGetResponseRulesList>;
 
-export type SiteInfoGetResponseRuleset = RulesBulkCreateResponseRuleset;
-export const SiteInfoGetResponseRuleset = RulesBulkCreateResponseRuleset;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetSiteInfoResponse {
   /** If enabled, the JavaScript snippet is automatically injected for orange-clouded sites. */
   autoInstall?: boolean | null;
+  /** formatdate-time */
   created?: string | null;
   /** A list of rules. */
   rules?: SiteInfoGetResponseRulesList | null;
-  ruleset?: RulesBulkCreateResponseRuleset | null;
-  /** The Web Analytics site identifier. */
-  siteTag?: string | null;
-  /** The Web Analytics site token. */
-  siteToken?: string | null;
-  /** Encoded JavaScript snippet. */
-  snippet?: string | null;
   /** The hostname the site measures (gray-clouded sites). */
   host?: string | null;
 }
@@ -562,10 +596,6 @@ export const GetSiteInfoResponse = /*@__PURE__*/ S.suspend(() =>
     autoInstall: S.optional(S.NullOr(S.Boolean).pipe(T.Body("auto_install"))),
     created: S.optional(S.NullOr(S.String)),
     rules: S.optional(S.NullOr(SiteInfoGetResponseRulesList)),
-    ruleset: S.optional(S.NullOr(RulesBulkCreateResponseRuleset)),
-    siteTag: S.optional(S.NullOr(S.String).pipe(T.Body("site_tag"))),
-    siteToken: S.optional(S.NullOr(S.String).pipe(T.Body("site_token"))),
-    snippet: S.optional(S.NullOr(S.String)),
     host: S.optional(S.NullOr(S.String)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
@@ -600,9 +630,15 @@ export const RulesListResponseRulesItemPathsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<RulesListResponseRulesItemPathsList>;
 
+export type RulesListResponseRulesItemRuleset =
+  RulesBulkCreateResponseRulesItemRuleset;
+export const RulesListResponseRulesItemRuleset =
+  RulesBulkCreateResponseRulesItemRuleset;
+
 export interface RulesListResponseRulesItem {
   /** The Web Analytics rule identifier. */
   id?: string | null;
+  /** formatdate-time */
   created?: string | null;
   /** The hostname the rule will be applied to. */
   host?: string | null;
@@ -613,6 +649,7 @@ export interface RulesListResponseRulesItem {
   /** The paths the rule will be applied to. */
   paths?: RulesListResponseRulesItemPathsList | null;
   priority?: number | null;
+  ruleset?: RulesBulkCreateResponseRulesItemRuleset | null;
 }
 export const RulesListResponseRulesItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -623,6 +660,7 @@ export const RulesListResponseRulesItem = /*@__PURE__*/ S.suspend(() =>
     isPaused: S.optional(S.NullOr(S.Boolean).pipe(T.Body("is_paused"))),
     paths: S.optional(S.NullOr(RulesListResponseRulesItemPathsList)),
     priority: S.optional(S.NullOr(S.Number)),
+    ruleset: S.optional(S.NullOr(RulesBulkCreateResponseRulesItemRuleset)),
   }),
 ).annotate({
   identifier: "RulesListResponseRulesItem",
@@ -633,19 +671,14 @@ export const RulesListResponseRulesList = /*@__PURE__*/ S.Array(
   RulesListResponseRulesItem,
 ) as any as S.Schema<RulesListResponseRulesList>;
 
-export type RulesListResponseRuleset = RulesBulkCreateResponseRuleset;
-export const RulesListResponseRuleset = RulesBulkCreateResponseRuleset;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface ListRulesResponse {
   /** A list of rules. */
   rules?: RulesListResponseRulesList | null;
-  ruleset?: RulesBulkCreateResponseRuleset | null;
 }
 export const ListRulesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     rules: S.optional(S.NullOr(RulesListResponseRulesList)),
-    ruleset: S.optional(S.NullOr(RulesBulkCreateResponseRuleset)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListRulesResponse",
@@ -688,9 +721,15 @@ export const SiteInfoListResultItemRulesItemPathsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SiteInfoListResultItemRulesItemPathsList>;
 
+export type SiteInfoListResultItemRulesItemRuleset =
+  RulesBulkCreateResponseRulesItemRuleset;
+export const SiteInfoListResultItemRulesItemRuleset =
+  RulesBulkCreateResponseRulesItemRuleset;
+
 export interface SiteInfoListResultItemRulesItem {
   /** The Web Analytics rule identifier. */
   id?: string | null;
+  /** formatdate-time */
   created?: string | null;
   /** The hostname the rule will be applied to. */
   host?: string | null;
@@ -701,6 +740,13 @@ export interface SiteInfoListResultItemRulesItem {
   /** The paths the rule will be applied to. */
   paths?: SiteInfoListResultItemRulesItemPathsList | null;
   priority?: number | null;
+  ruleset?: RulesBulkCreateResponseRulesItemRuleset | null;
+  /** The Web Analytics site identifier. */
+  siteTag?: string | null;
+  /** The Web Analytics site token. */
+  siteToken?: string | null;
+  /** Encoded JavaScript snippet. */
+  snippet?: string | null;
 }
 export const SiteInfoListResultItemRulesItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -711,6 +757,10 @@ export const SiteInfoListResultItemRulesItem = /*@__PURE__*/ S.suspend(() =>
     isPaused: S.optional(S.NullOr(S.Boolean).pipe(T.Body("is_paused"))),
     paths: S.optional(S.NullOr(SiteInfoListResultItemRulesItemPathsList)),
     priority: S.optional(S.NullOr(S.Number)),
+    ruleset: S.optional(S.NullOr(RulesBulkCreateResponseRulesItemRuleset)),
+    siteTag: S.optional(S.NullOr(S.String).pipe(T.Body("site_tag"))),
+    siteToken: S.optional(S.NullOr(S.String).pipe(T.Body("site_token"))),
+    snippet: S.optional(S.NullOr(S.String)),
   }),
 ).annotate({
   identifier: "SiteInfoListResultItemRulesItem",
@@ -722,22 +772,13 @@ export const SiteInfoListResultItemRulesList = /*@__PURE__*/ S.Array(
   SiteInfoListResultItemRulesItem,
 ) as any as S.Schema<SiteInfoListResultItemRulesList>;
 
-export type SiteInfoListResultItemRuleset = RulesBulkCreateResponseRuleset;
-export const SiteInfoListResultItemRuleset = RulesBulkCreateResponseRuleset;
-
 export interface SiteInfoListResultItem {
   /** If enabled, the JavaScript snippet is automatically injected for orange-clouded sites. */
   autoInstall?: boolean | null;
+  /** formatdate-time */
   created?: string | null;
   /** A list of rules. */
   rules?: SiteInfoListResultItemRulesList | null;
-  ruleset?: RulesBulkCreateResponseRuleset | null;
-  /** The Web Analytics site identifier. */
-  siteTag?: string | null;
-  /** The Web Analytics site token. */
-  siteToken?: string | null;
-  /** Encoded JavaScript snippet. */
-  snippet?: string | null;
   /** The hostname the site measures (gray-clouded sites). */
   host?: string | null;
 }
@@ -746,10 +787,6 @@ export const SiteInfoListResultItem = /*@__PURE__*/ S.suspend(() =>
     autoInstall: S.optional(S.NullOr(S.Boolean).pipe(T.Body("auto_install"))),
     created: S.optional(S.NullOr(S.String)),
     rules: S.optional(S.NullOr(SiteInfoListResultItemRulesList)),
-    ruleset: S.optional(S.NullOr(RulesBulkCreateResponseRuleset)),
-    siteTag: S.optional(S.NullOr(S.String).pipe(T.Body("site_tag"))),
-    siteToken: S.optional(S.NullOr(S.String).pipe(T.Body("site_token"))),
-    snippet: S.optional(S.NullOr(S.String)),
     host: S.optional(S.NullOr(S.String)),
   }),
 ).annotate({
@@ -826,6 +863,7 @@ export const RulesUpdateResponsePathsList = /*@__PURE__*/ S.Array(
 export interface UpdateRuleResponse {
   /** The Web Analytics rule identifier. */
   id?: string | null;
+  /** formatdate-time */
   created?: string | null;
   /** The hostname the rule will be applied to. */
   host?: string | null;
@@ -835,7 +873,12 @@ export interface UpdateRuleResponse {
   isPaused?: boolean | null;
   /** The paths the rule will be applied to. */
   paths?: RulesUpdateResponsePathsList | null;
+  /** HTTP */
   priority?: number | null;
+  host_2: unknown;
+  inclusive_2: unknown;
+  /** "*" */
+  paths_2: unknown;
 }
 export const UpdateRuleResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -846,6 +889,9 @@ export const UpdateRuleResponse = /*@__PURE__*/ S.suspend(() =>
     isPaused: S.optional(S.NullOr(S.Boolean).pipe(T.Body("is_paused"))),
     paths: S.optional(S.NullOr(RulesUpdateResponsePathsList)),
     priority: S.optional(S.NullOr(S.Number)),
+    host_2: S.Unknown.pipe(T.Body("host")),
+    inclusive_2: S.Unknown.pipe(T.Body("inclusive")),
+    paths_2: S.Unknown.pipe(T.Body("paths")),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateRuleResponse",
@@ -894,9 +940,19 @@ export const SiteInfoUpdateResponseRulesItemPathsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SiteInfoUpdateResponseRulesItemPathsList>;
 
+export type SiteInfoUpdateResponseRulesItemRuleset =
+  RulesBulkCreateResponseRulesItemRuleset;
+export const SiteInfoUpdateResponseRulesItemRuleset =
+  RulesBulkCreateResponseRulesItemRuleset;
+
+export type SiteInfoUpdateResponseRulesItemZoneTag =
+  "023e105f4ecef8ad9ca31a8372d0c353";
+export const SiteInfoUpdateResponseRulesItemZoneTag = /*@__PURE__*/ S.String;
+
 export interface SiteInfoUpdateResponseRulesItem {
   /** The Web Analytics rule identifier. */
   id?: string | null;
+  /** formatdate-time */
   created?: string | null;
   /** The hostname the rule will be applied to. */
   host?: string | null;
@@ -907,6 +963,18 @@ export interface SiteInfoUpdateResponseRulesItem {
   /** The paths the rule will be applied to. */
   paths?: SiteInfoUpdateResponseRulesItemPathsList | null;
   priority?: number | null;
+  ruleset?: RulesBulkCreateResponseRulesItemRuleset | null;
+  /** The Web Analytics site identifier. */
+  siteTag?: string | null;
+  /** The Web Analytics site token. */
+  siteToken?: string | null;
+  /** Encoded JavaScript snippet. */
+  snippet?: string | null;
+  autoInstall: unknown;
+  enabled: unknown;
+  host_2: unknown;
+  /** }' */
+  zoneTag: SiteInfoUpdateResponseRulesItemZoneTag;
 }
 export const SiteInfoUpdateResponseRulesItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -917,6 +985,14 @@ export const SiteInfoUpdateResponseRulesItem = /*@__PURE__*/ S.suspend(() =>
     isPaused: S.optional(S.NullOr(S.Boolean).pipe(T.Body("is_paused"))),
     paths: S.optional(S.NullOr(SiteInfoUpdateResponseRulesItemPathsList)),
     priority: S.optional(S.NullOr(S.Number)),
+    ruleset: S.optional(S.NullOr(RulesBulkCreateResponseRulesItemRuleset)),
+    siteTag: S.optional(S.NullOr(S.String).pipe(T.Body("site_tag"))),
+    siteToken: S.optional(S.NullOr(S.String).pipe(T.Body("site_token"))),
+    snippet: S.optional(S.NullOr(S.String)),
+    autoInstall: S.Unknown.pipe(T.Body("auto_install")),
+    enabled: S.Unknown,
+    host_2: S.Unknown.pipe(T.Body("host")),
+    zoneTag: SiteInfoUpdateResponseRulesItemZoneTag.pipe(T.Body("zone_tag")),
   }),
 ).annotate({
   identifier: "SiteInfoUpdateResponseRulesItem",
@@ -928,23 +1004,14 @@ export const SiteInfoUpdateResponseRulesList = /*@__PURE__*/ S.Array(
   SiteInfoUpdateResponseRulesItem,
 ) as any as S.Schema<SiteInfoUpdateResponseRulesList>;
 
-export type SiteInfoUpdateResponseRuleset = RulesBulkCreateResponseRuleset;
-export const SiteInfoUpdateResponseRuleset = RulesBulkCreateResponseRuleset;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface UpdateSiteInfoResponse {
   /** If enabled, the JavaScript snippet is automatically injected for orange-clouded sites. */
   autoInstall?: boolean | null;
+  /** formatdate-time */
   created?: string | null;
   /** A list of rules. */
   rules?: SiteInfoUpdateResponseRulesList | null;
-  ruleset?: RulesBulkCreateResponseRuleset | null;
-  /** The Web Analytics site identifier. */
-  siteTag?: string | null;
-  /** The Web Analytics site token. */
-  siteToken?: string | null;
-  /** Encoded JavaScript snippet. */
-  snippet?: string | null;
   /** The hostname the site measures (gray-clouded sites). */
   host?: string | null;
 }
@@ -953,10 +1020,6 @@ export const UpdateSiteInfoResponse = /*@__PURE__*/ S.suspend(() =>
     autoInstall: S.optional(S.NullOr(S.Boolean).pipe(T.Body("auto_install"))),
     created: S.optional(S.NullOr(S.String)),
     rules: S.optional(S.NullOr(SiteInfoUpdateResponseRulesList)),
-    ruleset: S.optional(S.NullOr(RulesBulkCreateResponseRuleset)),
-    siteTag: S.optional(S.NullOr(S.String).pipe(T.Body("site_tag"))),
-    siteToken: S.optional(S.NullOr(S.String).pipe(T.Body("site_token"))),
-    snippet: S.optional(S.NullOr(S.String)),
     host: S.optional(S.NullOr(S.String)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({

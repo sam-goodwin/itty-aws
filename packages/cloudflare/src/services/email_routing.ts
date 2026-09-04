@@ -94,6 +94,201 @@ export class WorkerScriptNotFound
     [{ code: 2016 }],
   ) {}
 
+export interface AccountRulesListForAccountRequest {
+  /** Identifier. */
+  accountId: string;
+  /** Filter by enabled routing rules. */
+  enabled?: string;
+  /** Page number of paginated results. */
+  page?: number;
+  /** Maximum number of results per page. */
+  perPage?: number;
+}
+export const AccountRulesListForAccountRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    enabled: S.optional(S.String.pipe(T.Query())),
+    page: S.optional(S.Number.pipe(T.Query())),
+    perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/email/routing/rules",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+).annotate({
+  identifier: "AccountRulesListForAccountRequest",
+}) as any as S.Schema<AccountRulesListForAccountRequest>;
+
+export type AccountRulesListResultItemActionsItemType =
+  | "drop"
+  | "forward"
+  | "worker";
+export const AccountRulesListResultItemActionsItemType = /*@__PURE__*/ S.String;
+
+export type AccountRulesListResultItemActionsItemValueList = Array<string>;
+export const AccountRulesListResultItemActionsItemValueList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<AccountRulesListResultItemActionsItemValueList>;
+
+export interface AccountRulesListResultItemActionsItem {
+  /** Type of supported action. */
+  type: AccountRulesListResultItemActionsItemType;
+  value?: AccountRulesListResultItemActionsItemValueList | null;
+}
+export const AccountRulesListResultItemActionsItem = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      type: AccountRulesListResultItemActionsItemType,
+      value: S.optional(
+        S.NullOr(AccountRulesListResultItemActionsItemValueList),
+      ),
+    }),
+).annotate({
+  identifier: "AccountRulesListResultItemActionsItem",
+}) as any as S.Schema<AccountRulesListResultItemActionsItem>;
+
+export type AccountRulesListResultItemActionsList =
+  Array<AccountRulesListResultItemActionsItem>;
+export const AccountRulesListResultItemActionsList = /*@__PURE__*/ S.Array(
+  AccountRulesListResultItemActionsItem,
+) as any as S.Schema<AccountRulesListResultItemActionsList>;
+
+export type AccountRulesListResultItemMatchersItemType = "all" | "literal";
+export const AccountRulesListResultItemMatchersItemType =
+  /*@__PURE__*/ S.String;
+
+export type AccountRulesListResultItemMatchersItemField = "to";
+export const AccountRulesListResultItemMatchersItemField =
+  /*@__PURE__*/ S.String;
+
+export interface AccountRulesListResultItemMatchersItem {
+  /** Type of matcher. */
+  type: AccountRulesListResultItemMatchersItemType;
+  /** Field for type matcher. */
+  field?: AccountRulesListResultItemMatchersItemField | null;
+  /** Value for matcher. */
+  value?: string | null;
+}
+export const AccountRulesListResultItemMatchersItem = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      type: AccountRulesListResultItemMatchersItemType,
+      field: S.optional(S.NullOr(AccountRulesListResultItemMatchersItemField)),
+      value: S.optional(S.NullOr(S.String)),
+    }),
+).annotate({
+  identifier: "AccountRulesListResultItemMatchersItem",
+}) as any as S.Schema<AccountRulesListResultItemMatchersItem>;
+
+export type AccountRulesListResultItemMatchersList =
+  Array<AccountRulesListResultItemMatchersItem>;
+export const AccountRulesListResultItemMatchersList = /*@__PURE__*/ S.Array(
+  AccountRulesListResultItemMatchersItem,
+) as any as S.Schema<AccountRulesListResultItemMatchersList>;
+
+export type AccountRulesListResultItemSource = "api" | "wrangler";
+export const AccountRulesListResultItemSource = /*@__PURE__*/ S.String;
+
+export interface AccountRulesListResultItemZone {
+  /** Zone name. */
+  name?: string | null;
+  /** Zone tag. */
+  tag?: string | null;
+}
+export const AccountRulesListResultItemZone = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.optional(S.NullOr(S.String)),
+    tag: S.optional(S.NullOr(S.String)),
+  }),
+).annotate({
+  identifier: "AccountRulesListResultItemZone",
+}) as any as S.Schema<AccountRulesListResultItemZone>;
+
+export interface AccountRulesListResultItem {
+  /** Routing rule identifier. */
+  id?: string | null;
+  /** List actions patterns. */
+  actions?: AccountRulesListResultItemActionsList | null;
+  /** Routing rule status. */
+  enabled?: boolean | null;
+  /** Matching patterns to forward to your actions. */
+  matchers?: AccountRulesListResultItemMatchersList | null;
+  /** Routing rule name. */
+  name?: string | null;
+  /** Priority of the routing rule. */
+  priority?: number | null;
+  /** Who manages the rule. `api` covers dashboard, generic API, and Terraform; `wrangler` means the rule is managed by a Worker’s wrangler.jsonc. Defaults to `api` when omitted on write. */
+  source?: AccountRulesListResultItemSource | null;
+  /** Routing rule tag. (Deprecated, replaced by routing rule identifier) */
+  deprecatedtag?: string | null;
+  /** Zone information for the routing rule. */
+  zone?: AccountRulesListResultItemZone | null;
+}
+export const AccountRulesListResultItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.NullOr(S.String)),
+    actions: S.optional(S.NullOr(AccountRulesListResultItemActionsList)),
+    enabled: S.optional(S.NullOr(S.Boolean)),
+    matchers: S.optional(S.NullOr(AccountRulesListResultItemMatchersList)),
+    name: S.optional(S.NullOr(S.String)),
+    priority: S.optional(S.NullOr(S.Number)),
+    source: S.optional(S.NullOr(AccountRulesListResultItemSource)),
+    deprecatedtag: S.optional(S.NullOr(S.String).pipe(T.Body("Deprecatedtag"))),
+    zone: S.optional(S.NullOr(AccountRulesListResultItemZone)),
+  }),
+).annotate({
+  identifier: "AccountRulesListResultItem",
+}) as any as S.Schema<AccountRulesListResultItem>;
+
+export type AccountRulesListResultList = Array<AccountRulesListResultItem>;
+export const AccountRulesListResultList = /*@__PURE__*/ S.Array(
+  AccountRulesListResultItem,
+) as any as S.Schema<AccountRulesListResultList>;
+
+export type AccountRulesListResponse = AccountRulesListResultList;
+export const AccountRulesListResponse = /*@__PURE__*/ S.suspend(() =>
+  AccountRulesListResultList.pipe(
+    T.EnvelopePayloadRoot(),
+    T.KeyDictionary(KEY_DICTIONARY),
+  ),
+).annotate({
+  identifier: "AccountRulesListResponse",
+}) as any as S.Schema<AccountRulesListResponse>;
+
+export interface AccountRulesListForZoneRequest {
+  /** Identifier. */
+  zoneId: string;
+  /** Filter by enabled routing rules. */
+  enabled?: string;
+  /** Page number of paginated results. */
+  page?: number;
+  /** Maximum number of results per page. */
+  perPage?: number;
+}
+export const AccountRulesListForZoneRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    zoneId: S.String.pipe(T.Label("zone_id")),
+    enabled: S.optional(S.String.pipe(T.Query())),
+    page: S.optional(S.Number.pipe(T.Query())),
+    perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/zones/{zone_id}/email/routing/rules",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+).annotate({
+  identifier: "AccountRulesListForZoneRequest",
+}) as any as S.Schema<AccountRulesListForZoneRequest>;
+
 export type AddressesEditRequestStatus = "unverified" | "verified";
 export const AddressesEditRequestStatus = /*@__PURE__*/ S.String;
 
@@ -125,6 +320,9 @@ export const AddressesEditRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "AddressesEditRequest",
 }) as any as S.Schema<AddressesEditRequest>;
 
+export type AddressesEditResponseStatus = "verified";
+export const AddressesEditResponseStatus = /*@__PURE__*/ S.String;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface AddressesEditResponse {
   /** Destination address identifier. */
@@ -136,9 +334,11 @@ export interface AddressesEditResponse {
   /** The date and time the destination address was last modified. */
   modified?: string | null;
   /** Destination address tag. (Deprecated, replaced by destination address identifier) */
-  tag?: string | null;
+  deprecatedtag?: string | null;
   /** The date and time the destination address has been verified. Null means not verified yet. */
   verified?: string | null;
+  /** }' */
+  status: AddressesEditResponseStatus;
 }
 export const AddressesEditResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -146,8 +346,9 @@ export const AddressesEditResponse = /*@__PURE__*/ S.suspend(() =>
     created: S.optional(S.NullOr(S.String)),
     email: S.optional(S.NullOr(S.String)),
     modified: S.optional(S.NullOr(S.String)),
-    tag: S.optional(S.NullOr(S.String)),
+    deprecatedtag: S.optional(S.NullOr(S.String).pipe(T.Body("Deprecatedtag"))),
     verified: S.optional(S.NullOr(S.String)),
+    status: AddressesEditResponseStatus,
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "AddressesEditResponse",
@@ -176,6 +377,9 @@ export const CreateAddressRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateAddressRequest",
 }) as any as S.Schema<CreateAddressRequest>;
 
+export type AddressesCreateResponseEmail = "user@example.com";
+export const AddressesCreateResponseEmail = /*@__PURE__*/ S.String;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateAddressResponse {
   /** Destination address identifier. */
@@ -187,9 +391,11 @@ export interface CreateAddressResponse {
   /** The date and time the destination address was last modified. */
   modified?: string | null;
   /** Destination address tag. (Deprecated, replaced by destination address identifier) */
-  tag?: string | null;
+  deprecatedtag?: string | null;
   /** The date and time the destination address has been verified. Null means not verified yet. */
   verified?: string | null;
+  /** }' */
+  email_2: AddressesCreateResponseEmail;
 }
 export const CreateAddressResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -197,8 +403,9 @@ export const CreateAddressResponse = /*@__PURE__*/ S.suspend(() =>
     created: S.optional(S.NullOr(S.String)),
     email: S.optional(S.NullOr(S.String)),
     modified: S.optional(S.NullOr(S.String)),
-    tag: S.optional(S.NullOr(S.String)),
+    deprecatedtag: S.optional(S.NullOr(S.String).pipe(T.Body("Deprecatedtag"))),
     verified: S.optional(S.NullOr(S.String)),
+    email_2: AddressesCreateResponseEmail.pipe(T.Body("email")),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateAddressResponse",
@@ -254,7 +461,7 @@ export interface CreateDnsResponse {
   /** Whether subaddressing (plus-addressing) is honored when matching incoming mail against routing rules. */
   supportSubaddress?: boolean | null;
   /** Email Routing settings tag. (Deprecated, replaced by Email Routing settings identifier) */
-  tag?: string | null;
+  deprecatedtag?: string | null;
 }
 export const CreateDnsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -268,7 +475,7 @@ export const CreateDnsResponse = /*@__PURE__*/ S.suspend(() =>
     supportSubaddress: S.optional(
       S.NullOr(S.Boolean).pipe(T.Body("support_subaddress")),
     ),
-    tag: S.optional(S.NullOr(S.String)),
+    deprecatedtag: S.optional(S.NullOr(S.String).pipe(T.Body("Deprecatedtag"))),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateDnsResponse",
@@ -346,11 +553,11 @@ export interface CreateRuleRequest {
   enabled?: boolean;
   /** Routing rule name. */
   name?: string;
-  /** Public tag (script_tag) of the Worker that owns this rule. Required when */
+  /** Public tag (script_tag) of the Worker that owns this rule. Required when `source` is `wrangler`. */
   ownerWorkerTag?: string;
   /** Priority of the routing rule. */
   priority?: number;
-  /** Who manages the rule. `api` covers dashboard, generic API, and Terraform; */
+  /** Who manages the rule. `api` covers dashboard, generic API, and Terraform; `wrangler` means the rule is managed by a Worker’s wrangler.jsonc. Defaults to `api` when omitted on write. */
   source?: RulesCreateRequestSource | (string & {});
 }
 export const CreateRuleRequest = /*@__PURE__*/ S.suspend(() =>
@@ -437,6 +644,15 @@ export const RulesCreateResponseMatchersList = /*@__PURE__*/ S.Array(
 export type RulesCreateResponseSource = "api" | "wrangler";
 export const RulesCreateResponseSource = /*@__PURE__*/ S.String;
 
+export type RulesCreateResponseType = "forward";
+export const RulesCreateResponseType = /*@__PURE__*/ S.String;
+
+export type RulesCreateResponseType2 = "literal";
+export const RulesCreateResponseType2 = /*@__PURE__*/ S.String;
+
+export type RulesCreateResponseSource2 = "api";
+export const RulesCreateResponseSource2 = /*@__PURE__*/ S.String;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateRuleResponse {
   /** Routing rule identifier. */
@@ -451,10 +667,23 @@ export interface CreateRuleResponse {
   name?: string | null;
   /** Priority of the routing rule. */
   priority?: number | null;
-  /** Who manages the rule. `api` covers dashboard, generic API, and Terraform; */
+  /** Who manages the rule. `api` covers dashboard, generic API, and Terraform; `wrangler` means the rule is managed by a Worker’s wrangler.jsonc. Defaults to `api` when omitted on write. */
   source?: RulesCreateResponseSource | null;
   /** Routing rule tag. (Deprecated, replaced by routing rule identifier) */
-  tag?: string | null;
+  deprecatedtag?: string | null;
+  /** { */
+  actions_2: unknown;
+  /** } */
+  type: RulesCreateResponseType;
+  /** { */
+  matchers_2: unknown;
+  /** } */
+  type_2: RulesCreateResponseType2;
+  enabled_2: unknown;
+  name_2: unknown;
+  ownerWorkerTag: unknown;
+  /** }' */
+  source_2: RulesCreateResponseSource2;
 }
 export const CreateRuleResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -465,7 +694,15 @@ export const CreateRuleResponse = /*@__PURE__*/ S.suspend(() =>
     name: S.optional(S.NullOr(S.String)),
     priority: S.optional(S.NullOr(S.Number)),
     source: S.optional(S.NullOr(RulesCreateResponseSource)),
-    tag: S.optional(S.NullOr(S.String)),
+    deprecatedtag: S.optional(S.NullOr(S.String).pipe(T.Body("Deprecatedtag"))),
+    actions_2: S.Unknown.pipe(T.Body("actions")),
+    type: RulesCreateResponseType,
+    matchers_2: S.Unknown.pipe(T.Body("matchers")),
+    type_2: RulesCreateResponseType2.pipe(T.Body("type")),
+    enabled_2: S.Unknown.pipe(T.Body("enabled")),
+    name_2: S.Unknown.pipe(T.Body("name")),
+    ownerWorkerTag: S.Unknown.pipe(T.Body("owner_worker_tag")),
+    source_2: RulesCreateResponseSource2.pipe(T.Body("source")),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateRuleResponse",
@@ -507,7 +744,7 @@ export interface DeleteAddressResponse {
   /** The date and time the destination address was last modified. */
   modified?: string | null;
   /** Destination address tag. (Deprecated, replaced by destination address identifier) */
-  tag?: string | null;
+  deprecatedtag?: string | null;
   /** The date and time the destination address has been verified. Null means not verified yet. */
   verified?: string | null;
 }
@@ -517,7 +754,7 @@ export const DeleteAddressResponse = /*@__PURE__*/ S.suspend(() =>
     created: S.optional(S.NullOr(S.String)),
     email: S.optional(S.NullOr(S.String)),
     modified: S.optional(S.NullOr(S.String)),
-    tag: S.optional(S.NullOr(S.String)),
+    deprecatedtag: S.optional(S.NullOr(S.String).pipe(T.Body("Deprecatedtag"))),
     verified: S.optional(S.NullOr(S.String)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
@@ -544,12 +781,68 @@ export const DeleteDnsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteDnsRequest",
 }) as any as S.Schema<DeleteDnsRequest>;
 
-export interface DeleteDnsResponse {}
-export const DeleteDnsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+export type DnsDeleteResultItemTtl = 1;
+export const DnsDeleteResultItemTtl = /*@__PURE__*/ S.Number;
+
+export type DnsDeleteResultItemType =
+  | "A"
+  | "AAAA"
+  | "CNAME"
+  | "HTTPS"
+  | "TXT"
+  | "SRV"
+  | "LOC"
+  | "MX"
+  | "NS"
+  | "CERT"
+  | "DNSKEY"
+  | "DS"
+  | "NAPTR"
+  | "SMIMEA"
+  | "SSHFP"
+  | "SVCB"
+  | "TLSA"
+  | "URI";
+export const DnsDeleteResultItemType = /*@__PURE__*/ S.String;
+
+export interface DnsDeleteResultItem {
+  /** DNS record content. */
+  content?: string | null;
+  /** DNS record name (or @ for the zone apex). */
+  name?: string | null;
+  /** Required for MX, SRV and URI records. Unused by other record types. Records with lower priorities are preferred. */
+  priority?: number | null;
+  /** Time to live, in seconds, of the DNS record. Must be between 60 and 86400, or 1 for ‘automatic’. */
+  ttl?: DnsDeleteResultItemTtl | null;
+  /** DNS record type. */
+  type?: DnsDeleteResultItemType | null;
+}
+export const DnsDeleteResultItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    content: S.optional(S.NullOr(S.String)),
+    name: S.optional(S.NullOr(S.String)),
+    priority: S.optional(S.NullOr(S.Number)),
+    ttl: S.optional(S.NullOr(DnsDeleteResultItemTtl)),
+    type: S.optional(S.NullOr(DnsDeleteResultItemType)),
+  }),
 ).annotate({
-  identifier: "DeleteDnsResponse",
-}) as any as S.Schema<DeleteDnsResponse>;
+  identifier: "DnsDeleteResultItem",
+}) as any as S.Schema<DnsDeleteResultItem>;
+
+export type DnsDeleteResultList = Array<DnsDeleteResultItem>;
+export const DnsDeleteResultList = /*@__PURE__*/ S.Array(
+  DnsDeleteResultItem,
+) as any as S.Schema<DnsDeleteResultList>;
+
+export type DnsDeleteResponse = DnsDeleteResultList;
+export const DnsDeleteResponse = /*@__PURE__*/ S.suspend(() =>
+  DnsDeleteResultList.pipe(
+    T.EnvelopePayloadRoot(),
+    T.KeyDictionary(KEY_DICTIONARY),
+  ),
+).annotate({
+  identifier: "DnsDeleteResponse",
+}) as any as S.Schema<DnsDeleteResponse>;
 
 export interface DeleteRuleRequest {
   /** Identifier. */
@@ -649,10 +942,10 @@ export interface DeleteRuleResponse {
   name?: string | null;
   /** Priority of the routing rule. */
   priority?: number | null;
-  /** Who manages the rule. `api` covers dashboard, generic API, and Terraform; */
+  /** Who manages the rule. `api` covers dashboard, generic API, and Terraform; `wrangler` means the rule is managed by a Worker’s wrangler.jsonc. Defaults to `api` when omitted on write. */
   source?: RulesDeleteResponseSource | null;
   /** Routing rule tag. (Deprecated, replaced by routing rule identifier) */
-  tag?: string | null;
+  deprecatedtag?: string | null;
 }
 export const DeleteRuleResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -663,7 +956,7 @@ export const DeleteRuleResponse = /*@__PURE__*/ S.suspend(() =>
     name: S.optional(S.NullOr(S.String)),
     priority: S.optional(S.NullOr(S.Number)),
     source: S.optional(S.NullOr(RulesDeleteResponseSource)),
-    tag: S.optional(S.NullOr(S.String)),
+    deprecatedtag: S.optional(S.NullOr(S.String).pipe(T.Body("Deprecatedtag"))),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteRuleResponse",
@@ -716,7 +1009,7 @@ export interface DisableEmailRoutingResponse {
   /** Whether subaddressing (plus-addressing) is honored when matching incoming mail against routing rules. */
   supportSubaddress?: boolean | null;
   /** Email Routing settings tag. (Deprecated, replaced by Email Routing settings identifier) */
-  tag?: string | null;
+  deprecatedtag?: string | null;
 }
 export const DisableEmailRoutingResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -730,11 +1023,90 @@ export const DisableEmailRoutingResponse = /*@__PURE__*/ S.suspend(() =>
     supportSubaddress: S.optional(
       S.NullOr(S.Boolean).pipe(T.Body("support_subaddress")),
     ),
-    tag: S.optional(S.NullOr(S.String)),
+    deprecatedtag: S.optional(S.NullOr(S.String).pipe(T.Body("Deprecatedtag"))),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DisableEmailRoutingResponse",
 }) as any as S.Schema<DisableEmailRoutingResponse>;
+
+export interface EditRequest {
+  /** Identifier. */
+  zoneId: string;
+  /** State of your zone Email Routing settings. No-op on this endpoint - use `POST`/`DELETE /zones/{zone_id}/email/routing/dns`. */
+  enabled?: boolean;
+  /** Flag to check if the user skipped the configuration wizard. */
+  skipWizard?: boolean;
+  /** Whether subaddressing (plus-addressing) is honored when matching incoming mail against routing rules. */
+  supportSubaddress?: boolean;
+}
+export const EditRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    zoneId: S.String.pipe(T.Label("zone_id")),
+    enabled: S.optional(S.Boolean),
+    skipWizard: S.optional(S.Boolean.pipe(T.Body("skip_wizard"))),
+    supportSubaddress: S.optional(S.Boolean.pipe(T.Body("support_subaddress"))),
+  })
+    .pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "/zones/{zone_id}/email/routing",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+).annotate({ identifier: "EditRequest" }) as any as S.Schema<EditRequest>;
+
+export type EditResponseStatus =
+  | "ready"
+  | "unconfigured"
+  | "misconfigured"
+  | "misconfigured/locked"
+  | "unlocked";
+export const EditResponseStatus = /*@__PURE__*/ S.String;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface EditResponse {
+  /** Email Routing settings identifier. */
+  id: string;
+  /** State of the zone settings for Email Routing. */
+  enabled: boolean;
+  /** Domain of your zone. */
+  name: string;
+  /** The date and time the settings have been created. */
+  created?: string | null;
+  /** The date and time the settings have been modified. */
+  modified?: string | null;
+  /** Flag to check if the user skipped the configuration wizard. */
+  skipWizard?: boolean | null;
+  /** Show the state of your account, and the type or configuration error. */
+  status?: EditResponseStatus | null;
+  /** Whether subaddressing (plus-addressing) is honored when matching incoming mail against routing rules. */
+  supportSubaddress?: boolean | null;
+  /** Email Routing settings tag. (Deprecated, replaced by Email Routing settings identifier) */
+  deprecatedtag?: string | null;
+  enabled_2: unknown;
+  skip_wizard_2: unknown;
+  /** }' */
+  support_subaddress_2: boolean;
+}
+export const EditResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    enabled: S.Boolean,
+    name: S.String,
+    created: S.optional(S.NullOr(S.String)),
+    modified: S.optional(S.NullOr(S.String)),
+    skipWizard: S.optional(S.NullOr(S.Boolean).pipe(T.Body("skip_wizard"))),
+    status: S.optional(S.NullOr(EditResponseStatus)),
+    supportSubaddress: S.optional(
+      S.NullOr(S.Boolean).pipe(T.Body("support_subaddress")),
+    ),
+    deprecatedtag: S.optional(S.NullOr(S.String).pipe(T.Body("Deprecatedtag"))),
+    enabled_2: S.Unknown.pipe(T.Body("enabled")),
+    skip_wizard_2: S.Unknown.pipe(T.Body("skip_wizard")),
+    support_subaddress_2: S.Boolean.pipe(T.Body("support_subaddress")),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+).annotate({ identifier: "EditResponse" }) as any as S.Schema<EditResponse>;
 
 export interface EnableEmailRoutingRequest {
   /** Identifier. */
@@ -783,7 +1155,7 @@ export interface EnableEmailRoutingResponse {
   /** Whether subaddressing (plus-addressing) is honored when matching incoming mail against routing rules. */
   supportSubaddress?: boolean | null;
   /** Email Routing settings tag. (Deprecated, replaced by Email Routing settings identifier) */
-  tag?: string | null;
+  deprecatedtag?: string | null;
 }
 export const EnableEmailRoutingResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -797,7 +1169,7 @@ export const EnableEmailRoutingResponse = /*@__PURE__*/ S.suspend(() =>
     supportSubaddress: S.optional(
       S.NullOr(S.Boolean).pipe(T.Body("support_subaddress")),
     ),
-    tag: S.optional(S.NullOr(S.String)),
+    deprecatedtag: S.optional(S.NullOr(S.String).pipe(T.Body("Deprecatedtag"))),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "EnableEmailRoutingResponse",
@@ -839,7 +1211,7 @@ export interface GetAddressResponse {
   /** The date and time the destination address was last modified. */
   modified?: string | null;
   /** Destination address tag. (Deprecated, replaced by destination address identifier) */
-  tag?: string | null;
+  deprecatedtag?: string | null;
   /** The date and time the destination address has been verified. Null means not verified yet. */
   verified?: string | null;
 }
@@ -849,7 +1221,7 @@ export const GetAddressResponse = /*@__PURE__*/ S.suspend(() =>
     created: S.optional(S.NullOr(S.String)),
     email: S.optional(S.NullOr(S.String)),
     modified: S.optional(S.NullOr(S.String)),
-    tag: S.optional(S.NullOr(S.String)),
+    deprecatedtag: S.optional(S.NullOr(S.String).pipe(T.Body("Deprecatedtag"))),
     verified: S.optional(S.NullOr(S.String)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
@@ -876,111 +1248,6 @@ export const GetDnsRequest = /*@__PURE__*/ S.suspend(() =>
     )
     .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({ identifier: "GetDnsRequest" }) as any as S.Schema<GetDnsRequest>;
-
-export type DnsGetResponseErrorsItemMissingType =
-  | "A"
-  | "AAAA"
-  | "CNAME"
-  | "HTTPS"
-  | "TXT"
-  | "SRV"
-  | "LOC"
-  | "MX"
-  | "NS"
-  | "CERT"
-  | "DNSKEY"
-  | "DS"
-  | "NAPTR"
-  | "SMIMEA"
-  | "SSHFP"
-  | "SVCB"
-  | "TLSA"
-  | "URI";
-export const DnsGetResponseErrorsItemMissingType = /*@__PURE__*/ S.String;
-
-export interface DnsGetResponseErrorsItemMissing {
-  /** DNS record content. */
-  content?: string | null;
-  /** DNS record name (or @ for the zone apex). */
-  name?: string | null;
-  /** Required for MX, SRV and URI records. Unused by other record types. Records with lower priorities are preferred. */
-  priority?: number | null;
-  /** Time to live, in seconds, of the DNS record. Must be between 60 and 86400, or 1 for 'automatic'. */
-  ttl?: number | null;
-  /** DNS record type. */
-  type?: DnsGetResponseErrorsItemMissingType | null;
-}
-export const DnsGetResponseErrorsItemMissing = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    content: S.optional(S.NullOr(S.String)),
-    name: S.optional(S.NullOr(S.String)),
-    priority: S.optional(S.NullOr(S.Number)),
-    ttl: S.optional(S.NullOr(S.Number)),
-    type: S.optional(S.NullOr(DnsGetResponseErrorsItemMissingType)),
-  }),
-).annotate({
-  identifier: "DnsGetResponseErrorsItemMissing",
-}) as any as S.Schema<DnsGetResponseErrorsItemMissing>;
-
-export interface DnsGetResponseErrorsItem {
-  code?: string | null;
-  /** List of records needed to enable an Email Routing zone. */
-  missing?: DnsGetResponseErrorsItemMissing | null;
-}
-export const DnsGetResponseErrorsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    code: S.optional(S.NullOr(S.String)),
-    missing: S.optional(S.NullOr(DnsGetResponseErrorsItemMissing)),
-  }),
-).annotate({
-  identifier: "DnsGetResponseErrorsItem",
-}) as any as S.Schema<DnsGetResponseErrorsItem>;
-
-export type DnsGetResponseErrorsList = Array<DnsGetResponseErrorsItem>;
-export const DnsGetResponseErrorsList = /*@__PURE__*/ S.Array(
-  DnsGetResponseErrorsItem,
-) as any as S.Schema<DnsGetResponseErrorsList>;
-
-export interface DnsGetResponseRecordItem {
-  /** DNS record content. */
-  content?: string | null;
-  /** DNS record name (or @ for the zone apex). */
-  name?: string | null;
-  /** Required for MX, SRV and URI records. Unused by other record types. Records with lower priorities are preferred. */
-  priority?: number | null;
-  /** Time to live, in seconds, of the DNS record. Must be between 60 and 86400, or 1 for 'automatic'. */
-  ttl?: number | null;
-  /** DNS record type. */
-  type?: string | null;
-}
-export const DnsGetResponseRecordItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    content: S.optional(S.NullOr(S.String)),
-    name: S.optional(S.NullOr(S.String)),
-    priority: S.optional(S.NullOr(S.Number)),
-    ttl: S.optional(S.NullOr(S.Number)),
-    type: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "DnsGetResponseRecordItem",
-}) as any as S.Schema<DnsGetResponseRecordItem>;
-
-export type DnsGetResponseRecordList = Array<DnsGetResponseRecordItem>;
-export const DnsGetResponseRecordList = /*@__PURE__*/ S.Array(
-  DnsGetResponseRecordItem,
-) as any as S.Schema<DnsGetResponseRecordList>;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface GetDnsResponse {
-  errors?: DnsGetResponseErrorsList | null;
-  record?: DnsGetResponseRecordList | null;
-}
-export const GetDnsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    errors: S.optional(S.NullOr(DnsGetResponseErrorsList)),
-    record: S.optional(S.NullOr(DnsGetResponseRecordList)),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({ identifier: "GetDnsResponse" }) as any as S.Schema<GetDnsResponse>;
 
 export interface GetEmailRoutingRequest {
   /** Identifier. */
@@ -1029,7 +1296,7 @@ export interface GetEmailRoutingResponse {
   /** Whether subaddressing (plus-addressing) is honored when matching incoming mail against routing rules. */
   supportSubaddress?: boolean | null;
   /** Email Routing settings tag. (Deprecated, replaced by Email Routing settings identifier) */
-  tag?: string | null;
+  deprecatedtag?: string | null;
 }
 export const GetEmailRoutingResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1043,7 +1310,7 @@ export const GetEmailRoutingResponse = /*@__PURE__*/ S.suspend(() =>
     supportSubaddress: S.optional(
       S.NullOr(S.Boolean).pipe(T.Body("support_subaddress")),
     ),
-    tag: S.optional(S.NullOr(S.String)),
+    deprecatedtag: S.optional(S.NullOr(S.String).pipe(T.Body("Deprecatedtag"))),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetEmailRoutingResponse",
@@ -1143,10 +1410,10 @@ export interface GetRuleResponse {
   name?: string | null;
   /** Priority of the routing rule. */
   priority?: number | null;
-  /** Who manages the rule. `api` covers dashboard, generic API, and Terraform; */
+  /** Who manages the rule. `api` covers dashboard, generic API, and Terraform; `wrangler` means the rule is managed by a Worker’s wrangler.jsonc. Defaults to `api` when omitted on write. */
   source?: RulesGetResponseSource | null;
   /** Routing rule tag. (Deprecated, replaced by routing rule identifier) */
-  tag?: string | null;
+  deprecatedtag?: string | null;
 }
 export const GetRuleResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1157,7 +1424,7 @@ export const GetRuleResponse = /*@__PURE__*/ S.suspend(() =>
     name: S.optional(S.NullOr(S.String)),
     priority: S.optional(S.NullOr(S.Number)),
     source: S.optional(S.NullOr(RulesGetResponseSource)),
-    tag: S.optional(S.NullOr(S.String)),
+    deprecatedtag: S.optional(S.NullOr(S.String).pipe(T.Body("Deprecatedtag"))),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetRuleResponse",
@@ -1222,7 +1489,7 @@ export type RulesCatchAllsGetResponseMatchersItemType = "all";
 export const RulesCatchAllsGetResponseMatchersItemType = /*@__PURE__*/ S.String;
 
 export interface RulesCatchAllsGetResponseMatchersItem {
-  /** Type of matcher. Default is 'all'. */
+  /** Type of matcher. Default is ‘all’. */
   type: RulesCatchAllsGetResponseMatchersItemType;
 }
 export const RulesCatchAllsGetResponseMatchersItem = /*@__PURE__*/ S.suspend(
@@ -1255,10 +1522,10 @@ export interface GetRuleCatchAllResponse {
   matchers?: RulesCatchAllsGetResponseMatchersList | null;
   /** Routing rule name. */
   name?: string | null;
-  /** Who manages the rule. `api` covers dashboard, generic API, and Terraform; */
+  /** Who manages the rule. `api` covers dashboard, generic API, and Terraform; `wrangler` means the rule is managed by a Worker’s wrangler.jsonc. Defaults to `api` when omitted on write. */
   source?: RulesCatchAllsGetResponseSource | null;
   /** Routing rule tag. (Deprecated, replaced by routing rule identifier) */
-  tag?: string | null;
+  deprecatedtag?: string | null;
 }
 export const GetRuleCatchAllResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1268,7 +1535,7 @@ export const GetRuleCatchAllResponse = /*@__PURE__*/ S.suspend(() =>
     matchers: S.optional(S.NullOr(RulesCatchAllsGetResponseMatchersList)),
     name: S.optional(S.NullOr(S.String)),
     source: S.optional(S.NullOr(RulesCatchAllsGetResponseSource)),
-    tag: S.optional(S.NullOr(S.String)),
+    deprecatedtag: S.optional(S.NullOr(S.String).pipe(T.Body("Deprecatedtag"))),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetRuleCatchAllResponse",
@@ -1319,7 +1586,7 @@ export interface AddressesListResultItem {
   /** The date and time the destination address was last modified. */
   modified?: string | null;
   /** Destination address tag. (Deprecated, replaced by destination address identifier) */
-  tag?: string | null;
+  deprecatedtag?: string | null;
   /** The date and time the destination address has been verified. Null means not verified yet. */
   verified?: string | null;
 }
@@ -1329,7 +1596,7 @@ export const AddressesListResultItem = /*@__PURE__*/ S.suspend(() =>
     created: S.optional(S.NullOr(S.String)),
     email: S.optional(S.NullOr(S.String)),
     modified: S.optional(S.NullOr(S.String)),
-    tag: S.optional(S.NullOr(S.String)),
+    deprecatedtag: S.optional(S.NullOr(S.String).pipe(T.Body("Deprecatedtag"))),
     verified: S.optional(S.NullOr(S.String)),
   }),
 ).annotate({
@@ -1453,7 +1720,7 @@ export interface PatchDnsResponse {
   /** Whether subaddressing (plus-addressing) is honored when matching incoming mail against routing rules. */
   supportSubaddress?: boolean | null;
   /** Email Routing settings tag. (Deprecated, replaced by Email Routing settings identifier) */
-  tag?: string | null;
+  deprecatedtag?: string | null;
 }
 export const PatchDnsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1467,7 +1734,7 @@ export const PatchDnsResponse = /*@__PURE__*/ S.suspend(() =>
     supportSubaddress: S.optional(
       S.NullOr(S.Boolean).pipe(T.Body("support_subaddress")),
     ),
-    tag: S.optional(S.NullOr(S.String)),
+    deprecatedtag: S.optional(S.NullOr(S.String).pipe(T.Body("Deprecatedtag"))),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchDnsResponse",
@@ -1512,7 +1779,7 @@ export const RulesCatchAllsUpdateRequestMatchersItemType =
   /*@__PURE__*/ S.String;
 
 export interface RulesCatchAllsUpdateRequestMatchersItem {
-  /** Type of matcher. Default is 'all'. */
+  /** Type of matcher. Default is ‘all’. */
   type: RulesCatchAllsUpdateRequestMatchersItemType | (string & {});
 }
 export const RulesCatchAllsUpdateRequestMatchersItem = /*@__PURE__*/ S.suspend(
@@ -1544,9 +1811,9 @@ export interface PutRuleCatchAllRequest {
   enabled?: boolean;
   /** Routing rule name. */
   name?: string;
-  /** Public tag (script_tag) of the Worker that owns this rule. Required when */
+  /** Public tag (script_tag) of the Worker that owns this rule. Required when `source` is `wrangler`. */
   ownerWorkerTag?: string;
-  /** Who manages the rule. `api` covers dashboard, generic API, and Terraform; */
+  /** Who manages the rule. `api` covers dashboard, generic API, and Terraform; `wrangler` means the rule is managed by a Worker’s wrangler.jsonc. Defaults to `api` when omitted on write. */
   source?: RulesCatchAllsUpdateRequestSource | (string & {});
 }
 export const PutRuleCatchAllRequest = /*@__PURE__*/ S.suspend(() =>
@@ -1612,7 +1879,7 @@ export const RulesCatchAllsUpdateResponseMatchersItemType =
   /*@__PURE__*/ S.String;
 
 export interface RulesCatchAllsUpdateResponseMatchersItem {
-  /** Type of matcher. Default is 'all'. */
+  /** Type of matcher. Default is ‘all’. */
   type: RulesCatchAllsUpdateResponseMatchersItemType;
 }
 export const RulesCatchAllsUpdateResponseMatchersItem = /*@__PURE__*/ S.suspend(
@@ -1633,6 +1900,15 @@ export const RulesCatchAllsUpdateResponseMatchersList = /*@__PURE__*/ S.Array(
 export type RulesCatchAllsUpdateResponseSource = "api" | "wrangler";
 export const RulesCatchAllsUpdateResponseSource = /*@__PURE__*/ S.String;
 
+export type RulesCatchAllsUpdateResponseType = "forward";
+export const RulesCatchAllsUpdateResponseType = /*@__PURE__*/ S.String;
+
+export type RulesCatchAllsUpdateResponseType2 = "all";
+export const RulesCatchAllsUpdateResponseType2 = /*@__PURE__*/ S.String;
+
+export type RulesCatchAllsUpdateResponseSource2 = "api";
+export const RulesCatchAllsUpdateResponseSource2 = /*@__PURE__*/ S.String;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface PutRuleCatchAllResponse {
   /** Routing rule identifier. */
@@ -1645,10 +1921,23 @@ export interface PutRuleCatchAllResponse {
   matchers?: RulesCatchAllsUpdateResponseMatchersList | null;
   /** Routing rule name. */
   name?: string | null;
-  /** Who manages the rule. `api` covers dashboard, generic API, and Terraform; */
+  /** Who manages the rule. `api` covers dashboard, generic API, and Terraform; `wrangler` means the rule is managed by a Worker’s wrangler.jsonc. Defaults to `api` when omitted on write. */
   source?: RulesCatchAllsUpdateResponseSource | null;
   /** Routing rule tag. (Deprecated, replaced by routing rule identifier) */
-  tag?: string | null;
+  deprecatedtag?: string | null;
+  /** { */
+  actions_2: unknown;
+  /** } */
+  type: RulesCatchAllsUpdateResponseType;
+  /** { */
+  matchers_2: unknown;
+  /** } */
+  type_2: RulesCatchAllsUpdateResponseType2;
+  enabled_2: unknown;
+  name_2: unknown;
+  ownerWorkerTag: unknown;
+  /** }' */
+  source_2: RulesCatchAllsUpdateResponseSource2;
 }
 export const PutRuleCatchAllResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1658,11 +1947,192 @@ export const PutRuleCatchAllResponse = /*@__PURE__*/ S.suspend(() =>
     matchers: S.optional(S.NullOr(RulesCatchAllsUpdateResponseMatchersList)),
     name: S.optional(S.NullOr(S.String)),
     source: S.optional(S.NullOr(RulesCatchAllsUpdateResponseSource)),
-    tag: S.optional(S.NullOr(S.String)),
+    deprecatedtag: S.optional(S.NullOr(S.String).pipe(T.Body("Deprecatedtag"))),
+    actions_2: S.Unknown.pipe(T.Body("actions")),
+    type: RulesCatchAllsUpdateResponseType,
+    matchers_2: S.Unknown.pipe(T.Body("matchers")),
+    type_2: RulesCatchAllsUpdateResponseType2.pipe(T.Body("type")),
+    enabled_2: S.Unknown.pipe(T.Body("enabled")),
+    name_2: S.Unknown.pipe(T.Body("name")),
+    ownerWorkerTag: S.Unknown.pipe(T.Body("owner_worker_tag")),
+    source_2: RulesCatchAllsUpdateResponseSource2.pipe(T.Body("source")),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PutRuleCatchAllResponse",
 }) as any as S.Schema<PutRuleCatchAllResponse>;
+
+export interface RulesListForAccountRequest {
+  /** Identifier. */
+  accountId: string;
+  /** Filter by enabled routing rules. */
+  enabled?: string;
+  /** Page number of paginated results. */
+  page?: number;
+  /** Maximum number of results per page. */
+  perPage?: number;
+}
+export const RulesListForAccountRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    enabled: S.optional(S.String.pipe(T.Query())),
+    page: S.optional(S.Number.pipe(T.Query())),
+    perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/email/routing/rules",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+).annotate({
+  identifier: "RulesListForAccountRequest",
+}) as any as S.Schema<RulesListForAccountRequest>;
+
+export type RulesListResultItemActionsItemType = "drop" | "forward" | "worker";
+export const RulesListResultItemActionsItemType = /*@__PURE__*/ S.String;
+
+export type RulesListResultItemActionsItemValueList = Array<string>;
+export const RulesListResultItemActionsItemValueList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<RulesListResultItemActionsItemValueList>;
+
+export interface RulesListResultItemActionsItem {
+  /** Type of supported action. */
+  type: RulesListResultItemActionsItemType;
+  value?: RulesListResultItemActionsItemValueList | null;
+}
+export const RulesListResultItemActionsItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    type: RulesListResultItemActionsItemType,
+    value: S.optional(S.NullOr(RulesListResultItemActionsItemValueList)),
+  }),
+).annotate({
+  identifier: "RulesListResultItemActionsItem",
+}) as any as S.Schema<RulesListResultItemActionsItem>;
+
+export type RulesListResultItemActionsList =
+  Array<RulesListResultItemActionsItem>;
+export const RulesListResultItemActionsList = /*@__PURE__*/ S.Array(
+  RulesListResultItemActionsItem,
+) as any as S.Schema<RulesListResultItemActionsList>;
+
+export type RulesListResultItemMatchersItemType = "all" | "literal";
+export const RulesListResultItemMatchersItemType = /*@__PURE__*/ S.String;
+
+export type RulesListResultItemMatchersItemField = "to";
+export const RulesListResultItemMatchersItemField = /*@__PURE__*/ S.String;
+
+export interface RulesListResultItemMatchersItem {
+  /** Type of matcher. */
+  type: RulesListResultItemMatchersItemType;
+  /** Field for type matcher. */
+  field?: RulesListResultItemMatchersItemField | null;
+  /** Value for matcher. */
+  value?: string | null;
+}
+export const RulesListResultItemMatchersItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    type: RulesListResultItemMatchersItemType,
+    field: S.optional(S.NullOr(RulesListResultItemMatchersItemField)),
+    value: S.optional(S.NullOr(S.String)),
+  }),
+).annotate({
+  identifier: "RulesListResultItemMatchersItem",
+}) as any as S.Schema<RulesListResultItemMatchersItem>;
+
+export type RulesListResultItemMatchersList =
+  Array<RulesListResultItemMatchersItem>;
+export const RulesListResultItemMatchersList = /*@__PURE__*/ S.Array(
+  RulesListResultItemMatchersItem,
+) as any as S.Schema<RulesListResultItemMatchersList>;
+
+export type RulesListResultItemSource = "api" | "wrangler";
+export const RulesListResultItemSource = /*@__PURE__*/ S.String;
+
+export type RulesListResultItemZone = AccountRulesListResultItemZone;
+export const RulesListResultItemZone = AccountRulesListResultItemZone;
+
+export interface RulesListResultItem {
+  /** Routing rule identifier. */
+  id?: string | null;
+  /** List actions patterns. */
+  actions?: RulesListResultItemActionsList | null;
+  /** Routing rule status. */
+  enabled?: boolean | null;
+  /** Matching patterns to forward to your actions. */
+  matchers?: RulesListResultItemMatchersList | null;
+  /** Routing rule name. */
+  name?: string | null;
+  /** Priority of the routing rule. */
+  priority?: number | null;
+  /** Who manages the rule. `api` covers dashboard, generic API, and Terraform; `wrangler` means the rule is managed by a Worker’s wrangler.jsonc. Defaults to `api` when omitted on write. */
+  source?: RulesListResultItemSource | null;
+  /** Routing rule tag. (Deprecated, replaced by routing rule identifier) */
+  deprecatedtag?: string | null;
+  /** Zone information for the routing rule. */
+  zone?: AccountRulesListResultItemZone | null;
+}
+export const RulesListResultItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.NullOr(S.String)),
+    actions: S.optional(S.NullOr(RulesListResultItemActionsList)),
+    enabled: S.optional(S.NullOr(S.Boolean)),
+    matchers: S.optional(S.NullOr(RulesListResultItemMatchersList)),
+    name: S.optional(S.NullOr(S.String)),
+    priority: S.optional(S.NullOr(S.Number)),
+    source: S.optional(S.NullOr(RulesListResultItemSource)),
+    deprecatedtag: S.optional(S.NullOr(S.String).pipe(T.Body("Deprecatedtag"))),
+    zone: S.optional(S.NullOr(AccountRulesListResultItemZone)),
+  }),
+).annotate({
+  identifier: "RulesListResultItem",
+}) as any as S.Schema<RulesListResultItem>;
+
+export type RulesListResultList = Array<RulesListResultItem>;
+export const RulesListResultList = /*@__PURE__*/ S.Array(
+  RulesListResultItem,
+) as any as S.Schema<RulesListResultList>;
+
+export type RulesListResponse = RulesListResultList;
+export const RulesListResponse = /*@__PURE__*/ S.suspend(() =>
+  RulesListResultList.pipe(
+    T.EnvelopePayloadRoot(),
+    T.KeyDictionary(KEY_DICTIONARY),
+  ),
+).annotate({
+  identifier: "RulesListResponse",
+}) as any as S.Schema<RulesListResponse>;
+
+export interface RulesListForZoneRequest {
+  /** Identifier. */
+  zoneId: string;
+  /** Filter by enabled routing rules. */
+  enabled?: string;
+  /** Page number of paginated results. */
+  page?: number;
+  /** Maximum number of results per page. */
+  perPage?: number;
+}
+export const RulesListForZoneRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    zoneId: S.String.pipe(T.Label("zone_id")),
+    enabled: S.optional(S.String.pipe(T.Query())),
+    page: S.optional(S.Number.pipe(T.Query())),
+    perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/zones/{zone_id}/email/routing/rules",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+).annotate({
+  identifier: "RulesListForZoneRequest",
+}) as any as S.Schema<RulesListForZoneRequest>;
 
 export interface UnlockRequest {
   /** Identifier. */
@@ -1712,7 +2182,7 @@ export interface UnlockResponse {
   /** Whether subaddressing (plus-addressing) is honored when matching incoming mail against routing rules. */
   supportSubaddress?: boolean | null;
   /** Email Routing settings tag. (Deprecated, replaced by Email Routing settings identifier) */
-  tag?: string | null;
+  deprecatedtag?: string | null;
 }
 export const UnlockResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1726,9 +2196,88 @@ export const UnlockResponse = /*@__PURE__*/ S.suspend(() =>
     supportSubaddress: S.optional(
       S.NullOr(S.Boolean).pipe(T.Body("support_subaddress")),
     ),
-    tag: S.optional(S.NullOr(S.String)),
+    deprecatedtag: S.optional(S.NullOr(S.String).pipe(T.Body("Deprecatedtag"))),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({ identifier: "UnlockResponse" }) as any as S.Schema<UnlockResponse>;
+
+export interface UpdateRequest {
+  /** Identifier. */
+  zoneId: string;
+  /** State of your zone Email Routing settings. No-op on this endpoint - use `POST`/`DELETE /zones/{zone_id}/email/routing/dns`. */
+  enabled?: boolean;
+  /** Flag to check if the user skipped the configuration wizard. */
+  skipWizard?: boolean;
+  /** Whether subaddressing (plus-addressing) is honored when matching incoming mail against routing rules. */
+  supportSubaddress?: boolean;
+}
+export const UpdateRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    zoneId: S.String.pipe(T.Label("zone_id")),
+    enabled: S.optional(S.Boolean),
+    skipWizard: S.optional(S.Boolean.pipe(T.Body("skip_wizard"))),
+    supportSubaddress: S.optional(S.Boolean.pipe(T.Body("support_subaddress"))),
+  })
+    .pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/zones/{zone_id}/email/routing",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+).annotate({ identifier: "UpdateRequest" }) as any as S.Schema<UpdateRequest>;
+
+export type UpdateResponseStatus =
+  | "ready"
+  | "unconfigured"
+  | "misconfigured"
+  | "misconfigured/locked"
+  | "unlocked";
+export const UpdateResponseStatus = /*@__PURE__*/ S.String;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface UpdateResponse {
+  /** Email Routing settings identifier. */
+  id: string;
+  /** State of the zone settings for Email Routing. */
+  enabled: boolean;
+  /** Domain of your zone. */
+  name: string;
+  /** The date and time the settings have been created. */
+  created?: string | null;
+  /** The date and time the settings have been modified. */
+  modified?: string | null;
+  /** Flag to check if the user skipped the configuration wizard. */
+  skipWizard?: boolean | null;
+  /** Show the state of your account, and the type or configuration error. */
+  status?: UpdateResponseStatus | null;
+  /** Whether subaddressing (plus-addressing) is honored when matching incoming mail against routing rules. */
+  supportSubaddress?: boolean | null;
+  /** Email Routing settings tag. (Deprecated, replaced by Email Routing settings identifier) */
+  deprecatedtag?: string | null;
+  enabled_2: unknown;
+  skip_wizard_2: unknown;
+  /** }' */
+  support_subaddress_2: boolean;
+}
+export const UpdateResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    enabled: S.Boolean,
+    name: S.String,
+    created: S.optional(S.NullOr(S.String)),
+    modified: S.optional(S.NullOr(S.String)),
+    skipWizard: S.optional(S.NullOr(S.Boolean).pipe(T.Body("skip_wizard"))),
+    status: S.optional(S.NullOr(UpdateResponseStatus)),
+    supportSubaddress: S.optional(
+      S.NullOr(S.Boolean).pipe(T.Body("support_subaddress")),
+    ),
+    deprecatedtag: S.optional(S.NullOr(S.String).pipe(T.Body("Deprecatedtag"))),
+    enabled_2: S.Unknown.pipe(T.Body("enabled")),
+    skip_wizard_2: S.Unknown.pipe(T.Body("skip_wizard")),
+    support_subaddress_2: S.Boolean.pipe(T.Body("support_subaddress")),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+).annotate({ identifier: "UpdateResponse" }) as any as S.Schema<UpdateResponse>;
 
 export type RulesUpdateRequestActionsItemType = "drop" | "forward" | "worker";
 export const RulesUpdateRequestActionsItemType = /*@__PURE__*/ S.String;
@@ -1804,11 +2353,11 @@ export interface UpdateRuleRequest {
   enabled?: boolean;
   /** Routing rule name. */
   name?: string;
-  /** Public tag (script_tag) of the Worker that owns this rule. Required when */
+  /** Public tag (script_tag) of the Worker that owns this rule. Required when `source` is `wrangler`. */
   ownerWorkerTag?: string;
   /** Priority of the routing rule. */
   priority?: number;
-  /** Who manages the rule. `api` covers dashboard, generic API, and Terraform; */
+  /** Who manages the rule. `api` covers dashboard, generic API, and Terraform; `wrangler` means the rule is managed by a Worker’s wrangler.jsonc. Defaults to `api` when omitted on write. */
   source?: RulesUpdateRequestSource | (string & {});
 }
 export const UpdateRuleRequest = /*@__PURE__*/ S.suspend(() =>
@@ -1896,6 +2445,15 @@ export const RulesUpdateResponseMatchersList = /*@__PURE__*/ S.Array(
 export type RulesUpdateResponseSource = "api" | "wrangler";
 export const RulesUpdateResponseSource = /*@__PURE__*/ S.String;
 
+export type RulesUpdateResponseType = "forward";
+export const RulesUpdateResponseType = /*@__PURE__*/ S.String;
+
+export type RulesUpdateResponseType2 = "literal";
+export const RulesUpdateResponseType2 = /*@__PURE__*/ S.String;
+
+export type RulesUpdateResponseSource2 = "api";
+export const RulesUpdateResponseSource2 = /*@__PURE__*/ S.String;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface UpdateRuleResponse {
   /** Routing rule identifier. */
@@ -1910,10 +2468,23 @@ export interface UpdateRuleResponse {
   name?: string | null;
   /** Priority of the routing rule. */
   priority?: number | null;
-  /** Who manages the rule. `api` covers dashboard, generic API, and Terraform; */
+  /** Who manages the rule. `api` covers dashboard, generic API, and Terraform; `wrangler` means the rule is managed by a Worker’s wrangler.jsonc. Defaults to `api` when omitted on write. */
   source?: RulesUpdateResponseSource | null;
   /** Routing rule tag. (Deprecated, replaced by routing rule identifier) */
-  tag?: string | null;
+  deprecatedtag?: string | null;
+  /** { */
+  actions_2: unknown;
+  /** } */
+  type: RulesUpdateResponseType;
+  /** { */
+  matchers_2: unknown;
+  /** } */
+  type_2: RulesUpdateResponseType2;
+  enabled_2: unknown;
+  name_2: unknown;
+  ownerWorkerTag: unknown;
+  /** }' */
+  source_2: RulesUpdateResponseSource2;
 }
 export const UpdateRuleResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1924,11 +2495,49 @@ export const UpdateRuleResponse = /*@__PURE__*/ S.suspend(() =>
     name: S.optional(S.NullOr(S.String)),
     priority: S.optional(S.NullOr(S.Number)),
     source: S.optional(S.NullOr(RulesUpdateResponseSource)),
-    tag: S.optional(S.NullOr(S.String)),
+    deprecatedtag: S.optional(S.NullOr(S.String).pipe(T.Body("Deprecatedtag"))),
+    actions_2: S.Unknown.pipe(T.Body("actions")),
+    type: RulesUpdateResponseType,
+    matchers_2: S.Unknown.pipe(T.Body("matchers")),
+    type_2: RulesUpdateResponseType2.pipe(T.Body("type")),
+    enabled_2: S.Unknown.pipe(T.Body("enabled")),
+    name_2: S.Unknown.pipe(T.Body("name")),
+    ownerWorkerTag: S.Unknown.pipe(T.Body("owner_worker_tag")),
+    source_2: RulesUpdateResponseSource2.pipe(T.Body("source")),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateRuleResponse",
 }) as any as S.Schema<UpdateRuleResponse>;
+
+export type AccountRulesListForAccountError = CloudflareOpError;
+/** Lists existing routing rules across all zones in the account or zone. */
+export const accountRulesListForAccount: API.OperationMethod<
+  AccountRulesListForAccountRequest,
+  AccountRulesListResponse,
+  AccountRulesListForAccountError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: AccountRulesListForAccountRequest,
+  output: AccountRulesListResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+  retry: Retry.Retry,
+}));
+
+export type AccountRulesListForZoneError = CloudflareOpError;
+/** Lists existing routing rules across all zones in the account or zone. */
+export const accountRulesListForZone: API.OperationMethod<
+  AccountRulesListForZoneRequest,
+  AccountRulesListResponse,
+  AccountRulesListForZoneError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: AccountRulesListForZoneRequest,
+  output: AccountRulesListResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+  retry: Retry.Retry,
+}));
 
 export type AddressesEditError = CloudflareOpError;
 /** Updates the status of a specific destination address. */
@@ -1976,7 +2585,7 @@ export const createDns: API.OperationMethod<
 }));
 
 export type CreateRuleError = WorkerScriptNotFound | CloudflareOpError;
-/** Rules consist of a set of criteria for matching emails (such as an email being sent to a specific custom email address) plus a set of actions to take on the email (like forwarding it to a specific destination address). Forward actions require all destination addresses to be verified. */
+/** Rules consist of a set of criteria for matching emails (such as an email being sent to a specific custom email address) plus a set of actions to take on the email (like forwarding it to a specific destination address). Forward actions require exactly one verified destination address. */
 export const createRule: API.OperationMethod<
   CreateRuleRequest,
   CreateRuleResponse,
@@ -2017,12 +2626,12 @@ export type DeleteDnsError = CloudflareOpError;
 /** Disable your Email Routing zone. Also removes additional MX records previously required for Email Routing to work. */
 export const deleteDns: API.OperationMethod<
   DeleteDnsRequest,
-  DeleteDnsResponse,
+  DnsDeleteResponse,
   DeleteDnsError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteDnsRequest,
-  output: DeleteDnsResponse,
+  output: DnsDeleteResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -2054,6 +2663,21 @@ export const disableEmailRouting: API.OperationMethod<
   input: DisableEmailRoutingRequest,
   output: DisableEmailRoutingResponse,
   errors: [Forbidden, CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+  retry: Retry.Retry,
+}));
+
+export type EditError = CloudflareOpError;
+/** Update the settings for your Email Routing zone. */
+export const edit: API.OperationMethod<
+  EditRequest,
+  EditResponse,
+  EditError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: EditRequest,
+  output: EditResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
 }));
@@ -2228,7 +2852,7 @@ export type PutRuleCatchAllError =
   | DestinationNotVerified
   | WorkerScriptNotFound
   | CloudflareOpError;
-/** Enable or disable catch-all routing rule, or change action to forward to specific destination address. Forward actions require all destination addresses to be verified. */
+/** Enable or disable catch-all routing rule, or change action to forward to a specific destination address. Forward actions require exactly one verified destination address. */
 export const putRuleCatchAll: API.OperationMethod<
   PutRuleCatchAllRequest,
   PutRuleCatchAllResponse,
@@ -2248,6 +2872,36 @@ export const putRuleCatchAll: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
+export type RulesListForAccountError = CloudflareOpError;
+/** Lists existing routing rules across all zones in the account or zone. */
+export const rulesListForAccount: API.OperationMethod<
+  RulesListForAccountRequest,
+  RulesListResponse,
+  RulesListForAccountError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: RulesListForAccountRequest,
+  output: RulesListResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+  retry: Retry.Retry,
+}));
+
+export type RulesListForZoneError = CloudflareOpError;
+/** Lists existing routing rules across all zones in the account or zone. */
+export const rulesListForZone: API.OperationMethod<
+  RulesListForZoneRequest,
+  RulesListResponse,
+  RulesListForZoneError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: RulesListForZoneRequest,
+  output: RulesListResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+  retry: Retry.Retry,
+}));
+
 export type UnlockError = CloudflareOpError;
 /** Unlock MX records previously locked by Email Routing. Deprecated - use PATCH /zones/{zone_id}/email/routing/dns instead. */
 export const unlock: API.OperationMethod<
@@ -2263,8 +2917,23 @@ export const unlock: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
+export type UpdateError = CloudflareOpError;
+/** Update the settings for your Email Routing zone. */
+export const update: API.OperationMethod<
+  UpdateRequest,
+  UpdateResponse,
+  UpdateError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: UpdateRequest,
+  output: UpdateResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+  retry: Retry.Retry,
+}));
+
 export type UpdateRuleError = WorkerScriptNotFound | CloudflareOpError;
-/** Update actions and matches, or enable/disable specific routing rules. Forward actions require all destination addresses to be verified. */
+/** Update actions and matches, or enable/disable specific routing rules. Forward actions require exactly one verified destination address. */
 export const updateRule: API.OperationMethod<
   UpdateRuleRequest,
   UpdateRuleResponse,

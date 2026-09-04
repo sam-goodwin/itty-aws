@@ -106,6 +106,9 @@ export type EndpointHealthchecksCreateResponseCheckType = "icmp";
 export const EndpointHealthchecksCreateResponseCheckType =
   /*@__PURE__*/ S.String;
 
+export type EndpointHealthchecksCreateResponseName = "My Endpoint";
+export const EndpointHealthchecksCreateResponseName = /*@__PURE__*/ S.String;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateEndpointHealthcheckResponse {
   /** type of check to perform */
@@ -116,6 +119,10 @@ export interface CreateEndpointHealthcheckResponse {
   id?: string | null;
   /** Optional name associated with this check */
   name?: string | null;
+  check_type_2: unknown;
+  endpoint_2: unknown;
+  /** }' */
+  name_2: EndpointHealthchecksCreateResponseName;
 }
 export const CreateEndpointHealthcheckResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -125,6 +132,9 @@ export const CreateEndpointHealthcheckResponse = /*@__PURE__*/ S.suspend(() =>
     endpoint: S.String,
     id: S.optional(S.NullOr(S.String)),
     name: S.optional(S.NullOr(S.String)),
+    check_type_2: S.Unknown.pipe(T.Body("check_type")),
+    endpoint_2: S.Unknown.pipe(T.Body("endpoint")),
+    name_2: EndpointHealthchecksCreateResponseName.pipe(T.Body("name")),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateEndpointHealthcheckResponse",
@@ -177,6 +187,7 @@ export const TraceroutesCreateRequestOptions = /*@__PURE__*/ S.suspend(() =>
 export interface CreateTracerouteRequest {
   /** Identifier */
   accountId: string;
+  /** maxLength10 */
   targets: TraceroutesCreateRequestTargetsList;
   /** If no source colo names specified, all colos will be used. China colos are unavailable for traceroutes. */
   colos?: TraceroutesCreateRequestColosList;
@@ -218,7 +229,6 @@ export const TraceroutesCreateResultItemColosItemColo = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<TraceroutesCreateResultItemColosItemColo>;
 
 export type TraceroutesCreateResultItemColosItemError =
-  | ""
   | "Could not gather traceroute data: Code 1"
   | "Could not gather traceroute data: Code 2"
   | "Could not gather traceroute data: Code 3"
@@ -231,6 +241,11 @@ export const TraceroutesCreateResultItemColosItemHopsItemNodesItemLabelsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<TraceroutesCreateResultItemColosItemHopsItemNodesItemLabelsList>;
+
+export type TraceroutesCreateResultItemColosItemHopsItemNodesItemPacketType =
+  "icmp";
+export const TraceroutesCreateResultItemColosItemHopsItemNodesItemPacketType =
+  /*@__PURE__*/ S.String;
 
 export interface TraceroutesCreateResultItemColosItemHopsItemNodesItem {
   /** AS number associated with the node object. */
@@ -251,6 +266,26 @@ export interface TraceroutesCreateResultItemColosItemHopsItemNodesItem {
   packetCount?: number | null;
   /** Standard deviation of the RTTs in ms. */
   stdDevRttMs?: number | null;
+  /** Number of packets where no response was received. */
+  packetsLost?: number | null;
+  /** Number of packets sent with specified TTL. */
+  packetsSent?: number | null;
+  /** The time to live (TTL). */
+  packetsTtl?: number | null;
+  /** Aggregated statistics from all hops about the target. */
+  targetSummary?: unknown | null;
+  /** Total time of traceroute in ms. */
+  tracerouteTimeMs?: number | null;
+  /** The target hostname, IPv6, or IPv6 address. */
+  target?: string | null;
+  /** "203.0.113.1", */
+  targets: unknown;
+  /** "den", */
+  colos: unknown;
+  options: unknown;
+  maxTtl: unknown;
+  /** } */
+  packetType: TraceroutesCreateResultItemColosItemHopsItemNodesItemPacketType;
 }
 export const TraceroutesCreateResultItemColosItemHopsItemNodesItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -270,6 +305,24 @@ export const TraceroutesCreateResultItemColosItemHopsItemNodesItem =
       stdDevRttMs: S.optional(
         S.NullOr(S.Number).pipe(T.Body("std_dev_rtt_ms")),
       ),
+      packetsLost: S.optional(S.NullOr(S.Number).pipe(T.Body("packets_lost"))),
+      packetsSent: S.optional(S.NullOr(S.Number).pipe(T.Body("packets_sent"))),
+      packetsTtl: S.optional(S.NullOr(S.Number).pipe(T.Body("packets_ttl"))),
+      targetSummary: S.optional(
+        S.NullOr(S.Unknown).pipe(T.Body("target_summary")),
+      ),
+      tracerouteTimeMs: S.optional(
+        S.NullOr(S.Number).pipe(T.Body("traceroute_time_ms")),
+      ),
+      target: S.optional(S.NullOr(S.String)),
+      targets: S.Unknown,
+      colos: S.Unknown,
+      options: S.Unknown,
+      maxTtl: S.Unknown.pipe(T.Body("max_ttl")),
+      packetType:
+        TraceroutesCreateResultItemColosItemHopsItemNodesItemPacketType.pipe(
+          T.Body("packet_type"),
+        ),
     }),
   ).annotate({
     identifier: "TraceroutesCreateResultItemColosItemHopsItemNodesItem",
@@ -285,12 +338,6 @@ export const TraceroutesCreateResultItemColosItemHopsItemNodesList =
 export interface TraceroutesCreateResultItemColosItemHopsItem {
   /** An array of node objects. */
   nodes?: TraceroutesCreateResultItemColosItemHopsItemNodesList | null;
-  /** Number of packets where no response was received. */
-  packetsLost?: number | null;
-  /** Number of packets sent with specified TTL. */
-  packetsSent?: number | null;
-  /** The time to live (TTL). */
-  packetsTtl?: number | null;
 }
 export const TraceroutesCreateResultItemColosItemHopsItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -298,9 +345,6 @@ export const TraceroutesCreateResultItemColosItemHopsItem =
       nodes: S.optional(
         S.NullOr(TraceroutesCreateResultItemColosItemHopsItemNodesList),
       ),
-      packetsLost: S.optional(S.NullOr(S.Number).pipe(T.Body("packets_lost"))),
-      packetsSent: S.optional(S.NullOr(S.Number).pipe(T.Body("packets_sent"))),
-      packetsTtl: S.optional(S.NullOr(S.Number).pipe(T.Body("packets_ttl"))),
     }),
   ).annotate({
     identifier: "TraceroutesCreateResultItemColosItemHopsItem",
@@ -318,10 +362,6 @@ export interface TraceroutesCreateResultItemColosItem {
   /** Errors resulting from collecting traceroute from colo to target. */
   error?: TraceroutesCreateResultItemColosItemError | null;
   hops?: TraceroutesCreateResultItemColosItemHopsList | null;
-  /** Aggregated statistics from all hops about the target. */
-  targetSummary?: unknown | null;
-  /** Total time of traceroute in ms. */
-  tracerouteTimeMs?: number | null;
 }
 export const TraceroutesCreateResultItemColosItem = /*@__PURE__*/ S.suspend(
   () =>
@@ -329,12 +369,6 @@ export const TraceroutesCreateResultItemColosItem = /*@__PURE__*/ S.suspend(
       colo: S.optional(S.NullOr(TraceroutesCreateResultItemColosItemColo)),
       error: S.optional(S.NullOr(TraceroutesCreateResultItemColosItemError)),
       hops: S.optional(S.NullOr(TraceroutesCreateResultItemColosItemHopsList)),
-      targetSummary: S.optional(
-        S.NullOr(S.Unknown).pipe(T.Body("target_summary")),
-      ),
-      tracerouteTimeMs: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("traceroute_time_ms")),
-      ),
     }),
 ).annotate({
   identifier: "TraceroutesCreateResultItemColosItem",
@@ -348,13 +382,10 @@ export const TraceroutesCreateResultItemColosList = /*@__PURE__*/ S.Array(
 
 export interface TraceroutesCreateResultItem {
   colos?: TraceroutesCreateResultItemColosList | null;
-  /** The target hostname, IPv6, or IPv6 address. */
-  target?: string | null;
 }
 export const TraceroutesCreateResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     colos: S.optional(S.NullOr(TraceroutesCreateResultItemColosList)),
-    target: S.optional(S.NullOr(S.String)),
   }),
 ).annotate({
   identifier: "TraceroutesCreateResultItem",
@@ -403,12 +434,46 @@ export const DeleteEndpointHealthcheckRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteEndpointHealthcheckRequest",
 }) as any as S.Schema<DeleteEndpointHealthcheckRequest>;
 
-export interface DeleteEndpointHealthcheckResponse {}
-export const DeleteEndpointHealthcheckResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+export type EndpointHealthchecksDeleteResponsePointer = "pointer";
+export const EndpointHealthchecksDeleteResponsePointer = /*@__PURE__*/ S.String;
+
+export type EndpointHealthchecksDeleteResponsePointer2 = "pointer";
+export const EndpointHealthchecksDeleteResponsePointer2 =
+  /*@__PURE__*/ S.String;
+
+/** Raw response payload (operation does not use the standard v4 result envelope). */
+export interface EndpointHealthchecksDeleteResponse {
+  code: unknown;
+  message: unknown;
+  documentationUrl: unknown;
+  source: unknown;
+  /** } */
+  pointer: EndpointHealthchecksDeleteResponsePointer;
+  code_2: unknown;
+  message_2: unknown;
+  documentation_url_2: unknown;
+  source_2: unknown;
+  /** } */
+  pointer_2: EndpointHealthchecksDeleteResponsePointer2;
+}
+export const EndpointHealthchecksDeleteResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    code: S.Unknown,
+    message: S.Unknown,
+    documentationUrl: S.Unknown.pipe(T.Body("documentation_url")),
+    source: S.Unknown,
+    pointer: EndpointHealthchecksDeleteResponsePointer,
+    code_2: S.Unknown.pipe(T.Body("code")),
+    message_2: S.Unknown.pipe(T.Body("message")),
+    documentation_url_2: S.Unknown.pipe(T.Body("documentation_url")),
+    source_2: S.Unknown.pipe(T.Body("source")),
+    pointer_2: EndpointHealthchecksDeleteResponsePointer2.pipe(
+      T.Body("pointer"),
+    ),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
-  identifier: "DeleteEndpointHealthcheckResponse",
-}) as any as S.Schema<DeleteEndpointHealthcheckResponse>;
+  identifier: "EndpointHealthchecksDeleteResponse",
+}) as any as S.Schema<EndpointHealthchecksDeleteResponse>;
 
 export interface GetEndpointHealthcheckRequest {
   /** Identifier */
@@ -566,6 +631,9 @@ export type EndpointHealthchecksUpdateResponseCheckType = "icmp";
 export const EndpointHealthchecksUpdateResponseCheckType =
   /*@__PURE__*/ S.String;
 
+export type EndpointHealthchecksUpdateResponseName = "My Endpoint";
+export const EndpointHealthchecksUpdateResponseName = /*@__PURE__*/ S.String;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface UpdateEndpointHealthcheckResponse {
   /** type of check to perform */
@@ -576,6 +644,10 @@ export interface UpdateEndpointHealthcheckResponse {
   id?: string | null;
   /** Optional name associated with this check */
   name?: string | null;
+  check_type_2: unknown;
+  endpoint_2: unknown;
+  /** }' */
+  name_2: EndpointHealthchecksUpdateResponseName;
 }
 export const UpdateEndpointHealthcheckResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -585,6 +657,9 @@ export const UpdateEndpointHealthcheckResponse = /*@__PURE__*/ S.suspend(() =>
     endpoint: S.String,
     id: S.optional(S.NullOr(S.String)),
     name: S.optional(S.NullOr(S.String)),
+    check_type_2: S.Unknown.pipe(T.Body("check_type")),
+    endpoint_2: S.Unknown.pipe(T.Body("endpoint")),
+    name_2: EndpointHealthchecksUpdateResponseName.pipe(T.Body("name")),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateEndpointHealthcheckResponse",
@@ -640,12 +715,12 @@ export type DeleteEndpointHealthcheckError =
 /** Delete Endpoint Health Check. */
 export const deleteEndpointHealthcheck: API.OperationMethod<
   DeleteEndpointHealthcheckRequest,
-  DeleteEndpointHealthcheckResponse,
+  EndpointHealthchecksDeleteResponse,
   DeleteEndpointHealthcheckError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteEndpointHealthcheckRequest,
-  output: DeleteEndpointHealthcheckResponse,
+  output: EndpointHealthchecksDeleteResponse,
   errors: [
     EndpointHealthcheckNotFound,
     Forbidden,

@@ -92,30 +92,6 @@ export class Forbidden
     [{ status: 403 }],
   ) {}
 
-export class LoadBalancerNotFound
-  extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedError<LoadBalancerNotFound>()(
-      "LoadBalancerNotFound",
-      {
-        code: S.Number,
-        message: S.String,
-      },
-    ),
-    [{ code: 1001 }],
-  ) {}
-
-export class LoadBalancingNotEnabledForZone
-  extends /*@__PURE__*/ T.applyErrorMatchers(
-    /*@__PURE__*/ S.TaggedError<LoadBalancingNotEnabledForZone>()(
-      "LoadBalancingNotEnabledForZone",
-      {
-        code: S.Number,
-        message: S.String,
-      },
-    ),
-    [{ code: 1002, message: { includes: "load balancing not enabled" } }],
-  ) {}
-
 export class MonitorGroupInUse
   extends /*@__PURE__*/ T.applyErrorMatchers(
     /*@__PURE__*/ S.TaggedError<MonitorGroupInUse>()("MonitorGroupInUse", {
@@ -248,6 +224,7 @@ export type PoolsBulkEditResultItemCheckRegionsItem =
   | "SAS"
   | "SEAS"
   | "NEAS"
+  | "CHINA"
   | "ALL_REGIONS";
 export const PoolsBulkEditResultItemCheckRegionsItem = /*@__PURE__*/ S.String;
 
@@ -256,6 +233,18 @@ export type PoolsBulkEditResultItemCheckRegionsList =
 export const PoolsBulkEditResultItemCheckRegionsList = /*@__PURE__*/ S.Array(
   PoolsBulkEditResultItemCheckRegionsItem,
 ) as any as S.Schema<PoolsBulkEditResultItemCheckRegionsList>;
+
+export type PoolsBulkEditResultItemHealthSourcesItem =
+  | "local"
+  | "regional"
+  | "global";
+export const PoolsBulkEditResultItemHealthSourcesItem = /*@__PURE__*/ S.String;
+
+export type PoolsBulkEditResultItemHealthSourcesList =
+  Array<PoolsBulkEditResultItemHealthSourcesItem>;
+export const PoolsBulkEditResultItemHealthSourcesList = /*@__PURE__*/ S.Array(
+  PoolsBulkEditResultItemHealthSourcesItem,
+) as any as S.Schema<PoolsBulkEditResultItemHealthSourcesList>;
 
 export type PoolsBulkEditResultItemLoadSheddingDefaultPolicy =
   | "random"
@@ -321,6 +310,11 @@ export const PoolsBulkEditResultItemNotificationFilterOrigin =
     identifier: "PoolsBulkEditResultItemNotificationFilterOrigin",
   }) as any as S.Schema<PoolsBulkEditResultItemNotificationFilterOrigin>;
 
+export type PoolsBulkEditResultItemNotificationFilterPool =
+  PoolsBulkEditResultItemNotificationFilterOrigin;
+export const PoolsBulkEditResultItemNotificationFilterPool =
+  PoolsBulkEditResultItemNotificationFilterOrigin;
+
 export interface PoolsBulkEditResultItemNotificationFilter {
   /** Filter options for a particular resource type (pool or origin). Use null to reset. */
   origin?: PoolsBulkEditResultItemNotificationFilterOrigin | null;
@@ -369,7 +363,7 @@ export const PoolsBulkEditResultItemOriginsItemHeaderHostList =
   ) as any as S.Schema<PoolsBulkEditResultItemOriginsItemHeaderHostList>;
 
 export interface PoolsBulkEditResultItemOriginsItemHeader {
-  /** The 'Host' header allows to override the hostname set in the HTTP request. Current support is 1 'Host' header override per origin. */
+  /** The ‘Host’ header allows to override the hostname set in the HTTP request. Current support is 1 ‘Host’ header override per origin. */
   host?: PoolsBulkEditResultItemOriginsItemHeaderHostList | null;
 }
 export const PoolsBulkEditResultItemOriginsItemHeader = /*@__PURE__*/ S.suspend(
@@ -394,7 +388,7 @@ export interface PoolsBulkEditResultItemOriginsItem {
   enabled?: boolean | null;
   /** Whether to flatten CNAME records for this origin, resolving them to A/AAAA records before returning to the client. When true (the default), the director resolves CNAME addresses to their underlying A/AAAA records. When false, the origin address is returned as a raw CNAME record without resolution. This setting mirrors the DNS API record flatten_cname setting. */
   flattenCname?: boolean | null;
-  /** The request header is used to pass additional information with an HTTP request. Currently supported header is 'Host'. */
+  /** The request header is used to pass additional information with an HTTP request. Currently supported header is ‘Host’. */
   header?: PoolsBulkEditResultItemOriginsItemHeader | null;
   /** A human-identifiable name for the origin. */
   name?: string | null;
@@ -440,6 +434,8 @@ export interface PoolsBulkEditResultItem {
   disabledAt?: string | null;
   /** Whether to enable (the default) or disable this pool. Disabled pools will not receive traffic and are excluded from health checks. Disabling a pool will cause any load balancers using it to failover to the next pool (if any). */
   enabled?: boolean | null;
+  /** A list of health sources, ordered from highest to lowest priority, used to evaluate individual origin health and overall pool health. The load balancer uses the first source that has data and falls back to the next. Currently accepted values are null or the exact array [“regional”, “global”]; any other combination is rejected. Null (the default) behaves like [“local”, “global”]. [“regional”, “global”] makes each region steer on its own health, falling back to the global decision when a region has no fresh data. Setting regional requires at least one region in check_regions. */
+  healthSources?: PoolsBulkEditResultItemHealthSourcesList | null;
   /** The latitude of the data center containing the origins used in this pool in decimal degrees. If this is set, longitude must also be set. */
   latitude?: number | null;
   /** Configures load shedding policies and percentages for the pool. */
@@ -457,7 +453,7 @@ export interface PoolsBulkEditResultItem {
   name?: string | null;
   /** List of networks where Load Balancer or Pool is enabled. */
   networks?: PoolsBulkEditResultItemNetworksList | null;
-  /** This field is now deprecated. It has been moved to Cloudflare's Centralized Notification service https://developers.cloudflare.com/fundamentals/notifications/. The email address to send health status notifications to. This can be an individual mailbox or a mailing list. Multiple emails can be supplied as a comma delimited list. */
+  /** This field is now deprecated. It has been moved to Cloudflare’s Centralized Notification service <https://developers.cloudflare.com/fundamentals/notifications/>. The email address to send health status notifications to. This can be an individual mailbox or a mailing list. Multiple emails can be supplied as a comma delimited list. */
   notificationEmail?: string | null;
   /** Filter pool and origin health notifications by resource type or health status. Use null to reset. */
   notificationFilter?: PoolsBulkEditResultItemNotificationFilter | null;
@@ -478,6 +474,11 @@ export const PoolsBulkEditResultItem = /*@__PURE__*/ S.suspend(() =>
     description: S.optional(S.NullOr(S.String)),
     disabledAt: S.optional(S.NullOr(S.String).pipe(T.Body("disabled_at"))),
     enabled: S.optional(S.NullOr(S.Boolean)),
+    healthSources: S.optional(
+      S.NullOr(PoolsBulkEditResultItemHealthSourcesList).pipe(
+        T.Body("health_sources"),
+      ),
+    ),
     latitude: S.optional(S.NullOr(S.Number)),
     loadShedding: S.optional(
       S.NullOr(PoolsBulkEditResultItemLoadShedding).pipe(
@@ -532,479 +533,28 @@ export const BulkPatchPoolsResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "BulkPatchPoolsResponse",
 }) as any as S.Schema<BulkPatchPoolsResponse>;
 
-export type CreateRequestDefaultPoolsList = Array<string>;
-export const CreateRequestDefaultPoolsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateRequestDefaultPoolsList>;
-
-export interface CreateRequestAdaptiveRouting {
-  /** Extends zero-downtime failover of requests to healthy origins from alternate pools, when no healthy alternate exists in the same pool, according to the failover order defined by traffic and origin steering. When set false (the default) zero-downtime failover will only occur between origins within the same pool. See `session_affinity_attributes` for control over when sessions are broken or reassigned. */
-  failoverAcrossPools?: boolean;
+export interface CreateForAccountRequest {
+  /** Identifier. */
+  accountId: string;
 }
-export const CreateRequestAdaptiveRouting = /*@__PURE__*/ S.suspend(() =>
+export const CreateForAccountRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    failoverAcrossPools: S.optional(
-      S.Boolean.pipe(T.Body("failover_across_pools")),
-    ),
-  }),
-).annotate({
-  identifier: "CreateRequestAdaptiveRouting",
-}) as any as S.Schema<CreateRequestAdaptiveRouting>;
-
-export type CreateRequestCountryPoolsMap = {
-  [key: string]: unknown | undefined;
-};
-export const CreateRequestCountryPoolsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<CreateRequestCountryPoolsMap>;
-
-export type CreateRequestLocationStrategyMode = "pop" | "resolver_ip";
-export const CreateRequestLocationStrategyMode = /*@__PURE__*/ S.String;
-
-export type CreateRequestLocationStrategyPreferEcs =
-  | "always"
-  | "never"
-  | "proximity"
-  | "geo";
-export const CreateRequestLocationStrategyPreferEcs = /*@__PURE__*/ S.String;
-
-export interface CreateRequestLocationStrategy {
-  /** Determines the authoritative location when ECS is not preferred, does not exist in the request, or its GeoIP lookup is unsuccessful. */
-  mode?: CreateRequestLocationStrategyMode | (string & {});
-  /** Whether the EDNS Client Subnet (ECS) GeoIP should be preferred as the authoritative location. */
-  preferEcs?: CreateRequestLocationStrategyPreferEcs | (string & {});
-}
-export const CreateRequestLocationStrategy = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    mode: S.optional(CreateRequestLocationStrategyMode),
-    preferEcs: S.optional(
-      CreateRequestLocationStrategyPreferEcs.pipe(T.Body("prefer_ecs")),
-    ),
-  }),
-).annotate({
-  identifier: "CreateRequestLocationStrategy",
-}) as any as S.Schema<CreateRequestLocationStrategy>;
-
-export type CreateRequestNetworksList = Array<string>;
-export const CreateRequestNetworksList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateRequestNetworksList>;
-
-export type CreateRequestPopPoolsMap = { [key: string]: unknown | undefined };
-export const CreateRequestPopPoolsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<CreateRequestPopPoolsMap>;
-
-export type CreateRequestRandomSteeringPoolWeightsMap = {
-  [key: string]: number | undefined;
-};
-export const CreateRequestRandomSteeringPoolWeightsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Number,
-) as any as S.Schema<CreateRequestRandomSteeringPoolWeightsMap>;
-
-export interface CreateRequestRandomSteering {
-  /** The default weight for pools in the load balancer that are not specified in the pool_weights map. */
-  defaultWeight?: number;
-  /** A mapping of pool IDs to custom weights. The weight is relative to other pools in the load balancer. */
-  poolWeights?: CreateRequestRandomSteeringPoolWeightsMap;
-}
-export const CreateRequestRandomSteering = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    defaultWeight: S.optional(S.Number.pipe(T.Body("default_weight"))),
-    poolWeights: S.optional(
-      CreateRequestRandomSteeringPoolWeightsMap.pipe(T.Body("pool_weights")),
-    ),
-  }),
-).annotate({
-  identifier: "CreateRequestRandomSteering",
-}) as any as S.Schema<CreateRequestRandomSteering>;
-
-export type CreateRequestRegionPoolsMap = {
-  [key: string]: unknown | undefined;
-};
-export const CreateRequestRegionPoolsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<CreateRequestRegionPoolsMap>;
-
-export interface CreateRequestRulesItemFixedResponse {
-  /** The http 'Content-Type' header to include in the response. */
-  contentType?: string;
-  /** The http 'Location' header to include in the response. */
-  location?: string;
-  /** Text to include as the http body. */
-  messageBody?: string;
-  /** The http status code to respond with. */
-  statusCode?: number;
-}
-export const CreateRequestRulesItemFixedResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    contentType: S.optional(S.String.pipe(T.Body("content_type"))),
-    location: S.optional(S.String),
-    messageBody: S.optional(S.String.pipe(T.Body("message_body"))),
-    statusCode: S.optional(S.Number.pipe(T.Body("status_code"))),
-  }),
-).annotate({
-  identifier: "CreateRequestRulesItemFixedResponse",
-}) as any as S.Schema<CreateRequestRulesItemFixedResponse>;
-
-export type CreateRequestRulesItemOverridesCountryPoolsMap = {
-  [key: string]: unknown | undefined;
-};
-export const CreateRequestRulesItemOverridesCountryPoolsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<CreateRequestRulesItemOverridesCountryPoolsMap>;
-
-export type CreateRequestRulesItemOverridesDefaultPoolsList = Array<string>;
-export const CreateRequestRulesItemOverridesDefaultPoolsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CreateRequestRulesItemOverridesDefaultPoolsList>;
-
-export type CreateRequestRulesItemOverridesPopPoolsMap = {
-  [key: string]: unknown | undefined;
-};
-export const CreateRequestRulesItemOverridesPopPoolsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<CreateRequestRulesItemOverridesPopPoolsMap>;
-
-export type CreateRequestRulesItemOverridesRegionPoolsMap = {
-  [key: string]: unknown | undefined;
-};
-export const CreateRequestRulesItemOverridesRegionPoolsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<CreateRequestRulesItemOverridesRegionPoolsMap>;
-
-export type CreateRequestRulesItemOverridesSessionAffinity =
-  | "none"
-  | "cookie"
-  | "ip_cookie"
-  | "header";
-export const CreateRequestRulesItemOverridesSessionAffinity =
-  /*@__PURE__*/ S.String;
-
-export type CreateRequestRulesItemOverridesSessionAffinityAttributesHeadersList =
-  Array<string>;
-export const CreateRequestRulesItemOverridesSessionAffinityAttributesHeadersList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CreateRequestRulesItemOverridesSessionAffinityAttributesHeadersList>;
-
-export type CreateRequestRulesItemOverridesSessionAffinityAttributesSamesite =
-  | "Auto"
-  | "Lax"
-  | "None"
-  | "Strict";
-export const CreateRequestRulesItemOverridesSessionAffinityAttributesSamesite =
-  /*@__PURE__*/ S.String;
-
-export type CreateRequestRulesItemOverridesSessionAffinityAttributesSecure =
-  | "Auto"
-  | "Always"
-  | "Never";
-export const CreateRequestRulesItemOverridesSessionAffinityAttributesSecure =
-  /*@__PURE__*/ S.String;
-
-export type CreateRequestRulesItemOverridesSessionAffinityAttributesZeroDowntimeFailover =
-  | "none"
-  | "temporary"
-  | "sticky";
-export const CreateRequestRulesItemOverridesSessionAffinityAttributesZeroDowntimeFailover =
-  /*@__PURE__*/ S.String;
-
-export interface CreateRequestRulesItemOverridesSessionAffinityAttributes {
-  /** Configures the drain duration in seconds. This field is only used when session affinity is enabled on the load balancer. */
-  drainDuration?: number;
-  /** Configures the names of HTTP headers to base session affinity on when header `session_affinity` is enabled. At least one HTTP header name must be provided. To specify the exact cookies to be used, include an item in the following format: `"cookie:<cookie-name-1>,<cookie-name-2>"` (example) where everything after the colon is a comma-separated list of cookie names. Providing only `"cookie"` will result in all cookies being used. The default max number of HTTP header names that can be provided depends on your plan: 5 for Enterprise, 1 for all other plans. */
-  headers?: CreateRequestRulesItemOverridesSessionAffinityAttributesHeadersList;
-  /** When header `session_affinity` is enabled, this option can be used to specify how HTTP headers on load balancing requests will be used. The supported values are: - `"true"`: Load balancing requests must contain *all* of the HTTP headers specified by the `headers` session affinity attribute, otherwise sessions aren't created. - `"false"`: Load balancing requests must contain *at least one* of the HTTP headers specified by the `headers` session affinity attribute, otherwise sessions aren't created. */
-  requireAllHeaders?: boolean;
-  /** Configures the SameSite attribute on session affinity cookie. Value "Auto" will be translated to "Lax" or "None" depending if Always Use HTTPS is enabled. Note: when using value "None", the secure attribute can not be set to "Never". */
-  samesite?:
-    | CreateRequestRulesItemOverridesSessionAffinityAttributesSamesite
-    | (string & {});
-  /** Configures the Secure attribute on session affinity cookie. Value "Always" indicates the Secure attribute will be set in the Set-Cookie header, "Never" indicates the Secure attribute will not be set, and "Auto" will set the Secure attribute depending if Always Use HTTPS is enabled. */
-  secure?:
-    | CreateRequestRulesItemOverridesSessionAffinityAttributesSecure
-    | (string & {});
-  /** Configures the zero-downtime failover between origins within a pool when session affinity is enabled. This feature is currently incompatible with Argo, Tiered Cache, and Bandwidth Alliance. The supported values are: - `"none"`: No failover takes place for sessions pinned to the origin (default). - `"temporary"`: Traffic will be sent to another other healthy origin until the originally pinned origin is available; note that this can potentially result in heavy origin flapping. - `"sticky"`: The session affinity cookie is updated and subsequent requests are sent to the new origin. Note: Zero-downtime failover with sticky sessions is currently not supported for session affinity by header. */
-  zeroDowntimeFailover?:
-    | CreateRequestRulesItemOverridesSessionAffinityAttributesZeroDowntimeFailover
-    | (string & {});
-}
-export const CreateRequestRulesItemOverridesSessionAffinityAttributes =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      drainDuration: S.optional(S.Number.pipe(T.Body("drain_duration"))),
-      headers: S.optional(
-        CreateRequestRulesItemOverridesSessionAffinityAttributesHeadersList,
-      ),
-      requireAllHeaders: S.optional(
-        S.Boolean.pipe(T.Body("require_all_headers")),
-      ),
-      samesite: S.optional(
-        CreateRequestRulesItemOverridesSessionAffinityAttributesSamesite,
-      ),
-      secure: S.optional(
-        CreateRequestRulesItemOverridesSessionAffinityAttributesSecure,
-      ),
-      zeroDowntimeFailover: S.optional(
-        CreateRequestRulesItemOverridesSessionAffinityAttributesZeroDowntimeFailover.pipe(
-          T.Body("zero_downtime_failover"),
-        ),
-      ),
-    }),
-  ).annotate({
-    identifier: "CreateRequestRulesItemOverridesSessionAffinityAttributes",
-  }) as any as S.Schema<CreateRequestRulesItemOverridesSessionAffinityAttributes>;
-
-export type CreateRequestRulesItemOverridesSteeringPolicy =
-  | "off"
-  | "geo"
-  | "random"
-  | "dynamic_latency"
-  | "proximity"
-  | "least_outstanding_requests"
-  | "least_connections"
-  | "";
-export const CreateRequestRulesItemOverridesSteeringPolicy =
-  /*@__PURE__*/ S.String;
-
-export interface CreateRequestRulesItemOverrides {
-  /** Controls features that modify the routing of requests to pools and origins in response to dynamic conditions, such as during the interval between active health monitoring requests. For example, zero-downtime failover occurs immediately when an origin becomes unavailable due to HTTP 521, 522, or 523 response codes. If there is another healthy origin in the same pool, the request is retried once against this alternate origin. */
-  adaptiveRouting?: CreateRequestAdaptiveRouting;
-  /** A mapping of country codes to a list of pool IDs (ordered by their failover priority) for the given country. Any country not explicitly defined will fall back to using the corresponding region_pool mapping if it exists else to default_pools. */
-  countryPools?: CreateRequestRulesItemOverridesCountryPoolsMap;
-  /** A list of pool IDs ordered by their failover priority. Pools defined here are used by default, or when region_pools are not configured for a given region. */
-  defaultPools?: CreateRequestRulesItemOverridesDefaultPoolsList;
-  /** The pool ID to use when all other pools are detected as unhealthy. */
-  fallbackPool?: string;
-  /** Controls location-based steering for non-proxied requests. See `steering_policy` to learn how steering is affected. */
-  locationStrategy?: CreateRequestLocationStrategy;
-  /** Enterprise only: A mapping of Cloudflare PoP identifiers to a list of pool IDs (ordered by their failover priority) for the PoP (datacenter). Any PoPs not explicitly defined will fall back to using the corresponding country_pool, then region_pool mapping if it exists else to default_pools. */
-  popPools?: CreateRequestRulesItemOverridesPopPoolsMap;
-  /** Configures pool weights. */
-  randomSteering?: CreateRequestRandomSteering;
-  /** A mapping of region codes to a list of pool IDs (ordered by their failover priority) for the given region. Any regions not explicitly defined will fall back to using default_pools. */
-  regionPools?: CreateRequestRulesItemOverridesRegionPoolsMap;
-  /** Specifies the type of session affinity the load balancer should use unless specified as `"none"`. The supported types are: - `"cookie"`: On the first request to a proxied load balancer, a cookie is generated, encoding information of which origin the request will be forwarded to. Subsequent requests, by the same client to the same load balancer, will be sent to the origin server the cookie encodes, for the duration of the cookie and as long as the origin server remains healthy. If the cookie has expired or the origin server is unhealthy, then a new origin server is calculated and used. - `"ip_cookie"`: Behaves the same as `"cookie"` except the initial origin selection is stable and based on the client's ip address. - `"header"`: On the first request to a proxied load balancer, a session key based on the configured HTTP headers (see `session_affinity_attributes.headers`) is generated, encoding the request headers used for storing in the load balancer session state which origin the request will be forwarded to. Subsequent requests to the load balancer with the same headers will be sent to the same origin server, for the duration of the session and as long as the origin server remains healthy. If the session has been idle for the duration of `session_affinity_ttl` seconds or the origin server is unhealthy, then a new origin server is calculated and used. See `headers` in `session_affinity_attributes` for additional required configuration. */
-  sessionAffinity?:
-    | CreateRequestRulesItemOverridesSessionAffinity
-    | (string & {});
-  /** Configures attributes for session affinity. */
-  sessionAffinityAttributes?: CreateRequestRulesItemOverridesSessionAffinityAttributes;
-  /** Time, in seconds, until a client's session expires after being created. Once the expiry time has been reached, subsequent requests may get sent to a different origin server. The accepted ranges per `session_affinity` policy are: - `"cookie"` / `"ip_cookie"`: The current default of 23 hours will be used unless explicitly set. The accepted range of values is between [1800, 604800]. - `"header"`: The current default of 1800 seconds will be used unless explicitly set. The accepted range of values is between [30, 3600]. Note: With session affinity by header, sessions only expire after they haven't been used for the number of seconds specified. */
-  sessionAffinityTtl?: number;
-  /** Steering Policy for this load balancer. */
-  steeringPolicy?:
-    | CreateRequestRulesItemOverridesSteeringPolicy
-    | (string & {});
-  /** Time to live (TTL) of the DNS entry for the IP address returned by this load balancer. This only applies to gray-clouded (unproxied) load balancers. */
-  ttl?: number;
-}
-export const CreateRequestRulesItemOverrides = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    adaptiveRouting: S.optional(
-      CreateRequestAdaptiveRouting.pipe(T.Body("adaptive_routing")),
-    ),
-    countryPools: S.optional(
-      CreateRequestRulesItemOverridesCountryPoolsMap.pipe(
-        T.Body("country_pools"),
-      ),
-    ),
-    defaultPools: S.optional(
-      CreateRequestRulesItemOverridesDefaultPoolsList.pipe(
-        T.Body("default_pools"),
-      ),
-    ),
-    fallbackPool: S.optional(S.String.pipe(T.Body("fallback_pool"))),
-    locationStrategy: S.optional(
-      CreateRequestLocationStrategy.pipe(T.Body("location_strategy")),
-    ),
-    popPools: S.optional(
-      CreateRequestRulesItemOverridesPopPoolsMap.pipe(T.Body("pop_pools")),
-    ),
-    randomSteering: S.optional(
-      CreateRequestRandomSteering.pipe(T.Body("random_steering")),
-    ),
-    regionPools: S.optional(
-      CreateRequestRulesItemOverridesRegionPoolsMap.pipe(
-        T.Body("region_pools"),
-      ),
-    ),
-    sessionAffinity: S.optional(
-      CreateRequestRulesItemOverridesSessionAffinity.pipe(
-        T.Body("session_affinity"),
-      ),
-    ),
-    sessionAffinityAttributes: S.optional(
-      CreateRequestRulesItemOverridesSessionAffinityAttributes.pipe(
-        T.Body("session_affinity_attributes"),
-      ),
-    ),
-    sessionAffinityTtl: S.optional(
-      S.Number.pipe(T.Body("session_affinity_ttl")),
-    ),
-    steeringPolicy: S.optional(
-      CreateRequestRulesItemOverridesSteeringPolicy.pipe(
-        T.Body("steering_policy"),
-      ),
-    ),
-    ttl: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "CreateRequestRulesItemOverrides",
-}) as any as S.Schema<CreateRequestRulesItemOverrides>;
-
-export interface CreateRequestRulesItem {
-  /** The condition expressions to evaluate. If the condition evaluates to true, the overrides or fixed_response in this rule will be applied. An empty condition is always true. For more details on condition expressions, please see https://developers.cloudflare.com/load-balancing/understand-basics/load-balancing-rules/expressions. */
-  condition?: string;
-  /** Disable this specific rule. It will no longer be evaluated by this load balancer. */
-  disabled?: boolean;
-  /** A collection of fields used to directly respond to the eyeball instead of routing to a pool. If a fixed_response is supplied the rule will be marked as terminates. */
-  fixedResponse?: CreateRequestRulesItemFixedResponse;
-  /** Name of this rule. Only used for human readability. */
-  name?: string;
-  /** A collection of overrides to apply to the load balancer when this rule's condition is true. All fields are optional. */
-  overrides?: CreateRequestRulesItemOverrides;
-  /** The order in which rules should be executed in relation to each other. Lower values are executed first. Values do not need to be sequential. If no value is provided for any rule the array order of the rules field will be used to assign a priority. */
-  priority?: number;
-  /** If this rule's condition is true, this causes rule evaluation to stop after processing this rule. */
-  terminates?: boolean;
-}
-export const CreateRequestRulesItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    condition: S.optional(S.String),
-    disabled: S.optional(S.Boolean),
-    fixedResponse: S.optional(
-      CreateRequestRulesItemFixedResponse.pipe(T.Body("fixed_response")),
-    ),
-    name: S.optional(S.String),
-    overrides: S.optional(CreateRequestRulesItemOverrides),
-    priority: S.optional(S.Number),
-    terminates: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "CreateRequestRulesItem",
-}) as any as S.Schema<CreateRequestRulesItem>;
-
-export type CreateRequestRulesList = Array<CreateRequestRulesItem>;
-export const CreateRequestRulesList = /*@__PURE__*/ S.Array(
-  CreateRequestRulesItem,
-) as any as S.Schema<CreateRequestRulesList>;
-
-export interface CreateLoadBalancerRequest {
-  zoneId: string;
-  /** A list of pool IDs ordered by their failover priority. Pools defined here are used by default, or when region_pools are not configured for a given region. */
-  defaultPools: CreateRequestDefaultPoolsList;
-  /** The pool ID to use when all other pools are detected as unhealthy. */
-  fallbackPool: string;
-  /** The DNS hostname to associate with your Load Balancer. If this hostname already exists as a DNS record in Cloudflare's DNS, the Load Balancer will take precedence and the DNS record will not be used. */
-  name: string;
-  /** Controls features that modify the routing of requests to pools and origins in response to dynamic conditions, such as during the interval between active health monitoring requests. For example, zero-downtime failover occurs immediately when an origin becomes unavailable due to HTTP 521, 522, or 523 response codes. If there is another healthy origin in the same pool, the request is retried once against this alternate origin. */
-  adaptiveRouting?: CreateRequestAdaptiveRouting;
-  /** A mapping of country codes to a list of pool IDs (ordered by their failover priority) for the given country. Any country not explicitly defined will fall back to using the corresponding region_pool mapping if it exists else to default_pools. */
-  countryPools?: CreateRequestCountryPoolsMap;
-  /** Object description. */
-  description?: string;
-  /** Controls location-based steering for non-proxied requests. See `steering_policy` to learn how steering is affected. */
-  locationStrategy?: CreateRequestLocationStrategy;
-  /** List of networks where Load Balancer or Pool is enabled. */
-  networks?: CreateRequestNetworksList;
-  /** Enterprise only: A mapping of Cloudflare PoP identifiers to a list of pool IDs (ordered by their failover priority) for the PoP (datacenter). Any PoPs not explicitly defined will fall back to using the corresponding country_pool, then region_pool mapping if it exists else to default_pools. */
-  popPools?: CreateRequestPopPoolsMap;
-  /** Whether the hostname should be gray clouded (false) or orange clouded (true). */
-  proxied?: boolean;
-  /** Configures pool weights. */
-  randomSteering?: CreateRequestRandomSteering;
-  /** A mapping of region codes to a list of pool IDs (ordered by their failover priority) for the given region. Any regions not explicitly defined will fall back to using default_pools. */
-  regionPools?: CreateRequestRegionPoolsMap;
-  /** BETA Field Not General Access: A list of rules for this load balancer to execute. */
-  rules?: CreateRequestRulesList;
-  /** Specifies the type of session affinity the load balancer should use unless specified as `"none"`. The supported types are: - `"cookie"`: On the first request to a proxied load balancer, a cookie is generated, encoding information of which origin the request will be forwarded to. Subsequent requests, by the same client to the same load balancer, will be sent to the origin server the cookie encodes, for the duration of the cookie and as long as the origin server remains healthy. If the cookie has expired or the origin server is unhealthy, then a new origin server is calculated and used. - `"ip_cookie"`: Behaves the same as `"cookie"` except the initial origin selection is stable and based on the client's ip address. - `"header"`: On the first request to a proxied load balancer, a session key based on the configured HTTP headers (see `session_affinity_attributes.headers`) is generated, encoding the request headers used for storing in the load balancer session state which origin the request will be forwarded to. Subsequent requests to the load balancer with the same headers will be sent to the same origin server, for the duration of the session and as long as the origin server remains healthy. If the session has been idle for the duration of `session_affinity_ttl` seconds or the origin server is unhealthy, then a new origin server is calculated and used. See `headers` in `session_affinity_attributes` for additional required configuration. */
-  sessionAffinity?:
-    | CreateRequestRulesItemOverridesSessionAffinity
-    | (string & {});
-  /** Configures attributes for session affinity. */
-  sessionAffinityAttributes?: CreateRequestRulesItemOverridesSessionAffinityAttributes;
-  /** Time, in seconds, until a client's session expires after being created. Once the expiry time has been reached, subsequent requests may get sent to a different origin server. The accepted ranges per `session_affinity` policy are: - `"cookie"` / `"ip_cookie"`: The current default of 23 hours will be used unless explicitly set. The accepted range of values is between [1800, 604800]. - `"header"`: The current default of 1800 seconds will be used unless explicitly set. The accepted range of values is between [30, 3600]. Note: With session affinity by header, sessions only expire after they haven't been used for the number of seconds specified. */
-  sessionAffinityTtl?: number;
-  /** Steering Policy for this load balancer. */
-  steeringPolicy?:
-    | CreateRequestRulesItemOverridesSteeringPolicy
-    | (string & {});
-  /** Time to live (TTL) of the DNS entry for the IP address returned by this load balancer. This only applies to gray-clouded (unproxied) load balancers. */
-  ttl?: number;
-}
-export const CreateLoadBalancerRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    zoneId: S.String.pipe(T.Label("zone_id")),
-    defaultPools: CreateRequestDefaultPoolsList.pipe(T.Body("default_pools")),
-    fallbackPool: S.String.pipe(T.Body("fallback_pool")),
-    name: S.String,
-    adaptiveRouting: S.optional(
-      CreateRequestAdaptiveRouting.pipe(T.Body("adaptive_routing")),
-    ),
-    countryPools: S.optional(
-      CreateRequestCountryPoolsMap.pipe(T.Body("country_pools")),
-    ),
-    description: S.optional(S.String),
-    locationStrategy: S.optional(
-      CreateRequestLocationStrategy.pipe(T.Body("location_strategy")),
-    ),
-    networks: S.optional(CreateRequestNetworksList),
-    popPools: S.optional(CreateRequestPopPoolsMap.pipe(T.Body("pop_pools"))),
-    proxied: S.optional(S.Boolean),
-    randomSteering: S.optional(
-      CreateRequestRandomSteering.pipe(T.Body("random_steering")),
-    ),
-    regionPools: S.optional(
-      CreateRequestRegionPoolsMap.pipe(T.Body("region_pools")),
-    ),
-    rules: S.optional(CreateRequestRulesList),
-    sessionAffinity: S.optional(
-      CreateRequestRulesItemOverridesSessionAffinity.pipe(
-        T.Body("session_affinity"),
-      ),
-    ),
-    sessionAffinityAttributes: S.optional(
-      CreateRequestRulesItemOverridesSessionAffinityAttributes.pipe(
-        T.Body("session_affinity_attributes"),
-      ),
-    ),
-    sessionAffinityTtl: S.optional(
-      S.Number.pipe(T.Body("session_affinity_ttl")),
-    ),
-    steeringPolicy: S.optional(
-      CreateRequestRulesItemOverridesSteeringPolicy.pipe(
-        T.Body("steering_policy"),
-      ),
-    ),
-    ttl: S.optional(S.Number),
+    accountId: S.String.pipe(T.Label("account_id")),
   })
     .pipe(
       T.Http({
         method: "POST",
-        uri: "/zones/{zone_id}/load_balancers",
+        uri: "/accounts/{account_id}/load_balancers",
         code: 200,
       }),
     )
     .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
-  identifier: "CreateLoadBalancerRequest",
-}) as any as S.Schema<CreateLoadBalancerRequest>;
+  identifier: "CreateForAccountRequest",
+}) as any as S.Schema<CreateForAccountRequest>;
 
 export interface CreateResponseAdaptiveRouting {
-  /** Extends zero-downtime failover of requests to healthy origins from alternate pools, when no healthy alternate exists in the same pool, according to the failover order defined by traffic and origin steering. When set false (the default) zero-downtime failover will only occur between origins within the same pool. See `session_affinity_attributes` for control over when sessions are broken or reassigned. */
+  /** Extends zero-downtime failover of requests to healthy origins from alternate pools, when no healthy alternate exists in the same pool, according to the failover order defined by traffic and origin steering. When set false (the default) zero-downtime failover will only occur between origins within the same pool. See session_affinity_attributes for control over when sessions are broken or reassigned. */
   failoverAcrossPools?: boolean | null;
 }
 export const CreateResponseAdaptiveRouting = /*@__PURE__*/ S.suspend(() =>
@@ -1017,17 +567,9 @@ export const CreateResponseAdaptiveRouting = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateResponseAdaptiveRouting",
 }) as any as S.Schema<CreateResponseAdaptiveRouting>;
 
-export type CreateResponseCountryPoolsMap = {
-  [key: string]: unknown | undefined;
-};
-export const CreateResponseCountryPoolsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<CreateResponseCountryPoolsMap>;
-
-export type CreateResponseDefaultPoolsList = Array<string>;
+export type CreateResponseDefaultPoolsList = Array<unknown>;
 export const CreateResponseDefaultPoolsList = /*@__PURE__*/ S.Array(
-  S.String,
+  S.Unknown,
 ) as any as S.Schema<CreateResponseDefaultPoolsList>;
 
 export type CreateResponseLocationStrategyMode = "pop" | "resolver_ip";
@@ -1041,9 +583,9 @@ export type CreateResponseLocationStrategyPreferEcs =
 export const CreateResponseLocationStrategyPreferEcs = /*@__PURE__*/ S.String;
 
 export interface CreateResponseLocationStrategy {
-  /** Determines the authoritative location when ECS is not preferred, does not exist in the request, or its GeoIP lookup is unsuccessful. */
+  /** Determines the authoritative location when ECS is not preferred, does not exist in the request, or its GeoIP lookup is unsuccessful. "pop" : Use the Cloudflare PoP location. "resolver_ip" : Use the DNS resolver GeoIP location. If the GeoIP lookup is unsuccessful, use the Cloudflare PoP location. */
   mode?: CreateResponseLocationStrategyMode | null;
-  /** Whether the EDNS Client Subnet (ECS) GeoIP should be preferred as the authoritative location. */
+  /** Whether the EDNS Client Subnet (ECS) GeoIP should be preferred as the authoritative location. "always" : Always prefer ECS. "never" : Never prefer ECS. "proximity" : Prefer ECS only when steering_policy="proximity" . "geo" : Prefer ECS only when steering_policy="geo" . */
   preferEcs?: CreateResponseLocationStrategyPreferEcs | null;
 }
 export const CreateResponseLocationStrategy = /*@__PURE__*/ S.suspend(() =>
@@ -1064,61 +606,17 @@ export const CreateResponseNetworksList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CreateResponseNetworksList>;
 
-export type CreateResponsePopPoolsMap = { [key: string]: unknown | undefined };
-export const CreateResponsePopPoolsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<CreateResponsePopPoolsMap>;
-
-export type CreateResponseRandomSteeringPoolWeightsMap = {
-  [key: string]: number | undefined;
-};
-export const CreateResponseRandomSteeringPoolWeightsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Number,
-  ) as any as S.Schema<CreateResponseRandomSteeringPoolWeightsMap>;
-
-export interface CreateResponseRandomSteering {
-  /** The default weight for pools in the load balancer that are not specified in the pool_weights map. */
-  defaultWeight?: number | null;
-  /** A mapping of pool IDs to custom weights. The weight is relative to other pools in the load balancer. */
-  poolWeights?: CreateResponseRandomSteeringPoolWeightsMap | null;
-}
-export const CreateResponseRandomSteering = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    defaultWeight: S.optional(
-      S.NullOr(S.Number).pipe(T.Body("default_weight")),
-    ),
-    poolWeights: S.optional(
-      S.NullOr(CreateResponseRandomSteeringPoolWeightsMap).pipe(
-        T.Body("pool_weights"),
-      ),
-    ),
-  }),
-).annotate({
-  identifier: "CreateResponseRandomSteering",
-}) as any as S.Schema<CreateResponseRandomSteering>;
-
-export type CreateResponseRegionPoolsMap = {
-  [key: string]: unknown | undefined;
-};
-export const CreateResponseRegionPoolsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<CreateResponseRegionPoolsMap>;
-
-export interface CreateResponseRulesItemFixedResponse {
-  /** The http 'Content-Type' header to include in the response. */
+export interface CreateResponsePoolSetsItemFixedResponse {
+  /** The http ‘Content-Type’ header to include in the response. */
   contentType?: string | null;
-  /** The http 'Location' header to include in the response. */
+  /** The http ‘Location’ header to include in the response. */
   location?: string | null;
   /** Text to include as the http body. */
   messageBody?: string | null;
   /** The http status code to respond with. */
   statusCode?: number | null;
 }
-export const CreateResponseRulesItemFixedResponse = /*@__PURE__*/ S.suspend(
+export const CreateResponsePoolSetsItemFixedResponse = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       contentType: S.optional(S.NullOr(S.String).pipe(T.Body("content_type"))),
@@ -1127,49 +625,213 @@ export const CreateResponseRulesItemFixedResponse = /*@__PURE__*/ S.suspend(
       statusCode: S.optional(S.NullOr(S.Number).pipe(T.Body("status_code"))),
     }),
 ).annotate({
-  identifier: "CreateResponseRulesItemFixedResponse",
-}) as any as S.Schema<CreateResponseRulesItemFixedResponse>;
+  identifier: "CreateResponsePoolSetsItemFixedResponse",
+}) as any as S.Schema<CreateResponsePoolSetsItemFixedResponse>;
 
-export type CreateResponseRulesItemOverridesCountryPoolsMap = {
-  [key: string]: unknown | undefined;
-};
-export const CreateResponseRulesItemOverridesCountryPoolsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<CreateResponseRulesItemOverridesCountryPoolsMap>;
-
-export type CreateResponseRulesItemOverridesDefaultPoolsList = Array<string>;
-export const CreateResponseRulesItemOverridesDefaultPoolsList =
+export type CreateResponsePoolSetsItemMatchTopologyCountriesList =
+  Array<string>;
+export const CreateResponsePoolSetsItemMatchTopologyCountriesList =
   /*@__PURE__*/ S.Array(
     S.String,
+  ) as any as S.Schema<CreateResponsePoolSetsItemMatchTopologyCountriesList>;
+
+export type CreateResponsePoolSetsItemMatchTopologyPopsList = Array<string>;
+export const CreateResponsePoolSetsItemMatchTopologyPopsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<CreateResponsePoolSetsItemMatchTopologyPopsList>;
+
+export type CreateResponsePoolSetsItemMatchTopologyRegionsList = Array<string>;
+export const CreateResponsePoolSetsItemMatchTopologyRegionsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<CreateResponsePoolSetsItemMatchTopologyRegionsList>;
+
+export interface CreateResponsePoolSetsItemMatchTopology {
+  /** A list of ISO 3166-1 alpha-2 country codes. Matches when the request’s country is in this list. */
+  countries?: CreateResponsePoolSetsItemMatchTopologyCountriesList | null;
+  /** A list of Cloudflare PoP codes. Matches when the request’s PoP is in this list. */
+  pops?: CreateResponsePoolSetsItemMatchTopologyPopsList | null;
+  /** A list of Cloudflare region codes (e.g. WNAM , ENAM , WEU ). Matches when the request’s region is in this list. */
+  regions?: CreateResponsePoolSetsItemMatchTopologyRegionsList | null;
+}
+export const CreateResponsePoolSetsItemMatchTopology = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      countries: S.optional(
+        S.NullOr(CreateResponsePoolSetsItemMatchTopologyCountriesList),
+      ),
+      pops: S.optional(
+        S.NullOr(CreateResponsePoolSetsItemMatchTopologyPopsList),
+      ),
+      regions: S.optional(
+        S.NullOr(CreateResponsePoolSetsItemMatchTopologyRegionsList),
+      ),
+    }),
+).annotate({
+  identifier: "CreateResponsePoolSetsItemMatchTopology",
+}) as any as S.Schema<CreateResponsePoolSetsItemMatchTopology>;
+
+export interface CreateResponsePoolSetsItemMatch {
+  /** When true, matches every request. Cannot be combined with topology . */
+  default?: boolean | null;
+  /** Matches requests by location. Set any combination of pops , countries , and regions (at least one is required); a request matches when its value appears in any populated list (e.g. regions: ["WNAM"] with countries: ["US"] matches a request in either WNAM or the US). */
+  topology?: CreateResponsePoolSetsItemMatchTopology | null;
+}
+export const CreateResponsePoolSetsItemMatch = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    default: S.optional(S.NullOr(S.Boolean)),
+    topology: S.optional(S.NullOr(CreateResponsePoolSetsItemMatchTopology)),
+  }),
+).annotate({
+  identifier: "CreateResponsePoolSetsItemMatch",
+}) as any as S.Schema<CreateResponsePoolSetsItemMatch>;
+
+export type CreateResponsePoolSetsItemOverridesPoolsList = Array<string>;
+export const CreateResponsePoolSetsItemOverridesPoolsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<CreateResponsePoolSetsItemOverridesPoolsList>;
+
+export interface CreateResponsePoolSetsItemOverrides {
+  /** The pool ID to use when all other pools are detected as unhealthy. */
+  fallbackPool?: string | null;
+  /** The default weight for pools not listed in pool_weights . The declarative alternative to random_steering.default_weight ; mutually exclusive with random_steering . */
+  poolDefaultWeight?: number | null;
+  /** A mapping of pool IDs to custom weights, relative to the other pools. The declarative alternative to random_steering.pool_weights ; mutually exclusive with random_steering . */
+  poolWeights?: unknown | null;
+  /** A flat, ordered list of pool IDs to route the matched audience to. Replaces the resolved topology with exactly these pools. Mutually exclusive with fixed_response . */
+  pools?: CreateResponsePoolSetsItemOverridesPoolsList | null;
+  /** Steering Policy for this load balancer. "off" : Use default_pools . "geo" : Use region_pools / country_pools / pop_pools . For non-proxied requests, the country for country_pools is determined by location_strategy . "random" : Select a pool randomly. "dynamic_latency" : Use round trip time to select the closest pool in default_pools (requires pool health checks). "proximity" : Use the pools’ latitude and longitude to select the closest pool using the Cloudflare PoP location for proxied requests or the location determined by location_strategy for non-proxied requests. "least_outstanding_requests" : Select a pool by taking into consideration random_steering weights, as well as each pool’s number of outstanding requests. Pools with more pending requests are weighted proportionately less relative to others. "least_connections" : Select a pool by taking into consideration random_steering weights, as well as each pool’s number of open connections. Pools with more open connections are weighted proportionately less relative to others. Supported for HTTP/1 and HTTP/2 connections. "" : Will map to "geo" if you use region_pools / country_pools / pop_pools otherwise "off" . */
+  steeringPolicy?: unknown | null;
+}
+export const CreateResponsePoolSetsItemOverrides = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    fallbackPool: S.optional(S.NullOr(S.String).pipe(T.Body("fallback_pool"))),
+    poolDefaultWeight: S.optional(
+      S.NullOr(S.Number).pipe(T.Body("pool_default_weight")),
+    ),
+    poolWeights: S.optional(S.NullOr(S.Unknown).pipe(T.Body("pool_weights"))),
+    pools: S.optional(S.NullOr(CreateResponsePoolSetsItemOverridesPoolsList)),
+    steeringPolicy: S.optional(
+      S.NullOr(S.Unknown).pipe(T.Body("steering_policy")),
+    ),
+  }),
+).annotate({
+  identifier: "CreateResponsePoolSetsItemOverrides",
+}) as any as S.Schema<CreateResponsePoolSetsItemOverrides>;
+
+export interface CreateResponsePoolSetsItem {
+  /** Disable this specific pool set. It will no longer be evaluated. */
+  disabled?: boolean | null;
+  /** A collection of fields used to directly respond to the client instead of routing to a pool. When supplied on a rule, that rule stops further rule evaluation. */
+  fixedResponse?: CreateResponsePoolSetsItemFixedResponse | null;
+  /** Determines which requests a pool set applies to. Set topology to match by location or default: true to match all requests; the two are mutually exclusive. A pool set with no match matches all requests. */
+  match?: CreateResponsePoolSetsItemMatch | null;
+  /** A human-readable name for this pool set. */
+  name?: string | null;
+  /** The behavior a pool set applies when its match succeeds. A strict subset of a rule’s overrides : a pool set replaces the topology wholesale with a flat pool list ( pools ), so only the declarative pool-routing fields plus fallback_pool and steering_policy are settable. All fields are optional. */
+  overrides?: CreateResponsePoolSetsItemOverrides | null;
+}
+export const CreateResponsePoolSetsItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    disabled: S.optional(S.NullOr(S.Boolean)),
+    fixedResponse: S.optional(
+      S.NullOr(CreateResponsePoolSetsItemFixedResponse).pipe(
+        T.Body("fixed_response"),
+      ),
+    ),
+    match: S.optional(S.NullOr(CreateResponsePoolSetsItemMatch)),
+    name: S.optional(S.NullOr(S.String)),
+    overrides: S.optional(S.NullOr(CreateResponsePoolSetsItemOverrides)),
+  }),
+).annotate({
+  identifier: "CreateResponsePoolSetsItem",
+}) as any as S.Schema<CreateResponsePoolSetsItem>;
+
+export type CreateResponsePoolSetsList = Array<CreateResponsePoolSetsItem>;
+export const CreateResponsePoolSetsList = /*@__PURE__*/ S.Array(
+  CreateResponsePoolSetsItem,
+) as any as S.Schema<CreateResponsePoolSetsList>;
+
+export interface CreateResponseRandomSteering {
+  /** The default weight for pools in the load balancer that are not specified in the pool_weights map. */
+  defaultWeight?: number | null;
+  /** A mapping of pool IDs to custom weights. The weight is relative to other pools in the load balancer. */
+  poolWeights?: unknown | null;
+}
+export const CreateResponseRandomSteering = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    defaultWeight: S.optional(
+      S.NullOr(S.Number).pipe(T.Body("default_weight")),
+    ),
+    poolWeights: S.optional(S.NullOr(S.Unknown).pipe(T.Body("pool_weights"))),
+  }),
+).annotate({
+  identifier: "CreateResponseRandomSteering",
+}) as any as S.Schema<CreateResponseRandomSteering>;
+
+export type CreateResponseRulesItemFixedResponse =
+  CreateResponsePoolSetsItemFixedResponse;
+export const CreateResponseRulesItemFixedResponse =
+  CreateResponsePoolSetsItemFixedResponse;
+
+export type CreateResponseRulesItemOverridesAdaptiveRouting =
+  CreateResponseAdaptiveRouting;
+export const CreateResponseRulesItemOverridesAdaptiveRouting =
+  CreateResponseAdaptiveRouting;
+
+export type CreateResponseRulesItemOverridesDefaultPoolsList = Array<unknown>;
+export const CreateResponseRulesItemOverridesDefaultPoolsList =
+  /*@__PURE__*/ S.Array(
+    S.Unknown,
   ) as any as S.Schema<CreateResponseRulesItemOverridesDefaultPoolsList>;
 
-export type CreateResponseRulesItemOverridesPopPoolsMap = {
-  [key: string]: unknown | undefined;
-};
-export const CreateResponseRulesItemOverridesPopPoolsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<CreateResponseRulesItemOverridesPopPoolsMap>;
-
-export type CreateResponseRulesItemOverridesRegionPoolsMap = {
-  [key: string]: unknown | undefined;
-};
-export const CreateResponseRulesItemOverridesRegionPoolsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<CreateResponseRulesItemOverridesRegionPoolsMap>;
-
-export type CreateResponseRulesItemOverridesSessionAffinity =
-  | "none"
-  | "cookie"
-  | "ip_cookie"
-  | "header";
-export const CreateResponseRulesItemOverridesSessionAffinity =
+export type CreateResponseRulesItemOverridesLocationStrategyMode =
+  | "pop"
+  | "resolver_ip";
+export const CreateResponseRulesItemOverridesLocationStrategyMode =
   /*@__PURE__*/ S.String;
+
+export type CreateResponseRulesItemOverridesLocationStrategyPreferEcs =
+  | "always"
+  | "never"
+  | "proximity"
+  | "geo";
+export const CreateResponseRulesItemOverridesLocationStrategyPreferEcs =
+  /*@__PURE__*/ S.String;
+
+export interface CreateResponseRulesItemOverridesLocationStrategy {
+  /** Determines the authoritative location when ECS is not preferred, does not exist in the request, or its GeoIP lookup is unsuccessful. "pop" : Use the Cloudflare PoP location. "resolver_ip" : Use the DNS resolver GeoIP location. If the GeoIP lookup is unsuccessful, use the Cloudflare PoP location. */
+  mode?: CreateResponseRulesItemOverridesLocationStrategyMode | null;
+  /** Whether the EDNS Client Subnet (ECS) GeoIP should be preferred as the authoritative location. "always" : Always prefer ECS. "never" : Never prefer ECS. "proximity" : Prefer ECS only when steering_policy="proximity" . "geo" : Prefer ECS only when steering_policy="geo" . */
+  preferEcs?: CreateResponseRulesItemOverridesLocationStrategyPreferEcs | null;
+}
+export const CreateResponseRulesItemOverridesLocationStrategy =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      mode: S.optional(
+        S.NullOr(CreateResponseRulesItemOverridesLocationStrategyMode),
+      ),
+      preferEcs: S.optional(
+        S.NullOr(
+          CreateResponseRulesItemOverridesLocationStrategyPreferEcs,
+        ).pipe(T.Body("prefer_ecs")),
+      ),
+    }),
+  ).annotate({
+    identifier: "CreateResponseRulesItemOverridesLocationStrategy",
+  }) as any as S.Schema<CreateResponseRulesItemOverridesLocationStrategy>;
+
+export type CreateResponseRulesItemOverridesPoolsList = Array<string>;
+export const CreateResponseRulesItemOverridesPoolsList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<CreateResponseRulesItemOverridesPoolsList>;
+
+export type CreateResponseRulesItemOverridesRandomSteering =
+  CreateResponseRandomSteering;
+export const CreateResponseRulesItemOverridesRandomSteering =
+  CreateResponseRandomSteering;
 
 export type CreateResponseRulesItemOverridesSessionAffinityAttributesHeadersList =
   Array<string>;
@@ -1203,15 +865,15 @@ export const CreateResponseRulesItemOverridesSessionAffinityAttributesZeroDownti
 export interface CreateResponseRulesItemOverridesSessionAffinityAttributes {
   /** Configures the drain duration in seconds. This field is only used when session affinity is enabled on the load balancer. */
   drainDuration?: number | null;
-  /** Configures the names of HTTP headers to base session affinity on when header `session_affinity` is enabled. At least one HTTP header name must be provided. To specify the exact cookies to be used, include an item in the following format: `"cookie:<cookie-name-1>,<cookie-name-2>"` (example) where everything after the colon is a comma-separated list of cookie names. Providing only `"cookie"` will result in all cookies being used. The default max number of HTTP header names that can be provided depends on your plan: 5 for Enterprise, 1 for all other plans. */
+  /** Configures the names of HTTP headers to base session affinity on when header session_affinity is enabled. At least one HTTP header name must be provided. To specify the exact cookies to be used, include an item in the following format: "cookie:&#x3C;cookie-name-1>,&#x3C;cookie-name-2>" (example) where everything after the colon is a comma-separated list of cookie names. Providing only "cookie" will result in all cookies being used. The default max number of HTTP header names that can be provided depends on your plan: 5 for Enterprise, 1 for all other plans. */
   headers?: CreateResponseRulesItemOverridesSessionAffinityAttributesHeadersList | null;
-  /** When header `session_affinity` is enabled, this option can be used to specify how HTTP headers on load balancing requests will be used. The supported values are: - `"true"`: Load balancing requests must contain *all* of the HTTP headers specified by the `headers` session affinity attribute, otherwise sessions aren't created. - `"false"`: Load balancing requests must contain *at least one* of the HTTP headers specified by the `headers` session affinity attribute, otherwise sessions aren't created. */
+  /** When header session_affinity is enabled, this option can be used to specify how HTTP headers on load balancing requests will be used. The supported values are: - "true" : Load balancing requests must contain all of the HTTP headers specified by the headers session affinity attribute, otherwise sessions aren’t created. - "false" : Load balancing requests must contain at least one of the HTTP headers specified by the headers session affinity attribute, otherwise sessions aren’t created. */
   requireAllHeaders?: boolean | null;
-  /** Configures the SameSite attribute on session affinity cookie. Value "Auto" will be translated to "Lax" or "None" depending if Always Use HTTPS is enabled. Note: when using value "None", the secure attribute can not be set to "Never". */
+  /** Configures the SameSite attribute on session affinity cookie. Value “Auto” will be translated to “Lax” or “None” depending if Always Use HTTPS is enabled. Note: when using value “None”, the secure attribute can not be set to “Never”. */
   samesite?: CreateResponseRulesItemOverridesSessionAffinityAttributesSamesite | null;
-  /** Configures the Secure attribute on session affinity cookie. Value "Always" indicates the Secure attribute will be set in the Set-Cookie header, "Never" indicates the Secure attribute will not be set, and "Auto" will set the Secure attribute depending if Always Use HTTPS is enabled. */
+  /** Configures the Secure attribute on session affinity cookie. Value “Always” indicates the Secure attribute will be set in the Set-Cookie header, “Never” indicates the Secure attribute will not be set, and “Auto” will set the Secure attribute depending if Always Use HTTPS is enabled. */
   secure?: CreateResponseRulesItemOverridesSessionAffinityAttributesSecure | null;
-  /** Configures the zero-downtime failover between origins within a pool when session affinity is enabled. This feature is currently incompatible with Argo, Tiered Cache, and Bandwidth Alliance. The supported values are: - `"none"`: No failover takes place for sessions pinned to the origin (default). - `"temporary"`: Traffic will be sent to another other healthy origin until the originally pinned origin is available; note that this can potentially result in heavy origin flapping. - `"sticky"`: The session affinity cookie is updated and subsequent requests are sent to the new origin. Note: Zero-downtime failover with sticky sessions is currently not supported for session affinity by header. */
+  /** Configures the zero-downtime failover between origins within a pool when session affinity is enabled. This feature is currently incompatible with Argo, Tiered Cache, and Bandwidth Alliance. The supported values are: - "none" : No failover takes place for sessions pinned to the origin (default). - "temporary" : Traffic will be sent to another other healthy origin until the originally pinned origin is available; note that this can potentially result in heavy origin flapping. - "sticky" : The session affinity cookie is updated and subsequent requests are sent to the new origin. Note: Zero-downtime failover with sticky sessions is currently not supported for session affinity by header. */
   zeroDowntimeFailover?: CreateResponseRulesItemOverridesSessionAffinityAttributesZeroDowntimeFailover | null;
 }
 export const CreateResponseRulesItemOverridesSessionAffinityAttributes =
@@ -1248,43 +910,37 @@ export const CreateResponseRulesItemOverridesSessionAffinityAttributes =
     identifier: "CreateResponseRulesItemOverridesSessionAffinityAttributes",
   }) as any as S.Schema<CreateResponseRulesItemOverridesSessionAffinityAttributes>;
 
-export type CreateResponseRulesItemOverridesSteeringPolicy =
-  | "off"
-  | "geo"
-  | "random"
-  | "dynamic_latency"
-  | "proximity"
-  | "least_outstanding_requests"
-  | "least_connections"
-  | "";
-export const CreateResponseRulesItemOverridesSteeringPolicy =
-  /*@__PURE__*/ S.String;
-
 export interface CreateResponseRulesItemOverrides {
   /** Controls features that modify the routing of requests to pools and origins in response to dynamic conditions, such as during the interval between active health monitoring requests. For example, zero-downtime failover occurs immediately when an origin becomes unavailable due to HTTP 521, 522, or 523 response codes. If there is another healthy origin in the same pool, the request is retried once against this alternate origin. */
   adaptiveRouting?: CreateResponseAdaptiveRouting | null;
   /** A mapping of country codes to a list of pool IDs (ordered by their failover priority) for the given country. Any country not explicitly defined will fall back to using the corresponding region_pool mapping if it exists else to default_pools. */
-  countryPools?: CreateResponseRulesItemOverridesCountryPoolsMap | null;
+  countryPools?: unknown | null;
   /** A list of pool IDs ordered by their failover priority. Pools defined here are used by default, or when region_pools are not configured for a given region. */
   defaultPools?: CreateResponseRulesItemOverridesDefaultPoolsList | null;
   /** The pool ID to use when all other pools are detected as unhealthy. */
   fallbackPool?: string | null;
-  /** Controls location-based steering for non-proxied requests. See `steering_policy` to learn how steering is affected. */
-  locationStrategy?: CreateResponseLocationStrategy | null;
+  /** Controls location-based steering for non-proxied requests. See steering_policy to learn how steering is affected. */
+  locationStrategy?: CreateResponseRulesItemOverridesLocationStrategy | null;
+  /** The default weight for pools not listed in pool_weights . The declarative alternative to random_steering.default_weight ; mutually exclusive with random_steering . */
+  poolDefaultWeight?: number | null;
+  /** A mapping of pool IDs to custom weights, relative to the other pools. The declarative alternative to random_steering.pool_weights ; mutually exclusive with random_steering . */
+  poolWeights?: unknown | null;
+  /** A flat, ordered list of pool IDs to route the matched audience to. Replaces the resolved topology with exactly these pools. Mutually exclusive with fixed_response . */
+  pools?: CreateResponseRulesItemOverridesPoolsList | null;
   /** Enterprise only: A mapping of Cloudflare PoP identifiers to a list of pool IDs (ordered by their failover priority) for the PoP (datacenter). Any PoPs not explicitly defined will fall back to using the corresponding country_pool, then region_pool mapping if it exists else to default_pools. */
-  popPools?: CreateResponseRulesItemOverridesPopPoolsMap | null;
-  /** Configures pool weights. */
+  popPools?: unknown | null;
+  /** Configures pool weights. steering_policy="random" : A random pool is selected with probability proportional to pool weights. steering_policy="least_outstanding_requests" : Use pool weights to scale each pool’s outstanding requests. steering_policy="least_connections" : Use pool weights to scale each pool’s open connections. */
   randomSteering?: CreateResponseRandomSteering | null;
   /** A mapping of region codes to a list of pool IDs (ordered by their failover priority) for the given region. Any regions not explicitly defined will fall back to using default_pools. */
-  regionPools?: CreateResponseRulesItemOverridesRegionPoolsMap | null;
-  /** Specifies the type of session affinity the load balancer should use unless specified as `"none"`. The supported types are: - `"cookie"`: On the first request to a proxied load balancer, a cookie is generated, encoding information of which origin the request will be forwarded to. Subsequent requests, by the same client to the same load balancer, will be sent to the origin server the cookie encodes, for the duration of the cookie and as long as the origin server remains healthy. If the cookie has expired or the origin server is unhealthy, then a new origin server is calculated and used. - `"ip_cookie"`: Behaves the same as `"cookie"` except the initial origin selection is stable and based on the client's ip address. - `"header"`: On the first request to a proxied load balancer, a session key based on the configured HTTP headers (see `session_affinity_attributes.headers`) is generated, encoding the request headers used for storing in the load balancer session state which origin the request will be forwarded to. Subsequent requests to the load balancer with the same headers will be sent to the same origin server, for the duration of the session and as long as the origin server remains healthy. If the session has been idle for the duration of `session_affinity_ttl` seconds or the origin server is unhealthy, then a new origin server is calculated and used. See `headers` in `session_affinity_attributes` for additional required configuration. */
-  sessionAffinity?: CreateResponseRulesItemOverridesSessionAffinity | null;
+  regionPools?: unknown | null;
+  /** Specifies the type of session affinity the load balancer should use unless specified as "none" . The supported types are: - "cookie" : On the first request to a proxied load balancer, a cookie is generated, encoding information of which origin the request will be forwarded to. Subsequent requests, by the same client to the same load balancer, will be sent to the origin server the cookie encodes, for the duration of the cookie and as long as the origin server remains healthy. If the cookie has expired or the origin server is unhealthy, then a new origin server is calculated and used. - "ip_cookie" : Behaves the same as "cookie" except the initial origin selection is stable and based on the client’s ip address. - "header" : On the first request to a proxied load balancer, a session key based on the configured HTTP headers (see session_affinity_attributes.headers ) is generated, encoding the request headers used for storing in the load balancer session state which origin the request will be forwarded to. Subsequent requests to the load balancer with the same headers will be sent to the same origin server, for the duration of the session and as long as the origin server remains healthy. If the session has been idle for the duration of session_affinity_ttl seconds or the origin server is unhealthy, then a new origin server is calculated and used. See headers in session_affinity_attributes for additional required configuration. */
+  sessionAffinity?: unknown | null;
   /** Configures attributes for session affinity. */
   sessionAffinityAttributes?: CreateResponseRulesItemOverridesSessionAffinityAttributes | null;
-  /** Time, in seconds, until a client's session expires after being created. Once the expiry time has been reached, subsequent requests may get sent to a different origin server. The accepted ranges per `session_affinity` policy are: - `"cookie"` / `"ip_cookie"`: The current default of 23 hours will be used unless explicitly set. The accepted range of values is between [1800, 604800]. - `"header"`: The current default of 1800 seconds will be used unless explicitly set. The accepted range of values is between [30, 3600]. Note: With session affinity by header, sessions only expire after they haven't been used for the number of seconds specified. */
+  /** Time, in seconds, until a client’s session expires after being created. Once the expiry time has been reached, subsequent requests may get sent to a different origin server. The accepted ranges per session_affinity policy are: - "cookie" / "ip_cookie" : The current default of 23 hours will be used unless explicitly set. The accepted range of values is between [1800, 604800]. - "header" : The current default of 1800 seconds will be used unless explicitly set. The accepted range of values is between [30, 3600]. Note: With session affinity by header, sessions only expire after they haven’t been used for the number of seconds specified. */
   sessionAffinityTtl?: number | null;
-  /** Steering Policy for this load balancer. */
-  steeringPolicy?: CreateResponseRulesItemOverridesSteeringPolicy | null;
+  /** Steering Policy for this load balancer. "off" : Use default_pools . "geo" : Use region_pools / country_pools / pop_pools . For non-proxied requests, the country for country_pools is determined by location_strategy . "random" : Select a pool randomly. "dynamic_latency" : Use round trip time to select the closest pool in default_pools (requires pool health checks). "proximity" : Use the pools’ latitude and longitude to select the closest pool using the Cloudflare PoP location for proxied requests or the location determined by location_strategy for non-proxied requests. "least_outstanding_requests" : Select a pool by taking into consideration random_steering weights, as well as each pool’s number of outstanding requests. Pools with more pending requests are weighted proportionately less relative to others. "least_connections" : Select a pool by taking into consideration random_steering weights, as well as each pool’s number of open connections. Pools with more open connections are weighted proportionately less relative to others. Supported for HTTP/1 and HTTP/2 connections. "" : Will map to "geo" if you use region_pools / country_pools / pop_pools otherwise "off" . */
+  steeringPolicy?: unknown | null;
   /** Time to live (TTL) of the DNS entry for the IP address returned by this load balancer. This only applies to gray-clouded (unproxied) load balancers. */
   ttl?: number | null;
 }
@@ -1293,11 +949,7 @@ export const CreateResponseRulesItemOverrides = /*@__PURE__*/ S.suspend(() =>
     adaptiveRouting: S.optional(
       S.NullOr(CreateResponseAdaptiveRouting).pipe(T.Body("adaptive_routing")),
     ),
-    countryPools: S.optional(
-      S.NullOr(CreateResponseRulesItemOverridesCountryPoolsMap).pipe(
-        T.Body("country_pools"),
-      ),
-    ),
+    countryPools: S.optional(S.NullOr(S.Unknown).pipe(T.Body("country_pools"))),
     defaultPools: S.optional(
       S.NullOr(CreateResponseRulesItemOverridesDefaultPoolsList).pipe(
         T.Body("default_pools"),
@@ -1305,27 +957,22 @@ export const CreateResponseRulesItemOverrides = /*@__PURE__*/ S.suspend(() =>
     ),
     fallbackPool: S.optional(S.NullOr(S.String).pipe(T.Body("fallback_pool"))),
     locationStrategy: S.optional(
-      S.NullOr(CreateResponseLocationStrategy).pipe(
+      S.NullOr(CreateResponseRulesItemOverridesLocationStrategy).pipe(
         T.Body("location_strategy"),
       ),
     ),
-    popPools: S.optional(
-      S.NullOr(CreateResponseRulesItemOverridesPopPoolsMap).pipe(
-        T.Body("pop_pools"),
-      ),
+    poolDefaultWeight: S.optional(
+      S.NullOr(S.Number).pipe(T.Body("pool_default_weight")),
     ),
+    poolWeights: S.optional(S.NullOr(S.Unknown).pipe(T.Body("pool_weights"))),
+    pools: S.optional(S.NullOr(CreateResponseRulesItemOverridesPoolsList)),
+    popPools: S.optional(S.NullOr(S.Unknown).pipe(T.Body("pop_pools"))),
     randomSteering: S.optional(
       S.NullOr(CreateResponseRandomSteering).pipe(T.Body("random_steering")),
     ),
-    regionPools: S.optional(
-      S.NullOr(CreateResponseRulesItemOverridesRegionPoolsMap).pipe(
-        T.Body("region_pools"),
-      ),
-    ),
+    regionPools: S.optional(S.NullOr(S.Unknown).pipe(T.Body("region_pools"))),
     sessionAffinity: S.optional(
-      S.NullOr(CreateResponseRulesItemOverridesSessionAffinity).pipe(
-        T.Body("session_affinity"),
-      ),
+      S.NullOr(S.Unknown).pipe(T.Body("session_affinity")),
     ),
     sessionAffinityAttributes: S.optional(
       S.NullOr(CreateResponseRulesItemOverridesSessionAffinityAttributes).pipe(
@@ -1336,9 +983,7 @@ export const CreateResponseRulesItemOverrides = /*@__PURE__*/ S.suspend(() =>
       S.NullOr(S.Number).pipe(T.Body("session_affinity_ttl")),
     ),
     steeringPolicy: S.optional(
-      S.NullOr(CreateResponseRulesItemOverridesSteeringPolicy).pipe(
-        T.Body("steering_policy"),
-      ),
+      S.NullOr(S.Unknown).pipe(T.Body("steering_policy")),
     ),
     ttl: S.optional(S.NullOr(S.Number)),
   }),
@@ -1347,19 +992,19 @@ export const CreateResponseRulesItemOverrides = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateResponseRulesItemOverrides>;
 
 export interface CreateResponseRulesItem {
-  /** The condition expressions to evaluate. If the condition evaluates to true, the overrides or fixed_response in this rule will be applied. An empty condition is always true. For more details on condition expressions, please see https://developers.cloudflare.com/load-balancing/understand-basics/load-balancing-rules/expressions. */
+  /** The condition expressions to evaluate. If the condition evaluates to true, the overrides or fixed_response in this rule will be applied. An empty condition is always true. For more details on condition expressions, please see https://developers.cloudflare.com/load-balancing/understand-basics/load-balancing-rules/expressions . */
   condition?: string | null;
   /** Disable this specific rule. It will no longer be evaluated by this load balancer. */
   disabled?: boolean | null;
-  /** A collection of fields used to directly respond to the eyeball instead of routing to a pool. If a fixed_response is supplied the rule will be marked as terminates. */
-  fixedResponse?: CreateResponseRulesItemFixedResponse | null;
+  /** A collection of fields used to directly respond to the client instead of routing to a pool. When supplied on a rule, that rule stops further rule evaluation. */
+  fixedResponse?: CreateResponsePoolSetsItemFixedResponse | null;
   /** Name of this rule. Only used for human readability. */
   name?: string | null;
-  /** A collection of overrides to apply to the load balancer when this rule's condition is true. All fields are optional. */
+  /** A collection of overrides to apply when this rule’s condition (or a pool set’s match ) is true. All fields are optional. */
   overrides?: CreateResponseRulesItemOverrides | null;
   /** The order in which rules should be executed in relation to each other. Lower values are executed first. Values do not need to be sequential. If no value is provided for any rule the array order of the rules field will be used to assign a priority. */
   priority?: number | null;
-  /** If this rule's condition is true, this causes rule evaluation to stop after processing this rule. */
+  /** If this rule’s condition is true, this causes rule evaluation to stop after processing this rule. */
   terminates?: boolean | null;
 }
 export const CreateResponseRulesItem = /*@__PURE__*/ S.suspend(() =>
@@ -1367,7 +1012,7 @@ export const CreateResponseRulesItem = /*@__PURE__*/ S.suspend(() =>
     condition: S.optional(S.NullOr(S.String)),
     disabled: S.optional(S.NullOr(S.Boolean)),
     fixedResponse: S.optional(
-      S.NullOr(CreateResponseRulesItemFixedResponse).pipe(
+      S.NullOr(CreateResponsePoolSetsItemFixedResponse).pipe(
         T.Body("fixed_response"),
       ),
     ),
@@ -1385,13 +1030,83 @@ export const CreateResponseRulesList = /*@__PURE__*/ S.Array(
   CreateResponseRulesItem,
 ) as any as S.Schema<CreateResponseRulesList>;
 
+export type CreateResponseSessionAffinityAttributesHeadersList = Array<string>;
+export const CreateResponseSessionAffinityAttributesHeadersList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<CreateResponseSessionAffinityAttributesHeadersList>;
+
+export type CreateResponseSessionAffinityAttributesSamesite =
+  | "Auto"
+  | "Lax"
+  | "None"
+  | "Strict";
+export const CreateResponseSessionAffinityAttributesSamesite =
+  /*@__PURE__*/ S.String;
+
+export type CreateResponseSessionAffinityAttributesSecure =
+  | "Auto"
+  | "Always"
+  | "Never";
+export const CreateResponseSessionAffinityAttributesSecure =
+  /*@__PURE__*/ S.String;
+
+export type CreateResponseSessionAffinityAttributesZeroDowntimeFailover =
+  | "none"
+  | "temporary"
+  | "sticky";
+export const CreateResponseSessionAffinityAttributesZeroDowntimeFailover =
+  /*@__PURE__*/ S.String;
+
+export interface CreateResponseSessionAffinityAttributes {
+  /** Configures the drain duration in seconds. This field is only used when session affinity is enabled on the load balancer. */
+  drainDuration?: number | null;
+  /** Configures the names of HTTP headers to base session affinity on when header session_affinity is enabled. At least one HTTP header name must be provided. To specify the exact cookies to be used, include an item in the following format: "cookie:&#x3C;cookie-name-1>,&#x3C;cookie-name-2>" (example) where everything after the colon is a comma-separated list of cookie names. Providing only "cookie" will result in all cookies being used. The default max number of HTTP header names that can be provided depends on your plan: 5 for Enterprise, 1 for all other plans. */
+  headers?: CreateResponseSessionAffinityAttributesHeadersList | null;
+  /** When header session_affinity is enabled, this option can be used to specify how HTTP headers on load balancing requests will be used. The supported values are: - "true" : Load balancing requests must contain all of the HTTP headers specified by the headers session affinity attribute, otherwise sessions aren’t created. - "false" : Load balancing requests must contain at least one of the HTTP headers specified by the headers session affinity attribute, otherwise sessions aren’t created. */
+  requireAllHeaders?: boolean | null;
+  /** Configures the SameSite attribute on session affinity cookie. Value “Auto” will be translated to “Lax” or “None” depending if Always Use HTTPS is enabled. Note: when using value “None”, the secure attribute can not be set to “Never”. */
+  samesite?: CreateResponseSessionAffinityAttributesSamesite | null;
+  /** Configures the Secure attribute on session affinity cookie. Value “Always” indicates the Secure attribute will be set in the Set-Cookie header, “Never” indicates the Secure attribute will not be set, and “Auto” will set the Secure attribute depending if Always Use HTTPS is enabled. */
+  secure?: CreateResponseSessionAffinityAttributesSecure | null;
+  /** Configures the zero-downtime failover between origins within a pool when session affinity is enabled. This feature is currently incompatible with Argo, Tiered Cache, and Bandwidth Alliance. The supported values are: - "none" : No failover takes place for sessions pinned to the origin (default). - "temporary" : Traffic will be sent to another other healthy origin until the originally pinned origin is available; note that this can potentially result in heavy origin flapping. - "sticky" : The session affinity cookie is updated and subsequent requests are sent to the new origin. Note: Zero-downtime failover with sticky sessions is currently not supported for session affinity by header. */
+  zeroDowntimeFailover?: CreateResponseSessionAffinityAttributesZeroDowntimeFailover | null;
+}
+export const CreateResponseSessionAffinityAttributes = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      drainDuration: S.optional(
+        S.NullOr(S.Number).pipe(T.Body("drain_duration")),
+      ),
+      headers: S.optional(
+        S.NullOr(CreateResponseSessionAffinityAttributesHeadersList),
+      ),
+      requireAllHeaders: S.optional(
+        S.NullOr(S.Boolean).pipe(T.Body("require_all_headers")),
+      ),
+      samesite: S.optional(
+        S.NullOr(CreateResponseSessionAffinityAttributesSamesite),
+      ),
+      secure: S.optional(
+        S.NullOr(CreateResponseSessionAffinityAttributesSecure),
+      ),
+      zeroDowntimeFailover: S.optional(
+        S.NullOr(
+          CreateResponseSessionAffinityAttributesZeroDowntimeFailover,
+        ).pipe(T.Body("zero_downtime_failover")),
+      ),
+    }),
+).annotate({
+  identifier: "CreateResponseSessionAffinityAttributes",
+}) as any as S.Schema<CreateResponseSessionAffinityAttributes>;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface CreateLoadBalancerResponse {
+export interface CreateResponse {
   id?: string | null;
   /** Controls features that modify the routing of requests to pools and origins in response to dynamic conditions, such as during the interval between active health monitoring requests. For example, zero-downtime failover occurs immediately when an origin becomes unavailable due to HTTP 521, 522, or 523 response codes. If there is another healthy origin in the same pool, the request is retried once against this alternate origin. */
   adaptiveRouting?: CreateResponseAdaptiveRouting | null;
   /** A mapping of country codes to a list of pool IDs (ordered by their failover priority) for the given country. Any country not explicitly defined will fall back to using the corresponding region_pool mapping if it exists else to default_pools. */
-  countryPools?: CreateResponseCountryPoolsMap | null;
+  countryPools?: unknown | null;
   createdOn?: string | null;
   /** A list of pool IDs ordered by their failover priority. Pools defined here are used by default, or when region_pools are not configured for a given region. */
   defaultPools?: CreateResponseDefaultPoolsList | null;
@@ -1401,44 +1116,44 @@ export interface CreateLoadBalancerResponse {
   enabled?: boolean | null;
   /** The pool ID to use when all other pools are detected as unhealthy. */
   fallbackPool?: string | null;
-  /** Controls location-based steering for non-proxied requests. See `steering_policy` to learn how steering is affected. */
+  /** Controls location-based steering for non-proxied requests. See steering_policy to learn how steering is affected. */
   locationStrategy?: CreateResponseLocationStrategy | null;
   modifiedOn?: string | null;
-  /** The DNS hostname to associate with your Load Balancer. If this hostname already exists as a DNS record in Cloudflare's DNS, the Load Balancer will take precedence and the DNS record will not be used. */
+  /** The DNS hostname to associate with your Load Balancer. If this hostname already exists as a DNS record in Cloudflare’s DNS, the Load Balancer will take precedence and the DNS record will not be used. */
   name?: string | null;
   /** List of networks where Load Balancer or Pool is enabled. */
   networks?: CreateResponseNetworksList | null;
+  /** An optional list of pool sets, evaluated in array order with first match wins. Pool sets are independent from the standard steering fields ( region_pools / country_pools / pop_pools / default_pools / steering_policy / random_steering / fallback_pool / rules ). On a PATCH, an empty array ( pool_sets: [] ) clears all pool sets, while omitting the field leaves existing pool sets unchanged. */
+  poolSets?: CreateResponsePoolSetsList | null;
   /** Enterprise only: A mapping of Cloudflare PoP identifiers to a list of pool IDs (ordered by their failover priority) for the PoP (datacenter). Any PoPs not explicitly defined will fall back to using the corresponding country_pool, then region_pool mapping if it exists else to default_pools. */
-  popPools?: CreateResponsePopPoolsMap | null;
+  popPools?: unknown | null;
   /** Whether the hostname should be gray clouded (false) or orange clouded (true). */
   proxied?: boolean | null;
-  /** Configures pool weights. */
+  /** Configures pool weights. steering_policy="random" : A random pool is selected with probability proportional to pool weights. steering_policy="least_outstanding_requests" : Use pool weights to scale each pool’s outstanding requests. steering_policy="least_connections" : Use pool weights to scale each pool’s open connections. */
   randomSteering?: CreateResponseRandomSteering | null;
   /** A mapping of region codes to a list of pool IDs (ordered by their failover priority) for the given region. Any regions not explicitly defined will fall back to using default_pools. */
-  regionPools?: CreateResponseRegionPoolsMap | null;
+  regionPools?: unknown | null;
   /** BETA Field Not General Access: A list of rules for this load balancer to execute. */
   rules?: CreateResponseRulesList | null;
-  /** Specifies the type of session affinity the load balancer should use unless specified as `"none"`. The supported types are: - `"cookie"`: On the first request to a proxied load balancer, a cookie is generated, encoding information of which origin the request will be forwarded to. Subsequent requests, by the same client to the same load balancer, will be sent to the origin server the cookie encodes, for the duration of the cookie and as long as the origin server remains healthy. If the cookie has expired or the origin server is unhealthy, then a new origin server is calculated and used. - `"ip_cookie"`: Behaves the same as `"cookie"` except the initial origin selection is stable and based on the client's ip address. - `"header"`: On the first request to a proxied load balancer, a session key based on the configured HTTP headers (see `session_affinity_attributes.headers`) is generated, encoding the request headers used for storing in the load balancer session state which origin the request will be forwarded to. Subsequent requests to the load balancer with the same headers will be sent to the same origin server, for the duration of the session and as long as the origin server remains healthy. If the session has been idle for the duration of `session_affinity_ttl` seconds or the origin server is unhealthy, then a new origin server is calculated and used. See `headers` in `session_affinity_attributes` for additional required configuration. */
-  sessionAffinity?: CreateResponseRulesItemOverridesSessionAffinity | null;
+  /** Specifies the type of session affinity the load balancer should use unless specified as "none" . The supported types are: - "cookie" : On the first request to a proxied load balancer, a cookie is generated, encoding information of which origin the request will be forwarded to. Subsequent requests, by the same client to the same load balancer, will be sent to the origin server the cookie encodes, for the duration of the cookie and as long as the origin server remains healthy. If the cookie has expired or the origin server is unhealthy, then a new origin server is calculated and used. - "ip_cookie" : Behaves the same as "cookie" except the initial origin selection is stable and based on the client’s ip address. - "header" : On the first request to a proxied load balancer, a session key based on the configured HTTP headers (see session_affinity_attributes.headers ) is generated, encoding the request headers used for storing in the load balancer session state which origin the request will be forwarded to. Subsequent requests to the load balancer with the same headers will be sent to the same origin server, for the duration of the session and as long as the origin server remains healthy. If the session has been idle for the duration of session_affinity_ttl seconds or the origin server is unhealthy, then a new origin server is calculated and used. See headers in session_affinity_attributes for additional required configuration. */
+  sessionAffinity?: unknown | null;
   /** Configures attributes for session affinity. */
-  sessionAffinityAttributes?: CreateResponseRulesItemOverridesSessionAffinityAttributes | null;
-  /** Time, in seconds, until a client's session expires after being created. Once the expiry time has been reached, subsequent requests may get sent to a different origin server. The accepted ranges per `session_affinity` policy are: - `"cookie"` / `"ip_cookie"`: The current default of 23 hours will be used unless explicitly set. The accepted range of values is between [1800, 604800]. - `"header"`: The current default of 1800 seconds will be used unless explicitly set. The accepted range of values is between [30, 3600]. Note: With session affinity by header, sessions only expire after they haven't been used for the number of seconds specified. */
+  sessionAffinityAttributes?: CreateResponseSessionAffinityAttributes | null;
+  /** Time, in seconds, until a client’s session expires after being created. Once the expiry time has been reached, subsequent requests may get sent to a different origin server. The accepted ranges per session_affinity policy are: - "cookie" / "ip_cookie" : The current default of 23 hours will be used unless explicitly set. The accepted range of values is between [1800, 604800]. - "header" : The current default of 1800 seconds will be used unless explicitly set. The accepted range of values is between [30, 3600]. Note: With session affinity by header, sessions only expire after they haven’t been used for the number of seconds specified. */
   sessionAffinityTtl?: number | null;
-  /** Steering Policy for this load balancer. */
-  steeringPolicy?: CreateResponseRulesItemOverridesSteeringPolicy | null;
+  /** Steering Policy for this load balancer. "off" : Use default_pools . "geo" : Use region_pools / country_pools / pop_pools . For non-proxied requests, the country for country_pools is determined by location_strategy . "random" : Select a pool randomly. "dynamic_latency" : Use round trip time to select the closest pool in default_pools (requires pool health checks). "proximity" : Use the pools’ latitude and longitude to select the closest pool using the Cloudflare PoP location for proxied requests or the location determined by location_strategy for non-proxied requests. "least_outstanding_requests" : Select a pool by taking into consideration random_steering weights, as well as each pool’s number of outstanding requests. Pools with more pending requests are weighted proportionately less relative to others. "least_connections" : Select a pool by taking into consideration random_steering weights, as well as each pool’s number of open connections. Pools with more open connections are weighted proportionately less relative to others. Supported for HTTP/1 and HTTP/2 connections. "" : Will map to "geo" if you use region_pools / country_pools / pop_pools otherwise "off" . */
+  steeringPolicy?: unknown | null;
   /** Time to live (TTL) of the DNS entry for the IP address returned by this load balancer. This only applies to gray-clouded (unproxied) load balancers. */
   ttl?: number | null;
   zoneName?: string | null;
 }
-export const CreateLoadBalancerResponse = /*@__PURE__*/ S.suspend(() =>
+export const CreateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.NullOr(S.String)),
     adaptiveRouting: S.optional(
       S.NullOr(CreateResponseAdaptiveRouting).pipe(T.Body("adaptive_routing")),
     ),
-    countryPools: S.optional(
-      S.NullOr(CreateResponseCountryPoolsMap).pipe(T.Body("country_pools")),
-    ),
+    countryPools: S.optional(S.NullOr(S.Unknown).pipe(T.Body("country_pools"))),
     createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
     defaultPools: S.optional(
       S.NullOr(CreateResponseDefaultPoolsList).pipe(T.Body("default_pools")),
@@ -1454,24 +1169,21 @@ export const CreateLoadBalancerResponse = /*@__PURE__*/ S.suspend(() =>
     modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
     name: S.optional(S.NullOr(S.String)),
     networks: S.optional(S.NullOr(CreateResponseNetworksList)),
-    popPools: S.optional(
-      S.NullOr(CreateResponsePopPoolsMap).pipe(T.Body("pop_pools")),
+    poolSets: S.optional(
+      S.NullOr(CreateResponsePoolSetsList).pipe(T.Body("pool_sets")),
     ),
+    popPools: S.optional(S.NullOr(S.Unknown).pipe(T.Body("pop_pools"))),
     proxied: S.optional(S.NullOr(S.Boolean)),
     randomSteering: S.optional(
       S.NullOr(CreateResponseRandomSteering).pipe(T.Body("random_steering")),
     ),
-    regionPools: S.optional(
-      S.NullOr(CreateResponseRegionPoolsMap).pipe(T.Body("region_pools")),
-    ),
+    regionPools: S.optional(S.NullOr(S.Unknown).pipe(T.Body("region_pools"))),
     rules: S.optional(S.NullOr(CreateResponseRulesList)),
     sessionAffinity: S.optional(
-      S.NullOr(CreateResponseRulesItemOverridesSessionAffinity).pipe(
-        T.Body("session_affinity"),
-      ),
+      S.NullOr(S.Unknown).pipe(T.Body("session_affinity")),
     ),
     sessionAffinityAttributes: S.optional(
-      S.NullOr(CreateResponseRulesItemOverridesSessionAffinityAttributes).pipe(
+      S.NullOr(CreateResponseSessionAffinityAttributes).pipe(
         T.Body("session_affinity_attributes"),
       ),
     ),
@@ -1479,16 +1191,32 @@ export const CreateLoadBalancerResponse = /*@__PURE__*/ S.suspend(() =>
       S.NullOr(S.Number).pipe(T.Body("session_affinity_ttl")),
     ),
     steeringPolicy: S.optional(
-      S.NullOr(CreateResponseRulesItemOverridesSteeringPolicy).pipe(
-        T.Body("steering_policy"),
-      ),
+      S.NullOr(S.Unknown).pipe(T.Body("steering_policy")),
     ),
     ttl: S.optional(S.NullOr(S.Number)),
     zoneName: S.optional(S.NullOr(S.String).pipe(T.Body("zone_name"))),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+).annotate({ identifier: "CreateResponse" }) as any as S.Schema<CreateResponse>;
+
+export interface CreateForZoneRequest {
+  /** Identifier. */
+  zoneId: string;
+}
+export const CreateForZoneRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    zoneId: S.String.pipe(T.Label("zone_id")),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/zones/{zone_id}/load_balancers",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
-  identifier: "CreateLoadBalancerResponse",
-}) as any as S.Schema<CreateLoadBalancerResponse>;
+  identifier: "CreateForZoneRequest",
+}) as any as S.Schema<CreateForZoneRequest>;
 
 export type MonitorsCreateRequestHeaderMap = {
   [key: string]: unknown | undefined;
@@ -1528,7 +1256,7 @@ export interface CreateMonitorRequest {
   header?: MonitorsCreateRequestHeaderMap;
   /** The interval between each health check. Shorter intervals may improve failover time, but will increase load on the origins as we check from multiple locations. */
   interval?: number;
-  /** The method to use for the health check. This defaults to 'GET' for HTTP/HTTPS based checks and 'connection_established' for TCP based health checks. */
+  /** The method to use for the health check. This defaults to ‘GET’ for HTTP/HTTPS based checks and ‘connection_established’ for TCP based health checks. */
   method?: string;
   /** The endpoint path you want to conduct a health check against. This parameter is only valid for HTTP and HTTPS monitors. */
   path?: string;
@@ -1540,7 +1268,7 @@ export interface CreateMonitorRequest {
   retries?: number;
   /** The timeout (in seconds) before marking the health check as failed. */
   timeout?: number;
-  /** The protocol to use for the health check. Currently supported protocols are 'HTTP','HTTPS', 'TCP', 'ICMP-PING', 'UDP-ICMP', and 'SMTP'. */
+  /** The protocol to use for the health check. Currently supported protocols are ‘HTTP’,‘HTTPS’, ‘TCP’, ‘ICMP-PING’, ‘UDP-ICMP’, and ‘SMTP’. */
   type?: MonitorsCreateRequestType | (string & {});
 }
 export const CreateMonitorRequest = /*@__PURE__*/ S.suspend(() =>
@@ -1614,7 +1342,7 @@ export interface CreateMonitorResponse {
   header?: MonitorsCreateResponseHeaderMap | null;
   /** The interval between each health check. Shorter intervals may improve failover time, but will increase load on the origins as we check from multiple locations. */
   interval?: number | null;
-  /** The method to use for the health check. This defaults to 'GET' for HTTP/HTTPS based checks and 'connection_established' for TCP based health checks. */
+  /** The method to use for the health check. This defaults to ‘GET’ for HTTP/HTTPS based checks and ‘connection_established’ for TCP based health checks. */
   method?: string | null;
   modifiedOn?: string | null;
   /** The endpoint path you want to conduct a health check against. This parameter is only valid for HTTP and HTTPS monitors. */
@@ -1627,7 +1355,7 @@ export interface CreateMonitorResponse {
   retries?: number | null;
   /** The timeout (in seconds) before marking the health check as failed. */
   timeout?: number | null;
-  /** The protocol to use for the health check. Currently supported protocols are 'HTTP','HTTPS', 'TCP', 'ICMP-PING', 'UDP-ICMP', and 'SMTP'. */
+  /** The protocol to use for the health check. Currently supported protocols are ‘HTTP’,‘HTTPS’, ‘TCP’, ‘ICMP-PING’, ‘UDP-ICMP’, and ‘SMTP’. */
   type?: MonitorsCreateResponseType | null;
 }
 export const CreateMonitorResponse = /*@__PURE__*/ S.suspend(() =>
@@ -1739,6 +1467,10 @@ export interface MonitorGroupsCreateResponseMembersItem {
   createdAt?: string | null;
   /** The timestamp of when the monitor group member was last updated */
   updatedAt?: string | null;
+  /** The timestamp of when the monitor group was created */
+  createdOn?: string | null;
+  /** The timestamp of when the monitor group was last updated */
+  modifiedOn?: string | null;
 }
 export const MonitorGroupsCreateResponseMembersItem = /*@__PURE__*/ S.suspend(
   () =>
@@ -1749,6 +1481,8 @@ export const MonitorGroupsCreateResponseMembersItem = /*@__PURE__*/ S.suspend(
       mustBeHealthy: S.Boolean.pipe(T.Body("must_be_healthy")),
       createdAt: S.optional(S.NullOr(S.String).pipe(T.Body("created_at"))),
       updatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("updated_at"))),
+      createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
+      modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
     }),
 ).annotate({
   identifier: "MonitorGroupsCreateResponseMembersItem",
@@ -1768,18 +1502,12 @@ export interface CreateMonitorGroupResponse {
   description: string;
   /** List of monitors in this group */
   members: MonitorGroupsCreateResponseMembersList;
-  /** The timestamp of when the monitor group was created */
-  createdOn?: string | null;
-  /** The timestamp of when the monitor group was last updated */
-  modifiedOn?: string | null;
 }
 export const CreateMonitorGroupResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     description: S.String,
     members: MonitorGroupsCreateResponseMembersList,
-    createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateMonitorGroupResponse",
@@ -1824,7 +1552,7 @@ export interface CreateMonitorPreviewRequest {
   header?: MonitorsPreviewsCreateRequestHeaderMap;
   /** The interval between each health check. Shorter intervals may improve failover time, but will increase load on the origins as we check from multiple locations. */
   interval?: number;
-  /** The method to use for the health check. This defaults to 'GET' for HTTP/HTTPS based checks and 'connection_established' for TCP based health checks. */
+  /** The method to use for the health check. This defaults to ‘GET’ for HTTP/HTTPS based checks and ‘connection_established’ for TCP based health checks. */
   method?: string;
   /** The endpoint path you want to conduct a health check against. This parameter is only valid for HTTP and HTTPS monitors. */
   path?: string;
@@ -1836,7 +1564,7 @@ export interface CreateMonitorPreviewRequest {
   retries?: number;
   /** The timeout (in seconds) before marking the health check as failed. */
   timeout?: number;
-  /** The protocol to use for the health check. Currently supported protocols are 'HTTP','HTTPS', 'TCP', 'ICMP-PING', 'UDP-ICMP', and 'SMTP'. */
+  /** The protocol to use for the health check. Currently supported protocols are ‘HTTP’,‘HTTPS’, ‘TCP’, ‘ICMP-PING’, ‘UDP-ICMP’, and ‘SMTP’. */
   type?: MonitorsPreviewsCreateRequestType | (string & {});
 }
 export const CreateMonitorPreviewRequest = /*@__PURE__*/ S.suspend(() =>
@@ -1902,7 +1630,7 @@ export const PoolsCreateRequestOriginsItemHeaderHostList =
   ) as any as S.Schema<PoolsCreateRequestOriginsItemHeaderHostList>;
 
 export interface PoolsCreateRequestOriginsItemHeader {
-  /** The 'Host' header allows to override the hostname set in the HTTP request. Current support is 1 'Host' header override per origin. */
+  /** The ‘Host’ header allows to override the hostname set in the HTTP request. Current support is 1 ‘Host’ header override per origin. */
   host?: PoolsCreateRequestOriginsItemHeaderHostList;
 }
 export const PoolsCreateRequestOriginsItemHeader = /*@__PURE__*/ S.suspend(() =>
@@ -1915,6 +1643,108 @@ export const PoolsCreateRequestOriginsItemHeader = /*@__PURE__*/ S.suspend(() =>
   identifier: "PoolsCreateRequestOriginsItemHeader",
 }) as any as S.Schema<PoolsCreateRequestOriginsItemHeader>;
 
+export type PoolsCreateRequestOriginsItemLoadSheddingDefaultPolicy =
+  | "random"
+  | "hash";
+export const PoolsCreateRequestOriginsItemLoadSheddingDefaultPolicy =
+  /*@__PURE__*/ S.String;
+
+export type PoolsCreateRequestOriginsItemLoadSheddingSessionPolicy = "hash";
+export const PoolsCreateRequestOriginsItemLoadSheddingSessionPolicy =
+  /*@__PURE__*/ S.String;
+
+export interface PoolsCreateRequestOriginsItemLoadShedding {
+  /** The percent of traffic to shed from the pool, according to the default policy. Applies to new sessions and traffic without session affinity. */
+  defaultPercent?: number;
+  /** The default policy to use when load shedding. A random policy randomly sheds a given percent of requests. A hash policy computes a hash over the CF-Connecting-IP address and sheds all requests originating from a percent of IPs. */
+  defaultPolicy?:
+    | PoolsCreateRequestOriginsItemLoadSheddingDefaultPolicy
+    | (string & {});
+  /** The percent of existing sessions to shed from the pool, according to the session policy. */
+  sessionPercent?: number;
+  /** Only the hash policy is supported for existing sessions (to avoid exponential decay). */
+  sessionPolicy?:
+    | PoolsCreateRequestOriginsItemLoadSheddingSessionPolicy
+    | (string & {});
+}
+export const PoolsCreateRequestOriginsItemLoadShedding =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      defaultPercent: S.optional(S.Number.pipe(T.Body("default_percent"))),
+      defaultPolicy: S.optional(
+        PoolsCreateRequestOriginsItemLoadSheddingDefaultPolicy.pipe(
+          T.Body("default_policy"),
+        ),
+      ),
+      sessionPercent: S.optional(S.Number.pipe(T.Body("session_percent"))),
+      sessionPolicy: S.optional(
+        PoolsCreateRequestOriginsItemLoadSheddingSessionPolicy.pipe(
+          T.Body("session_policy"),
+        ),
+      ),
+    }),
+  ).annotate({
+    identifier: "PoolsCreateRequestOriginsItemLoadShedding",
+  }) as any as S.Schema<PoolsCreateRequestOriginsItemLoadShedding>;
+
+export interface PoolsCreateRequestOriginsItemNotificationFilterOrigin {
+  /** If set true, disable notifications for this type of resource (pool or origin). */
+  disable?: boolean;
+  /** If present, send notifications only for this health status (e.g. false for only DOWN events). Use null to reset (all events). */
+  healthy?: boolean;
+}
+export const PoolsCreateRequestOriginsItemNotificationFilterOrigin =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      disable: S.optional(S.Boolean),
+      healthy: S.optional(S.Boolean),
+    }),
+  ).annotate({
+    identifier: "PoolsCreateRequestOriginsItemNotificationFilterOrigin",
+  }) as any as S.Schema<PoolsCreateRequestOriginsItemNotificationFilterOrigin>;
+
+export type PoolsCreateRequestOriginsItemNotificationFilterPool =
+  PoolsCreateRequestOriginsItemNotificationFilterOrigin;
+export const PoolsCreateRequestOriginsItemNotificationFilterPool =
+  PoolsCreateRequestOriginsItemNotificationFilterOrigin;
+
+export interface PoolsCreateRequestOriginsItemNotificationFilter {
+  /** Filter options for a particular resource type (pool or origin). Use null to reset. */
+  origin?: PoolsCreateRequestOriginsItemNotificationFilterOrigin;
+  /** Filter options for a particular resource type (pool or origin). Use null to reset. */
+  pool?: PoolsCreateRequestOriginsItemNotificationFilterOrigin;
+}
+export const PoolsCreateRequestOriginsItemNotificationFilter =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      origin: S.optional(PoolsCreateRequestOriginsItemNotificationFilterOrigin),
+      pool: S.optional(PoolsCreateRequestOriginsItemNotificationFilterOrigin),
+    }),
+  ).annotate({
+    identifier: "PoolsCreateRequestOriginsItemNotificationFilter",
+  }) as any as S.Schema<PoolsCreateRequestOriginsItemNotificationFilter>;
+
+export type PoolsCreateRequestOriginsItemOriginSteeringPolicy =
+  | "random"
+  | "hash"
+  | "least_outstanding_requests"
+  | "least_connections";
+export const PoolsCreateRequestOriginsItemOriginSteeringPolicy =
+  /*@__PURE__*/ S.String;
+
+export interface PoolsCreateRequestOriginsItemOriginSteering {
+  /** The type of origin steering policy to use. */
+  policy?: PoolsCreateRequestOriginsItemOriginSteeringPolicy | (string & {});
+}
+export const PoolsCreateRequestOriginsItemOriginSteering =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      policy: S.optional(PoolsCreateRequestOriginsItemOriginSteeringPolicy),
+    }),
+  ).annotate({
+    identifier: "PoolsCreateRequestOriginsItemOriginSteering",
+  }) as any as S.Schema<PoolsCreateRequestOriginsItemOriginSteering>;
+
 export interface PoolsCreateRequestOriginsItem {
   /** The IP address (IPv4 or IPv6) of the origin, or its publicly addressable hostname. Hostnames entered here should resolve directly to the origin, and not be a hostname proxied by Cloudflare. To set an internal/reserved address, virtual_network_id must also be set. */
   address?: string;
@@ -1924,7 +1754,7 @@ export interface PoolsCreateRequestOriginsItem {
   enabled?: boolean;
   /** Whether to flatten CNAME records for this origin, resolving them to A/AAAA records before returning to the client. When true (the default), the director resolves CNAME addresses to their underlying A/AAAA records. When false, the origin address is returned as a raw CNAME record without resolution. This setting mirrors the DNS API record flatten_cname setting. */
   flattenCname?: boolean;
-  /** The request header is used to pass additional information with an HTTP request. Currently supported header is 'Host'. */
+  /** The request header is used to pass additional information with an HTTP request. Currently supported header is ‘Host’. */
   header?: PoolsCreateRequestOriginsItemHeader;
   /** A human-identifiable name for the origin. */
   name?: string;
@@ -1934,6 +1764,28 @@ export interface PoolsCreateRequestOriginsItem {
   virtualNetworkId?: string;
   /** The weight of this origin relative to other origins in the pool. Based on the configured weight the total traffic is distributed among origins within the pool. */
   weight?: number;
+  /** A human-readable description of the pool. */
+  description?: string;
+  /** Whether to enable (the default) or disable this pool. Disabled pools will not receive traffic and are excluded from health checks. Disabling a pool will cause any load balancers using it to failover to the next pool (if any). */
+  enabled_2?: boolean;
+  /** The latitude of the data center containing the origins used in this pool in decimal degrees. If this is set, longitude must also be set. */
+  latitude?: number;
+  /** Configures load shedding policies and percentages for the pool. */
+  loadShedding?: PoolsCreateRequestOriginsItemLoadShedding;
+  /** The longitude of the data center containing the origins used in this pool in decimal degrees. If this is set, latitude must also be set. */
+  longitude?: number;
+  /** The minimum number of origins that must be healthy for this pool to serve traffic. If the number of healthy origins falls below this number, the pool will be marked unhealthy and will failover to the next available pool. */
+  minimumOrigins?: number;
+  /** The ID of the Monitor to use for checking the health of origins within this pool. */
+  monitor?: string;
+  /** The ID of the Monitor Group to use for checking the health of origins within this pool. */
+  monitorGroup?: string;
+  /** This field is now deprecated. It has been moved to Cloudflare’s Centralized Notification service <https://developers.cloudflare.com/fundamentals/notifications/>. The email address to send health status notifications to. This can be an individual mailbox or a mailing list. Multiple emails can be supplied as a comma delimited list. */
+  notificationEmail?: string;
+  /** Filter pool and origin health notifications by resource type or health status. Use null to reset. */
+  notificationFilter?: PoolsCreateRequestOriginsItemNotificationFilter;
+  /** Configures origin steering for the pool. Controls how origins are selected for new sessions and traffic without session affinity. */
+  originSteering?: PoolsCreateRequestOriginsItemOriginSteering;
 }
 export const PoolsCreateRequestOriginsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1946,6 +1798,27 @@ export const PoolsCreateRequestOriginsItem = /*@__PURE__*/ S.suspend(() =>
     port: S.optional(S.Number),
     virtualNetworkId: S.optional(S.String.pipe(T.Body("virtual_network_id"))),
     weight: S.optional(S.Number),
+    description: S.optional(S.String),
+    enabled_2: S.optional(S.Boolean.pipe(T.Body("enabled"))),
+    latitude: S.optional(S.Number),
+    loadShedding: S.optional(
+      PoolsCreateRequestOriginsItemLoadShedding.pipe(T.Body("load_shedding")),
+    ),
+    longitude: S.optional(S.Number),
+    minimumOrigins: S.optional(S.Number.pipe(T.Body("minimum_origins"))),
+    monitor: S.optional(S.String),
+    monitorGroup: S.optional(S.String.pipe(T.Body("monitor_group"))),
+    notificationEmail: S.optional(S.String.pipe(T.Body("notification_email"))),
+    notificationFilter: S.optional(
+      PoolsCreateRequestOriginsItemNotificationFilter.pipe(
+        T.Body("notification_filter"),
+      ),
+    ),
+    originSteering: S.optional(
+      PoolsCreateRequestOriginsItemOriginSteering.pipe(
+        T.Body("origin_steering"),
+      ),
+    ),
   }),
 ).annotate({
   identifier: "PoolsCreateRequestOriginsItem",
@@ -1957,94 +1830,6 @@ export const PoolsCreateRequestOriginsList = /*@__PURE__*/ S.Array(
   PoolsCreateRequestOriginsItem,
 ) as any as S.Schema<PoolsCreateRequestOriginsList>;
 
-export type PoolsCreateRequestLoadSheddingDefaultPolicy = "random" | "hash";
-export const PoolsCreateRequestLoadSheddingDefaultPolicy =
-  /*@__PURE__*/ S.String;
-
-export type PoolsCreateRequestLoadSheddingSessionPolicy = "hash";
-export const PoolsCreateRequestLoadSheddingSessionPolicy =
-  /*@__PURE__*/ S.String;
-
-export interface PoolsCreateRequestLoadShedding {
-  /** The percent of traffic to shed from the pool, according to the default policy. Applies to new sessions and traffic without session affinity. */
-  defaultPercent?: number;
-  /** The default policy to use when load shedding. A random policy randomly sheds a given percent of requests. A hash policy computes a hash over the CF-Connecting-IP address and sheds all requests originating from a percent of IPs. */
-  defaultPolicy?: PoolsCreateRequestLoadSheddingDefaultPolicy | (string & {});
-  /** The percent of existing sessions to shed from the pool, according to the session policy. */
-  sessionPercent?: number;
-  /** Only the hash policy is supported for existing sessions (to avoid exponential decay). */
-  sessionPolicy?: PoolsCreateRequestLoadSheddingSessionPolicy | (string & {});
-}
-export const PoolsCreateRequestLoadShedding = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    defaultPercent: S.optional(S.Number.pipe(T.Body("default_percent"))),
-    defaultPolicy: S.optional(
-      PoolsCreateRequestLoadSheddingDefaultPolicy.pipe(
-        T.Body("default_policy"),
-      ),
-    ),
-    sessionPercent: S.optional(S.Number.pipe(T.Body("session_percent"))),
-    sessionPolicy: S.optional(
-      PoolsCreateRequestLoadSheddingSessionPolicy.pipe(
-        T.Body("session_policy"),
-      ),
-    ),
-  }),
-).annotate({
-  identifier: "PoolsCreateRequestLoadShedding",
-}) as any as S.Schema<PoolsCreateRequestLoadShedding>;
-
-export interface PoolsCreateRequestNotificationFilterOrigin {
-  /** If set true, disable notifications for this type of resource (pool or origin). */
-  disable?: boolean;
-  /** If present, send notifications only for this health status (e.g. false for only DOWN events). Use null to reset (all events). */
-  healthy?: boolean;
-}
-export const PoolsCreateRequestNotificationFilterOrigin =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      disable: S.optional(S.Boolean),
-      healthy: S.optional(S.Boolean),
-    }),
-  ).annotate({
-    identifier: "PoolsCreateRequestNotificationFilterOrigin",
-  }) as any as S.Schema<PoolsCreateRequestNotificationFilterOrigin>;
-
-export interface PoolsCreateRequestNotificationFilter {
-  /** Filter options for a particular resource type (pool or origin). Use null to reset. */
-  origin?: PoolsCreateRequestNotificationFilterOrigin;
-  /** Filter options for a particular resource type (pool or origin). Use null to reset. */
-  pool?: PoolsCreateRequestNotificationFilterOrigin;
-}
-export const PoolsCreateRequestNotificationFilter = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      origin: S.optional(PoolsCreateRequestNotificationFilterOrigin),
-      pool: S.optional(PoolsCreateRequestNotificationFilterOrigin),
-    }),
-).annotate({
-  identifier: "PoolsCreateRequestNotificationFilter",
-}) as any as S.Schema<PoolsCreateRequestNotificationFilter>;
-
-export type PoolsCreateRequestOriginSteeringPolicy =
-  | "random"
-  | "hash"
-  | "least_outstanding_requests"
-  | "least_connections";
-export const PoolsCreateRequestOriginSteeringPolicy = /*@__PURE__*/ S.String;
-
-export interface PoolsCreateRequestOriginSteering {
-  /** The type of origin steering policy to use. */
-  policy?: PoolsCreateRequestOriginSteeringPolicy | (string & {});
-}
-export const PoolsCreateRequestOriginSteering = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    policy: S.optional(PoolsCreateRequestOriginSteeringPolicy),
-  }),
-).annotate({
-  identifier: "PoolsCreateRequestOriginSteering",
-}) as any as S.Schema<PoolsCreateRequestOriginSteering>;
-
 export interface CreatePoolRequest {
   /** Identifier. */
   accountId: string;
@@ -2052,51 +1837,12 @@ export interface CreatePoolRequest {
   name: string;
   /** The list of origins within this pool. Traffic directed at this pool is balanced across all currently healthy origins, provided the pool itself is healthy. */
   origins: PoolsCreateRequestOriginsList;
-  /** A human-readable description of the pool. */
-  description?: string;
-  /** Whether to enable (the default) or disable this pool. Disabled pools will not receive traffic and are excluded from health checks. Disabling a pool will cause any load balancers using it to failover to the next pool (if any). */
-  enabled?: boolean;
-  /** The latitude of the data center containing the origins used in this pool in decimal degrees. If this is set, longitude must also be set. */
-  latitude?: number;
-  /** Configures load shedding policies and percentages for the pool. */
-  loadShedding?: PoolsCreateRequestLoadShedding;
-  /** The longitude of the data center containing the origins used in this pool in decimal degrees. If this is set, latitude must also be set. */
-  longitude?: number;
-  /** The minimum number of origins that must be healthy for this pool to serve traffic. If the number of healthy origins falls below this number, the pool will be marked unhealthy and will failover to the next available pool. */
-  minimumOrigins?: number;
-  /** The ID of the Monitor to use for checking the health of origins within this pool. */
-  monitor?: string;
-  /** The ID of the Monitor Group to use for checking the health of origins within this pool. */
-  monitorGroup?: string;
-  /** This field is now deprecated. It has been moved to Cloudflare's Centralized Notification service https://developers.cloudflare.com/fundamentals/notifications/. The email address to send health status notifications to. This can be an individual mailbox or a mailing list. Multiple emails can be supplied as a comma delimited list. */
-  notificationEmail?: string;
-  /** Filter pool and origin health notifications by resource type or health status. Use null to reset. */
-  notificationFilter?: PoolsCreateRequestNotificationFilter;
-  /** Configures origin steering for the pool. Controls how origins are selected for new sessions and traffic without session affinity. */
-  originSteering?: PoolsCreateRequestOriginSteering;
 }
 export const CreatePoolRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     name: S.String,
     origins: PoolsCreateRequestOriginsList,
-    description: S.optional(S.String),
-    enabled: S.optional(S.Boolean),
-    latitude: S.optional(S.Number),
-    loadShedding: S.optional(
-      PoolsCreateRequestLoadShedding.pipe(T.Body("load_shedding")),
-    ),
-    longitude: S.optional(S.Number),
-    minimumOrigins: S.optional(S.Number.pipe(T.Body("minimum_origins"))),
-    monitor: S.optional(S.String),
-    monitorGroup: S.optional(S.String.pipe(T.Body("monitor_group"))),
-    notificationEmail: S.optional(S.String.pipe(T.Body("notification_email"))),
-    notificationFilter: S.optional(
-      PoolsCreateRequestNotificationFilter.pipe(T.Body("notification_filter")),
-    ),
-    originSteering: S.optional(
-      PoolsCreateRequestOriginSteering.pipe(T.Body("origin_steering")),
-    ),
   })
     .pipe(
       T.Http({
@@ -2124,6 +1870,7 @@ export type PoolsCreateResponseCheckRegionsItem =
   | "SAS"
   | "SEAS"
   | "NEAS"
+  | "CHINA"
   | "ALL_REGIONS";
 export const PoolsCreateResponseCheckRegionsItem = /*@__PURE__*/ S.String;
 
@@ -2132,6 +1879,18 @@ export type PoolsCreateResponseCheckRegionsList =
 export const PoolsCreateResponseCheckRegionsList = /*@__PURE__*/ S.Array(
   PoolsCreateResponseCheckRegionsItem,
 ) as any as S.Schema<PoolsCreateResponseCheckRegionsList>;
+
+export type PoolsCreateResponseHealthSourcesItem =
+  | "local"
+  | "regional"
+  | "global";
+export const PoolsCreateResponseHealthSourcesItem = /*@__PURE__*/ S.String;
+
+export type PoolsCreateResponseHealthSourcesList =
+  Array<PoolsCreateResponseHealthSourcesItem>;
+export const PoolsCreateResponseHealthSourcesList = /*@__PURE__*/ S.Array(
+  PoolsCreateResponseHealthSourcesItem,
+) as any as S.Schema<PoolsCreateResponseHealthSourcesList>;
 
 export type PoolsCreateResponseLoadSheddingDefaultPolicy = "random" | "hash";
 export const PoolsCreateResponseLoadSheddingDefaultPolicy =
@@ -2184,6 +1943,11 @@ export type PoolsCreateResponseNotificationFilterOrigin =
 export const PoolsCreateResponseNotificationFilterOrigin =
   PoolsBulkEditResultItemNotificationFilterOrigin;
 
+export type PoolsCreateResponseNotificationFilterPool =
+  PoolsBulkEditResultItemNotificationFilterOrigin;
+export const PoolsCreateResponseNotificationFilterPool =
+  PoolsBulkEditResultItemNotificationFilterOrigin;
+
 export type PoolsCreateResponseNotificationFilter =
   PoolsBulkEditResultItemNotificationFilter;
 export const PoolsCreateResponseNotificationFilter =
@@ -2215,7 +1979,7 @@ export const PoolsCreateResponseOriginsItemHeaderHostList =
   ) as any as S.Schema<PoolsCreateResponseOriginsItemHeaderHostList>;
 
 export interface PoolsCreateResponseOriginsItemHeader {
-  /** The 'Host' header allows to override the hostname set in the HTTP request. Current support is 1 'Host' header override per origin. */
+  /** The ‘Host’ header allows to override the hostname set in the HTTP request. Current support is 1 ‘Host’ header override per origin. */
   host?: PoolsCreateResponseOriginsItemHeaderHostList | null;
 }
 export const PoolsCreateResponseOriginsItemHeader = /*@__PURE__*/ S.suspend(
@@ -2240,7 +2004,7 @@ export interface PoolsCreateResponseOriginsItem {
   enabled?: boolean | null;
   /** Whether to flatten CNAME records for this origin, resolving them to A/AAAA records before returning to the client. When true (the default), the director resolves CNAME addresses to their underlying A/AAAA records. When false, the origin address is returned as a raw CNAME record without resolution. This setting mirrors the DNS API record flatten_cname setting. */
   flattenCname?: boolean | null;
-  /** The request header is used to pass additional information with an HTTP request. Currently supported header is 'Host'. */
+  /** The request header is used to pass additional information with an HTTP request. Currently supported header is ‘Host’. */
   header?: PoolsCreateResponseOriginsItemHeader | null;
   /** A human-identifiable name for the origin. */
   name?: string | null;
@@ -2287,6 +2051,8 @@ export interface CreatePoolResponse {
   disabledAt?: string | null;
   /** Whether to enable (the default) or disable this pool. Disabled pools will not receive traffic and are excluded from health checks. Disabling a pool will cause any load balancers using it to failover to the next pool (if any). */
   enabled?: boolean | null;
+  /** A list of health sources, ordered from highest to lowest priority, used to evaluate individual origin health and overall pool health. The load balancer uses the first source that has data and falls back to the next. Currently accepted values are null or the exact array [“regional”, “global”]; any other combination is rejected. Null (the default) behaves like [“local”, “global”]. [“regional”, “global”] makes each region steer on its own health, falling back to the global decision when a region has no fresh data. Setting regional requires at least one region in check_regions. */
+  healthSources?: PoolsCreateResponseHealthSourcesList | null;
   /** The latitude of the data center containing the origins used in this pool in decimal degrees. If this is set, longitude must also be set. */
   latitude?: number | null;
   /** Configures load shedding policies and percentages for the pool. */
@@ -2304,7 +2070,7 @@ export interface CreatePoolResponse {
   name?: string | null;
   /** List of networks where Load Balancer or Pool is enabled. */
   networks?: PoolsCreateResponseNetworksList | null;
-  /** This field is now deprecated. It has been moved to Cloudflare's Centralized Notification service https://developers.cloudflare.com/fundamentals/notifications/. The email address to send health status notifications to. This can be an individual mailbox or a mailing list. Multiple emails can be supplied as a comma delimited list. */
+  /** This field is now deprecated. It has been moved to Cloudflare’s Centralized Notification service <https://developers.cloudflare.com/fundamentals/notifications/>. The email address to send health status notifications to. This can be an individual mailbox or a mailing list. Multiple emails can be supplied as a comma delimited list. */
   notificationEmail?: string | null;
   /** Filter pool and origin health notifications by resource type or health status. Use null to reset. */
   notificationFilter?: PoolsBulkEditResultItemNotificationFilter | null;
@@ -2325,6 +2091,11 @@ export const CreatePoolResponse = /*@__PURE__*/ S.suspend(() =>
     description: S.optional(S.NullOr(S.String)),
     disabledAt: S.optional(S.NullOr(S.String).pipe(T.Body("disabled_at"))),
     enabled: S.optional(S.NullOr(S.Boolean)),
+    healthSources: S.optional(
+      S.NullOr(PoolsCreateResponseHealthSourcesList).pipe(
+        T.Body("health_sources"),
+      ),
+    ),
     latitude: S.optional(S.NullOr(S.Number)),
     loadShedding: S.optional(
       S.NullOr(PoolsCreateResponseLoadShedding).pipe(T.Body("load_shedding")),
@@ -2396,7 +2167,7 @@ export interface CreatePoolHealthRequest {
   header?: PoolsHealthCreateRequestHeaderMap;
   /** The interval between each health check. Shorter intervals may improve failover time, but will increase load on the origins as we check from multiple locations. */
   interval?: number;
-  /** The method to use for the health check. This defaults to 'GET' for HTTP/HTTPS based checks and 'connection_established' for TCP based health checks. */
+  /** The method to use for the health check. This defaults to ‘GET’ for HTTP/HTTPS based checks and ‘connection_established’ for TCP based health checks. */
   method?: string;
   /** The endpoint path you want to conduct a health check against. This parameter is only valid for HTTP and HTTPS monitors. */
   path?: string;
@@ -2408,7 +2179,7 @@ export interface CreatePoolHealthRequest {
   retries?: number;
   /** The timeout (in seconds) before marking the health check as failed. */
   timeout?: number;
-  /** The protocol to use for the health check. Currently supported protocols are 'HTTP','HTTPS', 'TCP', 'ICMP-PING', 'UDP-ICMP', and 'SMTP'. */
+  /** The protocol to use for the health check. Currently supported protocols are ‘HTTP’,‘HTTPS’, ‘TCP’, ‘ICMP-PING’, ‘UDP-ICMP’, and ‘SMTP’. */
   type?: PoolsHealthCreateRequestType | (string & {});
 }
 export const CreatePoolHealthRequest = /*@__PURE__*/ S.suspend(() =>
@@ -2467,11 +2238,44 @@ export const CreatePoolHealthResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreatePoolHealthResponse",
 }) as any as S.Schema<CreatePoolHealthResponse>;
 
-export interface DeleteLoadBalancerRequest {
+export interface DeleteForAccountRequest {
+  /** Identifier. */
+  accountId: string;
+  loadBalancerId: string;
+}
+export const DeleteForAccountRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    loadBalancerId: S.String.pipe(T.Label("load_balancer_id")),
+  })
+    .pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "/accounts/{account_id}/load_balancers/{load_balancer_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+).annotate({
+  identifier: "DeleteForAccountRequest",
+}) as any as S.Schema<DeleteForAccountRequest>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface DeleteResponse {
+  id?: string | null;
+}
+export const DeleteResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.NullOr(S.String)),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+).annotate({ identifier: "DeleteResponse" }) as any as S.Schema<DeleteResponse>;
+
+export interface DeleteForZoneRequest {
+  /** Identifier. */
   zoneId: string;
   loadBalancerId: string;
 }
-export const DeleteLoadBalancerRequest = /*@__PURE__*/ S.suspend(() =>
+export const DeleteForZoneRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     loadBalancerId: S.String.pipe(T.Label("load_balancer_id")),
@@ -2485,20 +2289,8 @@ export const DeleteLoadBalancerRequest = /*@__PURE__*/ S.suspend(() =>
     )
     .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
-  identifier: "DeleteLoadBalancerRequest",
-}) as any as S.Schema<DeleteLoadBalancerRequest>;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface DeleteLoadBalancerResponse {
-  id?: string | null;
-}
-export const DeleteLoadBalancerResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.NullOr(S.String)),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({
-  identifier: "DeleteLoadBalancerResponse",
-}) as any as S.Schema<DeleteLoadBalancerResponse>;
+  identifier: "DeleteForZoneRequest",
+}) as any as S.Schema<DeleteForZoneRequest>;
 
 export interface DeleteMonitorRequest {
   /** Identifier. */
@@ -2575,18 +2367,12 @@ export interface DeleteMonitorGroupResponse {
   description: string;
   /** List of monitors in this group */
   members: MonitorGroupsDeleteResponseMembersList;
-  /** The timestamp of when the monitor group was created */
-  createdOn?: string | null;
-  /** The timestamp of when the monitor group was last updated */
-  modifiedOn?: string | null;
 }
 export const DeleteMonitorGroupResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     description: S.String,
     members: MonitorGroupsDeleteResponseMembersList,
-    createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteMonitorGroupResponse",
@@ -2626,39 +2412,671 @@ export const DeletePoolResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeletePoolResponse",
 }) as any as S.Schema<DeletePoolResponse>;
 
-export interface GetLoadBalancerRequest {
+export interface EditForAccountRequest {
+  /** Identifier. */
+  accountId: string;
+  loadBalancerId: string;
+}
+export const EditForAccountRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    loadBalancerId: S.String.pipe(T.Label("load_balancer_id")),
+  })
+    .pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "/accounts/{account_id}/load_balancers/{load_balancer_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+).annotate({
+  identifier: "EditForAccountRequest",
+}) as any as S.Schema<EditForAccountRequest>;
+
+export type EditResponseAdaptiveRouting = CreateResponseAdaptiveRouting;
+export const EditResponseAdaptiveRouting = CreateResponseAdaptiveRouting;
+
+export type EditResponseDefaultPoolsList = Array<unknown>;
+export const EditResponseDefaultPoolsList = /*@__PURE__*/ S.Array(
+  S.Unknown,
+) as any as S.Schema<EditResponseDefaultPoolsList>;
+
+export type EditResponseLocationStrategyMode = "pop" | "resolver_ip";
+export const EditResponseLocationStrategyMode = /*@__PURE__*/ S.String;
+
+export type EditResponseLocationStrategyPreferEcs =
+  | "always"
+  | "never"
+  | "proximity"
+  | "geo";
+export const EditResponseLocationStrategyPreferEcs = /*@__PURE__*/ S.String;
+
+export interface EditResponseLocationStrategy {
+  /** Determines the authoritative location when ECS is not preferred, does not exist in the request, or its GeoIP lookup is unsuccessful. "pop" : Use the Cloudflare PoP location. "resolver_ip" : Use the DNS resolver GeoIP location. If the GeoIP lookup is unsuccessful, use the Cloudflare PoP location. */
+  mode?: EditResponseLocationStrategyMode | null;
+  /** Whether the EDNS Client Subnet (ECS) GeoIP should be preferred as the authoritative location. "always" : Always prefer ECS. "never" : Never prefer ECS. "proximity" : Prefer ECS only when steering_policy="proximity" . "geo" : Prefer ECS only when steering_policy="geo" . */
+  preferEcs?: EditResponseLocationStrategyPreferEcs | null;
+}
+export const EditResponseLocationStrategy = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    mode: S.optional(S.NullOr(EditResponseLocationStrategyMode)),
+    preferEcs: S.optional(
+      S.NullOr(EditResponseLocationStrategyPreferEcs).pipe(
+        T.Body("prefer_ecs"),
+      ),
+    ),
+  }),
+).annotate({
+  identifier: "EditResponseLocationStrategy",
+}) as any as S.Schema<EditResponseLocationStrategy>;
+
+export type EditResponseNetworksList = Array<string>;
+export const EditResponseNetworksList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<EditResponseNetworksList>;
+
+export type EditResponsePoolSetsItemFixedResponse =
+  CreateResponsePoolSetsItemFixedResponse;
+export const EditResponsePoolSetsItemFixedResponse =
+  CreateResponsePoolSetsItemFixedResponse;
+
+export type EditResponsePoolSetsItemMatchTopologyCountriesList = Array<string>;
+export const EditResponsePoolSetsItemMatchTopologyCountriesList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<EditResponsePoolSetsItemMatchTopologyCountriesList>;
+
+export type EditResponsePoolSetsItemMatchTopologyPopsList = Array<string>;
+export const EditResponsePoolSetsItemMatchTopologyPopsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<EditResponsePoolSetsItemMatchTopologyPopsList>;
+
+export type EditResponsePoolSetsItemMatchTopologyRegionsList = Array<string>;
+export const EditResponsePoolSetsItemMatchTopologyRegionsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<EditResponsePoolSetsItemMatchTopologyRegionsList>;
+
+export interface EditResponsePoolSetsItemMatchTopology {
+  /** A list of ISO 3166-1 alpha-2 country codes. Matches when the request’s country is in this list. */
+  countries?: EditResponsePoolSetsItemMatchTopologyCountriesList | null;
+  /** A list of Cloudflare PoP codes. Matches when the request’s PoP is in this list. */
+  pops?: EditResponsePoolSetsItemMatchTopologyPopsList | null;
+  /** A list of Cloudflare region codes (e.g. WNAM , ENAM , WEU ). Matches when the request’s region is in this list. */
+  regions?: EditResponsePoolSetsItemMatchTopologyRegionsList | null;
+}
+export const EditResponsePoolSetsItemMatchTopology = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      countries: S.optional(
+        S.NullOr(EditResponsePoolSetsItemMatchTopologyCountriesList),
+      ),
+      pops: S.optional(S.NullOr(EditResponsePoolSetsItemMatchTopologyPopsList)),
+      regions: S.optional(
+        S.NullOr(EditResponsePoolSetsItemMatchTopologyRegionsList),
+      ),
+    }),
+).annotate({
+  identifier: "EditResponsePoolSetsItemMatchTopology",
+}) as any as S.Schema<EditResponsePoolSetsItemMatchTopology>;
+
+export interface EditResponsePoolSetsItemMatch {
+  /** When true, matches every request. Cannot be combined with topology . */
+  default?: boolean | null;
+  /** Matches requests by location. Set any combination of pops , countries , and regions (at least one is required); a request matches when its value appears in any populated list (e.g. regions: ["WNAM"] with countries: ["US"] matches a request in either WNAM or the US). */
+  topology?: EditResponsePoolSetsItemMatchTopology | null;
+}
+export const EditResponsePoolSetsItemMatch = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    default: S.optional(S.NullOr(S.Boolean)),
+    topology: S.optional(S.NullOr(EditResponsePoolSetsItemMatchTopology)),
+  }),
+).annotate({
+  identifier: "EditResponsePoolSetsItemMatch",
+}) as any as S.Schema<EditResponsePoolSetsItemMatch>;
+
+export type EditResponsePoolSetsItemOverridesPoolsList = Array<string>;
+export const EditResponsePoolSetsItemOverridesPoolsList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<EditResponsePoolSetsItemOverridesPoolsList>;
+
+export interface EditResponsePoolSetsItemOverrides {
+  /** The pool ID to use when all other pools are detected as unhealthy. */
+  fallbackPool?: string | null;
+  /** The default weight for pools not listed in pool_weights . The declarative alternative to random_steering.default_weight ; mutually exclusive with random_steering . */
+  poolDefaultWeight?: number | null;
+  /** A mapping of pool IDs to custom weights, relative to the other pools. The declarative alternative to random_steering.pool_weights ; mutually exclusive with random_steering . */
+  poolWeights?: unknown | null;
+  /** A flat, ordered list of pool IDs to route the matched audience to. Replaces the resolved topology with exactly these pools. Mutually exclusive with fixed_response . */
+  pools?: EditResponsePoolSetsItemOverridesPoolsList | null;
+  /** Steering Policy for this load balancer. "off" : Use default_pools . "geo" : Use region_pools / country_pools / pop_pools . For non-proxied requests, the country for country_pools is determined by location_strategy . "random" : Select a pool randomly. "dynamic_latency" : Use round trip time to select the closest pool in default_pools (requires pool health checks). "proximity" : Use the pools’ latitude and longitude to select the closest pool using the Cloudflare PoP location for proxied requests or the location determined by location_strategy for non-proxied requests. "least_outstanding_requests" : Select a pool by taking into consideration random_steering weights, as well as each pool’s number of outstanding requests. Pools with more pending requests are weighted proportionately less relative to others. "least_connections" : Select a pool by taking into consideration random_steering weights, as well as each pool’s number of open connections. Pools with more open connections are weighted proportionately less relative to others. Supported for HTTP/1 and HTTP/2 connections. "" : Will map to "geo" if you use region_pools / country_pools / pop_pools otherwise "off" . */
+  steeringPolicy?: unknown | null;
+}
+export const EditResponsePoolSetsItemOverrides = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    fallbackPool: S.optional(S.NullOr(S.String).pipe(T.Body("fallback_pool"))),
+    poolDefaultWeight: S.optional(
+      S.NullOr(S.Number).pipe(T.Body("pool_default_weight")),
+    ),
+    poolWeights: S.optional(S.NullOr(S.Unknown).pipe(T.Body("pool_weights"))),
+    pools: S.optional(S.NullOr(EditResponsePoolSetsItemOverridesPoolsList)),
+    steeringPolicy: S.optional(
+      S.NullOr(S.Unknown).pipe(T.Body("steering_policy")),
+    ),
+  }),
+).annotate({
+  identifier: "EditResponsePoolSetsItemOverrides",
+}) as any as S.Schema<EditResponsePoolSetsItemOverrides>;
+
+export interface EditResponsePoolSetsItem {
+  /** Disable this specific pool set. It will no longer be evaluated. */
+  disabled?: boolean | null;
+  /** A collection of fields used to directly respond to the client instead of routing to a pool. When supplied on a rule, that rule stops further rule evaluation. */
+  fixedResponse?: CreateResponsePoolSetsItemFixedResponse | null;
+  /** Determines which requests a pool set applies to. Set topology to match by location or default: true to match all requests; the two are mutually exclusive. A pool set with no match matches all requests. */
+  match?: EditResponsePoolSetsItemMatch | null;
+  /** A human-readable name for this pool set. */
+  name?: string | null;
+  /** The behavior a pool set applies when its match succeeds. A strict subset of a rule’s overrides : a pool set replaces the topology wholesale with a flat pool list ( pools ), so only the declarative pool-routing fields plus fallback_pool and steering_policy are settable. All fields are optional. */
+  overrides?: EditResponsePoolSetsItemOverrides | null;
+}
+export const EditResponsePoolSetsItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    disabled: S.optional(S.NullOr(S.Boolean)),
+    fixedResponse: S.optional(
+      S.NullOr(CreateResponsePoolSetsItemFixedResponse).pipe(
+        T.Body("fixed_response"),
+      ),
+    ),
+    match: S.optional(S.NullOr(EditResponsePoolSetsItemMatch)),
+    name: S.optional(S.NullOr(S.String)),
+    overrides: S.optional(S.NullOr(EditResponsePoolSetsItemOverrides)),
+  }),
+).annotate({
+  identifier: "EditResponsePoolSetsItem",
+}) as any as S.Schema<EditResponsePoolSetsItem>;
+
+export type EditResponsePoolSetsList = Array<EditResponsePoolSetsItem>;
+export const EditResponsePoolSetsList = /*@__PURE__*/ S.Array(
+  EditResponsePoolSetsItem,
+) as any as S.Schema<EditResponsePoolSetsList>;
+
+export type EditResponseRandomSteering = CreateResponseRandomSteering;
+export const EditResponseRandomSteering = CreateResponseRandomSteering;
+
+export type EditResponseRulesItemFixedResponse =
+  CreateResponsePoolSetsItemFixedResponse;
+export const EditResponseRulesItemFixedResponse =
+  CreateResponsePoolSetsItemFixedResponse;
+
+export type EditResponseRulesItemOverridesAdaptiveRouting =
+  CreateResponseAdaptiveRouting;
+export const EditResponseRulesItemOverridesAdaptiveRouting =
+  CreateResponseAdaptiveRouting;
+
+export type EditResponseRulesItemOverridesDefaultPoolsList = Array<unknown>;
+export const EditResponseRulesItemOverridesDefaultPoolsList =
+  /*@__PURE__*/ S.Array(
+    S.Unknown,
+  ) as any as S.Schema<EditResponseRulesItemOverridesDefaultPoolsList>;
+
+export type EditResponseRulesItemOverridesLocationStrategyMode =
+  | "pop"
+  | "resolver_ip";
+export const EditResponseRulesItemOverridesLocationStrategyMode =
+  /*@__PURE__*/ S.String;
+
+export type EditResponseRulesItemOverridesLocationStrategyPreferEcs =
+  | "always"
+  | "never"
+  | "proximity"
+  | "geo";
+export const EditResponseRulesItemOverridesLocationStrategyPreferEcs =
+  /*@__PURE__*/ S.String;
+
+export interface EditResponseRulesItemOverridesLocationStrategy {
+  /** Determines the authoritative location when ECS is not preferred, does not exist in the request, or its GeoIP lookup is unsuccessful. "pop" : Use the Cloudflare PoP location. "resolver_ip" : Use the DNS resolver GeoIP location. If the GeoIP lookup is unsuccessful, use the Cloudflare PoP location. */
+  mode?: EditResponseRulesItemOverridesLocationStrategyMode | null;
+  /** Whether the EDNS Client Subnet (ECS) GeoIP should be preferred as the authoritative location. "always" : Always prefer ECS. "never" : Never prefer ECS. "proximity" : Prefer ECS only when steering_policy="proximity" . "geo" : Prefer ECS only when steering_policy="geo" . */
+  preferEcs?: EditResponseRulesItemOverridesLocationStrategyPreferEcs | null;
+}
+export const EditResponseRulesItemOverridesLocationStrategy =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      mode: S.optional(
+        S.NullOr(EditResponseRulesItemOverridesLocationStrategyMode),
+      ),
+      preferEcs: S.optional(
+        S.NullOr(EditResponseRulesItemOverridesLocationStrategyPreferEcs).pipe(
+          T.Body("prefer_ecs"),
+        ),
+      ),
+    }),
+  ).annotate({
+    identifier: "EditResponseRulesItemOverridesLocationStrategy",
+  }) as any as S.Schema<EditResponseRulesItemOverridesLocationStrategy>;
+
+export type EditResponseRulesItemOverridesPoolsList = Array<string>;
+export const EditResponseRulesItemOverridesPoolsList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<EditResponseRulesItemOverridesPoolsList>;
+
+export type EditResponseRulesItemOverridesRandomSteering =
+  CreateResponseRandomSteering;
+export const EditResponseRulesItemOverridesRandomSteering =
+  CreateResponseRandomSteering;
+
+export type EditResponseRulesItemOverridesSessionAffinityAttributesHeadersList =
+  Array<string>;
+export const EditResponseRulesItemOverridesSessionAffinityAttributesHeadersList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<EditResponseRulesItemOverridesSessionAffinityAttributesHeadersList>;
+
+export type EditResponseRulesItemOverridesSessionAffinityAttributesSamesite =
+  | "Auto"
+  | "Lax"
+  | "None"
+  | "Strict";
+export const EditResponseRulesItemOverridesSessionAffinityAttributesSamesite =
+  /*@__PURE__*/ S.String;
+
+export type EditResponseRulesItemOverridesSessionAffinityAttributesSecure =
+  | "Auto"
+  | "Always"
+  | "Never";
+export const EditResponseRulesItemOverridesSessionAffinityAttributesSecure =
+  /*@__PURE__*/ S.String;
+
+export type EditResponseRulesItemOverridesSessionAffinityAttributesZeroDowntimeFailover =
+  | "none"
+  | "temporary"
+  | "sticky";
+export const EditResponseRulesItemOverridesSessionAffinityAttributesZeroDowntimeFailover =
+  /*@__PURE__*/ S.String;
+
+export interface EditResponseRulesItemOverridesSessionAffinityAttributes {
+  /** Configures the drain duration in seconds. This field is only used when session affinity is enabled on the load balancer. */
+  drainDuration?: number | null;
+  /** Configures the names of HTTP headers to base session affinity on when header session_affinity is enabled. At least one HTTP header name must be provided. To specify the exact cookies to be used, include an item in the following format: "cookie:&#x3C;cookie-name-1>,&#x3C;cookie-name-2>" (example) where everything after the colon is a comma-separated list of cookie names. Providing only "cookie" will result in all cookies being used. The default max number of HTTP header names that can be provided depends on your plan: 5 for Enterprise, 1 for all other plans. */
+  headers?: EditResponseRulesItemOverridesSessionAffinityAttributesHeadersList | null;
+  /** When header session_affinity is enabled, this option can be used to specify how HTTP headers on load balancing requests will be used. The supported values are: - "true" : Load balancing requests must contain all of the HTTP headers specified by the headers session affinity attribute, otherwise sessions aren’t created. - "false" : Load balancing requests must contain at least one of the HTTP headers specified by the headers session affinity attribute, otherwise sessions aren’t created. */
+  requireAllHeaders?: boolean | null;
+  /** Configures the SameSite attribute on session affinity cookie. Value “Auto” will be translated to “Lax” or “None” depending if Always Use HTTPS is enabled. Note: when using value “None”, the secure attribute can not be set to “Never”. */
+  samesite?: EditResponseRulesItemOverridesSessionAffinityAttributesSamesite | null;
+  /** Configures the Secure attribute on session affinity cookie. Value “Always” indicates the Secure attribute will be set in the Set-Cookie header, “Never” indicates the Secure attribute will not be set, and “Auto” will set the Secure attribute depending if Always Use HTTPS is enabled. */
+  secure?: EditResponseRulesItemOverridesSessionAffinityAttributesSecure | null;
+  /** Configures the zero-downtime failover between origins within a pool when session affinity is enabled. This feature is currently incompatible with Argo, Tiered Cache, and Bandwidth Alliance. The supported values are: - "none" : No failover takes place for sessions pinned to the origin (default). - "temporary" : Traffic will be sent to another other healthy origin until the originally pinned origin is available; note that this can potentially result in heavy origin flapping. - "sticky" : The session affinity cookie is updated and subsequent requests are sent to the new origin. Note: Zero-downtime failover with sticky sessions is currently not supported for session affinity by header. */
+  zeroDowntimeFailover?: EditResponseRulesItemOverridesSessionAffinityAttributesZeroDowntimeFailover | null;
+}
+export const EditResponseRulesItemOverridesSessionAffinityAttributes =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      drainDuration: S.optional(
+        S.NullOr(S.Number).pipe(T.Body("drain_duration")),
+      ),
+      headers: S.optional(
+        S.NullOr(
+          EditResponseRulesItemOverridesSessionAffinityAttributesHeadersList,
+        ),
+      ),
+      requireAllHeaders: S.optional(
+        S.NullOr(S.Boolean).pipe(T.Body("require_all_headers")),
+      ),
+      samesite: S.optional(
+        S.NullOr(
+          EditResponseRulesItemOverridesSessionAffinityAttributesSamesite,
+        ),
+      ),
+      secure: S.optional(
+        S.NullOr(EditResponseRulesItemOverridesSessionAffinityAttributesSecure),
+      ),
+      zeroDowntimeFailover: S.optional(
+        S.NullOr(
+          EditResponseRulesItemOverridesSessionAffinityAttributesZeroDowntimeFailover,
+        ).pipe(T.Body("zero_downtime_failover")),
+      ),
+    }),
+  ).annotate({
+    identifier: "EditResponseRulesItemOverridesSessionAffinityAttributes",
+  }) as any as S.Schema<EditResponseRulesItemOverridesSessionAffinityAttributes>;
+
+export interface EditResponseRulesItemOverrides {
+  /** Controls features that modify the routing of requests to pools and origins in response to dynamic conditions, such as during the interval between active health monitoring requests. For example, zero-downtime failover occurs immediately when an origin becomes unavailable due to HTTP 521, 522, or 523 response codes. If there is another healthy origin in the same pool, the request is retried once against this alternate origin. */
+  adaptiveRouting?: CreateResponseAdaptiveRouting | null;
+  /** A mapping of country codes to a list of pool IDs (ordered by their failover priority) for the given country. Any country not explicitly defined will fall back to using the corresponding region_pool mapping if it exists else to default_pools. */
+  countryPools?: unknown | null;
+  /** A list of pool IDs ordered by their failover priority. Pools defined here are used by default, or when region_pools are not configured for a given region. */
+  defaultPools?: EditResponseRulesItemOverridesDefaultPoolsList | null;
+  /** The pool ID to use when all other pools are detected as unhealthy. */
+  fallbackPool?: string | null;
+  /** Controls location-based steering for non-proxied requests. See steering_policy to learn how steering is affected. */
+  locationStrategy?: EditResponseRulesItemOverridesLocationStrategy | null;
+  /** The default weight for pools not listed in pool_weights . The declarative alternative to random_steering.default_weight ; mutually exclusive with random_steering . */
+  poolDefaultWeight?: number | null;
+  /** A mapping of pool IDs to custom weights, relative to the other pools. The declarative alternative to random_steering.pool_weights ; mutually exclusive with random_steering . */
+  poolWeights?: unknown | null;
+  /** A flat, ordered list of pool IDs to route the matched audience to. Replaces the resolved topology with exactly these pools. Mutually exclusive with fixed_response . */
+  pools?: EditResponseRulesItemOverridesPoolsList | null;
+  /** Enterprise only: A mapping of Cloudflare PoP identifiers to a list of pool IDs (ordered by their failover priority) for the PoP (datacenter). Any PoPs not explicitly defined will fall back to using the corresponding country_pool, then region_pool mapping if it exists else to default_pools. */
+  popPools?: unknown | null;
+  /** Configures pool weights. steering_policy="random" : A random pool is selected with probability proportional to pool weights. steering_policy="least_outstanding_requests" : Use pool weights to scale each pool’s outstanding requests. steering_policy="least_connections" : Use pool weights to scale each pool’s open connections. */
+  randomSteering?: CreateResponseRandomSteering | null;
+  /** A mapping of region codes to a list of pool IDs (ordered by their failover priority) for the given region. Any regions not explicitly defined will fall back to using default_pools. */
+  regionPools?: unknown | null;
+  /** Specifies the type of session affinity the load balancer should use unless specified as "none" . The supported types are: - "cookie" : On the first request to a proxied load balancer, a cookie is generated, encoding information of which origin the request will be forwarded to. Subsequent requests, by the same client to the same load balancer, will be sent to the origin server the cookie encodes, for the duration of the cookie and as long as the origin server remains healthy. If the cookie has expired or the origin server is unhealthy, then a new origin server is calculated and used. - "ip_cookie" : Behaves the same as "cookie" except the initial origin selection is stable and based on the client’s ip address. - "header" : On the first request to a proxied load balancer, a session key based on the configured HTTP headers (see session_affinity_attributes.headers ) is generated, encoding the request headers used for storing in the load balancer session state which origin the request will be forwarded to. Subsequent requests to the load balancer with the same headers will be sent to the same origin server, for the duration of the session and as long as the origin server remains healthy. If the session has been idle for the duration of session_affinity_ttl seconds or the origin server is unhealthy, then a new origin server is calculated and used. See headers in session_affinity_attributes for additional required configuration. */
+  sessionAffinity?: unknown | null;
+  /** Configures attributes for session affinity. */
+  sessionAffinityAttributes?: EditResponseRulesItemOverridesSessionAffinityAttributes | null;
+  /** Time, in seconds, until a client’s session expires after being created. Once the expiry time has been reached, subsequent requests may get sent to a different origin server. The accepted ranges per session_affinity policy are: - "cookie" / "ip_cookie" : The current default of 23 hours will be used unless explicitly set. The accepted range of values is between [1800, 604800]. - "header" : The current default of 1800 seconds will be used unless explicitly set. The accepted range of values is between [30, 3600]. Note: With session affinity by header, sessions only expire after they haven’t been used for the number of seconds specified. */
+  sessionAffinityTtl?: number | null;
+  /** Steering Policy for this load balancer. "off" : Use default_pools . "geo" : Use region_pools / country_pools / pop_pools . For non-proxied requests, the country for country_pools is determined by location_strategy . "random" : Select a pool randomly. "dynamic_latency" : Use round trip time to select the closest pool in default_pools (requires pool health checks). "proximity" : Use the pools’ latitude and longitude to select the closest pool using the Cloudflare PoP location for proxied requests or the location determined by location_strategy for non-proxied requests. "least_outstanding_requests" : Select a pool by taking into consideration random_steering weights, as well as each pool’s number of outstanding requests. Pools with more pending requests are weighted proportionately less relative to others. "least_connections" : Select a pool by taking into consideration random_steering weights, as well as each pool’s number of open connections. Pools with more open connections are weighted proportionately less relative to others. Supported for HTTP/1 and HTTP/2 connections. "" : Will map to "geo" if you use region_pools / country_pools / pop_pools otherwise "off" . */
+  steeringPolicy?: unknown | null;
+  /** Time to live (TTL) of the DNS entry for the IP address returned by this load balancer. This only applies to gray-clouded (unproxied) load balancers. */
+  ttl?: number | null;
+}
+export const EditResponseRulesItemOverrides = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    adaptiveRouting: S.optional(
+      S.NullOr(CreateResponseAdaptiveRouting).pipe(T.Body("adaptive_routing")),
+    ),
+    countryPools: S.optional(S.NullOr(S.Unknown).pipe(T.Body("country_pools"))),
+    defaultPools: S.optional(
+      S.NullOr(EditResponseRulesItemOverridesDefaultPoolsList).pipe(
+        T.Body("default_pools"),
+      ),
+    ),
+    fallbackPool: S.optional(S.NullOr(S.String).pipe(T.Body("fallback_pool"))),
+    locationStrategy: S.optional(
+      S.NullOr(EditResponseRulesItemOverridesLocationStrategy).pipe(
+        T.Body("location_strategy"),
+      ),
+    ),
+    poolDefaultWeight: S.optional(
+      S.NullOr(S.Number).pipe(T.Body("pool_default_weight")),
+    ),
+    poolWeights: S.optional(S.NullOr(S.Unknown).pipe(T.Body("pool_weights"))),
+    pools: S.optional(S.NullOr(EditResponseRulesItemOverridesPoolsList)),
+    popPools: S.optional(S.NullOr(S.Unknown).pipe(T.Body("pop_pools"))),
+    randomSteering: S.optional(
+      S.NullOr(CreateResponseRandomSteering).pipe(T.Body("random_steering")),
+    ),
+    regionPools: S.optional(S.NullOr(S.Unknown).pipe(T.Body("region_pools"))),
+    sessionAffinity: S.optional(
+      S.NullOr(S.Unknown).pipe(T.Body("session_affinity")),
+    ),
+    sessionAffinityAttributes: S.optional(
+      S.NullOr(EditResponseRulesItemOverridesSessionAffinityAttributes).pipe(
+        T.Body("session_affinity_attributes"),
+      ),
+    ),
+    sessionAffinityTtl: S.optional(
+      S.NullOr(S.Number).pipe(T.Body("session_affinity_ttl")),
+    ),
+    steeringPolicy: S.optional(
+      S.NullOr(S.Unknown).pipe(T.Body("steering_policy")),
+    ),
+    ttl: S.optional(S.NullOr(S.Number)),
+  }),
+).annotate({
+  identifier: "EditResponseRulesItemOverrides",
+}) as any as S.Schema<EditResponseRulesItemOverrides>;
+
+export interface EditResponseRulesItem {
+  /** The condition expressions to evaluate. If the condition evaluates to true, the overrides or fixed_response in this rule will be applied. An empty condition is always true. For more details on condition expressions, please see https://developers.cloudflare.com/load-balancing/understand-basics/load-balancing-rules/expressions . */
+  condition?: string | null;
+  /** Disable this specific rule. It will no longer be evaluated by this load balancer. */
+  disabled?: boolean | null;
+  /** A collection of fields used to directly respond to the client instead of routing to a pool. When supplied on a rule, that rule stops further rule evaluation. */
+  fixedResponse?: CreateResponsePoolSetsItemFixedResponse | null;
+  /** Name of this rule. Only used for human readability. */
+  name?: string | null;
+  /** A collection of overrides to apply when this rule’s condition (or a pool set’s match ) is true. All fields are optional. */
+  overrides?: EditResponseRulesItemOverrides | null;
+  /** The order in which rules should be executed in relation to each other. Lower values are executed first. Values do not need to be sequential. If no value is provided for any rule the array order of the rules field will be used to assign a priority. */
+  priority?: number | null;
+  /** If this rule’s condition is true, this causes rule evaluation to stop after processing this rule. */
+  terminates?: boolean | null;
+}
+export const EditResponseRulesItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    condition: S.optional(S.NullOr(S.String)),
+    disabled: S.optional(S.NullOr(S.Boolean)),
+    fixedResponse: S.optional(
+      S.NullOr(CreateResponsePoolSetsItemFixedResponse).pipe(
+        T.Body("fixed_response"),
+      ),
+    ),
+    name: S.optional(S.NullOr(S.String)),
+    overrides: S.optional(S.NullOr(EditResponseRulesItemOverrides)),
+    priority: S.optional(S.NullOr(S.Number)),
+    terminates: S.optional(S.NullOr(S.Boolean)),
+  }),
+).annotate({
+  identifier: "EditResponseRulesItem",
+}) as any as S.Schema<EditResponseRulesItem>;
+
+export type EditResponseRulesList = Array<EditResponseRulesItem>;
+export const EditResponseRulesList = /*@__PURE__*/ S.Array(
+  EditResponseRulesItem,
+) as any as S.Schema<EditResponseRulesList>;
+
+export type EditResponseSessionAffinityAttributesHeadersList = Array<string>;
+export const EditResponseSessionAffinityAttributesHeadersList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<EditResponseSessionAffinityAttributesHeadersList>;
+
+export type EditResponseSessionAffinityAttributesSamesite =
+  | "Auto"
+  | "Lax"
+  | "None"
+  | "Strict";
+export const EditResponseSessionAffinityAttributesSamesite =
+  /*@__PURE__*/ S.String;
+
+export type EditResponseSessionAffinityAttributesSecure =
+  | "Auto"
+  | "Always"
+  | "Never";
+export const EditResponseSessionAffinityAttributesSecure =
+  /*@__PURE__*/ S.String;
+
+export type EditResponseSessionAffinityAttributesZeroDowntimeFailover =
+  | "none"
+  | "temporary"
+  | "sticky";
+export const EditResponseSessionAffinityAttributesZeroDowntimeFailover =
+  /*@__PURE__*/ S.String;
+
+export interface EditResponseSessionAffinityAttributes {
+  /** Configures the drain duration in seconds. This field is only used when session affinity is enabled on the load balancer. */
+  drainDuration?: number | null;
+  /** Configures the names of HTTP headers to base session affinity on when header session_affinity is enabled. At least one HTTP header name must be provided. To specify the exact cookies to be used, include an item in the following format: "cookie:&#x3C;cookie-name-1>,&#x3C;cookie-name-2>" (example) where everything after the colon is a comma-separated list of cookie names. Providing only "cookie" will result in all cookies being used. The default max number of HTTP header names that can be provided depends on your plan: 5 for Enterprise, 1 for all other plans. */
+  headers?: EditResponseSessionAffinityAttributesHeadersList | null;
+  /** When header session_affinity is enabled, this option can be used to specify how HTTP headers on load balancing requests will be used. The supported values are: - "true" : Load balancing requests must contain all of the HTTP headers specified by the headers session affinity attribute, otherwise sessions aren’t created. - "false" : Load balancing requests must contain at least one of the HTTP headers specified by the headers session affinity attribute, otherwise sessions aren’t created. */
+  requireAllHeaders?: boolean | null;
+  /** Configures the SameSite attribute on session affinity cookie. Value “Auto” will be translated to “Lax” or “None” depending if Always Use HTTPS is enabled. Note: when using value “None”, the secure attribute can not be set to “Never”. */
+  samesite?: EditResponseSessionAffinityAttributesSamesite | null;
+  /** Configures the Secure attribute on session affinity cookie. Value “Always” indicates the Secure attribute will be set in the Set-Cookie header, “Never” indicates the Secure attribute will not be set, and “Auto” will set the Secure attribute depending if Always Use HTTPS is enabled. */
+  secure?: EditResponseSessionAffinityAttributesSecure | null;
+  /** Configures the zero-downtime failover between origins within a pool when session affinity is enabled. This feature is currently incompatible with Argo, Tiered Cache, and Bandwidth Alliance. The supported values are: - "none" : No failover takes place for sessions pinned to the origin (default). - "temporary" : Traffic will be sent to another other healthy origin until the originally pinned origin is available; note that this can potentially result in heavy origin flapping. - "sticky" : The session affinity cookie is updated and subsequent requests are sent to the new origin. Note: Zero-downtime failover with sticky sessions is currently not supported for session affinity by header. */
+  zeroDowntimeFailover?: EditResponseSessionAffinityAttributesZeroDowntimeFailover | null;
+}
+export const EditResponseSessionAffinityAttributes = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      drainDuration: S.optional(
+        S.NullOr(S.Number).pipe(T.Body("drain_duration")),
+      ),
+      headers: S.optional(
+        S.NullOr(EditResponseSessionAffinityAttributesHeadersList),
+      ),
+      requireAllHeaders: S.optional(
+        S.NullOr(S.Boolean).pipe(T.Body("require_all_headers")),
+      ),
+      samesite: S.optional(
+        S.NullOr(EditResponseSessionAffinityAttributesSamesite),
+      ),
+      secure: S.optional(S.NullOr(EditResponseSessionAffinityAttributesSecure)),
+      zeroDowntimeFailover: S.optional(
+        S.NullOr(
+          EditResponseSessionAffinityAttributesZeroDowntimeFailover,
+        ).pipe(T.Body("zero_downtime_failover")),
+      ),
+    }),
+).annotate({
+  identifier: "EditResponseSessionAffinityAttributes",
+}) as any as S.Schema<EditResponseSessionAffinityAttributes>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface EditResponse {
+  id?: string | null;
+  /** Controls features that modify the routing of requests to pools and origins in response to dynamic conditions, such as during the interval between active health monitoring requests. For example, zero-downtime failover occurs immediately when an origin becomes unavailable due to HTTP 521, 522, or 523 response codes. If there is another healthy origin in the same pool, the request is retried once against this alternate origin. */
+  adaptiveRouting?: CreateResponseAdaptiveRouting | null;
+  /** A mapping of country codes to a list of pool IDs (ordered by their failover priority) for the given country. Any country not explicitly defined will fall back to using the corresponding region_pool mapping if it exists else to default_pools. */
+  countryPools?: unknown | null;
+  createdOn?: string | null;
+  /** A list of pool IDs ordered by their failover priority. Pools defined here are used by default, or when region_pools are not configured for a given region. */
+  defaultPools?: EditResponseDefaultPoolsList | null;
+  /** Object description. */
+  description?: string | null;
+  /** Whether to enable (the default) this load balancer. */
+  enabled?: boolean | null;
+  /** The pool ID to use when all other pools are detected as unhealthy. */
+  fallbackPool?: string | null;
+  /** Controls location-based steering for non-proxied requests. See steering_policy to learn how steering is affected. */
+  locationStrategy?: EditResponseLocationStrategy | null;
+  modifiedOn?: string | null;
+  /** The DNS hostname to associate with your Load Balancer. If this hostname already exists as a DNS record in Cloudflare’s DNS, the Load Balancer will take precedence and the DNS record will not be used. */
+  name?: string | null;
+  /** List of networks where Load Balancer or Pool is enabled. */
+  networks?: EditResponseNetworksList | null;
+  /** An optional list of pool sets, evaluated in array order with first match wins. Pool sets are independent from the standard steering fields ( region_pools / country_pools / pop_pools / default_pools / steering_policy / random_steering / fallback_pool / rules ). On a PATCH, an empty array ( pool_sets: [] ) clears all pool sets, while omitting the field leaves existing pool sets unchanged. */
+  poolSets?: EditResponsePoolSetsList | null;
+  /** Enterprise only: A mapping of Cloudflare PoP identifiers to a list of pool IDs (ordered by their failover priority) for the PoP (datacenter). Any PoPs not explicitly defined will fall back to using the corresponding country_pool, then region_pool mapping if it exists else to default_pools. */
+  popPools?: unknown | null;
+  /** Whether the hostname should be gray clouded (false) or orange clouded (true). */
+  proxied?: boolean | null;
+  /** Configures pool weights. steering_policy="random" : A random pool is selected with probability proportional to pool weights. steering_policy="least_outstanding_requests" : Use pool weights to scale each pool’s outstanding requests. steering_policy="least_connections" : Use pool weights to scale each pool’s open connections. */
+  randomSteering?: CreateResponseRandomSteering | null;
+  /** A mapping of region codes to a list of pool IDs (ordered by their failover priority) for the given region. Any regions not explicitly defined will fall back to using default_pools. */
+  regionPools?: unknown | null;
+  /** BETA Field Not General Access: A list of rules for this load balancer to execute. */
+  rules?: EditResponseRulesList | null;
+  /** Specifies the type of session affinity the load balancer should use unless specified as "none" . The supported types are: - "cookie" : On the first request to a proxied load balancer, a cookie is generated, encoding information of which origin the request will be forwarded to. Subsequent requests, by the same client to the same load balancer, will be sent to the origin server the cookie encodes, for the duration of the cookie and as long as the origin server remains healthy. If the cookie has expired or the origin server is unhealthy, then a new origin server is calculated and used. - "ip_cookie" : Behaves the same as "cookie" except the initial origin selection is stable and based on the client’s ip address. - "header" : On the first request to a proxied load balancer, a session key based on the configured HTTP headers (see session_affinity_attributes.headers ) is generated, encoding the request headers used for storing in the load balancer session state which origin the request will be forwarded to. Subsequent requests to the load balancer with the same headers will be sent to the same origin server, for the duration of the session and as long as the origin server remains healthy. If the session has been idle for the duration of session_affinity_ttl seconds or the origin server is unhealthy, then a new origin server is calculated and used. See headers in session_affinity_attributes for additional required configuration. */
+  sessionAffinity?: unknown | null;
+  /** Configures attributes for session affinity. */
+  sessionAffinityAttributes?: EditResponseSessionAffinityAttributes | null;
+  /** Time, in seconds, until a client’s session expires after being created. Once the expiry time has been reached, subsequent requests may get sent to a different origin server. The accepted ranges per session_affinity policy are: - "cookie" / "ip_cookie" : The current default of 23 hours will be used unless explicitly set. The accepted range of values is between [1800, 604800]. - "header" : The current default of 1800 seconds will be used unless explicitly set. The accepted range of values is between [30, 3600]. Note: With session affinity by header, sessions only expire after they haven’t been used for the number of seconds specified. */
+  sessionAffinityTtl?: number | null;
+  /** Steering Policy for this load balancer. "off" : Use default_pools . "geo" : Use region_pools / country_pools / pop_pools . For non-proxied requests, the country for country_pools is determined by location_strategy . "random" : Select a pool randomly. "dynamic_latency" : Use round trip time to select the closest pool in default_pools (requires pool health checks). "proximity" : Use the pools’ latitude and longitude to select the closest pool using the Cloudflare PoP location for proxied requests or the location determined by location_strategy for non-proxied requests. "least_outstanding_requests" : Select a pool by taking into consideration random_steering weights, as well as each pool’s number of outstanding requests. Pools with more pending requests are weighted proportionately less relative to others. "least_connections" : Select a pool by taking into consideration random_steering weights, as well as each pool’s number of open connections. Pools with more open connections are weighted proportionately less relative to others. Supported for HTTP/1 and HTTP/2 connections. "" : Will map to "geo" if you use region_pools / country_pools / pop_pools otherwise "off" . */
+  steeringPolicy?: unknown | null;
+  /** Time to live (TTL) of the DNS entry for the IP address returned by this load balancer. This only applies to gray-clouded (unproxied) load balancers. */
+  ttl?: number | null;
+  zoneName?: string | null;
+}
+export const EditResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.NullOr(S.String)),
+    adaptiveRouting: S.optional(
+      S.NullOr(CreateResponseAdaptiveRouting).pipe(T.Body("adaptive_routing")),
+    ),
+    countryPools: S.optional(S.NullOr(S.Unknown).pipe(T.Body("country_pools"))),
+    createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
+    defaultPools: S.optional(
+      S.NullOr(EditResponseDefaultPoolsList).pipe(T.Body("default_pools")),
+    ),
+    description: S.optional(S.NullOr(S.String)),
+    enabled: S.optional(S.NullOr(S.Boolean)),
+    fallbackPool: S.optional(S.NullOr(S.String).pipe(T.Body("fallback_pool"))),
+    locationStrategy: S.optional(
+      S.NullOr(EditResponseLocationStrategy).pipe(T.Body("location_strategy")),
+    ),
+    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
+    name: S.optional(S.NullOr(S.String)),
+    networks: S.optional(S.NullOr(EditResponseNetworksList)),
+    poolSets: S.optional(
+      S.NullOr(EditResponsePoolSetsList).pipe(T.Body("pool_sets")),
+    ),
+    popPools: S.optional(S.NullOr(S.Unknown).pipe(T.Body("pop_pools"))),
+    proxied: S.optional(S.NullOr(S.Boolean)),
+    randomSteering: S.optional(
+      S.NullOr(CreateResponseRandomSteering).pipe(T.Body("random_steering")),
+    ),
+    regionPools: S.optional(S.NullOr(S.Unknown).pipe(T.Body("region_pools"))),
+    rules: S.optional(S.NullOr(EditResponseRulesList)),
+    sessionAffinity: S.optional(
+      S.NullOr(S.Unknown).pipe(T.Body("session_affinity")),
+    ),
+    sessionAffinityAttributes: S.optional(
+      S.NullOr(EditResponseSessionAffinityAttributes).pipe(
+        T.Body("session_affinity_attributes"),
+      ),
+    ),
+    sessionAffinityTtl: S.optional(
+      S.NullOr(S.Number).pipe(T.Body("session_affinity_ttl")),
+    ),
+    steeringPolicy: S.optional(
+      S.NullOr(S.Unknown).pipe(T.Body("steering_policy")),
+    ),
+    ttl: S.optional(S.NullOr(S.Number)),
+    zoneName: S.optional(S.NullOr(S.String).pipe(T.Body("zone_name"))),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+).annotate({ identifier: "EditResponse" }) as any as S.Schema<EditResponse>;
+
+export interface EditForZoneRequest {
+  /** Identifier. */
   zoneId: string;
   loadBalancerId: string;
 }
-export const GetLoadBalancerRequest = /*@__PURE__*/ S.suspend(() =>
+export const EditForZoneRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     loadBalancerId: S.String.pipe(T.Label("load_balancer_id")),
   })
     .pipe(
       T.Http({
-        method: "GET",
+        method: "PATCH",
         uri: "/zones/{zone_id}/load_balancers/{load_balancer_id}",
         code: 200,
       }),
     )
     .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
-  identifier: "GetLoadBalancerRequest",
-}) as any as S.Schema<GetLoadBalancerRequest>;
+  identifier: "EditForZoneRequest",
+}) as any as S.Schema<EditForZoneRequest>;
+
+export interface GetForAccountRequest {
+  /** Identifier. */
+  accountId: string;
+  loadBalancerId: string;
+}
+export const GetForAccountRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    loadBalancerId: S.String.pipe(T.Label("load_balancer_id")),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/load_balancers/{load_balancer_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+).annotate({
+  identifier: "GetForAccountRequest",
+}) as any as S.Schema<GetForAccountRequest>;
 
 export type GetResponseAdaptiveRouting = CreateResponseAdaptiveRouting;
 export const GetResponseAdaptiveRouting = CreateResponseAdaptiveRouting;
 
-export type GetResponseCountryPoolsMap = { [key: string]: unknown | undefined };
-export const GetResponseCountryPoolsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<GetResponseCountryPoolsMap>;
-
-export type GetResponseDefaultPoolsList = Array<string>;
+export type GetResponseDefaultPoolsList = Array<unknown>;
 export const GetResponseDefaultPoolsList = /*@__PURE__*/ S.Array(
-  S.String,
+  S.Unknown,
 ) as any as S.Schema<GetResponseDefaultPoolsList>;
 
 export type GetResponseLocationStrategyMode = "pop" | "resolver_ip";
@@ -2672,9 +3090,9 @@ export type GetResponseLocationStrategyPreferEcs =
 export const GetResponseLocationStrategyPreferEcs = /*@__PURE__*/ S.String;
 
 export interface GetResponseLocationStrategy {
-  /** Determines the authoritative location when ECS is not preferred, does not exist in the request, or its GeoIP lookup is unsuccessful. */
+  /** Determines the authoritative location when ECS is not preferred, does not exist in the request, or its GeoIP lookup is unsuccessful. "pop" : Use the Cloudflare PoP location. "resolver_ip" : Use the DNS resolver GeoIP location. If the GeoIP lookup is unsuccessful, use the Cloudflare PoP location. */
   mode?: GetResponseLocationStrategyMode | null;
-  /** Whether the EDNS Client Subnet (ECS) GeoIP should be preferred as the authoritative location. */
+  /** Whether the EDNS Client Subnet (ECS) GeoIP should be preferred as the authoritative location. "always" : Always prefer ECS. "never" : Never prefer ECS. "proximity" : Prefer ECS only when steering_policy="proximity" . "geo" : Prefer ECS only when steering_policy="geo" . */
   preferEcs?: GetResponseLocationStrategyPreferEcs | null;
 }
 export const GetResponseLocationStrategy = /*@__PURE__*/ S.suspend(() =>
@@ -2693,91 +3111,197 @@ export const GetResponseNetworksList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GetResponseNetworksList>;
 
-export type GetResponsePopPoolsMap = { [key: string]: unknown | undefined };
-export const GetResponsePopPoolsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<GetResponsePopPoolsMap>;
+export type GetResponsePoolSetsItemFixedResponse =
+  CreateResponsePoolSetsItemFixedResponse;
+export const GetResponsePoolSetsItemFixedResponse =
+  CreateResponsePoolSetsItemFixedResponse;
 
-export type GetResponseRandomSteeringPoolWeightsMap = {
-  [key: string]: number | undefined;
-};
-export const GetResponseRandomSteeringPoolWeightsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Number,
-) as any as S.Schema<GetResponseRandomSteeringPoolWeightsMap>;
+export type GetResponsePoolSetsItemMatchTopologyCountriesList = Array<string>;
+export const GetResponsePoolSetsItemMatchTopologyCountriesList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<GetResponsePoolSetsItemMatchTopologyCountriesList>;
 
-export interface GetResponseRandomSteering {
-  /** The default weight for pools in the load balancer that are not specified in the pool_weights map. */
-  defaultWeight?: number | null;
-  /** A mapping of pool IDs to custom weights. The weight is relative to other pools in the load balancer. */
-  poolWeights?: GetResponseRandomSteeringPoolWeightsMap | null;
+export type GetResponsePoolSetsItemMatchTopologyPopsList = Array<string>;
+export const GetResponsePoolSetsItemMatchTopologyPopsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<GetResponsePoolSetsItemMatchTopologyPopsList>;
+
+export type GetResponsePoolSetsItemMatchTopologyRegionsList = Array<string>;
+export const GetResponsePoolSetsItemMatchTopologyRegionsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<GetResponsePoolSetsItemMatchTopologyRegionsList>;
+
+export interface GetResponsePoolSetsItemMatchTopology {
+  /** A list of ISO 3166-1 alpha-2 country codes. Matches when the request’s country is in this list. */
+  countries?: GetResponsePoolSetsItemMatchTopologyCountriesList | null;
+  /** A list of Cloudflare PoP codes. Matches when the request’s PoP is in this list. */
+  pops?: GetResponsePoolSetsItemMatchTopologyPopsList | null;
+  /** A list of Cloudflare region codes (e.g. WNAM , ENAM , WEU ). Matches when the request’s region is in this list. */
+  regions?: GetResponsePoolSetsItemMatchTopologyRegionsList | null;
 }
-export const GetResponseRandomSteering = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    defaultWeight: S.optional(
-      S.NullOr(S.Number).pipe(T.Body("default_weight")),
-    ),
-    poolWeights: S.optional(
-      S.NullOr(GetResponseRandomSteeringPoolWeightsMap).pipe(
-        T.Body("pool_weights"),
+export const GetResponsePoolSetsItemMatchTopology = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      countries: S.optional(
+        S.NullOr(GetResponsePoolSetsItemMatchTopologyCountriesList),
       ),
+      pops: S.optional(S.NullOr(GetResponsePoolSetsItemMatchTopologyPopsList)),
+      regions: S.optional(
+        S.NullOr(GetResponsePoolSetsItemMatchTopologyRegionsList),
+      ),
+    }),
+).annotate({
+  identifier: "GetResponsePoolSetsItemMatchTopology",
+}) as any as S.Schema<GetResponsePoolSetsItemMatchTopology>;
+
+export interface GetResponsePoolSetsItemMatch {
+  /** When true, matches every request. Cannot be combined with topology . */
+  default?: boolean | null;
+  /** Matches requests by location. Set any combination of pops , countries , and regions (at least one is required); a request matches when its value appears in any populated list (e.g. regions: ["WNAM"] with countries: ["US"] matches a request in either WNAM or the US). */
+  topology?: GetResponsePoolSetsItemMatchTopology | null;
+}
+export const GetResponsePoolSetsItemMatch = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    default: S.optional(S.NullOr(S.Boolean)),
+    topology: S.optional(S.NullOr(GetResponsePoolSetsItemMatchTopology)),
+  }),
+).annotate({
+  identifier: "GetResponsePoolSetsItemMatch",
+}) as any as S.Schema<GetResponsePoolSetsItemMatch>;
+
+export type GetResponsePoolSetsItemOverridesPoolsList = Array<string>;
+export const GetResponsePoolSetsItemOverridesPoolsList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<GetResponsePoolSetsItemOverridesPoolsList>;
+
+export interface GetResponsePoolSetsItemOverrides {
+  /** The pool ID to use when all other pools are detected as unhealthy. */
+  fallbackPool?: string | null;
+  /** The default weight for pools not listed in pool_weights . The declarative alternative to random_steering.default_weight ; mutually exclusive with random_steering . */
+  poolDefaultWeight?: number | null;
+  /** A mapping of pool IDs to custom weights, relative to the other pools. The declarative alternative to random_steering.pool_weights ; mutually exclusive with random_steering . */
+  poolWeights?: unknown | null;
+  /** A flat, ordered list of pool IDs to route the matched audience to. Replaces the resolved topology with exactly these pools. Mutually exclusive with fixed_response . */
+  pools?: GetResponsePoolSetsItemOverridesPoolsList | null;
+  /** Steering Policy for this load balancer. "off" : Use default_pools . "geo" : Use region_pools / country_pools / pop_pools . For non-proxied requests, the country for country_pools is determined by location_strategy . "random" : Select a pool randomly. "dynamic_latency" : Use round trip time to select the closest pool in default_pools (requires pool health checks). "proximity" : Use the pools’ latitude and longitude to select the closest pool using the Cloudflare PoP location for proxied requests or the location determined by location_strategy for non-proxied requests. "least_outstanding_requests" : Select a pool by taking into consideration random_steering weights, as well as each pool’s number of outstanding requests. Pools with more pending requests are weighted proportionately less relative to others. "least_connections" : Select a pool by taking into consideration random_steering weights, as well as each pool’s number of open connections. Pools with more open connections are weighted proportionately less relative to others. Supported for HTTP/1 and HTTP/2 connections. "" : Will map to "geo" if you use region_pools / country_pools / pop_pools otherwise "off" . */
+  steeringPolicy?: unknown | null;
+}
+export const GetResponsePoolSetsItemOverrides = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    fallbackPool: S.optional(S.NullOr(S.String).pipe(T.Body("fallback_pool"))),
+    poolDefaultWeight: S.optional(
+      S.NullOr(S.Number).pipe(T.Body("pool_default_weight")),
+    ),
+    poolWeights: S.optional(S.NullOr(S.Unknown).pipe(T.Body("pool_weights"))),
+    pools: S.optional(S.NullOr(GetResponsePoolSetsItemOverridesPoolsList)),
+    steeringPolicy: S.optional(
+      S.NullOr(S.Unknown).pipe(T.Body("steering_policy")),
     ),
   }),
 ).annotate({
-  identifier: "GetResponseRandomSteering",
-}) as any as S.Schema<GetResponseRandomSteering>;
+  identifier: "GetResponsePoolSetsItemOverrides",
+}) as any as S.Schema<GetResponsePoolSetsItemOverrides>;
 
-export type GetResponseRegionPoolsMap = { [key: string]: unknown | undefined };
-export const GetResponseRegionPoolsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<GetResponseRegionPoolsMap>;
+export interface GetResponsePoolSetsItem {
+  /** Disable this specific pool set. It will no longer be evaluated. */
+  disabled?: boolean | null;
+  /** A collection of fields used to directly respond to the client instead of routing to a pool. When supplied on a rule, that rule stops further rule evaluation. */
+  fixedResponse?: CreateResponsePoolSetsItemFixedResponse | null;
+  /** Determines which requests a pool set applies to. Set topology to match by location or default: true to match all requests; the two are mutually exclusive. A pool set with no match matches all requests. */
+  match?: GetResponsePoolSetsItemMatch | null;
+  /** A human-readable name for this pool set. */
+  name?: string | null;
+  /** The behavior a pool set applies when its match succeeds. A strict subset of a rule’s overrides : a pool set replaces the topology wholesale with a flat pool list ( pools ), so only the declarative pool-routing fields plus fallback_pool and steering_policy are settable. All fields are optional. */
+  overrides?: GetResponsePoolSetsItemOverrides | null;
+}
+export const GetResponsePoolSetsItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    disabled: S.optional(S.NullOr(S.Boolean)),
+    fixedResponse: S.optional(
+      S.NullOr(CreateResponsePoolSetsItemFixedResponse).pipe(
+        T.Body("fixed_response"),
+      ),
+    ),
+    match: S.optional(S.NullOr(GetResponsePoolSetsItemMatch)),
+    name: S.optional(S.NullOr(S.String)),
+    overrides: S.optional(S.NullOr(GetResponsePoolSetsItemOverrides)),
+  }),
+).annotate({
+  identifier: "GetResponsePoolSetsItem",
+}) as any as S.Schema<GetResponsePoolSetsItem>;
+
+export type GetResponsePoolSetsList = Array<GetResponsePoolSetsItem>;
+export const GetResponsePoolSetsList = /*@__PURE__*/ S.Array(
+  GetResponsePoolSetsItem,
+) as any as S.Schema<GetResponsePoolSetsList>;
+
+export type GetResponseRandomSteering = CreateResponseRandomSteering;
+export const GetResponseRandomSteering = CreateResponseRandomSteering;
 
 export type GetResponseRulesItemFixedResponse =
-  CreateResponseRulesItemFixedResponse;
+  CreateResponsePoolSetsItemFixedResponse;
 export const GetResponseRulesItemFixedResponse =
-  CreateResponseRulesItemFixedResponse;
+  CreateResponsePoolSetsItemFixedResponse;
 
-export type GetResponseRulesItemOverridesCountryPoolsMap = {
-  [key: string]: unknown | undefined;
-};
-export const GetResponseRulesItemOverridesCountryPoolsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<GetResponseRulesItemOverridesCountryPoolsMap>;
+export type GetResponseRulesItemOverridesAdaptiveRouting =
+  CreateResponseAdaptiveRouting;
+export const GetResponseRulesItemOverridesAdaptiveRouting =
+  CreateResponseAdaptiveRouting;
 
-export type GetResponseRulesItemOverridesDefaultPoolsList = Array<string>;
+export type GetResponseRulesItemOverridesDefaultPoolsList = Array<unknown>;
 export const GetResponseRulesItemOverridesDefaultPoolsList =
   /*@__PURE__*/ S.Array(
-    S.String,
+    S.Unknown,
   ) as any as S.Schema<GetResponseRulesItemOverridesDefaultPoolsList>;
 
-export type GetResponseRulesItemOverridesPopPoolsMap = {
-  [key: string]: unknown | undefined;
-};
-export const GetResponseRulesItemOverridesPopPoolsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<GetResponseRulesItemOverridesPopPoolsMap>;
-
-export type GetResponseRulesItemOverridesRegionPoolsMap = {
-  [key: string]: unknown | undefined;
-};
-export const GetResponseRulesItemOverridesRegionPoolsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<GetResponseRulesItemOverridesRegionPoolsMap>;
-
-export type GetResponseRulesItemOverridesSessionAffinity =
-  | "none"
-  | "cookie"
-  | "ip_cookie"
-  | "header";
-export const GetResponseRulesItemOverridesSessionAffinity =
+export type GetResponseRulesItemOverridesLocationStrategyMode =
+  | "pop"
+  | "resolver_ip";
+export const GetResponseRulesItemOverridesLocationStrategyMode =
   /*@__PURE__*/ S.String;
+
+export type GetResponseRulesItemOverridesLocationStrategyPreferEcs =
+  | "always"
+  | "never"
+  | "proximity"
+  | "geo";
+export const GetResponseRulesItemOverridesLocationStrategyPreferEcs =
+  /*@__PURE__*/ S.String;
+
+export interface GetResponseRulesItemOverridesLocationStrategy {
+  /** Determines the authoritative location when ECS is not preferred, does not exist in the request, or its GeoIP lookup is unsuccessful. "pop" : Use the Cloudflare PoP location. "resolver_ip" : Use the DNS resolver GeoIP location. If the GeoIP lookup is unsuccessful, use the Cloudflare PoP location. */
+  mode?: GetResponseRulesItemOverridesLocationStrategyMode | null;
+  /** Whether the EDNS Client Subnet (ECS) GeoIP should be preferred as the authoritative location. "always" : Always prefer ECS. "never" : Never prefer ECS. "proximity" : Prefer ECS only when steering_policy="proximity" . "geo" : Prefer ECS only when steering_policy="geo" . */
+  preferEcs?: GetResponseRulesItemOverridesLocationStrategyPreferEcs | null;
+}
+export const GetResponseRulesItemOverridesLocationStrategy =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      mode: S.optional(
+        S.NullOr(GetResponseRulesItemOverridesLocationStrategyMode),
+      ),
+      preferEcs: S.optional(
+        S.NullOr(GetResponseRulesItemOverridesLocationStrategyPreferEcs).pipe(
+          T.Body("prefer_ecs"),
+        ),
+      ),
+    }),
+  ).annotate({
+    identifier: "GetResponseRulesItemOverridesLocationStrategy",
+  }) as any as S.Schema<GetResponseRulesItemOverridesLocationStrategy>;
+
+export type GetResponseRulesItemOverridesPoolsList = Array<string>;
+export const GetResponseRulesItemOverridesPoolsList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<GetResponseRulesItemOverridesPoolsList>;
+
+export type GetResponseRulesItemOverridesRandomSteering =
+  CreateResponseRandomSteering;
+export const GetResponseRulesItemOverridesRandomSteering =
+  CreateResponseRandomSteering;
 
 export type GetResponseRulesItemOverridesSessionAffinityAttributesHeadersList =
   Array<string>;
@@ -2811,15 +3335,15 @@ export const GetResponseRulesItemOverridesSessionAffinityAttributesZeroDowntimeF
 export interface GetResponseRulesItemOverridesSessionAffinityAttributes {
   /** Configures the drain duration in seconds. This field is only used when session affinity is enabled on the load balancer. */
   drainDuration?: number | null;
-  /** Configures the names of HTTP headers to base session affinity on when header `session_affinity` is enabled. At least one HTTP header name must be provided. To specify the exact cookies to be used, include an item in the following format: `"cookie:<cookie-name-1>,<cookie-name-2>"` (example) where everything after the colon is a comma-separated list of cookie names. Providing only `"cookie"` will result in all cookies being used. The default max number of HTTP header names that can be provided depends on your plan: 5 for Enterprise, 1 for all other plans. */
+  /** Configures the names of HTTP headers to base session affinity on when header session_affinity is enabled. At least one HTTP header name must be provided. To specify the exact cookies to be used, include an item in the following format: "cookie:&#x3C;cookie-name-1>,&#x3C;cookie-name-2>" (example) where everything after the colon is a comma-separated list of cookie names. Providing only "cookie" will result in all cookies being used. The default max number of HTTP header names that can be provided depends on your plan: 5 for Enterprise, 1 for all other plans. */
   headers?: GetResponseRulesItemOverridesSessionAffinityAttributesHeadersList | null;
-  /** When header `session_affinity` is enabled, this option can be used to specify how HTTP headers on load balancing requests will be used. The supported values are: - `"true"`: Load balancing requests must contain *all* of the HTTP headers specified by the `headers` session affinity attribute, otherwise sessions aren't created. - `"false"`: Load balancing requests must contain *at least one* of the HTTP headers specified by the `headers` session affinity attribute, otherwise sessions aren't created. */
+  /** When header session_affinity is enabled, this option can be used to specify how HTTP headers on load balancing requests will be used. The supported values are: - "true" : Load balancing requests must contain all of the HTTP headers specified by the headers session affinity attribute, otherwise sessions aren’t created. - "false" : Load balancing requests must contain at least one of the HTTP headers specified by the headers session affinity attribute, otherwise sessions aren’t created. */
   requireAllHeaders?: boolean | null;
-  /** Configures the SameSite attribute on session affinity cookie. Value "Auto" will be translated to "Lax" or "None" depending if Always Use HTTPS is enabled. Note: when using value "None", the secure attribute can not be set to "Never". */
+  /** Configures the SameSite attribute on session affinity cookie. Value “Auto” will be translated to “Lax” or “None” depending if Always Use HTTPS is enabled. Note: when using value “None”, the secure attribute can not be set to “Never”. */
   samesite?: GetResponseRulesItemOverridesSessionAffinityAttributesSamesite | null;
-  /** Configures the Secure attribute on session affinity cookie. Value "Always" indicates the Secure attribute will be set in the Set-Cookie header, "Never" indicates the Secure attribute will not be set, and "Auto" will set the Secure attribute depending if Always Use HTTPS is enabled. */
+  /** Configures the Secure attribute on session affinity cookie. Value “Always” indicates the Secure attribute will be set in the Set-Cookie header, “Never” indicates the Secure attribute will not be set, and “Auto” will set the Secure attribute depending if Always Use HTTPS is enabled. */
   secure?: GetResponseRulesItemOverridesSessionAffinityAttributesSecure | null;
-  /** Configures the zero-downtime failover between origins within a pool when session affinity is enabled. This feature is currently incompatible with Argo, Tiered Cache, and Bandwidth Alliance. The supported values are: - `"none"`: No failover takes place for sessions pinned to the origin (default). - `"temporary"`: Traffic will be sent to another other healthy origin until the originally pinned origin is available; note that this can potentially result in heavy origin flapping. - `"sticky"`: The session affinity cookie is updated and subsequent requests are sent to the new origin. Note: Zero-downtime failover with sticky sessions is currently not supported for session affinity by header. */
+  /** Configures the zero-downtime failover between origins within a pool when session affinity is enabled. This feature is currently incompatible with Argo, Tiered Cache, and Bandwidth Alliance. The supported values are: - "none" : No failover takes place for sessions pinned to the origin (default). - "temporary" : Traffic will be sent to another other healthy origin until the originally pinned origin is available; note that this can potentially result in heavy origin flapping. - "sticky" : The session affinity cookie is updated and subsequent requests are sent to the new origin. Note: Zero-downtime failover with sticky sessions is currently not supported for session affinity by header. */
   zeroDowntimeFailover?: GetResponseRulesItemOverridesSessionAffinityAttributesZeroDowntimeFailover | null;
 }
 export const GetResponseRulesItemOverridesSessionAffinityAttributes =
@@ -2854,43 +3378,37 @@ export const GetResponseRulesItemOverridesSessionAffinityAttributes =
     identifier: "GetResponseRulesItemOverridesSessionAffinityAttributes",
   }) as any as S.Schema<GetResponseRulesItemOverridesSessionAffinityAttributes>;
 
-export type GetResponseRulesItemOverridesSteeringPolicy =
-  | "off"
-  | "geo"
-  | "random"
-  | "dynamic_latency"
-  | "proximity"
-  | "least_outstanding_requests"
-  | "least_connections"
-  | "";
-export const GetResponseRulesItemOverridesSteeringPolicy =
-  /*@__PURE__*/ S.String;
-
 export interface GetResponseRulesItemOverrides {
   /** Controls features that modify the routing of requests to pools and origins in response to dynamic conditions, such as during the interval between active health monitoring requests. For example, zero-downtime failover occurs immediately when an origin becomes unavailable due to HTTP 521, 522, or 523 response codes. If there is another healthy origin in the same pool, the request is retried once against this alternate origin. */
   adaptiveRouting?: CreateResponseAdaptiveRouting | null;
   /** A mapping of country codes to a list of pool IDs (ordered by their failover priority) for the given country. Any country not explicitly defined will fall back to using the corresponding region_pool mapping if it exists else to default_pools. */
-  countryPools?: GetResponseRulesItemOverridesCountryPoolsMap | null;
+  countryPools?: unknown | null;
   /** A list of pool IDs ordered by their failover priority. Pools defined here are used by default, or when region_pools are not configured for a given region. */
   defaultPools?: GetResponseRulesItemOverridesDefaultPoolsList | null;
   /** The pool ID to use when all other pools are detected as unhealthy. */
   fallbackPool?: string | null;
-  /** Controls location-based steering for non-proxied requests. See `steering_policy` to learn how steering is affected. */
-  locationStrategy?: GetResponseLocationStrategy | null;
+  /** Controls location-based steering for non-proxied requests. See steering_policy to learn how steering is affected. */
+  locationStrategy?: GetResponseRulesItemOverridesLocationStrategy | null;
+  /** The default weight for pools not listed in pool_weights . The declarative alternative to random_steering.default_weight ; mutually exclusive with random_steering . */
+  poolDefaultWeight?: number | null;
+  /** A mapping of pool IDs to custom weights, relative to the other pools. The declarative alternative to random_steering.pool_weights ; mutually exclusive with random_steering . */
+  poolWeights?: unknown | null;
+  /** A flat, ordered list of pool IDs to route the matched audience to. Replaces the resolved topology with exactly these pools. Mutually exclusive with fixed_response . */
+  pools?: GetResponseRulesItemOverridesPoolsList | null;
   /** Enterprise only: A mapping of Cloudflare PoP identifiers to a list of pool IDs (ordered by their failover priority) for the PoP (datacenter). Any PoPs not explicitly defined will fall back to using the corresponding country_pool, then region_pool mapping if it exists else to default_pools. */
-  popPools?: GetResponseRulesItemOverridesPopPoolsMap | null;
-  /** Configures pool weights. */
-  randomSteering?: GetResponseRandomSteering | null;
+  popPools?: unknown | null;
+  /** Configures pool weights. steering_policy="random" : A random pool is selected with probability proportional to pool weights. steering_policy="least_outstanding_requests" : Use pool weights to scale each pool’s outstanding requests. steering_policy="least_connections" : Use pool weights to scale each pool’s open connections. */
+  randomSteering?: CreateResponseRandomSteering | null;
   /** A mapping of region codes to a list of pool IDs (ordered by their failover priority) for the given region. Any regions not explicitly defined will fall back to using default_pools. */
-  regionPools?: GetResponseRulesItemOverridesRegionPoolsMap | null;
-  /** Specifies the type of session affinity the load balancer should use unless specified as `"none"`. The supported types are: - `"cookie"`: On the first request to a proxied load balancer, a cookie is generated, encoding information of which origin the request will be forwarded to. Subsequent requests, by the same client to the same load balancer, will be sent to the origin server the cookie encodes, for the duration of the cookie and as long as the origin server remains healthy. If the cookie has expired or the origin server is unhealthy, then a new origin server is calculated and used. - `"ip_cookie"`: Behaves the same as `"cookie"` except the initial origin selection is stable and based on the client's ip address. - `"header"`: On the first request to a proxied load balancer, a session key based on the configured HTTP headers (see `session_affinity_attributes.headers`) is generated, encoding the request headers used for storing in the load balancer session state which origin the request will be forwarded to. Subsequent requests to the load balancer with the same headers will be sent to the same origin server, for the duration of the session and as long as the origin server remains healthy. If the session has been idle for the duration of `session_affinity_ttl` seconds or the origin server is unhealthy, then a new origin server is calculated and used. See `headers` in `session_affinity_attributes` for additional required configuration. */
-  sessionAffinity?: GetResponseRulesItemOverridesSessionAffinity | null;
+  regionPools?: unknown | null;
+  /** Specifies the type of session affinity the load balancer should use unless specified as "none" . The supported types are: - "cookie" : On the first request to a proxied load balancer, a cookie is generated, encoding information of which origin the request will be forwarded to. Subsequent requests, by the same client to the same load balancer, will be sent to the origin server the cookie encodes, for the duration of the cookie and as long as the origin server remains healthy. If the cookie has expired or the origin server is unhealthy, then a new origin server is calculated and used. - "ip_cookie" : Behaves the same as "cookie" except the initial origin selection is stable and based on the client’s ip address. - "header" : On the first request to a proxied load balancer, a session key based on the configured HTTP headers (see session_affinity_attributes.headers ) is generated, encoding the request headers used for storing in the load balancer session state which origin the request will be forwarded to. Subsequent requests to the load balancer with the same headers will be sent to the same origin server, for the duration of the session and as long as the origin server remains healthy. If the session has been idle for the duration of session_affinity_ttl seconds or the origin server is unhealthy, then a new origin server is calculated and used. See headers in session_affinity_attributes for additional required configuration. */
+  sessionAffinity?: unknown | null;
   /** Configures attributes for session affinity. */
   sessionAffinityAttributes?: GetResponseRulesItemOverridesSessionAffinityAttributes | null;
-  /** Time, in seconds, until a client's session expires after being created. Once the expiry time has been reached, subsequent requests may get sent to a different origin server. The accepted ranges per `session_affinity` policy are: - `"cookie"` / `"ip_cookie"`: The current default of 23 hours will be used unless explicitly set. The accepted range of values is between [1800, 604800]. - `"header"`: The current default of 1800 seconds will be used unless explicitly set. The accepted range of values is between [30, 3600]. Note: With session affinity by header, sessions only expire after they haven't been used for the number of seconds specified. */
+  /** Time, in seconds, until a client’s session expires after being created. Once the expiry time has been reached, subsequent requests may get sent to a different origin server. The accepted ranges per session_affinity policy are: - "cookie" / "ip_cookie" : The current default of 23 hours will be used unless explicitly set. The accepted range of values is between [1800, 604800]. - "header" : The current default of 1800 seconds will be used unless explicitly set. The accepted range of values is between [30, 3600]. Note: With session affinity by header, sessions only expire after they haven’t been used for the number of seconds specified. */
   sessionAffinityTtl?: number | null;
-  /** Steering Policy for this load balancer. */
-  steeringPolicy?: GetResponseRulesItemOverridesSteeringPolicy | null;
+  /** Steering Policy for this load balancer. "off" : Use default_pools . "geo" : Use region_pools / country_pools / pop_pools . For non-proxied requests, the country for country_pools is determined by location_strategy . "random" : Select a pool randomly. "dynamic_latency" : Use round trip time to select the closest pool in default_pools (requires pool health checks). "proximity" : Use the pools’ latitude and longitude to select the closest pool using the Cloudflare PoP location for proxied requests or the location determined by location_strategy for non-proxied requests. "least_outstanding_requests" : Select a pool by taking into consideration random_steering weights, as well as each pool’s number of outstanding requests. Pools with more pending requests are weighted proportionately less relative to others. "least_connections" : Select a pool by taking into consideration random_steering weights, as well as each pool’s number of open connections. Pools with more open connections are weighted proportionately less relative to others. Supported for HTTP/1 and HTTP/2 connections. "" : Will map to "geo" if you use region_pools / country_pools / pop_pools otherwise "off" . */
+  steeringPolicy?: unknown | null;
   /** Time to live (TTL) of the DNS entry for the IP address returned by this load balancer. This only applies to gray-clouded (unproxied) load balancers. */
   ttl?: number | null;
 }
@@ -2899,11 +3417,7 @@ export const GetResponseRulesItemOverrides = /*@__PURE__*/ S.suspend(() =>
     adaptiveRouting: S.optional(
       S.NullOr(CreateResponseAdaptiveRouting).pipe(T.Body("adaptive_routing")),
     ),
-    countryPools: S.optional(
-      S.NullOr(GetResponseRulesItemOverridesCountryPoolsMap).pipe(
-        T.Body("country_pools"),
-      ),
-    ),
+    countryPools: S.optional(S.NullOr(S.Unknown).pipe(T.Body("country_pools"))),
     defaultPools: S.optional(
       S.NullOr(GetResponseRulesItemOverridesDefaultPoolsList).pipe(
         T.Body("default_pools"),
@@ -2911,25 +3425,22 @@ export const GetResponseRulesItemOverrides = /*@__PURE__*/ S.suspend(() =>
     ),
     fallbackPool: S.optional(S.NullOr(S.String).pipe(T.Body("fallback_pool"))),
     locationStrategy: S.optional(
-      S.NullOr(GetResponseLocationStrategy).pipe(T.Body("location_strategy")),
-    ),
-    popPools: S.optional(
-      S.NullOr(GetResponseRulesItemOverridesPopPoolsMap).pipe(
-        T.Body("pop_pools"),
+      S.NullOr(GetResponseRulesItemOverridesLocationStrategy).pipe(
+        T.Body("location_strategy"),
       ),
     ),
+    poolDefaultWeight: S.optional(
+      S.NullOr(S.Number).pipe(T.Body("pool_default_weight")),
+    ),
+    poolWeights: S.optional(S.NullOr(S.Unknown).pipe(T.Body("pool_weights"))),
+    pools: S.optional(S.NullOr(GetResponseRulesItemOverridesPoolsList)),
+    popPools: S.optional(S.NullOr(S.Unknown).pipe(T.Body("pop_pools"))),
     randomSteering: S.optional(
-      S.NullOr(GetResponseRandomSteering).pipe(T.Body("random_steering")),
+      S.NullOr(CreateResponseRandomSteering).pipe(T.Body("random_steering")),
     ),
-    regionPools: S.optional(
-      S.NullOr(GetResponseRulesItemOverridesRegionPoolsMap).pipe(
-        T.Body("region_pools"),
-      ),
-    ),
+    regionPools: S.optional(S.NullOr(S.Unknown).pipe(T.Body("region_pools"))),
     sessionAffinity: S.optional(
-      S.NullOr(GetResponseRulesItemOverridesSessionAffinity).pipe(
-        T.Body("session_affinity"),
-      ),
+      S.NullOr(S.Unknown).pipe(T.Body("session_affinity")),
     ),
     sessionAffinityAttributes: S.optional(
       S.NullOr(GetResponseRulesItemOverridesSessionAffinityAttributes).pipe(
@@ -2940,9 +3451,7 @@ export const GetResponseRulesItemOverrides = /*@__PURE__*/ S.suspend(() =>
       S.NullOr(S.Number).pipe(T.Body("session_affinity_ttl")),
     ),
     steeringPolicy: S.optional(
-      S.NullOr(GetResponseRulesItemOverridesSteeringPolicy).pipe(
-        T.Body("steering_policy"),
-      ),
+      S.NullOr(S.Unknown).pipe(T.Body("steering_policy")),
     ),
     ttl: S.optional(S.NullOr(S.Number)),
   }),
@@ -2951,19 +3460,19 @@ export const GetResponseRulesItemOverrides = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetResponseRulesItemOverrides>;
 
 export interface GetResponseRulesItem {
-  /** The condition expressions to evaluate. If the condition evaluates to true, the overrides or fixed_response in this rule will be applied. An empty condition is always true. For more details on condition expressions, please see https://developers.cloudflare.com/load-balancing/understand-basics/load-balancing-rules/expressions. */
+  /** The condition expressions to evaluate. If the condition evaluates to true, the overrides or fixed_response in this rule will be applied. An empty condition is always true. For more details on condition expressions, please see https://developers.cloudflare.com/load-balancing/understand-basics/load-balancing-rules/expressions . */
   condition?: string | null;
   /** Disable this specific rule. It will no longer be evaluated by this load balancer. */
   disabled?: boolean | null;
-  /** A collection of fields used to directly respond to the eyeball instead of routing to a pool. If a fixed_response is supplied the rule will be marked as terminates. */
-  fixedResponse?: CreateResponseRulesItemFixedResponse | null;
+  /** A collection of fields used to directly respond to the client instead of routing to a pool. When supplied on a rule, that rule stops further rule evaluation. */
+  fixedResponse?: CreateResponsePoolSetsItemFixedResponse | null;
   /** Name of this rule. Only used for human readability. */
   name?: string | null;
-  /** A collection of overrides to apply to the load balancer when this rule's condition is true. All fields are optional. */
+  /** A collection of overrides to apply when this rule’s condition (or a pool set’s match ) is true. All fields are optional. */
   overrides?: GetResponseRulesItemOverrides | null;
   /** The order in which rules should be executed in relation to each other. Lower values are executed first. Values do not need to be sequential. If no value is provided for any rule the array order of the rules field will be used to assign a priority. */
   priority?: number | null;
-  /** If this rule's condition is true, this causes rule evaluation to stop after processing this rule. */
+  /** If this rule’s condition is true, this causes rule evaluation to stop after processing this rule. */
   terminates?: boolean | null;
 }
 export const GetResponseRulesItem = /*@__PURE__*/ S.suspend(() =>
@@ -2971,7 +3480,7 @@ export const GetResponseRulesItem = /*@__PURE__*/ S.suspend(() =>
     condition: S.optional(S.NullOr(S.String)),
     disabled: S.optional(S.NullOr(S.Boolean)),
     fixedResponse: S.optional(
-      S.NullOr(CreateResponseRulesItemFixedResponse).pipe(
+      S.NullOr(CreateResponsePoolSetsItemFixedResponse).pipe(
         T.Body("fixed_response"),
       ),
     ),
@@ -2989,13 +3498,81 @@ export const GetResponseRulesList = /*@__PURE__*/ S.Array(
   GetResponseRulesItem,
 ) as any as S.Schema<GetResponseRulesList>;
 
+export type GetResponseSessionAffinityAttributesHeadersList = Array<string>;
+export const GetResponseSessionAffinityAttributesHeadersList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<GetResponseSessionAffinityAttributesHeadersList>;
+
+export type GetResponseSessionAffinityAttributesSamesite =
+  | "Auto"
+  | "Lax"
+  | "None"
+  | "Strict";
+export const GetResponseSessionAffinityAttributesSamesite =
+  /*@__PURE__*/ S.String;
+
+export type GetResponseSessionAffinityAttributesSecure =
+  | "Auto"
+  | "Always"
+  | "Never";
+export const GetResponseSessionAffinityAttributesSecure =
+  /*@__PURE__*/ S.String;
+
+export type GetResponseSessionAffinityAttributesZeroDowntimeFailover =
+  | "none"
+  | "temporary"
+  | "sticky";
+export const GetResponseSessionAffinityAttributesZeroDowntimeFailover =
+  /*@__PURE__*/ S.String;
+
+export interface GetResponseSessionAffinityAttributes {
+  /** Configures the drain duration in seconds. This field is only used when session affinity is enabled on the load balancer. */
+  drainDuration?: number | null;
+  /** Configures the names of HTTP headers to base session affinity on when header session_affinity is enabled. At least one HTTP header name must be provided. To specify the exact cookies to be used, include an item in the following format: "cookie:&#x3C;cookie-name-1>,&#x3C;cookie-name-2>" (example) where everything after the colon is a comma-separated list of cookie names. Providing only "cookie" will result in all cookies being used. The default max number of HTTP header names that can be provided depends on your plan: 5 for Enterprise, 1 for all other plans. */
+  headers?: GetResponseSessionAffinityAttributesHeadersList | null;
+  /** When header session_affinity is enabled, this option can be used to specify how HTTP headers on load balancing requests will be used. The supported values are: - "true" : Load balancing requests must contain all of the HTTP headers specified by the headers session affinity attribute, otherwise sessions aren’t created. - "false" : Load balancing requests must contain at least one of the HTTP headers specified by the headers session affinity attribute, otherwise sessions aren’t created. */
+  requireAllHeaders?: boolean | null;
+  /** Configures the SameSite attribute on session affinity cookie. Value “Auto” will be translated to “Lax” or “None” depending if Always Use HTTPS is enabled. Note: when using value “None”, the secure attribute can not be set to “Never”. */
+  samesite?: GetResponseSessionAffinityAttributesSamesite | null;
+  /** Configures the Secure attribute on session affinity cookie. Value “Always” indicates the Secure attribute will be set in the Set-Cookie header, “Never” indicates the Secure attribute will not be set, and “Auto” will set the Secure attribute depending if Always Use HTTPS is enabled. */
+  secure?: GetResponseSessionAffinityAttributesSecure | null;
+  /** Configures the zero-downtime failover between origins within a pool when session affinity is enabled. This feature is currently incompatible with Argo, Tiered Cache, and Bandwidth Alliance. The supported values are: - "none" : No failover takes place for sessions pinned to the origin (default). - "temporary" : Traffic will be sent to another other healthy origin until the originally pinned origin is available; note that this can potentially result in heavy origin flapping. - "sticky" : The session affinity cookie is updated and subsequent requests are sent to the new origin. Note: Zero-downtime failover with sticky sessions is currently not supported for session affinity by header. */
+  zeroDowntimeFailover?: GetResponseSessionAffinityAttributesZeroDowntimeFailover | null;
+}
+export const GetResponseSessionAffinityAttributes = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      drainDuration: S.optional(
+        S.NullOr(S.Number).pipe(T.Body("drain_duration")),
+      ),
+      headers: S.optional(
+        S.NullOr(GetResponseSessionAffinityAttributesHeadersList),
+      ),
+      requireAllHeaders: S.optional(
+        S.NullOr(S.Boolean).pipe(T.Body("require_all_headers")),
+      ),
+      samesite: S.optional(
+        S.NullOr(GetResponseSessionAffinityAttributesSamesite),
+      ),
+      secure: S.optional(S.NullOr(GetResponseSessionAffinityAttributesSecure)),
+      zeroDowntimeFailover: S.optional(
+        S.NullOr(GetResponseSessionAffinityAttributesZeroDowntimeFailover).pipe(
+          T.Body("zero_downtime_failover"),
+        ),
+      ),
+    }),
+).annotate({
+  identifier: "GetResponseSessionAffinityAttributes",
+}) as any as S.Schema<GetResponseSessionAffinityAttributes>;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface GetLoadBalancerResponse {
+export interface GetResponse {
   id?: string | null;
   /** Controls features that modify the routing of requests to pools and origins in response to dynamic conditions, such as during the interval between active health monitoring requests. For example, zero-downtime failover occurs immediately when an origin becomes unavailable due to HTTP 521, 522, or 523 response codes. If there is another healthy origin in the same pool, the request is retried once against this alternate origin. */
   adaptiveRouting?: CreateResponseAdaptiveRouting | null;
   /** A mapping of country codes to a list of pool IDs (ordered by their failover priority) for the given country. Any country not explicitly defined will fall back to using the corresponding region_pool mapping if it exists else to default_pools. */
-  countryPools?: GetResponseCountryPoolsMap | null;
+  countryPools?: unknown | null;
   createdOn?: string | null;
   /** A list of pool IDs ordered by their failover priority. Pools defined here are used by default, or when region_pools are not configured for a given region. */
   defaultPools?: GetResponseDefaultPoolsList | null;
@@ -3005,44 +3582,44 @@ export interface GetLoadBalancerResponse {
   enabled?: boolean | null;
   /** The pool ID to use when all other pools are detected as unhealthy. */
   fallbackPool?: string | null;
-  /** Controls location-based steering for non-proxied requests. See `steering_policy` to learn how steering is affected. */
+  /** Controls location-based steering for non-proxied requests. See steering_policy to learn how steering is affected. */
   locationStrategy?: GetResponseLocationStrategy | null;
   modifiedOn?: string | null;
-  /** The DNS hostname to associate with your Load Balancer. If this hostname already exists as a DNS record in Cloudflare's DNS, the Load Balancer will take precedence and the DNS record will not be used. */
+  /** The DNS hostname to associate with your Load Balancer. If this hostname already exists as a DNS record in Cloudflare’s DNS, the Load Balancer will take precedence and the DNS record will not be used. */
   name?: string | null;
   /** List of networks where Load Balancer or Pool is enabled. */
   networks?: GetResponseNetworksList | null;
+  /** An optional list of pool sets, evaluated in array order with first match wins. Pool sets are independent from the standard steering fields ( region_pools / country_pools / pop_pools / default_pools / steering_policy / random_steering / fallback_pool / rules ). On a PATCH, an empty array ( pool_sets: [] ) clears all pool sets, while omitting the field leaves existing pool sets unchanged. */
+  poolSets?: GetResponsePoolSetsList | null;
   /** Enterprise only: A mapping of Cloudflare PoP identifiers to a list of pool IDs (ordered by their failover priority) for the PoP (datacenter). Any PoPs not explicitly defined will fall back to using the corresponding country_pool, then region_pool mapping if it exists else to default_pools. */
-  popPools?: GetResponsePopPoolsMap | null;
+  popPools?: unknown | null;
   /** Whether the hostname should be gray clouded (false) or orange clouded (true). */
   proxied?: boolean | null;
-  /** Configures pool weights. */
-  randomSteering?: GetResponseRandomSteering | null;
+  /** Configures pool weights. steering_policy="random" : A random pool is selected with probability proportional to pool weights. steering_policy="least_outstanding_requests" : Use pool weights to scale each pool’s outstanding requests. steering_policy="least_connections" : Use pool weights to scale each pool’s open connections. */
+  randomSteering?: CreateResponseRandomSteering | null;
   /** A mapping of region codes to a list of pool IDs (ordered by their failover priority) for the given region. Any regions not explicitly defined will fall back to using default_pools. */
-  regionPools?: GetResponseRegionPoolsMap | null;
+  regionPools?: unknown | null;
   /** BETA Field Not General Access: A list of rules for this load balancer to execute. */
   rules?: GetResponseRulesList | null;
-  /** Specifies the type of session affinity the load balancer should use unless specified as `"none"`. The supported types are: - `"cookie"`: On the first request to a proxied load balancer, a cookie is generated, encoding information of which origin the request will be forwarded to. Subsequent requests, by the same client to the same load balancer, will be sent to the origin server the cookie encodes, for the duration of the cookie and as long as the origin server remains healthy. If the cookie has expired or the origin server is unhealthy, then a new origin server is calculated and used. - `"ip_cookie"`: Behaves the same as `"cookie"` except the initial origin selection is stable and based on the client's ip address. - `"header"`: On the first request to a proxied load balancer, a session key based on the configured HTTP headers (see `session_affinity_attributes.headers`) is generated, encoding the request headers used for storing in the load balancer session state which origin the request will be forwarded to. Subsequent requests to the load balancer with the same headers will be sent to the same origin server, for the duration of the session and as long as the origin server remains healthy. If the session has been idle for the duration of `session_affinity_ttl` seconds or the origin server is unhealthy, then a new origin server is calculated and used. See `headers` in `session_affinity_attributes` for additional required configuration. */
-  sessionAffinity?: GetResponseRulesItemOverridesSessionAffinity | null;
+  /** Specifies the type of session affinity the load balancer should use unless specified as "none" . The supported types are: - "cookie" : On the first request to a proxied load balancer, a cookie is generated, encoding information of which origin the request will be forwarded to. Subsequent requests, by the same client to the same load balancer, will be sent to the origin server the cookie encodes, for the duration of the cookie and as long as the origin server remains healthy. If the cookie has expired or the origin server is unhealthy, then a new origin server is calculated and used. - "ip_cookie" : Behaves the same as "cookie" except the initial origin selection is stable and based on the client’s ip address. - "header" : On the first request to a proxied load balancer, a session key based on the configured HTTP headers (see session_affinity_attributes.headers ) is generated, encoding the request headers used for storing in the load balancer session state which origin the request will be forwarded to. Subsequent requests to the load balancer with the same headers will be sent to the same origin server, for the duration of the session and as long as the origin server remains healthy. If the session has been idle for the duration of session_affinity_ttl seconds or the origin server is unhealthy, then a new origin server is calculated and used. See headers in session_affinity_attributes for additional required configuration. */
+  sessionAffinity?: unknown | null;
   /** Configures attributes for session affinity. */
-  sessionAffinityAttributes?: GetResponseRulesItemOverridesSessionAffinityAttributes | null;
-  /** Time, in seconds, until a client's session expires after being created. Once the expiry time has been reached, subsequent requests may get sent to a different origin server. The accepted ranges per `session_affinity` policy are: - `"cookie"` / `"ip_cookie"`: The current default of 23 hours will be used unless explicitly set. The accepted range of values is between [1800, 604800]. - `"header"`: The current default of 1800 seconds will be used unless explicitly set. The accepted range of values is between [30, 3600]. Note: With session affinity by header, sessions only expire after they haven't been used for the number of seconds specified. */
+  sessionAffinityAttributes?: GetResponseSessionAffinityAttributes | null;
+  /** Time, in seconds, until a client’s session expires after being created. Once the expiry time has been reached, subsequent requests may get sent to a different origin server. The accepted ranges per session_affinity policy are: - "cookie" / "ip_cookie" : The current default of 23 hours will be used unless explicitly set. The accepted range of values is between [1800, 604800]. - "header" : The current default of 1800 seconds will be used unless explicitly set. The accepted range of values is between [30, 3600]. Note: With session affinity by header, sessions only expire after they haven’t been used for the number of seconds specified. */
   sessionAffinityTtl?: number | null;
-  /** Steering Policy for this load balancer. */
-  steeringPolicy?: GetResponseRulesItemOverridesSteeringPolicy | null;
+  /** Steering Policy for this load balancer. "off" : Use default_pools . "geo" : Use region_pools / country_pools / pop_pools . For non-proxied requests, the country for country_pools is determined by location_strategy . "random" : Select a pool randomly. "dynamic_latency" : Use round trip time to select the closest pool in default_pools (requires pool health checks). "proximity" : Use the pools’ latitude and longitude to select the closest pool using the Cloudflare PoP location for proxied requests or the location determined by location_strategy for non-proxied requests. "least_outstanding_requests" : Select a pool by taking into consideration random_steering weights, as well as each pool’s number of outstanding requests. Pools with more pending requests are weighted proportionately less relative to others. "least_connections" : Select a pool by taking into consideration random_steering weights, as well as each pool’s number of open connections. Pools with more open connections are weighted proportionately less relative to others. Supported for HTTP/1 and HTTP/2 connections. "" : Will map to "geo" if you use region_pools / country_pools / pop_pools otherwise "off" . */
+  steeringPolicy?: unknown | null;
   /** Time to live (TTL) of the DNS entry for the IP address returned by this load balancer. This only applies to gray-clouded (unproxied) load balancers. */
   ttl?: number | null;
   zoneName?: string | null;
 }
-export const GetLoadBalancerResponse = /*@__PURE__*/ S.suspend(() =>
+export const GetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.NullOr(S.String)),
     adaptiveRouting: S.optional(
       S.NullOr(CreateResponseAdaptiveRouting).pipe(T.Body("adaptive_routing")),
     ),
-    countryPools: S.optional(
-      S.NullOr(GetResponseCountryPoolsMap).pipe(T.Body("country_pools")),
-    ),
+    countryPools: S.optional(S.NullOr(S.Unknown).pipe(T.Body("country_pools"))),
     createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
     defaultPools: S.optional(
       S.NullOr(GetResponseDefaultPoolsList).pipe(T.Body("default_pools")),
@@ -3056,24 +3633,21 @@ export const GetLoadBalancerResponse = /*@__PURE__*/ S.suspend(() =>
     modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
     name: S.optional(S.NullOr(S.String)),
     networks: S.optional(S.NullOr(GetResponseNetworksList)),
-    popPools: S.optional(
-      S.NullOr(GetResponsePopPoolsMap).pipe(T.Body("pop_pools")),
+    poolSets: S.optional(
+      S.NullOr(GetResponsePoolSetsList).pipe(T.Body("pool_sets")),
     ),
+    popPools: S.optional(S.NullOr(S.Unknown).pipe(T.Body("pop_pools"))),
     proxied: S.optional(S.NullOr(S.Boolean)),
     randomSteering: S.optional(
-      S.NullOr(GetResponseRandomSteering).pipe(T.Body("random_steering")),
+      S.NullOr(CreateResponseRandomSteering).pipe(T.Body("random_steering")),
     ),
-    regionPools: S.optional(
-      S.NullOr(GetResponseRegionPoolsMap).pipe(T.Body("region_pools")),
-    ),
+    regionPools: S.optional(S.NullOr(S.Unknown).pipe(T.Body("region_pools"))),
     rules: S.optional(S.NullOr(GetResponseRulesList)),
     sessionAffinity: S.optional(
-      S.NullOr(GetResponseRulesItemOverridesSessionAffinity).pipe(
-        T.Body("session_affinity"),
-      ),
+      S.NullOr(S.Unknown).pipe(T.Body("session_affinity")),
     ),
     sessionAffinityAttributes: S.optional(
-      S.NullOr(GetResponseRulesItemOverridesSessionAffinityAttributes).pipe(
+      S.NullOr(GetResponseSessionAffinityAttributes).pipe(
         T.Body("session_affinity_attributes"),
       ),
     ),
@@ -3081,16 +3655,34 @@ export const GetLoadBalancerResponse = /*@__PURE__*/ S.suspend(() =>
       S.NullOr(S.Number).pipe(T.Body("session_affinity_ttl")),
     ),
     steeringPolicy: S.optional(
-      S.NullOr(GetResponseRulesItemOverridesSteeringPolicy).pipe(
-        T.Body("steering_policy"),
-      ),
+      S.NullOr(S.Unknown).pipe(T.Body("steering_policy")),
     ),
     ttl: S.optional(S.NullOr(S.Number)),
     zoneName: S.optional(S.NullOr(S.String).pipe(T.Body("zone_name"))),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+).annotate({ identifier: "GetResponse" }) as any as S.Schema<GetResponse>;
+
+export interface GetForZoneRequest {
+  /** Identifier. */
+  zoneId: string;
+  loadBalancerId: string;
+}
+export const GetForZoneRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    zoneId: S.String.pipe(T.Label("zone_id")),
+    loadBalancerId: S.String.pipe(T.Label("load_balancer_id")),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/zones/{zone_id}/load_balancers/{load_balancer_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
-  identifier: "GetLoadBalancerResponse",
-}) as any as S.Schema<GetLoadBalancerResponse>;
+  identifier: "GetForZoneRequest",
+}) as any as S.Schema<GetForZoneRequest>;
 
 export interface GetMonitorRequest {
   /** Identifier. */
@@ -3153,7 +3745,7 @@ export interface GetMonitorResponse {
   header?: MonitorsGetResponseHeaderMap | null;
   /** The interval between each health check. Shorter intervals may improve failover time, but will increase load on the origins as we check from multiple locations. */
   interval?: number | null;
-  /** The method to use for the health check. This defaults to 'GET' for HTTP/HTTPS based checks and 'connection_established' for TCP based health checks. */
+  /** The method to use for the health check. This defaults to ‘GET’ for HTTP/HTTPS based checks and ‘connection_established’ for TCP based health checks. */
   method?: string | null;
   modifiedOn?: string | null;
   /** The endpoint path you want to conduct a health check against. This parameter is only valid for HTTP and HTTPS monitors. */
@@ -3166,7 +3758,7 @@ export interface GetMonitorResponse {
   retries?: number | null;
   /** The timeout (in seconds) before marking the health check as failed. */
   timeout?: number | null;
-  /** The protocol to use for the health check. Currently supported protocols are 'HTTP','HTTPS', 'TCP', 'ICMP-PING', 'UDP-ICMP', and 'SMTP'. */
+  /** The protocol to use for the health check. Currently supported protocols are ‘HTTP’,‘HTTPS’, ‘TCP’, ‘ICMP-PING’, ‘UDP-ICMP’, and ‘SMTP’. */
   type?: MonitorsGetResponseType | null;
 }
 export const GetMonitorResponse = /*@__PURE__*/ S.suspend(() =>
@@ -3246,18 +3838,12 @@ export interface GetMonitorGroupResponse {
   description: string;
   /** List of monitors in this group */
   members: MonitorGroupsGetResponseMembersList;
-  /** The timestamp of when the monitor group was created */
-  createdOn?: string | null;
-  /** The timestamp of when the monitor group was last updated */
-  modifiedOn?: string | null;
 }
 export const GetMonitorGroupResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     description: S.String,
     members: MonitorGroupsGetResponseMembersList,
-    createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetMonitorGroupResponse",
@@ -3444,6 +4030,7 @@ export type PoolsGetResponseCheckRegionsItem =
   | "SAS"
   | "SEAS"
   | "NEAS"
+  | "CHINA"
   | "ALL_REGIONS";
 export const PoolsGetResponseCheckRegionsItem = /*@__PURE__*/ S.String;
 
@@ -3452,6 +4039,15 @@ export type PoolsGetResponseCheckRegionsList =
 export const PoolsGetResponseCheckRegionsList = /*@__PURE__*/ S.Array(
   PoolsGetResponseCheckRegionsItem,
 ) as any as S.Schema<PoolsGetResponseCheckRegionsList>;
+
+export type PoolsGetResponseHealthSourcesItem = "local" | "regional" | "global";
+export const PoolsGetResponseHealthSourcesItem = /*@__PURE__*/ S.String;
+
+export type PoolsGetResponseHealthSourcesList =
+  Array<PoolsGetResponseHealthSourcesItem>;
+export const PoolsGetResponseHealthSourcesList = /*@__PURE__*/ S.Array(
+  PoolsGetResponseHealthSourcesItem,
+) as any as S.Schema<PoolsGetResponseHealthSourcesList>;
 
 export type PoolsGetResponseLoadSheddingDefaultPolicy = "random" | "hash";
 export const PoolsGetResponseLoadSheddingDefaultPolicy = /*@__PURE__*/ S.String;
@@ -3502,6 +4098,11 @@ export type PoolsGetResponseNotificationFilterOrigin =
 export const PoolsGetResponseNotificationFilterOrigin =
   PoolsBulkEditResultItemNotificationFilterOrigin;
 
+export type PoolsGetResponseNotificationFilterPool =
+  PoolsBulkEditResultItemNotificationFilterOrigin;
+export const PoolsGetResponseNotificationFilterPool =
+  PoolsBulkEditResultItemNotificationFilterOrigin;
+
 export type PoolsGetResponseNotificationFilter =
   PoolsBulkEditResultItemNotificationFilter;
 export const PoolsGetResponseNotificationFilter =
@@ -3532,7 +4133,7 @@ export const PoolsGetResponseOriginsItemHeaderHostList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<PoolsGetResponseOriginsItemHeaderHostList>;
 
 export interface PoolsGetResponseOriginsItemHeader {
-  /** The 'Host' header allows to override the hostname set in the HTTP request. Current support is 1 'Host' header override per origin. */
+  /** The ‘Host’ header allows to override the hostname set in the HTTP request. Current support is 1 ‘Host’ header override per origin. */
   host?: PoolsGetResponseOriginsItemHeaderHostList | null;
 }
 export const PoolsGetResponseOriginsItemHeader = /*@__PURE__*/ S.suspend(() =>
@@ -3554,7 +4155,7 @@ export interface PoolsGetResponseOriginsItem {
   enabled?: boolean | null;
   /** Whether to flatten CNAME records for this origin, resolving them to A/AAAA records before returning to the client. When true (the default), the director resolves CNAME addresses to their underlying A/AAAA records. When false, the origin address is returned as a raw CNAME record without resolution. This setting mirrors the DNS API record flatten_cname setting. */
   flattenCname?: boolean | null;
-  /** The request header is used to pass additional information with an HTTP request. Currently supported header is 'Host'. */
+  /** The request header is used to pass additional information with an HTTP request. Currently supported header is ‘Host’. */
   header?: PoolsGetResponseOriginsItemHeader | null;
   /** A human-identifiable name for the origin. */
   name?: string | null;
@@ -3600,6 +4201,8 @@ export interface GetPoolResponse {
   disabledAt?: string | null;
   /** Whether to enable (the default) or disable this pool. Disabled pools will not receive traffic and are excluded from health checks. Disabling a pool will cause any load balancers using it to failover to the next pool (if any). */
   enabled?: boolean | null;
+  /** A list of health sources, ordered from highest to lowest priority, used to evaluate individual origin health and overall pool health. The load balancer uses the first source that has data and falls back to the next. Currently accepted values are null or the exact array [“regional”, “global”]; any other combination is rejected. Null (the default) behaves like [“local”, “global”]. [“regional”, “global”] makes each region steer on its own health, falling back to the global decision when a region has no fresh data. Setting regional requires at least one region in check_regions. */
+  healthSources?: PoolsGetResponseHealthSourcesList | null;
   /** The latitude of the data center containing the origins used in this pool in decimal degrees. If this is set, longitude must also be set. */
   latitude?: number | null;
   /** Configures load shedding policies and percentages for the pool. */
@@ -3617,7 +4220,7 @@ export interface GetPoolResponse {
   name?: string | null;
   /** List of networks where Load Balancer or Pool is enabled. */
   networks?: PoolsGetResponseNetworksList | null;
-  /** This field is now deprecated. It has been moved to Cloudflare's Centralized Notification service https://developers.cloudflare.com/fundamentals/notifications/. The email address to send health status notifications to. This can be an individual mailbox or a mailing list. Multiple emails can be supplied as a comma delimited list. */
+  /** This field is now deprecated. It has been moved to Cloudflare’s Centralized Notification service <https://developers.cloudflare.com/fundamentals/notifications/>. The email address to send health status notifications to. This can be an individual mailbox or a mailing list. Multiple emails can be supplied as a comma delimited list. */
   notificationEmail?: string | null;
   /** Filter pool and origin health notifications by resource type or health status. Use null to reset. */
   notificationFilter?: PoolsBulkEditResultItemNotificationFilter | null;
@@ -3636,6 +4239,11 @@ export const GetPoolResponse = /*@__PURE__*/ S.suspend(() =>
     description: S.optional(S.NullOr(S.String)),
     disabledAt: S.optional(S.NullOr(S.String).pipe(T.Body("disabled_at"))),
     enabled: S.optional(S.NullOr(S.Boolean)),
+    healthSources: S.optional(
+      S.NullOr(PoolsGetResponseHealthSourcesList).pipe(
+        T.Body("health_sources"),
+      ),
+    ),
     latitude: S.optional(S.NullOr(S.Number)),
     loadShedding: S.optional(
       S.NullOr(PoolsGetResponseLoadShedding).pipe(T.Body("load_shedding")),
@@ -3968,39 +4576,32 @@ export const GetRegionResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetRegionResponse",
 }) as any as S.Schema<GetRegionResponse>;
 
-export interface ListLoadBalancersRequest {
-  zoneId: string;
+export interface ListForAccountRequest {
+  /** Identifier. */
+  accountId: string;
 }
-export const ListLoadBalancersRequest = /*@__PURE__*/ S.suspend(() =>
+export const ListForAccountRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    zoneId: S.String.pipe(T.Label("zone_id")),
+    accountId: S.String.pipe(T.Label("account_id")),
   })
     .pipe(
       T.Http({
         method: "GET",
-        uri: "/zones/{zone_id}/load_balancers",
+        uri: "/accounts/{account_id}/load_balancers",
         code: 200,
       }),
     )
     .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
-  identifier: "ListLoadBalancersRequest",
-}) as any as S.Schema<ListLoadBalancersRequest>;
+  identifier: "ListForAccountRequest",
+}) as any as S.Schema<ListForAccountRequest>;
 
 export type ListResultItemAdaptiveRouting = CreateResponseAdaptiveRouting;
 export const ListResultItemAdaptiveRouting = CreateResponseAdaptiveRouting;
 
-export type ListResultItemCountryPoolsMap = {
-  [key: string]: unknown | undefined;
-};
-export const ListResultItemCountryPoolsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<ListResultItemCountryPoolsMap>;
-
-export type ListResultItemDefaultPoolsList = Array<string>;
+export type ListResultItemDefaultPoolsList = Array<unknown>;
 export const ListResultItemDefaultPoolsList = /*@__PURE__*/ S.Array(
-  S.String,
+  S.Unknown,
 ) as any as S.Schema<ListResultItemDefaultPoolsList>;
 
 export type ListResultItemLocationStrategyMode = "pop" | "resolver_ip";
@@ -4014,9 +4615,9 @@ export type ListResultItemLocationStrategyPreferEcs =
 export const ListResultItemLocationStrategyPreferEcs = /*@__PURE__*/ S.String;
 
 export interface ListResultItemLocationStrategy {
-  /** Determines the authoritative location when ECS is not preferred, does not exist in the request, or its GeoIP lookup is unsuccessful. */
+  /** Determines the authoritative location when ECS is not preferred, does not exist in the request, or its GeoIP lookup is unsuccessful. "pop" : Use the Cloudflare PoP location. "resolver_ip" : Use the DNS resolver GeoIP location. If the GeoIP lookup is unsuccessful, use the Cloudflare PoP location. */
   mode?: ListResultItemLocationStrategyMode | null;
-  /** Whether the EDNS Client Subnet (ECS) GeoIP should be preferred as the authoritative location. */
+  /** Whether the EDNS Client Subnet (ECS) GeoIP should be preferred as the authoritative location. "always" : Always prefer ECS. "never" : Never prefer ECS. "proximity" : Prefer ECS only when steering_policy="proximity" . "geo" : Prefer ECS only when steering_policy="geo" . */
   preferEcs?: ListResultItemLocationStrategyPreferEcs | null;
 }
 export const ListResultItemLocationStrategy = /*@__PURE__*/ S.suspend(() =>
@@ -4037,95 +4638,201 @@ export const ListResultItemNetworksList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ListResultItemNetworksList>;
 
-export type ListResultItemPopPoolsMap = { [key: string]: unknown | undefined };
-export const ListResultItemPopPoolsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<ListResultItemPopPoolsMap>;
+export type ListResultItemPoolSetsItemFixedResponse =
+  CreateResponsePoolSetsItemFixedResponse;
+export const ListResultItemPoolSetsItemFixedResponse =
+  CreateResponsePoolSetsItemFixedResponse;
 
-export type ListResultItemRandomSteeringPoolWeightsMap = {
-  [key: string]: number | undefined;
-};
-export const ListResultItemRandomSteeringPoolWeightsMap =
-  /*@__PURE__*/ S.Record(
+export type ListResultItemPoolSetsItemMatchTopologyCountriesList =
+  Array<string>;
+export const ListResultItemPoolSetsItemMatchTopologyCountriesList =
+  /*@__PURE__*/ S.Array(
     S.String,
-    S.Number,
-  ) as any as S.Schema<ListResultItemRandomSteeringPoolWeightsMap>;
+  ) as any as S.Schema<ListResultItemPoolSetsItemMatchTopologyCountriesList>;
 
-export interface ListResultItemRandomSteering {
-  /** The default weight for pools in the load balancer that are not specified in the pool_weights map. */
-  defaultWeight?: number | null;
-  /** A mapping of pool IDs to custom weights. The weight is relative to other pools in the load balancer. */
-  poolWeights?: ListResultItemRandomSteeringPoolWeightsMap | null;
+export type ListResultItemPoolSetsItemMatchTopologyPopsList = Array<string>;
+export const ListResultItemPoolSetsItemMatchTopologyPopsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<ListResultItemPoolSetsItemMatchTopologyPopsList>;
+
+export type ListResultItemPoolSetsItemMatchTopologyRegionsList = Array<string>;
+export const ListResultItemPoolSetsItemMatchTopologyRegionsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<ListResultItemPoolSetsItemMatchTopologyRegionsList>;
+
+export interface ListResultItemPoolSetsItemMatchTopology {
+  /** A list of ISO 3166-1 alpha-2 country codes. Matches when the request’s country is in this list. */
+  countries?: ListResultItemPoolSetsItemMatchTopologyCountriesList | null;
+  /** A list of Cloudflare PoP codes. Matches when the request’s PoP is in this list. */
+  pops?: ListResultItemPoolSetsItemMatchTopologyPopsList | null;
+  /** A list of Cloudflare region codes (e.g. WNAM , ENAM , WEU ). Matches when the request’s region is in this list. */
+  regions?: ListResultItemPoolSetsItemMatchTopologyRegionsList | null;
 }
-export const ListResultItemRandomSteering = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    defaultWeight: S.optional(
-      S.NullOr(S.Number).pipe(T.Body("default_weight")),
-    ),
-    poolWeights: S.optional(
-      S.NullOr(ListResultItemRandomSteeringPoolWeightsMap).pipe(
-        T.Body("pool_weights"),
+export const ListResultItemPoolSetsItemMatchTopology = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      countries: S.optional(
+        S.NullOr(ListResultItemPoolSetsItemMatchTopologyCountriesList),
       ),
+      pops: S.optional(
+        S.NullOr(ListResultItemPoolSetsItemMatchTopologyPopsList),
+      ),
+      regions: S.optional(
+        S.NullOr(ListResultItemPoolSetsItemMatchTopologyRegionsList),
+      ),
+    }),
+).annotate({
+  identifier: "ListResultItemPoolSetsItemMatchTopology",
+}) as any as S.Schema<ListResultItemPoolSetsItemMatchTopology>;
+
+export interface ListResultItemPoolSetsItemMatch {
+  /** When true, matches every request. Cannot be combined with topology . */
+  default?: boolean | null;
+  /** Matches requests by location. Set any combination of pops , countries , and regions (at least one is required); a request matches when its value appears in any populated list (e.g. regions: ["WNAM"] with countries: ["US"] matches a request in either WNAM or the US). */
+  topology?: ListResultItemPoolSetsItemMatchTopology | null;
+}
+export const ListResultItemPoolSetsItemMatch = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    default: S.optional(S.NullOr(S.Boolean)),
+    topology: S.optional(S.NullOr(ListResultItemPoolSetsItemMatchTopology)),
+  }),
+).annotate({
+  identifier: "ListResultItemPoolSetsItemMatch",
+}) as any as S.Schema<ListResultItemPoolSetsItemMatch>;
+
+export type ListResultItemPoolSetsItemOverridesPoolsList = Array<string>;
+export const ListResultItemPoolSetsItemOverridesPoolsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<ListResultItemPoolSetsItemOverridesPoolsList>;
+
+export interface ListResultItemPoolSetsItemOverrides {
+  /** The pool ID to use when all other pools are detected as unhealthy. */
+  fallbackPool?: string | null;
+  /** The default weight for pools not listed in pool_weights . The declarative alternative to random_steering.default_weight ; mutually exclusive with random_steering . */
+  poolDefaultWeight?: number | null;
+  /** A mapping of pool IDs to custom weights, relative to the other pools. The declarative alternative to random_steering.pool_weights ; mutually exclusive with random_steering . */
+  poolWeights?: unknown | null;
+  /** A flat, ordered list of pool IDs to route the matched audience to. Replaces the resolved topology with exactly these pools. Mutually exclusive with fixed_response . */
+  pools?: ListResultItemPoolSetsItemOverridesPoolsList | null;
+  /** Steering Policy for this load balancer. "off" : Use default_pools . "geo" : Use region_pools / country_pools / pop_pools . For non-proxied requests, the country for country_pools is determined by location_strategy . "random" : Select a pool randomly. "dynamic_latency" : Use round trip time to select the closest pool in default_pools (requires pool health checks). "proximity" : Use the pools’ latitude and longitude to select the closest pool using the Cloudflare PoP location for proxied requests or the location determined by location_strategy for non-proxied requests. "least_outstanding_requests" : Select a pool by taking into consideration random_steering weights, as well as each pool’s number of outstanding requests. Pools with more pending requests are weighted proportionately less relative to others. "least_connections" : Select a pool by taking into consideration random_steering weights, as well as each pool’s number of open connections. Pools with more open connections are weighted proportionately less relative to others. Supported for HTTP/1 and HTTP/2 connections. "" : Will map to "geo" if you use region_pools / country_pools / pop_pools otherwise "off" . */
+  steeringPolicy?: unknown | null;
+}
+export const ListResultItemPoolSetsItemOverrides = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    fallbackPool: S.optional(S.NullOr(S.String).pipe(T.Body("fallback_pool"))),
+    poolDefaultWeight: S.optional(
+      S.NullOr(S.Number).pipe(T.Body("pool_default_weight")),
+    ),
+    poolWeights: S.optional(S.NullOr(S.Unknown).pipe(T.Body("pool_weights"))),
+    pools: S.optional(S.NullOr(ListResultItemPoolSetsItemOverridesPoolsList)),
+    steeringPolicy: S.optional(
+      S.NullOr(S.Unknown).pipe(T.Body("steering_policy")),
     ),
   }),
 ).annotate({
-  identifier: "ListResultItemRandomSteering",
-}) as any as S.Schema<ListResultItemRandomSteering>;
+  identifier: "ListResultItemPoolSetsItemOverrides",
+}) as any as S.Schema<ListResultItemPoolSetsItemOverrides>;
 
-export type ListResultItemRegionPoolsMap = {
-  [key: string]: unknown | undefined;
-};
-export const ListResultItemRegionPoolsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<ListResultItemRegionPoolsMap>;
+export interface ListResultItemPoolSetsItem {
+  /** Disable this specific pool set. It will no longer be evaluated. */
+  disabled?: boolean | null;
+  /** A collection of fields used to directly respond to the client instead of routing to a pool. When supplied on a rule, that rule stops further rule evaluation. */
+  fixedResponse?: CreateResponsePoolSetsItemFixedResponse | null;
+  /** Determines which requests a pool set applies to. Set topology to match by location or default: true to match all requests; the two are mutually exclusive. A pool set with no match matches all requests. */
+  match?: ListResultItemPoolSetsItemMatch | null;
+  /** A human-readable name for this pool set. */
+  name?: string | null;
+  /** The behavior a pool set applies when its match succeeds. A strict subset of a rule’s overrides : a pool set replaces the topology wholesale with a flat pool list ( pools ), so only the declarative pool-routing fields plus fallback_pool and steering_policy are settable. All fields are optional. */
+  overrides?: ListResultItemPoolSetsItemOverrides | null;
+}
+export const ListResultItemPoolSetsItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    disabled: S.optional(S.NullOr(S.Boolean)),
+    fixedResponse: S.optional(
+      S.NullOr(CreateResponsePoolSetsItemFixedResponse).pipe(
+        T.Body("fixed_response"),
+      ),
+    ),
+    match: S.optional(S.NullOr(ListResultItemPoolSetsItemMatch)),
+    name: S.optional(S.NullOr(S.String)),
+    overrides: S.optional(S.NullOr(ListResultItemPoolSetsItemOverrides)),
+  }),
+).annotate({
+  identifier: "ListResultItemPoolSetsItem",
+}) as any as S.Schema<ListResultItemPoolSetsItem>;
+
+export type ListResultItemPoolSetsList = Array<ListResultItemPoolSetsItem>;
+export const ListResultItemPoolSetsList = /*@__PURE__*/ S.Array(
+  ListResultItemPoolSetsItem,
+) as any as S.Schema<ListResultItemPoolSetsList>;
+
+export type ListResultItemRandomSteering = CreateResponseRandomSteering;
+export const ListResultItemRandomSteering = CreateResponseRandomSteering;
 
 export type ListResultItemRulesItemFixedResponse =
-  CreateResponseRulesItemFixedResponse;
+  CreateResponsePoolSetsItemFixedResponse;
 export const ListResultItemRulesItemFixedResponse =
-  CreateResponseRulesItemFixedResponse;
+  CreateResponsePoolSetsItemFixedResponse;
 
-export type ListResultItemRulesItemOverridesCountryPoolsMap = {
-  [key: string]: unknown | undefined;
-};
-export const ListResultItemRulesItemOverridesCountryPoolsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<ListResultItemRulesItemOverridesCountryPoolsMap>;
+export type ListResultItemRulesItemOverridesAdaptiveRouting =
+  CreateResponseAdaptiveRouting;
+export const ListResultItemRulesItemOverridesAdaptiveRouting =
+  CreateResponseAdaptiveRouting;
 
-export type ListResultItemRulesItemOverridesDefaultPoolsList = Array<string>;
+export type ListResultItemRulesItemOverridesDefaultPoolsList = Array<unknown>;
 export const ListResultItemRulesItemOverridesDefaultPoolsList =
   /*@__PURE__*/ S.Array(
-    S.String,
+    S.Unknown,
   ) as any as S.Schema<ListResultItemRulesItemOverridesDefaultPoolsList>;
 
-export type ListResultItemRulesItemOverridesPopPoolsMap = {
-  [key: string]: unknown | undefined;
-};
-export const ListResultItemRulesItemOverridesPopPoolsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<ListResultItemRulesItemOverridesPopPoolsMap>;
-
-export type ListResultItemRulesItemOverridesRegionPoolsMap = {
-  [key: string]: unknown | undefined;
-};
-export const ListResultItemRulesItemOverridesRegionPoolsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<ListResultItemRulesItemOverridesRegionPoolsMap>;
-
-export type ListResultItemRulesItemOverridesSessionAffinity =
-  | "none"
-  | "cookie"
-  | "ip_cookie"
-  | "header";
-export const ListResultItemRulesItemOverridesSessionAffinity =
+export type ListResultItemRulesItemOverridesLocationStrategyMode =
+  | "pop"
+  | "resolver_ip";
+export const ListResultItemRulesItemOverridesLocationStrategyMode =
   /*@__PURE__*/ S.String;
+
+export type ListResultItemRulesItemOverridesLocationStrategyPreferEcs =
+  | "always"
+  | "never"
+  | "proximity"
+  | "geo";
+export const ListResultItemRulesItemOverridesLocationStrategyPreferEcs =
+  /*@__PURE__*/ S.String;
+
+export interface ListResultItemRulesItemOverridesLocationStrategy {
+  /** Determines the authoritative location when ECS is not preferred, does not exist in the request, or its GeoIP lookup is unsuccessful. "pop" : Use the Cloudflare PoP location. "resolver_ip" : Use the DNS resolver GeoIP location. If the GeoIP lookup is unsuccessful, use the Cloudflare PoP location. */
+  mode?: ListResultItemRulesItemOverridesLocationStrategyMode | null;
+  /** Whether the EDNS Client Subnet (ECS) GeoIP should be preferred as the authoritative location. "always" : Always prefer ECS. "never" : Never prefer ECS. "proximity" : Prefer ECS only when steering_policy="proximity" . "geo" : Prefer ECS only when steering_policy="geo" . */
+  preferEcs?: ListResultItemRulesItemOverridesLocationStrategyPreferEcs | null;
+}
+export const ListResultItemRulesItemOverridesLocationStrategy =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      mode: S.optional(
+        S.NullOr(ListResultItemRulesItemOverridesLocationStrategyMode),
+      ),
+      preferEcs: S.optional(
+        S.NullOr(
+          ListResultItemRulesItemOverridesLocationStrategyPreferEcs,
+        ).pipe(T.Body("prefer_ecs")),
+      ),
+    }),
+  ).annotate({
+    identifier: "ListResultItemRulesItemOverridesLocationStrategy",
+  }) as any as S.Schema<ListResultItemRulesItemOverridesLocationStrategy>;
+
+export type ListResultItemRulesItemOverridesPoolsList = Array<string>;
+export const ListResultItemRulesItemOverridesPoolsList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<ListResultItemRulesItemOverridesPoolsList>;
+
+export type ListResultItemRulesItemOverridesRandomSteering =
+  CreateResponseRandomSteering;
+export const ListResultItemRulesItemOverridesRandomSteering =
+  CreateResponseRandomSteering;
 
 export type ListResultItemRulesItemOverridesSessionAffinityAttributesHeadersList =
   Array<string>;
@@ -4159,15 +4866,15 @@ export const ListResultItemRulesItemOverridesSessionAffinityAttributesZeroDownti
 export interface ListResultItemRulesItemOverridesSessionAffinityAttributes {
   /** Configures the drain duration in seconds. This field is only used when session affinity is enabled on the load balancer. */
   drainDuration?: number | null;
-  /** Configures the names of HTTP headers to base session affinity on when header `session_affinity` is enabled. At least one HTTP header name must be provided. To specify the exact cookies to be used, include an item in the following format: `"cookie:<cookie-name-1>,<cookie-name-2>"` (example) where everything after the colon is a comma-separated list of cookie names. Providing only `"cookie"` will result in all cookies being used. The default max number of HTTP header names that can be provided depends on your plan: 5 for Enterprise, 1 for all other plans. */
+  /** Configures the names of HTTP headers to base session affinity on when header session_affinity is enabled. At least one HTTP header name must be provided. To specify the exact cookies to be used, include an item in the following format: "cookie:&#x3C;cookie-name-1>,&#x3C;cookie-name-2>" (example) where everything after the colon is a comma-separated list of cookie names. Providing only "cookie" will result in all cookies being used. The default max number of HTTP header names that can be provided depends on your plan: 5 for Enterprise, 1 for all other plans. */
   headers?: ListResultItemRulesItemOverridesSessionAffinityAttributesHeadersList | null;
-  /** When header `session_affinity` is enabled, this option can be used to specify how HTTP headers on load balancing requests will be used. The supported values are: - `"true"`: Load balancing requests must contain *all* of the HTTP headers specified by the `headers` session affinity attribute, otherwise sessions aren't created. - `"false"`: Load balancing requests must contain *at least one* of the HTTP headers specified by the `headers` session affinity attribute, otherwise sessions aren't created. */
+  /** When header session_affinity is enabled, this option can be used to specify how HTTP headers on load balancing requests will be used. The supported values are: - "true" : Load balancing requests must contain all of the HTTP headers specified by the headers session affinity attribute, otherwise sessions aren’t created. - "false" : Load balancing requests must contain at least one of the HTTP headers specified by the headers session affinity attribute, otherwise sessions aren’t created. */
   requireAllHeaders?: boolean | null;
-  /** Configures the SameSite attribute on session affinity cookie. Value "Auto" will be translated to "Lax" or "None" depending if Always Use HTTPS is enabled. Note: when using value "None", the secure attribute can not be set to "Never". */
+  /** Configures the SameSite attribute on session affinity cookie. Value “Auto” will be translated to “Lax” or “None” depending if Always Use HTTPS is enabled. Note: when using value “None”, the secure attribute can not be set to “Never”. */
   samesite?: ListResultItemRulesItemOverridesSessionAffinityAttributesSamesite | null;
-  /** Configures the Secure attribute on session affinity cookie. Value "Always" indicates the Secure attribute will be set in the Set-Cookie header, "Never" indicates the Secure attribute will not be set, and "Auto" will set the Secure attribute depending if Always Use HTTPS is enabled. */
+  /** Configures the Secure attribute on session affinity cookie. Value “Always” indicates the Secure attribute will be set in the Set-Cookie header, “Never” indicates the Secure attribute will not be set, and “Auto” will set the Secure attribute depending if Always Use HTTPS is enabled. */
   secure?: ListResultItemRulesItemOverridesSessionAffinityAttributesSecure | null;
-  /** Configures the zero-downtime failover between origins within a pool when session affinity is enabled. This feature is currently incompatible with Argo, Tiered Cache, and Bandwidth Alliance. The supported values are: - `"none"`: No failover takes place for sessions pinned to the origin (default). - `"temporary"`: Traffic will be sent to another other healthy origin until the originally pinned origin is available; note that this can potentially result in heavy origin flapping. - `"sticky"`: The session affinity cookie is updated and subsequent requests are sent to the new origin. Note: Zero-downtime failover with sticky sessions is currently not supported for session affinity by header. */
+  /** Configures the zero-downtime failover between origins within a pool when session affinity is enabled. This feature is currently incompatible with Argo, Tiered Cache, and Bandwidth Alliance. The supported values are: - "none" : No failover takes place for sessions pinned to the origin (default). - "temporary" : Traffic will be sent to another other healthy origin until the originally pinned origin is available; note that this can potentially result in heavy origin flapping. - "sticky" : The session affinity cookie is updated and subsequent requests are sent to the new origin. Note: Zero-downtime failover with sticky sessions is currently not supported for session affinity by header. */
   zeroDowntimeFailover?: ListResultItemRulesItemOverridesSessionAffinityAttributesZeroDowntimeFailover | null;
 }
 export const ListResultItemRulesItemOverridesSessionAffinityAttributes =
@@ -4204,43 +4911,37 @@ export const ListResultItemRulesItemOverridesSessionAffinityAttributes =
     identifier: "ListResultItemRulesItemOverridesSessionAffinityAttributes",
   }) as any as S.Schema<ListResultItemRulesItemOverridesSessionAffinityAttributes>;
 
-export type ListResultItemRulesItemOverridesSteeringPolicy =
-  | "off"
-  | "geo"
-  | "random"
-  | "dynamic_latency"
-  | "proximity"
-  | "least_outstanding_requests"
-  | "least_connections"
-  | "";
-export const ListResultItemRulesItemOverridesSteeringPolicy =
-  /*@__PURE__*/ S.String;
-
 export interface ListResultItemRulesItemOverrides {
   /** Controls features that modify the routing of requests to pools and origins in response to dynamic conditions, such as during the interval between active health monitoring requests. For example, zero-downtime failover occurs immediately when an origin becomes unavailable due to HTTP 521, 522, or 523 response codes. If there is another healthy origin in the same pool, the request is retried once against this alternate origin. */
   adaptiveRouting?: CreateResponseAdaptiveRouting | null;
   /** A mapping of country codes to a list of pool IDs (ordered by their failover priority) for the given country. Any country not explicitly defined will fall back to using the corresponding region_pool mapping if it exists else to default_pools. */
-  countryPools?: ListResultItemRulesItemOverridesCountryPoolsMap | null;
+  countryPools?: unknown | null;
   /** A list of pool IDs ordered by their failover priority. Pools defined here are used by default, or when region_pools are not configured for a given region. */
   defaultPools?: ListResultItemRulesItemOverridesDefaultPoolsList | null;
   /** The pool ID to use when all other pools are detected as unhealthy. */
   fallbackPool?: string | null;
-  /** Controls location-based steering for non-proxied requests. See `steering_policy` to learn how steering is affected. */
-  locationStrategy?: ListResultItemLocationStrategy | null;
+  /** Controls location-based steering for non-proxied requests. See steering_policy to learn how steering is affected. */
+  locationStrategy?: ListResultItemRulesItemOverridesLocationStrategy | null;
+  /** The default weight for pools not listed in pool_weights . The declarative alternative to random_steering.default_weight ; mutually exclusive with random_steering . */
+  poolDefaultWeight?: number | null;
+  /** A mapping of pool IDs to custom weights, relative to the other pools. The declarative alternative to random_steering.pool_weights ; mutually exclusive with random_steering . */
+  poolWeights?: unknown | null;
+  /** A flat, ordered list of pool IDs to route the matched audience to. Replaces the resolved topology with exactly these pools. Mutually exclusive with fixed_response . */
+  pools?: ListResultItemRulesItemOverridesPoolsList | null;
   /** Enterprise only: A mapping of Cloudflare PoP identifiers to a list of pool IDs (ordered by their failover priority) for the PoP (datacenter). Any PoPs not explicitly defined will fall back to using the corresponding country_pool, then region_pool mapping if it exists else to default_pools. */
-  popPools?: ListResultItemRulesItemOverridesPopPoolsMap | null;
-  /** Configures pool weights. */
-  randomSteering?: ListResultItemRandomSteering | null;
+  popPools?: unknown | null;
+  /** Configures pool weights. steering_policy="random" : A random pool is selected with probability proportional to pool weights. steering_policy="least_outstanding_requests" : Use pool weights to scale each pool’s outstanding requests. steering_policy="least_connections" : Use pool weights to scale each pool’s open connections. */
+  randomSteering?: CreateResponseRandomSteering | null;
   /** A mapping of region codes to a list of pool IDs (ordered by their failover priority) for the given region. Any regions not explicitly defined will fall back to using default_pools. */
-  regionPools?: ListResultItemRulesItemOverridesRegionPoolsMap | null;
-  /** Specifies the type of session affinity the load balancer should use unless specified as `"none"`. The supported types are: - `"cookie"`: On the first request to a proxied load balancer, a cookie is generated, encoding information of which origin the request will be forwarded to. Subsequent requests, by the same client to the same load balancer, will be sent to the origin server the cookie encodes, for the duration of the cookie and as long as the origin server remains healthy. If the cookie has expired or the origin server is unhealthy, then a new origin server is calculated and used. - `"ip_cookie"`: Behaves the same as `"cookie"` except the initial origin selection is stable and based on the client's ip address. - `"header"`: On the first request to a proxied load balancer, a session key based on the configured HTTP headers (see `session_affinity_attributes.headers`) is generated, encoding the request headers used for storing in the load balancer session state which origin the request will be forwarded to. Subsequent requests to the load balancer with the same headers will be sent to the same origin server, for the duration of the session and as long as the origin server remains healthy. If the session has been idle for the duration of `session_affinity_ttl` seconds or the origin server is unhealthy, then a new origin server is calculated and used. See `headers` in `session_affinity_attributes` for additional required configuration. */
-  sessionAffinity?: ListResultItemRulesItemOverridesSessionAffinity | null;
+  regionPools?: unknown | null;
+  /** Specifies the type of session affinity the load balancer should use unless specified as "none" . The supported types are: - "cookie" : On the first request to a proxied load balancer, a cookie is generated, encoding information of which origin the request will be forwarded to. Subsequent requests, by the same client to the same load balancer, will be sent to the origin server the cookie encodes, for the duration of the cookie and as long as the origin server remains healthy. If the cookie has expired or the origin server is unhealthy, then a new origin server is calculated and used. - "ip_cookie" : Behaves the same as "cookie" except the initial origin selection is stable and based on the client’s ip address. - "header" : On the first request to a proxied load balancer, a session key based on the configured HTTP headers (see session_affinity_attributes.headers ) is generated, encoding the request headers used for storing in the load balancer session state which origin the request will be forwarded to. Subsequent requests to the load balancer with the same headers will be sent to the same origin server, for the duration of the session and as long as the origin server remains healthy. If the session has been idle for the duration of session_affinity_ttl seconds or the origin server is unhealthy, then a new origin server is calculated and used. See headers in session_affinity_attributes for additional required configuration. */
+  sessionAffinity?: unknown | null;
   /** Configures attributes for session affinity. */
   sessionAffinityAttributes?: ListResultItemRulesItemOverridesSessionAffinityAttributes | null;
-  /** Time, in seconds, until a client's session expires after being created. Once the expiry time has been reached, subsequent requests may get sent to a different origin server. The accepted ranges per `session_affinity` policy are: - `"cookie"` / `"ip_cookie"`: The current default of 23 hours will be used unless explicitly set. The accepted range of values is between [1800, 604800]. - `"header"`: The current default of 1800 seconds will be used unless explicitly set. The accepted range of values is between [30, 3600]. Note: With session affinity by header, sessions only expire after they haven't been used for the number of seconds specified. */
+  /** Time, in seconds, until a client’s session expires after being created. Once the expiry time has been reached, subsequent requests may get sent to a different origin server. The accepted ranges per session_affinity policy are: - "cookie" / "ip_cookie" : The current default of 23 hours will be used unless explicitly set. The accepted range of values is between [1800, 604800]. - "header" : The current default of 1800 seconds will be used unless explicitly set. The accepted range of values is between [30, 3600]. Note: With session affinity by header, sessions only expire after they haven’t been used for the number of seconds specified. */
   sessionAffinityTtl?: number | null;
-  /** Steering Policy for this load balancer. */
-  steeringPolicy?: ListResultItemRulesItemOverridesSteeringPolicy | null;
+  /** Steering Policy for this load balancer. "off" : Use default_pools . "geo" : Use region_pools / country_pools / pop_pools . For non-proxied requests, the country for country_pools is determined by location_strategy . "random" : Select a pool randomly. "dynamic_latency" : Use round trip time to select the closest pool in default_pools (requires pool health checks). "proximity" : Use the pools’ latitude and longitude to select the closest pool using the Cloudflare PoP location for proxied requests or the location determined by location_strategy for non-proxied requests. "least_outstanding_requests" : Select a pool by taking into consideration random_steering weights, as well as each pool’s number of outstanding requests. Pools with more pending requests are weighted proportionately less relative to others. "least_connections" : Select a pool by taking into consideration random_steering weights, as well as each pool’s number of open connections. Pools with more open connections are weighted proportionately less relative to others. Supported for HTTP/1 and HTTP/2 connections. "" : Will map to "geo" if you use region_pools / country_pools / pop_pools otherwise "off" . */
+  steeringPolicy?: unknown | null;
   /** Time to live (TTL) of the DNS entry for the IP address returned by this load balancer. This only applies to gray-clouded (unproxied) load balancers. */
   ttl?: number | null;
 }
@@ -4249,11 +4950,7 @@ export const ListResultItemRulesItemOverrides = /*@__PURE__*/ S.suspend(() =>
     adaptiveRouting: S.optional(
       S.NullOr(CreateResponseAdaptiveRouting).pipe(T.Body("adaptive_routing")),
     ),
-    countryPools: S.optional(
-      S.NullOr(ListResultItemRulesItemOverridesCountryPoolsMap).pipe(
-        T.Body("country_pools"),
-      ),
-    ),
+    countryPools: S.optional(S.NullOr(S.Unknown).pipe(T.Body("country_pools"))),
     defaultPools: S.optional(
       S.NullOr(ListResultItemRulesItemOverridesDefaultPoolsList).pipe(
         T.Body("default_pools"),
@@ -4261,27 +4958,22 @@ export const ListResultItemRulesItemOverrides = /*@__PURE__*/ S.suspend(() =>
     ),
     fallbackPool: S.optional(S.NullOr(S.String).pipe(T.Body("fallback_pool"))),
     locationStrategy: S.optional(
-      S.NullOr(ListResultItemLocationStrategy).pipe(
+      S.NullOr(ListResultItemRulesItemOverridesLocationStrategy).pipe(
         T.Body("location_strategy"),
       ),
     ),
-    popPools: S.optional(
-      S.NullOr(ListResultItemRulesItemOverridesPopPoolsMap).pipe(
-        T.Body("pop_pools"),
-      ),
+    poolDefaultWeight: S.optional(
+      S.NullOr(S.Number).pipe(T.Body("pool_default_weight")),
     ),
+    poolWeights: S.optional(S.NullOr(S.Unknown).pipe(T.Body("pool_weights"))),
+    pools: S.optional(S.NullOr(ListResultItemRulesItemOverridesPoolsList)),
+    popPools: S.optional(S.NullOr(S.Unknown).pipe(T.Body("pop_pools"))),
     randomSteering: S.optional(
-      S.NullOr(ListResultItemRandomSteering).pipe(T.Body("random_steering")),
+      S.NullOr(CreateResponseRandomSteering).pipe(T.Body("random_steering")),
     ),
-    regionPools: S.optional(
-      S.NullOr(ListResultItemRulesItemOverridesRegionPoolsMap).pipe(
-        T.Body("region_pools"),
-      ),
-    ),
+    regionPools: S.optional(S.NullOr(S.Unknown).pipe(T.Body("region_pools"))),
     sessionAffinity: S.optional(
-      S.NullOr(ListResultItemRulesItemOverridesSessionAffinity).pipe(
-        T.Body("session_affinity"),
-      ),
+      S.NullOr(S.Unknown).pipe(T.Body("session_affinity")),
     ),
     sessionAffinityAttributes: S.optional(
       S.NullOr(ListResultItemRulesItemOverridesSessionAffinityAttributes).pipe(
@@ -4292,9 +4984,7 @@ export const ListResultItemRulesItemOverrides = /*@__PURE__*/ S.suspend(() =>
       S.NullOr(S.Number).pipe(T.Body("session_affinity_ttl")),
     ),
     steeringPolicy: S.optional(
-      S.NullOr(ListResultItemRulesItemOverridesSteeringPolicy).pipe(
-        T.Body("steering_policy"),
-      ),
+      S.NullOr(S.Unknown).pipe(T.Body("steering_policy")),
     ),
     ttl: S.optional(S.NullOr(S.Number)),
   }),
@@ -4303,19 +4993,19 @@ export const ListResultItemRulesItemOverrides = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListResultItemRulesItemOverrides>;
 
 export interface ListResultItemRulesItem {
-  /** The condition expressions to evaluate. If the condition evaluates to true, the overrides or fixed_response in this rule will be applied. An empty condition is always true. For more details on condition expressions, please see https://developers.cloudflare.com/load-balancing/understand-basics/load-balancing-rules/expressions. */
+  /** The condition expressions to evaluate. If the condition evaluates to true, the overrides or fixed_response in this rule will be applied. An empty condition is always true. For more details on condition expressions, please see https://developers.cloudflare.com/load-balancing/understand-basics/load-balancing-rules/expressions . */
   condition?: string | null;
   /** Disable this specific rule. It will no longer be evaluated by this load balancer. */
   disabled?: boolean | null;
-  /** A collection of fields used to directly respond to the eyeball instead of routing to a pool. If a fixed_response is supplied the rule will be marked as terminates. */
-  fixedResponse?: CreateResponseRulesItemFixedResponse | null;
+  /** A collection of fields used to directly respond to the client instead of routing to a pool. When supplied on a rule, that rule stops further rule evaluation. */
+  fixedResponse?: CreateResponsePoolSetsItemFixedResponse | null;
   /** Name of this rule. Only used for human readability. */
   name?: string | null;
-  /** A collection of overrides to apply to the load balancer when this rule's condition is true. All fields are optional. */
+  /** A collection of overrides to apply when this rule’s condition (or a pool set’s match ) is true. All fields are optional. */
   overrides?: ListResultItemRulesItemOverrides | null;
   /** The order in which rules should be executed in relation to each other. Lower values are executed first. Values do not need to be sequential. If no value is provided for any rule the array order of the rules field will be used to assign a priority. */
   priority?: number | null;
-  /** If this rule's condition is true, this causes rule evaluation to stop after processing this rule. */
+  /** If this rule’s condition is true, this causes rule evaluation to stop after processing this rule. */
   terminates?: boolean | null;
 }
 export const ListResultItemRulesItem = /*@__PURE__*/ S.suspend(() =>
@@ -4323,7 +5013,7 @@ export const ListResultItemRulesItem = /*@__PURE__*/ S.suspend(() =>
     condition: S.optional(S.NullOr(S.String)),
     disabled: S.optional(S.NullOr(S.Boolean)),
     fixedResponse: S.optional(
-      S.NullOr(CreateResponseRulesItemFixedResponse).pipe(
+      S.NullOr(CreateResponsePoolSetsItemFixedResponse).pipe(
         T.Body("fixed_response"),
       ),
     ),
@@ -4341,12 +5031,82 @@ export const ListResultItemRulesList = /*@__PURE__*/ S.Array(
   ListResultItemRulesItem,
 ) as any as S.Schema<ListResultItemRulesList>;
 
+export type ListResultItemSessionAffinityAttributesHeadersList = Array<string>;
+export const ListResultItemSessionAffinityAttributesHeadersList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<ListResultItemSessionAffinityAttributesHeadersList>;
+
+export type ListResultItemSessionAffinityAttributesSamesite =
+  | "Auto"
+  | "Lax"
+  | "None"
+  | "Strict";
+export const ListResultItemSessionAffinityAttributesSamesite =
+  /*@__PURE__*/ S.String;
+
+export type ListResultItemSessionAffinityAttributesSecure =
+  | "Auto"
+  | "Always"
+  | "Never";
+export const ListResultItemSessionAffinityAttributesSecure =
+  /*@__PURE__*/ S.String;
+
+export type ListResultItemSessionAffinityAttributesZeroDowntimeFailover =
+  | "none"
+  | "temporary"
+  | "sticky";
+export const ListResultItemSessionAffinityAttributesZeroDowntimeFailover =
+  /*@__PURE__*/ S.String;
+
+export interface ListResultItemSessionAffinityAttributes {
+  /** Configures the drain duration in seconds. This field is only used when session affinity is enabled on the load balancer. */
+  drainDuration?: number | null;
+  /** Configures the names of HTTP headers to base session affinity on when header session_affinity is enabled. At least one HTTP header name must be provided. To specify the exact cookies to be used, include an item in the following format: "cookie:&#x3C;cookie-name-1>,&#x3C;cookie-name-2>" (example) where everything after the colon is a comma-separated list of cookie names. Providing only "cookie" will result in all cookies being used. The default max number of HTTP header names that can be provided depends on your plan: 5 for Enterprise, 1 for all other plans. */
+  headers?: ListResultItemSessionAffinityAttributesHeadersList | null;
+  /** When header session_affinity is enabled, this option can be used to specify how HTTP headers on load balancing requests will be used. The supported values are: - "true" : Load balancing requests must contain all of the HTTP headers specified by the headers session affinity attribute, otherwise sessions aren’t created. - "false" : Load balancing requests must contain at least one of the HTTP headers specified by the headers session affinity attribute, otherwise sessions aren’t created. */
+  requireAllHeaders?: boolean | null;
+  /** Configures the SameSite attribute on session affinity cookie. Value “Auto” will be translated to “Lax” or “None” depending if Always Use HTTPS is enabled. Note: when using value “None”, the secure attribute can not be set to “Never”. */
+  samesite?: ListResultItemSessionAffinityAttributesSamesite | null;
+  /** Configures the Secure attribute on session affinity cookie. Value “Always” indicates the Secure attribute will be set in the Set-Cookie header, “Never” indicates the Secure attribute will not be set, and “Auto” will set the Secure attribute depending if Always Use HTTPS is enabled. */
+  secure?: ListResultItemSessionAffinityAttributesSecure | null;
+  /** Configures the zero-downtime failover between origins within a pool when session affinity is enabled. This feature is currently incompatible with Argo, Tiered Cache, and Bandwidth Alliance. The supported values are: - "none" : No failover takes place for sessions pinned to the origin (default). - "temporary" : Traffic will be sent to another other healthy origin until the originally pinned origin is available; note that this can potentially result in heavy origin flapping. - "sticky" : The session affinity cookie is updated and subsequent requests are sent to the new origin. Note: Zero-downtime failover with sticky sessions is currently not supported for session affinity by header. */
+  zeroDowntimeFailover?: ListResultItemSessionAffinityAttributesZeroDowntimeFailover | null;
+}
+export const ListResultItemSessionAffinityAttributes = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      drainDuration: S.optional(
+        S.NullOr(S.Number).pipe(T.Body("drain_duration")),
+      ),
+      headers: S.optional(
+        S.NullOr(ListResultItemSessionAffinityAttributesHeadersList),
+      ),
+      requireAllHeaders: S.optional(
+        S.NullOr(S.Boolean).pipe(T.Body("require_all_headers")),
+      ),
+      samesite: S.optional(
+        S.NullOr(ListResultItemSessionAffinityAttributesSamesite),
+      ),
+      secure: S.optional(
+        S.NullOr(ListResultItemSessionAffinityAttributesSecure),
+      ),
+      zeroDowntimeFailover: S.optional(
+        S.NullOr(
+          ListResultItemSessionAffinityAttributesZeroDowntimeFailover,
+        ).pipe(T.Body("zero_downtime_failover")),
+      ),
+    }),
+).annotate({
+  identifier: "ListResultItemSessionAffinityAttributes",
+}) as any as S.Schema<ListResultItemSessionAffinityAttributes>;
+
 export interface ListResultItem {
   id?: string | null;
   /** Controls features that modify the routing of requests to pools and origins in response to dynamic conditions, such as during the interval between active health monitoring requests. For example, zero-downtime failover occurs immediately when an origin becomes unavailable due to HTTP 521, 522, or 523 response codes. If there is another healthy origin in the same pool, the request is retried once against this alternate origin. */
   adaptiveRouting?: CreateResponseAdaptiveRouting | null;
   /** A mapping of country codes to a list of pool IDs (ordered by their failover priority) for the given country. Any country not explicitly defined will fall back to using the corresponding region_pool mapping if it exists else to default_pools. */
-  countryPools?: ListResultItemCountryPoolsMap | null;
+  countryPools?: unknown | null;
   createdOn?: string | null;
   /** A list of pool IDs ordered by their failover priority. Pools defined here are used by default, or when region_pools are not configured for a given region. */
   defaultPools?: ListResultItemDefaultPoolsList | null;
@@ -4356,31 +5116,33 @@ export interface ListResultItem {
   enabled?: boolean | null;
   /** The pool ID to use when all other pools are detected as unhealthy. */
   fallbackPool?: string | null;
-  /** Controls location-based steering for non-proxied requests. See `steering_policy` to learn how steering is affected. */
+  /** Controls location-based steering for non-proxied requests. See steering_policy to learn how steering is affected. */
   locationStrategy?: ListResultItemLocationStrategy | null;
   modifiedOn?: string | null;
-  /** The DNS hostname to associate with your Load Balancer. If this hostname already exists as a DNS record in Cloudflare's DNS, the Load Balancer will take precedence and the DNS record will not be used. */
+  /** The DNS hostname to associate with your Load Balancer. If this hostname already exists as a DNS record in Cloudflare’s DNS, the Load Balancer will take precedence and the DNS record will not be used. */
   name?: string | null;
   /** List of networks where Load Balancer or Pool is enabled. */
   networks?: ListResultItemNetworksList | null;
+  /** An optional list of pool sets, evaluated in array order with first match wins. Pool sets are independent from the standard steering fields ( region_pools / country_pools / pop_pools / default_pools / steering_policy / random_steering / fallback_pool / rules ). On a PATCH, an empty array ( pool_sets: [] ) clears all pool sets, while omitting the field leaves existing pool sets unchanged. */
+  poolSets?: ListResultItemPoolSetsList | null;
   /** Enterprise only: A mapping of Cloudflare PoP identifiers to a list of pool IDs (ordered by their failover priority) for the PoP (datacenter). Any PoPs not explicitly defined will fall back to using the corresponding country_pool, then region_pool mapping if it exists else to default_pools. */
-  popPools?: ListResultItemPopPoolsMap | null;
+  popPools?: unknown | null;
   /** Whether the hostname should be gray clouded (false) or orange clouded (true). */
   proxied?: boolean | null;
-  /** Configures pool weights. */
-  randomSteering?: ListResultItemRandomSteering | null;
+  /** Configures pool weights. steering_policy="random" : A random pool is selected with probability proportional to pool weights. steering_policy="least_outstanding_requests" : Use pool weights to scale each pool’s outstanding requests. steering_policy="least_connections" : Use pool weights to scale each pool’s open connections. */
+  randomSteering?: CreateResponseRandomSteering | null;
   /** A mapping of region codes to a list of pool IDs (ordered by their failover priority) for the given region. Any regions not explicitly defined will fall back to using default_pools. */
-  regionPools?: ListResultItemRegionPoolsMap | null;
+  regionPools?: unknown | null;
   /** BETA Field Not General Access: A list of rules for this load balancer to execute. */
   rules?: ListResultItemRulesList | null;
-  /** Specifies the type of session affinity the load balancer should use unless specified as `"none"`. The supported types are: - `"cookie"`: On the first request to a proxied load balancer, a cookie is generated, encoding information of which origin the request will be forwarded to. Subsequent requests, by the same client to the same load balancer, will be sent to the origin server the cookie encodes, for the duration of the cookie and as long as the origin server remains healthy. If the cookie has expired or the origin server is unhealthy, then a new origin server is calculated and used. - `"ip_cookie"`: Behaves the same as `"cookie"` except the initial origin selection is stable and based on the client's ip address. - `"header"`: On the first request to a proxied load balancer, a session key based on the configured HTTP headers (see `session_affinity_attributes.headers`) is generated, encoding the request headers used for storing in the load balancer session state which origin the request will be forwarded to. Subsequent requests to the load balancer with the same headers will be sent to the same origin server, for the duration of the session and as long as the origin server remains healthy. If the session has been idle for the duration of `session_affinity_ttl` seconds or the origin server is unhealthy, then a new origin server is calculated and used. See `headers` in `session_affinity_attributes` for additional required configuration. */
-  sessionAffinity?: ListResultItemRulesItemOverridesSessionAffinity | null;
+  /** Specifies the type of session affinity the load balancer should use unless specified as "none" . The supported types are: - "cookie" : On the first request to a proxied load balancer, a cookie is generated, encoding information of which origin the request will be forwarded to. Subsequent requests, by the same client to the same load balancer, will be sent to the origin server the cookie encodes, for the duration of the cookie and as long as the origin server remains healthy. If the cookie has expired or the origin server is unhealthy, then a new origin server is calculated and used. - "ip_cookie" : Behaves the same as "cookie" except the initial origin selection is stable and based on the client’s ip address. - "header" : On the first request to a proxied load balancer, a session key based on the configured HTTP headers (see session_affinity_attributes.headers ) is generated, encoding the request headers used for storing in the load balancer session state which origin the request will be forwarded to. Subsequent requests to the load balancer with the same headers will be sent to the same origin server, for the duration of the session and as long as the origin server remains healthy. If the session has been idle for the duration of session_affinity_ttl seconds or the origin server is unhealthy, then a new origin server is calculated and used. See headers in session_affinity_attributes for additional required configuration. */
+  sessionAffinity?: unknown | null;
   /** Configures attributes for session affinity. */
-  sessionAffinityAttributes?: ListResultItemRulesItemOverridesSessionAffinityAttributes | null;
-  /** Time, in seconds, until a client's session expires after being created. Once the expiry time has been reached, subsequent requests may get sent to a different origin server. The accepted ranges per `session_affinity` policy are: - `"cookie"` / `"ip_cookie"`: The current default of 23 hours will be used unless explicitly set. The accepted range of values is between [1800, 604800]. - `"header"`: The current default of 1800 seconds will be used unless explicitly set. The accepted range of values is between [30, 3600]. Note: With session affinity by header, sessions only expire after they haven't been used for the number of seconds specified. */
+  sessionAffinityAttributes?: ListResultItemSessionAffinityAttributes | null;
+  /** Time, in seconds, until a client’s session expires after being created. Once the expiry time has been reached, subsequent requests may get sent to a different origin server. The accepted ranges per session_affinity policy are: - "cookie" / "ip_cookie" : The current default of 23 hours will be used unless explicitly set. The accepted range of values is between [1800, 604800]. - "header" : The current default of 1800 seconds will be used unless explicitly set. The accepted range of values is between [30, 3600]. Note: With session affinity by header, sessions only expire after they haven’t been used for the number of seconds specified. */
   sessionAffinityTtl?: number | null;
-  /** Steering Policy for this load balancer. */
-  steeringPolicy?: ListResultItemRulesItemOverridesSteeringPolicy | null;
+  /** Steering Policy for this load balancer. "off" : Use default_pools . "geo" : Use region_pools / country_pools / pop_pools . For non-proxied requests, the country for country_pools is determined by location_strategy . "random" : Select a pool randomly. "dynamic_latency" : Use round trip time to select the closest pool in default_pools (requires pool health checks). "proximity" : Use the pools’ latitude and longitude to select the closest pool using the Cloudflare PoP location for proxied requests or the location determined by location_strategy for non-proxied requests. "least_outstanding_requests" : Select a pool by taking into consideration random_steering weights, as well as each pool’s number of outstanding requests. Pools with more pending requests are weighted proportionately less relative to others. "least_connections" : Select a pool by taking into consideration random_steering weights, as well as each pool’s number of open connections. Pools with more open connections are weighted proportionately less relative to others. Supported for HTTP/1 and HTTP/2 connections. "" : Will map to "geo" if you use region_pools / country_pools / pop_pools otherwise "off" . */
+  steeringPolicy?: unknown | null;
   /** Time to live (TTL) of the DNS entry for the IP address returned by this load balancer. This only applies to gray-clouded (unproxied) load balancers. */
   ttl?: number | null;
   zoneName?: string | null;
@@ -4391,9 +5153,7 @@ export const ListResultItem = /*@__PURE__*/ S.suspend(() =>
     adaptiveRouting: S.optional(
       S.NullOr(CreateResponseAdaptiveRouting).pipe(T.Body("adaptive_routing")),
     ),
-    countryPools: S.optional(
-      S.NullOr(ListResultItemCountryPoolsMap).pipe(T.Body("country_pools")),
-    ),
+    countryPools: S.optional(S.NullOr(S.Unknown).pipe(T.Body("country_pools"))),
     createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
     defaultPools: S.optional(
       S.NullOr(ListResultItemDefaultPoolsList).pipe(T.Body("default_pools")),
@@ -4409,24 +5169,21 @@ export const ListResultItem = /*@__PURE__*/ S.suspend(() =>
     modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
     name: S.optional(S.NullOr(S.String)),
     networks: S.optional(S.NullOr(ListResultItemNetworksList)),
-    popPools: S.optional(
-      S.NullOr(ListResultItemPopPoolsMap).pipe(T.Body("pop_pools")),
+    poolSets: S.optional(
+      S.NullOr(ListResultItemPoolSetsList).pipe(T.Body("pool_sets")),
     ),
+    popPools: S.optional(S.NullOr(S.Unknown).pipe(T.Body("pop_pools"))),
     proxied: S.optional(S.NullOr(S.Boolean)),
     randomSteering: S.optional(
-      S.NullOr(ListResultItemRandomSteering).pipe(T.Body("random_steering")),
+      S.NullOr(CreateResponseRandomSteering).pipe(T.Body("random_steering")),
     ),
-    regionPools: S.optional(
-      S.NullOr(ListResultItemRegionPoolsMap).pipe(T.Body("region_pools")),
-    ),
+    regionPools: S.optional(S.NullOr(S.Unknown).pipe(T.Body("region_pools"))),
     rules: S.optional(S.NullOr(ListResultItemRulesList)),
     sessionAffinity: S.optional(
-      S.NullOr(ListResultItemRulesItemOverridesSessionAffinity).pipe(
-        T.Body("session_affinity"),
-      ),
+      S.NullOr(S.Unknown).pipe(T.Body("session_affinity")),
     ),
     sessionAffinityAttributes: S.optional(
-      S.NullOr(ListResultItemRulesItemOverridesSessionAffinityAttributes).pipe(
+      S.NullOr(ListResultItemSessionAffinityAttributes).pipe(
         T.Body("session_affinity_attributes"),
       ),
     ),
@@ -4434,9 +5191,7 @@ export const ListResultItem = /*@__PURE__*/ S.suspend(() =>
       S.NullOr(S.Number).pipe(T.Body("session_affinity_ttl")),
     ),
     steeringPolicy: S.optional(
-      S.NullOr(ListResultItemRulesItemOverridesSteeringPolicy).pipe(
-        T.Body("steering_policy"),
-      ),
+      S.NullOr(S.Unknown).pipe(T.Body("steering_policy")),
     ),
     ttl: S.optional(S.NullOr(S.Number)),
     zoneName: S.optional(S.NullOr(S.String).pipe(T.Body("zone_name"))),
@@ -4448,20 +5203,30 @@ export const ListResultList = /*@__PURE__*/ S.Array(
   ListResultItem,
 ) as any as S.Schema<ListResultList>;
 
-export interface ListLoadBalancersResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result: ListResultList;
-  /** Pagination info from the envelope's `result_info`. */
-  resultInfo?: ResultInfo | null;
+export type ListResponse = ListResultList;
+export const ListResponse = /*@__PURE__*/ S.suspend(() =>
+  ListResultList.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
+).annotate({ identifier: "ListResponse" }) as any as S.Schema<ListResponse>;
+
+export interface ListForZoneRequest {
+  /** Identifier. */
+  zoneId: string;
 }
-export const ListLoadBalancersResponse = /*@__PURE__*/ S.suspend(() =>
+export const ListForZoneRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: ListResultList.pipe(T.EnvelopePayload()),
-    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+    zoneId: S.String.pipe(T.Label("zone_id")),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/zones/{zone_id}/load_balancers",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
-  identifier: "ListLoadBalancersResponse",
-}) as any as S.Schema<ListLoadBalancersResponse>;
+  identifier: "ListForZoneRequest",
+}) as any as S.Schema<ListForZoneRequest>;
 
 export interface ListMonitorGroupsRequest {
   /** Identifier. */
@@ -4501,18 +5266,12 @@ export interface MonitorGroupsListResultItem {
   description: string;
   /** List of monitors in this group */
   members: MonitorGroupsListResultItemMembersList;
-  /** The timestamp of when the monitor group was created */
-  createdOn?: string | null;
-  /** The timestamp of when the monitor group was last updated */
-  modifiedOn?: string | null;
 }
 export const MonitorGroupsListResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     description: S.String,
     members: MonitorGroupsListResultItemMembersList,
-    createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
   }),
 ).annotate({
   identifier: "MonitorGroupsListResultItem",
@@ -4596,7 +5355,7 @@ export interface MonitorsListResultItem {
   header?: MonitorsListResultItemHeaderMap | null;
   /** The interval between each health check. Shorter intervals may improve failover time, but will increase load on the origins as we check from multiple locations. */
   interval?: number | null;
-  /** The method to use for the health check. This defaults to 'GET' for HTTP/HTTPS based checks and 'connection_established' for TCP based health checks. */
+  /** The method to use for the health check. This defaults to ‘GET’ for HTTP/HTTPS based checks and ‘connection_established’ for TCP based health checks. */
   method?: string | null;
   modifiedOn?: string | null;
   /** The endpoint path you want to conduct a health check against. This parameter is only valid for HTTP and HTTPS monitors. */
@@ -4609,7 +5368,7 @@ export interface MonitorsListResultItem {
   retries?: number | null;
   /** The timeout (in seconds) before marking the health check as failed. */
   timeout?: number | null;
-  /** The protocol to use for the health check. Currently supported protocols are 'HTTP','HTTPS', 'TCP', 'ICMP-PING', 'UDP-ICMP', and 'SMTP'. */
+  /** The protocol to use for the health check. Currently supported protocols are ‘HTTP’,‘HTTPS’, ‘TCP’, ‘ICMP-PING’, ‘UDP-ICMP’, and ‘SMTP’. */
   type?: MonitorsListResultItemType | null;
 }
 export const MonitorsListResultItem = /*@__PURE__*/ S.suspend(() =>
@@ -4705,6 +5464,7 @@ export type PoolsListResultItemCheckRegionsItem =
   | "SAS"
   | "SEAS"
   | "NEAS"
+  | "CHINA"
   | "ALL_REGIONS";
 export const PoolsListResultItemCheckRegionsItem = /*@__PURE__*/ S.String;
 
@@ -4713,6 +5473,18 @@ export type PoolsListResultItemCheckRegionsList =
 export const PoolsListResultItemCheckRegionsList = /*@__PURE__*/ S.Array(
   PoolsListResultItemCheckRegionsItem,
 ) as any as S.Schema<PoolsListResultItemCheckRegionsList>;
+
+export type PoolsListResultItemHealthSourcesItem =
+  | "local"
+  | "regional"
+  | "global";
+export const PoolsListResultItemHealthSourcesItem = /*@__PURE__*/ S.String;
+
+export type PoolsListResultItemHealthSourcesList =
+  Array<PoolsListResultItemHealthSourcesItem>;
+export const PoolsListResultItemHealthSourcesList = /*@__PURE__*/ S.Array(
+  PoolsListResultItemHealthSourcesItem,
+) as any as S.Schema<PoolsListResultItemHealthSourcesList>;
 
 export type PoolsListResultItemLoadSheddingDefaultPolicy = "random" | "hash";
 export const PoolsListResultItemLoadSheddingDefaultPolicy =
@@ -4765,6 +5537,11 @@ export type PoolsListResultItemNotificationFilterOrigin =
 export const PoolsListResultItemNotificationFilterOrigin =
   PoolsBulkEditResultItemNotificationFilterOrigin;
 
+export type PoolsListResultItemNotificationFilterPool =
+  PoolsBulkEditResultItemNotificationFilterOrigin;
+export const PoolsListResultItemNotificationFilterPool =
+  PoolsBulkEditResultItemNotificationFilterOrigin;
+
 export type PoolsListResultItemNotificationFilter =
   PoolsBulkEditResultItemNotificationFilter;
 export const PoolsListResultItemNotificationFilter =
@@ -4796,7 +5573,7 @@ export const PoolsListResultItemOriginsItemHeaderHostList =
   ) as any as S.Schema<PoolsListResultItemOriginsItemHeaderHostList>;
 
 export interface PoolsListResultItemOriginsItemHeader {
-  /** The 'Host' header allows to override the hostname set in the HTTP request. Current support is 1 'Host' header override per origin. */
+  /** The ‘Host’ header allows to override the hostname set in the HTTP request. Current support is 1 ‘Host’ header override per origin. */
   host?: PoolsListResultItemOriginsItemHeaderHostList | null;
 }
 export const PoolsListResultItemOriginsItemHeader = /*@__PURE__*/ S.suspend(
@@ -4821,7 +5598,7 @@ export interface PoolsListResultItemOriginsItem {
   enabled?: boolean | null;
   /** Whether to flatten CNAME records for this origin, resolving them to A/AAAA records before returning to the client. When true (the default), the director resolves CNAME addresses to their underlying A/AAAA records. When false, the origin address is returned as a raw CNAME record without resolution. This setting mirrors the DNS API record flatten_cname setting. */
   flattenCname?: boolean | null;
-  /** The request header is used to pass additional information with an HTTP request. Currently supported header is 'Host'. */
+  /** The request header is used to pass additional information with an HTTP request. Currently supported header is ‘Host’. */
   header?: PoolsListResultItemOriginsItemHeader | null;
   /** A human-identifiable name for the origin. */
   name?: string | null;
@@ -4867,6 +5644,8 @@ export interface PoolsListResultItem {
   disabledAt?: string | null;
   /** Whether to enable (the default) or disable this pool. Disabled pools will not receive traffic and are excluded from health checks. Disabling a pool will cause any load balancers using it to failover to the next pool (if any). */
   enabled?: boolean | null;
+  /** A list of health sources, ordered from highest to lowest priority, used to evaluate individual origin health and overall pool health. The load balancer uses the first source that has data and falls back to the next. Currently accepted values are null or the exact array [“regional”, “global”]; any other combination is rejected. Null (the default) behaves like [“local”, “global”]. [“regional”, “global”] makes each region steer on its own health, falling back to the global decision when a region has no fresh data. Setting regional requires at least one region in check_regions. */
+  healthSources?: PoolsListResultItemHealthSourcesList | null;
   /** The latitude of the data center containing the origins used in this pool in decimal degrees. If this is set, longitude must also be set. */
   latitude?: number | null;
   /** Configures load shedding policies and percentages for the pool. */
@@ -4884,7 +5663,7 @@ export interface PoolsListResultItem {
   name?: string | null;
   /** List of networks where Load Balancer or Pool is enabled. */
   networks?: PoolsListResultItemNetworksList | null;
-  /** This field is now deprecated. It has been moved to Cloudflare's Centralized Notification service https://developers.cloudflare.com/fundamentals/notifications/. The email address to send health status notifications to. This can be an individual mailbox or a mailing list. Multiple emails can be supplied as a comma delimited list. */
+  /** This field is now deprecated. It has been moved to Cloudflare’s Centralized Notification service <https://developers.cloudflare.com/fundamentals/notifications/>. The email address to send health status notifications to. This can be an individual mailbox or a mailing list. Multiple emails can be supplied as a comma delimited list. */
   notificationEmail?: string | null;
   /** Filter pool and origin health notifications by resource type or health status. Use null to reset. */
   notificationFilter?: PoolsBulkEditResultItemNotificationFilter | null;
@@ -4905,6 +5684,11 @@ export const PoolsListResultItem = /*@__PURE__*/ S.suspend(() =>
     description: S.optional(S.NullOr(S.String)),
     disabledAt: S.optional(S.NullOr(S.String).pipe(T.Body("disabled_at"))),
     enabled: S.optional(S.NullOr(S.Boolean)),
+    healthSources: S.optional(
+      S.NullOr(PoolsListResultItemHealthSourcesList).pipe(
+        T.Body("health_sources"),
+      ),
+    ),
     latitude: S.optional(S.NullOr(S.Number)),
     loadShedding: S.optional(
       S.NullOr(PoolsListResultItemLoadShedding).pipe(T.Body("load_shedding")),
@@ -4995,17 +5779,19 @@ export const ListRegionsResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListRegionsResponse",
 }) as any as S.Schema<ListRegionsResponse>;
 
-export type SearchesListRequestReferences = "" | "*" | "referral" | "referrer";
+export type SearchesListRequestReferences = "*" | "referral" | "referrer";
 export const SearchesListRequestReferences = /*@__PURE__*/ S.String;
 
 export interface ListSearchesRequest {
   /** Identifier. */
   accountId: string;
+  /** minimum1 */
   page?: number;
+  /** maximum1000 */
   perPage?: number;
   /** Search query term. */
   query?: string;
-  /** The type of references to include. "*" to include both referral and referrer references. "" to not include any reference information. */
+  /** The type of references to include. ”*” to include both referral and referrer references. "" to not include any reference information. */
   references?: SearchesListRequestReferences | (string & {});
 }
 export const ListSearchesRequest = /*@__PURE__*/ S.suspend(() =>
@@ -5099,887 +5885,6 @@ export const ListSearchesResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListSearchesResponse",
 }) as any as S.Schema<ListSearchesResponse>;
 
-export type EditRequestAdaptiveRouting = CreateRequestAdaptiveRouting;
-export const EditRequestAdaptiveRouting = CreateRequestAdaptiveRouting;
-
-export type EditRequestCountryPoolsMap = { [key: string]: unknown | undefined };
-export const EditRequestCountryPoolsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<EditRequestCountryPoolsMap>;
-
-export type EditRequestDefaultPoolsList = Array<string>;
-export const EditRequestDefaultPoolsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<EditRequestDefaultPoolsList>;
-
-export type EditRequestLocationStrategyMode = "pop" | "resolver_ip";
-export const EditRequestLocationStrategyMode = /*@__PURE__*/ S.String;
-
-export type EditRequestLocationStrategyPreferEcs =
-  | "always"
-  | "never"
-  | "proximity"
-  | "geo";
-export const EditRequestLocationStrategyPreferEcs = /*@__PURE__*/ S.String;
-
-export interface EditRequestLocationStrategy {
-  /** Determines the authoritative location when ECS is not preferred, does not exist in the request, or its GeoIP lookup is unsuccessful. */
-  mode?: EditRequestLocationStrategyMode | (string & {});
-  /** Whether the EDNS Client Subnet (ECS) GeoIP should be preferred as the authoritative location. */
-  preferEcs?: EditRequestLocationStrategyPreferEcs | (string & {});
-}
-export const EditRequestLocationStrategy = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    mode: S.optional(EditRequestLocationStrategyMode),
-    preferEcs: S.optional(
-      EditRequestLocationStrategyPreferEcs.pipe(T.Body("prefer_ecs")),
-    ),
-  }),
-).annotate({
-  identifier: "EditRequestLocationStrategy",
-}) as any as S.Schema<EditRequestLocationStrategy>;
-
-export type EditRequestPopPoolsMap = { [key: string]: unknown | undefined };
-export const EditRequestPopPoolsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<EditRequestPopPoolsMap>;
-
-export type EditRequestRandomSteeringPoolWeightsMap = {
-  [key: string]: number | undefined;
-};
-export const EditRequestRandomSteeringPoolWeightsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Number,
-) as any as S.Schema<EditRequestRandomSteeringPoolWeightsMap>;
-
-export interface EditRequestRandomSteering {
-  /** The default weight for pools in the load balancer that are not specified in the pool_weights map. */
-  defaultWeight?: number;
-  /** A mapping of pool IDs to custom weights. The weight is relative to other pools in the load balancer. */
-  poolWeights?: EditRequestRandomSteeringPoolWeightsMap;
-}
-export const EditRequestRandomSteering = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    defaultWeight: S.optional(S.Number.pipe(T.Body("default_weight"))),
-    poolWeights: S.optional(
-      EditRequestRandomSteeringPoolWeightsMap.pipe(T.Body("pool_weights")),
-    ),
-  }),
-).annotate({
-  identifier: "EditRequestRandomSteering",
-}) as any as S.Schema<EditRequestRandomSteering>;
-
-export type EditRequestRegionPoolsMap = { [key: string]: unknown | undefined };
-export const EditRequestRegionPoolsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<EditRequestRegionPoolsMap>;
-
-export type EditRequestRulesItemFixedResponse =
-  CreateRequestRulesItemFixedResponse;
-export const EditRequestRulesItemFixedResponse =
-  CreateRequestRulesItemFixedResponse;
-
-export type EditRequestRulesItemOverridesCountryPoolsMap = {
-  [key: string]: unknown | undefined;
-};
-export const EditRequestRulesItemOverridesCountryPoolsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<EditRequestRulesItemOverridesCountryPoolsMap>;
-
-export type EditRequestRulesItemOverridesDefaultPoolsList = Array<string>;
-export const EditRequestRulesItemOverridesDefaultPoolsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<EditRequestRulesItemOverridesDefaultPoolsList>;
-
-export type EditRequestRulesItemOverridesPopPoolsMap = {
-  [key: string]: unknown | undefined;
-};
-export const EditRequestRulesItemOverridesPopPoolsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<EditRequestRulesItemOverridesPopPoolsMap>;
-
-export type EditRequestRulesItemOverridesRegionPoolsMap = {
-  [key: string]: unknown | undefined;
-};
-export const EditRequestRulesItemOverridesRegionPoolsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<EditRequestRulesItemOverridesRegionPoolsMap>;
-
-export type EditRequestRulesItemOverridesSessionAffinity =
-  | "none"
-  | "cookie"
-  | "ip_cookie"
-  | "header";
-export const EditRequestRulesItemOverridesSessionAffinity =
-  /*@__PURE__*/ S.String;
-
-export type EditRequestRulesItemOverridesSessionAffinityAttributesHeadersList =
-  Array<string>;
-export const EditRequestRulesItemOverridesSessionAffinityAttributesHeadersList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<EditRequestRulesItemOverridesSessionAffinityAttributesHeadersList>;
-
-export type EditRequestRulesItemOverridesSessionAffinityAttributesSamesite =
-  | "Auto"
-  | "Lax"
-  | "None"
-  | "Strict";
-export const EditRequestRulesItemOverridesSessionAffinityAttributesSamesite =
-  /*@__PURE__*/ S.String;
-
-export type EditRequestRulesItemOverridesSessionAffinityAttributesSecure =
-  | "Auto"
-  | "Always"
-  | "Never";
-export const EditRequestRulesItemOverridesSessionAffinityAttributesSecure =
-  /*@__PURE__*/ S.String;
-
-export type EditRequestRulesItemOverridesSessionAffinityAttributesZeroDowntimeFailover =
-  | "none"
-  | "temporary"
-  | "sticky";
-export const EditRequestRulesItemOverridesSessionAffinityAttributesZeroDowntimeFailover =
-  /*@__PURE__*/ S.String;
-
-export interface EditRequestRulesItemOverridesSessionAffinityAttributes {
-  /** Configures the drain duration in seconds. This field is only used when session affinity is enabled on the load balancer. */
-  drainDuration?: number;
-  /** Configures the names of HTTP headers to base session affinity on when header `session_affinity` is enabled. At least one HTTP header name must be provided. To specify the exact cookies to be used, include an item in the following format: `"cookie:<cookie-name-1>,<cookie-name-2>"` (example) where everything after the colon is a comma-separated list of cookie names. Providing only `"cookie"` will result in all cookies being used. The default max number of HTTP header names that can be provided depends on your plan: 5 for Enterprise, 1 for all other plans. */
-  headers?: EditRequestRulesItemOverridesSessionAffinityAttributesHeadersList;
-  /** When header `session_affinity` is enabled, this option can be used to specify how HTTP headers on load balancing requests will be used. The supported values are: - `"true"`: Load balancing requests must contain *all* of the HTTP headers specified by the `headers` session affinity attribute, otherwise sessions aren't created. - `"false"`: Load balancing requests must contain *at least one* of the HTTP headers specified by the `headers` session affinity attribute, otherwise sessions aren't created. */
-  requireAllHeaders?: boolean;
-  /** Configures the SameSite attribute on session affinity cookie. Value "Auto" will be translated to "Lax" or "None" depending if Always Use HTTPS is enabled. Note: when using value "None", the secure attribute can not be set to "Never". */
-  samesite?:
-    | EditRequestRulesItemOverridesSessionAffinityAttributesSamesite
-    | (string & {});
-  /** Configures the Secure attribute on session affinity cookie. Value "Always" indicates the Secure attribute will be set in the Set-Cookie header, "Never" indicates the Secure attribute will not be set, and "Auto" will set the Secure attribute depending if Always Use HTTPS is enabled. */
-  secure?:
-    | EditRequestRulesItemOverridesSessionAffinityAttributesSecure
-    | (string & {});
-  /** Configures the zero-downtime failover between origins within a pool when session affinity is enabled. This feature is currently incompatible with Argo, Tiered Cache, and Bandwidth Alliance. The supported values are: - `"none"`: No failover takes place for sessions pinned to the origin (default). - `"temporary"`: Traffic will be sent to another other healthy origin until the originally pinned origin is available; note that this can potentially result in heavy origin flapping. - `"sticky"`: The session affinity cookie is updated and subsequent requests are sent to the new origin. Note: Zero-downtime failover with sticky sessions is currently not supported for session affinity by header. */
-  zeroDowntimeFailover?:
-    | EditRequestRulesItemOverridesSessionAffinityAttributesZeroDowntimeFailover
-    | (string & {});
-}
-export const EditRequestRulesItemOverridesSessionAffinityAttributes =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      drainDuration: S.optional(S.Number.pipe(T.Body("drain_duration"))),
-      headers: S.optional(
-        EditRequestRulesItemOverridesSessionAffinityAttributesHeadersList,
-      ),
-      requireAllHeaders: S.optional(
-        S.Boolean.pipe(T.Body("require_all_headers")),
-      ),
-      samesite: S.optional(
-        EditRequestRulesItemOverridesSessionAffinityAttributesSamesite,
-      ),
-      secure: S.optional(
-        EditRequestRulesItemOverridesSessionAffinityAttributesSecure,
-      ),
-      zeroDowntimeFailover: S.optional(
-        EditRequestRulesItemOverridesSessionAffinityAttributesZeroDowntimeFailover.pipe(
-          T.Body("zero_downtime_failover"),
-        ),
-      ),
-    }),
-  ).annotate({
-    identifier: "EditRequestRulesItemOverridesSessionAffinityAttributes",
-  }) as any as S.Schema<EditRequestRulesItemOverridesSessionAffinityAttributes>;
-
-export type EditRequestRulesItemOverridesSteeringPolicy =
-  | "off"
-  | "geo"
-  | "random"
-  | "dynamic_latency"
-  | "proximity"
-  | "least_outstanding_requests"
-  | "least_connections"
-  | "";
-export const EditRequestRulesItemOverridesSteeringPolicy =
-  /*@__PURE__*/ S.String;
-
-export interface EditRequestRulesItemOverrides {
-  /** Controls features that modify the routing of requests to pools and origins in response to dynamic conditions, such as during the interval between active health monitoring requests. For example, zero-downtime failover occurs immediately when an origin becomes unavailable due to HTTP 521, 522, or 523 response codes. If there is another healthy origin in the same pool, the request is retried once against this alternate origin. */
-  adaptiveRouting?: CreateRequestAdaptiveRouting;
-  /** A mapping of country codes to a list of pool IDs (ordered by their failover priority) for the given country. Any country not explicitly defined will fall back to using the corresponding region_pool mapping if it exists else to default_pools. */
-  countryPools?: EditRequestRulesItemOverridesCountryPoolsMap;
-  /** A list of pool IDs ordered by their failover priority. Pools defined here are used by default, or when region_pools are not configured for a given region. */
-  defaultPools?: EditRequestRulesItemOverridesDefaultPoolsList;
-  /** The pool ID to use when all other pools are detected as unhealthy. */
-  fallbackPool?: string;
-  /** Controls location-based steering for non-proxied requests. See `steering_policy` to learn how steering is affected. */
-  locationStrategy?: EditRequestLocationStrategy;
-  /** Enterprise only: A mapping of Cloudflare PoP identifiers to a list of pool IDs (ordered by their failover priority) for the PoP (datacenter). Any PoPs not explicitly defined will fall back to using the corresponding country_pool, then region_pool mapping if it exists else to default_pools. */
-  popPools?: EditRequestRulesItemOverridesPopPoolsMap;
-  /** Configures pool weights. */
-  randomSteering?: EditRequestRandomSteering;
-  /** A mapping of region codes to a list of pool IDs (ordered by their failover priority) for the given region. Any regions not explicitly defined will fall back to using default_pools. */
-  regionPools?: EditRequestRulesItemOverridesRegionPoolsMap;
-  /** Specifies the type of session affinity the load balancer should use unless specified as `"none"`. The supported types are: - `"cookie"`: On the first request to a proxied load balancer, a cookie is generated, encoding information of which origin the request will be forwarded to. Subsequent requests, by the same client to the same load balancer, will be sent to the origin server the cookie encodes, for the duration of the cookie and as long as the origin server remains healthy. If the cookie has expired or the origin server is unhealthy, then a new origin server is calculated and used. - `"ip_cookie"`: Behaves the same as `"cookie"` except the initial origin selection is stable and based on the client's ip address. - `"header"`: On the first request to a proxied load balancer, a session key based on the configured HTTP headers (see `session_affinity_attributes.headers`) is generated, encoding the request headers used for storing in the load balancer session state which origin the request will be forwarded to. Subsequent requests to the load balancer with the same headers will be sent to the same origin server, for the duration of the session and as long as the origin server remains healthy. If the session has been idle for the duration of `session_affinity_ttl` seconds or the origin server is unhealthy, then a new origin server is calculated and used. See `headers` in `session_affinity_attributes` for additional required configuration. */
-  sessionAffinity?:
-    | EditRequestRulesItemOverridesSessionAffinity
-    | (string & {});
-  /** Configures attributes for session affinity. */
-  sessionAffinityAttributes?: EditRequestRulesItemOverridesSessionAffinityAttributes;
-  /** Time, in seconds, until a client's session expires after being created. Once the expiry time has been reached, subsequent requests may get sent to a different origin server. The accepted ranges per `session_affinity` policy are: - `"cookie"` / `"ip_cookie"`: The current default of 23 hours will be used unless explicitly set. The accepted range of values is between [1800, 604800]. - `"header"`: The current default of 1800 seconds will be used unless explicitly set. The accepted range of values is between [30, 3600]. Note: With session affinity by header, sessions only expire after they haven't been used for the number of seconds specified. */
-  sessionAffinityTtl?: number;
-  /** Steering Policy for this load balancer. */
-  steeringPolicy?: EditRequestRulesItemOverridesSteeringPolicy | (string & {});
-  /** Time to live (TTL) of the DNS entry for the IP address returned by this load balancer. This only applies to gray-clouded (unproxied) load balancers. */
-  ttl?: number;
-}
-export const EditRequestRulesItemOverrides = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    adaptiveRouting: S.optional(
-      CreateRequestAdaptiveRouting.pipe(T.Body("adaptive_routing")),
-    ),
-    countryPools: S.optional(
-      EditRequestRulesItemOverridesCountryPoolsMap.pipe(
-        T.Body("country_pools"),
-      ),
-    ),
-    defaultPools: S.optional(
-      EditRequestRulesItemOverridesDefaultPoolsList.pipe(
-        T.Body("default_pools"),
-      ),
-    ),
-    fallbackPool: S.optional(S.String.pipe(T.Body("fallback_pool"))),
-    locationStrategy: S.optional(
-      EditRequestLocationStrategy.pipe(T.Body("location_strategy")),
-    ),
-    popPools: S.optional(
-      EditRequestRulesItemOverridesPopPoolsMap.pipe(T.Body("pop_pools")),
-    ),
-    randomSteering: S.optional(
-      EditRequestRandomSteering.pipe(T.Body("random_steering")),
-    ),
-    regionPools: S.optional(
-      EditRequestRulesItemOverridesRegionPoolsMap.pipe(T.Body("region_pools")),
-    ),
-    sessionAffinity: S.optional(
-      EditRequestRulesItemOverridesSessionAffinity.pipe(
-        T.Body("session_affinity"),
-      ),
-    ),
-    sessionAffinityAttributes: S.optional(
-      EditRequestRulesItemOverridesSessionAffinityAttributes.pipe(
-        T.Body("session_affinity_attributes"),
-      ),
-    ),
-    sessionAffinityTtl: S.optional(
-      S.Number.pipe(T.Body("session_affinity_ttl")),
-    ),
-    steeringPolicy: S.optional(
-      EditRequestRulesItemOverridesSteeringPolicy.pipe(
-        T.Body("steering_policy"),
-      ),
-    ),
-    ttl: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "EditRequestRulesItemOverrides",
-}) as any as S.Schema<EditRequestRulesItemOverrides>;
-
-export interface EditRequestRulesItem {
-  /** The condition expressions to evaluate. If the condition evaluates to true, the overrides or fixed_response in this rule will be applied. An empty condition is always true. For more details on condition expressions, please see https://developers.cloudflare.com/load-balancing/understand-basics/load-balancing-rules/expressions. */
-  condition?: string;
-  /** Disable this specific rule. It will no longer be evaluated by this load balancer. */
-  disabled?: boolean;
-  /** A collection of fields used to directly respond to the eyeball instead of routing to a pool. If a fixed_response is supplied the rule will be marked as terminates. */
-  fixedResponse?: CreateRequestRulesItemFixedResponse;
-  /** Name of this rule. Only used for human readability. */
-  name?: string;
-  /** A collection of overrides to apply to the load balancer when this rule's condition is true. All fields are optional. */
-  overrides?: EditRequestRulesItemOverrides;
-  /** The order in which rules should be executed in relation to each other. Lower values are executed first. Values do not need to be sequential. If no value is provided for any rule the array order of the rules field will be used to assign a priority. */
-  priority?: number;
-  /** If this rule's condition is true, this causes rule evaluation to stop after processing this rule. */
-  terminates?: boolean;
-}
-export const EditRequestRulesItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    condition: S.optional(S.String),
-    disabled: S.optional(S.Boolean),
-    fixedResponse: S.optional(
-      CreateRequestRulesItemFixedResponse.pipe(T.Body("fixed_response")),
-    ),
-    name: S.optional(S.String),
-    overrides: S.optional(EditRequestRulesItemOverrides),
-    priority: S.optional(S.Number),
-    terminates: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "EditRequestRulesItem",
-}) as any as S.Schema<EditRequestRulesItem>;
-
-export type EditRequestRulesList = Array<EditRequestRulesItem>;
-export const EditRequestRulesList = /*@__PURE__*/ S.Array(
-  EditRequestRulesItem,
-) as any as S.Schema<EditRequestRulesList>;
-
-export interface PatchLoadBalancerRequest {
-  zoneId: string;
-  loadBalancerId: string;
-  /** Controls features that modify the routing of requests to pools and origins in response to dynamic conditions, such as during the interval between active health monitoring requests. For example, zero-downtime failover occurs immediately when an origin becomes unavailable due to HTTP 521, 522, or 523 response codes. If there is another healthy origin in the same pool, the request is retried once against this alternate origin. */
-  adaptiveRouting?: CreateRequestAdaptiveRouting;
-  /** A mapping of country codes to a list of pool IDs (ordered by their failover priority) for the given country. Any country not explicitly defined will fall back to using the corresponding region_pool mapping if it exists else to default_pools. */
-  countryPools?: EditRequestCountryPoolsMap;
-  /** A list of pool IDs ordered by their failover priority. Pools defined here are used by default, or when region_pools are not configured for a given region. */
-  defaultPools?: EditRequestDefaultPoolsList;
-  /** Object description. */
-  description?: string;
-  /** Whether to enable (the default) this load balancer. */
-  enabled?: boolean;
-  /** The pool ID to use when all other pools are detected as unhealthy. */
-  fallbackPool?: string;
-  /** Controls location-based steering for non-proxied requests. See `steering_policy` to learn how steering is affected. */
-  locationStrategy?: EditRequestLocationStrategy;
-  /** The DNS hostname to associate with your Load Balancer. If this hostname already exists as a DNS record in Cloudflare's DNS, the Load Balancer will take precedence and the DNS record will not be used. */
-  name?: string;
-  /** Enterprise only: A mapping of Cloudflare PoP identifiers to a list of pool IDs (ordered by their failover priority) for the PoP (datacenter). Any PoPs not explicitly defined will fall back to using the corresponding country_pool, then region_pool mapping if it exists else to default_pools. */
-  popPools?: EditRequestPopPoolsMap;
-  /** Whether the hostname should be gray clouded (false) or orange clouded (true). */
-  proxied?: boolean;
-  /** Configures pool weights. */
-  randomSteering?: EditRequestRandomSteering;
-  /** A mapping of region codes to a list of pool IDs (ordered by their failover priority) for the given region. Any regions not explicitly defined will fall back to using default_pools. */
-  regionPools?: EditRequestRegionPoolsMap;
-  /** BETA Field Not General Access: A list of rules for this load balancer to execute. */
-  rules?: EditRequestRulesList;
-  /** Specifies the type of session affinity the load balancer should use unless specified as `"none"`. The supported types are: - `"cookie"`: On the first request to a proxied load balancer, a cookie is generated, encoding information of which origin the request will be forwarded to. Subsequent requests, by the same client to the same load balancer, will be sent to the origin server the cookie encodes, for the duration of the cookie and as long as the origin server remains healthy. If the cookie has expired or the origin server is unhealthy, then a new origin server is calculated and used. - `"ip_cookie"`: Behaves the same as `"cookie"` except the initial origin selection is stable and based on the client's ip address. - `"header"`: On the first request to a proxied load balancer, a session key based on the configured HTTP headers (see `session_affinity_attributes.headers`) is generated, encoding the request headers used for storing in the load balancer session state which origin the request will be forwarded to. Subsequent requests to the load balancer with the same headers will be sent to the same origin server, for the duration of the session and as long as the origin server remains healthy. If the session has been idle for the duration of `session_affinity_ttl` seconds or the origin server is unhealthy, then a new origin server is calculated and used. See `headers` in `session_affinity_attributes` for additional required configuration. */
-  sessionAffinity?:
-    | EditRequestRulesItemOverridesSessionAffinity
-    | (string & {});
-  /** Configures attributes for session affinity. */
-  sessionAffinityAttributes?: EditRequestRulesItemOverridesSessionAffinityAttributes;
-  /** Time, in seconds, until a client's session expires after being created. Once the expiry time has been reached, subsequent requests may get sent to a different origin server. The accepted ranges per `session_affinity` policy are: - `"cookie"` / `"ip_cookie"`: The current default of 23 hours will be used unless explicitly set. The accepted range of values is between [1800, 604800]. - `"header"`: The current default of 1800 seconds will be used unless explicitly set. The accepted range of values is between [30, 3600]. Note: With session affinity by header, sessions only expire after they haven't been used for the number of seconds specified. */
-  sessionAffinityTtl?: number;
-  /** Steering Policy for this load balancer. */
-  steeringPolicy?: EditRequestRulesItemOverridesSteeringPolicy | (string & {});
-  /** Time to live (TTL) of the DNS entry for the IP address returned by this load balancer. This only applies to gray-clouded (unproxied) load balancers. */
-  ttl?: number;
-}
-export const PatchLoadBalancerRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    zoneId: S.String.pipe(T.Label("zone_id")),
-    loadBalancerId: S.String.pipe(T.Label("load_balancer_id")),
-    adaptiveRouting: S.optional(
-      CreateRequestAdaptiveRouting.pipe(T.Body("adaptive_routing")),
-    ),
-    countryPools: S.optional(
-      EditRequestCountryPoolsMap.pipe(T.Body("country_pools")),
-    ),
-    defaultPools: S.optional(
-      EditRequestDefaultPoolsList.pipe(T.Body("default_pools")),
-    ),
-    description: S.optional(S.String),
-    enabled: S.optional(S.Boolean),
-    fallbackPool: S.optional(S.String.pipe(T.Body("fallback_pool"))),
-    locationStrategy: S.optional(
-      EditRequestLocationStrategy.pipe(T.Body("location_strategy")),
-    ),
-    name: S.optional(S.String),
-    popPools: S.optional(EditRequestPopPoolsMap.pipe(T.Body("pop_pools"))),
-    proxied: S.optional(S.Boolean),
-    randomSteering: S.optional(
-      EditRequestRandomSteering.pipe(T.Body("random_steering")),
-    ),
-    regionPools: S.optional(
-      EditRequestRegionPoolsMap.pipe(T.Body("region_pools")),
-    ),
-    rules: S.optional(EditRequestRulesList),
-    sessionAffinity: S.optional(
-      EditRequestRulesItemOverridesSessionAffinity.pipe(
-        T.Body("session_affinity"),
-      ),
-    ),
-    sessionAffinityAttributes: S.optional(
-      EditRequestRulesItemOverridesSessionAffinityAttributes.pipe(
-        T.Body("session_affinity_attributes"),
-      ),
-    ),
-    sessionAffinityTtl: S.optional(
-      S.Number.pipe(T.Body("session_affinity_ttl")),
-    ),
-    steeringPolicy: S.optional(
-      EditRequestRulesItemOverridesSteeringPolicy.pipe(
-        T.Body("steering_policy"),
-      ),
-    ),
-    ttl: S.optional(S.Number),
-  })
-    .pipe(
-      T.Http({
-        method: "PATCH",
-        uri: "/zones/{zone_id}/load_balancers/{load_balancer_id}",
-        code: 200,
-      }),
-    )
-    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({
-  identifier: "PatchLoadBalancerRequest",
-}) as any as S.Schema<PatchLoadBalancerRequest>;
-
-export type EditResponseAdaptiveRouting = CreateResponseAdaptiveRouting;
-export const EditResponseAdaptiveRouting = CreateResponseAdaptiveRouting;
-
-export type EditResponseCountryPoolsMap = {
-  [key: string]: unknown | undefined;
-};
-export const EditResponseCountryPoolsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<EditResponseCountryPoolsMap>;
-
-export type EditResponseDefaultPoolsList = Array<string>;
-export const EditResponseDefaultPoolsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<EditResponseDefaultPoolsList>;
-
-export type EditResponseLocationStrategyMode = "pop" | "resolver_ip";
-export const EditResponseLocationStrategyMode = /*@__PURE__*/ S.String;
-
-export type EditResponseLocationStrategyPreferEcs =
-  | "always"
-  | "never"
-  | "proximity"
-  | "geo";
-export const EditResponseLocationStrategyPreferEcs = /*@__PURE__*/ S.String;
-
-export interface EditResponseLocationStrategy {
-  /** Determines the authoritative location when ECS is not preferred, does not exist in the request, or its GeoIP lookup is unsuccessful. */
-  mode?: EditResponseLocationStrategyMode | null;
-  /** Whether the EDNS Client Subnet (ECS) GeoIP should be preferred as the authoritative location. */
-  preferEcs?: EditResponseLocationStrategyPreferEcs | null;
-}
-export const EditResponseLocationStrategy = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    mode: S.optional(S.NullOr(EditResponseLocationStrategyMode)),
-    preferEcs: S.optional(
-      S.NullOr(EditResponseLocationStrategyPreferEcs).pipe(
-        T.Body("prefer_ecs"),
-      ),
-    ),
-  }),
-).annotate({
-  identifier: "EditResponseLocationStrategy",
-}) as any as S.Schema<EditResponseLocationStrategy>;
-
-export type EditResponseNetworksList = Array<string>;
-export const EditResponseNetworksList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<EditResponseNetworksList>;
-
-export type EditResponsePopPoolsMap = { [key: string]: unknown | undefined };
-export const EditResponsePopPoolsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<EditResponsePopPoolsMap>;
-
-export type EditResponseRandomSteeringPoolWeightsMap = {
-  [key: string]: number | undefined;
-};
-export const EditResponseRandomSteeringPoolWeightsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Number,
-) as any as S.Schema<EditResponseRandomSteeringPoolWeightsMap>;
-
-export interface EditResponseRandomSteering {
-  /** The default weight for pools in the load balancer that are not specified in the pool_weights map. */
-  defaultWeight?: number | null;
-  /** A mapping of pool IDs to custom weights. The weight is relative to other pools in the load balancer. */
-  poolWeights?: EditResponseRandomSteeringPoolWeightsMap | null;
-}
-export const EditResponseRandomSteering = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    defaultWeight: S.optional(
-      S.NullOr(S.Number).pipe(T.Body("default_weight")),
-    ),
-    poolWeights: S.optional(
-      S.NullOr(EditResponseRandomSteeringPoolWeightsMap).pipe(
-        T.Body("pool_weights"),
-      ),
-    ),
-  }),
-).annotate({
-  identifier: "EditResponseRandomSteering",
-}) as any as S.Schema<EditResponseRandomSteering>;
-
-export type EditResponseRegionPoolsMap = { [key: string]: unknown | undefined };
-export const EditResponseRegionPoolsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<EditResponseRegionPoolsMap>;
-
-export type EditResponseRulesItemFixedResponse =
-  CreateResponseRulesItemFixedResponse;
-export const EditResponseRulesItemFixedResponse =
-  CreateResponseRulesItemFixedResponse;
-
-export type EditResponseRulesItemOverridesCountryPoolsMap = {
-  [key: string]: unknown | undefined;
-};
-export const EditResponseRulesItemOverridesCountryPoolsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<EditResponseRulesItemOverridesCountryPoolsMap>;
-
-export type EditResponseRulesItemOverridesDefaultPoolsList = Array<string>;
-export const EditResponseRulesItemOverridesDefaultPoolsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<EditResponseRulesItemOverridesDefaultPoolsList>;
-
-export type EditResponseRulesItemOverridesPopPoolsMap = {
-  [key: string]: unknown | undefined;
-};
-export const EditResponseRulesItemOverridesPopPoolsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<EditResponseRulesItemOverridesPopPoolsMap>;
-
-export type EditResponseRulesItemOverridesRegionPoolsMap = {
-  [key: string]: unknown | undefined;
-};
-export const EditResponseRulesItemOverridesRegionPoolsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<EditResponseRulesItemOverridesRegionPoolsMap>;
-
-export type EditResponseRulesItemOverridesSessionAffinity =
-  | "none"
-  | "cookie"
-  | "ip_cookie"
-  | "header";
-export const EditResponseRulesItemOverridesSessionAffinity =
-  /*@__PURE__*/ S.String;
-
-export type EditResponseRulesItemOverridesSessionAffinityAttributesHeadersList =
-  Array<string>;
-export const EditResponseRulesItemOverridesSessionAffinityAttributesHeadersList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<EditResponseRulesItemOverridesSessionAffinityAttributesHeadersList>;
-
-export type EditResponseRulesItemOverridesSessionAffinityAttributesSamesite =
-  | "Auto"
-  | "Lax"
-  | "None"
-  | "Strict";
-export const EditResponseRulesItemOverridesSessionAffinityAttributesSamesite =
-  /*@__PURE__*/ S.String;
-
-export type EditResponseRulesItemOverridesSessionAffinityAttributesSecure =
-  | "Auto"
-  | "Always"
-  | "Never";
-export const EditResponseRulesItemOverridesSessionAffinityAttributesSecure =
-  /*@__PURE__*/ S.String;
-
-export type EditResponseRulesItemOverridesSessionAffinityAttributesZeroDowntimeFailover =
-  | "none"
-  | "temporary"
-  | "sticky";
-export const EditResponseRulesItemOverridesSessionAffinityAttributesZeroDowntimeFailover =
-  /*@__PURE__*/ S.String;
-
-export interface EditResponseRulesItemOverridesSessionAffinityAttributes {
-  /** Configures the drain duration in seconds. This field is only used when session affinity is enabled on the load balancer. */
-  drainDuration?: number | null;
-  /** Configures the names of HTTP headers to base session affinity on when header `session_affinity` is enabled. At least one HTTP header name must be provided. To specify the exact cookies to be used, include an item in the following format: `"cookie:<cookie-name-1>,<cookie-name-2>"` (example) where everything after the colon is a comma-separated list of cookie names. Providing only `"cookie"` will result in all cookies being used. The default max number of HTTP header names that can be provided depends on your plan: 5 for Enterprise, 1 for all other plans. */
-  headers?: EditResponseRulesItemOverridesSessionAffinityAttributesHeadersList | null;
-  /** When header `session_affinity` is enabled, this option can be used to specify how HTTP headers on load balancing requests will be used. The supported values are: - `"true"`: Load balancing requests must contain *all* of the HTTP headers specified by the `headers` session affinity attribute, otherwise sessions aren't created. - `"false"`: Load balancing requests must contain *at least one* of the HTTP headers specified by the `headers` session affinity attribute, otherwise sessions aren't created. */
-  requireAllHeaders?: boolean | null;
-  /** Configures the SameSite attribute on session affinity cookie. Value "Auto" will be translated to "Lax" or "None" depending if Always Use HTTPS is enabled. Note: when using value "None", the secure attribute can not be set to "Never". */
-  samesite?: EditResponseRulesItemOverridesSessionAffinityAttributesSamesite | null;
-  /** Configures the Secure attribute on session affinity cookie. Value "Always" indicates the Secure attribute will be set in the Set-Cookie header, "Never" indicates the Secure attribute will not be set, and "Auto" will set the Secure attribute depending if Always Use HTTPS is enabled. */
-  secure?: EditResponseRulesItemOverridesSessionAffinityAttributesSecure | null;
-  /** Configures the zero-downtime failover between origins within a pool when session affinity is enabled. This feature is currently incompatible with Argo, Tiered Cache, and Bandwidth Alliance. The supported values are: - `"none"`: No failover takes place for sessions pinned to the origin (default). - `"temporary"`: Traffic will be sent to another other healthy origin until the originally pinned origin is available; note that this can potentially result in heavy origin flapping. - `"sticky"`: The session affinity cookie is updated and subsequent requests are sent to the new origin. Note: Zero-downtime failover with sticky sessions is currently not supported for session affinity by header. */
-  zeroDowntimeFailover?: EditResponseRulesItemOverridesSessionAffinityAttributesZeroDowntimeFailover | null;
-}
-export const EditResponseRulesItemOverridesSessionAffinityAttributes =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      drainDuration: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("drain_duration")),
-      ),
-      headers: S.optional(
-        S.NullOr(
-          EditResponseRulesItemOverridesSessionAffinityAttributesHeadersList,
-        ),
-      ),
-      requireAllHeaders: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("require_all_headers")),
-      ),
-      samesite: S.optional(
-        S.NullOr(
-          EditResponseRulesItemOverridesSessionAffinityAttributesSamesite,
-        ),
-      ),
-      secure: S.optional(
-        S.NullOr(EditResponseRulesItemOverridesSessionAffinityAttributesSecure),
-      ),
-      zeroDowntimeFailover: S.optional(
-        S.NullOr(
-          EditResponseRulesItemOverridesSessionAffinityAttributesZeroDowntimeFailover,
-        ).pipe(T.Body("zero_downtime_failover")),
-      ),
-    }),
-  ).annotate({
-    identifier: "EditResponseRulesItemOverridesSessionAffinityAttributes",
-  }) as any as S.Schema<EditResponseRulesItemOverridesSessionAffinityAttributes>;
-
-export type EditResponseRulesItemOverridesSteeringPolicy =
-  | "off"
-  | "geo"
-  | "random"
-  | "dynamic_latency"
-  | "proximity"
-  | "least_outstanding_requests"
-  | "least_connections"
-  | "";
-export const EditResponseRulesItemOverridesSteeringPolicy =
-  /*@__PURE__*/ S.String;
-
-export interface EditResponseRulesItemOverrides {
-  /** Controls features that modify the routing of requests to pools and origins in response to dynamic conditions, such as during the interval between active health monitoring requests. For example, zero-downtime failover occurs immediately when an origin becomes unavailable due to HTTP 521, 522, or 523 response codes. If there is another healthy origin in the same pool, the request is retried once against this alternate origin. */
-  adaptiveRouting?: CreateResponseAdaptiveRouting | null;
-  /** A mapping of country codes to a list of pool IDs (ordered by their failover priority) for the given country. Any country not explicitly defined will fall back to using the corresponding region_pool mapping if it exists else to default_pools. */
-  countryPools?: EditResponseRulesItemOverridesCountryPoolsMap | null;
-  /** A list of pool IDs ordered by their failover priority. Pools defined here are used by default, or when region_pools are not configured for a given region. */
-  defaultPools?: EditResponseRulesItemOverridesDefaultPoolsList | null;
-  /** The pool ID to use when all other pools are detected as unhealthy. */
-  fallbackPool?: string | null;
-  /** Controls location-based steering for non-proxied requests. See `steering_policy` to learn how steering is affected. */
-  locationStrategy?: EditResponseLocationStrategy | null;
-  /** Enterprise only: A mapping of Cloudflare PoP identifiers to a list of pool IDs (ordered by their failover priority) for the PoP (datacenter). Any PoPs not explicitly defined will fall back to using the corresponding country_pool, then region_pool mapping if it exists else to default_pools. */
-  popPools?: EditResponseRulesItemOverridesPopPoolsMap | null;
-  /** Configures pool weights. */
-  randomSteering?: EditResponseRandomSteering | null;
-  /** A mapping of region codes to a list of pool IDs (ordered by their failover priority) for the given region. Any regions not explicitly defined will fall back to using default_pools. */
-  regionPools?: EditResponseRulesItemOverridesRegionPoolsMap | null;
-  /** Specifies the type of session affinity the load balancer should use unless specified as `"none"`. The supported types are: - `"cookie"`: On the first request to a proxied load balancer, a cookie is generated, encoding information of which origin the request will be forwarded to. Subsequent requests, by the same client to the same load balancer, will be sent to the origin server the cookie encodes, for the duration of the cookie and as long as the origin server remains healthy. If the cookie has expired or the origin server is unhealthy, then a new origin server is calculated and used. - `"ip_cookie"`: Behaves the same as `"cookie"` except the initial origin selection is stable and based on the client's ip address. - `"header"`: On the first request to a proxied load balancer, a session key based on the configured HTTP headers (see `session_affinity_attributes.headers`) is generated, encoding the request headers used for storing in the load balancer session state which origin the request will be forwarded to. Subsequent requests to the load balancer with the same headers will be sent to the same origin server, for the duration of the session and as long as the origin server remains healthy. If the session has been idle for the duration of `session_affinity_ttl` seconds or the origin server is unhealthy, then a new origin server is calculated and used. See `headers` in `session_affinity_attributes` for additional required configuration. */
-  sessionAffinity?: EditResponseRulesItemOverridesSessionAffinity | null;
-  /** Configures attributes for session affinity. */
-  sessionAffinityAttributes?: EditResponseRulesItemOverridesSessionAffinityAttributes | null;
-  /** Time, in seconds, until a client's session expires after being created. Once the expiry time has been reached, subsequent requests may get sent to a different origin server. The accepted ranges per `session_affinity` policy are: - `"cookie"` / `"ip_cookie"`: The current default of 23 hours will be used unless explicitly set. The accepted range of values is between [1800, 604800]. - `"header"`: The current default of 1800 seconds will be used unless explicitly set. The accepted range of values is between [30, 3600]. Note: With session affinity by header, sessions only expire after they haven't been used for the number of seconds specified. */
-  sessionAffinityTtl?: number | null;
-  /** Steering Policy for this load balancer. */
-  steeringPolicy?: EditResponseRulesItemOverridesSteeringPolicy | null;
-  /** Time to live (TTL) of the DNS entry for the IP address returned by this load balancer. This only applies to gray-clouded (unproxied) load balancers. */
-  ttl?: number | null;
-}
-export const EditResponseRulesItemOverrides = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    adaptiveRouting: S.optional(
-      S.NullOr(CreateResponseAdaptiveRouting).pipe(T.Body("adaptive_routing")),
-    ),
-    countryPools: S.optional(
-      S.NullOr(EditResponseRulesItemOverridesCountryPoolsMap).pipe(
-        T.Body("country_pools"),
-      ),
-    ),
-    defaultPools: S.optional(
-      S.NullOr(EditResponseRulesItemOverridesDefaultPoolsList).pipe(
-        T.Body("default_pools"),
-      ),
-    ),
-    fallbackPool: S.optional(S.NullOr(S.String).pipe(T.Body("fallback_pool"))),
-    locationStrategy: S.optional(
-      S.NullOr(EditResponseLocationStrategy).pipe(T.Body("location_strategy")),
-    ),
-    popPools: S.optional(
-      S.NullOr(EditResponseRulesItemOverridesPopPoolsMap).pipe(
-        T.Body("pop_pools"),
-      ),
-    ),
-    randomSteering: S.optional(
-      S.NullOr(EditResponseRandomSteering).pipe(T.Body("random_steering")),
-    ),
-    regionPools: S.optional(
-      S.NullOr(EditResponseRulesItemOverridesRegionPoolsMap).pipe(
-        T.Body("region_pools"),
-      ),
-    ),
-    sessionAffinity: S.optional(
-      S.NullOr(EditResponseRulesItemOverridesSessionAffinity).pipe(
-        T.Body("session_affinity"),
-      ),
-    ),
-    sessionAffinityAttributes: S.optional(
-      S.NullOr(EditResponseRulesItemOverridesSessionAffinityAttributes).pipe(
-        T.Body("session_affinity_attributes"),
-      ),
-    ),
-    sessionAffinityTtl: S.optional(
-      S.NullOr(S.Number).pipe(T.Body("session_affinity_ttl")),
-    ),
-    steeringPolicy: S.optional(
-      S.NullOr(EditResponseRulesItemOverridesSteeringPolicy).pipe(
-        T.Body("steering_policy"),
-      ),
-    ),
-    ttl: S.optional(S.NullOr(S.Number)),
-  }),
-).annotate({
-  identifier: "EditResponseRulesItemOverrides",
-}) as any as S.Schema<EditResponseRulesItemOverrides>;
-
-export interface EditResponseRulesItem {
-  /** The condition expressions to evaluate. If the condition evaluates to true, the overrides or fixed_response in this rule will be applied. An empty condition is always true. For more details on condition expressions, please see https://developers.cloudflare.com/load-balancing/understand-basics/load-balancing-rules/expressions. */
-  condition?: string | null;
-  /** Disable this specific rule. It will no longer be evaluated by this load balancer. */
-  disabled?: boolean | null;
-  /** A collection of fields used to directly respond to the eyeball instead of routing to a pool. If a fixed_response is supplied the rule will be marked as terminates. */
-  fixedResponse?: CreateResponseRulesItemFixedResponse | null;
-  /** Name of this rule. Only used for human readability. */
-  name?: string | null;
-  /** A collection of overrides to apply to the load balancer when this rule's condition is true. All fields are optional. */
-  overrides?: EditResponseRulesItemOverrides | null;
-  /** The order in which rules should be executed in relation to each other. Lower values are executed first. Values do not need to be sequential. If no value is provided for any rule the array order of the rules field will be used to assign a priority. */
-  priority?: number | null;
-  /** If this rule's condition is true, this causes rule evaluation to stop after processing this rule. */
-  terminates?: boolean | null;
-}
-export const EditResponseRulesItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    condition: S.optional(S.NullOr(S.String)),
-    disabled: S.optional(S.NullOr(S.Boolean)),
-    fixedResponse: S.optional(
-      S.NullOr(CreateResponseRulesItemFixedResponse).pipe(
-        T.Body("fixed_response"),
-      ),
-    ),
-    name: S.optional(S.NullOr(S.String)),
-    overrides: S.optional(S.NullOr(EditResponseRulesItemOverrides)),
-    priority: S.optional(S.NullOr(S.Number)),
-    terminates: S.optional(S.NullOr(S.Boolean)),
-  }),
-).annotate({
-  identifier: "EditResponseRulesItem",
-}) as any as S.Schema<EditResponseRulesItem>;
-
-export type EditResponseRulesList = Array<EditResponseRulesItem>;
-export const EditResponseRulesList = /*@__PURE__*/ S.Array(
-  EditResponseRulesItem,
-) as any as S.Schema<EditResponseRulesList>;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface PatchLoadBalancerResponse {
-  id?: string | null;
-  /** Controls features that modify the routing of requests to pools and origins in response to dynamic conditions, such as during the interval between active health monitoring requests. For example, zero-downtime failover occurs immediately when an origin becomes unavailable due to HTTP 521, 522, or 523 response codes. If there is another healthy origin in the same pool, the request is retried once against this alternate origin. */
-  adaptiveRouting?: CreateResponseAdaptiveRouting | null;
-  /** A mapping of country codes to a list of pool IDs (ordered by their failover priority) for the given country. Any country not explicitly defined will fall back to using the corresponding region_pool mapping if it exists else to default_pools. */
-  countryPools?: EditResponseCountryPoolsMap | null;
-  createdOn?: string | null;
-  /** A list of pool IDs ordered by their failover priority. Pools defined here are used by default, or when region_pools are not configured for a given region. */
-  defaultPools?: EditResponseDefaultPoolsList | null;
-  /** Object description. */
-  description?: string | null;
-  /** Whether to enable (the default) this load balancer. */
-  enabled?: boolean | null;
-  /** The pool ID to use when all other pools are detected as unhealthy. */
-  fallbackPool?: string | null;
-  /** Controls location-based steering for non-proxied requests. See `steering_policy` to learn how steering is affected. */
-  locationStrategy?: EditResponseLocationStrategy | null;
-  modifiedOn?: string | null;
-  /** The DNS hostname to associate with your Load Balancer. If this hostname already exists as a DNS record in Cloudflare's DNS, the Load Balancer will take precedence and the DNS record will not be used. */
-  name?: string | null;
-  /** List of networks where Load Balancer or Pool is enabled. */
-  networks?: EditResponseNetworksList | null;
-  /** Enterprise only: A mapping of Cloudflare PoP identifiers to a list of pool IDs (ordered by their failover priority) for the PoP (datacenter). Any PoPs not explicitly defined will fall back to using the corresponding country_pool, then region_pool mapping if it exists else to default_pools. */
-  popPools?: EditResponsePopPoolsMap | null;
-  /** Whether the hostname should be gray clouded (false) or orange clouded (true). */
-  proxied?: boolean | null;
-  /** Configures pool weights. */
-  randomSteering?: EditResponseRandomSteering | null;
-  /** A mapping of region codes to a list of pool IDs (ordered by their failover priority) for the given region. Any regions not explicitly defined will fall back to using default_pools. */
-  regionPools?: EditResponseRegionPoolsMap | null;
-  /** BETA Field Not General Access: A list of rules for this load balancer to execute. */
-  rules?: EditResponseRulesList | null;
-  /** Specifies the type of session affinity the load balancer should use unless specified as `"none"`. The supported types are: - `"cookie"`: On the first request to a proxied load balancer, a cookie is generated, encoding information of which origin the request will be forwarded to. Subsequent requests, by the same client to the same load balancer, will be sent to the origin server the cookie encodes, for the duration of the cookie and as long as the origin server remains healthy. If the cookie has expired or the origin server is unhealthy, then a new origin server is calculated and used. - `"ip_cookie"`: Behaves the same as `"cookie"` except the initial origin selection is stable and based on the client's ip address. - `"header"`: On the first request to a proxied load balancer, a session key based on the configured HTTP headers (see `session_affinity_attributes.headers`) is generated, encoding the request headers used for storing in the load balancer session state which origin the request will be forwarded to. Subsequent requests to the load balancer with the same headers will be sent to the same origin server, for the duration of the session and as long as the origin server remains healthy. If the session has been idle for the duration of `session_affinity_ttl` seconds or the origin server is unhealthy, then a new origin server is calculated and used. See `headers` in `session_affinity_attributes` for additional required configuration. */
-  sessionAffinity?: EditResponseRulesItemOverridesSessionAffinity | null;
-  /** Configures attributes for session affinity. */
-  sessionAffinityAttributes?: EditResponseRulesItemOverridesSessionAffinityAttributes | null;
-  /** Time, in seconds, until a client's session expires after being created. Once the expiry time has been reached, subsequent requests may get sent to a different origin server. The accepted ranges per `session_affinity` policy are: - `"cookie"` / `"ip_cookie"`: The current default of 23 hours will be used unless explicitly set. The accepted range of values is between [1800, 604800]. - `"header"`: The current default of 1800 seconds will be used unless explicitly set. The accepted range of values is between [30, 3600]. Note: With session affinity by header, sessions only expire after they haven't been used for the number of seconds specified. */
-  sessionAffinityTtl?: number | null;
-  /** Steering Policy for this load balancer. */
-  steeringPolicy?: EditResponseRulesItemOverridesSteeringPolicy | null;
-  /** Time to live (TTL) of the DNS entry for the IP address returned by this load balancer. This only applies to gray-clouded (unproxied) load balancers. */
-  ttl?: number | null;
-  zoneName?: string | null;
-}
-export const PatchLoadBalancerResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.NullOr(S.String)),
-    adaptiveRouting: S.optional(
-      S.NullOr(CreateResponseAdaptiveRouting).pipe(T.Body("adaptive_routing")),
-    ),
-    countryPools: S.optional(
-      S.NullOr(EditResponseCountryPoolsMap).pipe(T.Body("country_pools")),
-    ),
-    createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
-    defaultPools: S.optional(
-      S.NullOr(EditResponseDefaultPoolsList).pipe(T.Body("default_pools")),
-    ),
-    description: S.optional(S.NullOr(S.String)),
-    enabled: S.optional(S.NullOr(S.Boolean)),
-    fallbackPool: S.optional(S.NullOr(S.String).pipe(T.Body("fallback_pool"))),
-    locationStrategy: S.optional(
-      S.NullOr(EditResponseLocationStrategy).pipe(T.Body("location_strategy")),
-    ),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-    name: S.optional(S.NullOr(S.String)),
-    networks: S.optional(S.NullOr(EditResponseNetworksList)),
-    popPools: S.optional(
-      S.NullOr(EditResponsePopPoolsMap).pipe(T.Body("pop_pools")),
-    ),
-    proxied: S.optional(S.NullOr(S.Boolean)),
-    randomSteering: S.optional(
-      S.NullOr(EditResponseRandomSteering).pipe(T.Body("random_steering")),
-    ),
-    regionPools: S.optional(
-      S.NullOr(EditResponseRegionPoolsMap).pipe(T.Body("region_pools")),
-    ),
-    rules: S.optional(S.NullOr(EditResponseRulesList)),
-    sessionAffinity: S.optional(
-      S.NullOr(EditResponseRulesItemOverridesSessionAffinity).pipe(
-        T.Body("session_affinity"),
-      ),
-    ),
-    sessionAffinityAttributes: S.optional(
-      S.NullOr(EditResponseRulesItemOverridesSessionAffinityAttributes).pipe(
-        T.Body("session_affinity_attributes"),
-      ),
-    ),
-    sessionAffinityTtl: S.optional(
-      S.NullOr(S.Number).pipe(T.Body("session_affinity_ttl")),
-    ),
-    steeringPolicy: S.optional(
-      S.NullOr(EditResponseRulesItemOverridesSteeringPolicy).pipe(
-        T.Body("steering_policy"),
-      ),
-    ),
-    ttl: S.optional(S.NullOr(S.Number)),
-    zoneName: S.optional(S.NullOr(S.String).pipe(T.Body("zone_name"))),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({
-  identifier: "PatchLoadBalancerResponse",
-}) as any as S.Schema<PatchLoadBalancerResponse>;
-
 export type MonitorsEditRequestHeaderMap = {
   [key: string]: unknown | undefined;
 };
@@ -6019,7 +5924,7 @@ export interface PatchMonitorRequest {
   header?: MonitorsEditRequestHeaderMap;
   /** The interval between each health check. Shorter intervals may improve failover time, but will increase load on the origins as we check from multiple locations. */
   interval?: number;
-  /** The method to use for the health check. This defaults to 'GET' for HTTP/HTTPS based checks and 'connection_established' for TCP based health checks. */
+  /** The method to use for the health check. This defaults to ‘GET’ for HTTP/HTTPS based checks and ‘connection_established’ for TCP based health checks. */
   method?: string;
   /** The endpoint path you want to conduct a health check against. This parameter is only valid for HTTP and HTTPS monitors. */
   path?: string;
@@ -6031,7 +5936,7 @@ export interface PatchMonitorRequest {
   retries?: number;
   /** The timeout (in seconds) before marking the health check as failed. */
   timeout?: number;
-  /** The protocol to use for the health check. Currently supported protocols are 'HTTP','HTTPS', 'TCP', 'ICMP-PING', 'UDP-ICMP', and 'SMTP'. */
+  /** The protocol to use for the health check. Currently supported protocols are ‘HTTP’,‘HTTPS’, ‘TCP’, ‘ICMP-PING’, ‘UDP-ICMP’, and ‘SMTP’. */
   type?: MonitorsEditRequestType | (string & {});
 }
 export const PatchMonitorRequest = /*@__PURE__*/ S.suspend(() =>
@@ -6106,7 +6011,7 @@ export interface PatchMonitorResponse {
   header?: MonitorsEditResponseHeaderMap | null;
   /** The interval between each health check. Shorter intervals may improve failover time, but will increase load on the origins as we check from multiple locations. */
   interval?: number | null;
-  /** The method to use for the health check. This defaults to 'GET' for HTTP/HTTPS based checks and 'connection_established' for TCP based health checks. */
+  /** The method to use for the health check. This defaults to ‘GET’ for HTTP/HTTPS based checks and ‘connection_established’ for TCP based health checks. */
   method?: string | null;
   modifiedOn?: string | null;
   /** The endpoint path you want to conduct a health check against. This parameter is only valid for HTTP and HTTPS monitors. */
@@ -6119,7 +6024,7 @@ export interface PatchMonitorResponse {
   retries?: number | null;
   /** The timeout (in seconds) before marking the health check as failed. */
   timeout?: number | null;
-  /** The protocol to use for the health check. Currently supported protocols are 'HTTP','HTTPS', 'TCP', 'ICMP-PING', 'UDP-ICMP', and 'SMTP'. */
+  /** The protocol to use for the health check. Currently supported protocols are ‘HTTP’,‘HTTPS’, ‘TCP’, ‘ICMP-PING’, ‘UDP-ICMP’, and ‘SMTP’. */
   type?: MonitorsEditResponseType | null;
 }
 export const PatchMonitorResponse = /*@__PURE__*/ S.suspend(() =>
@@ -6216,226 +6121,26 @@ export interface PatchMonitorGroupResponse {
   description: string;
   /** List of monitors in this group */
   members: MonitorGroupsEditResponseMembersList;
-  /** The timestamp of when the monitor group was created */
-  createdOn?: string | null;
-  /** The timestamp of when the monitor group was last updated */
-  modifiedOn?: string | null;
 }
 export const PatchMonitorGroupResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     description: S.String,
     members: MonitorGroupsEditResponseMembersList,
-    createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchMonitorGroupResponse",
 }) as any as S.Schema<PatchMonitorGroupResponse>;
 
-export type PoolsEditRequestCheckRegionsItem =
-  | "WNAM"
-  | "ENAM"
-  | "WEU"
-  | "EEU"
-  | "NSAM"
-  | "SSAM"
-  | "OC"
-  | "ME"
-  | "NAF"
-  | "SAF"
-  | "SAS"
-  | "SEAS"
-  | "NEAS"
-  | "ALL_REGIONS";
-export const PoolsEditRequestCheckRegionsItem = /*@__PURE__*/ S.String;
-
-export type PoolsEditRequestCheckRegionsList = Array<
-  PoolsEditRequestCheckRegionsItem | (string & {})
->;
-export const PoolsEditRequestCheckRegionsList = /*@__PURE__*/ S.Array(
-  PoolsEditRequestCheckRegionsItem,
-) as any as S.Schema<PoolsEditRequestCheckRegionsList>;
-
-export type PoolsEditRequestLoadSheddingDefaultPolicy = "random" | "hash";
-export const PoolsEditRequestLoadSheddingDefaultPolicy = /*@__PURE__*/ S.String;
-
-export type PoolsEditRequestLoadSheddingSessionPolicy = "hash";
-export const PoolsEditRequestLoadSheddingSessionPolicy = /*@__PURE__*/ S.String;
-
-export interface PoolsEditRequestLoadShedding {
-  /** The percent of traffic to shed from the pool, according to the default policy. Applies to new sessions and traffic without session affinity. */
-  defaultPercent?: number;
-  /** The default policy to use when load shedding. A random policy randomly sheds a given percent of requests. A hash policy computes a hash over the CF-Connecting-IP address and sheds all requests originating from a percent of IPs. */
-  defaultPolicy?: PoolsEditRequestLoadSheddingDefaultPolicy | (string & {});
-  /** The percent of existing sessions to shed from the pool, according to the session policy. */
-  sessionPercent?: number;
-  /** Only the hash policy is supported for existing sessions (to avoid exponential decay). */
-  sessionPolicy?: PoolsEditRequestLoadSheddingSessionPolicy | (string & {});
-}
-export const PoolsEditRequestLoadShedding = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    defaultPercent: S.optional(S.Number.pipe(T.Body("default_percent"))),
-    defaultPolicy: S.optional(
-      PoolsEditRequestLoadSheddingDefaultPolicy.pipe(T.Body("default_policy")),
-    ),
-    sessionPercent: S.optional(S.Number.pipe(T.Body("session_percent"))),
-    sessionPolicy: S.optional(
-      PoolsEditRequestLoadSheddingSessionPolicy.pipe(T.Body("session_policy")),
-    ),
-  }),
-).annotate({
-  identifier: "PoolsEditRequestLoadShedding",
-}) as any as S.Schema<PoolsEditRequestLoadShedding>;
-
-export type PoolsEditRequestNotificationFilterOrigin =
-  PoolsCreateRequestNotificationFilterOrigin;
-export const PoolsEditRequestNotificationFilterOrigin =
-  PoolsCreateRequestNotificationFilterOrigin;
-
-export type PoolsEditRequestNotificationFilter =
-  PoolsCreateRequestNotificationFilter;
-export const PoolsEditRequestNotificationFilter =
-  PoolsCreateRequestNotificationFilter;
-
-export type PoolsEditRequestOriginSteeringPolicy =
-  | "random"
-  | "hash"
-  | "least_outstanding_requests"
-  | "least_connections";
-export const PoolsEditRequestOriginSteeringPolicy = /*@__PURE__*/ S.String;
-
-export interface PoolsEditRequestOriginSteering {
-  /** The type of origin steering policy to use. */
-  policy?: PoolsEditRequestOriginSteeringPolicy | (string & {});
-}
-export const PoolsEditRequestOriginSteering = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    policy: S.optional(PoolsEditRequestOriginSteeringPolicy),
-  }),
-).annotate({
-  identifier: "PoolsEditRequestOriginSteering",
-}) as any as S.Schema<PoolsEditRequestOriginSteering>;
-
-export type PoolsEditRequestOriginsItemHeaderHostList = Array<string>;
-export const PoolsEditRequestOriginsItemHeaderHostList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PoolsEditRequestOriginsItemHeaderHostList>;
-
-export interface PoolsEditRequestOriginsItemHeader {
-  /** The 'Host' header allows to override the hostname set in the HTTP request. Current support is 1 'Host' header override per origin. */
-  host?: PoolsEditRequestOriginsItemHeaderHostList;
-}
-export const PoolsEditRequestOriginsItemHeader = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    host: S.optional(
-      PoolsEditRequestOriginsItemHeaderHostList.pipe(T.Body("Host")),
-    ),
-  }),
-).annotate({
-  identifier: "PoolsEditRequestOriginsItemHeader",
-}) as any as S.Schema<PoolsEditRequestOriginsItemHeader>;
-
-export interface PoolsEditRequestOriginsItem {
-  /** The IP address (IPv4 or IPv6) of the origin, or its publicly addressable hostname. Hostnames entered here should resolve directly to the origin, and not be a hostname proxied by Cloudflare. To set an internal/reserved address, virtual_network_id must also be set. */
-  address?: string;
-  /** This field shows up only if the origin is disabled. This field is set with the time the origin was disabled. */
-  disabledAt?: string;
-  /** Whether to enable (the default) this origin within the pool. Disabled origins will not receive traffic and are excluded from health checks. The origin will only be disabled for the current pool. */
-  enabled?: boolean;
-  /** Whether to flatten CNAME records for this origin, resolving them to A/AAAA records before returning to the client. When true (the default), the director resolves CNAME addresses to their underlying A/AAAA records. When false, the origin address is returned as a raw CNAME record without resolution. This setting mirrors the DNS API record flatten_cname setting. */
-  flattenCname?: boolean;
-  /** The request header is used to pass additional information with an HTTP request. Currently supported header is 'Host'. */
-  header?: PoolsEditRequestOriginsItemHeader;
-  /** A human-identifiable name for the origin. */
-  name?: string;
-  /** The port for upstream connections. A value of 0 means the default port for the protocol will be used. */
-  port?: number;
-  /** The virtual network subnet ID the origin belongs in. Virtual network must also belong to the account. */
-  virtualNetworkId?: string;
-  /** The weight of this origin relative to other origins in the pool. Based on the configured weight the total traffic is distributed among origins within the pool. */
-  weight?: number;
-}
-export const PoolsEditRequestOriginsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    address: S.optional(S.String),
-    disabledAt: S.optional(S.String.pipe(T.Body("disabled_at"))),
-    enabled: S.optional(S.Boolean),
-    flattenCname: S.optional(S.Boolean.pipe(T.Body("flatten_cname"))),
-    header: S.optional(PoolsEditRequestOriginsItemHeader),
-    name: S.optional(S.String),
-    port: S.optional(S.Number),
-    virtualNetworkId: S.optional(S.String.pipe(T.Body("virtual_network_id"))),
-    weight: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "PoolsEditRequestOriginsItem",
-}) as any as S.Schema<PoolsEditRequestOriginsItem>;
-
-export type PoolsEditRequestOriginsList = Array<PoolsEditRequestOriginsItem>;
-export const PoolsEditRequestOriginsList = /*@__PURE__*/ S.Array(
-  PoolsEditRequestOriginsItem,
-) as any as S.Schema<PoolsEditRequestOriginsList>;
-
 export interface PatchPoolRequest {
   /** Identifier. */
   accountId: string;
   poolId: string;
-  /** A list of regions from which to run health checks. Null means every Cloudflare data center. */
-  checkRegions?: PoolsEditRequestCheckRegionsList;
-  /** A human-readable description of the pool. */
-  description?: string;
-  /** Whether to enable (the default) or disable this pool. Disabled pools will not receive traffic and are excluded from health checks. Disabling a pool will cause any load balancers using it to failover to the next pool (if any). */
-  enabled?: boolean;
-  /** The latitude of the data center containing the origins used in this pool in decimal degrees. If this is set, longitude must also be set. */
-  latitude?: number;
-  /** Configures load shedding policies and percentages for the pool. */
-  loadShedding?: PoolsEditRequestLoadShedding;
-  /** The longitude of the data center containing the origins used in this pool in decimal degrees. If this is set, latitude must also be set. */
-  longitude?: number;
-  /** The minimum number of origins that must be healthy for this pool to serve traffic. If the number of healthy origins falls below this number, the pool will be marked unhealthy and will failover to the next available pool. */
-  minimumOrigins?: number;
-  /** The ID of the Monitor to use for checking the health of origins within this pool. */
-  monitor?: string;
-  /** The ID of the Monitor Group to use for checking the health of origins within this pool. */
-  monitorGroup?: string;
-  /** A short name (tag) for the pool. Only alphanumeric characters, hyphens, and underscores are allowed. */
-  name?: string;
-  /** This field is now deprecated. It has been moved to Cloudflare's Centralized Notification service https://developers.cloudflare.com/fundamentals/notifications/. The email address to send health status notifications to. This can be an individual mailbox or a mailing list. Multiple emails can be supplied as a comma delimited list. */
-  notificationEmail?: string;
-  /** Filter pool and origin health notifications by resource type or health status. Use null to reset. */
-  notificationFilter?: PoolsCreateRequestNotificationFilter;
-  /** Configures origin steering for the pool. Controls how origins are selected for new sessions and traffic without session affinity. */
-  originSteering?: PoolsEditRequestOriginSteering;
-  /** The list of origins within this pool. Traffic directed at this pool is balanced across all currently healthy origins, provided the pool itself is healthy. */
-  origins?: PoolsEditRequestOriginsList;
 }
 export const PatchPoolRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     poolId: S.String.pipe(T.Label("pool_id")),
-    checkRegions: S.optional(
-      PoolsEditRequestCheckRegionsList.pipe(T.Body("check_regions")),
-    ),
-    description: S.optional(S.String),
-    enabled: S.optional(S.Boolean),
-    latitude: S.optional(S.Number),
-    loadShedding: S.optional(
-      PoolsEditRequestLoadShedding.pipe(T.Body("load_shedding")),
-    ),
-    longitude: S.optional(S.Number),
-    minimumOrigins: S.optional(S.Number.pipe(T.Body("minimum_origins"))),
-    monitor: S.optional(S.String),
-    monitorGroup: S.optional(S.String.pipe(T.Body("monitor_group"))),
-    name: S.optional(S.String),
-    notificationEmail: S.optional(S.String.pipe(T.Body("notification_email"))),
-    notificationFilter: S.optional(
-      PoolsCreateRequestNotificationFilter.pipe(T.Body("notification_filter")),
-    ),
-    originSteering: S.optional(
-      PoolsEditRequestOriginSteering.pipe(T.Body("origin_steering")),
-    ),
-    origins: S.optional(PoolsEditRequestOriginsList),
   })
     .pipe(
       T.Http({
@@ -6449,28 +6154,22 @@ export const PatchPoolRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "PatchPoolRequest",
 }) as any as S.Schema<PatchPoolRequest>;
 
-export type PoolsEditResponseCheckRegionsItem =
-  | "WNAM"
-  | "ENAM"
-  | "WEU"
-  | "EEU"
-  | "NSAM"
-  | "SSAM"
-  | "OC"
-  | "ME"
-  | "NAF"
-  | "SAF"
-  | "SAS"
-  | "SEAS"
-  | "NEAS"
-  | "ALL_REGIONS";
-export const PoolsEditResponseCheckRegionsItem = /*@__PURE__*/ S.String;
-
-export type PoolsEditResponseCheckRegionsList =
-  Array<PoolsEditResponseCheckRegionsItem>;
+export type PoolsEditResponseCheckRegionsList = Array<unknown>;
 export const PoolsEditResponseCheckRegionsList = /*@__PURE__*/ S.Array(
-  PoolsEditResponseCheckRegionsItem,
+  S.Unknown,
 ) as any as S.Schema<PoolsEditResponseCheckRegionsList>;
+
+export type PoolsEditResponseHealthSourcesItem =
+  | "local"
+  | "regional"
+  | "global";
+export const PoolsEditResponseHealthSourcesItem = /*@__PURE__*/ S.String;
+
+export type PoolsEditResponseHealthSourcesList =
+  Array<PoolsEditResponseHealthSourcesItem>;
+export const PoolsEditResponseHealthSourcesList = /*@__PURE__*/ S.Array(
+  PoolsEditResponseHealthSourcesItem,
+) as any as S.Schema<PoolsEditResponseHealthSourcesList>;
 
 export type PoolsEditResponseLoadSheddingDefaultPolicy = "random" | "hash";
 export const PoolsEditResponseLoadSheddingDefaultPolicy =
@@ -6523,6 +6222,11 @@ export type PoolsEditResponseNotificationFilterOrigin =
 export const PoolsEditResponseNotificationFilterOrigin =
   PoolsBulkEditResultItemNotificationFilterOrigin;
 
+export type PoolsEditResponseNotificationFilterPool =
+  PoolsBulkEditResultItemNotificationFilterOrigin;
+export const PoolsEditResponseNotificationFilterPool =
+  PoolsBulkEditResultItemNotificationFilterOrigin;
+
 export type PoolsEditResponseNotificationFilter =
   PoolsBulkEditResultItemNotificationFilter;
 export const PoolsEditResponseNotificationFilter =
@@ -6536,7 +6240,7 @@ export type PoolsEditResponseOriginSteeringPolicy =
 export const PoolsEditResponseOriginSteeringPolicy = /*@__PURE__*/ S.String;
 
 export interface PoolsEditResponseOriginSteering {
-  /** The type of origin steering policy to use. */
+  /** The type of origin steering policy to use. "random" : Select an origin randomly. "hash" : Select an origin by computing a hash over the CF-Connecting-IP address. "least_outstanding_requests" : Select an origin by taking into consideration origin weights, as well as each origin’s number of outstanding requests. Origins with more pending requests are weighted proportionately less relative to others. "least_connections" : Select an origin by taking into consideration origin weights, as well as each origin’s number of open connections. Origins with more open connections are weighted proportionately less relative to others. Supported for HTTP/1 and HTTP/2 connections. */
   policy?: PoolsEditResponseOriginSteeringPolicy | null;
 }
 export const PoolsEditResponseOriginSteering = /*@__PURE__*/ S.suspend(() =>
@@ -6553,7 +6257,7 @@ export const PoolsEditResponseOriginsItemHeaderHostList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<PoolsEditResponseOriginsItemHeaderHostList>;
 
 export interface PoolsEditResponseOriginsItemHeader {
-  /** The 'Host' header allows to override the hostname set in the HTTP request. Current support is 1 'Host' header override per origin. */
+  /** The ‘Host’ header allows to override the hostname set in the HTTP request. Current support is 1 ‘Host’ header override per origin. */
   host?: PoolsEditResponseOriginsItemHeaderHostList | null;
 }
 export const PoolsEditResponseOriginsItemHeader = /*@__PURE__*/ S.suspend(() =>
@@ -6575,7 +6279,7 @@ export interface PoolsEditResponseOriginsItem {
   enabled?: boolean | null;
   /** Whether to flatten CNAME records for this origin, resolving them to A/AAAA records before returning to the client. When true (the default), the director resolves CNAME addresses to their underlying A/AAAA records. When false, the origin address is returned as a raw CNAME record without resolution. This setting mirrors the DNS API record flatten_cname setting. */
   flattenCname?: boolean | null;
-  /** The request header is used to pass additional information with an HTTP request. Currently supported header is 'Host'. */
+  /** The request header is used to pass additional information with an HTTP request. Currently supported header is ‘Host’. */
   header?: PoolsEditResponseOriginsItemHeader | null;
   /** A human-identifiable name for the origin. */
   name?: string | null;
@@ -6583,7 +6287,7 @@ export interface PoolsEditResponseOriginsItem {
   port?: number | null;
   /** The virtual network subnet ID the origin belongs in. Virtual network must also belong to the account. */
   virtualNetworkId?: string | null;
-  /** The weight of this origin relative to other origins in the pool. Based on the configured weight the total traffic is distributed among origins within the pool. */
+  /** The weight of this origin relative to other origins in the pool. Based on the configured weight the total traffic is distributed among origins within the pool. origin_steering.policy="least_outstanding_requests" : Use weight to scale the origin’s outstanding requests. origin_steering.policy="least_connections" : Use weight to scale the origin’s open connections. */
   weight?: number | null;
 }
 export const PoolsEditResponseOriginsItem = /*@__PURE__*/ S.suspend(() =>
@@ -6621,6 +6325,8 @@ export interface PatchPoolResponse {
   disabledAt?: string | null;
   /** Whether to enable (the default) or disable this pool. Disabled pools will not receive traffic and are excluded from health checks. Disabling a pool will cause any load balancers using it to failover to the next pool (if any). */
   enabled?: boolean | null;
+  /** A list of health sources, ordered from highest to lowest priority, used to evaluate individual origin health and overall pool health. The load balancer uses the first source that has data and falls back to the next. Currently accepted values are null or the exact array [“regional”, “global”]; any other combination is rejected. Null (the default) behaves like [“local”, “global”]. [“regional”, “global”] makes each region steer on its own health, falling back to the global decision when a region has no fresh data. Setting regional requires at least one region in check_regions. */
+  healthSources?: PoolsEditResponseHealthSourcesList | null;
   /** The latitude of the data center containing the origins used in this pool in decimal degrees. If this is set, longitude must also be set. */
   latitude?: number | null;
   /** Configures load shedding policies and percentages for the pool. */
@@ -6638,7 +6344,7 @@ export interface PatchPoolResponse {
   name?: string | null;
   /** List of networks where Load Balancer or Pool is enabled. */
   networks?: PoolsEditResponseNetworksList | null;
-  /** This field is now deprecated. It has been moved to Cloudflare's Centralized Notification service https://developers.cloudflare.com/fundamentals/notifications/. The email address to send health status notifications to. This can be an individual mailbox or a mailing list. Multiple emails can be supplied as a comma delimited list. */
+  /** This field is now deprecated. It has been moved to Cloudflare’s Centralized Notification service https://developers.cloudflare.com/fundamentals/notifications/ . The email address to send health status notifications to. This can be an individual mailbox or a mailing list. Multiple emails can be supplied as a comma delimited list. */
   notificationEmail?: string | null;
   /** Filter pool and origin health notifications by resource type or health status. Use null to reset. */
   notificationFilter?: PoolsBulkEditResultItemNotificationFilter | null;
@@ -6657,6 +6363,11 @@ export const PatchPoolResponse = /*@__PURE__*/ S.suspend(() =>
     description: S.optional(S.NullOr(S.String)),
     disabledAt: S.optional(S.NullOr(S.String).pipe(T.Body("disabled_at"))),
     enabled: S.optional(S.NullOr(S.Boolean)),
+    healthSources: S.optional(
+      S.NullOr(PoolsEditResponseHealthSourcesList).pipe(
+        T.Body("health_sources"),
+      ),
+    ),
     latitude: S.optional(S.NullOr(S.Number)),
     loadShedding: S.optional(
       S.NullOr(PoolsEditResponseLoadShedding).pipe(T.Body("load_shedding")),
@@ -6687,469 +6398,34 @@ export const PatchPoolResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "PatchPoolResponse",
 }) as any as S.Schema<PatchPoolResponse>;
 
-export type UpdateRequestDefaultPoolsList = Array<string>;
-export const UpdateRequestDefaultPoolsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateRequestDefaultPoolsList>;
-
-export type UpdateRequestAdaptiveRouting = CreateRequestAdaptiveRouting;
-export const UpdateRequestAdaptiveRouting = CreateRequestAdaptiveRouting;
-
-export type UpdateRequestCountryPoolsMap = {
-  [key: string]: unknown | undefined;
-};
-export const UpdateRequestCountryPoolsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<UpdateRequestCountryPoolsMap>;
-
-export type UpdateRequestLocationStrategyMode = "pop" | "resolver_ip";
-export const UpdateRequestLocationStrategyMode = /*@__PURE__*/ S.String;
-
-export type UpdateRequestLocationStrategyPreferEcs =
-  | "always"
-  | "never"
-  | "proximity"
-  | "geo";
-export const UpdateRequestLocationStrategyPreferEcs = /*@__PURE__*/ S.String;
-
-export interface UpdateRequestLocationStrategy {
-  /** Determines the authoritative location when ECS is not preferred, does not exist in the request, or its GeoIP lookup is unsuccessful. */
-  mode?: UpdateRequestLocationStrategyMode | (string & {});
-  /** Whether the EDNS Client Subnet (ECS) GeoIP should be preferred as the authoritative location. */
-  preferEcs?: UpdateRequestLocationStrategyPreferEcs | (string & {});
-}
-export const UpdateRequestLocationStrategy = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    mode: S.optional(UpdateRequestLocationStrategyMode),
-    preferEcs: S.optional(
-      UpdateRequestLocationStrategyPreferEcs.pipe(T.Body("prefer_ecs")),
-    ),
-  }),
-).annotate({
-  identifier: "UpdateRequestLocationStrategy",
-}) as any as S.Schema<UpdateRequestLocationStrategy>;
-
-export type UpdateRequestNetworksList = Array<string>;
-export const UpdateRequestNetworksList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateRequestNetworksList>;
-
-export type UpdateRequestPopPoolsMap = { [key: string]: unknown | undefined };
-export const UpdateRequestPopPoolsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<UpdateRequestPopPoolsMap>;
-
-export type UpdateRequestRandomSteeringPoolWeightsMap = {
-  [key: string]: number | undefined;
-};
-export const UpdateRequestRandomSteeringPoolWeightsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Number,
-) as any as S.Schema<UpdateRequestRandomSteeringPoolWeightsMap>;
-
-export interface UpdateRequestRandomSteering {
-  /** The default weight for pools in the load balancer that are not specified in the pool_weights map. */
-  defaultWeight?: number;
-  /** A mapping of pool IDs to custom weights. The weight is relative to other pools in the load balancer. */
-  poolWeights?: UpdateRequestRandomSteeringPoolWeightsMap;
-}
-export const UpdateRequestRandomSteering = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    defaultWeight: S.optional(S.Number.pipe(T.Body("default_weight"))),
-    poolWeights: S.optional(
-      UpdateRequestRandomSteeringPoolWeightsMap.pipe(T.Body("pool_weights")),
-    ),
-  }),
-).annotate({
-  identifier: "UpdateRequestRandomSteering",
-}) as any as S.Schema<UpdateRequestRandomSteering>;
-
-export type UpdateRequestRegionPoolsMap = {
-  [key: string]: unknown | undefined;
-};
-export const UpdateRequestRegionPoolsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<UpdateRequestRegionPoolsMap>;
-
-export type UpdateRequestRulesItemFixedResponse =
-  CreateRequestRulesItemFixedResponse;
-export const UpdateRequestRulesItemFixedResponse =
-  CreateRequestRulesItemFixedResponse;
-
-export type UpdateRequestRulesItemOverridesCountryPoolsMap = {
-  [key: string]: unknown | undefined;
-};
-export const UpdateRequestRulesItemOverridesCountryPoolsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<UpdateRequestRulesItemOverridesCountryPoolsMap>;
-
-export type UpdateRequestRulesItemOverridesDefaultPoolsList = Array<string>;
-export const UpdateRequestRulesItemOverridesDefaultPoolsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<UpdateRequestRulesItemOverridesDefaultPoolsList>;
-
-export type UpdateRequestRulesItemOverridesPopPoolsMap = {
-  [key: string]: unknown | undefined;
-};
-export const UpdateRequestRulesItemOverridesPopPoolsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<UpdateRequestRulesItemOverridesPopPoolsMap>;
-
-export type UpdateRequestRulesItemOverridesRegionPoolsMap = {
-  [key: string]: unknown | undefined;
-};
-export const UpdateRequestRulesItemOverridesRegionPoolsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<UpdateRequestRulesItemOverridesRegionPoolsMap>;
-
-export type UpdateRequestRulesItemOverridesSessionAffinity =
-  | "none"
-  | "cookie"
-  | "ip_cookie"
-  | "header";
-export const UpdateRequestRulesItemOverridesSessionAffinity =
-  /*@__PURE__*/ S.String;
-
-export type UpdateRequestRulesItemOverridesSessionAffinityAttributesHeadersList =
-  Array<string>;
-export const UpdateRequestRulesItemOverridesSessionAffinityAttributesHeadersList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<UpdateRequestRulesItemOverridesSessionAffinityAttributesHeadersList>;
-
-export type UpdateRequestRulesItemOverridesSessionAffinityAttributesSamesite =
-  | "Auto"
-  | "Lax"
-  | "None"
-  | "Strict";
-export const UpdateRequestRulesItemOverridesSessionAffinityAttributesSamesite =
-  /*@__PURE__*/ S.String;
-
-export type UpdateRequestRulesItemOverridesSessionAffinityAttributesSecure =
-  | "Auto"
-  | "Always"
-  | "Never";
-export const UpdateRequestRulesItemOverridesSessionAffinityAttributesSecure =
-  /*@__PURE__*/ S.String;
-
-export type UpdateRequestRulesItemOverridesSessionAffinityAttributesZeroDowntimeFailover =
-  | "none"
-  | "temporary"
-  | "sticky";
-export const UpdateRequestRulesItemOverridesSessionAffinityAttributesZeroDowntimeFailover =
-  /*@__PURE__*/ S.String;
-
-export interface UpdateRequestRulesItemOverridesSessionAffinityAttributes {
-  /** Configures the drain duration in seconds. This field is only used when session affinity is enabled on the load balancer. */
-  drainDuration?: number;
-  /** Configures the names of HTTP headers to base session affinity on when header `session_affinity` is enabled. At least one HTTP header name must be provided. To specify the exact cookies to be used, include an item in the following format: `"cookie:<cookie-name-1>,<cookie-name-2>"` (example) where everything after the colon is a comma-separated list of cookie names. Providing only `"cookie"` will result in all cookies being used. The default max number of HTTP header names that can be provided depends on your plan: 5 for Enterprise, 1 for all other plans. */
-  headers?: UpdateRequestRulesItemOverridesSessionAffinityAttributesHeadersList;
-  /** When header `session_affinity` is enabled, this option can be used to specify how HTTP headers on load balancing requests will be used. The supported values are: - `"true"`: Load balancing requests must contain *all* of the HTTP headers specified by the `headers` session affinity attribute, otherwise sessions aren't created. - `"false"`: Load balancing requests must contain *at least one* of the HTTP headers specified by the `headers` session affinity attribute, otherwise sessions aren't created. */
-  requireAllHeaders?: boolean;
-  /** Configures the SameSite attribute on session affinity cookie. Value "Auto" will be translated to "Lax" or "None" depending if Always Use HTTPS is enabled. Note: when using value "None", the secure attribute can not be set to "Never". */
-  samesite?:
-    | UpdateRequestRulesItemOverridesSessionAffinityAttributesSamesite
-    | (string & {});
-  /** Configures the Secure attribute on session affinity cookie. Value "Always" indicates the Secure attribute will be set in the Set-Cookie header, "Never" indicates the Secure attribute will not be set, and "Auto" will set the Secure attribute depending if Always Use HTTPS is enabled. */
-  secure?:
-    | UpdateRequestRulesItemOverridesSessionAffinityAttributesSecure
-    | (string & {});
-  /** Configures the zero-downtime failover between origins within a pool when session affinity is enabled. This feature is currently incompatible with Argo, Tiered Cache, and Bandwidth Alliance. The supported values are: - `"none"`: No failover takes place for sessions pinned to the origin (default). - `"temporary"`: Traffic will be sent to another other healthy origin until the originally pinned origin is available; note that this can potentially result in heavy origin flapping. - `"sticky"`: The session affinity cookie is updated and subsequent requests are sent to the new origin. Note: Zero-downtime failover with sticky sessions is currently not supported for session affinity by header. */
-  zeroDowntimeFailover?:
-    | UpdateRequestRulesItemOverridesSessionAffinityAttributesZeroDowntimeFailover
-    | (string & {});
-}
-export const UpdateRequestRulesItemOverridesSessionAffinityAttributes =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      drainDuration: S.optional(S.Number.pipe(T.Body("drain_duration"))),
-      headers: S.optional(
-        UpdateRequestRulesItemOverridesSessionAffinityAttributesHeadersList,
-      ),
-      requireAllHeaders: S.optional(
-        S.Boolean.pipe(T.Body("require_all_headers")),
-      ),
-      samesite: S.optional(
-        UpdateRequestRulesItemOverridesSessionAffinityAttributesSamesite,
-      ),
-      secure: S.optional(
-        UpdateRequestRulesItemOverridesSessionAffinityAttributesSecure,
-      ),
-      zeroDowntimeFailover: S.optional(
-        UpdateRequestRulesItemOverridesSessionAffinityAttributesZeroDowntimeFailover.pipe(
-          T.Body("zero_downtime_failover"),
-        ),
-      ),
-    }),
-  ).annotate({
-    identifier: "UpdateRequestRulesItemOverridesSessionAffinityAttributes",
-  }) as any as S.Schema<UpdateRequestRulesItemOverridesSessionAffinityAttributes>;
-
-export type UpdateRequestRulesItemOverridesSteeringPolicy =
-  | "off"
-  | "geo"
-  | "random"
-  | "dynamic_latency"
-  | "proximity"
-  | "least_outstanding_requests"
-  | "least_connections"
-  | "";
-export const UpdateRequestRulesItemOverridesSteeringPolicy =
-  /*@__PURE__*/ S.String;
-
-export interface UpdateRequestRulesItemOverrides {
-  /** Controls features that modify the routing of requests to pools and origins in response to dynamic conditions, such as during the interval between active health monitoring requests. For example, zero-downtime failover occurs immediately when an origin becomes unavailable due to HTTP 521, 522, or 523 response codes. If there is another healthy origin in the same pool, the request is retried once against this alternate origin. */
-  adaptiveRouting?: CreateRequestAdaptiveRouting;
-  /** A mapping of country codes to a list of pool IDs (ordered by their failover priority) for the given country. Any country not explicitly defined will fall back to using the corresponding region_pool mapping if it exists else to default_pools. */
-  countryPools?: UpdateRequestRulesItemOverridesCountryPoolsMap;
-  /** A list of pool IDs ordered by their failover priority. Pools defined here are used by default, or when region_pools are not configured for a given region. */
-  defaultPools?: UpdateRequestRulesItemOverridesDefaultPoolsList;
-  /** The pool ID to use when all other pools are detected as unhealthy. */
-  fallbackPool?: string;
-  /** Controls location-based steering for non-proxied requests. See `steering_policy` to learn how steering is affected. */
-  locationStrategy?: UpdateRequestLocationStrategy;
-  /** Enterprise only: A mapping of Cloudflare PoP identifiers to a list of pool IDs (ordered by their failover priority) for the PoP (datacenter). Any PoPs not explicitly defined will fall back to using the corresponding country_pool, then region_pool mapping if it exists else to default_pools. */
-  popPools?: UpdateRequestRulesItemOverridesPopPoolsMap;
-  /** Configures pool weights. */
-  randomSteering?: UpdateRequestRandomSteering;
-  /** A mapping of region codes to a list of pool IDs (ordered by their failover priority) for the given region. Any regions not explicitly defined will fall back to using default_pools. */
-  regionPools?: UpdateRequestRulesItemOverridesRegionPoolsMap;
-  /** Specifies the type of session affinity the load balancer should use unless specified as `"none"`. The supported types are: - `"cookie"`: On the first request to a proxied load balancer, a cookie is generated, encoding information of which origin the request will be forwarded to. Subsequent requests, by the same client to the same load balancer, will be sent to the origin server the cookie encodes, for the duration of the cookie and as long as the origin server remains healthy. If the cookie has expired or the origin server is unhealthy, then a new origin server is calculated and used. - `"ip_cookie"`: Behaves the same as `"cookie"` except the initial origin selection is stable and based on the client's ip address. - `"header"`: On the first request to a proxied load balancer, a session key based on the configured HTTP headers (see `session_affinity_attributes.headers`) is generated, encoding the request headers used for storing in the load balancer session state which origin the request will be forwarded to. Subsequent requests to the load balancer with the same headers will be sent to the same origin server, for the duration of the session and as long as the origin server remains healthy. If the session has been idle for the duration of `session_affinity_ttl` seconds or the origin server is unhealthy, then a new origin server is calculated and used. See `headers` in `session_affinity_attributes` for additional required configuration. */
-  sessionAffinity?:
-    | UpdateRequestRulesItemOverridesSessionAffinity
-    | (string & {});
-  /** Configures attributes for session affinity. */
-  sessionAffinityAttributes?: UpdateRequestRulesItemOverridesSessionAffinityAttributes;
-  /** Time, in seconds, until a client's session expires after being created. Once the expiry time has been reached, subsequent requests may get sent to a different origin server. The accepted ranges per `session_affinity` policy are: - `"cookie"` / `"ip_cookie"`: The current default of 23 hours will be used unless explicitly set. The accepted range of values is between [1800, 604800]. - `"header"`: The current default of 1800 seconds will be used unless explicitly set. The accepted range of values is between [30, 3600]. Note: With session affinity by header, sessions only expire after they haven't been used for the number of seconds specified. */
-  sessionAffinityTtl?: number;
-  /** Steering Policy for this load balancer. */
-  steeringPolicy?:
-    | UpdateRequestRulesItemOverridesSteeringPolicy
-    | (string & {});
-  /** Time to live (TTL) of the DNS entry for the IP address returned by this load balancer. This only applies to gray-clouded (unproxied) load balancers. */
-  ttl?: number;
-}
-export const UpdateRequestRulesItemOverrides = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    adaptiveRouting: S.optional(
-      CreateRequestAdaptiveRouting.pipe(T.Body("adaptive_routing")),
-    ),
-    countryPools: S.optional(
-      UpdateRequestRulesItemOverridesCountryPoolsMap.pipe(
-        T.Body("country_pools"),
-      ),
-    ),
-    defaultPools: S.optional(
-      UpdateRequestRulesItemOverridesDefaultPoolsList.pipe(
-        T.Body("default_pools"),
-      ),
-    ),
-    fallbackPool: S.optional(S.String.pipe(T.Body("fallback_pool"))),
-    locationStrategy: S.optional(
-      UpdateRequestLocationStrategy.pipe(T.Body("location_strategy")),
-    ),
-    popPools: S.optional(
-      UpdateRequestRulesItemOverridesPopPoolsMap.pipe(T.Body("pop_pools")),
-    ),
-    randomSteering: S.optional(
-      UpdateRequestRandomSteering.pipe(T.Body("random_steering")),
-    ),
-    regionPools: S.optional(
-      UpdateRequestRulesItemOverridesRegionPoolsMap.pipe(
-        T.Body("region_pools"),
-      ),
-    ),
-    sessionAffinity: S.optional(
-      UpdateRequestRulesItemOverridesSessionAffinity.pipe(
-        T.Body("session_affinity"),
-      ),
-    ),
-    sessionAffinityAttributes: S.optional(
-      UpdateRequestRulesItemOverridesSessionAffinityAttributes.pipe(
-        T.Body("session_affinity_attributes"),
-      ),
-    ),
-    sessionAffinityTtl: S.optional(
-      S.Number.pipe(T.Body("session_affinity_ttl")),
-    ),
-    steeringPolicy: S.optional(
-      UpdateRequestRulesItemOverridesSteeringPolicy.pipe(
-        T.Body("steering_policy"),
-      ),
-    ),
-    ttl: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "UpdateRequestRulesItemOverrides",
-}) as any as S.Schema<UpdateRequestRulesItemOverrides>;
-
-export interface UpdateRequestRulesItem {
-  /** The condition expressions to evaluate. If the condition evaluates to true, the overrides or fixed_response in this rule will be applied. An empty condition is always true. For more details on condition expressions, please see https://developers.cloudflare.com/load-balancing/understand-basics/load-balancing-rules/expressions. */
-  condition?: string;
-  /** Disable this specific rule. It will no longer be evaluated by this load balancer. */
-  disabled?: boolean;
-  /** A collection of fields used to directly respond to the eyeball instead of routing to a pool. If a fixed_response is supplied the rule will be marked as terminates. */
-  fixedResponse?: CreateRequestRulesItemFixedResponse;
-  /** Name of this rule. Only used for human readability. */
-  name?: string;
-  /** A collection of overrides to apply to the load balancer when this rule's condition is true. All fields are optional. */
-  overrides?: UpdateRequestRulesItemOverrides;
-  /** The order in which rules should be executed in relation to each other. Lower values are executed first. Values do not need to be sequential. If no value is provided for any rule the array order of the rules field will be used to assign a priority. */
-  priority?: number;
-  /** If this rule's condition is true, this causes rule evaluation to stop after processing this rule. */
-  terminates?: boolean;
-}
-export const UpdateRequestRulesItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    condition: S.optional(S.String),
-    disabled: S.optional(S.Boolean),
-    fixedResponse: S.optional(
-      CreateRequestRulesItemFixedResponse.pipe(T.Body("fixed_response")),
-    ),
-    name: S.optional(S.String),
-    overrides: S.optional(UpdateRequestRulesItemOverrides),
-    priority: S.optional(S.Number),
-    terminates: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "UpdateRequestRulesItem",
-}) as any as S.Schema<UpdateRequestRulesItem>;
-
-export type UpdateRequestRulesList = Array<UpdateRequestRulesItem>;
-export const UpdateRequestRulesList = /*@__PURE__*/ S.Array(
-  UpdateRequestRulesItem,
-) as any as S.Schema<UpdateRequestRulesList>;
-
-export interface UpdateLoadBalancerRequest {
-  zoneId: string;
+export interface UpdateForAccountRequest {
+  /** Identifier. */
+  accountId: string;
   loadBalancerId: string;
-  /** A list of pool IDs ordered by their failover priority. Pools defined here are used by default, or when region_pools are not configured for a given region. */
-  defaultPools: UpdateRequestDefaultPoolsList;
-  /** The pool ID to use when all other pools are detected as unhealthy. */
-  fallbackPool: string;
-  /** The DNS hostname to associate with your Load Balancer. If this hostname already exists as a DNS record in Cloudflare's DNS, the Load Balancer will take precedence and the DNS record will not be used. */
-  name: string;
-  /** Controls features that modify the routing of requests to pools and origins in response to dynamic conditions, such as during the interval between active health monitoring requests. For example, zero-downtime failover occurs immediately when an origin becomes unavailable due to HTTP 521, 522, or 523 response codes. If there is another healthy origin in the same pool, the request is retried once against this alternate origin. */
-  adaptiveRouting?: CreateRequestAdaptiveRouting;
-  /** A mapping of country codes to a list of pool IDs (ordered by their failover priority) for the given country. Any country not explicitly defined will fall back to using the corresponding region_pool mapping if it exists else to default_pools. */
-  countryPools?: UpdateRequestCountryPoolsMap;
-  /** Object description. */
-  description?: string;
-  /** Whether to enable (the default) this load balancer. */
-  enabled?: boolean;
-  /** Controls location-based steering for non-proxied requests. See `steering_policy` to learn how steering is affected. */
-  locationStrategy?: UpdateRequestLocationStrategy;
-  /** List of networks where Load Balancer or Pool is enabled. */
-  networks?: UpdateRequestNetworksList;
-  /** Enterprise only: A mapping of Cloudflare PoP identifiers to a list of pool IDs (ordered by their failover priority) for the PoP (datacenter). Any PoPs not explicitly defined will fall back to using the corresponding country_pool, then region_pool mapping if it exists else to default_pools. */
-  popPools?: UpdateRequestPopPoolsMap;
-  /** Whether the hostname should be gray clouded (false) or orange clouded (true). */
-  proxied?: boolean;
-  /** Configures pool weights. */
-  randomSteering?: UpdateRequestRandomSteering;
-  /** A mapping of region codes to a list of pool IDs (ordered by their failover priority) for the given region. Any regions not explicitly defined will fall back to using default_pools. */
-  regionPools?: UpdateRequestRegionPoolsMap;
-  /** BETA Field Not General Access: A list of rules for this load balancer to execute. */
-  rules?: UpdateRequestRulesList;
-  /** Specifies the type of session affinity the load balancer should use unless specified as `"none"`. The supported types are: - `"cookie"`: On the first request to a proxied load balancer, a cookie is generated, encoding information of which origin the request will be forwarded to. Subsequent requests, by the same client to the same load balancer, will be sent to the origin server the cookie encodes, for the duration of the cookie and as long as the origin server remains healthy. If the cookie has expired or the origin server is unhealthy, then a new origin server is calculated and used. - `"ip_cookie"`: Behaves the same as `"cookie"` except the initial origin selection is stable and based on the client's ip address. - `"header"`: On the first request to a proxied load balancer, a session key based on the configured HTTP headers (see `session_affinity_attributes.headers`) is generated, encoding the request headers used for storing in the load balancer session state which origin the request will be forwarded to. Subsequent requests to the load balancer with the same headers will be sent to the same origin server, for the duration of the session and as long as the origin server remains healthy. If the session has been idle for the duration of `session_affinity_ttl` seconds or the origin server is unhealthy, then a new origin server is calculated and used. See `headers` in `session_affinity_attributes` for additional required configuration. */
-  sessionAffinity?:
-    | UpdateRequestRulesItemOverridesSessionAffinity
-    | (string & {});
-  /** Configures attributes for session affinity. */
-  sessionAffinityAttributes?: UpdateRequestRulesItemOverridesSessionAffinityAttributes;
-  /** Time, in seconds, until a client's session expires after being created. Once the expiry time has been reached, subsequent requests may get sent to a different origin server. The accepted ranges per `session_affinity` policy are: - `"cookie"` / `"ip_cookie"`: The current default of 23 hours will be used unless explicitly set. The accepted range of values is between [1800, 604800]. - `"header"`: The current default of 1800 seconds will be used unless explicitly set. The accepted range of values is between [30, 3600]. Note: With session affinity by header, sessions only expire after they haven't been used for the number of seconds specified. */
-  sessionAffinityTtl?: number;
-  /** Steering Policy for this load balancer. */
-  steeringPolicy?:
-    | UpdateRequestRulesItemOverridesSteeringPolicy
-    | (string & {});
-  /** Time to live (TTL) of the DNS entry for the IP address returned by this load balancer. This only applies to gray-clouded (unproxied) load balancers. */
-  ttl?: number;
 }
-export const UpdateLoadBalancerRequest = /*@__PURE__*/ S.suspend(() =>
+export const UpdateForAccountRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    zoneId: S.String.pipe(T.Label("zone_id")),
+    accountId: S.String.pipe(T.Label("account_id")),
     loadBalancerId: S.String.pipe(T.Label("load_balancer_id")),
-    defaultPools: UpdateRequestDefaultPoolsList.pipe(T.Body("default_pools")),
-    fallbackPool: S.String.pipe(T.Body("fallback_pool")),
-    name: S.String,
-    adaptiveRouting: S.optional(
-      CreateRequestAdaptiveRouting.pipe(T.Body("adaptive_routing")),
-    ),
-    countryPools: S.optional(
-      UpdateRequestCountryPoolsMap.pipe(T.Body("country_pools")),
-    ),
-    description: S.optional(S.String),
-    enabled: S.optional(S.Boolean),
-    locationStrategy: S.optional(
-      UpdateRequestLocationStrategy.pipe(T.Body("location_strategy")),
-    ),
-    networks: S.optional(UpdateRequestNetworksList),
-    popPools: S.optional(UpdateRequestPopPoolsMap.pipe(T.Body("pop_pools"))),
-    proxied: S.optional(S.Boolean),
-    randomSteering: S.optional(
-      UpdateRequestRandomSteering.pipe(T.Body("random_steering")),
-    ),
-    regionPools: S.optional(
-      UpdateRequestRegionPoolsMap.pipe(T.Body("region_pools")),
-    ),
-    rules: S.optional(UpdateRequestRulesList),
-    sessionAffinity: S.optional(
-      UpdateRequestRulesItemOverridesSessionAffinity.pipe(
-        T.Body("session_affinity"),
-      ),
-    ),
-    sessionAffinityAttributes: S.optional(
-      UpdateRequestRulesItemOverridesSessionAffinityAttributes.pipe(
-        T.Body("session_affinity_attributes"),
-      ),
-    ),
-    sessionAffinityTtl: S.optional(
-      S.Number.pipe(T.Body("session_affinity_ttl")),
-    ),
-    steeringPolicy: S.optional(
-      UpdateRequestRulesItemOverridesSteeringPolicy.pipe(
-        T.Body("steering_policy"),
-      ),
-    ),
-    ttl: S.optional(S.Number),
   })
     .pipe(
       T.Http({
         method: "PUT",
-        uri: "/zones/{zone_id}/load_balancers/{load_balancer_id}",
+        uri: "/accounts/{account_id}/load_balancers/{load_balancer_id}",
         code: 200,
       }),
     )
     .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
-  identifier: "UpdateLoadBalancerRequest",
-}) as any as S.Schema<UpdateLoadBalancerRequest>;
+  identifier: "UpdateForAccountRequest",
+}) as any as S.Schema<UpdateForAccountRequest>;
 
 export type UpdateResponseAdaptiveRouting = CreateResponseAdaptiveRouting;
 export const UpdateResponseAdaptiveRouting = CreateResponseAdaptiveRouting;
 
-export type UpdateResponseCountryPoolsMap = {
-  [key: string]: unknown | undefined;
-};
-export const UpdateResponseCountryPoolsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<UpdateResponseCountryPoolsMap>;
-
-export type UpdateResponseDefaultPoolsList = Array<string>;
+export type UpdateResponseDefaultPoolsList = Array<unknown>;
 export const UpdateResponseDefaultPoolsList = /*@__PURE__*/ S.Array(
-  S.String,
+  S.Unknown,
 ) as any as S.Schema<UpdateResponseDefaultPoolsList>;
 
 export type UpdateResponseLocationStrategyMode = "pop" | "resolver_ip";
@@ -7163,9 +6439,9 @@ export type UpdateResponseLocationStrategyPreferEcs =
 export const UpdateResponseLocationStrategyPreferEcs = /*@__PURE__*/ S.String;
 
 export interface UpdateResponseLocationStrategy {
-  /** Determines the authoritative location when ECS is not preferred, does not exist in the request, or its GeoIP lookup is unsuccessful. */
+  /** Determines the authoritative location when ECS is not preferred, does not exist in the request, or its GeoIP lookup is unsuccessful. "pop" : Use the Cloudflare PoP location. "resolver_ip" : Use the DNS resolver GeoIP location. If the GeoIP lookup is unsuccessful, use the Cloudflare PoP location. */
   mode?: UpdateResponseLocationStrategyMode | null;
-  /** Whether the EDNS Client Subnet (ECS) GeoIP should be preferred as the authoritative location. */
+  /** Whether the EDNS Client Subnet (ECS) GeoIP should be preferred as the authoritative location. "always" : Always prefer ECS. "never" : Never prefer ECS. "proximity" : Prefer ECS only when steering_policy="proximity" . "geo" : Prefer ECS only when steering_policy="geo" . */
   preferEcs?: UpdateResponseLocationStrategyPreferEcs | null;
 }
 export const UpdateResponseLocationStrategy = /*@__PURE__*/ S.suspend(() =>
@@ -7186,95 +6462,201 @@ export const UpdateResponseNetworksList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<UpdateResponseNetworksList>;
 
-export type UpdateResponsePopPoolsMap = { [key: string]: unknown | undefined };
-export const UpdateResponsePopPoolsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<UpdateResponsePopPoolsMap>;
+export type UpdateResponsePoolSetsItemFixedResponse =
+  CreateResponsePoolSetsItemFixedResponse;
+export const UpdateResponsePoolSetsItemFixedResponse =
+  CreateResponsePoolSetsItemFixedResponse;
 
-export type UpdateResponseRandomSteeringPoolWeightsMap = {
-  [key: string]: number | undefined;
-};
-export const UpdateResponseRandomSteeringPoolWeightsMap =
-  /*@__PURE__*/ S.Record(
+export type UpdateResponsePoolSetsItemMatchTopologyCountriesList =
+  Array<string>;
+export const UpdateResponsePoolSetsItemMatchTopologyCountriesList =
+  /*@__PURE__*/ S.Array(
     S.String,
-    S.Number,
-  ) as any as S.Schema<UpdateResponseRandomSteeringPoolWeightsMap>;
+  ) as any as S.Schema<UpdateResponsePoolSetsItemMatchTopologyCountriesList>;
 
-export interface UpdateResponseRandomSteering {
-  /** The default weight for pools in the load balancer that are not specified in the pool_weights map. */
-  defaultWeight?: number | null;
-  /** A mapping of pool IDs to custom weights. The weight is relative to other pools in the load balancer. */
-  poolWeights?: UpdateResponseRandomSteeringPoolWeightsMap | null;
+export type UpdateResponsePoolSetsItemMatchTopologyPopsList = Array<string>;
+export const UpdateResponsePoolSetsItemMatchTopologyPopsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<UpdateResponsePoolSetsItemMatchTopologyPopsList>;
+
+export type UpdateResponsePoolSetsItemMatchTopologyRegionsList = Array<string>;
+export const UpdateResponsePoolSetsItemMatchTopologyRegionsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<UpdateResponsePoolSetsItemMatchTopologyRegionsList>;
+
+export interface UpdateResponsePoolSetsItemMatchTopology {
+  /** A list of ISO 3166-1 alpha-2 country codes. Matches when the request’s country is in this list. */
+  countries?: UpdateResponsePoolSetsItemMatchTopologyCountriesList | null;
+  /** A list of Cloudflare PoP codes. Matches when the request’s PoP is in this list. */
+  pops?: UpdateResponsePoolSetsItemMatchTopologyPopsList | null;
+  /** A list of Cloudflare region codes (e.g. WNAM , ENAM , WEU ). Matches when the request’s region is in this list. */
+  regions?: UpdateResponsePoolSetsItemMatchTopologyRegionsList | null;
 }
-export const UpdateResponseRandomSteering = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    defaultWeight: S.optional(
-      S.NullOr(S.Number).pipe(T.Body("default_weight")),
-    ),
-    poolWeights: S.optional(
-      S.NullOr(UpdateResponseRandomSteeringPoolWeightsMap).pipe(
-        T.Body("pool_weights"),
+export const UpdateResponsePoolSetsItemMatchTopology = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      countries: S.optional(
+        S.NullOr(UpdateResponsePoolSetsItemMatchTopologyCountriesList),
       ),
+      pops: S.optional(
+        S.NullOr(UpdateResponsePoolSetsItemMatchTopologyPopsList),
+      ),
+      regions: S.optional(
+        S.NullOr(UpdateResponsePoolSetsItemMatchTopologyRegionsList),
+      ),
+    }),
+).annotate({
+  identifier: "UpdateResponsePoolSetsItemMatchTopology",
+}) as any as S.Schema<UpdateResponsePoolSetsItemMatchTopology>;
+
+export interface UpdateResponsePoolSetsItemMatch {
+  /** When true, matches every request. Cannot be combined with topology . */
+  default?: boolean | null;
+  /** Matches requests by location. Set any combination of pops , countries , and regions (at least one is required); a request matches when its value appears in any populated list (e.g. regions: ["WNAM"] with countries: ["US"] matches a request in either WNAM or the US). */
+  topology?: UpdateResponsePoolSetsItemMatchTopology | null;
+}
+export const UpdateResponsePoolSetsItemMatch = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    default: S.optional(S.NullOr(S.Boolean)),
+    topology: S.optional(S.NullOr(UpdateResponsePoolSetsItemMatchTopology)),
+  }),
+).annotate({
+  identifier: "UpdateResponsePoolSetsItemMatch",
+}) as any as S.Schema<UpdateResponsePoolSetsItemMatch>;
+
+export type UpdateResponsePoolSetsItemOverridesPoolsList = Array<string>;
+export const UpdateResponsePoolSetsItemOverridesPoolsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<UpdateResponsePoolSetsItemOverridesPoolsList>;
+
+export interface UpdateResponsePoolSetsItemOverrides {
+  /** The pool ID to use when all other pools are detected as unhealthy. */
+  fallbackPool?: string | null;
+  /** The default weight for pools not listed in pool_weights . The declarative alternative to random_steering.default_weight ; mutually exclusive with random_steering . */
+  poolDefaultWeight?: number | null;
+  /** A mapping of pool IDs to custom weights, relative to the other pools. The declarative alternative to random_steering.pool_weights ; mutually exclusive with random_steering . */
+  poolWeights?: unknown | null;
+  /** A flat, ordered list of pool IDs to route the matched audience to. Replaces the resolved topology with exactly these pools. Mutually exclusive with fixed_response . */
+  pools?: UpdateResponsePoolSetsItemOverridesPoolsList | null;
+  /** Steering Policy for this load balancer. "off" : Use default_pools . "geo" : Use region_pools / country_pools / pop_pools . For non-proxied requests, the country for country_pools is determined by location_strategy . "random" : Select a pool randomly. "dynamic_latency" : Use round trip time to select the closest pool in default_pools (requires pool health checks). "proximity" : Use the pools’ latitude and longitude to select the closest pool using the Cloudflare PoP location for proxied requests or the location determined by location_strategy for non-proxied requests. "least_outstanding_requests" : Select a pool by taking into consideration random_steering weights, as well as each pool’s number of outstanding requests. Pools with more pending requests are weighted proportionately less relative to others. "least_connections" : Select a pool by taking into consideration random_steering weights, as well as each pool’s number of open connections. Pools with more open connections are weighted proportionately less relative to others. Supported for HTTP/1 and HTTP/2 connections. "" : Will map to "geo" if you use region_pools / country_pools / pop_pools otherwise "off" . */
+  steeringPolicy?: unknown | null;
+}
+export const UpdateResponsePoolSetsItemOverrides = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    fallbackPool: S.optional(S.NullOr(S.String).pipe(T.Body("fallback_pool"))),
+    poolDefaultWeight: S.optional(
+      S.NullOr(S.Number).pipe(T.Body("pool_default_weight")),
+    ),
+    poolWeights: S.optional(S.NullOr(S.Unknown).pipe(T.Body("pool_weights"))),
+    pools: S.optional(S.NullOr(UpdateResponsePoolSetsItemOverridesPoolsList)),
+    steeringPolicy: S.optional(
+      S.NullOr(S.Unknown).pipe(T.Body("steering_policy")),
     ),
   }),
 ).annotate({
-  identifier: "UpdateResponseRandomSteering",
-}) as any as S.Schema<UpdateResponseRandomSteering>;
+  identifier: "UpdateResponsePoolSetsItemOverrides",
+}) as any as S.Schema<UpdateResponsePoolSetsItemOverrides>;
 
-export type UpdateResponseRegionPoolsMap = {
-  [key: string]: unknown | undefined;
-};
-export const UpdateResponseRegionPoolsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<UpdateResponseRegionPoolsMap>;
+export interface UpdateResponsePoolSetsItem {
+  /** Disable this specific pool set. It will no longer be evaluated. */
+  disabled?: boolean | null;
+  /** A collection of fields used to directly respond to the client instead of routing to a pool. When supplied on a rule, that rule stops further rule evaluation. */
+  fixedResponse?: CreateResponsePoolSetsItemFixedResponse | null;
+  /** Determines which requests a pool set applies to. Set topology to match by location or default: true to match all requests; the two are mutually exclusive. A pool set with no match matches all requests. */
+  match?: UpdateResponsePoolSetsItemMatch | null;
+  /** A human-readable name for this pool set. */
+  name?: string | null;
+  /** The behavior a pool set applies when its match succeeds. A strict subset of a rule’s overrides : a pool set replaces the topology wholesale with a flat pool list ( pools ), so only the declarative pool-routing fields plus fallback_pool and steering_policy are settable. All fields are optional. */
+  overrides?: UpdateResponsePoolSetsItemOverrides | null;
+}
+export const UpdateResponsePoolSetsItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    disabled: S.optional(S.NullOr(S.Boolean)),
+    fixedResponse: S.optional(
+      S.NullOr(CreateResponsePoolSetsItemFixedResponse).pipe(
+        T.Body("fixed_response"),
+      ),
+    ),
+    match: S.optional(S.NullOr(UpdateResponsePoolSetsItemMatch)),
+    name: S.optional(S.NullOr(S.String)),
+    overrides: S.optional(S.NullOr(UpdateResponsePoolSetsItemOverrides)),
+  }),
+).annotate({
+  identifier: "UpdateResponsePoolSetsItem",
+}) as any as S.Schema<UpdateResponsePoolSetsItem>;
+
+export type UpdateResponsePoolSetsList = Array<UpdateResponsePoolSetsItem>;
+export const UpdateResponsePoolSetsList = /*@__PURE__*/ S.Array(
+  UpdateResponsePoolSetsItem,
+) as any as S.Schema<UpdateResponsePoolSetsList>;
+
+export type UpdateResponseRandomSteering = CreateResponseRandomSteering;
+export const UpdateResponseRandomSteering = CreateResponseRandomSteering;
 
 export type UpdateResponseRulesItemFixedResponse =
-  CreateResponseRulesItemFixedResponse;
+  CreateResponsePoolSetsItemFixedResponse;
 export const UpdateResponseRulesItemFixedResponse =
-  CreateResponseRulesItemFixedResponse;
+  CreateResponsePoolSetsItemFixedResponse;
 
-export type UpdateResponseRulesItemOverridesCountryPoolsMap = {
-  [key: string]: unknown | undefined;
-};
-export const UpdateResponseRulesItemOverridesCountryPoolsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<UpdateResponseRulesItemOverridesCountryPoolsMap>;
+export type UpdateResponseRulesItemOverridesAdaptiveRouting =
+  CreateResponseAdaptiveRouting;
+export const UpdateResponseRulesItemOverridesAdaptiveRouting =
+  CreateResponseAdaptiveRouting;
 
-export type UpdateResponseRulesItemOverridesDefaultPoolsList = Array<string>;
+export type UpdateResponseRulesItemOverridesDefaultPoolsList = Array<unknown>;
 export const UpdateResponseRulesItemOverridesDefaultPoolsList =
   /*@__PURE__*/ S.Array(
-    S.String,
+    S.Unknown,
   ) as any as S.Schema<UpdateResponseRulesItemOverridesDefaultPoolsList>;
 
-export type UpdateResponseRulesItemOverridesPopPoolsMap = {
-  [key: string]: unknown | undefined;
-};
-export const UpdateResponseRulesItemOverridesPopPoolsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<UpdateResponseRulesItemOverridesPopPoolsMap>;
-
-export type UpdateResponseRulesItemOverridesRegionPoolsMap = {
-  [key: string]: unknown | undefined;
-};
-export const UpdateResponseRulesItemOverridesRegionPoolsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<UpdateResponseRulesItemOverridesRegionPoolsMap>;
-
-export type UpdateResponseRulesItemOverridesSessionAffinity =
-  | "none"
-  | "cookie"
-  | "ip_cookie"
-  | "header";
-export const UpdateResponseRulesItemOverridesSessionAffinity =
+export type UpdateResponseRulesItemOverridesLocationStrategyMode =
+  | "pop"
+  | "resolver_ip";
+export const UpdateResponseRulesItemOverridesLocationStrategyMode =
   /*@__PURE__*/ S.String;
+
+export type UpdateResponseRulesItemOverridesLocationStrategyPreferEcs =
+  | "always"
+  | "never"
+  | "proximity"
+  | "geo";
+export const UpdateResponseRulesItemOverridesLocationStrategyPreferEcs =
+  /*@__PURE__*/ S.String;
+
+export interface UpdateResponseRulesItemOverridesLocationStrategy {
+  /** Determines the authoritative location when ECS is not preferred, does not exist in the request, or its GeoIP lookup is unsuccessful. "pop" : Use the Cloudflare PoP location. "resolver_ip" : Use the DNS resolver GeoIP location. If the GeoIP lookup is unsuccessful, use the Cloudflare PoP location. */
+  mode?: UpdateResponseRulesItemOverridesLocationStrategyMode | null;
+  /** Whether the EDNS Client Subnet (ECS) GeoIP should be preferred as the authoritative location. "always" : Always prefer ECS. "never" : Never prefer ECS. "proximity" : Prefer ECS only when steering_policy="proximity" . "geo" : Prefer ECS only when steering_policy="geo" . */
+  preferEcs?: UpdateResponseRulesItemOverridesLocationStrategyPreferEcs | null;
+}
+export const UpdateResponseRulesItemOverridesLocationStrategy =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      mode: S.optional(
+        S.NullOr(UpdateResponseRulesItemOverridesLocationStrategyMode),
+      ),
+      preferEcs: S.optional(
+        S.NullOr(
+          UpdateResponseRulesItemOverridesLocationStrategyPreferEcs,
+        ).pipe(T.Body("prefer_ecs")),
+      ),
+    }),
+  ).annotate({
+    identifier: "UpdateResponseRulesItemOverridesLocationStrategy",
+  }) as any as S.Schema<UpdateResponseRulesItemOverridesLocationStrategy>;
+
+export type UpdateResponseRulesItemOverridesPoolsList = Array<string>;
+export const UpdateResponseRulesItemOverridesPoolsList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<UpdateResponseRulesItemOverridesPoolsList>;
+
+export type UpdateResponseRulesItemOverridesRandomSteering =
+  CreateResponseRandomSteering;
+export const UpdateResponseRulesItemOverridesRandomSteering =
+  CreateResponseRandomSteering;
 
 export type UpdateResponseRulesItemOverridesSessionAffinityAttributesHeadersList =
   Array<string>;
@@ -7308,15 +6690,15 @@ export const UpdateResponseRulesItemOverridesSessionAffinityAttributesZeroDownti
 export interface UpdateResponseRulesItemOverridesSessionAffinityAttributes {
   /** Configures the drain duration in seconds. This field is only used when session affinity is enabled on the load balancer. */
   drainDuration?: number | null;
-  /** Configures the names of HTTP headers to base session affinity on when header `session_affinity` is enabled. At least one HTTP header name must be provided. To specify the exact cookies to be used, include an item in the following format: `"cookie:<cookie-name-1>,<cookie-name-2>"` (example) where everything after the colon is a comma-separated list of cookie names. Providing only `"cookie"` will result in all cookies being used. The default max number of HTTP header names that can be provided depends on your plan: 5 for Enterprise, 1 for all other plans. */
+  /** Configures the names of HTTP headers to base session affinity on when header session_affinity is enabled. At least one HTTP header name must be provided. To specify the exact cookies to be used, include an item in the following format: "cookie:&#x3C;cookie-name-1>,&#x3C;cookie-name-2>" (example) where everything after the colon is a comma-separated list of cookie names. Providing only "cookie" will result in all cookies being used. The default max number of HTTP header names that can be provided depends on your plan: 5 for Enterprise, 1 for all other plans. */
   headers?: UpdateResponseRulesItemOverridesSessionAffinityAttributesHeadersList | null;
-  /** When header `session_affinity` is enabled, this option can be used to specify how HTTP headers on load balancing requests will be used. The supported values are: - `"true"`: Load balancing requests must contain *all* of the HTTP headers specified by the `headers` session affinity attribute, otherwise sessions aren't created. - `"false"`: Load balancing requests must contain *at least one* of the HTTP headers specified by the `headers` session affinity attribute, otherwise sessions aren't created. */
+  /** When header session_affinity is enabled, this option can be used to specify how HTTP headers on load balancing requests will be used. The supported values are: - "true" : Load balancing requests must contain all of the HTTP headers specified by the headers session affinity attribute, otherwise sessions aren’t created. - "false" : Load balancing requests must contain at least one of the HTTP headers specified by the headers session affinity attribute, otherwise sessions aren’t created. */
   requireAllHeaders?: boolean | null;
-  /** Configures the SameSite attribute on session affinity cookie. Value "Auto" will be translated to "Lax" or "None" depending if Always Use HTTPS is enabled. Note: when using value "None", the secure attribute can not be set to "Never". */
+  /** Configures the SameSite attribute on session affinity cookie. Value “Auto” will be translated to “Lax” or “None” depending if Always Use HTTPS is enabled. Note: when using value “None”, the secure attribute can not be set to “Never”. */
   samesite?: UpdateResponseRulesItemOverridesSessionAffinityAttributesSamesite | null;
-  /** Configures the Secure attribute on session affinity cookie. Value "Always" indicates the Secure attribute will be set in the Set-Cookie header, "Never" indicates the Secure attribute will not be set, and "Auto" will set the Secure attribute depending if Always Use HTTPS is enabled. */
+  /** Configures the Secure attribute on session affinity cookie. Value “Always” indicates the Secure attribute will be set in the Set-Cookie header, “Never” indicates the Secure attribute will not be set, and “Auto” will set the Secure attribute depending if Always Use HTTPS is enabled. */
   secure?: UpdateResponseRulesItemOverridesSessionAffinityAttributesSecure | null;
-  /** Configures the zero-downtime failover between origins within a pool when session affinity is enabled. This feature is currently incompatible with Argo, Tiered Cache, and Bandwidth Alliance. The supported values are: - `"none"`: No failover takes place for sessions pinned to the origin (default). - `"temporary"`: Traffic will be sent to another other healthy origin until the originally pinned origin is available; note that this can potentially result in heavy origin flapping. - `"sticky"`: The session affinity cookie is updated and subsequent requests are sent to the new origin. Note: Zero-downtime failover with sticky sessions is currently not supported for session affinity by header. */
+  /** Configures the zero-downtime failover between origins within a pool when session affinity is enabled. This feature is currently incompatible with Argo, Tiered Cache, and Bandwidth Alliance. The supported values are: - "none" : No failover takes place for sessions pinned to the origin (default). - "temporary" : Traffic will be sent to another other healthy origin until the originally pinned origin is available; note that this can potentially result in heavy origin flapping. - "sticky" : The session affinity cookie is updated and subsequent requests are sent to the new origin. Note: Zero-downtime failover with sticky sessions is currently not supported for session affinity by header. */
   zeroDowntimeFailover?: UpdateResponseRulesItemOverridesSessionAffinityAttributesZeroDowntimeFailover | null;
 }
 export const UpdateResponseRulesItemOverridesSessionAffinityAttributes =
@@ -7353,43 +6735,37 @@ export const UpdateResponseRulesItemOverridesSessionAffinityAttributes =
     identifier: "UpdateResponseRulesItemOverridesSessionAffinityAttributes",
   }) as any as S.Schema<UpdateResponseRulesItemOverridesSessionAffinityAttributes>;
 
-export type UpdateResponseRulesItemOverridesSteeringPolicy =
-  | "off"
-  | "geo"
-  | "random"
-  | "dynamic_latency"
-  | "proximity"
-  | "least_outstanding_requests"
-  | "least_connections"
-  | "";
-export const UpdateResponseRulesItemOverridesSteeringPolicy =
-  /*@__PURE__*/ S.String;
-
 export interface UpdateResponseRulesItemOverrides {
   /** Controls features that modify the routing of requests to pools and origins in response to dynamic conditions, such as during the interval between active health monitoring requests. For example, zero-downtime failover occurs immediately when an origin becomes unavailable due to HTTP 521, 522, or 523 response codes. If there is another healthy origin in the same pool, the request is retried once against this alternate origin. */
   adaptiveRouting?: CreateResponseAdaptiveRouting | null;
   /** A mapping of country codes to a list of pool IDs (ordered by their failover priority) for the given country. Any country not explicitly defined will fall back to using the corresponding region_pool mapping if it exists else to default_pools. */
-  countryPools?: UpdateResponseRulesItemOverridesCountryPoolsMap | null;
+  countryPools?: unknown | null;
   /** A list of pool IDs ordered by their failover priority. Pools defined here are used by default, or when region_pools are not configured for a given region. */
   defaultPools?: UpdateResponseRulesItemOverridesDefaultPoolsList | null;
   /** The pool ID to use when all other pools are detected as unhealthy. */
   fallbackPool?: string | null;
-  /** Controls location-based steering for non-proxied requests. See `steering_policy` to learn how steering is affected. */
-  locationStrategy?: UpdateResponseLocationStrategy | null;
+  /** Controls location-based steering for non-proxied requests. See steering_policy to learn how steering is affected. */
+  locationStrategy?: UpdateResponseRulesItemOverridesLocationStrategy | null;
+  /** The default weight for pools not listed in pool_weights . The declarative alternative to random_steering.default_weight ; mutually exclusive with random_steering . */
+  poolDefaultWeight?: number | null;
+  /** A mapping of pool IDs to custom weights, relative to the other pools. The declarative alternative to random_steering.pool_weights ; mutually exclusive with random_steering . */
+  poolWeights?: unknown | null;
+  /** A flat, ordered list of pool IDs to route the matched audience to. Replaces the resolved topology with exactly these pools. Mutually exclusive with fixed_response . */
+  pools?: UpdateResponseRulesItemOverridesPoolsList | null;
   /** Enterprise only: A mapping of Cloudflare PoP identifiers to a list of pool IDs (ordered by their failover priority) for the PoP (datacenter). Any PoPs not explicitly defined will fall back to using the corresponding country_pool, then region_pool mapping if it exists else to default_pools. */
-  popPools?: UpdateResponseRulesItemOverridesPopPoolsMap | null;
-  /** Configures pool weights. */
-  randomSteering?: UpdateResponseRandomSteering | null;
+  popPools?: unknown | null;
+  /** Configures pool weights. steering_policy="random" : A random pool is selected with probability proportional to pool weights. steering_policy="least_outstanding_requests" : Use pool weights to scale each pool’s outstanding requests. steering_policy="least_connections" : Use pool weights to scale each pool’s open connections. */
+  randomSteering?: CreateResponseRandomSteering | null;
   /** A mapping of region codes to a list of pool IDs (ordered by their failover priority) for the given region. Any regions not explicitly defined will fall back to using default_pools. */
-  regionPools?: UpdateResponseRulesItemOverridesRegionPoolsMap | null;
-  /** Specifies the type of session affinity the load balancer should use unless specified as `"none"`. The supported types are: - `"cookie"`: On the first request to a proxied load balancer, a cookie is generated, encoding information of which origin the request will be forwarded to. Subsequent requests, by the same client to the same load balancer, will be sent to the origin server the cookie encodes, for the duration of the cookie and as long as the origin server remains healthy. If the cookie has expired or the origin server is unhealthy, then a new origin server is calculated and used. - `"ip_cookie"`: Behaves the same as `"cookie"` except the initial origin selection is stable and based on the client's ip address. - `"header"`: On the first request to a proxied load balancer, a session key based on the configured HTTP headers (see `session_affinity_attributes.headers`) is generated, encoding the request headers used for storing in the load balancer session state which origin the request will be forwarded to. Subsequent requests to the load balancer with the same headers will be sent to the same origin server, for the duration of the session and as long as the origin server remains healthy. If the session has been idle for the duration of `session_affinity_ttl` seconds or the origin server is unhealthy, then a new origin server is calculated and used. See `headers` in `session_affinity_attributes` for additional required configuration. */
-  sessionAffinity?: UpdateResponseRulesItemOverridesSessionAffinity | null;
+  regionPools?: unknown | null;
+  /** Specifies the type of session affinity the load balancer should use unless specified as "none" . The supported types are: - "cookie" : On the first request to a proxied load balancer, a cookie is generated, encoding information of which origin the request will be forwarded to. Subsequent requests, by the same client to the same load balancer, will be sent to the origin server the cookie encodes, for the duration of the cookie and as long as the origin server remains healthy. If the cookie has expired or the origin server is unhealthy, then a new origin server is calculated and used. - "ip_cookie" : Behaves the same as "cookie" except the initial origin selection is stable and based on the client’s ip address. - "header" : On the first request to a proxied load balancer, a session key based on the configured HTTP headers (see session_affinity_attributes.headers ) is generated, encoding the request headers used for storing in the load balancer session state which origin the request will be forwarded to. Subsequent requests to the load balancer with the same headers will be sent to the same origin server, for the duration of the session and as long as the origin server remains healthy. If the session has been idle for the duration of session_affinity_ttl seconds or the origin server is unhealthy, then a new origin server is calculated and used. See headers in session_affinity_attributes for additional required configuration. */
+  sessionAffinity?: unknown | null;
   /** Configures attributes for session affinity. */
   sessionAffinityAttributes?: UpdateResponseRulesItemOverridesSessionAffinityAttributes | null;
-  /** Time, in seconds, until a client's session expires after being created. Once the expiry time has been reached, subsequent requests may get sent to a different origin server. The accepted ranges per `session_affinity` policy are: - `"cookie"` / `"ip_cookie"`: The current default of 23 hours will be used unless explicitly set. The accepted range of values is between [1800, 604800]. - `"header"`: The current default of 1800 seconds will be used unless explicitly set. The accepted range of values is between [30, 3600]. Note: With session affinity by header, sessions only expire after they haven't been used for the number of seconds specified. */
+  /** Time, in seconds, until a client’s session expires after being created. Once the expiry time has been reached, subsequent requests may get sent to a different origin server. The accepted ranges per session_affinity policy are: - "cookie" / "ip_cookie" : The current default of 23 hours will be used unless explicitly set. The accepted range of values is between [1800, 604800]. - "header" : The current default of 1800 seconds will be used unless explicitly set. The accepted range of values is between [30, 3600]. Note: With session affinity by header, sessions only expire after they haven’t been used for the number of seconds specified. */
   sessionAffinityTtl?: number | null;
-  /** Steering Policy for this load balancer. */
-  steeringPolicy?: UpdateResponseRulesItemOverridesSteeringPolicy | null;
+  /** Steering Policy for this load balancer. "off" : Use default_pools . "geo" : Use region_pools / country_pools / pop_pools . For non-proxied requests, the country for country_pools is determined by location_strategy . "random" : Select a pool randomly. "dynamic_latency" : Use round trip time to select the closest pool in default_pools (requires pool health checks). "proximity" : Use the pools’ latitude and longitude to select the closest pool using the Cloudflare PoP location for proxied requests or the location determined by location_strategy for non-proxied requests. "least_outstanding_requests" : Select a pool by taking into consideration random_steering weights, as well as each pool’s number of outstanding requests. Pools with more pending requests are weighted proportionately less relative to others. "least_connections" : Select a pool by taking into consideration random_steering weights, as well as each pool’s number of open connections. Pools with more open connections are weighted proportionately less relative to others. Supported for HTTP/1 and HTTP/2 connections. "" : Will map to "geo" if you use region_pools / country_pools / pop_pools otherwise "off" . */
+  steeringPolicy?: unknown | null;
   /** Time to live (TTL) of the DNS entry for the IP address returned by this load balancer. This only applies to gray-clouded (unproxied) load balancers. */
   ttl?: number | null;
 }
@@ -7398,11 +6774,7 @@ export const UpdateResponseRulesItemOverrides = /*@__PURE__*/ S.suspend(() =>
     adaptiveRouting: S.optional(
       S.NullOr(CreateResponseAdaptiveRouting).pipe(T.Body("adaptive_routing")),
     ),
-    countryPools: S.optional(
-      S.NullOr(UpdateResponseRulesItemOverridesCountryPoolsMap).pipe(
-        T.Body("country_pools"),
-      ),
-    ),
+    countryPools: S.optional(S.NullOr(S.Unknown).pipe(T.Body("country_pools"))),
     defaultPools: S.optional(
       S.NullOr(UpdateResponseRulesItemOverridesDefaultPoolsList).pipe(
         T.Body("default_pools"),
@@ -7410,27 +6782,22 @@ export const UpdateResponseRulesItemOverrides = /*@__PURE__*/ S.suspend(() =>
     ),
     fallbackPool: S.optional(S.NullOr(S.String).pipe(T.Body("fallback_pool"))),
     locationStrategy: S.optional(
-      S.NullOr(UpdateResponseLocationStrategy).pipe(
+      S.NullOr(UpdateResponseRulesItemOverridesLocationStrategy).pipe(
         T.Body("location_strategy"),
       ),
     ),
-    popPools: S.optional(
-      S.NullOr(UpdateResponseRulesItemOverridesPopPoolsMap).pipe(
-        T.Body("pop_pools"),
-      ),
+    poolDefaultWeight: S.optional(
+      S.NullOr(S.Number).pipe(T.Body("pool_default_weight")),
     ),
+    poolWeights: S.optional(S.NullOr(S.Unknown).pipe(T.Body("pool_weights"))),
+    pools: S.optional(S.NullOr(UpdateResponseRulesItemOverridesPoolsList)),
+    popPools: S.optional(S.NullOr(S.Unknown).pipe(T.Body("pop_pools"))),
     randomSteering: S.optional(
-      S.NullOr(UpdateResponseRandomSteering).pipe(T.Body("random_steering")),
+      S.NullOr(CreateResponseRandomSteering).pipe(T.Body("random_steering")),
     ),
-    regionPools: S.optional(
-      S.NullOr(UpdateResponseRulesItemOverridesRegionPoolsMap).pipe(
-        T.Body("region_pools"),
-      ),
-    ),
+    regionPools: S.optional(S.NullOr(S.Unknown).pipe(T.Body("region_pools"))),
     sessionAffinity: S.optional(
-      S.NullOr(UpdateResponseRulesItemOverridesSessionAffinity).pipe(
-        T.Body("session_affinity"),
-      ),
+      S.NullOr(S.Unknown).pipe(T.Body("session_affinity")),
     ),
     sessionAffinityAttributes: S.optional(
       S.NullOr(UpdateResponseRulesItemOverridesSessionAffinityAttributes).pipe(
@@ -7441,9 +6808,7 @@ export const UpdateResponseRulesItemOverrides = /*@__PURE__*/ S.suspend(() =>
       S.NullOr(S.Number).pipe(T.Body("session_affinity_ttl")),
     ),
     steeringPolicy: S.optional(
-      S.NullOr(UpdateResponseRulesItemOverridesSteeringPolicy).pipe(
-        T.Body("steering_policy"),
-      ),
+      S.NullOr(S.Unknown).pipe(T.Body("steering_policy")),
     ),
     ttl: S.optional(S.NullOr(S.Number)),
   }),
@@ -7452,19 +6817,19 @@ export const UpdateResponseRulesItemOverrides = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateResponseRulesItemOverrides>;
 
 export interface UpdateResponseRulesItem {
-  /** The condition expressions to evaluate. If the condition evaluates to true, the overrides or fixed_response in this rule will be applied. An empty condition is always true. For more details on condition expressions, please see https://developers.cloudflare.com/load-balancing/understand-basics/load-balancing-rules/expressions. */
+  /** The condition expressions to evaluate. If the condition evaluates to true, the overrides or fixed_response in this rule will be applied. An empty condition is always true. For more details on condition expressions, please see https://developers.cloudflare.com/load-balancing/understand-basics/load-balancing-rules/expressions . */
   condition?: string | null;
   /** Disable this specific rule. It will no longer be evaluated by this load balancer. */
   disabled?: boolean | null;
-  /** A collection of fields used to directly respond to the eyeball instead of routing to a pool. If a fixed_response is supplied the rule will be marked as terminates. */
-  fixedResponse?: CreateResponseRulesItemFixedResponse | null;
+  /** A collection of fields used to directly respond to the client instead of routing to a pool. When supplied on a rule, that rule stops further rule evaluation. */
+  fixedResponse?: CreateResponsePoolSetsItemFixedResponse | null;
   /** Name of this rule. Only used for human readability. */
   name?: string | null;
-  /** A collection of overrides to apply to the load balancer when this rule's condition is true. All fields are optional. */
+  /** A collection of overrides to apply when this rule’s condition (or a pool set’s match ) is true. All fields are optional. */
   overrides?: UpdateResponseRulesItemOverrides | null;
   /** The order in which rules should be executed in relation to each other. Lower values are executed first. Values do not need to be sequential. If no value is provided for any rule the array order of the rules field will be used to assign a priority. */
   priority?: number | null;
-  /** If this rule's condition is true, this causes rule evaluation to stop after processing this rule. */
+  /** If this rule’s condition is true, this causes rule evaluation to stop after processing this rule. */
   terminates?: boolean | null;
 }
 export const UpdateResponseRulesItem = /*@__PURE__*/ S.suspend(() =>
@@ -7472,7 +6837,7 @@ export const UpdateResponseRulesItem = /*@__PURE__*/ S.suspend(() =>
     condition: S.optional(S.NullOr(S.String)),
     disabled: S.optional(S.NullOr(S.Boolean)),
     fixedResponse: S.optional(
-      S.NullOr(CreateResponseRulesItemFixedResponse).pipe(
+      S.NullOr(CreateResponsePoolSetsItemFixedResponse).pipe(
         T.Body("fixed_response"),
       ),
     ),
@@ -7490,13 +6855,83 @@ export const UpdateResponseRulesList = /*@__PURE__*/ S.Array(
   UpdateResponseRulesItem,
 ) as any as S.Schema<UpdateResponseRulesList>;
 
+export type UpdateResponseSessionAffinityAttributesHeadersList = Array<string>;
+export const UpdateResponseSessionAffinityAttributesHeadersList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<UpdateResponseSessionAffinityAttributesHeadersList>;
+
+export type UpdateResponseSessionAffinityAttributesSamesite =
+  | "Auto"
+  | "Lax"
+  | "None"
+  | "Strict";
+export const UpdateResponseSessionAffinityAttributesSamesite =
+  /*@__PURE__*/ S.String;
+
+export type UpdateResponseSessionAffinityAttributesSecure =
+  | "Auto"
+  | "Always"
+  | "Never";
+export const UpdateResponseSessionAffinityAttributesSecure =
+  /*@__PURE__*/ S.String;
+
+export type UpdateResponseSessionAffinityAttributesZeroDowntimeFailover =
+  | "none"
+  | "temporary"
+  | "sticky";
+export const UpdateResponseSessionAffinityAttributesZeroDowntimeFailover =
+  /*@__PURE__*/ S.String;
+
+export interface UpdateResponseSessionAffinityAttributes {
+  /** Configures the drain duration in seconds. This field is only used when session affinity is enabled on the load balancer. */
+  drainDuration?: number | null;
+  /** Configures the names of HTTP headers to base session affinity on when header session_affinity is enabled. At least one HTTP header name must be provided. To specify the exact cookies to be used, include an item in the following format: "cookie:&#x3C;cookie-name-1>,&#x3C;cookie-name-2>" (example) where everything after the colon is a comma-separated list of cookie names. Providing only "cookie" will result in all cookies being used. The default max number of HTTP header names that can be provided depends on your plan: 5 for Enterprise, 1 for all other plans. */
+  headers?: UpdateResponseSessionAffinityAttributesHeadersList | null;
+  /** When header session_affinity is enabled, this option can be used to specify how HTTP headers on load balancing requests will be used. The supported values are: - "true" : Load balancing requests must contain all of the HTTP headers specified by the headers session affinity attribute, otherwise sessions aren’t created. - "false" : Load balancing requests must contain at least one of the HTTP headers specified by the headers session affinity attribute, otherwise sessions aren’t created. */
+  requireAllHeaders?: boolean | null;
+  /** Configures the SameSite attribute on session affinity cookie. Value “Auto” will be translated to “Lax” or “None” depending if Always Use HTTPS is enabled. Note: when using value “None”, the secure attribute can not be set to “Never”. */
+  samesite?: UpdateResponseSessionAffinityAttributesSamesite | null;
+  /** Configures the Secure attribute on session affinity cookie. Value “Always” indicates the Secure attribute will be set in the Set-Cookie header, “Never” indicates the Secure attribute will not be set, and “Auto” will set the Secure attribute depending if Always Use HTTPS is enabled. */
+  secure?: UpdateResponseSessionAffinityAttributesSecure | null;
+  /** Configures the zero-downtime failover between origins within a pool when session affinity is enabled. This feature is currently incompatible with Argo, Tiered Cache, and Bandwidth Alliance. The supported values are: - "none" : No failover takes place for sessions pinned to the origin (default). - "temporary" : Traffic will be sent to another other healthy origin until the originally pinned origin is available; note that this can potentially result in heavy origin flapping. - "sticky" : The session affinity cookie is updated and subsequent requests are sent to the new origin. Note: Zero-downtime failover with sticky sessions is currently not supported for session affinity by header. */
+  zeroDowntimeFailover?: UpdateResponseSessionAffinityAttributesZeroDowntimeFailover | null;
+}
+export const UpdateResponseSessionAffinityAttributes = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      drainDuration: S.optional(
+        S.NullOr(S.Number).pipe(T.Body("drain_duration")),
+      ),
+      headers: S.optional(
+        S.NullOr(UpdateResponseSessionAffinityAttributesHeadersList),
+      ),
+      requireAllHeaders: S.optional(
+        S.NullOr(S.Boolean).pipe(T.Body("require_all_headers")),
+      ),
+      samesite: S.optional(
+        S.NullOr(UpdateResponseSessionAffinityAttributesSamesite),
+      ),
+      secure: S.optional(
+        S.NullOr(UpdateResponseSessionAffinityAttributesSecure),
+      ),
+      zeroDowntimeFailover: S.optional(
+        S.NullOr(
+          UpdateResponseSessionAffinityAttributesZeroDowntimeFailover,
+        ).pipe(T.Body("zero_downtime_failover")),
+      ),
+    }),
+).annotate({
+  identifier: "UpdateResponseSessionAffinityAttributes",
+}) as any as S.Schema<UpdateResponseSessionAffinityAttributes>;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface UpdateLoadBalancerResponse {
+export interface UpdateResponse {
   id?: string | null;
   /** Controls features that modify the routing of requests to pools and origins in response to dynamic conditions, such as during the interval between active health monitoring requests. For example, zero-downtime failover occurs immediately when an origin becomes unavailable due to HTTP 521, 522, or 523 response codes. If there is another healthy origin in the same pool, the request is retried once against this alternate origin. */
   adaptiveRouting?: CreateResponseAdaptiveRouting | null;
   /** A mapping of country codes to a list of pool IDs (ordered by their failover priority) for the given country. Any country not explicitly defined will fall back to using the corresponding region_pool mapping if it exists else to default_pools. */
-  countryPools?: UpdateResponseCountryPoolsMap | null;
+  countryPools?: unknown | null;
   createdOn?: string | null;
   /** A list of pool IDs ordered by their failover priority. Pools defined here are used by default, or when region_pools are not configured for a given region. */
   defaultPools?: UpdateResponseDefaultPoolsList | null;
@@ -7506,44 +6941,44 @@ export interface UpdateLoadBalancerResponse {
   enabled?: boolean | null;
   /** The pool ID to use when all other pools are detected as unhealthy. */
   fallbackPool?: string | null;
-  /** Controls location-based steering for non-proxied requests. See `steering_policy` to learn how steering is affected. */
+  /** Controls location-based steering for non-proxied requests. See steering_policy to learn how steering is affected. */
   locationStrategy?: UpdateResponseLocationStrategy | null;
   modifiedOn?: string | null;
-  /** The DNS hostname to associate with your Load Balancer. If this hostname already exists as a DNS record in Cloudflare's DNS, the Load Balancer will take precedence and the DNS record will not be used. */
+  /** The DNS hostname to associate with your Load Balancer. If this hostname already exists as a DNS record in Cloudflare’s DNS, the Load Balancer will take precedence and the DNS record will not be used. */
   name?: string | null;
   /** List of networks where Load Balancer or Pool is enabled. */
   networks?: UpdateResponseNetworksList | null;
+  /** An optional list of pool sets, evaluated in array order with first match wins. Pool sets are independent from the standard steering fields ( region_pools / country_pools / pop_pools / default_pools / steering_policy / random_steering / fallback_pool / rules ). On a PATCH, an empty array ( pool_sets: [] ) clears all pool sets, while omitting the field leaves existing pool sets unchanged. */
+  poolSets?: UpdateResponsePoolSetsList | null;
   /** Enterprise only: A mapping of Cloudflare PoP identifiers to a list of pool IDs (ordered by their failover priority) for the PoP (datacenter). Any PoPs not explicitly defined will fall back to using the corresponding country_pool, then region_pool mapping if it exists else to default_pools. */
-  popPools?: UpdateResponsePopPoolsMap | null;
+  popPools?: unknown | null;
   /** Whether the hostname should be gray clouded (false) or orange clouded (true). */
   proxied?: boolean | null;
-  /** Configures pool weights. */
-  randomSteering?: UpdateResponseRandomSteering | null;
+  /** Configures pool weights. steering_policy="random" : A random pool is selected with probability proportional to pool weights. steering_policy="least_outstanding_requests" : Use pool weights to scale each pool’s outstanding requests. steering_policy="least_connections" : Use pool weights to scale each pool’s open connections. */
+  randomSteering?: CreateResponseRandomSteering | null;
   /** A mapping of region codes to a list of pool IDs (ordered by their failover priority) for the given region. Any regions not explicitly defined will fall back to using default_pools. */
-  regionPools?: UpdateResponseRegionPoolsMap | null;
+  regionPools?: unknown | null;
   /** BETA Field Not General Access: A list of rules for this load balancer to execute. */
   rules?: UpdateResponseRulesList | null;
-  /** Specifies the type of session affinity the load balancer should use unless specified as `"none"`. The supported types are: - `"cookie"`: On the first request to a proxied load balancer, a cookie is generated, encoding information of which origin the request will be forwarded to. Subsequent requests, by the same client to the same load balancer, will be sent to the origin server the cookie encodes, for the duration of the cookie and as long as the origin server remains healthy. If the cookie has expired or the origin server is unhealthy, then a new origin server is calculated and used. - `"ip_cookie"`: Behaves the same as `"cookie"` except the initial origin selection is stable and based on the client's ip address. - `"header"`: On the first request to a proxied load balancer, a session key based on the configured HTTP headers (see `session_affinity_attributes.headers`) is generated, encoding the request headers used for storing in the load balancer session state which origin the request will be forwarded to. Subsequent requests to the load balancer with the same headers will be sent to the same origin server, for the duration of the session and as long as the origin server remains healthy. If the session has been idle for the duration of `session_affinity_ttl` seconds or the origin server is unhealthy, then a new origin server is calculated and used. See `headers` in `session_affinity_attributes` for additional required configuration. */
-  sessionAffinity?: UpdateResponseRulesItemOverridesSessionAffinity | null;
+  /** Specifies the type of session affinity the load balancer should use unless specified as "none" . The supported types are: - "cookie" : On the first request to a proxied load balancer, a cookie is generated, encoding information of which origin the request will be forwarded to. Subsequent requests, by the same client to the same load balancer, will be sent to the origin server the cookie encodes, for the duration of the cookie and as long as the origin server remains healthy. If the cookie has expired or the origin server is unhealthy, then a new origin server is calculated and used. - "ip_cookie" : Behaves the same as "cookie" except the initial origin selection is stable and based on the client’s ip address. - "header" : On the first request to a proxied load balancer, a session key based on the configured HTTP headers (see session_affinity_attributes.headers ) is generated, encoding the request headers used for storing in the load balancer session state which origin the request will be forwarded to. Subsequent requests to the load balancer with the same headers will be sent to the same origin server, for the duration of the session and as long as the origin server remains healthy. If the session has been idle for the duration of session_affinity_ttl seconds or the origin server is unhealthy, then a new origin server is calculated and used. See headers in session_affinity_attributes for additional required configuration. */
+  sessionAffinity?: unknown | null;
   /** Configures attributes for session affinity. */
-  sessionAffinityAttributes?: UpdateResponseRulesItemOverridesSessionAffinityAttributes | null;
-  /** Time, in seconds, until a client's session expires after being created. Once the expiry time has been reached, subsequent requests may get sent to a different origin server. The accepted ranges per `session_affinity` policy are: - `"cookie"` / `"ip_cookie"`: The current default of 23 hours will be used unless explicitly set. The accepted range of values is between [1800, 604800]. - `"header"`: The current default of 1800 seconds will be used unless explicitly set. The accepted range of values is between [30, 3600]. Note: With session affinity by header, sessions only expire after they haven't been used for the number of seconds specified. */
+  sessionAffinityAttributes?: UpdateResponseSessionAffinityAttributes | null;
+  /** Time, in seconds, until a client’s session expires after being created. Once the expiry time has been reached, subsequent requests may get sent to a different origin server. The accepted ranges per session_affinity policy are: - "cookie" / "ip_cookie" : The current default of 23 hours will be used unless explicitly set. The accepted range of values is between [1800, 604800]. - "header" : The current default of 1800 seconds will be used unless explicitly set. The accepted range of values is between [30, 3600]. Note: With session affinity by header, sessions only expire after they haven’t been used for the number of seconds specified. */
   sessionAffinityTtl?: number | null;
-  /** Steering Policy for this load balancer. */
-  steeringPolicy?: UpdateResponseRulesItemOverridesSteeringPolicy | null;
+  /** Steering Policy for this load balancer. "off" : Use default_pools . "geo" : Use region_pools / country_pools / pop_pools . For non-proxied requests, the country for country_pools is determined by location_strategy . "random" : Select a pool randomly. "dynamic_latency" : Use round trip time to select the closest pool in default_pools (requires pool health checks). "proximity" : Use the pools’ latitude and longitude to select the closest pool using the Cloudflare PoP location for proxied requests or the location determined by location_strategy for non-proxied requests. "least_outstanding_requests" : Select a pool by taking into consideration random_steering weights, as well as each pool’s number of outstanding requests. Pools with more pending requests are weighted proportionately less relative to others. "least_connections" : Select a pool by taking into consideration random_steering weights, as well as each pool’s number of open connections. Pools with more open connections are weighted proportionately less relative to others. Supported for HTTP/1 and HTTP/2 connections. "" : Will map to "geo" if you use region_pools / country_pools / pop_pools otherwise "off" . */
+  steeringPolicy?: unknown | null;
   /** Time to live (TTL) of the DNS entry for the IP address returned by this load balancer. This only applies to gray-clouded (unproxied) load balancers. */
   ttl?: number | null;
   zoneName?: string | null;
 }
-export const UpdateLoadBalancerResponse = /*@__PURE__*/ S.suspend(() =>
+export const UpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.NullOr(S.String)),
     adaptiveRouting: S.optional(
       S.NullOr(CreateResponseAdaptiveRouting).pipe(T.Body("adaptive_routing")),
     ),
-    countryPools: S.optional(
-      S.NullOr(UpdateResponseCountryPoolsMap).pipe(T.Body("country_pools")),
-    ),
+    countryPools: S.optional(S.NullOr(S.Unknown).pipe(T.Body("country_pools"))),
     createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
     defaultPools: S.optional(
       S.NullOr(UpdateResponseDefaultPoolsList).pipe(T.Body("default_pools")),
@@ -7559,24 +6994,21 @@ export const UpdateLoadBalancerResponse = /*@__PURE__*/ S.suspend(() =>
     modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
     name: S.optional(S.NullOr(S.String)),
     networks: S.optional(S.NullOr(UpdateResponseNetworksList)),
-    popPools: S.optional(
-      S.NullOr(UpdateResponsePopPoolsMap).pipe(T.Body("pop_pools")),
+    poolSets: S.optional(
+      S.NullOr(UpdateResponsePoolSetsList).pipe(T.Body("pool_sets")),
     ),
+    popPools: S.optional(S.NullOr(S.Unknown).pipe(T.Body("pop_pools"))),
     proxied: S.optional(S.NullOr(S.Boolean)),
     randomSteering: S.optional(
-      S.NullOr(UpdateResponseRandomSteering).pipe(T.Body("random_steering")),
+      S.NullOr(CreateResponseRandomSteering).pipe(T.Body("random_steering")),
     ),
-    regionPools: S.optional(
-      S.NullOr(UpdateResponseRegionPoolsMap).pipe(T.Body("region_pools")),
-    ),
+    regionPools: S.optional(S.NullOr(S.Unknown).pipe(T.Body("region_pools"))),
     rules: S.optional(S.NullOr(UpdateResponseRulesList)),
     sessionAffinity: S.optional(
-      S.NullOr(UpdateResponseRulesItemOverridesSessionAffinity).pipe(
-        T.Body("session_affinity"),
-      ),
+      S.NullOr(S.Unknown).pipe(T.Body("session_affinity")),
     ),
     sessionAffinityAttributes: S.optional(
-      S.NullOr(UpdateResponseRulesItemOverridesSessionAffinityAttributes).pipe(
+      S.NullOr(UpdateResponseSessionAffinityAttributes).pipe(
         T.Body("session_affinity_attributes"),
       ),
     ),
@@ -7584,16 +7016,34 @@ export const UpdateLoadBalancerResponse = /*@__PURE__*/ S.suspend(() =>
       S.NullOr(S.Number).pipe(T.Body("session_affinity_ttl")),
     ),
     steeringPolicy: S.optional(
-      S.NullOr(UpdateResponseRulesItemOverridesSteeringPolicy).pipe(
-        T.Body("steering_policy"),
-      ),
+      S.NullOr(S.Unknown).pipe(T.Body("steering_policy")),
     ),
     ttl: S.optional(S.NullOr(S.Number)),
     zoneName: S.optional(S.NullOr(S.String).pipe(T.Body("zone_name"))),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+).annotate({ identifier: "UpdateResponse" }) as any as S.Schema<UpdateResponse>;
+
+export interface UpdateForZoneRequest {
+  /** Identifier. */
+  zoneId: string;
+  loadBalancerId: string;
+}
+export const UpdateForZoneRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    zoneId: S.String.pipe(T.Label("zone_id")),
+    loadBalancerId: S.String.pipe(T.Label("load_balancer_id")),
+  })
+    .pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/zones/{zone_id}/load_balancers/{load_balancer_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
-  identifier: "UpdateLoadBalancerResponse",
-}) as any as S.Schema<UpdateLoadBalancerResponse>;
+  identifier: "UpdateForZoneRequest",
+}) as any as S.Schema<UpdateForZoneRequest>;
 
 export type MonitorsUpdateRequestHeaderMap = {
   [key: string]: unknown | undefined;
@@ -7634,7 +7084,7 @@ export interface UpdateMonitorRequest {
   header?: MonitorsUpdateRequestHeaderMap;
   /** The interval between each health check. Shorter intervals may improve failover time, but will increase load on the origins as we check from multiple locations. */
   interval?: number;
-  /** The method to use for the health check. This defaults to 'GET' for HTTP/HTTPS based checks and 'connection_established' for TCP based health checks. */
+  /** The method to use for the health check. This defaults to ‘GET’ for HTTP/HTTPS based checks and ‘connection_established’ for TCP based health checks. */
   method?: string;
   /** The endpoint path you want to conduct a health check against. This parameter is only valid for HTTP and HTTPS monitors. */
   path?: string;
@@ -7646,7 +7096,7 @@ export interface UpdateMonitorRequest {
   retries?: number;
   /** The timeout (in seconds) before marking the health check as failed. */
   timeout?: number;
-  /** The protocol to use for the health check. Currently supported protocols are 'HTTP','HTTPS', 'TCP', 'ICMP-PING', 'UDP-ICMP', and 'SMTP'. */
+  /** The protocol to use for the health check. Currently supported protocols are ‘HTTP’,‘HTTPS’, ‘TCP’, ‘ICMP-PING’, ‘UDP-ICMP’, and ‘SMTP’. */
   type?: MonitorsUpdateRequestType | (string & {});
 }
 export const UpdateMonitorRequest = /*@__PURE__*/ S.suspend(() =>
@@ -7721,7 +7171,7 @@ export interface UpdateMonitorResponse {
   header?: MonitorsUpdateResponseHeaderMap | null;
   /** The interval between each health check. Shorter intervals may improve failover time, but will increase load on the origins as we check from multiple locations. */
   interval?: number | null;
-  /** The method to use for the health check. This defaults to 'GET' for HTTP/HTTPS based checks and 'connection_established' for TCP based health checks. */
+  /** The method to use for the health check. This defaults to ‘GET’ for HTTP/HTTPS based checks and ‘connection_established’ for TCP based health checks. */
   method?: string | null;
   modifiedOn?: string | null;
   /** The endpoint path you want to conduct a health check against. This parameter is only valid for HTTP and HTTPS monitors. */
@@ -7734,7 +7184,7 @@ export interface UpdateMonitorResponse {
   retries?: number | null;
   /** The timeout (in seconds) before marking the health check as failed. */
   timeout?: number | null;
-  /** The protocol to use for the health check. Currently supported protocols are 'HTTP','HTTPS', 'TCP', 'ICMP-PING', 'UDP-ICMP', and 'SMTP'. */
+  /** The protocol to use for the health check. Currently supported protocols are ‘HTTP’,‘HTTPS’, ‘TCP’, ‘ICMP-PING’, ‘UDP-ICMP’, and ‘SMTP’. */
   type?: MonitorsUpdateResponseType | null;
 }
 export const UpdateMonitorResponse = /*@__PURE__*/ S.suspend(() =>
@@ -7831,234 +7281,26 @@ export interface UpdateMonitorGroupResponse {
   description: string;
   /** List of monitors in this group */
   members: MonitorGroupsUpdateResponseMembersList;
-  /** The timestamp of when the monitor group was created */
-  createdOn?: string | null;
-  /** The timestamp of when the monitor group was last updated */
-  modifiedOn?: string | null;
 }
 export const UpdateMonitorGroupResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     description: S.String,
     members: MonitorGroupsUpdateResponseMembersList,
-    createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateMonitorGroupResponse",
 }) as any as S.Schema<UpdateMonitorGroupResponse>;
 
-export type PoolsUpdateRequestOriginsItemHeaderHostList = Array<string>;
-export const PoolsUpdateRequestOriginsItemHeaderHostList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<PoolsUpdateRequestOriginsItemHeaderHostList>;
-
-export interface PoolsUpdateRequestOriginsItemHeader {
-  /** The 'Host' header allows to override the hostname set in the HTTP request. Current support is 1 'Host' header override per origin. */
-  host?: PoolsUpdateRequestOriginsItemHeaderHostList;
-}
-export const PoolsUpdateRequestOriginsItemHeader = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    host: S.optional(
-      PoolsUpdateRequestOriginsItemHeaderHostList.pipe(T.Body("Host")),
-    ),
-  }),
-).annotate({
-  identifier: "PoolsUpdateRequestOriginsItemHeader",
-}) as any as S.Schema<PoolsUpdateRequestOriginsItemHeader>;
-
-export interface PoolsUpdateRequestOriginsItem {
-  /** The IP address (IPv4 or IPv6) of the origin, or its publicly addressable hostname. Hostnames entered here should resolve directly to the origin, and not be a hostname proxied by Cloudflare. To set an internal/reserved address, virtual_network_id must also be set. */
-  address?: string;
-  /** This field shows up only if the origin is disabled. This field is set with the time the origin was disabled. */
-  disabledAt?: string;
-  /** Whether to enable (the default) this origin within the pool. Disabled origins will not receive traffic and are excluded from health checks. The origin will only be disabled for the current pool. */
-  enabled?: boolean;
-  /** Whether to flatten CNAME records for this origin, resolving them to A/AAAA records before returning to the client. When true (the default), the director resolves CNAME addresses to their underlying A/AAAA records. When false, the origin address is returned as a raw CNAME record without resolution. This setting mirrors the DNS API record flatten_cname setting. */
-  flattenCname?: boolean;
-  /** The request header is used to pass additional information with an HTTP request. Currently supported header is 'Host'. */
-  header?: PoolsUpdateRequestOriginsItemHeader;
-  /** A human-identifiable name for the origin. */
-  name?: string;
-  /** The port for upstream connections. A value of 0 means the default port for the protocol will be used. */
-  port?: number;
-  /** The virtual network subnet ID the origin belongs in. Virtual network must also belong to the account. */
-  virtualNetworkId?: string;
-  /** The weight of this origin relative to other origins in the pool. Based on the configured weight the total traffic is distributed among origins within the pool. */
-  weight?: number;
-}
-export const PoolsUpdateRequestOriginsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    address: S.optional(S.String),
-    disabledAt: S.optional(S.String.pipe(T.Body("disabled_at"))),
-    enabled: S.optional(S.Boolean),
-    flattenCname: S.optional(S.Boolean.pipe(T.Body("flatten_cname"))),
-    header: S.optional(PoolsUpdateRequestOriginsItemHeader),
-    name: S.optional(S.String),
-    port: S.optional(S.Number),
-    virtualNetworkId: S.optional(S.String.pipe(T.Body("virtual_network_id"))),
-    weight: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "PoolsUpdateRequestOriginsItem",
-}) as any as S.Schema<PoolsUpdateRequestOriginsItem>;
-
-export type PoolsUpdateRequestOriginsList =
-  Array<PoolsUpdateRequestOriginsItem>;
-export const PoolsUpdateRequestOriginsList = /*@__PURE__*/ S.Array(
-  PoolsUpdateRequestOriginsItem,
-) as any as S.Schema<PoolsUpdateRequestOriginsList>;
-
-export type PoolsUpdateRequestCheckRegionsItem =
-  | "WNAM"
-  | "ENAM"
-  | "WEU"
-  | "EEU"
-  | "NSAM"
-  | "SSAM"
-  | "OC"
-  | "ME"
-  | "NAF"
-  | "SAF"
-  | "SAS"
-  | "SEAS"
-  | "NEAS"
-  | "ALL_REGIONS";
-export const PoolsUpdateRequestCheckRegionsItem = /*@__PURE__*/ S.String;
-
-export type PoolsUpdateRequestCheckRegionsList = Array<
-  PoolsUpdateRequestCheckRegionsItem | (string & {})
->;
-export const PoolsUpdateRequestCheckRegionsList = /*@__PURE__*/ S.Array(
-  PoolsUpdateRequestCheckRegionsItem,
-) as any as S.Schema<PoolsUpdateRequestCheckRegionsList>;
-
-export type PoolsUpdateRequestLoadSheddingDefaultPolicy = "random" | "hash";
-export const PoolsUpdateRequestLoadSheddingDefaultPolicy =
-  /*@__PURE__*/ S.String;
-
-export type PoolsUpdateRequestLoadSheddingSessionPolicy = "hash";
-export const PoolsUpdateRequestLoadSheddingSessionPolicy =
-  /*@__PURE__*/ S.String;
-
-export interface PoolsUpdateRequestLoadShedding {
-  /** The percent of traffic to shed from the pool, according to the default policy. Applies to new sessions and traffic without session affinity. */
-  defaultPercent?: number;
-  /** The default policy to use when load shedding. A random policy randomly sheds a given percent of requests. A hash policy computes a hash over the CF-Connecting-IP address and sheds all requests originating from a percent of IPs. */
-  defaultPolicy?: PoolsUpdateRequestLoadSheddingDefaultPolicy | (string & {});
-  /** The percent of existing sessions to shed from the pool, according to the session policy. */
-  sessionPercent?: number;
-  /** Only the hash policy is supported for existing sessions (to avoid exponential decay). */
-  sessionPolicy?: PoolsUpdateRequestLoadSheddingSessionPolicy | (string & {});
-}
-export const PoolsUpdateRequestLoadShedding = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    defaultPercent: S.optional(S.Number.pipe(T.Body("default_percent"))),
-    defaultPolicy: S.optional(
-      PoolsUpdateRequestLoadSheddingDefaultPolicy.pipe(
-        T.Body("default_policy"),
-      ),
-    ),
-    sessionPercent: S.optional(S.Number.pipe(T.Body("session_percent"))),
-    sessionPolicy: S.optional(
-      PoolsUpdateRequestLoadSheddingSessionPolicy.pipe(
-        T.Body("session_policy"),
-      ),
-    ),
-  }),
-).annotate({
-  identifier: "PoolsUpdateRequestLoadShedding",
-}) as any as S.Schema<PoolsUpdateRequestLoadShedding>;
-
-export type PoolsUpdateRequestNotificationFilterOrigin =
-  PoolsCreateRequestNotificationFilterOrigin;
-export const PoolsUpdateRequestNotificationFilterOrigin =
-  PoolsCreateRequestNotificationFilterOrigin;
-
-export type PoolsUpdateRequestNotificationFilter =
-  PoolsCreateRequestNotificationFilter;
-export const PoolsUpdateRequestNotificationFilter =
-  PoolsCreateRequestNotificationFilter;
-
-export type PoolsUpdateRequestOriginSteeringPolicy =
-  | "random"
-  | "hash"
-  | "least_outstanding_requests"
-  | "least_connections";
-export const PoolsUpdateRequestOriginSteeringPolicy = /*@__PURE__*/ S.String;
-
-export interface PoolsUpdateRequestOriginSteering {
-  /** The type of origin steering policy to use. */
-  policy?: PoolsUpdateRequestOriginSteeringPolicy | (string & {});
-}
-export const PoolsUpdateRequestOriginSteering = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    policy: S.optional(PoolsUpdateRequestOriginSteeringPolicy),
-  }),
-).annotate({
-  identifier: "PoolsUpdateRequestOriginSteering",
-}) as any as S.Schema<PoolsUpdateRequestOriginSteering>;
-
 export interface UpdatePoolRequest {
   /** Identifier. */
   accountId: string;
   poolId: string;
-  /** A short name (tag) for the pool. Only alphanumeric characters, hyphens, and underscores are allowed. */
-  name: string;
-  /** The list of origins within this pool. Traffic directed at this pool is balanced across all currently healthy origins, provided the pool itself is healthy. */
-  origins: PoolsUpdateRequestOriginsList;
-  /** A list of regions from which to run health checks. Null means every Cloudflare data center. */
-  checkRegions?: PoolsUpdateRequestCheckRegionsList;
-  /** A human-readable description of the pool. */
-  description?: string;
-  /** Whether to enable (the default) or disable this pool. Disabled pools will not receive traffic and are excluded from health checks. Disabling a pool will cause any load balancers using it to failover to the next pool (if any). */
-  enabled?: boolean;
-  /** The latitude of the data center containing the origins used in this pool in decimal degrees. If this is set, longitude must also be set. */
-  latitude?: number;
-  /** Configures load shedding policies and percentages for the pool. */
-  loadShedding?: PoolsUpdateRequestLoadShedding;
-  /** The longitude of the data center containing the origins used in this pool in decimal degrees. If this is set, latitude must also be set. */
-  longitude?: number;
-  /** The minimum number of origins that must be healthy for this pool to serve traffic. If the number of healthy origins falls below this number, the pool will be marked unhealthy and will failover to the next available pool. */
-  minimumOrigins?: number;
-  /** The ID of the Monitor to use for checking the health of origins within this pool. */
-  monitor?: string;
-  /** The ID of the Monitor Group to use for checking the health of origins within this pool. */
-  monitorGroup?: string;
-  /** This field is now deprecated. It has been moved to Cloudflare's Centralized Notification service https://developers.cloudflare.com/fundamentals/notifications/. The email address to send health status notifications to. This can be an individual mailbox or a mailing list. Multiple emails can be supplied as a comma delimited list. */
-  notificationEmail?: string;
-  /** Filter pool and origin health notifications by resource type or health status. Use null to reset. */
-  notificationFilter?: PoolsCreateRequestNotificationFilter;
-  /** Configures origin steering for the pool. Controls how origins are selected for new sessions and traffic without session affinity. */
-  originSteering?: PoolsUpdateRequestOriginSteering;
 }
 export const UpdatePoolRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     poolId: S.String.pipe(T.Label("pool_id")),
-    name: S.String,
-    origins: PoolsUpdateRequestOriginsList,
-    checkRegions: S.optional(
-      PoolsUpdateRequestCheckRegionsList.pipe(T.Body("check_regions")),
-    ),
-    description: S.optional(S.String),
-    enabled: S.optional(S.Boolean),
-    latitude: S.optional(S.Number),
-    loadShedding: S.optional(
-      PoolsUpdateRequestLoadShedding.pipe(T.Body("load_shedding")),
-    ),
-    longitude: S.optional(S.Number),
-    minimumOrigins: S.optional(S.Number.pipe(T.Body("minimum_origins"))),
-    monitor: S.optional(S.String),
-    monitorGroup: S.optional(S.String.pipe(T.Body("monitor_group"))),
-    notificationEmail: S.optional(S.String.pipe(T.Body("notification_email"))),
-    notificationFilter: S.optional(
-      PoolsCreateRequestNotificationFilter.pipe(T.Body("notification_filter")),
-    ),
-    originSteering: S.optional(
-      PoolsUpdateRequestOriginSteering.pipe(T.Body("origin_steering")),
-    ),
   })
     .pipe(
       T.Http({
@@ -8072,28 +7314,22 @@ export const UpdatePoolRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdatePoolRequest",
 }) as any as S.Schema<UpdatePoolRequest>;
 
-export type PoolsUpdateResponseCheckRegionsItem =
-  | "WNAM"
-  | "ENAM"
-  | "WEU"
-  | "EEU"
-  | "NSAM"
-  | "SSAM"
-  | "OC"
-  | "ME"
-  | "NAF"
-  | "SAF"
-  | "SAS"
-  | "SEAS"
-  | "NEAS"
-  | "ALL_REGIONS";
-export const PoolsUpdateResponseCheckRegionsItem = /*@__PURE__*/ S.String;
-
-export type PoolsUpdateResponseCheckRegionsList =
-  Array<PoolsUpdateResponseCheckRegionsItem>;
+export type PoolsUpdateResponseCheckRegionsList = Array<unknown>;
 export const PoolsUpdateResponseCheckRegionsList = /*@__PURE__*/ S.Array(
-  PoolsUpdateResponseCheckRegionsItem,
+  S.Unknown,
 ) as any as S.Schema<PoolsUpdateResponseCheckRegionsList>;
+
+export type PoolsUpdateResponseHealthSourcesItem =
+  | "local"
+  | "regional"
+  | "global";
+export const PoolsUpdateResponseHealthSourcesItem = /*@__PURE__*/ S.String;
+
+export type PoolsUpdateResponseHealthSourcesList =
+  Array<PoolsUpdateResponseHealthSourcesItem>;
+export const PoolsUpdateResponseHealthSourcesList = /*@__PURE__*/ S.Array(
+  PoolsUpdateResponseHealthSourcesItem,
+) as any as S.Schema<PoolsUpdateResponseHealthSourcesList>;
 
 export type PoolsUpdateResponseLoadSheddingDefaultPolicy = "random" | "hash";
 export const PoolsUpdateResponseLoadSheddingDefaultPolicy =
@@ -8146,6 +7382,11 @@ export type PoolsUpdateResponseNotificationFilterOrigin =
 export const PoolsUpdateResponseNotificationFilterOrigin =
   PoolsBulkEditResultItemNotificationFilterOrigin;
 
+export type PoolsUpdateResponseNotificationFilterPool =
+  PoolsBulkEditResultItemNotificationFilterOrigin;
+export const PoolsUpdateResponseNotificationFilterPool =
+  PoolsBulkEditResultItemNotificationFilterOrigin;
+
 export type PoolsUpdateResponseNotificationFilter =
   PoolsBulkEditResultItemNotificationFilter;
 export const PoolsUpdateResponseNotificationFilter =
@@ -8159,7 +7400,7 @@ export type PoolsUpdateResponseOriginSteeringPolicy =
 export const PoolsUpdateResponseOriginSteeringPolicy = /*@__PURE__*/ S.String;
 
 export interface PoolsUpdateResponseOriginSteering {
-  /** The type of origin steering policy to use. */
+  /** The type of origin steering policy to use. "random" : Select an origin randomly. "hash" : Select an origin by computing a hash over the CF-Connecting-IP address. "least_outstanding_requests" : Select an origin by taking into consideration origin weights, as well as each origin’s number of outstanding requests. Origins with more pending requests are weighted proportionately less relative to others. "least_connections" : Select an origin by taking into consideration origin weights, as well as each origin’s number of open connections. Origins with more open connections are weighted proportionately less relative to others. Supported for HTTP/1 and HTTP/2 connections. */
   policy?: PoolsUpdateResponseOriginSteeringPolicy | null;
 }
 export const PoolsUpdateResponseOriginSteering = /*@__PURE__*/ S.suspend(() =>
@@ -8177,7 +7418,7 @@ export const PoolsUpdateResponseOriginsItemHeaderHostList =
   ) as any as S.Schema<PoolsUpdateResponseOriginsItemHeaderHostList>;
 
 export interface PoolsUpdateResponseOriginsItemHeader {
-  /** The 'Host' header allows to override the hostname set in the HTTP request. Current support is 1 'Host' header override per origin. */
+  /** The ‘Host’ header allows to override the hostname set in the HTTP request. Current support is 1 ‘Host’ header override per origin. */
   host?: PoolsUpdateResponseOriginsItemHeaderHostList | null;
 }
 export const PoolsUpdateResponseOriginsItemHeader = /*@__PURE__*/ S.suspend(
@@ -8202,7 +7443,7 @@ export interface PoolsUpdateResponseOriginsItem {
   enabled?: boolean | null;
   /** Whether to flatten CNAME records for this origin, resolving them to A/AAAA records before returning to the client. When true (the default), the director resolves CNAME addresses to their underlying A/AAAA records. When false, the origin address is returned as a raw CNAME record without resolution. This setting mirrors the DNS API record flatten_cname setting. */
   flattenCname?: boolean | null;
-  /** The request header is used to pass additional information with an HTTP request. Currently supported header is 'Host'. */
+  /** The request header is used to pass additional information with an HTTP request. Currently supported header is ‘Host’. */
   header?: PoolsUpdateResponseOriginsItemHeader | null;
   /** A human-identifiable name for the origin. */
   name?: string | null;
@@ -8210,7 +7451,7 @@ export interface PoolsUpdateResponseOriginsItem {
   port?: number | null;
   /** The virtual network subnet ID the origin belongs in. Virtual network must also belong to the account. */
   virtualNetworkId?: string | null;
-  /** The weight of this origin relative to other origins in the pool. Based on the configured weight the total traffic is distributed among origins within the pool. */
+  /** The weight of this origin relative to other origins in the pool. Based on the configured weight the total traffic is distributed among origins within the pool. origin_steering.policy="least_outstanding_requests" : Use weight to scale the origin’s outstanding requests. origin_steering.policy="least_connections" : Use weight to scale the origin’s open connections. */
   weight?: number | null;
 }
 export const PoolsUpdateResponseOriginsItem = /*@__PURE__*/ S.suspend(() =>
@@ -8249,6 +7490,8 @@ export interface UpdatePoolResponse {
   disabledAt?: string | null;
   /** Whether to enable (the default) or disable this pool. Disabled pools will not receive traffic and are excluded from health checks. Disabling a pool will cause any load balancers using it to failover to the next pool (if any). */
   enabled?: boolean | null;
+  /** A list of health sources, ordered from highest to lowest priority, used to evaluate individual origin health and overall pool health. The load balancer uses the first source that has data and falls back to the next. Currently accepted values are null or the exact array [“regional”, “global”]; any other combination is rejected. Null (the default) behaves like [“local”, “global”]. [“regional”, “global”] makes each region steer on its own health, falling back to the global decision when a region has no fresh data. Setting regional requires at least one region in check_regions. */
+  healthSources?: PoolsUpdateResponseHealthSourcesList | null;
   /** The latitude of the data center containing the origins used in this pool in decimal degrees. If this is set, longitude must also be set. */
   latitude?: number | null;
   /** Configures load shedding policies and percentages for the pool. */
@@ -8266,7 +7509,7 @@ export interface UpdatePoolResponse {
   name?: string | null;
   /** List of networks where Load Balancer or Pool is enabled. */
   networks?: PoolsUpdateResponseNetworksList | null;
-  /** This field is now deprecated. It has been moved to Cloudflare's Centralized Notification service https://developers.cloudflare.com/fundamentals/notifications/. The email address to send health status notifications to. This can be an individual mailbox or a mailing list. Multiple emails can be supplied as a comma delimited list. */
+  /** This field is now deprecated. It has been moved to Cloudflare’s Centralized Notification service https://developers.cloudflare.com/fundamentals/notifications/ . The email address to send health status notifications to. This can be an individual mailbox or a mailing list. Multiple emails can be supplied as a comma delimited list. */
   notificationEmail?: string | null;
   /** Filter pool and origin health notifications by resource type or health status. Use null to reset. */
   notificationFilter?: PoolsBulkEditResultItemNotificationFilter | null;
@@ -8287,6 +7530,11 @@ export const UpdatePoolResponse = /*@__PURE__*/ S.suspend(() =>
     description: S.optional(S.NullOr(S.String)),
     disabledAt: S.optional(S.NullOr(S.String).pipe(T.Body("disabled_at"))),
     enabled: S.optional(S.NullOr(S.Boolean)),
+    healthSources: S.optional(
+      S.NullOr(PoolsUpdateResponseHealthSourcesList).pipe(
+        T.Body("health_sources"),
+      ),
+    ),
     latitude: S.optional(S.NullOr(S.Number)),
     loadShedding: S.optional(
       S.NullOr(PoolsUpdateResponseLoadShedding).pipe(T.Body("load_shedding")),
@@ -8339,25 +7587,32 @@ export const bulkPatchPools: API.PaginatedOperationMethod<
   cloudflarePaginate,
 ) as any;
 
-export type CreateLoadBalancerError =
-  | LoadBalancingNotEnabledForZone
-  | Forbidden
-  | CloudflareOpError;
-/** Create a new load balancer. */
-export const createLoadBalancer: API.OperationMethod<
-  CreateLoadBalancerRequest,
-  CreateLoadBalancerResponse,
-  CreateLoadBalancerError,
+export type CreateForAccountError = CloudflareOpError;
+/** Create a new account or zone-scoped load balancer. */
+export const createForAccount: API.OperationMethod<
+  CreateForAccountRequest,
+  CreateResponse,
+  CreateForAccountError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateLoadBalancerRequest,
-  output: CreateLoadBalancerResponse,
-  errors: [
-    LoadBalancingNotEnabledForZone,
-    Forbidden,
-    CloudflareRateLimited,
-    CloudflareError,
-  ],
+  input: CreateForAccountRequest,
+  output: CreateResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+  retry: Retry.Retry,
+}));
+
+export type CreateForZoneError = CloudflareOpError;
+/** Create a new account or zone-scoped load balancer. */
+export const createForZone: API.OperationMethod<
+  CreateForZoneRequest,
+  CreateResponse,
+  CreateForZoneError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreateForZoneRequest,
+  output: CreateResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
 }));
@@ -8453,25 +7708,32 @@ export const createPoolHealth: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteLoadBalancerError =
-  | LoadBalancerNotFound
-  | Forbidden
-  | CloudflareOpError;
-/** Delete a configured load balancer. */
-export const deleteLoadBalancer: API.OperationMethod<
-  DeleteLoadBalancerRequest,
-  DeleteLoadBalancerResponse,
-  DeleteLoadBalancerError,
+export type DeleteForAccountError = CloudflareOpError;
+/** Delete a configured account or zone-scoped load balancer. */
+export const deleteForAccount: API.OperationMethod<
+  DeleteForAccountRequest,
+  DeleteResponse,
+  DeleteForAccountError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteLoadBalancerRequest,
-  output: DeleteLoadBalancerResponse,
-  errors: [
-    LoadBalancerNotFound,
-    Forbidden,
-    CloudflareRateLimited,
-    CloudflareError,
-  ],
+  input: DeleteForAccountRequest,
+  output: DeleteResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+  retry: Retry.Retry,
+}));
+
+export type DeleteForZoneError = CloudflareOpError;
+/** Delete a configured account or zone-scoped load balancer. */
+export const deleteForZone: API.OperationMethod<
+  DeleteForZoneRequest,
+  DeleteResponse,
+  DeleteForZoneError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteForZoneRequest,
+  output: DeleteResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
 }));
@@ -8551,25 +7813,62 @@ export const deletePool: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetLoadBalancerError =
-  | LoadBalancerNotFound
-  | Forbidden
-  | CloudflareOpError;
-/** Fetch a single configured load balancer. */
-export const getLoadBalancer: API.OperationMethod<
-  GetLoadBalancerRequest,
-  GetLoadBalancerResponse,
-  GetLoadBalancerError,
+export type EditForAccountError = CloudflareOpError;
+/** Apply changes to an existing account or zone-scoped load balancer, overwriting the supplied properties. */
+export const editForAccount: API.OperationMethod<
+  EditForAccountRequest,
+  EditResponse,
+  EditForAccountError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetLoadBalancerRequest,
-  output: GetLoadBalancerResponse,
-  errors: [
-    LoadBalancerNotFound,
-    Forbidden,
-    CloudflareRateLimited,
-    CloudflareError,
-  ],
+  input: EditForAccountRequest,
+  output: EditResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+  retry: Retry.Retry,
+}));
+
+export type EditForZoneError = CloudflareOpError;
+/** Apply changes to an existing account or zone-scoped load balancer, overwriting the supplied properties. */
+export const editForZone: API.OperationMethod<
+  EditForZoneRequest,
+  EditResponse,
+  EditForZoneError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: EditForZoneRequest,
+  output: EditResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GetForAccountError = CloudflareOpError;
+/** Fetch a single configured account or zone-scoped load balancer. */
+export const getForAccount: API.OperationMethod<
+  GetForAccountRequest,
+  GetResponse,
+  GetForAccountError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetForAccountRequest,
+  output: GetResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GetForZoneError = CloudflareOpError;
+/** Fetch a single configured account or zone-scoped load balancer. */
+export const getForZone: API.OperationMethod<
+  GetForZoneRequest,
+  GetResponse,
+  GetForZoneError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetForZoneRequest,
+  output: GetResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
 }));
@@ -8732,25 +8031,35 @@ export const getRegion: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type ListLoadBalancersError = CloudflareOpError;
-/** List configured load balancers. */
-export const listLoadBalancers: API.PaginatedOperationMethod<
-  ListLoadBalancersRequest,
-  ListLoadBalancersResponse,
-  ListLoadBalancersError,
-  CloudflareOpContext,
-  ListResultItem
-> = /*@__PURE__*/ API.makePaginated(
-  () => ({
-    input: ListLoadBalancersRequest,
-    output: ListLoadBalancersResponse,
-    errors: [CloudflareRateLimited, CloudflareError],
-    protocol: CloudflarePaginatedProtocol,
-    retry: Retry.Retry,
-    pagination: { mode: "single", items: "result" } as const,
-  }),
-  cloudflarePaginate,
-) as any;
+export type ListForAccountError = CloudflareOpError;
+/** List configured account or zone-scoped load balancers. */
+export const listForAccount: API.OperationMethod<
+  ListForAccountRequest,
+  ListResponse,
+  ListForAccountError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListForAccountRequest,
+  output: ListResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListForZoneError = CloudflareOpError;
+/** List configured account or zone-scoped load balancers. */
+export const listForZone: API.OperationMethod<
+  ListForZoneRequest,
+  ListResponse,
+  ListForZoneError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListForZoneRequest,
+  output: ListResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+  retry: Retry.Retry,
+}));
 
 export type ListMonitorGroupsError = CloudflareOpError;
 /** List configured monitor groups. */
@@ -8842,21 +8151,6 @@ export const listSearches: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchLoadBalancerError = CloudflareOpError;
-/** Apply changes to an existing load balancer, overwriting the supplied properties. */
-export const patchLoadBalancer: API.OperationMethod<
-  PatchLoadBalancerRequest,
-  PatchLoadBalancerResponse,
-  PatchLoadBalancerError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: PatchLoadBalancerRequest,
-  output: PatchLoadBalancerResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-  retry: Retry.Retry,
-}));
-
 export type PatchMonitorError = CloudflareOpError;
 /** Apply changes to an existing monitor, overwriting the supplied properties. */
 export const patchMonitor: API.OperationMethod<
@@ -8902,27 +8196,32 @@ export const patchPool: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type UpdateLoadBalancerError =
-  | LoadBalancerNotFound
-  | LoadBalancingNotEnabledForZone
-  | Forbidden
-  | CloudflareOpError;
-/** Update a configured load balancer. */
-export const updateLoadBalancer: API.OperationMethod<
-  UpdateLoadBalancerRequest,
-  UpdateLoadBalancerResponse,
-  UpdateLoadBalancerError,
+export type UpdateForAccountError = CloudflareOpError;
+/** Update a configured account or zone-scoped load balancer. */
+export const updateForAccount: API.OperationMethod<
+  UpdateForAccountRequest,
+  UpdateResponse,
+  UpdateForAccountError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateLoadBalancerRequest,
-  output: UpdateLoadBalancerResponse,
-  errors: [
-    LoadBalancerNotFound,
-    LoadBalancingNotEnabledForZone,
-    Forbidden,
-    CloudflareRateLimited,
-    CloudflareError,
-  ],
+  input: UpdateForAccountRequest,
+  output: UpdateResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+  retry: Retry.Retry,
+}));
+
+export type UpdateForZoneError = CloudflareOpError;
+/** Update a configured account or zone-scoped load balancer. */
+export const updateForZone: API.OperationMethod<
+  UpdateForZoneRequest,
+  UpdateResponse,
+  UpdateForZoneError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: UpdateForZoneRequest,
+  output: UpdateResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
 }));

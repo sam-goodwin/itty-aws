@@ -193,34 +193,12 @@ export const ApplyOnRampResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ApplyOnRampResponse",
 }) as any as S.Schema<ApplyOnRampResponse>;
 
-export type CatalogSyncsCreateRequestDestinationType =
-  | "NONE"
-  | "ZERO_TRUST_LIST";
-export const CatalogSyncsCreateRequestDestinationType = /*@__PURE__*/ S.String;
-
-export type CatalogSyncsCreateRequestUpdateMode = "AUTO" | "MANUAL";
-export const CatalogSyncsCreateRequestUpdateMode = /*@__PURE__*/ S.String;
-
 export interface CreateCatalogSyncRequest {
   accountId: string;
-  forwarded?: string;
-  destinationType: CatalogSyncsCreateRequestDestinationType | (string & {});
-  name: string;
-  updateMode: CatalogSyncsCreateRequestUpdateMode | (string & {});
-  description?: string;
-  policy?: string;
 }
 export const CreateCatalogSyncRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
-    forwarded: S.optional(S.String.pipe(T.Header())),
-    destinationType: CatalogSyncsCreateRequestDestinationType.pipe(
-      T.Body("destination_type"),
-    ),
-    name: S.String,
-    updateMode: CatalogSyncsCreateRequestUpdateMode.pipe(T.Body("update_mode")),
-    description: S.optional(S.String),
-    policy: S.optional(S.String),
   })
     .pipe(
       T.Http({
@@ -242,172 +220,14 @@ export const CatalogSyncsCreateResponseDestinationType = /*@__PURE__*/ S.String;
 export type CatalogSyncsCreateResponseUpdateMode = "AUTO" | "MANUAL";
 export const CatalogSyncsCreateResponseUpdateMode = /*@__PURE__*/ S.String;
 
-export type CatalogSyncsCreateResponseErrorsValueCode =
-  | 1001
-  | 1002
-  | 1003
-  | 1004
-  | 1005
-  | 1006
-  | 1007
-  | 1008
-  | 1009
-  | 1010
-  | 1011
-  | 1012
-  | 1013
-  | 1014
-  | 1015
-  | 1016
-  | 1017
-  | 1018
-  | 2001
-  | 2002
-  | 2003
-  | 2004
-  | 2005
-  | 2006
-  | 2007
-  | 2008
-  | 2009
-  | 2010
-  | 2011
-  | 2012
-  | 2013
-  | 2014
-  | 2015
-  | 2016
-  | 2017
-  | 2018
-  | 2019
-  | 2020
-  | 2021
-  | 2022
-  | 3001
-  | 3002
-  | 3003
-  | 3004
-  | 3005
-  | 3006
-  | 3007
-  | 4001
-  | 4002
-  | 4003
-  | 4004
-  | 4005
-  | 4006
-  | 4007
-  | 4008
-  | 4009
-  | 4010
-  | 4011
-  | 4012
-  | 4013
-  | 4014
-  | 4015
-  | 4016
-  | 4017
-  | 4018
-  | 4019
-  | 4020
-  | 4021
-  | 4022
-  | 4023
-  | 5001
-  | 5002
-  | 5003
-  | 5004
-  | 102000
-  | 102001
-  | 102002
-  | 102003
-  | 102004
-  | 102005
-  | 102006
-  | 102007
-  | 102008
-  | 102009
-  | 102010
-  | 102011
-  | 102012
-  | 102013
-  | 102014
-  | 102015
-  | 102016
-  | 102017
-  | 102018
-  | 102019
-  | 102020
-  | 102021
-  | 102022
-  | 102023
-  | 102024
-  | 102025
-  | 102026
-  | 102027
-  | 102028
-  | 102029
-  | 102030
-  | 102031
-  | 102032
-  | 102033
-  | 102034
-  | 102035
-  | 102036
-  | 102037
-  | 102038
-  | 102039
-  | 102040
-  | 102041
-  | 102042
-  | 102043
-  | 102044
-  | 102045
-  | 102046
-  | 102047
-  | 102048
-  | 102049
-  | 102050
-  | 102051
-  | 102052
-  | 102053
-  | 102054
-  | 102055
-  | 102056
-  | 102057
-  | 102058
-  | 102059
-  | 102060
-  | 102061
-  | 102062
-  | 102063
-  | 102064
-  | 102065
-  | 102066
-  | 102067
-  | 102068
-  | 102069
-  | 102070
-  | 102071
-  | 102072
-  | 103001
-  | 103002
-  | 103003
-  | 103004
-  | 103005
-  | 103006
-  | 103007
-  | 103008;
-export const CatalogSyncsCreateResponseErrorsValueCode = /*@__PURE__*/ S.Number;
-
-export interface CatalogSyncsCreateResponseErrorsValueMeta {
+export interface CatalogSyncsCreateResponseErrorsMeta {
   l10nKey?: string | null;
   loggableError?: string | null;
   templateData?: unknown | null;
   traceId?: string | null;
 }
-export const CatalogSyncsCreateResponseErrorsValueMeta =
-  /*@__PURE__*/ S.suspend(() =>
+export const CatalogSyncsCreateResponseErrorsMeta = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       l10nKey: S.optional(S.NullOr(S.String).pipe(T.Body("l10n_key"))),
       loggableError: S.optional(
@@ -418,17 +238,17 @@ export const CatalogSyncsCreateResponseErrorsValueMeta =
       ),
       traceId: S.optional(S.NullOr(S.String).pipe(T.Body("trace_id"))),
     }),
-  ).annotate({
-    identifier: "CatalogSyncsCreateResponseErrorsValueMeta",
-  }) as any as S.Schema<CatalogSyncsCreateResponseErrorsValueMeta>;
+).annotate({
+  identifier: "CatalogSyncsCreateResponseErrorsMeta",
+}) as any as S.Schema<CatalogSyncsCreateResponseErrorsMeta>;
 
-export interface CatalogSyncsCreateResponseErrorsValueSource {
+export interface CatalogSyncsCreateResponseErrorsSource {
   parameter?: string | null;
   parameterValueIndex?: number | null;
   pointer?: string | null;
 }
-export const CatalogSyncsCreateResponseErrorsValueSource =
-  /*@__PURE__*/ S.suspend(() =>
+export const CatalogSyncsCreateResponseErrorsSource = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       parameter: S.optional(S.NullOr(S.String)),
       parameterValueIndex: S.optional(
@@ -436,39 +256,30 @@ export const CatalogSyncsCreateResponseErrorsValueSource =
       ),
       pointer: S.optional(S.NullOr(S.String)),
     }),
-  ).annotate({
-    identifier: "CatalogSyncsCreateResponseErrorsValueSource",
-  }) as any as S.Schema<CatalogSyncsCreateResponseErrorsValueSource>;
+).annotate({
+  identifier: "CatalogSyncsCreateResponseErrorsSource",
+}) as any as S.Schema<CatalogSyncsCreateResponseErrorsSource>;
 
-export interface CatalogSyncsCreateResponseErrorsValue {
-  code: CatalogSyncsCreateResponseErrorsValueCode;
+export interface CatalogSyncsCreateResponseErrors {
+  code: number;
   message: string;
   documentationUrl?: string | null;
-  meta?: CatalogSyncsCreateResponseErrorsValueMeta | null;
-  source?: CatalogSyncsCreateResponseErrorsValueSource | null;
+  meta?: CatalogSyncsCreateResponseErrorsMeta | null;
+  source?: CatalogSyncsCreateResponseErrorsSource | null;
 }
-export const CatalogSyncsCreateResponseErrorsValue = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      code: CatalogSyncsCreateResponseErrorsValueCode,
-      message: S.String,
-      documentationUrl: S.optional(
-        S.NullOr(S.String).pipe(T.Body("documentation_url")),
-      ),
-      meta: S.optional(S.NullOr(CatalogSyncsCreateResponseErrorsValueMeta)),
-      source: S.optional(S.NullOr(CatalogSyncsCreateResponseErrorsValueSource)),
-    }),
+export const CatalogSyncsCreateResponseErrors = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    code: S.Number,
+    message: S.String,
+    documentationUrl: S.optional(
+      S.NullOr(S.String).pipe(T.Body("documentation_url")),
+    ),
+    meta: S.optional(S.NullOr(CatalogSyncsCreateResponseErrorsMeta)),
+    source: S.optional(S.NullOr(CatalogSyncsCreateResponseErrorsSource)),
+  }),
 ).annotate({
-  identifier: "CatalogSyncsCreateResponseErrorsValue",
-}) as any as S.Schema<CatalogSyncsCreateResponseErrorsValue>;
-
-export type CatalogSyncsCreateResponseErrorsMap = {
-  [key: string]: CatalogSyncsCreateResponseErrorsValue | undefined;
-};
-export const CatalogSyncsCreateResponseErrorsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  CatalogSyncsCreateResponseErrorsValue,
-) as any as S.Schema<CatalogSyncsCreateResponseErrorsMap>;
+  identifier: "CatalogSyncsCreateResponseErrors",
+}) as any as S.Schema<CatalogSyncsCreateResponseErrors>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateCatalogSyncResponse {
@@ -480,7 +291,7 @@ export interface CreateCatalogSyncResponse {
   name: string;
   policy: string;
   updateMode: CatalogSyncsCreateResponseUpdateMode;
-  errors?: CatalogSyncsCreateResponseErrorsMap | null;
+  errors?: CatalogSyncsCreateResponseErrors | null;
   includesDiscoveriesUntil?: string | null;
   lastAttemptedUpdateAt?: string | null;
   lastSuccessfulUpdateAt?: string | null;
@@ -499,7 +310,7 @@ export const CreateCatalogSyncResponse = /*@__PURE__*/ S.suspend(() =>
     updateMode: CatalogSyncsCreateResponseUpdateMode.pipe(
       T.Body("update_mode"),
     ),
-    errors: S.optional(S.NullOr(CatalogSyncsCreateResponseErrorsMap)),
+    errors: S.optional(S.NullOr(CatalogSyncsCreateResponseErrors)),
     includesDiscoveriesUntil: S.optional(
       S.NullOr(S.String).pipe(T.Body("includes_discoveries_until")),
     ),
@@ -514,29 +325,12 @@ export const CreateCatalogSyncResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateCatalogSyncResponse",
 }) as any as S.Schema<CreateCatalogSyncResponse>;
 
-export type CloudIntegrationsCreateRequestCloudType =
-  | "AWS"
-  | "AZURE"
-  | "GOOGLE"
-  | "CLOUDFLARE";
-export const CloudIntegrationsCreateRequestCloudType = /*@__PURE__*/ S.String;
-
 export interface CreateCloudIntegrationRequest {
   accountId: string;
-  forwarded?: string;
-  cloudType: CloudIntegrationsCreateRequestCloudType | (string & {});
-  friendlyName: string;
-  description?: string;
 }
 export const CreateCloudIntegrationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
-    forwarded: S.optional(S.String.pipe(T.Header())),
-    cloudType: CloudIntegrationsCreateRequestCloudType.pipe(
-      T.Body("cloud_type"),
-    ),
-    friendlyName: S.String.pipe(T.Body("friendly_name")),
-    description: S.optional(S.String),
   })
     .pipe(
       T.Http({
@@ -564,22 +358,6 @@ export type CloudIntegrationsCreateResponseLifecycleState =
 export const CloudIntegrationsCreateResponseLifecycleState =
   /*@__PURE__*/ S.String;
 
-export type CloudIntegrationsCreateResponseState =
-  | "UNSPECIFIED"
-  | "PENDING"
-  | "DISCOVERING"
-  | "FAILED"
-  | "SUCCEEDED";
-export const CloudIntegrationsCreateResponseState = /*@__PURE__*/ S.String;
-
-export type CloudIntegrationsCreateResponseStateV2 =
-  | "UNSPECIFIED"
-  | "PENDING"
-  | "DISCOVERING"
-  | "FAILED"
-  | "SUCCEEDED";
-export const CloudIntegrationsCreateResponseStateV2 = /*@__PURE__*/ S.String;
-
 export interface CloudIntegrationsCreateResponseStatusDiscoveryProgress {
   done: number;
   total: number;
@@ -600,24 +378,6 @@ export type CloudIntegrationsCreateResponseStatusDiscoveryProgressV2 =
   CloudIntegrationsCreateResponseStatusDiscoveryProgress;
 export const CloudIntegrationsCreateResponseStatusDiscoveryProgressV2 =
   CloudIntegrationsCreateResponseStatusDiscoveryProgress;
-
-export type CloudIntegrationsCreateResponseStatusLastDiscoveryStatus =
-  | "UNSPECIFIED"
-  | "PENDING"
-  | "DISCOVERING"
-  | "FAILED"
-  | "SUCCEEDED";
-export const CloudIntegrationsCreateResponseStatusLastDiscoveryStatus =
-  /*@__PURE__*/ S.String;
-
-export type CloudIntegrationsCreateResponseStatusLastDiscoveryStatusV2 =
-  | "UNSPECIFIED"
-  | "PENDING"
-  | "DISCOVERING"
-  | "FAILED"
-  | "SUCCEEDED";
-export const CloudIntegrationsCreateResponseStatusLastDiscoveryStatusV2 =
-  /*@__PURE__*/ S.String;
 
 export type CloudIntegrationsCreateResponseStatusRegionsList = Array<string>;
 export const CloudIntegrationsCreateResponseStatusRegionsList =
@@ -659,8 +419,8 @@ export const CloudIntegrationsCreateResponseStatusInUseByList =
 export interface CloudIntegrationsCreateResponseStatus {
   discoveryProgress: CloudIntegrationsCreateResponseStatusDiscoveryProgress;
   discoveryProgressV2: CloudIntegrationsCreateResponseStatusDiscoveryProgress;
-  lastDiscoveryStatus: CloudIntegrationsCreateResponseStatusLastDiscoveryStatus;
-  lastDiscoveryStatusV2: CloudIntegrationsCreateResponseStatusLastDiscoveryStatusV2;
+  lastDiscoveryStatus: string;
+  lastDiscoveryStatusV2: string;
   regions: CloudIntegrationsCreateResponseStatusRegionsList;
   credentialsGoodSince?: string | null;
   credentialsMissingSince?: string | null;
@@ -685,14 +445,8 @@ export const CloudIntegrationsCreateResponseStatus = /*@__PURE__*/ S.suspend(
         CloudIntegrationsCreateResponseStatusDiscoveryProgress.pipe(
           T.Body("discovery_progress_v2"),
         ),
-      lastDiscoveryStatus:
-        CloudIntegrationsCreateResponseStatusLastDiscoveryStatus.pipe(
-          T.Body("last_discovery_status"),
-        ),
-      lastDiscoveryStatusV2:
-        CloudIntegrationsCreateResponseStatusLastDiscoveryStatusV2.pipe(
-          T.Body("last_discovery_status_v2"),
-        ),
+      lastDiscoveryStatus: S.String.pipe(T.Body("last_discovery_status")),
+      lastDiscoveryStatusV2: S.String.pipe(T.Body("last_discovery_status_v2")),
       regions: CloudIntegrationsCreateResponseStatusRegionsList,
       credentialsGoodSince: S.optional(
         S.NullOr(S.String).pipe(T.Body("credentials_good_since")),
@@ -739,8 +493,8 @@ export interface CreateCloudIntegrationResponse {
   friendlyName: string;
   lastUpdated: string;
   lifecycleState: CloudIntegrationsCreateResponseLifecycleState;
-  state: CloudIntegrationsCreateResponseState;
-  stateV2: CloudIntegrationsCreateResponseStateV2;
+  state: string;
+  stateV2: string;
   awsArn?: string | null;
   azureSubscriptionId?: string | null;
   azureTenantId?: string | null;
@@ -760,8 +514,8 @@ export const CreateCloudIntegrationResponse = /*@__PURE__*/ S.suspend(() =>
     lifecycleState: CloudIntegrationsCreateResponseLifecycleState.pipe(
       T.Body("lifecycle_state"),
     ),
-    state: CloudIntegrationsCreateResponseState,
-    stateV2: CloudIntegrationsCreateResponseStateV2.pipe(T.Body("state_v2")),
+    state: S.String,
+    stateV2: S.String.pipe(T.Body("state_v2")),
     awsArn: S.optional(S.NullOr(S.String).pipe(T.Body("aws_arn"))),
     azureSubscriptionId: S.optional(
       S.NullOr(S.String).pipe(T.Body("azure_subscription_id")),
@@ -780,74 +534,12 @@ export const CreateCloudIntegrationResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateCloudIntegrationResponse",
 }) as any as S.Schema<CreateCloudIntegrationResponse>;
 
-export type OnRampsCreateRequestCloudType = "AWS" | "AZURE" | "GOOGLE";
-export const OnRampsCreateRequestCloudType = /*@__PURE__*/ S.String;
-
-export type OnRampsCreateRequestType = "OnrampTypeSingle" | "OnrampTypeHub";
-export const OnRampsCreateRequestType = /*@__PURE__*/ S.String;
-
-export type OnRampsCreateRequestAttachedHubsList = Array<string>;
-export const OnRampsCreateRequestAttachedHubsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<OnRampsCreateRequestAttachedHubsList>;
-
-export type OnRampsCreateRequestAttachedVpcsList = Array<string>;
-export const OnRampsCreateRequestAttachedVpcsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<OnRampsCreateRequestAttachedVpcsList>;
-
 export interface CreateOnRampRequest {
   accountId: string;
-  forwarded?: string;
-  cloudType: OnRampsCreateRequestCloudType | (string & {});
-  /** Enables BGP routing. When enabling this feature, set both install_routes_in_cloud and install_routes_in_magic_wan to false. */
-  dynamicRouting: boolean;
-  installRoutesInCloud: boolean;
-  installRoutesInMagicWan: boolean;
-  name: string;
-  type: OnRampsCreateRequestType | (string & {});
-  adoptedHubId?: string;
-  attachedHubs?: OnRampsCreateRequestAttachedHubsList;
-  attachedVpcs?: OnRampsCreateRequestAttachedVpcsList;
-  /** Sets the cloud-side ASN. If unset or zero, the cloud's default ASN takes effect. */
-  cloudAsn?: number;
-  description?: string;
-  hubProviderId?: string;
-  manageHubToHubAttachments?: boolean;
-  manageVpcToHubAttachments?: boolean;
-  region?: string;
-  vpc?: string;
 }
 export const CreateOnRampRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
-    forwarded: S.optional(S.String.pipe(T.Header())),
-    cloudType: OnRampsCreateRequestCloudType.pipe(T.Body("cloud_type")),
-    dynamicRouting: S.Boolean.pipe(T.Body("dynamic_routing")),
-    installRoutesInCloud: S.Boolean.pipe(T.Body("install_routes_in_cloud")),
-    installRoutesInMagicWan: S.Boolean.pipe(
-      T.Body("install_routes_in_magic_wan"),
-    ),
-    name: S.String,
-    type: OnRampsCreateRequestType,
-    adoptedHubId: S.optional(S.String.pipe(T.Body("adopted_hub_id"))),
-    attachedHubs: S.optional(
-      OnRampsCreateRequestAttachedHubsList.pipe(T.Body("attached_hubs")),
-    ),
-    attachedVpcs: S.optional(
-      OnRampsCreateRequestAttachedVpcsList.pipe(T.Body("attached_vpcs")),
-    ),
-    cloudAsn: S.optional(S.Number.pipe(T.Body("cloud_asn"))),
-    description: S.optional(S.String),
-    hubProviderId: S.optional(S.String.pipe(T.Body("hub_provider_id"))),
-    manageHubToHubAttachments: S.optional(
-      S.Boolean.pipe(T.Body("manage_hub_to_hub_attachments")),
-    ),
-    manageVpcToHubAttachments: S.optional(
-      S.Boolean.pipe(T.Body("manage_vpc_to_hub_attachments")),
-    ),
-    region: S.optional(S.String),
-    vpc: S.optional(S.String),
   })
     .pipe(
       T.Http({
@@ -927,15 +619,6 @@ export type OnRampsCreateResponsePlannedResourcesItemMonthlyCostEstimateDiff =
 export const OnRampsCreateResponsePlannedResourcesItemMonthlyCostEstimateDiff =
   OnRampsCreateResponsePlannedMonthlyCostEstimate;
 
-export type OnRampsCreateResponsePlannedResourcesItemPlannedAction =
-  | "no_op"
-  | "create"
-  | "update"
-  | "replace"
-  | "destroy";
-export const OnRampsCreateResponsePlannedResourcesItemPlannedAction =
-  /*@__PURE__*/ S.String;
-
 export type OnRampsCreateResponsePlannedResourcesItemResourceCloudType =
   | "AWS"
   | "AZURE"
@@ -944,73 +627,12 @@ export type OnRampsCreateResponsePlannedResourcesItemResourceCloudType =
 export const OnRampsCreateResponsePlannedResourcesItemResourceCloudType =
   /*@__PURE__*/ S.String;
 
-export type OnRampsCreateResponsePlannedResourcesItemResourceResourceType =
-  | "aws_customer_gateway"
-  | "aws_egress_only_internet_gateway"
-  | "aws_internet_gateway"
-  | "aws_instance"
-  | "aws_network_interface"
-  | "aws_route"
-  | "aws_route_table"
-  | "aws_route_table_association"
-  | "aws_subnet"
-  | "aws_vpc"
-  | "aws_vpc_ipv4_cidr_block_association"
-  | "aws_vpn_connection"
-  | "aws_vpn_connection_route"
-  | "aws_vpn_gateway"
-  | "aws_security_group"
-  | "aws_vpc_security_group_ingress_rule"
-  | "aws_vpc_security_group_egress_rule"
-  | "aws_ec2_managed_prefix_list"
-  | "aws_ec2_transit_gateway"
-  | "aws_ec2_transit_gateway_prefix_list_reference"
-  | "aws_ec2_transit_gateway_vpc_attachment"
-  | "azurerm_application_security_group"
-  | "azurerm_lb"
-  | "azurerm_lb_backend_address_pool"
-  | "azurerm_lb_nat_pool"
-  | "azurerm_lb_nat_rule"
-  | "azurerm_lb_rule"
-  | "azurerm_local_network_gateway"
-  | "azurerm_network_interface"
-  | "azurerm_network_interface_application_security_group_association"
-  | "azurerm_network_interface_backend_address_pool_association"
-  | "azurerm_network_interface_security_group_association"
-  | "azurerm_network_security_group"
-  | "azurerm_public_ip"
-  | "azurerm_route"
-  | "azurerm_route_table"
-  | "azurerm_subnet"
-  | "azurerm_subnet_route_table_association"
-  | "azurerm_virtual_machine"
-  | "azurerm_virtual_network_gateway_connection"
-  | "azurerm_virtual_network"
-  | "azurerm_virtual_network_gateway"
-  | "google_compute_network"
-  | "google_compute_subnetwork"
-  | "google_compute_vpn_gateway"
-  | "google_compute_vpn_tunnel"
-  | "google_compute_route"
-  | "google_compute_address"
-  | "google_compute_global_address"
-  | "google_compute_router"
-  | "google_compute_interconnect_attachment"
-  | "google_compute_ha_vpn_gateway"
-  | "google_compute_forwarding_rule"
-  | "google_compute_network_firewall_policy"
-  | "google_compute_network_firewall_policy_rule"
-  | "cloudflare_static_route"
-  | "cloudflare_ipsec_tunnel";
-export const OnRampsCreateResponsePlannedResourcesItemResourceResourceType =
-  /*@__PURE__*/ S.String;
-
 export interface OnRampsCreateResponsePlannedResourcesItemResource {
   id: string;
   cloudType: OnRampsCreateResponsePlannedResourcesItemResourceCloudType;
   detail: string;
   name: string;
-  resourceType: OnRampsCreateResponsePlannedResourcesItemResourceResourceType;
+  resourceType: string;
   title: string;
 }
 export const OnRampsCreateResponsePlannedResourcesItemResource =
@@ -1023,10 +645,7 @@ export const OnRampsCreateResponsePlannedResourcesItemResource =
         ),
       detail: S.String,
       name: S.String,
-      resourceType:
-        OnRampsCreateResponsePlannedResourcesItemResourceResourceType.pipe(
-          T.Body("resource_type"),
-        ),
+      resourceType: S.String.pipe(T.Body("resource_type")),
       title: S.String,
     }),
   ).annotate({
@@ -1037,7 +656,7 @@ export interface OnRampsCreateResponsePlannedResourcesItem {
   diff: OnRampsCreateResponsePlannedResourcesItemDiff;
   keysRequireReplace: OnRampsCreateResponsePlannedResourcesItemKeysRequireReplaceList;
   monthlyCostEstimateDiff: OnRampsCreateResponsePlannedMonthlyCostEstimate;
-  plannedAction: OnRampsCreateResponsePlannedResourcesItemPlannedAction;
+  plannedAction: string;
   resource: OnRampsCreateResponsePlannedResourcesItemResource;
 }
 export const OnRampsCreateResponsePlannedResourcesItem =
@@ -1052,10 +671,7 @@ export const OnRampsCreateResponsePlannedResourcesItem =
         OnRampsCreateResponsePlannedMonthlyCostEstimate.pipe(
           T.Body("monthly_cost_estimate_diff"),
         ),
-      plannedAction:
-        OnRampsCreateResponsePlannedResourcesItemPlannedAction.pipe(
-          T.Body("planned_action"),
-        ),
+      plannedAction: S.String.pipe(T.Body("planned_action")),
       resource: OnRampsCreateResponsePlannedResourcesItemResource,
     }),
   ).annotate({
@@ -1082,35 +698,26 @@ export const OnRampsCreateResponsePostApplyMonthlyCostEstimate =
     identifier: "OnRampsCreateResponsePostApplyMonthlyCostEstimate",
   }) as any as S.Schema<OnRampsCreateResponsePostApplyMonthlyCostEstimate>;
 
-export type OnRampsCreateResponsePostApplyResourcesValueCloudType =
+export type OnRampsCreateResponsePostApplyResourcesCloudType =
   | "AWS"
   | "AZURE"
   | "GOOGLE"
   | "CLOUDFLARE";
-export const OnRampsCreateResponsePostApplyResourcesValueCloudType =
+export const OnRampsCreateResponsePostApplyResourcesCloudType =
   /*@__PURE__*/ S.String;
 
-export type OnRampsCreateResponsePostApplyResourcesValueConfigMap = {
-  [key: string]: unknown | undefined;
-};
-export const OnRampsCreateResponsePostApplyResourcesValueConfigMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<OnRampsCreateResponsePostApplyResourcesValueConfigMap>;
-
-export type OnRampsCreateResponsePostApplyResourcesValueMonthlyCostEstimate =
+export type OnRampsCreateResponsePostApplyResourcesMonthlyCostEstimate =
   OnRampsCreateResponsePostApplyMonthlyCostEstimate;
-export const OnRampsCreateResponsePostApplyResourcesValueMonthlyCostEstimate =
+export const OnRampsCreateResponsePostApplyResourcesMonthlyCostEstimate =
   OnRampsCreateResponsePostApplyMonthlyCostEstimate;
 
-export interface OnRampsCreateResponsePostApplyResourcesValueObservationsValue {
+export interface OnRampsCreateResponsePostApplyResourcesObservations {
   firstObservedAt: string;
   lastObservedAt: string;
   providerId: string;
   resourceId: string;
 }
-export const OnRampsCreateResponsePostApplyResourcesValueObservationsValue =
+export const OnRampsCreateResponsePostApplyResourcesObservations =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       firstObservedAt: S.String.pipe(T.Body("first_observed_at")),
@@ -1119,911 +726,146 @@ export const OnRampsCreateResponsePostApplyResourcesValueObservationsValue =
       resourceId: S.String.pipe(T.Body("resource_id")),
     }),
   ).annotate({
-    identifier: "OnRampsCreateResponsePostApplyResourcesValueObservationsValue",
-  }) as any as S.Schema<OnRampsCreateResponsePostApplyResourcesValueObservationsValue>;
+    identifier: "OnRampsCreateResponsePostApplyResourcesObservations",
+  }) as any as S.Schema<OnRampsCreateResponsePostApplyResourcesObservations>;
 
-export type OnRampsCreateResponsePostApplyResourcesValueObservationsMap = {
-  [key: string]:
-    | OnRampsCreateResponsePostApplyResourcesValueObservationsValue
-    | undefined;
-};
-export const OnRampsCreateResponsePostApplyResourcesValueObservationsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    OnRampsCreateResponsePostApplyResourcesValueObservationsValue,
-  ) as any as S.Schema<OnRampsCreateResponsePostApplyResourcesValueObservationsMap>;
-
-export type OnRampsCreateResponsePostApplyResourcesValueProviderIdsList =
+export type OnRampsCreateResponsePostApplyResourcesProviderIdsList =
   Array<string>;
-export const OnRampsCreateResponsePostApplyResourcesValueProviderIdsList =
+export const OnRampsCreateResponsePostApplyResourcesProviderIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
-  ) as any as S.Schema<OnRampsCreateResponsePostApplyResourcesValueProviderIdsList>;
+  ) as any as S.Schema<OnRampsCreateResponsePostApplyResourcesProviderIdsList>;
 
-export type OnRampsCreateResponsePostApplyResourcesValueProviderNamesByIdMap = {
-  [key: string]: string | undefined;
-};
-export const OnRampsCreateResponsePostApplyResourcesValueProviderNamesByIdMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<OnRampsCreateResponsePostApplyResourcesValueProviderNamesByIdMap>;
-
-export type OnRampsCreateResponsePostApplyResourcesValueResourceType =
-  | "aws_customer_gateway"
-  | "aws_egress_only_internet_gateway"
-  | "aws_internet_gateway"
-  | "aws_instance"
-  | "aws_network_interface"
-  | "aws_route"
-  | "aws_route_table"
-  | "aws_route_table_association"
-  | "aws_subnet"
-  | "aws_vpc"
-  | "aws_vpc_ipv4_cidr_block_association"
-  | "aws_vpn_connection"
-  | "aws_vpn_connection_route"
-  | "aws_vpn_gateway"
-  | "aws_security_group"
-  | "aws_vpc_security_group_ingress_rule"
-  | "aws_vpc_security_group_egress_rule"
-  | "aws_ec2_managed_prefix_list"
-  | "aws_ec2_transit_gateway"
-  | "aws_ec2_transit_gateway_prefix_list_reference"
-  | "aws_ec2_transit_gateway_vpc_attachment"
-  | "azurerm_application_security_group"
-  | "azurerm_lb"
-  | "azurerm_lb_backend_address_pool"
-  | "azurerm_lb_nat_pool"
-  | "azurerm_lb_nat_rule"
-  | "azurerm_lb_rule"
-  | "azurerm_local_network_gateway"
-  | "azurerm_network_interface"
-  | "azurerm_network_interface_application_security_group_association"
-  | "azurerm_network_interface_backend_address_pool_association"
-  | "azurerm_network_interface_security_group_association"
-  | "azurerm_network_security_group"
-  | "azurerm_public_ip"
-  | "azurerm_route"
-  | "azurerm_route_table"
-  | "azurerm_subnet"
-  | "azurerm_subnet_route_table_association"
-  | "azurerm_virtual_machine"
-  | "azurerm_virtual_network_gateway_connection"
-  | "azurerm_virtual_network"
-  | "azurerm_virtual_network_gateway"
-  | "google_compute_network"
-  | "google_compute_subnetwork"
-  | "google_compute_vpn_gateway"
-  | "google_compute_vpn_tunnel"
-  | "google_compute_route"
-  | "google_compute_address"
-  | "google_compute_global_address"
-  | "google_compute_router"
-  | "google_compute_interconnect_attachment"
-  | "google_compute_ha_vpn_gateway"
-  | "google_compute_forwarding_rule"
-  | "google_compute_network_firewall_policy"
-  | "google_compute_network_firewall_policy_rule"
-  | "cloudflare_static_route"
-  | "cloudflare_ipsec_tunnel";
-export const OnRampsCreateResponsePostApplyResourcesValueResourceType =
-  /*@__PURE__*/ S.String;
-
-export interface OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem {
-  itemType: string;
-  string: string;
-}
-export const OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      itemType: S.String.pipe(T.Body("item_type")),
-      string: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem",
-  }) as any as S.Schema<OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem>;
-
-export interface OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlItem {
-  itemType: string;
-  yaml: string;
-}
-export const OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      itemType: S.String.pipe(T.Body("item_type")),
-      yaml: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlItem",
-  }) as any as S.Schema<OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlItem>;
-
-export type OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlDiffItemYamlDiff =
-  OnRampsCreateResponsePlannedResourcesItemDiff;
-export const OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlDiffItemYamlDiff =
-  OnRampsCreateResponsePlannedResourcesItemDiff;
-
-export interface OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlDiffItem {
-  itemType: string;
-  yamlDiff: OnRampsCreateResponsePlannedResourcesItemDiff;
-}
-export const OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlDiffItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      itemType: S.String.pipe(T.Body("item_type")),
-      yamlDiff: OnRampsCreateResponsePlannedResourcesItemDiff.pipe(
-        T.Body("yaml_diff"),
-      ),
-    }),
-  ).annotate({
-    identifier:
-      "OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlDiffItem",
-  }) as any as S.Schema<OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlDiffItem>;
-
-export type OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreviewCloudType =
-  | "AWS"
-  | "AZURE"
-  | "GOOGLE"
-  | "CLOUDFLARE";
-export const OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreviewCloudType =
-  /*@__PURE__*/ S.String;
-
-export type OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreviewResourceType =
-  | "aws_customer_gateway"
-  | "aws_egress_only_internet_gateway"
-  | "aws_internet_gateway"
-  | "aws_instance"
-  | "aws_network_interface"
-  | "aws_route"
-  | "aws_route_table"
-  | "aws_route_table_association"
-  | "aws_subnet"
-  | "aws_vpc"
-  | "aws_vpc_ipv4_cidr_block_association"
-  | "aws_vpn_connection"
-  | "aws_vpn_connection_route"
-  | "aws_vpn_gateway"
-  | "aws_security_group"
-  | "aws_vpc_security_group_ingress_rule"
-  | "aws_vpc_security_group_egress_rule"
-  | "aws_ec2_managed_prefix_list"
-  | "aws_ec2_transit_gateway"
-  | "aws_ec2_transit_gateway_prefix_list_reference"
-  | "aws_ec2_transit_gateway_vpc_attachment"
-  | "azurerm_application_security_group"
-  | "azurerm_lb"
-  | "azurerm_lb_backend_address_pool"
-  | "azurerm_lb_nat_pool"
-  | "azurerm_lb_nat_rule"
-  | "azurerm_lb_rule"
-  | "azurerm_local_network_gateway"
-  | "azurerm_network_interface"
-  | "azurerm_network_interface_application_security_group_association"
-  | "azurerm_network_interface_backend_address_pool_association"
-  | "azurerm_network_interface_security_group_association"
-  | "azurerm_network_security_group"
-  | "azurerm_public_ip"
-  | "azurerm_route"
-  | "azurerm_route_table"
-  | "azurerm_subnet"
-  | "azurerm_subnet_route_table_association"
-  | "azurerm_virtual_machine"
-  | "azurerm_virtual_network_gateway_connection"
-  | "azurerm_virtual_network"
-  | "azurerm_virtual_network_gateway"
-  | "google_compute_network"
-  | "google_compute_subnetwork"
-  | "google_compute_vpn_gateway"
-  | "google_compute_vpn_tunnel"
-  | "google_compute_route"
-  | "google_compute_address"
-  | "google_compute_global_address"
-  | "google_compute_router"
-  | "google_compute_interconnect_attachment"
-  | "google_compute_ha_vpn_gateway"
-  | "google_compute_forwarding_rule"
-  | "google_compute_network_firewall_policy"
-  | "google_compute_network_firewall_policy_rule"
-  | "cloudflare_static_route"
-  | "cloudflare_ipsec_tunnel";
-export const OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreviewResourceType =
-  /*@__PURE__*/ S.String;
-
-export interface OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview {
-  id: string;
-  cloudType: OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreviewCloudType;
-  detail: string;
-  name: string;
-  resourceType: OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreviewResourceType;
-  title: string;
-}
-export const OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-      cloudType:
-        OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreviewCloudType.pipe(
-          T.Body("cloud_type"),
-        ),
-      detail: S.String,
-      name: S.String,
-      resourceType:
-        OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreviewResourceType.pipe(
-          T.Body("resource_type"),
-        ),
-      title: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview",
-  }) as any as S.Schema<OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview>;
-
-export interface OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItem {
-  itemType: string;
-  resourcePreview: OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview;
-}
-export const OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      itemType: S.String.pipe(T.Body("item_type")),
-      resourcePreview:
-        OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview.pipe(
-          T.Body("resource_preview"),
-        ),
-    }),
-  ).annotate({
-    identifier:
-      "OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItem",
-  }) as any as S.Schema<OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItem>;
-
-export type OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnStringItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem;
-export const OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnStringItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem;
-
-export type OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewCloudType =
-  | "AWS"
-  | "AZURE"
-  | "GOOGLE"
-  | "CLOUDFLARE";
-export const OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewCloudType =
-  /*@__PURE__*/ S.String;
-
-export type OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewResourceType =
-  | "aws_customer_gateway"
-  | "aws_egress_only_internet_gateway"
-  | "aws_internet_gateway"
-  | "aws_instance"
-  | "aws_network_interface"
-  | "aws_route"
-  | "aws_route_table"
-  | "aws_route_table_association"
-  | "aws_subnet"
-  | "aws_vpc"
-  | "aws_vpc_ipv4_cidr_block_association"
-  | "aws_vpn_connection"
-  | "aws_vpn_connection_route"
-  | "aws_vpn_gateway"
-  | "aws_security_group"
-  | "aws_vpc_security_group_ingress_rule"
-  | "aws_vpc_security_group_egress_rule"
-  | "aws_ec2_managed_prefix_list"
-  | "aws_ec2_transit_gateway"
-  | "aws_ec2_transit_gateway_prefix_list_reference"
-  | "aws_ec2_transit_gateway_vpc_attachment"
-  | "azurerm_application_security_group"
-  | "azurerm_lb"
-  | "azurerm_lb_backend_address_pool"
-  | "azurerm_lb_nat_pool"
-  | "azurerm_lb_nat_rule"
-  | "azurerm_lb_rule"
-  | "azurerm_local_network_gateway"
-  | "azurerm_network_interface"
-  | "azurerm_network_interface_application_security_group_association"
-  | "azurerm_network_interface_backend_address_pool_association"
-  | "azurerm_network_interface_security_group_association"
-  | "azurerm_network_security_group"
-  | "azurerm_public_ip"
-  | "azurerm_route"
-  | "azurerm_route_table"
-  | "azurerm_subnet"
-  | "azurerm_subnet_route_table_association"
-  | "azurerm_virtual_machine"
-  | "azurerm_virtual_network_gateway_connection"
-  | "azurerm_virtual_network"
-  | "azurerm_virtual_network_gateway"
-  | "google_compute_network"
-  | "google_compute_subnetwork"
-  | "google_compute_vpn_gateway"
-  | "google_compute_vpn_tunnel"
-  | "google_compute_route"
-  | "google_compute_address"
-  | "google_compute_global_address"
-  | "google_compute_router"
-  | "google_compute_interconnect_attachment"
-  | "google_compute_ha_vpn_gateway"
-  | "google_compute_forwarding_rule"
-  | "google_compute_network_firewall_policy"
-  | "google_compute_network_firewall_policy_rule"
-  | "cloudflare_static_route"
-  | "cloudflare_ipsec_tunnel";
-export const OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewResourceType =
-  /*@__PURE__*/ S.String;
-
-export interface OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview {
-  id: string;
-  cloudType: OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewCloudType;
-  detail: string;
-  name: string;
-  resourceType: OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewResourceType;
-  title: string;
-}
-export const OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-      cloudType:
-        OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewCloudType.pipe(
-          T.Body("cloud_type"),
-        ),
-      detail: S.String,
-      name: S.String,
-      resourceType:
-        OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewResourceType.pipe(
-          T.Body("resource_type"),
-        ),
-      title: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview",
-  }) as any as S.Schema<OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview>;
-
-export interface OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItem {
-  itemType: string;
-  resourcePreview: OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview;
-}
-export const OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      itemType: S.String.pipe(T.Body("item_type")),
-      resourcePreview:
-        OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview.pipe(
-          T.Body("resource_preview"),
-        ),
-    }),
-  ).annotate({
-    identifier:
-      "OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItem",
-  }) as any as S.Schema<OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItem>;
-
-export type OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItem =
-  | OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem
-  | OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItem;
-export const OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItem =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["itemType", "string"],
-      ["itemType", "resourcePreview"],
-    ]),
-  );
-
-export type OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListList =
-  Array<OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItem>;
-export const OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListList =
-  /*@__PURE__*/ S.Array(
-    OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItem,
-  ) as any as S.Schema<OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListList>;
-
-export interface OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItem {
-  itemType: string;
-  list: OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListList;
-}
-export const OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      itemType: S.String.pipe(T.Body("item_type")),
-      list: OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListList,
-    }),
-  ).annotate({
-    identifier:
-      "OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItem",
-  }) as any as S.Schema<OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItem>;
-
-export type OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValue =
-  | OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem
-  | OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlItem
-  | OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlDiffItem
-  | OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItem
-  | OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItem;
-export const OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValue =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["itemType", "string"],
-      ["itemType", "yaml"],
-      ["itemType", "yamlDiff"],
-      ["itemType", "resourcePreview"],
-      ["itemType", "list"],
-    ]),
-  );
-
-export interface OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItem {
+export interface OnRampsCreateResponsePostApplyResourcesSectionsItemHiddenItemsItem {
   helpText?: string | null;
   name?: string | null;
-  value?: OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValue | null;
+  value?: unknown | null;
 }
-export const OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItem =
+export const OnRampsCreateResponsePostApplyResourcesSectionsItemHiddenItemsItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       helpText: S.optional(S.NullOr(S.String)),
       name: S.optional(S.NullOr(S.String)),
-      value: S.optional(
-        S.NullOr(
-          OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValue,
-        ),
-      ),
+      value: S.optional(S.NullOr(S.Unknown)),
     }),
   ).annotate({
     identifier:
-      "OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItem",
-  }) as any as S.Schema<OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItem>;
+      "OnRampsCreateResponsePostApplyResourcesSectionsItemHiddenItemsItem",
+  }) as any as S.Schema<OnRampsCreateResponsePostApplyResourcesSectionsItemHiddenItemsItem>;
 
-export type OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsList =
-  Array<OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItem>;
-export const OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsList =
+export type OnRampsCreateResponsePostApplyResourcesSectionsItemHiddenItemsList =
+  Array<OnRampsCreateResponsePostApplyResourcesSectionsItemHiddenItemsItem>;
+export const OnRampsCreateResponsePostApplyResourcesSectionsItemHiddenItemsList =
   /*@__PURE__*/ S.Array(
-    OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItem,
-  ) as any as S.Schema<OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsList>;
+    OnRampsCreateResponsePostApplyResourcesSectionsItemHiddenItemsItem,
+  ) as any as S.Schema<OnRampsCreateResponsePostApplyResourcesSectionsItemHiddenItemsList>;
 
-export type OnRampsCreateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnStringItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem;
-export const OnRampsCreateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnStringItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem;
+export type OnRampsCreateResponsePostApplyResourcesSectionsItemVisibleItemsItem =
+  OnRampsCreateResponsePostApplyResourcesSectionsItemHiddenItemsItem;
+export const OnRampsCreateResponsePostApplyResourcesSectionsItemVisibleItemsItem =
+  OnRampsCreateResponsePostApplyResourcesSectionsItemHiddenItemsItem;
 
-export type OnRampsCreateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnYamlItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlItem;
-export const OnRampsCreateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnYamlItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlItem;
-
-export type OnRampsCreateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnYamlDiffItemYamlDiff =
-  OnRampsCreateResponsePlannedResourcesItemDiff;
-export const OnRampsCreateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnYamlDiffItemYamlDiff =
-  OnRampsCreateResponsePlannedResourcesItemDiff;
-
-export type OnRampsCreateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnYamlDiffItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlDiffItem;
-export const OnRampsCreateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnYamlDiffItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlDiffItem;
-
-export type OnRampsCreateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreviewCloudType =
-  | "AWS"
-  | "AZURE"
-  | "GOOGLE"
-  | "CLOUDFLARE";
-export const OnRampsCreateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreviewCloudType =
-  /*@__PURE__*/ S.String;
-
-export type OnRampsCreateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreviewResourceType =
-  | "aws_customer_gateway"
-  | "aws_egress_only_internet_gateway"
-  | "aws_internet_gateway"
-  | "aws_instance"
-  | "aws_network_interface"
-  | "aws_route"
-  | "aws_route_table"
-  | "aws_route_table_association"
-  | "aws_subnet"
-  | "aws_vpc"
-  | "aws_vpc_ipv4_cidr_block_association"
-  | "aws_vpn_connection"
-  | "aws_vpn_connection_route"
-  | "aws_vpn_gateway"
-  | "aws_security_group"
-  | "aws_vpc_security_group_ingress_rule"
-  | "aws_vpc_security_group_egress_rule"
-  | "aws_ec2_managed_prefix_list"
-  | "aws_ec2_transit_gateway"
-  | "aws_ec2_transit_gateway_prefix_list_reference"
-  | "aws_ec2_transit_gateway_vpc_attachment"
-  | "azurerm_application_security_group"
-  | "azurerm_lb"
-  | "azurerm_lb_backend_address_pool"
-  | "azurerm_lb_nat_pool"
-  | "azurerm_lb_nat_rule"
-  | "azurerm_lb_rule"
-  | "azurerm_local_network_gateway"
-  | "azurerm_network_interface"
-  | "azurerm_network_interface_application_security_group_association"
-  | "azurerm_network_interface_backend_address_pool_association"
-  | "azurerm_network_interface_security_group_association"
-  | "azurerm_network_security_group"
-  | "azurerm_public_ip"
-  | "azurerm_route"
-  | "azurerm_route_table"
-  | "azurerm_subnet"
-  | "azurerm_subnet_route_table_association"
-  | "azurerm_virtual_machine"
-  | "azurerm_virtual_network_gateway_connection"
-  | "azurerm_virtual_network"
-  | "azurerm_virtual_network_gateway"
-  | "google_compute_network"
-  | "google_compute_subnetwork"
-  | "google_compute_vpn_gateway"
-  | "google_compute_vpn_tunnel"
-  | "google_compute_route"
-  | "google_compute_address"
-  | "google_compute_global_address"
-  | "google_compute_router"
-  | "google_compute_interconnect_attachment"
-  | "google_compute_ha_vpn_gateway"
-  | "google_compute_forwarding_rule"
-  | "google_compute_network_firewall_policy"
-  | "google_compute_network_firewall_policy_rule"
-  | "cloudflare_static_route"
-  | "cloudflare_ipsec_tunnel";
-export const OnRampsCreateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreviewResourceType =
-  /*@__PURE__*/ S.String;
-
-export interface OnRampsCreateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreview {
-  id: string;
-  cloudType: OnRampsCreateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreviewCloudType;
-  detail: string;
-  name: string;
-  resourceType: OnRampsCreateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreviewResourceType;
-  title: string;
-}
-export const OnRampsCreateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreview =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-      cloudType:
-        OnRampsCreateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreviewCloudType.pipe(
-          T.Body("cloud_type"),
-        ),
-      detail: S.String,
-      name: S.String,
-      resourceType:
-        OnRampsCreateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreviewResourceType.pipe(
-          T.Body("resource_type"),
-        ),
-      title: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "OnRampsCreateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreview",
-  }) as any as S.Schema<OnRampsCreateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreview>;
-
-export interface OnRampsCreateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItem {
-  itemType: string;
-  resourcePreview: OnRampsCreateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreview;
-}
-export const OnRampsCreateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      itemType: S.String.pipe(T.Body("item_type")),
-      resourcePreview:
-        OnRampsCreateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreview.pipe(
-          T.Body("resource_preview"),
-        ),
-    }),
-  ).annotate({
-    identifier:
-      "OnRampsCreateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItem",
-  }) as any as S.Schema<OnRampsCreateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItem>;
-
-export type OnRampsCreateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnStringItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem;
-export const OnRampsCreateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnStringItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem;
-
-export type OnRampsCreateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewCloudType =
-  | "AWS"
-  | "AZURE"
-  | "GOOGLE"
-  | "CLOUDFLARE";
-export const OnRampsCreateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewCloudType =
-  /*@__PURE__*/ S.String;
-
-export type OnRampsCreateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewResourceType =
-  | "aws_customer_gateway"
-  | "aws_egress_only_internet_gateway"
-  | "aws_internet_gateway"
-  | "aws_instance"
-  | "aws_network_interface"
-  | "aws_route"
-  | "aws_route_table"
-  | "aws_route_table_association"
-  | "aws_subnet"
-  | "aws_vpc"
-  | "aws_vpc_ipv4_cidr_block_association"
-  | "aws_vpn_connection"
-  | "aws_vpn_connection_route"
-  | "aws_vpn_gateway"
-  | "aws_security_group"
-  | "aws_vpc_security_group_ingress_rule"
-  | "aws_vpc_security_group_egress_rule"
-  | "aws_ec2_managed_prefix_list"
-  | "aws_ec2_transit_gateway"
-  | "aws_ec2_transit_gateway_prefix_list_reference"
-  | "aws_ec2_transit_gateway_vpc_attachment"
-  | "azurerm_application_security_group"
-  | "azurerm_lb"
-  | "azurerm_lb_backend_address_pool"
-  | "azurerm_lb_nat_pool"
-  | "azurerm_lb_nat_rule"
-  | "azurerm_lb_rule"
-  | "azurerm_local_network_gateway"
-  | "azurerm_network_interface"
-  | "azurerm_network_interface_application_security_group_association"
-  | "azurerm_network_interface_backend_address_pool_association"
-  | "azurerm_network_interface_security_group_association"
-  | "azurerm_network_security_group"
-  | "azurerm_public_ip"
-  | "azurerm_route"
-  | "azurerm_route_table"
-  | "azurerm_subnet"
-  | "azurerm_subnet_route_table_association"
-  | "azurerm_virtual_machine"
-  | "azurerm_virtual_network_gateway_connection"
-  | "azurerm_virtual_network"
-  | "azurerm_virtual_network_gateway"
-  | "google_compute_network"
-  | "google_compute_subnetwork"
-  | "google_compute_vpn_gateway"
-  | "google_compute_vpn_tunnel"
-  | "google_compute_route"
-  | "google_compute_address"
-  | "google_compute_global_address"
-  | "google_compute_router"
-  | "google_compute_interconnect_attachment"
-  | "google_compute_ha_vpn_gateway"
-  | "google_compute_forwarding_rule"
-  | "google_compute_network_firewall_policy"
-  | "google_compute_network_firewall_policy_rule"
-  | "cloudflare_static_route"
-  | "cloudflare_ipsec_tunnel";
-export const OnRampsCreateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewResourceType =
-  /*@__PURE__*/ S.String;
-
-export interface OnRampsCreateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview {
-  id: string;
-  cloudType: OnRampsCreateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewCloudType;
-  detail: string;
-  name: string;
-  resourceType: OnRampsCreateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewResourceType;
-  title: string;
-}
-export const OnRampsCreateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-      cloudType:
-        OnRampsCreateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewCloudType.pipe(
-          T.Body("cloud_type"),
-        ),
-      detail: S.String,
-      name: S.String,
-      resourceType:
-        OnRampsCreateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewResourceType.pipe(
-          T.Body("resource_type"),
-        ),
-      title: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "OnRampsCreateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview",
-  }) as any as S.Schema<OnRampsCreateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview>;
-
-export interface OnRampsCreateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItem {
-  itemType: string;
-  resourcePreview: OnRampsCreateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview;
-}
-export const OnRampsCreateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      itemType: S.String.pipe(T.Body("item_type")),
-      resourcePreview:
-        OnRampsCreateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview.pipe(
-          T.Body("resource_preview"),
-        ),
-    }),
-  ).annotate({
-    identifier:
-      "OnRampsCreateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItem",
-  }) as any as S.Schema<OnRampsCreateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItem>;
-
-export type OnRampsCreateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItem =
-  | OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem
-  | OnRampsCreateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItem;
-export const OnRampsCreateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItem =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["itemType", "string"],
-      ["itemType", "resourcePreview"],
-    ]),
-  );
-
-export type OnRampsCreateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListList =
-  Array<OnRampsCreateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItem>;
-export const OnRampsCreateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListList =
+export type OnRampsCreateResponsePostApplyResourcesSectionsItemVisibleItemsList =
+  Array<OnRampsCreateResponsePostApplyResourcesSectionsItemHiddenItemsItem>;
+export const OnRampsCreateResponsePostApplyResourcesSectionsItemVisibleItemsList =
   /*@__PURE__*/ S.Array(
-    OnRampsCreateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItem,
-  ) as any as S.Schema<OnRampsCreateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListList>;
+    OnRampsCreateResponsePostApplyResourcesSectionsItemHiddenItemsItem,
+  ) as any as S.Schema<OnRampsCreateResponsePostApplyResourcesSectionsItemVisibleItemsList>;
 
-export interface OnRampsCreateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItem {
-  itemType: string;
-  list: OnRampsCreateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListList;
-}
-export const OnRampsCreateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      itemType: S.String.pipe(T.Body("item_type")),
-      list: OnRampsCreateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListList,
-    }),
-  ).annotate({
-    identifier:
-      "OnRampsCreateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItem",
-  }) as any as S.Schema<OnRampsCreateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItem>;
-
-export type OnRampsCreateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValue =
-  | OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem
-  | OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlItem
-  | OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlDiffItem
-  | OnRampsCreateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItem
-  | OnRampsCreateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItem;
-export const OnRampsCreateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValue =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["itemType", "string"],
-      ["itemType", "yaml"],
-      ["itemType", "yamlDiff"],
-      ["itemType", "resourcePreview"],
-      ["itemType", "list"],
-    ]),
-  );
-
-export interface OnRampsCreateResponsePostApplyResourcesValueSectionsItemVisibleItemsItem {
-  helpText?: string | null;
-  name?: string | null;
-  value?: OnRampsCreateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValue | null;
-}
-export const OnRampsCreateResponsePostApplyResourcesValueSectionsItemVisibleItemsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      helpText: S.optional(S.NullOr(S.String)),
-      name: S.optional(S.NullOr(S.String)),
-      value: S.optional(
-        S.NullOr(
-          OnRampsCreateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValue,
-        ),
-      ),
-    }),
-  ).annotate({
-    identifier:
-      "OnRampsCreateResponsePostApplyResourcesValueSectionsItemVisibleItemsItem",
-  }) as any as S.Schema<OnRampsCreateResponsePostApplyResourcesValueSectionsItemVisibleItemsItem>;
-
-export type OnRampsCreateResponsePostApplyResourcesValueSectionsItemVisibleItemsList =
-  Array<OnRampsCreateResponsePostApplyResourcesValueSectionsItemVisibleItemsItem>;
-export const OnRampsCreateResponsePostApplyResourcesValueSectionsItemVisibleItemsList =
-  /*@__PURE__*/ S.Array(
-    OnRampsCreateResponsePostApplyResourcesValueSectionsItemVisibleItemsItem,
-  ) as any as S.Schema<OnRampsCreateResponsePostApplyResourcesValueSectionsItemVisibleItemsList>;
-
-export interface OnRampsCreateResponsePostApplyResourcesValueSectionsItem {
-  hiddenItems: OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsList;
+export interface OnRampsCreateResponsePostApplyResourcesSectionsItem {
+  hiddenItems: OnRampsCreateResponsePostApplyResourcesSectionsItemHiddenItemsList;
   name: string;
-  visibleItems: OnRampsCreateResponsePostApplyResourcesValueSectionsItemVisibleItemsList;
+  visibleItems: OnRampsCreateResponsePostApplyResourcesSectionsItemVisibleItemsList;
   helpText?: string | null;
 }
-export const OnRampsCreateResponsePostApplyResourcesValueSectionsItem =
+export const OnRampsCreateResponsePostApplyResourcesSectionsItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       hiddenItems:
-        OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsList.pipe(
+        OnRampsCreateResponsePostApplyResourcesSectionsItemHiddenItemsList.pipe(
           T.Body("hidden_items"),
         ),
       name: S.String,
       visibleItems:
-        OnRampsCreateResponsePostApplyResourcesValueSectionsItemVisibleItemsList.pipe(
+        OnRampsCreateResponsePostApplyResourcesSectionsItemVisibleItemsList.pipe(
           T.Body("visible_items"),
         ),
       helpText: S.optional(S.NullOr(S.String).pipe(T.Body("help_text"))),
     }),
   ).annotate({
-    identifier: "OnRampsCreateResponsePostApplyResourcesValueSectionsItem",
-  }) as any as S.Schema<OnRampsCreateResponsePostApplyResourcesValueSectionsItem>;
+    identifier: "OnRampsCreateResponsePostApplyResourcesSectionsItem",
+  }) as any as S.Schema<OnRampsCreateResponsePostApplyResourcesSectionsItem>;
 
-export type OnRampsCreateResponsePostApplyResourcesValueSectionsList =
-  Array<OnRampsCreateResponsePostApplyResourcesValueSectionsItem>;
-export const OnRampsCreateResponsePostApplyResourcesValueSectionsList =
+export type OnRampsCreateResponsePostApplyResourcesSectionsList =
+  Array<OnRampsCreateResponsePostApplyResourcesSectionsItem>;
+export const OnRampsCreateResponsePostApplyResourcesSectionsList =
   /*@__PURE__*/ S.Array(
-    OnRampsCreateResponsePostApplyResourcesValueSectionsItem,
-  ) as any as S.Schema<OnRampsCreateResponsePostApplyResourcesValueSectionsList>;
+    OnRampsCreateResponsePostApplyResourcesSectionsItem,
+  ) as any as S.Schema<OnRampsCreateResponsePostApplyResourcesSectionsList>;
 
-export type OnRampsCreateResponsePostApplyResourcesValueStateMap = {
-  [key: string]: unknown | undefined;
-};
-export const OnRampsCreateResponsePostApplyResourcesValueStateMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<OnRampsCreateResponsePostApplyResourcesValueStateMap>;
-
-export type OnRampsCreateResponsePostApplyResourcesValueTagsMap = {
-  [key: string]: string | undefined;
-};
-export const OnRampsCreateResponsePostApplyResourcesValueTagsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<OnRampsCreateResponsePostApplyResourcesValueTagsMap>;
-
-export type OnRampsCreateResponsePostApplyResourcesValueManagedByItemClientType =
+export type OnRampsCreateResponsePostApplyResourcesManagedByItemClientType =
   "MAGIC_WAN_CLOUD_ONRAMP";
-export const OnRampsCreateResponsePostApplyResourcesValueManagedByItemClientType =
+export const OnRampsCreateResponsePostApplyResourcesManagedByItemClientType =
   /*@__PURE__*/ S.String;
 
-export interface OnRampsCreateResponsePostApplyResourcesValueManagedByItem {
+export interface OnRampsCreateResponsePostApplyResourcesManagedByItem {
   id: string;
-  clientType: OnRampsCreateResponsePostApplyResourcesValueManagedByItemClientType;
+  clientType: OnRampsCreateResponsePostApplyResourcesManagedByItemClientType;
   name: string;
 }
-export const OnRampsCreateResponsePostApplyResourcesValueManagedByItem =
+export const OnRampsCreateResponsePostApplyResourcesManagedByItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       id: S.String,
       clientType:
-        OnRampsCreateResponsePostApplyResourcesValueManagedByItemClientType.pipe(
+        OnRampsCreateResponsePostApplyResourcesManagedByItemClientType.pipe(
           T.Body("client_type"),
         ),
       name: S.String,
     }),
   ).annotate({
-    identifier: "OnRampsCreateResponsePostApplyResourcesValueManagedByItem",
-  }) as any as S.Schema<OnRampsCreateResponsePostApplyResourcesValueManagedByItem>;
+    identifier: "OnRampsCreateResponsePostApplyResourcesManagedByItem",
+  }) as any as S.Schema<OnRampsCreateResponsePostApplyResourcesManagedByItem>;
 
-export type OnRampsCreateResponsePostApplyResourcesValueManagedByList =
-  Array<OnRampsCreateResponsePostApplyResourcesValueManagedByItem>;
-export const OnRampsCreateResponsePostApplyResourcesValueManagedByList =
+export type OnRampsCreateResponsePostApplyResourcesManagedByList =
+  Array<OnRampsCreateResponsePostApplyResourcesManagedByItem>;
+export const OnRampsCreateResponsePostApplyResourcesManagedByList =
   /*@__PURE__*/ S.Array(
-    OnRampsCreateResponsePostApplyResourcesValueManagedByItem,
-  ) as any as S.Schema<OnRampsCreateResponsePostApplyResourcesValueManagedByList>;
+    OnRampsCreateResponsePostApplyResourcesManagedByItem,
+  ) as any as S.Schema<OnRampsCreateResponsePostApplyResourcesManagedByList>;
 
-export interface OnRampsCreateResponsePostApplyResourcesValue {
+export interface OnRampsCreateResponsePostApplyResources {
   id: string;
   accountId: string;
-  cloudType: OnRampsCreateResponsePostApplyResourcesValueCloudType;
-  config: OnRampsCreateResponsePostApplyResourcesValueConfigMap;
+  cloudType: OnRampsCreateResponsePostApplyResourcesCloudType;
+  config: unknown;
   deploymentProvider: string;
   managed: boolean;
   monthlyCostEstimate: OnRampsCreateResponsePostApplyMonthlyCostEstimate;
   name: string;
   nativeId: string;
-  observations: OnRampsCreateResponsePostApplyResourcesValueObservationsMap;
-  providerIds: OnRampsCreateResponsePostApplyResourcesValueProviderIdsList;
-  providerNamesById: OnRampsCreateResponsePostApplyResourcesValueProviderNamesByIdMap;
+  observations: OnRampsCreateResponsePostApplyResourcesObservations;
+  providerIds: OnRampsCreateResponsePostApplyResourcesProviderIdsList;
+  providerNamesById: unknown;
   region: string;
   resourceGroup: string;
-  resourceType: OnRampsCreateResponsePostApplyResourcesValueResourceType;
-  sections: OnRampsCreateResponsePostApplyResourcesValueSectionsList;
-  state: OnRampsCreateResponsePostApplyResourcesValueStateMap;
-  tags: OnRampsCreateResponsePostApplyResourcesValueTagsMap;
+  resourceType: string;
+  sections: OnRampsCreateResponsePostApplyResourcesSectionsList;
+  state: unknown;
+  tags: unknown;
   updatedAt: string;
   url: string;
-  managedBy?: OnRampsCreateResponsePostApplyResourcesValueManagedByList | null;
+  managedBy?: OnRampsCreateResponsePostApplyResourcesManagedByList | null;
 }
-export const OnRampsCreateResponsePostApplyResourcesValue =
-  /*@__PURE__*/ S.suspend(() =>
+export const OnRampsCreateResponsePostApplyResources = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       id: S.String,
       accountId: S.String.pipe(T.Body("account_id")),
-      cloudType: OnRampsCreateResponsePostApplyResourcesValueCloudType.pipe(
+      cloudType: OnRampsCreateResponsePostApplyResourcesCloudType.pipe(
         T.Body("cloud_type"),
       ),
-      config: OnRampsCreateResponsePostApplyResourcesValueConfigMap,
+      config: S.Unknown,
       deploymentProvider: S.String.pipe(T.Body("deployment_provider")),
       managed: S.Boolean,
       monthlyCostEstimate:
@@ -2032,44 +874,28 @@ export const OnRampsCreateResponsePostApplyResourcesValue =
         ),
       name: S.String,
       nativeId: S.String.pipe(T.Body("native_id")),
-      observations: OnRampsCreateResponsePostApplyResourcesValueObservationsMap,
-      providerIds:
-        OnRampsCreateResponsePostApplyResourcesValueProviderIdsList.pipe(
-          T.Body("provider_ids"),
-        ),
-      providerNamesById:
-        OnRampsCreateResponsePostApplyResourcesValueProviderNamesByIdMap.pipe(
-          T.Body("provider_names_by_id"),
-        ),
+      observations: OnRampsCreateResponsePostApplyResourcesObservations,
+      providerIds: OnRampsCreateResponsePostApplyResourcesProviderIdsList.pipe(
+        T.Body("provider_ids"),
+      ),
+      providerNamesById: S.Unknown.pipe(T.Body("provider_names_by_id")),
       region: S.String,
       resourceGroup: S.String.pipe(T.Body("resource_group")),
-      resourceType:
-        OnRampsCreateResponsePostApplyResourcesValueResourceType.pipe(
-          T.Body("resource_type"),
-        ),
-      sections: OnRampsCreateResponsePostApplyResourcesValueSectionsList,
-      state: OnRampsCreateResponsePostApplyResourcesValueStateMap,
-      tags: OnRampsCreateResponsePostApplyResourcesValueTagsMap,
+      resourceType: S.String.pipe(T.Body("resource_type")),
+      sections: OnRampsCreateResponsePostApplyResourcesSectionsList,
+      state: S.Unknown,
+      tags: S.Unknown,
       updatedAt: S.String.pipe(T.Body("updated_at")),
       url: S.String,
       managedBy: S.optional(
-        S.NullOr(
-          OnRampsCreateResponsePostApplyResourcesValueManagedByList,
-        ).pipe(T.Body("managed_by")),
+        S.NullOr(OnRampsCreateResponsePostApplyResourcesManagedByList).pipe(
+          T.Body("managed_by"),
+        ),
       ),
     }),
-  ).annotate({
-    identifier: "OnRampsCreateResponsePostApplyResourcesValue",
-  }) as any as S.Schema<OnRampsCreateResponsePostApplyResourcesValue>;
-
-export type OnRampsCreateResponsePostApplyResourcesMap = {
-  [key: string]: OnRampsCreateResponsePostApplyResourcesValue | undefined;
-};
-export const OnRampsCreateResponsePostApplyResourcesMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    OnRampsCreateResponsePostApplyResourcesValue,
-  ) as any as S.Schema<OnRampsCreateResponsePostApplyResourcesMap>;
+).annotate({
+  identifier: "OnRampsCreateResponsePostApplyResources",
+}) as any as S.Schema<OnRampsCreateResponsePostApplyResources>;
 
 export interface OnRampsCreateResponseStatusApplyProgress {
   done: number;
@@ -2084,21 +910,6 @@ export const OnRampsCreateResponseStatusApplyProgress = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "OnRampsCreateResponseStatusApplyProgress",
 }) as any as S.Schema<OnRampsCreateResponseStatusApplyProgress>;
-
-export type OnRampsCreateResponseStatusLifecycleState =
-  | "OnrampNeedsApply"
-  | "OnrampPendingPlan"
-  | "OnrampPlanning"
-  | "OnrampPlanFailed"
-  | "OnrampPendingApproval"
-  | "OnrampPendingApply"
-  | "OnrampApplying"
-  | "OnrampApplyFailed"
-  | "OnrampActive"
-  | "OnrampPendingDestroy"
-  | "OnrampDestroying"
-  | "OnrampDestroyFailed";
-export const OnRampsCreateResponseStatusLifecycleState = /*@__PURE__*/ S.String;
 
 export type OnRampsCreateResponseStatusPlanProgress =
   OnRampsCreateResponseStatusApplyProgress;
@@ -2115,229 +926,42 @@ export const OnRampsCreateResponseStatusTunnelsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<OnRampsCreateResponseStatusTunnelsList>;
 
-export type OnRampsCreateResponseStatusLifecycleErrorsValueCode =
-  | 1001
-  | 1002
-  | 1003
-  | 1004
-  | 1005
-  | 1006
-  | 1007
-  | 1008
-  | 1009
-  | 1010
-  | 1011
-  | 1012
-  | 1013
-  | 1014
-  | 1015
-  | 1016
-  | 1017
-  | 1018
-  | 2001
-  | 2002
-  | 2003
-  | 2004
-  | 2005
-  | 2006
-  | 2007
-  | 2008
-  | 2009
-  | 2010
-  | 2011
-  | 2012
-  | 2013
-  | 2014
-  | 2015
-  | 2016
-  | 2017
-  | 2018
-  | 2019
-  | 2020
-  | 2021
-  | 2022
-  | 3001
-  | 3002
-  | 3003
-  | 3004
-  | 3005
-  | 3006
-  | 3007
-  | 4001
-  | 4002
-  | 4003
-  | 4004
-  | 4005
-  | 4006
-  | 4007
-  | 4008
-  | 4009
-  | 4010
-  | 4011
-  | 4012
-  | 4013
-  | 4014
-  | 4015
-  | 4016
-  | 4017
-  | 4018
-  | 4019
-  | 4020
-  | 4021
-  | 4022
-  | 4023
-  | 5001
-  | 5002
-  | 5003
-  | 5004
-  | 102000
-  | 102001
-  | 102002
-  | 102003
-  | 102004
-  | 102005
-  | 102006
-  | 102007
-  | 102008
-  | 102009
-  | 102010
-  | 102011
-  | 102012
-  | 102013
-  | 102014
-  | 102015
-  | 102016
-  | 102017
-  | 102018
-  | 102019
-  | 102020
-  | 102021
-  | 102022
-  | 102023
-  | 102024
-  | 102025
-  | 102026
-  | 102027
-  | 102028
-  | 102029
-  | 102030
-  | 102031
-  | 102032
-  | 102033
-  | 102034
-  | 102035
-  | 102036
-  | 102037
-  | 102038
-  | 102039
-  | 102040
-  | 102041
-  | 102042
-  | 102043
-  | 102044
-  | 102045
-  | 102046
-  | 102047
-  | 102048
-  | 102049
-  | 102050
-  | 102051
-  | 102052
-  | 102053
-  | 102054
-  | 102055
-  | 102056
-  | 102057
-  | 102058
-  | 102059
-  | 102060
-  | 102061
-  | 102062
-  | 102063
-  | 102064
-  | 102065
-  | 102066
-  | 102067
-  | 102068
-  | 102069
-  | 102070
-  | 102071
-  | 102072
-  | 103001
-  | 103002
-  | 103003
-  | 103004
-  | 103005
-  | 103006
-  | 103007
-  | 103008;
-export const OnRampsCreateResponseStatusLifecycleErrorsValueCode =
-  /*@__PURE__*/ S.Number;
+export type OnRampsCreateResponseStatusLifecycleErrorsMeta =
+  CatalogSyncsCreateResponseErrorsMeta;
+export const OnRampsCreateResponseStatusLifecycleErrorsMeta =
+  CatalogSyncsCreateResponseErrorsMeta;
 
-export type OnRampsCreateResponseStatusLifecycleErrorsValueMeta =
-  CatalogSyncsCreateResponseErrorsValueMeta;
-export const OnRampsCreateResponseStatusLifecycleErrorsValueMeta =
-  CatalogSyncsCreateResponseErrorsValueMeta;
+export type OnRampsCreateResponseStatusLifecycleErrorsSource =
+  CatalogSyncsCreateResponseErrorsSource;
+export const OnRampsCreateResponseStatusLifecycleErrorsSource =
+  CatalogSyncsCreateResponseErrorsSource;
 
-export type OnRampsCreateResponseStatusLifecycleErrorsValueSource =
-  CatalogSyncsCreateResponseErrorsValueSource;
-export const OnRampsCreateResponseStatusLifecycleErrorsValueSource =
-  CatalogSyncsCreateResponseErrorsValueSource;
-
-export interface OnRampsCreateResponseStatusLifecycleErrorsValue {
-  code: OnRampsCreateResponseStatusLifecycleErrorsValueCode;
-  message: string;
-  documentationUrl?: string | null;
-  meta?: CatalogSyncsCreateResponseErrorsValueMeta | null;
-  source?: CatalogSyncsCreateResponseErrorsValueSource | null;
-}
-export const OnRampsCreateResponseStatusLifecycleErrorsValue =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      code: OnRampsCreateResponseStatusLifecycleErrorsValueCode,
-      message: S.String,
-      documentationUrl: S.optional(
-        S.NullOr(S.String).pipe(T.Body("documentation_url")),
-      ),
-      meta: S.optional(S.NullOr(CatalogSyncsCreateResponseErrorsValueMeta)),
-      source: S.optional(S.NullOr(CatalogSyncsCreateResponseErrorsValueSource)),
-    }),
-  ).annotate({
-    identifier: "OnRampsCreateResponseStatusLifecycleErrorsValue",
-  }) as any as S.Schema<OnRampsCreateResponseStatusLifecycleErrorsValue>;
-
-export type OnRampsCreateResponseStatusLifecycleErrorsMap = {
-  [key: string]: OnRampsCreateResponseStatusLifecycleErrorsValue | undefined;
-};
-export const OnRampsCreateResponseStatusLifecycleErrorsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    OnRampsCreateResponseStatusLifecycleErrorsValue,
-  ) as any as S.Schema<OnRampsCreateResponseStatusLifecycleErrorsMap>;
+export type OnRampsCreateResponseStatusLifecycleErrors =
+  CatalogSyncsCreateResponseErrors;
+export const OnRampsCreateResponseStatusLifecycleErrors =
+  CatalogSyncsCreateResponseErrors;
 
 export interface OnRampsCreateResponseStatus {
   applyProgress: OnRampsCreateResponseStatusApplyProgress;
-  lifecycleState: OnRampsCreateResponseStatusLifecycleState;
+  lifecycleState: string;
   planProgress: OnRampsCreateResponseStatusApplyProgress;
   routes: OnRampsCreateResponseStatusRoutesList;
   tunnels: OnRampsCreateResponseStatusTunnelsList;
-  lifecycleErrors?: OnRampsCreateResponseStatusLifecycleErrorsMap | null;
+  lifecycleErrors?: CatalogSyncsCreateResponseErrors | null;
 }
 export const OnRampsCreateResponseStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     applyProgress: OnRampsCreateResponseStatusApplyProgress.pipe(
       T.Body("apply_progress"),
     ),
-    lifecycleState: OnRampsCreateResponseStatusLifecycleState.pipe(
-      T.Body("lifecycle_state"),
-    ),
+    lifecycleState: S.String.pipe(T.Body("lifecycle_state")),
     planProgress: OnRampsCreateResponseStatusApplyProgress.pipe(
       T.Body("plan_progress"),
     ),
     routes: OnRampsCreateResponseStatusRoutesList,
     tunnels: OnRampsCreateResponseStatusTunnelsList,
     lifecycleErrors: S.optional(
-      S.NullOr(OnRampsCreateResponseStatusLifecycleErrorsMap).pipe(
+      S.NullOr(CatalogSyncsCreateResponseErrors).pipe(
         T.Body("lifecycle_errors"),
       ),
     ),
@@ -2346,899 +970,143 @@ export const OnRampsCreateResponseStatus = /*@__PURE__*/ S.suspend(() =>
   identifier: "OnRampsCreateResponseStatus",
 }) as any as S.Schema<OnRampsCreateResponseStatus>;
 
-export type OnRampsCreateResponseVpcsByIdValueCloudType =
+export type OnRampsCreateResponseVpcsByIdCloudType =
   | "AWS"
   | "AZURE"
   | "GOOGLE"
   | "CLOUDFLARE";
-export const OnRampsCreateResponseVpcsByIdValueCloudType =
-  /*@__PURE__*/ S.String;
+export const OnRampsCreateResponseVpcsByIdCloudType = /*@__PURE__*/ S.String;
 
-export type OnRampsCreateResponseVpcsByIdValueConfigMap = {
-  [key: string]: unknown | undefined;
-};
-export const OnRampsCreateResponseVpcsByIdValueConfigMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<OnRampsCreateResponseVpcsByIdValueConfigMap>;
-
-export type OnRampsCreateResponseVpcsByIdValueMonthlyCostEstimate =
+export type OnRampsCreateResponseVpcsByIdMonthlyCostEstimate =
   OnRampsCreateResponsePostApplyMonthlyCostEstimate;
-export const OnRampsCreateResponseVpcsByIdValueMonthlyCostEstimate =
+export const OnRampsCreateResponseVpcsByIdMonthlyCostEstimate =
   OnRampsCreateResponsePostApplyMonthlyCostEstimate;
 
-export type OnRampsCreateResponseVpcsByIdValueObservationsValue =
-  OnRampsCreateResponsePostApplyResourcesValueObservationsValue;
-export const OnRampsCreateResponseVpcsByIdValueObservationsValue =
-  OnRampsCreateResponsePostApplyResourcesValueObservationsValue;
+export type OnRampsCreateResponseVpcsByIdObservations =
+  OnRampsCreateResponsePostApplyResourcesObservations;
+export const OnRampsCreateResponseVpcsByIdObservations =
+  OnRampsCreateResponsePostApplyResourcesObservations;
 
-export type OnRampsCreateResponseVpcsByIdValueObservationsMap = {
-  [key: string]:
-    | OnRampsCreateResponsePostApplyResourcesValueObservationsValue
-    | undefined;
-};
-export const OnRampsCreateResponseVpcsByIdValueObservationsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    OnRampsCreateResponsePostApplyResourcesValueObservationsValue,
-  ) as any as S.Schema<OnRampsCreateResponseVpcsByIdValueObservationsMap>;
-
-export type OnRampsCreateResponseVpcsByIdValueProviderIdsList = Array<string>;
-export const OnRampsCreateResponseVpcsByIdValueProviderIdsList =
+export type OnRampsCreateResponseVpcsByIdProviderIdsList = Array<string>;
+export const OnRampsCreateResponseVpcsByIdProviderIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
-  ) as any as S.Schema<OnRampsCreateResponseVpcsByIdValueProviderIdsList>;
+  ) as any as S.Schema<OnRampsCreateResponseVpcsByIdProviderIdsList>;
 
-export type OnRampsCreateResponseVpcsByIdValueProviderNamesByIdMap = {
-  [key: string]: string | undefined;
-};
-export const OnRampsCreateResponseVpcsByIdValueProviderNamesByIdMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<OnRampsCreateResponseVpcsByIdValueProviderNamesByIdMap>;
+export type OnRampsCreateResponseVpcsByIdSectionsItemHiddenItemsItem =
+  OnRampsCreateResponsePostApplyResourcesSectionsItemHiddenItemsItem;
+export const OnRampsCreateResponseVpcsByIdSectionsItemHiddenItemsItem =
+  OnRampsCreateResponsePostApplyResourcesSectionsItemHiddenItemsItem;
 
-export type OnRampsCreateResponseVpcsByIdValueResourceType =
-  | "aws_customer_gateway"
-  | "aws_egress_only_internet_gateway"
-  | "aws_internet_gateway"
-  | "aws_instance"
-  | "aws_network_interface"
-  | "aws_route"
-  | "aws_route_table"
-  | "aws_route_table_association"
-  | "aws_subnet"
-  | "aws_vpc"
-  | "aws_vpc_ipv4_cidr_block_association"
-  | "aws_vpn_connection"
-  | "aws_vpn_connection_route"
-  | "aws_vpn_gateway"
-  | "aws_security_group"
-  | "aws_vpc_security_group_ingress_rule"
-  | "aws_vpc_security_group_egress_rule"
-  | "aws_ec2_managed_prefix_list"
-  | "aws_ec2_transit_gateway"
-  | "aws_ec2_transit_gateway_prefix_list_reference"
-  | "aws_ec2_transit_gateway_vpc_attachment"
-  | "azurerm_application_security_group"
-  | "azurerm_lb"
-  | "azurerm_lb_backend_address_pool"
-  | "azurerm_lb_nat_pool"
-  | "azurerm_lb_nat_rule"
-  | "azurerm_lb_rule"
-  | "azurerm_local_network_gateway"
-  | "azurerm_network_interface"
-  | "azurerm_network_interface_application_security_group_association"
-  | "azurerm_network_interface_backend_address_pool_association"
-  | "azurerm_network_interface_security_group_association"
-  | "azurerm_network_security_group"
-  | "azurerm_public_ip"
-  | "azurerm_route"
-  | "azurerm_route_table"
-  | "azurerm_subnet"
-  | "azurerm_subnet_route_table_association"
-  | "azurerm_virtual_machine"
-  | "azurerm_virtual_network_gateway_connection"
-  | "azurerm_virtual_network"
-  | "azurerm_virtual_network_gateway"
-  | "google_compute_network"
-  | "google_compute_subnetwork"
-  | "google_compute_vpn_gateway"
-  | "google_compute_vpn_tunnel"
-  | "google_compute_route"
-  | "google_compute_address"
-  | "google_compute_global_address"
-  | "google_compute_router"
-  | "google_compute_interconnect_attachment"
-  | "google_compute_ha_vpn_gateway"
-  | "google_compute_forwarding_rule"
-  | "google_compute_network_firewall_policy"
-  | "google_compute_network_firewall_policy_rule"
-  | "cloudflare_static_route"
-  | "cloudflare_ipsec_tunnel";
-export const OnRampsCreateResponseVpcsByIdValueResourceType =
-  /*@__PURE__*/ S.String;
-
-export type OnRampsCreateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnStringItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem;
-export const OnRampsCreateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnStringItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem;
-
-export type OnRampsCreateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnYamlItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlItem;
-export const OnRampsCreateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnYamlItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlItem;
-
-export type OnRampsCreateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnYamlDiffItemYamlDiff =
-  OnRampsCreateResponsePlannedResourcesItemDiff;
-export const OnRampsCreateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnYamlDiffItemYamlDiff =
-  OnRampsCreateResponsePlannedResourcesItemDiff;
-
-export type OnRampsCreateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnYamlDiffItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlDiffItem;
-export const OnRampsCreateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnYamlDiffItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlDiffItem;
-
-export type OnRampsCreateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreviewCloudType =
-  | "AWS"
-  | "AZURE"
-  | "GOOGLE"
-  | "CLOUDFLARE";
-export const OnRampsCreateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreviewCloudType =
-  /*@__PURE__*/ S.String;
-
-export type OnRampsCreateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreviewResourceType =
-  | "aws_customer_gateway"
-  | "aws_egress_only_internet_gateway"
-  | "aws_internet_gateway"
-  | "aws_instance"
-  | "aws_network_interface"
-  | "aws_route"
-  | "aws_route_table"
-  | "aws_route_table_association"
-  | "aws_subnet"
-  | "aws_vpc"
-  | "aws_vpc_ipv4_cidr_block_association"
-  | "aws_vpn_connection"
-  | "aws_vpn_connection_route"
-  | "aws_vpn_gateway"
-  | "aws_security_group"
-  | "aws_vpc_security_group_ingress_rule"
-  | "aws_vpc_security_group_egress_rule"
-  | "aws_ec2_managed_prefix_list"
-  | "aws_ec2_transit_gateway"
-  | "aws_ec2_transit_gateway_prefix_list_reference"
-  | "aws_ec2_transit_gateway_vpc_attachment"
-  | "azurerm_application_security_group"
-  | "azurerm_lb"
-  | "azurerm_lb_backend_address_pool"
-  | "azurerm_lb_nat_pool"
-  | "azurerm_lb_nat_rule"
-  | "azurerm_lb_rule"
-  | "azurerm_local_network_gateway"
-  | "azurerm_network_interface"
-  | "azurerm_network_interface_application_security_group_association"
-  | "azurerm_network_interface_backend_address_pool_association"
-  | "azurerm_network_interface_security_group_association"
-  | "azurerm_network_security_group"
-  | "azurerm_public_ip"
-  | "azurerm_route"
-  | "azurerm_route_table"
-  | "azurerm_subnet"
-  | "azurerm_subnet_route_table_association"
-  | "azurerm_virtual_machine"
-  | "azurerm_virtual_network_gateway_connection"
-  | "azurerm_virtual_network"
-  | "azurerm_virtual_network_gateway"
-  | "google_compute_network"
-  | "google_compute_subnetwork"
-  | "google_compute_vpn_gateway"
-  | "google_compute_vpn_tunnel"
-  | "google_compute_route"
-  | "google_compute_address"
-  | "google_compute_global_address"
-  | "google_compute_router"
-  | "google_compute_interconnect_attachment"
-  | "google_compute_ha_vpn_gateway"
-  | "google_compute_forwarding_rule"
-  | "google_compute_network_firewall_policy"
-  | "google_compute_network_firewall_policy_rule"
-  | "cloudflare_static_route"
-  | "cloudflare_ipsec_tunnel";
-export const OnRampsCreateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreviewResourceType =
-  /*@__PURE__*/ S.String;
-
-export interface OnRampsCreateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview {
-  id: string;
-  cloudType: OnRampsCreateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreviewCloudType;
-  detail: string;
-  name: string;
-  resourceType: OnRampsCreateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreviewResourceType;
-  title: string;
-}
-export const OnRampsCreateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-      cloudType:
-        OnRampsCreateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreviewCloudType.pipe(
-          T.Body("cloud_type"),
-        ),
-      detail: S.String,
-      name: S.String,
-      resourceType:
-        OnRampsCreateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreviewResourceType.pipe(
-          T.Body("resource_type"),
-        ),
-      title: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "OnRampsCreateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview",
-  }) as any as S.Schema<OnRampsCreateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview>;
-
-export interface OnRampsCreateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItem {
-  itemType: string;
-  resourcePreview: OnRampsCreateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview;
-}
-export const OnRampsCreateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      itemType: S.String.pipe(T.Body("item_type")),
-      resourcePreview:
-        OnRampsCreateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview.pipe(
-          T.Body("resource_preview"),
-        ),
-    }),
-  ).annotate({
-    identifier:
-      "OnRampsCreateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItem",
-  }) as any as S.Schema<OnRampsCreateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItem>;
-
-export type OnRampsCreateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnStringItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem;
-export const OnRampsCreateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnStringItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem;
-
-export type OnRampsCreateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewCloudType =
-  | "AWS"
-  | "AZURE"
-  | "GOOGLE"
-  | "CLOUDFLARE";
-export const OnRampsCreateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewCloudType =
-  /*@__PURE__*/ S.String;
-
-export type OnRampsCreateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewResourceType =
-  | "aws_customer_gateway"
-  | "aws_egress_only_internet_gateway"
-  | "aws_internet_gateway"
-  | "aws_instance"
-  | "aws_network_interface"
-  | "aws_route"
-  | "aws_route_table"
-  | "aws_route_table_association"
-  | "aws_subnet"
-  | "aws_vpc"
-  | "aws_vpc_ipv4_cidr_block_association"
-  | "aws_vpn_connection"
-  | "aws_vpn_connection_route"
-  | "aws_vpn_gateway"
-  | "aws_security_group"
-  | "aws_vpc_security_group_ingress_rule"
-  | "aws_vpc_security_group_egress_rule"
-  | "aws_ec2_managed_prefix_list"
-  | "aws_ec2_transit_gateway"
-  | "aws_ec2_transit_gateway_prefix_list_reference"
-  | "aws_ec2_transit_gateway_vpc_attachment"
-  | "azurerm_application_security_group"
-  | "azurerm_lb"
-  | "azurerm_lb_backend_address_pool"
-  | "azurerm_lb_nat_pool"
-  | "azurerm_lb_nat_rule"
-  | "azurerm_lb_rule"
-  | "azurerm_local_network_gateway"
-  | "azurerm_network_interface"
-  | "azurerm_network_interface_application_security_group_association"
-  | "azurerm_network_interface_backend_address_pool_association"
-  | "azurerm_network_interface_security_group_association"
-  | "azurerm_network_security_group"
-  | "azurerm_public_ip"
-  | "azurerm_route"
-  | "azurerm_route_table"
-  | "azurerm_subnet"
-  | "azurerm_subnet_route_table_association"
-  | "azurerm_virtual_machine"
-  | "azurerm_virtual_network_gateway_connection"
-  | "azurerm_virtual_network"
-  | "azurerm_virtual_network_gateway"
-  | "google_compute_network"
-  | "google_compute_subnetwork"
-  | "google_compute_vpn_gateway"
-  | "google_compute_vpn_tunnel"
-  | "google_compute_route"
-  | "google_compute_address"
-  | "google_compute_global_address"
-  | "google_compute_router"
-  | "google_compute_interconnect_attachment"
-  | "google_compute_ha_vpn_gateway"
-  | "google_compute_forwarding_rule"
-  | "google_compute_network_firewall_policy"
-  | "google_compute_network_firewall_policy_rule"
-  | "cloudflare_static_route"
-  | "cloudflare_ipsec_tunnel";
-export const OnRampsCreateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewResourceType =
-  /*@__PURE__*/ S.String;
-
-export interface OnRampsCreateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview {
-  id: string;
-  cloudType: OnRampsCreateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewCloudType;
-  detail: string;
-  name: string;
-  resourceType: OnRampsCreateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewResourceType;
-  title: string;
-}
-export const OnRampsCreateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-      cloudType:
-        OnRampsCreateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewCloudType.pipe(
-          T.Body("cloud_type"),
-        ),
-      detail: S.String,
-      name: S.String,
-      resourceType:
-        OnRampsCreateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewResourceType.pipe(
-          T.Body("resource_type"),
-        ),
-      title: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "OnRampsCreateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview",
-  }) as any as S.Schema<OnRampsCreateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview>;
-
-export interface OnRampsCreateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItem {
-  itemType: string;
-  resourcePreview: OnRampsCreateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview;
-}
-export const OnRampsCreateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      itemType: S.String.pipe(T.Body("item_type")),
-      resourcePreview:
-        OnRampsCreateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview.pipe(
-          T.Body("resource_preview"),
-        ),
-    }),
-  ).annotate({
-    identifier:
-      "OnRampsCreateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItem",
-  }) as any as S.Schema<OnRampsCreateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItem>;
-
-export type OnRampsCreateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItem =
-  | OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem
-  | OnRampsCreateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItem;
-export const OnRampsCreateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItem =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["itemType", "string"],
-      ["itemType", "resourcePreview"],
-    ]),
-  );
-
-export type OnRampsCreateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListList =
-  Array<OnRampsCreateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItem>;
-export const OnRampsCreateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListList =
+export type OnRampsCreateResponseVpcsByIdSectionsItemHiddenItemsList =
+  Array<OnRampsCreateResponsePostApplyResourcesSectionsItemHiddenItemsItem>;
+export const OnRampsCreateResponseVpcsByIdSectionsItemHiddenItemsList =
   /*@__PURE__*/ S.Array(
-    OnRampsCreateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItem,
-  ) as any as S.Schema<OnRampsCreateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListList>;
+    OnRampsCreateResponsePostApplyResourcesSectionsItemHiddenItemsItem,
+  ) as any as S.Schema<OnRampsCreateResponseVpcsByIdSectionsItemHiddenItemsList>;
 
-export interface OnRampsCreateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItem {
-  itemType: string;
-  list: OnRampsCreateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListList;
-}
-export const OnRampsCreateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      itemType: S.String.pipe(T.Body("item_type")),
-      list: OnRampsCreateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListList,
-    }),
-  ).annotate({
-    identifier:
-      "OnRampsCreateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItem",
-  }) as any as S.Schema<OnRampsCreateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItem>;
+export type OnRampsCreateResponseVpcsByIdSectionsItemVisibleItemsItem =
+  OnRampsCreateResponsePostApplyResourcesSectionsItemHiddenItemsItem;
+export const OnRampsCreateResponseVpcsByIdSectionsItemVisibleItemsItem =
+  OnRampsCreateResponsePostApplyResourcesSectionsItemHiddenItemsItem;
 
-export type OnRampsCreateResponseVpcsByIdValueSectionsItemHiddenItemsItemValue =
-  | OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem
-  | OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlItem
-  | OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlDiffItem
-  | OnRampsCreateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItem
-  | OnRampsCreateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItem;
-export const OnRampsCreateResponseVpcsByIdValueSectionsItemHiddenItemsItemValue =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["itemType", "string"],
-      ["itemType", "yaml"],
-      ["itemType", "yamlDiff"],
-      ["itemType", "resourcePreview"],
-      ["itemType", "list"],
-    ]),
-  );
-
-export interface OnRampsCreateResponseVpcsByIdValueSectionsItemHiddenItemsItem {
-  helpText?: string | null;
-  name?: string | null;
-  value?: OnRampsCreateResponseVpcsByIdValueSectionsItemHiddenItemsItemValue | null;
-}
-export const OnRampsCreateResponseVpcsByIdValueSectionsItemHiddenItemsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      helpText: S.optional(S.NullOr(S.String)),
-      name: S.optional(S.NullOr(S.String)),
-      value: S.optional(
-        S.NullOr(
-          OnRampsCreateResponseVpcsByIdValueSectionsItemHiddenItemsItemValue,
-        ),
-      ),
-    }),
-  ).annotate({
-    identifier: "OnRampsCreateResponseVpcsByIdValueSectionsItemHiddenItemsItem",
-  }) as any as S.Schema<OnRampsCreateResponseVpcsByIdValueSectionsItemHiddenItemsItem>;
-
-export type OnRampsCreateResponseVpcsByIdValueSectionsItemHiddenItemsList =
-  Array<OnRampsCreateResponseVpcsByIdValueSectionsItemHiddenItemsItem>;
-export const OnRampsCreateResponseVpcsByIdValueSectionsItemHiddenItemsList =
+export type OnRampsCreateResponseVpcsByIdSectionsItemVisibleItemsList =
+  Array<OnRampsCreateResponsePostApplyResourcesSectionsItemHiddenItemsItem>;
+export const OnRampsCreateResponseVpcsByIdSectionsItemVisibleItemsList =
   /*@__PURE__*/ S.Array(
-    OnRampsCreateResponseVpcsByIdValueSectionsItemHiddenItemsItem,
-  ) as any as S.Schema<OnRampsCreateResponseVpcsByIdValueSectionsItemHiddenItemsList>;
+    OnRampsCreateResponsePostApplyResourcesSectionsItemHiddenItemsItem,
+  ) as any as S.Schema<OnRampsCreateResponseVpcsByIdSectionsItemVisibleItemsList>;
 
-export type OnRampsCreateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnStringItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem;
-export const OnRampsCreateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnStringItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem;
-
-export type OnRampsCreateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnYamlItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlItem;
-export const OnRampsCreateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnYamlItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlItem;
-
-export type OnRampsCreateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnYamlDiffItemYamlDiff =
-  OnRampsCreateResponsePlannedResourcesItemDiff;
-export const OnRampsCreateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnYamlDiffItemYamlDiff =
-  OnRampsCreateResponsePlannedResourcesItemDiff;
-
-export type OnRampsCreateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnYamlDiffItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlDiffItem;
-export const OnRampsCreateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnYamlDiffItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlDiffItem;
-
-export type OnRampsCreateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreviewCloudType =
-  | "AWS"
-  | "AZURE"
-  | "GOOGLE"
-  | "CLOUDFLARE";
-export const OnRampsCreateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreviewCloudType =
-  /*@__PURE__*/ S.String;
-
-export type OnRampsCreateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreviewResourceType =
-  | "aws_customer_gateway"
-  | "aws_egress_only_internet_gateway"
-  | "aws_internet_gateway"
-  | "aws_instance"
-  | "aws_network_interface"
-  | "aws_route"
-  | "aws_route_table"
-  | "aws_route_table_association"
-  | "aws_subnet"
-  | "aws_vpc"
-  | "aws_vpc_ipv4_cidr_block_association"
-  | "aws_vpn_connection"
-  | "aws_vpn_connection_route"
-  | "aws_vpn_gateway"
-  | "aws_security_group"
-  | "aws_vpc_security_group_ingress_rule"
-  | "aws_vpc_security_group_egress_rule"
-  | "aws_ec2_managed_prefix_list"
-  | "aws_ec2_transit_gateway"
-  | "aws_ec2_transit_gateway_prefix_list_reference"
-  | "aws_ec2_transit_gateway_vpc_attachment"
-  | "azurerm_application_security_group"
-  | "azurerm_lb"
-  | "azurerm_lb_backend_address_pool"
-  | "azurerm_lb_nat_pool"
-  | "azurerm_lb_nat_rule"
-  | "azurerm_lb_rule"
-  | "azurerm_local_network_gateway"
-  | "azurerm_network_interface"
-  | "azurerm_network_interface_application_security_group_association"
-  | "azurerm_network_interface_backend_address_pool_association"
-  | "azurerm_network_interface_security_group_association"
-  | "azurerm_network_security_group"
-  | "azurerm_public_ip"
-  | "azurerm_route"
-  | "azurerm_route_table"
-  | "azurerm_subnet"
-  | "azurerm_subnet_route_table_association"
-  | "azurerm_virtual_machine"
-  | "azurerm_virtual_network_gateway_connection"
-  | "azurerm_virtual_network"
-  | "azurerm_virtual_network_gateway"
-  | "google_compute_network"
-  | "google_compute_subnetwork"
-  | "google_compute_vpn_gateway"
-  | "google_compute_vpn_tunnel"
-  | "google_compute_route"
-  | "google_compute_address"
-  | "google_compute_global_address"
-  | "google_compute_router"
-  | "google_compute_interconnect_attachment"
-  | "google_compute_ha_vpn_gateway"
-  | "google_compute_forwarding_rule"
-  | "google_compute_network_firewall_policy"
-  | "google_compute_network_firewall_policy_rule"
-  | "cloudflare_static_route"
-  | "cloudflare_ipsec_tunnel";
-export const OnRampsCreateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreviewResourceType =
-  /*@__PURE__*/ S.String;
-
-export interface OnRampsCreateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreview {
-  id: string;
-  cloudType: OnRampsCreateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreviewCloudType;
-  detail: string;
+export interface OnRampsCreateResponseVpcsByIdSectionsItem {
+  hiddenItems: OnRampsCreateResponseVpcsByIdSectionsItemHiddenItemsList;
   name: string;
-  resourceType: OnRampsCreateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreviewResourceType;
-  title: string;
-}
-export const OnRampsCreateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreview =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-      cloudType:
-        OnRampsCreateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreviewCloudType.pipe(
-          T.Body("cloud_type"),
-        ),
-      detail: S.String,
-      name: S.String,
-      resourceType:
-        OnRampsCreateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreviewResourceType.pipe(
-          T.Body("resource_type"),
-        ),
-      title: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "OnRampsCreateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreview",
-  }) as any as S.Schema<OnRampsCreateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreview>;
-
-export interface OnRampsCreateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItem {
-  itemType: string;
-  resourcePreview: OnRampsCreateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreview;
-}
-export const OnRampsCreateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      itemType: S.String.pipe(T.Body("item_type")),
-      resourcePreview:
-        OnRampsCreateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreview.pipe(
-          T.Body("resource_preview"),
-        ),
-    }),
-  ).annotate({
-    identifier:
-      "OnRampsCreateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItem",
-  }) as any as S.Schema<OnRampsCreateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItem>;
-
-export type OnRampsCreateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnStringItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem;
-export const OnRampsCreateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnStringItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem;
-
-export type OnRampsCreateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewCloudType =
-  | "AWS"
-  | "AZURE"
-  | "GOOGLE"
-  | "CLOUDFLARE";
-export const OnRampsCreateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewCloudType =
-  /*@__PURE__*/ S.String;
-
-export type OnRampsCreateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewResourceType =
-  | "aws_customer_gateway"
-  | "aws_egress_only_internet_gateway"
-  | "aws_internet_gateway"
-  | "aws_instance"
-  | "aws_network_interface"
-  | "aws_route"
-  | "aws_route_table"
-  | "aws_route_table_association"
-  | "aws_subnet"
-  | "aws_vpc"
-  | "aws_vpc_ipv4_cidr_block_association"
-  | "aws_vpn_connection"
-  | "aws_vpn_connection_route"
-  | "aws_vpn_gateway"
-  | "aws_security_group"
-  | "aws_vpc_security_group_ingress_rule"
-  | "aws_vpc_security_group_egress_rule"
-  | "aws_ec2_managed_prefix_list"
-  | "aws_ec2_transit_gateway"
-  | "aws_ec2_transit_gateway_prefix_list_reference"
-  | "aws_ec2_transit_gateway_vpc_attachment"
-  | "azurerm_application_security_group"
-  | "azurerm_lb"
-  | "azurerm_lb_backend_address_pool"
-  | "azurerm_lb_nat_pool"
-  | "azurerm_lb_nat_rule"
-  | "azurerm_lb_rule"
-  | "azurerm_local_network_gateway"
-  | "azurerm_network_interface"
-  | "azurerm_network_interface_application_security_group_association"
-  | "azurerm_network_interface_backend_address_pool_association"
-  | "azurerm_network_interface_security_group_association"
-  | "azurerm_network_security_group"
-  | "azurerm_public_ip"
-  | "azurerm_route"
-  | "azurerm_route_table"
-  | "azurerm_subnet"
-  | "azurerm_subnet_route_table_association"
-  | "azurerm_virtual_machine"
-  | "azurerm_virtual_network_gateway_connection"
-  | "azurerm_virtual_network"
-  | "azurerm_virtual_network_gateway"
-  | "google_compute_network"
-  | "google_compute_subnetwork"
-  | "google_compute_vpn_gateway"
-  | "google_compute_vpn_tunnel"
-  | "google_compute_route"
-  | "google_compute_address"
-  | "google_compute_global_address"
-  | "google_compute_router"
-  | "google_compute_interconnect_attachment"
-  | "google_compute_ha_vpn_gateway"
-  | "google_compute_forwarding_rule"
-  | "google_compute_network_firewall_policy"
-  | "google_compute_network_firewall_policy_rule"
-  | "cloudflare_static_route"
-  | "cloudflare_ipsec_tunnel";
-export const OnRampsCreateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewResourceType =
-  /*@__PURE__*/ S.String;
-
-export interface OnRampsCreateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview {
-  id: string;
-  cloudType: OnRampsCreateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewCloudType;
-  detail: string;
-  name: string;
-  resourceType: OnRampsCreateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewResourceType;
-  title: string;
-}
-export const OnRampsCreateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-      cloudType:
-        OnRampsCreateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewCloudType.pipe(
-          T.Body("cloud_type"),
-        ),
-      detail: S.String,
-      name: S.String,
-      resourceType:
-        OnRampsCreateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewResourceType.pipe(
-          T.Body("resource_type"),
-        ),
-      title: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "OnRampsCreateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview",
-  }) as any as S.Schema<OnRampsCreateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview>;
-
-export interface OnRampsCreateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItem {
-  itemType: string;
-  resourcePreview: OnRampsCreateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview;
-}
-export const OnRampsCreateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      itemType: S.String.pipe(T.Body("item_type")),
-      resourcePreview:
-        OnRampsCreateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview.pipe(
-          T.Body("resource_preview"),
-        ),
-    }),
-  ).annotate({
-    identifier:
-      "OnRampsCreateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItem",
-  }) as any as S.Schema<OnRampsCreateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItem>;
-
-export type OnRampsCreateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItem =
-  | OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem
-  | OnRampsCreateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItem;
-export const OnRampsCreateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItem =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["itemType", "string"],
-      ["itemType", "resourcePreview"],
-    ]),
-  );
-
-export type OnRampsCreateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListList =
-  Array<OnRampsCreateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItem>;
-export const OnRampsCreateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListList =
-  /*@__PURE__*/ S.Array(
-    OnRampsCreateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItem,
-  ) as any as S.Schema<OnRampsCreateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListList>;
-
-export interface OnRampsCreateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItem {
-  itemType: string;
-  list: OnRampsCreateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListList;
-}
-export const OnRampsCreateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      itemType: S.String.pipe(T.Body("item_type")),
-      list: OnRampsCreateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListList,
-    }),
-  ).annotate({
-    identifier:
-      "OnRampsCreateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItem",
-  }) as any as S.Schema<OnRampsCreateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItem>;
-
-export type OnRampsCreateResponseVpcsByIdValueSectionsItemVisibleItemsItemValue =
-  | OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem
-  | OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlItem
-  | OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlDiffItem
-  | OnRampsCreateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItem
-  | OnRampsCreateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItem;
-export const OnRampsCreateResponseVpcsByIdValueSectionsItemVisibleItemsItemValue =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["itemType", "string"],
-      ["itemType", "yaml"],
-      ["itemType", "yamlDiff"],
-      ["itemType", "resourcePreview"],
-      ["itemType", "list"],
-    ]),
-  );
-
-export interface OnRampsCreateResponseVpcsByIdValueSectionsItemVisibleItemsItem {
-  helpText?: string | null;
-  name?: string | null;
-  value?: OnRampsCreateResponseVpcsByIdValueSectionsItemVisibleItemsItemValue | null;
-}
-export const OnRampsCreateResponseVpcsByIdValueSectionsItemVisibleItemsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      helpText: S.optional(S.NullOr(S.String)),
-      name: S.optional(S.NullOr(S.String)),
-      value: S.optional(
-        S.NullOr(
-          OnRampsCreateResponseVpcsByIdValueSectionsItemVisibleItemsItemValue,
-        ),
-      ),
-    }),
-  ).annotate({
-    identifier:
-      "OnRampsCreateResponseVpcsByIdValueSectionsItemVisibleItemsItem",
-  }) as any as S.Schema<OnRampsCreateResponseVpcsByIdValueSectionsItemVisibleItemsItem>;
-
-export type OnRampsCreateResponseVpcsByIdValueSectionsItemVisibleItemsList =
-  Array<OnRampsCreateResponseVpcsByIdValueSectionsItemVisibleItemsItem>;
-export const OnRampsCreateResponseVpcsByIdValueSectionsItemVisibleItemsList =
-  /*@__PURE__*/ S.Array(
-    OnRampsCreateResponseVpcsByIdValueSectionsItemVisibleItemsItem,
-  ) as any as S.Schema<OnRampsCreateResponseVpcsByIdValueSectionsItemVisibleItemsList>;
-
-export interface OnRampsCreateResponseVpcsByIdValueSectionsItem {
-  hiddenItems: OnRampsCreateResponseVpcsByIdValueSectionsItemHiddenItemsList;
-  name: string;
-  visibleItems: OnRampsCreateResponseVpcsByIdValueSectionsItemVisibleItemsList;
+  visibleItems: OnRampsCreateResponseVpcsByIdSectionsItemVisibleItemsList;
   helpText?: string | null;
 }
-export const OnRampsCreateResponseVpcsByIdValueSectionsItem =
+export const OnRampsCreateResponseVpcsByIdSectionsItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       hiddenItems:
-        OnRampsCreateResponseVpcsByIdValueSectionsItemHiddenItemsList.pipe(
+        OnRampsCreateResponseVpcsByIdSectionsItemHiddenItemsList.pipe(
           T.Body("hidden_items"),
         ),
       name: S.String,
       visibleItems:
-        OnRampsCreateResponseVpcsByIdValueSectionsItemVisibleItemsList.pipe(
+        OnRampsCreateResponseVpcsByIdSectionsItemVisibleItemsList.pipe(
           T.Body("visible_items"),
         ),
       helpText: S.optional(S.NullOr(S.String).pipe(T.Body("help_text"))),
     }),
   ).annotate({
-    identifier: "OnRampsCreateResponseVpcsByIdValueSectionsItem",
-  }) as any as S.Schema<OnRampsCreateResponseVpcsByIdValueSectionsItem>;
+    identifier: "OnRampsCreateResponseVpcsByIdSectionsItem",
+  }) as any as S.Schema<OnRampsCreateResponseVpcsByIdSectionsItem>;
 
-export type OnRampsCreateResponseVpcsByIdValueSectionsList =
-  Array<OnRampsCreateResponseVpcsByIdValueSectionsItem>;
-export const OnRampsCreateResponseVpcsByIdValueSectionsList =
-  /*@__PURE__*/ S.Array(
-    OnRampsCreateResponseVpcsByIdValueSectionsItem,
-  ) as any as S.Schema<OnRampsCreateResponseVpcsByIdValueSectionsList>;
+export type OnRampsCreateResponseVpcsByIdSectionsList =
+  Array<OnRampsCreateResponseVpcsByIdSectionsItem>;
+export const OnRampsCreateResponseVpcsByIdSectionsList = /*@__PURE__*/ S.Array(
+  OnRampsCreateResponseVpcsByIdSectionsItem,
+) as any as S.Schema<OnRampsCreateResponseVpcsByIdSectionsList>;
 
-export type OnRampsCreateResponseVpcsByIdValueStateMap = {
-  [key: string]: unknown | undefined;
-};
-export const OnRampsCreateResponseVpcsByIdValueStateMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<OnRampsCreateResponseVpcsByIdValueStateMap>;
-
-export type OnRampsCreateResponseVpcsByIdValueTagsMap = {
-  [key: string]: string | undefined;
-};
-export const OnRampsCreateResponseVpcsByIdValueTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<OnRampsCreateResponseVpcsByIdValueTagsMap>;
-
-export type OnRampsCreateResponseVpcsByIdValueManagedByItemClientType =
+export type OnRampsCreateResponseVpcsByIdManagedByItemClientType =
   "MAGIC_WAN_CLOUD_ONRAMP";
-export const OnRampsCreateResponseVpcsByIdValueManagedByItemClientType =
+export const OnRampsCreateResponseVpcsByIdManagedByItemClientType =
   /*@__PURE__*/ S.String;
 
-export interface OnRampsCreateResponseVpcsByIdValueManagedByItem {
+export interface OnRampsCreateResponseVpcsByIdManagedByItem {
   id: string;
-  clientType: OnRampsCreateResponseVpcsByIdValueManagedByItemClientType;
+  clientType: OnRampsCreateResponseVpcsByIdManagedByItemClientType;
   name: string;
 }
-export const OnRampsCreateResponseVpcsByIdValueManagedByItem =
+export const OnRampsCreateResponseVpcsByIdManagedByItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       id: S.String,
-      clientType:
-        OnRampsCreateResponseVpcsByIdValueManagedByItemClientType.pipe(
-          T.Body("client_type"),
-        ),
+      clientType: OnRampsCreateResponseVpcsByIdManagedByItemClientType.pipe(
+        T.Body("client_type"),
+      ),
       name: S.String,
     }),
   ).annotate({
-    identifier: "OnRampsCreateResponseVpcsByIdValueManagedByItem",
-  }) as any as S.Schema<OnRampsCreateResponseVpcsByIdValueManagedByItem>;
+    identifier: "OnRampsCreateResponseVpcsByIdManagedByItem",
+  }) as any as S.Schema<OnRampsCreateResponseVpcsByIdManagedByItem>;
 
-export type OnRampsCreateResponseVpcsByIdValueManagedByList =
-  Array<OnRampsCreateResponseVpcsByIdValueManagedByItem>;
-export const OnRampsCreateResponseVpcsByIdValueManagedByList =
-  /*@__PURE__*/ S.Array(
-    OnRampsCreateResponseVpcsByIdValueManagedByItem,
-  ) as any as S.Schema<OnRampsCreateResponseVpcsByIdValueManagedByList>;
+export type OnRampsCreateResponseVpcsByIdManagedByList =
+  Array<OnRampsCreateResponseVpcsByIdManagedByItem>;
+export const OnRampsCreateResponseVpcsByIdManagedByList = /*@__PURE__*/ S.Array(
+  OnRampsCreateResponseVpcsByIdManagedByItem,
+) as any as S.Schema<OnRampsCreateResponseVpcsByIdManagedByList>;
 
-export interface OnRampsCreateResponseVpcsByIdValue {
+export interface OnRampsCreateResponseVpcsById {
   id: string;
   accountId: string;
-  cloudType: OnRampsCreateResponseVpcsByIdValueCloudType;
-  config: OnRampsCreateResponseVpcsByIdValueConfigMap;
+  cloudType: OnRampsCreateResponseVpcsByIdCloudType;
+  config: unknown;
   deploymentProvider: string;
   managed: boolean;
   monthlyCostEstimate: OnRampsCreateResponsePostApplyMonthlyCostEstimate;
   name: string;
   nativeId: string;
-  observations: OnRampsCreateResponseVpcsByIdValueObservationsMap;
-  providerIds: OnRampsCreateResponseVpcsByIdValueProviderIdsList;
-  providerNamesById: OnRampsCreateResponseVpcsByIdValueProviderNamesByIdMap;
+  observations: OnRampsCreateResponsePostApplyResourcesObservations;
+  providerIds: OnRampsCreateResponseVpcsByIdProviderIdsList;
+  providerNamesById: unknown;
   region: string;
   resourceGroup: string;
-  resourceType: OnRampsCreateResponseVpcsByIdValueResourceType;
-  sections: OnRampsCreateResponseVpcsByIdValueSectionsList;
-  state: OnRampsCreateResponseVpcsByIdValueStateMap;
-  tags: OnRampsCreateResponseVpcsByIdValueTagsMap;
+  resourceType: string;
+  sections: OnRampsCreateResponseVpcsByIdSectionsList;
+  state: unknown;
+  tags: unknown;
   updatedAt: string;
   url: string;
-  managedBy?: OnRampsCreateResponseVpcsByIdValueManagedByList | null;
+  managedBy?: OnRampsCreateResponseVpcsByIdManagedByList | null;
 }
-export const OnRampsCreateResponseVpcsByIdValue = /*@__PURE__*/ S.suspend(() =>
+export const OnRampsCreateResponseVpcsById = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     accountId: S.String.pipe(T.Body("account_id")),
-    cloudType: OnRampsCreateResponseVpcsByIdValueCloudType.pipe(
+    cloudType: OnRampsCreateResponseVpcsByIdCloudType.pipe(
       T.Body("cloud_type"),
     ),
-    config: OnRampsCreateResponseVpcsByIdValueConfigMap,
+    config: S.Unknown,
     deploymentProvider: S.String.pipe(T.Body("deployment_provider")),
     managed: S.Boolean,
     monthlyCostEstimate: OnRampsCreateResponsePostApplyMonthlyCostEstimate.pipe(
@@ -3246,41 +1114,28 @@ export const OnRampsCreateResponseVpcsByIdValue = /*@__PURE__*/ S.suspend(() =>
     ),
     name: S.String,
     nativeId: S.String.pipe(T.Body("native_id")),
-    observations: OnRampsCreateResponseVpcsByIdValueObservationsMap,
-    providerIds: OnRampsCreateResponseVpcsByIdValueProviderIdsList.pipe(
+    observations: OnRampsCreateResponsePostApplyResourcesObservations,
+    providerIds: OnRampsCreateResponseVpcsByIdProviderIdsList.pipe(
       T.Body("provider_ids"),
     ),
-    providerNamesById:
-      OnRampsCreateResponseVpcsByIdValueProviderNamesByIdMap.pipe(
-        T.Body("provider_names_by_id"),
-      ),
+    providerNamesById: S.Unknown.pipe(T.Body("provider_names_by_id")),
     region: S.String,
     resourceGroup: S.String.pipe(T.Body("resource_group")),
-    resourceType: OnRampsCreateResponseVpcsByIdValueResourceType.pipe(
-      T.Body("resource_type"),
-    ),
-    sections: OnRampsCreateResponseVpcsByIdValueSectionsList,
-    state: OnRampsCreateResponseVpcsByIdValueStateMap,
-    tags: OnRampsCreateResponseVpcsByIdValueTagsMap,
+    resourceType: S.String.pipe(T.Body("resource_type")),
+    sections: OnRampsCreateResponseVpcsByIdSectionsList,
+    state: S.Unknown,
+    tags: S.Unknown,
     updatedAt: S.String.pipe(T.Body("updated_at")),
     url: S.String,
     managedBy: S.optional(
-      S.NullOr(OnRampsCreateResponseVpcsByIdValueManagedByList).pipe(
+      S.NullOr(OnRampsCreateResponseVpcsByIdManagedByList).pipe(
         T.Body("managed_by"),
       ),
     ),
   }),
 ).annotate({
-  identifier: "OnRampsCreateResponseVpcsByIdValue",
-}) as any as S.Schema<OnRampsCreateResponseVpcsByIdValue>;
-
-export type OnRampsCreateResponseVpcsByIdMap = {
-  [key: string]: OnRampsCreateResponseVpcsByIdValue | undefined;
-};
-export const OnRampsCreateResponseVpcsByIdMap = /*@__PURE__*/ S.Record(
-  S.String,
-  OnRampsCreateResponseVpcsByIdValue,
-) as any as S.Schema<OnRampsCreateResponseVpcsByIdMap>;
+  identifier: "OnRampsCreateResponseVpcsById",
+}) as any as S.Schema<OnRampsCreateResponseVpcsById>;
 
 export type OnRampsCreateResponseVpcsByIdUnavailableList = Array<string>;
 export const OnRampsCreateResponseVpcsByIdUnavailableList =
@@ -3312,12 +1167,12 @@ export interface CreateOnRampResponse {
   plannedResources?: OnRampsCreateResponsePlannedResourcesList | null;
   plannedResourcesUnavailable?: boolean | null;
   postApplyMonthlyCostEstimate?: OnRampsCreateResponsePostApplyMonthlyCostEstimate | null;
-  postApplyResources?: OnRampsCreateResponsePostApplyResourcesMap | null;
+  postApplyResources?: OnRampsCreateResponsePostApplyResources | null;
   postApplyResourcesUnavailable?: boolean | null;
   region?: string | null;
   status?: OnRampsCreateResponseStatus | null;
   vpc?: string | null;
-  vpcsById?: OnRampsCreateResponseVpcsByIdMap | null;
+  vpcsById?: OnRampsCreateResponseVpcsById | null;
   /** The list of vpc IDs for which resource details failed to generate. */
   vpcsByIdUnavailable?: OnRampsCreateResponseVpcsByIdUnavailableList | null;
 }
@@ -3380,7 +1235,7 @@ export const CreateOnRampResponse = /*@__PURE__*/ S.suspend(() =>
       ),
     ),
     postApplyResources: S.optional(
-      S.NullOr(OnRampsCreateResponsePostApplyResourcesMap).pipe(
+      S.NullOr(OnRampsCreateResponsePostApplyResources).pipe(
         T.Body("post_apply_resources"),
       ),
     ),
@@ -3391,7 +1246,7 @@ export const CreateOnRampResponse = /*@__PURE__*/ S.suspend(() =>
     status: S.optional(S.NullOr(OnRampsCreateResponseStatus)),
     vpc: S.optional(S.NullOr(S.String)),
     vpcsById: S.optional(
-      S.NullOr(OnRampsCreateResponseVpcsByIdMap).pipe(T.Body("vpcs_by_id")),
+      S.NullOr(OnRampsCreateResponseVpcsById).pipe(T.Body("vpcs_by_id")),
     ),
     vpcsByIdUnavailable: S.optional(
       S.NullOr(OnRampsCreateResponseVpcsByIdUnavailableList).pipe(
@@ -3406,15 +1261,11 @@ export const CreateOnRampResponse = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteCatalogSyncRequest {
   accountId: string;
   syncId: string;
-  deleteDestination?: boolean;
 }
 export const DeleteCatalogSyncRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     syncId: S.String.pipe(T.Label("sync_id")),
-    deleteDestination: S.optional(
-      S.Boolean.pipe(T.Query("delete_destination")),
-    ),
   })
     .pipe(
       T.Http({
@@ -3476,15 +1327,11 @@ export const DeleteCloudIntegrationResponse = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteOnRampRequest {
   accountId: string;
   onrampId: string;
-  destroy?: boolean;
-  force?: boolean;
 }
 export const DeleteOnRampRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     onrampId: S.String.pipe(T.Label("onramp_id")),
-    destroy: S.optional(S.Boolean.pipe(T.Query())),
-    force: S.optional(S.Boolean.pipe(T.Query())),
   })
     .pipe(
       T.Http({
@@ -3539,13 +1386,11 @@ export const DiscoverAllCloudIntegrationResponse = /*@__PURE__*/ S.suspend(() =>
 export interface DiscoverCloudIntegrationRequest {
   accountId: string;
   providerId: string;
-  v2?: boolean;
 }
 export const DiscoverCloudIntegrationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     providerId: S.String.pipe(T.Label("provider_id")),
-    v2: S.optional(S.Boolean.pipe(T.Query())),
   })
     .pipe(
       T.Http({
@@ -3568,6 +1413,7 @@ export const DiscoverCloudIntegrationResponse = /*@__PURE__*/ S.suspend(() =>
 
 export interface ExportOnRampRequest {
   accountId: string;
+  /** formatuuid */
   onrampId: string;
 }
 export const ExportOnRampRequest = /*@__PURE__*/ S.suspend(() =>
@@ -3674,7 +1520,7 @@ export const ResourcesExportRequestSearchList = /*@__PURE__*/ S.Array(
 export interface ExportResourceRequest {
   accountId: string;
   desc?: boolean;
-  /** One of ["id", "resource_type", "region"]. */
+  /** One of [“id”, “resource_type”, “region”]. */
   orderBy?: string;
   providerId?: string;
   region?: string;
@@ -3682,6 +1528,7 @@ export interface ExportResourceRequest {
   resourceId?: ResourcesExportRequestResourceIdList;
   resourceType?: ResourcesExportRequestResourceTypeList;
   search?: ResourcesExportRequestSearchList;
+  /** HTTP */
   v2?: boolean;
 }
 export const ExportResourceRequest = /*@__PURE__*/ S.suspend(() =>
@@ -3747,202 +1594,18 @@ export const CatalogSyncsGetResponseDestinationType = /*@__PURE__*/ S.String;
 export type CatalogSyncsGetResponseUpdateMode = "AUTO" | "MANUAL";
 export const CatalogSyncsGetResponseUpdateMode = /*@__PURE__*/ S.String;
 
-export type CatalogSyncsGetResponseErrorsValueCode =
-  | 1001
-  | 1002
-  | 1003
-  | 1004
-  | 1005
-  | 1006
-  | 1007
-  | 1008
-  | 1009
-  | 1010
-  | 1011
-  | 1012
-  | 1013
-  | 1014
-  | 1015
-  | 1016
-  | 1017
-  | 1018
-  | 2001
-  | 2002
-  | 2003
-  | 2004
-  | 2005
-  | 2006
-  | 2007
-  | 2008
-  | 2009
-  | 2010
-  | 2011
-  | 2012
-  | 2013
-  | 2014
-  | 2015
-  | 2016
-  | 2017
-  | 2018
-  | 2019
-  | 2020
-  | 2021
-  | 2022
-  | 3001
-  | 3002
-  | 3003
-  | 3004
-  | 3005
-  | 3006
-  | 3007
-  | 4001
-  | 4002
-  | 4003
-  | 4004
-  | 4005
-  | 4006
-  | 4007
-  | 4008
-  | 4009
-  | 4010
-  | 4011
-  | 4012
-  | 4013
-  | 4014
-  | 4015
-  | 4016
-  | 4017
-  | 4018
-  | 4019
-  | 4020
-  | 4021
-  | 4022
-  | 4023
-  | 5001
-  | 5002
-  | 5003
-  | 5004
-  | 102000
-  | 102001
-  | 102002
-  | 102003
-  | 102004
-  | 102005
-  | 102006
-  | 102007
-  | 102008
-  | 102009
-  | 102010
-  | 102011
-  | 102012
-  | 102013
-  | 102014
-  | 102015
-  | 102016
-  | 102017
-  | 102018
-  | 102019
-  | 102020
-  | 102021
-  | 102022
-  | 102023
-  | 102024
-  | 102025
-  | 102026
-  | 102027
-  | 102028
-  | 102029
-  | 102030
-  | 102031
-  | 102032
-  | 102033
-  | 102034
-  | 102035
-  | 102036
-  | 102037
-  | 102038
-  | 102039
-  | 102040
-  | 102041
-  | 102042
-  | 102043
-  | 102044
-  | 102045
-  | 102046
-  | 102047
-  | 102048
-  | 102049
-  | 102050
-  | 102051
-  | 102052
-  | 102053
-  | 102054
-  | 102055
-  | 102056
-  | 102057
-  | 102058
-  | 102059
-  | 102060
-  | 102061
-  | 102062
-  | 102063
-  | 102064
-  | 102065
-  | 102066
-  | 102067
-  | 102068
-  | 102069
-  | 102070
-  | 102071
-  | 102072
-  | 103001
-  | 103002
-  | 103003
-  | 103004
-  | 103005
-  | 103006
-  | 103007
-  | 103008;
-export const CatalogSyncsGetResponseErrorsValueCode = /*@__PURE__*/ S.Number;
+export type CatalogSyncsGetResponseErrorsMeta =
+  CatalogSyncsCreateResponseErrorsMeta;
+export const CatalogSyncsGetResponseErrorsMeta =
+  CatalogSyncsCreateResponseErrorsMeta;
 
-export type CatalogSyncsGetResponseErrorsValueMeta =
-  CatalogSyncsCreateResponseErrorsValueMeta;
-export const CatalogSyncsGetResponseErrorsValueMeta =
-  CatalogSyncsCreateResponseErrorsValueMeta;
+export type CatalogSyncsGetResponseErrorsSource =
+  CatalogSyncsCreateResponseErrorsSource;
+export const CatalogSyncsGetResponseErrorsSource =
+  CatalogSyncsCreateResponseErrorsSource;
 
-export type CatalogSyncsGetResponseErrorsValueSource =
-  CatalogSyncsCreateResponseErrorsValueSource;
-export const CatalogSyncsGetResponseErrorsValueSource =
-  CatalogSyncsCreateResponseErrorsValueSource;
-
-export interface CatalogSyncsGetResponseErrorsValue {
-  code: CatalogSyncsGetResponseErrorsValueCode;
-  message: string;
-  documentationUrl?: string | null;
-  meta?: CatalogSyncsCreateResponseErrorsValueMeta | null;
-  source?: CatalogSyncsCreateResponseErrorsValueSource | null;
-}
-export const CatalogSyncsGetResponseErrorsValue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    code: CatalogSyncsGetResponseErrorsValueCode,
-    message: S.String,
-    documentationUrl: S.optional(
-      S.NullOr(S.String).pipe(T.Body("documentation_url")),
-    ),
-    meta: S.optional(S.NullOr(CatalogSyncsCreateResponseErrorsValueMeta)),
-    source: S.optional(S.NullOr(CatalogSyncsCreateResponseErrorsValueSource)),
-  }),
-).annotate({
-  identifier: "CatalogSyncsGetResponseErrorsValue",
-}) as any as S.Schema<CatalogSyncsGetResponseErrorsValue>;
-
-export type CatalogSyncsGetResponseErrorsMap = {
-  [key: string]: CatalogSyncsGetResponseErrorsValue | undefined;
-};
-export const CatalogSyncsGetResponseErrorsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  CatalogSyncsGetResponseErrorsValue,
-) as any as S.Schema<CatalogSyncsGetResponseErrorsMap>;
+export type CatalogSyncsGetResponseErrors = CatalogSyncsCreateResponseErrors;
+export const CatalogSyncsGetResponseErrors = CatalogSyncsCreateResponseErrors;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetCatalogSyncResponse {
@@ -3954,7 +1617,7 @@ export interface GetCatalogSyncResponse {
   name: string;
   policy: string;
   updateMode: CatalogSyncsGetResponseUpdateMode;
-  errors?: CatalogSyncsGetResponseErrorsMap | null;
+  errors?: CatalogSyncsCreateResponseErrors | null;
   includesDiscoveriesUntil?: string | null;
   lastAttemptedUpdateAt?: string | null;
   lastSuccessfulUpdateAt?: string | null;
@@ -3971,7 +1634,7 @@ export const GetCatalogSyncResponse = /*@__PURE__*/ S.suspend(() =>
     name: S.String,
     policy: S.String,
     updateMode: CatalogSyncsGetResponseUpdateMode.pipe(T.Body("update_mode")),
-    errors: S.optional(S.NullOr(CatalogSyncsGetResponseErrorsMap)),
+    errors: S.optional(S.NullOr(CatalogSyncsCreateResponseErrors)),
     includesDiscoveriesUntil: S.optional(
       S.NullOr(S.String).pipe(T.Body("includes_discoveries_until")),
     ),
@@ -3989,13 +1652,11 @@ export const GetCatalogSyncResponse = /*@__PURE__*/ S.suspend(() =>
 export interface GetCloudIntegrationRequest {
   accountId: string;
   providerId: string;
-  status?: boolean;
 }
 export const GetCloudIntegrationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     providerId: S.String.pipe(T.Label("provider_id")),
-    status: S.optional(S.Boolean.pipe(T.Query())),
   })
     .pipe(
       T.Http({
@@ -4023,22 +1684,6 @@ export type CloudIntegrationsGetResponseLifecycleState =
 export const CloudIntegrationsGetResponseLifecycleState =
   /*@__PURE__*/ S.String;
 
-export type CloudIntegrationsGetResponseState =
-  | "UNSPECIFIED"
-  | "PENDING"
-  | "DISCOVERING"
-  | "FAILED"
-  | "SUCCEEDED";
-export const CloudIntegrationsGetResponseState = /*@__PURE__*/ S.String;
-
-export type CloudIntegrationsGetResponseStateV2 =
-  | "UNSPECIFIED"
-  | "PENDING"
-  | "DISCOVERING"
-  | "FAILED"
-  | "SUCCEEDED";
-export const CloudIntegrationsGetResponseStateV2 = /*@__PURE__*/ S.String;
-
 export type CloudIntegrationsGetResponseStatusDiscoveryProgress =
   CloudIntegrationsCreateResponseStatusDiscoveryProgress;
 export const CloudIntegrationsGetResponseStatusDiscoveryProgress =
@@ -4048,24 +1693,6 @@ export type CloudIntegrationsGetResponseStatusDiscoveryProgressV2 =
   CloudIntegrationsCreateResponseStatusDiscoveryProgress;
 export const CloudIntegrationsGetResponseStatusDiscoveryProgressV2 =
   CloudIntegrationsCreateResponseStatusDiscoveryProgress;
-
-export type CloudIntegrationsGetResponseStatusLastDiscoveryStatus =
-  | "UNSPECIFIED"
-  | "PENDING"
-  | "DISCOVERING"
-  | "FAILED"
-  | "SUCCEEDED";
-export const CloudIntegrationsGetResponseStatusLastDiscoveryStatus =
-  /*@__PURE__*/ S.String;
-
-export type CloudIntegrationsGetResponseStatusLastDiscoveryStatusV2 =
-  | "UNSPECIFIED"
-  | "PENDING"
-  | "DISCOVERING"
-  | "FAILED"
-  | "SUCCEEDED";
-export const CloudIntegrationsGetResponseStatusLastDiscoveryStatusV2 =
-  /*@__PURE__*/ S.String;
 
 export type CloudIntegrationsGetResponseStatusRegionsList = Array<string>;
 export const CloudIntegrationsGetResponseStatusRegionsList =
@@ -4106,8 +1733,8 @@ export const CloudIntegrationsGetResponseStatusInUseByList =
 export interface CloudIntegrationsGetResponseStatus {
   discoveryProgress: CloudIntegrationsCreateResponseStatusDiscoveryProgress;
   discoveryProgressV2: CloudIntegrationsCreateResponseStatusDiscoveryProgress;
-  lastDiscoveryStatus: CloudIntegrationsGetResponseStatusLastDiscoveryStatus;
-  lastDiscoveryStatusV2: CloudIntegrationsGetResponseStatusLastDiscoveryStatusV2;
+  lastDiscoveryStatus: string;
+  lastDiscoveryStatusV2: string;
   regions: CloudIntegrationsGetResponseStatusRegionsList;
   credentialsGoodSince?: string | null;
   credentialsMissingSince?: string | null;
@@ -4131,14 +1758,8 @@ export const CloudIntegrationsGetResponseStatus = /*@__PURE__*/ S.suspend(() =>
       CloudIntegrationsCreateResponseStatusDiscoveryProgress.pipe(
         T.Body("discovery_progress_v2"),
       ),
-    lastDiscoveryStatus:
-      CloudIntegrationsGetResponseStatusLastDiscoveryStatus.pipe(
-        T.Body("last_discovery_status"),
-      ),
-    lastDiscoveryStatusV2:
-      CloudIntegrationsGetResponseStatusLastDiscoveryStatusV2.pipe(
-        T.Body("last_discovery_status_v2"),
-      ),
+    lastDiscoveryStatus: S.String.pipe(T.Body("last_discovery_status")),
+    lastDiscoveryStatusV2: S.String.pipe(T.Body("last_discovery_status_v2")),
     regions: CloudIntegrationsGetResponseStatusRegionsList,
     credentialsGoodSince: S.optional(
       S.NullOr(S.String).pipe(T.Body("credentials_good_since")),
@@ -4185,8 +1806,8 @@ export interface GetCloudIntegrationResponse {
   friendlyName: string;
   lastUpdated: string;
   lifecycleState: CloudIntegrationsGetResponseLifecycleState;
-  state: CloudIntegrationsGetResponseState;
-  stateV2: CloudIntegrationsGetResponseStateV2;
+  state: string;
+  stateV2: string;
   awsArn?: string | null;
   azureSubscriptionId?: string | null;
   azureTenantId?: string | null;
@@ -4204,8 +1825,8 @@ export const GetCloudIntegrationResponse = /*@__PURE__*/ S.suspend(() =>
     lifecycleState: CloudIntegrationsGetResponseLifecycleState.pipe(
       T.Body("lifecycle_state"),
     ),
-    state: CloudIntegrationsGetResponseState,
-    stateV2: CloudIntegrationsGetResponseStateV2.pipe(T.Body("state_v2")),
+    state: S.String,
+    stateV2: S.String.pipe(T.Body("state_v2")),
     awsArn: S.optional(S.NullOr(S.String).pipe(T.Body("aws_arn"))),
     azureSubscriptionId: S.optional(
       S.NullOr(S.String).pipe(T.Body("azure_subscription_id")),
@@ -4227,21 +1848,11 @@ export const GetCloudIntegrationResponse = /*@__PURE__*/ S.suspend(() =>
 export interface GetOnRampRequest {
   accountId: string;
   onrampId: string;
-  plannedResources?: boolean;
-  postApplyResources?: boolean;
-  status?: boolean;
-  vpcs?: boolean;
 }
 export const GetOnRampRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     onrampId: S.String.pipe(T.Label("onramp_id")),
-    plannedResources: S.optional(S.Boolean.pipe(T.Query("planned_resources"))),
-    postApplyResources: S.optional(
-      S.Boolean.pipe(T.Query("post_apply_resources")),
-    ),
-    status: S.optional(S.Boolean.pipe(T.Query())),
-    vpcs: S.optional(S.Boolean.pipe(T.Query())),
   })
     .pipe(
       T.Http({
@@ -4293,15 +1904,6 @@ export type OnRampsGetResponsePlannedResourcesItemMonthlyCostEstimateDiff =
 export const OnRampsGetResponsePlannedResourcesItemMonthlyCostEstimateDiff =
   OnRampsCreateResponsePlannedMonthlyCostEstimate;
 
-export type OnRampsGetResponsePlannedResourcesItemPlannedAction =
-  | "no_op"
-  | "create"
-  | "update"
-  | "replace"
-  | "destroy";
-export const OnRampsGetResponsePlannedResourcesItemPlannedAction =
-  /*@__PURE__*/ S.String;
-
 export type OnRampsGetResponsePlannedResourcesItemResourceCloudType =
   | "AWS"
   | "AZURE"
@@ -4310,73 +1912,12 @@ export type OnRampsGetResponsePlannedResourcesItemResourceCloudType =
 export const OnRampsGetResponsePlannedResourcesItemResourceCloudType =
   /*@__PURE__*/ S.String;
 
-export type OnRampsGetResponsePlannedResourcesItemResourceResourceType =
-  | "aws_customer_gateway"
-  | "aws_egress_only_internet_gateway"
-  | "aws_internet_gateway"
-  | "aws_instance"
-  | "aws_network_interface"
-  | "aws_route"
-  | "aws_route_table"
-  | "aws_route_table_association"
-  | "aws_subnet"
-  | "aws_vpc"
-  | "aws_vpc_ipv4_cidr_block_association"
-  | "aws_vpn_connection"
-  | "aws_vpn_connection_route"
-  | "aws_vpn_gateway"
-  | "aws_security_group"
-  | "aws_vpc_security_group_ingress_rule"
-  | "aws_vpc_security_group_egress_rule"
-  | "aws_ec2_managed_prefix_list"
-  | "aws_ec2_transit_gateway"
-  | "aws_ec2_transit_gateway_prefix_list_reference"
-  | "aws_ec2_transit_gateway_vpc_attachment"
-  | "azurerm_application_security_group"
-  | "azurerm_lb"
-  | "azurerm_lb_backend_address_pool"
-  | "azurerm_lb_nat_pool"
-  | "azurerm_lb_nat_rule"
-  | "azurerm_lb_rule"
-  | "azurerm_local_network_gateway"
-  | "azurerm_network_interface"
-  | "azurerm_network_interface_application_security_group_association"
-  | "azurerm_network_interface_backend_address_pool_association"
-  | "azurerm_network_interface_security_group_association"
-  | "azurerm_network_security_group"
-  | "azurerm_public_ip"
-  | "azurerm_route"
-  | "azurerm_route_table"
-  | "azurerm_subnet"
-  | "azurerm_subnet_route_table_association"
-  | "azurerm_virtual_machine"
-  | "azurerm_virtual_network_gateway_connection"
-  | "azurerm_virtual_network"
-  | "azurerm_virtual_network_gateway"
-  | "google_compute_network"
-  | "google_compute_subnetwork"
-  | "google_compute_vpn_gateway"
-  | "google_compute_vpn_tunnel"
-  | "google_compute_route"
-  | "google_compute_address"
-  | "google_compute_global_address"
-  | "google_compute_router"
-  | "google_compute_interconnect_attachment"
-  | "google_compute_ha_vpn_gateway"
-  | "google_compute_forwarding_rule"
-  | "google_compute_network_firewall_policy"
-  | "google_compute_network_firewall_policy_rule"
-  | "cloudflare_static_route"
-  | "cloudflare_ipsec_tunnel";
-export const OnRampsGetResponsePlannedResourcesItemResourceResourceType =
-  /*@__PURE__*/ S.String;
-
 export interface OnRampsGetResponsePlannedResourcesItemResource {
   id: string;
   cloudType: OnRampsGetResponsePlannedResourcesItemResourceCloudType;
   detail: string;
   name: string;
-  resourceType: OnRampsGetResponsePlannedResourcesItemResourceResourceType;
+  resourceType: string;
   title: string;
 }
 export const OnRampsGetResponsePlannedResourcesItemResource =
@@ -4388,10 +1929,7 @@ export const OnRampsGetResponsePlannedResourcesItemResource =
       ),
       detail: S.String,
       name: S.String,
-      resourceType:
-        OnRampsGetResponsePlannedResourcesItemResourceResourceType.pipe(
-          T.Body("resource_type"),
-        ),
+      resourceType: S.String.pipe(T.Body("resource_type")),
       title: S.String,
     }),
   ).annotate({
@@ -4402,7 +1940,7 @@ export interface OnRampsGetResponsePlannedResourcesItem {
   diff: OnRampsCreateResponsePlannedResourcesItemDiff;
   keysRequireReplace: OnRampsGetResponsePlannedResourcesItemKeysRequireReplaceList;
   monthlyCostEstimateDiff: OnRampsCreateResponsePlannedMonthlyCostEstimate;
-  plannedAction: OnRampsGetResponsePlannedResourcesItemPlannedAction;
+  plannedAction: string;
   resource: OnRampsGetResponsePlannedResourcesItemResource;
 }
 export const OnRampsGetResponsePlannedResourcesItem = /*@__PURE__*/ S.suspend(
@@ -4417,9 +1955,7 @@ export const OnRampsGetResponsePlannedResourcesItem = /*@__PURE__*/ S.suspend(
         OnRampsCreateResponsePlannedMonthlyCostEstimate.pipe(
           T.Body("monthly_cost_estimate_diff"),
         ),
-      plannedAction: OnRampsGetResponsePlannedResourcesItemPlannedAction.pipe(
-        T.Body("planned_action"),
-      ),
+      plannedAction: S.String.pipe(T.Body("planned_action")),
       resource: OnRampsGetResponsePlannedResourcesItemResource,
     }),
 ).annotate({
@@ -4437,903 +1973,148 @@ export type OnRampsGetResponsePostApplyMonthlyCostEstimate =
 export const OnRampsGetResponsePostApplyMonthlyCostEstimate =
   OnRampsCreateResponsePostApplyMonthlyCostEstimate;
 
-export type OnRampsGetResponsePostApplyResourcesValueCloudType =
+export type OnRampsGetResponsePostApplyResourcesCloudType =
   | "AWS"
   | "AZURE"
   | "GOOGLE"
   | "CLOUDFLARE";
-export const OnRampsGetResponsePostApplyResourcesValueCloudType =
+export const OnRampsGetResponsePostApplyResourcesCloudType =
   /*@__PURE__*/ S.String;
 
-export type OnRampsGetResponsePostApplyResourcesValueConfigMap = {
-  [key: string]: unknown | undefined;
-};
-export const OnRampsGetResponsePostApplyResourcesValueConfigMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<OnRampsGetResponsePostApplyResourcesValueConfigMap>;
-
-export type OnRampsGetResponsePostApplyResourcesValueMonthlyCostEstimate =
+export type OnRampsGetResponsePostApplyResourcesMonthlyCostEstimate =
   OnRampsCreateResponsePostApplyMonthlyCostEstimate;
-export const OnRampsGetResponsePostApplyResourcesValueMonthlyCostEstimate =
+export const OnRampsGetResponsePostApplyResourcesMonthlyCostEstimate =
   OnRampsCreateResponsePostApplyMonthlyCostEstimate;
 
-export type OnRampsGetResponsePostApplyResourcesValueObservationsValue =
-  OnRampsCreateResponsePostApplyResourcesValueObservationsValue;
-export const OnRampsGetResponsePostApplyResourcesValueObservationsValue =
-  OnRampsCreateResponsePostApplyResourcesValueObservationsValue;
+export type OnRampsGetResponsePostApplyResourcesObservations =
+  OnRampsCreateResponsePostApplyResourcesObservations;
+export const OnRampsGetResponsePostApplyResourcesObservations =
+  OnRampsCreateResponsePostApplyResourcesObservations;
 
-export type OnRampsGetResponsePostApplyResourcesValueObservationsMap = {
-  [key: string]:
-    | OnRampsCreateResponsePostApplyResourcesValueObservationsValue
-    | undefined;
-};
-export const OnRampsGetResponsePostApplyResourcesValueObservationsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    OnRampsCreateResponsePostApplyResourcesValueObservationsValue,
-  ) as any as S.Schema<OnRampsGetResponsePostApplyResourcesValueObservationsMap>;
-
-export type OnRampsGetResponsePostApplyResourcesValueProviderIdsList =
-  Array<string>;
-export const OnRampsGetResponsePostApplyResourcesValueProviderIdsList =
+export type OnRampsGetResponsePostApplyResourcesProviderIdsList = Array<string>;
+export const OnRampsGetResponsePostApplyResourcesProviderIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
-  ) as any as S.Schema<OnRampsGetResponsePostApplyResourcesValueProviderIdsList>;
+  ) as any as S.Schema<OnRampsGetResponsePostApplyResourcesProviderIdsList>;
 
-export type OnRampsGetResponsePostApplyResourcesValueProviderNamesByIdMap = {
-  [key: string]: string | undefined;
-};
-export const OnRampsGetResponsePostApplyResourcesValueProviderNamesByIdMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<OnRampsGetResponsePostApplyResourcesValueProviderNamesByIdMap>;
+export type OnRampsGetResponsePostApplyResourcesSectionsItemHiddenItemsItem =
+  OnRampsCreateResponsePostApplyResourcesSectionsItemHiddenItemsItem;
+export const OnRampsGetResponsePostApplyResourcesSectionsItemHiddenItemsItem =
+  OnRampsCreateResponsePostApplyResourcesSectionsItemHiddenItemsItem;
 
-export type OnRampsGetResponsePostApplyResourcesValueResourceType =
-  | "aws_customer_gateway"
-  | "aws_egress_only_internet_gateway"
-  | "aws_internet_gateway"
-  | "aws_instance"
-  | "aws_network_interface"
-  | "aws_route"
-  | "aws_route_table"
-  | "aws_route_table_association"
-  | "aws_subnet"
-  | "aws_vpc"
-  | "aws_vpc_ipv4_cidr_block_association"
-  | "aws_vpn_connection"
-  | "aws_vpn_connection_route"
-  | "aws_vpn_gateway"
-  | "aws_security_group"
-  | "aws_vpc_security_group_ingress_rule"
-  | "aws_vpc_security_group_egress_rule"
-  | "aws_ec2_managed_prefix_list"
-  | "aws_ec2_transit_gateway"
-  | "aws_ec2_transit_gateway_prefix_list_reference"
-  | "aws_ec2_transit_gateway_vpc_attachment"
-  | "azurerm_application_security_group"
-  | "azurerm_lb"
-  | "azurerm_lb_backend_address_pool"
-  | "azurerm_lb_nat_pool"
-  | "azurerm_lb_nat_rule"
-  | "azurerm_lb_rule"
-  | "azurerm_local_network_gateway"
-  | "azurerm_network_interface"
-  | "azurerm_network_interface_application_security_group_association"
-  | "azurerm_network_interface_backend_address_pool_association"
-  | "azurerm_network_interface_security_group_association"
-  | "azurerm_network_security_group"
-  | "azurerm_public_ip"
-  | "azurerm_route"
-  | "azurerm_route_table"
-  | "azurerm_subnet"
-  | "azurerm_subnet_route_table_association"
-  | "azurerm_virtual_machine"
-  | "azurerm_virtual_network_gateway_connection"
-  | "azurerm_virtual_network"
-  | "azurerm_virtual_network_gateway"
-  | "google_compute_network"
-  | "google_compute_subnetwork"
-  | "google_compute_vpn_gateway"
-  | "google_compute_vpn_tunnel"
-  | "google_compute_route"
-  | "google_compute_address"
-  | "google_compute_global_address"
-  | "google_compute_router"
-  | "google_compute_interconnect_attachment"
-  | "google_compute_ha_vpn_gateway"
-  | "google_compute_forwarding_rule"
-  | "google_compute_network_firewall_policy"
-  | "google_compute_network_firewall_policy_rule"
-  | "cloudflare_static_route"
-  | "cloudflare_ipsec_tunnel";
-export const OnRampsGetResponsePostApplyResourcesValueResourceType =
-  /*@__PURE__*/ S.String;
-
-export type OnRampsGetResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem;
-export const OnRampsGetResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem;
-
-export type OnRampsGetResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlItem;
-export const OnRampsGetResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlItem;
-
-export type OnRampsGetResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlDiffItemYamlDiff =
-  OnRampsCreateResponsePlannedResourcesItemDiff;
-export const OnRampsGetResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlDiffItemYamlDiff =
-  OnRampsCreateResponsePlannedResourcesItemDiff;
-
-export type OnRampsGetResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlDiffItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlDiffItem;
-export const OnRampsGetResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlDiffItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlDiffItem;
-
-export type OnRampsGetResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreviewCloudType =
-  | "AWS"
-  | "AZURE"
-  | "GOOGLE"
-  | "CLOUDFLARE";
-export const OnRampsGetResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreviewCloudType =
-  /*@__PURE__*/ S.String;
-
-export type OnRampsGetResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreviewResourceType =
-  | "aws_customer_gateway"
-  | "aws_egress_only_internet_gateway"
-  | "aws_internet_gateway"
-  | "aws_instance"
-  | "aws_network_interface"
-  | "aws_route"
-  | "aws_route_table"
-  | "aws_route_table_association"
-  | "aws_subnet"
-  | "aws_vpc"
-  | "aws_vpc_ipv4_cidr_block_association"
-  | "aws_vpn_connection"
-  | "aws_vpn_connection_route"
-  | "aws_vpn_gateway"
-  | "aws_security_group"
-  | "aws_vpc_security_group_ingress_rule"
-  | "aws_vpc_security_group_egress_rule"
-  | "aws_ec2_managed_prefix_list"
-  | "aws_ec2_transit_gateway"
-  | "aws_ec2_transit_gateway_prefix_list_reference"
-  | "aws_ec2_transit_gateway_vpc_attachment"
-  | "azurerm_application_security_group"
-  | "azurerm_lb"
-  | "azurerm_lb_backend_address_pool"
-  | "azurerm_lb_nat_pool"
-  | "azurerm_lb_nat_rule"
-  | "azurerm_lb_rule"
-  | "azurerm_local_network_gateway"
-  | "azurerm_network_interface"
-  | "azurerm_network_interface_application_security_group_association"
-  | "azurerm_network_interface_backend_address_pool_association"
-  | "azurerm_network_interface_security_group_association"
-  | "azurerm_network_security_group"
-  | "azurerm_public_ip"
-  | "azurerm_route"
-  | "azurerm_route_table"
-  | "azurerm_subnet"
-  | "azurerm_subnet_route_table_association"
-  | "azurerm_virtual_machine"
-  | "azurerm_virtual_network_gateway_connection"
-  | "azurerm_virtual_network"
-  | "azurerm_virtual_network_gateway"
-  | "google_compute_network"
-  | "google_compute_subnetwork"
-  | "google_compute_vpn_gateway"
-  | "google_compute_vpn_tunnel"
-  | "google_compute_route"
-  | "google_compute_address"
-  | "google_compute_global_address"
-  | "google_compute_router"
-  | "google_compute_interconnect_attachment"
-  | "google_compute_ha_vpn_gateway"
-  | "google_compute_forwarding_rule"
-  | "google_compute_network_firewall_policy"
-  | "google_compute_network_firewall_policy_rule"
-  | "cloudflare_static_route"
-  | "cloudflare_ipsec_tunnel";
-export const OnRampsGetResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreviewResourceType =
-  /*@__PURE__*/ S.String;
-
-export interface OnRampsGetResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview {
-  id: string;
-  cloudType: OnRampsGetResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreviewCloudType;
-  detail: string;
-  name: string;
-  resourceType: OnRampsGetResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreviewResourceType;
-  title: string;
-}
-export const OnRampsGetResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-      cloudType:
-        OnRampsGetResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreviewCloudType.pipe(
-          T.Body("cloud_type"),
-        ),
-      detail: S.String,
-      name: S.String,
-      resourceType:
-        OnRampsGetResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreviewResourceType.pipe(
-          T.Body("resource_type"),
-        ),
-      title: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "OnRampsGetResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview",
-  }) as any as S.Schema<OnRampsGetResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview>;
-
-export interface OnRampsGetResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItem {
-  itemType: string;
-  resourcePreview: OnRampsGetResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview;
-}
-export const OnRampsGetResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      itemType: S.String.pipe(T.Body("item_type")),
-      resourcePreview:
-        OnRampsGetResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview.pipe(
-          T.Body("resource_preview"),
-        ),
-    }),
-  ).annotate({
-    identifier:
-      "OnRampsGetResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItem",
-  }) as any as S.Schema<OnRampsGetResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItem>;
-
-export type OnRampsGetResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnStringItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem;
-export const OnRampsGetResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnStringItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem;
-
-export type OnRampsGetResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewCloudType =
-  | "AWS"
-  | "AZURE"
-  | "GOOGLE"
-  | "CLOUDFLARE";
-export const OnRampsGetResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewCloudType =
-  /*@__PURE__*/ S.String;
-
-export type OnRampsGetResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewResourceType =
-  | "aws_customer_gateway"
-  | "aws_egress_only_internet_gateway"
-  | "aws_internet_gateway"
-  | "aws_instance"
-  | "aws_network_interface"
-  | "aws_route"
-  | "aws_route_table"
-  | "aws_route_table_association"
-  | "aws_subnet"
-  | "aws_vpc"
-  | "aws_vpc_ipv4_cidr_block_association"
-  | "aws_vpn_connection"
-  | "aws_vpn_connection_route"
-  | "aws_vpn_gateway"
-  | "aws_security_group"
-  | "aws_vpc_security_group_ingress_rule"
-  | "aws_vpc_security_group_egress_rule"
-  | "aws_ec2_managed_prefix_list"
-  | "aws_ec2_transit_gateway"
-  | "aws_ec2_transit_gateway_prefix_list_reference"
-  | "aws_ec2_transit_gateway_vpc_attachment"
-  | "azurerm_application_security_group"
-  | "azurerm_lb"
-  | "azurerm_lb_backend_address_pool"
-  | "azurerm_lb_nat_pool"
-  | "azurerm_lb_nat_rule"
-  | "azurerm_lb_rule"
-  | "azurerm_local_network_gateway"
-  | "azurerm_network_interface"
-  | "azurerm_network_interface_application_security_group_association"
-  | "azurerm_network_interface_backend_address_pool_association"
-  | "azurerm_network_interface_security_group_association"
-  | "azurerm_network_security_group"
-  | "azurerm_public_ip"
-  | "azurerm_route"
-  | "azurerm_route_table"
-  | "azurerm_subnet"
-  | "azurerm_subnet_route_table_association"
-  | "azurerm_virtual_machine"
-  | "azurerm_virtual_network_gateway_connection"
-  | "azurerm_virtual_network"
-  | "azurerm_virtual_network_gateway"
-  | "google_compute_network"
-  | "google_compute_subnetwork"
-  | "google_compute_vpn_gateway"
-  | "google_compute_vpn_tunnel"
-  | "google_compute_route"
-  | "google_compute_address"
-  | "google_compute_global_address"
-  | "google_compute_router"
-  | "google_compute_interconnect_attachment"
-  | "google_compute_ha_vpn_gateway"
-  | "google_compute_forwarding_rule"
-  | "google_compute_network_firewall_policy"
-  | "google_compute_network_firewall_policy_rule"
-  | "cloudflare_static_route"
-  | "cloudflare_ipsec_tunnel";
-export const OnRampsGetResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewResourceType =
-  /*@__PURE__*/ S.String;
-
-export interface OnRampsGetResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview {
-  id: string;
-  cloudType: OnRampsGetResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewCloudType;
-  detail: string;
-  name: string;
-  resourceType: OnRampsGetResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewResourceType;
-  title: string;
-}
-export const OnRampsGetResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-      cloudType:
-        OnRampsGetResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewCloudType.pipe(
-          T.Body("cloud_type"),
-        ),
-      detail: S.String,
-      name: S.String,
-      resourceType:
-        OnRampsGetResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewResourceType.pipe(
-          T.Body("resource_type"),
-        ),
-      title: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "OnRampsGetResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview",
-  }) as any as S.Schema<OnRampsGetResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview>;
-
-export interface OnRampsGetResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItem {
-  itemType: string;
-  resourcePreview: OnRampsGetResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview;
-}
-export const OnRampsGetResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      itemType: S.String.pipe(T.Body("item_type")),
-      resourcePreview:
-        OnRampsGetResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview.pipe(
-          T.Body("resource_preview"),
-        ),
-    }),
-  ).annotate({
-    identifier:
-      "OnRampsGetResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItem",
-  }) as any as S.Schema<OnRampsGetResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItem>;
-
-export type OnRampsGetResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItem =
-  | OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem
-  | OnRampsGetResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItem;
-export const OnRampsGetResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItem =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["itemType", "string"],
-      ["itemType", "resourcePreview"],
-    ]),
-  );
-
-export type OnRampsGetResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListList =
-  Array<OnRampsGetResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItem>;
-export const OnRampsGetResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListList =
+export type OnRampsGetResponsePostApplyResourcesSectionsItemHiddenItemsList =
+  Array<OnRampsCreateResponsePostApplyResourcesSectionsItemHiddenItemsItem>;
+export const OnRampsGetResponsePostApplyResourcesSectionsItemHiddenItemsList =
   /*@__PURE__*/ S.Array(
-    OnRampsGetResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItem,
-  ) as any as S.Schema<OnRampsGetResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListList>;
+    OnRampsCreateResponsePostApplyResourcesSectionsItemHiddenItemsItem,
+  ) as any as S.Schema<OnRampsGetResponsePostApplyResourcesSectionsItemHiddenItemsList>;
 
-export interface OnRampsGetResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItem {
-  itemType: string;
-  list: OnRampsGetResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListList;
-}
-export const OnRampsGetResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      itemType: S.String.pipe(T.Body("item_type")),
-      list: OnRampsGetResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListList,
-    }),
-  ).annotate({
-    identifier:
-      "OnRampsGetResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItem",
-  }) as any as S.Schema<OnRampsGetResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItem>;
+export type OnRampsGetResponsePostApplyResourcesSectionsItemVisibleItemsItem =
+  OnRampsCreateResponsePostApplyResourcesSectionsItemHiddenItemsItem;
+export const OnRampsGetResponsePostApplyResourcesSectionsItemVisibleItemsItem =
+  OnRampsCreateResponsePostApplyResourcesSectionsItemHiddenItemsItem;
 
-export type OnRampsGetResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValue =
-  | OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem
-  | OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlItem
-  | OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlDiffItem
-  | OnRampsGetResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItem
-  | OnRampsGetResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItem;
-export const OnRampsGetResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValue =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["itemType", "string"],
-      ["itemType", "yaml"],
-      ["itemType", "yamlDiff"],
-      ["itemType", "resourcePreview"],
-      ["itemType", "list"],
-    ]),
-  );
-
-export interface OnRampsGetResponsePostApplyResourcesValueSectionsItemHiddenItemsItem {
-  helpText?: string | null;
-  name?: string | null;
-  value?: OnRampsGetResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValue | null;
-}
-export const OnRampsGetResponsePostApplyResourcesValueSectionsItemHiddenItemsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      helpText: S.optional(S.NullOr(S.String)),
-      name: S.optional(S.NullOr(S.String)),
-      value: S.optional(
-        S.NullOr(
-          OnRampsGetResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValue,
-        ),
-      ),
-    }),
-  ).annotate({
-    identifier:
-      "OnRampsGetResponsePostApplyResourcesValueSectionsItemHiddenItemsItem",
-  }) as any as S.Schema<OnRampsGetResponsePostApplyResourcesValueSectionsItemHiddenItemsItem>;
-
-export type OnRampsGetResponsePostApplyResourcesValueSectionsItemHiddenItemsList =
-  Array<OnRampsGetResponsePostApplyResourcesValueSectionsItemHiddenItemsItem>;
-export const OnRampsGetResponsePostApplyResourcesValueSectionsItemHiddenItemsList =
+export type OnRampsGetResponsePostApplyResourcesSectionsItemVisibleItemsList =
+  Array<OnRampsCreateResponsePostApplyResourcesSectionsItemHiddenItemsItem>;
+export const OnRampsGetResponsePostApplyResourcesSectionsItemVisibleItemsList =
   /*@__PURE__*/ S.Array(
-    OnRampsGetResponsePostApplyResourcesValueSectionsItemHiddenItemsItem,
-  ) as any as S.Schema<OnRampsGetResponsePostApplyResourcesValueSectionsItemHiddenItemsList>;
+    OnRampsCreateResponsePostApplyResourcesSectionsItemHiddenItemsItem,
+  ) as any as S.Schema<OnRampsGetResponsePostApplyResourcesSectionsItemVisibleItemsList>;
 
-export type OnRampsGetResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnStringItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem;
-export const OnRampsGetResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnStringItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem;
-
-export type OnRampsGetResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnYamlItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlItem;
-export const OnRampsGetResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnYamlItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlItem;
-
-export type OnRampsGetResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnYamlDiffItemYamlDiff =
-  OnRampsCreateResponsePlannedResourcesItemDiff;
-export const OnRampsGetResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnYamlDiffItemYamlDiff =
-  OnRampsCreateResponsePlannedResourcesItemDiff;
-
-export type OnRampsGetResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnYamlDiffItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlDiffItem;
-export const OnRampsGetResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnYamlDiffItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlDiffItem;
-
-export type OnRampsGetResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreviewCloudType =
-  | "AWS"
-  | "AZURE"
-  | "GOOGLE"
-  | "CLOUDFLARE";
-export const OnRampsGetResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreviewCloudType =
-  /*@__PURE__*/ S.String;
-
-export type OnRampsGetResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreviewResourceType =
-  | "aws_customer_gateway"
-  | "aws_egress_only_internet_gateway"
-  | "aws_internet_gateway"
-  | "aws_instance"
-  | "aws_network_interface"
-  | "aws_route"
-  | "aws_route_table"
-  | "aws_route_table_association"
-  | "aws_subnet"
-  | "aws_vpc"
-  | "aws_vpc_ipv4_cidr_block_association"
-  | "aws_vpn_connection"
-  | "aws_vpn_connection_route"
-  | "aws_vpn_gateway"
-  | "aws_security_group"
-  | "aws_vpc_security_group_ingress_rule"
-  | "aws_vpc_security_group_egress_rule"
-  | "aws_ec2_managed_prefix_list"
-  | "aws_ec2_transit_gateway"
-  | "aws_ec2_transit_gateway_prefix_list_reference"
-  | "aws_ec2_transit_gateway_vpc_attachment"
-  | "azurerm_application_security_group"
-  | "azurerm_lb"
-  | "azurerm_lb_backend_address_pool"
-  | "azurerm_lb_nat_pool"
-  | "azurerm_lb_nat_rule"
-  | "azurerm_lb_rule"
-  | "azurerm_local_network_gateway"
-  | "azurerm_network_interface"
-  | "azurerm_network_interface_application_security_group_association"
-  | "azurerm_network_interface_backend_address_pool_association"
-  | "azurerm_network_interface_security_group_association"
-  | "azurerm_network_security_group"
-  | "azurerm_public_ip"
-  | "azurerm_route"
-  | "azurerm_route_table"
-  | "azurerm_subnet"
-  | "azurerm_subnet_route_table_association"
-  | "azurerm_virtual_machine"
-  | "azurerm_virtual_network_gateway_connection"
-  | "azurerm_virtual_network"
-  | "azurerm_virtual_network_gateway"
-  | "google_compute_network"
-  | "google_compute_subnetwork"
-  | "google_compute_vpn_gateway"
-  | "google_compute_vpn_tunnel"
-  | "google_compute_route"
-  | "google_compute_address"
-  | "google_compute_global_address"
-  | "google_compute_router"
-  | "google_compute_interconnect_attachment"
-  | "google_compute_ha_vpn_gateway"
-  | "google_compute_forwarding_rule"
-  | "google_compute_network_firewall_policy"
-  | "google_compute_network_firewall_policy_rule"
-  | "cloudflare_static_route"
-  | "cloudflare_ipsec_tunnel";
-export const OnRampsGetResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreviewResourceType =
-  /*@__PURE__*/ S.String;
-
-export interface OnRampsGetResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreview {
-  id: string;
-  cloudType: OnRampsGetResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreviewCloudType;
-  detail: string;
+export interface OnRampsGetResponsePostApplyResourcesSectionsItem {
+  hiddenItems: OnRampsGetResponsePostApplyResourcesSectionsItemHiddenItemsList;
   name: string;
-  resourceType: OnRampsGetResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreviewResourceType;
-  title: string;
-}
-export const OnRampsGetResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreview =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-      cloudType:
-        OnRampsGetResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreviewCloudType.pipe(
-          T.Body("cloud_type"),
-        ),
-      detail: S.String,
-      name: S.String,
-      resourceType:
-        OnRampsGetResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreviewResourceType.pipe(
-          T.Body("resource_type"),
-        ),
-      title: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "OnRampsGetResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreview",
-  }) as any as S.Schema<OnRampsGetResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreview>;
-
-export interface OnRampsGetResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItem {
-  itemType: string;
-  resourcePreview: OnRampsGetResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreview;
-}
-export const OnRampsGetResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      itemType: S.String.pipe(T.Body("item_type")),
-      resourcePreview:
-        OnRampsGetResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreview.pipe(
-          T.Body("resource_preview"),
-        ),
-    }),
-  ).annotate({
-    identifier:
-      "OnRampsGetResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItem",
-  }) as any as S.Schema<OnRampsGetResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItem>;
-
-export type OnRampsGetResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnStringItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem;
-export const OnRampsGetResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnStringItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem;
-
-export type OnRampsGetResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewCloudType =
-  | "AWS"
-  | "AZURE"
-  | "GOOGLE"
-  | "CLOUDFLARE";
-export const OnRampsGetResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewCloudType =
-  /*@__PURE__*/ S.String;
-
-export type OnRampsGetResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewResourceType =
-  | "aws_customer_gateway"
-  | "aws_egress_only_internet_gateway"
-  | "aws_internet_gateway"
-  | "aws_instance"
-  | "aws_network_interface"
-  | "aws_route"
-  | "aws_route_table"
-  | "aws_route_table_association"
-  | "aws_subnet"
-  | "aws_vpc"
-  | "aws_vpc_ipv4_cidr_block_association"
-  | "aws_vpn_connection"
-  | "aws_vpn_connection_route"
-  | "aws_vpn_gateway"
-  | "aws_security_group"
-  | "aws_vpc_security_group_ingress_rule"
-  | "aws_vpc_security_group_egress_rule"
-  | "aws_ec2_managed_prefix_list"
-  | "aws_ec2_transit_gateway"
-  | "aws_ec2_transit_gateway_prefix_list_reference"
-  | "aws_ec2_transit_gateway_vpc_attachment"
-  | "azurerm_application_security_group"
-  | "azurerm_lb"
-  | "azurerm_lb_backend_address_pool"
-  | "azurerm_lb_nat_pool"
-  | "azurerm_lb_nat_rule"
-  | "azurerm_lb_rule"
-  | "azurerm_local_network_gateway"
-  | "azurerm_network_interface"
-  | "azurerm_network_interface_application_security_group_association"
-  | "azurerm_network_interface_backend_address_pool_association"
-  | "azurerm_network_interface_security_group_association"
-  | "azurerm_network_security_group"
-  | "azurerm_public_ip"
-  | "azurerm_route"
-  | "azurerm_route_table"
-  | "azurerm_subnet"
-  | "azurerm_subnet_route_table_association"
-  | "azurerm_virtual_machine"
-  | "azurerm_virtual_network_gateway_connection"
-  | "azurerm_virtual_network"
-  | "azurerm_virtual_network_gateway"
-  | "google_compute_network"
-  | "google_compute_subnetwork"
-  | "google_compute_vpn_gateway"
-  | "google_compute_vpn_tunnel"
-  | "google_compute_route"
-  | "google_compute_address"
-  | "google_compute_global_address"
-  | "google_compute_router"
-  | "google_compute_interconnect_attachment"
-  | "google_compute_ha_vpn_gateway"
-  | "google_compute_forwarding_rule"
-  | "google_compute_network_firewall_policy"
-  | "google_compute_network_firewall_policy_rule"
-  | "cloudflare_static_route"
-  | "cloudflare_ipsec_tunnel";
-export const OnRampsGetResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewResourceType =
-  /*@__PURE__*/ S.String;
-
-export interface OnRampsGetResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview {
-  id: string;
-  cloudType: OnRampsGetResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewCloudType;
-  detail: string;
-  name: string;
-  resourceType: OnRampsGetResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewResourceType;
-  title: string;
-}
-export const OnRampsGetResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-      cloudType:
-        OnRampsGetResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewCloudType.pipe(
-          T.Body("cloud_type"),
-        ),
-      detail: S.String,
-      name: S.String,
-      resourceType:
-        OnRampsGetResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewResourceType.pipe(
-          T.Body("resource_type"),
-        ),
-      title: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "OnRampsGetResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview",
-  }) as any as S.Schema<OnRampsGetResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview>;
-
-export interface OnRampsGetResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItem {
-  itemType: string;
-  resourcePreview: OnRampsGetResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview;
-}
-export const OnRampsGetResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      itemType: S.String.pipe(T.Body("item_type")),
-      resourcePreview:
-        OnRampsGetResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview.pipe(
-          T.Body("resource_preview"),
-        ),
-    }),
-  ).annotate({
-    identifier:
-      "OnRampsGetResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItem",
-  }) as any as S.Schema<OnRampsGetResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItem>;
-
-export type OnRampsGetResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItem =
-  | OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem
-  | OnRampsGetResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItem;
-export const OnRampsGetResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItem =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["itemType", "string"],
-      ["itemType", "resourcePreview"],
-    ]),
-  );
-
-export type OnRampsGetResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListList =
-  Array<OnRampsGetResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItem>;
-export const OnRampsGetResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListList =
-  /*@__PURE__*/ S.Array(
-    OnRampsGetResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItem,
-  ) as any as S.Schema<OnRampsGetResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListList>;
-
-export interface OnRampsGetResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItem {
-  itemType: string;
-  list: OnRampsGetResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListList;
-}
-export const OnRampsGetResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      itemType: S.String.pipe(T.Body("item_type")),
-      list: OnRampsGetResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListList,
-    }),
-  ).annotate({
-    identifier:
-      "OnRampsGetResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItem",
-  }) as any as S.Schema<OnRampsGetResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItem>;
-
-export type OnRampsGetResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValue =
-  | OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem
-  | OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlItem
-  | OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlDiffItem
-  | OnRampsGetResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItem
-  | OnRampsGetResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItem;
-export const OnRampsGetResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValue =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["itemType", "string"],
-      ["itemType", "yaml"],
-      ["itemType", "yamlDiff"],
-      ["itemType", "resourcePreview"],
-      ["itemType", "list"],
-    ]),
-  );
-
-export interface OnRampsGetResponsePostApplyResourcesValueSectionsItemVisibleItemsItem {
-  helpText?: string | null;
-  name?: string | null;
-  value?: OnRampsGetResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValue | null;
-}
-export const OnRampsGetResponsePostApplyResourcesValueSectionsItemVisibleItemsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      helpText: S.optional(S.NullOr(S.String)),
-      name: S.optional(S.NullOr(S.String)),
-      value: S.optional(
-        S.NullOr(
-          OnRampsGetResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValue,
-        ),
-      ),
-    }),
-  ).annotate({
-    identifier:
-      "OnRampsGetResponsePostApplyResourcesValueSectionsItemVisibleItemsItem",
-  }) as any as S.Schema<OnRampsGetResponsePostApplyResourcesValueSectionsItemVisibleItemsItem>;
-
-export type OnRampsGetResponsePostApplyResourcesValueSectionsItemVisibleItemsList =
-  Array<OnRampsGetResponsePostApplyResourcesValueSectionsItemVisibleItemsItem>;
-export const OnRampsGetResponsePostApplyResourcesValueSectionsItemVisibleItemsList =
-  /*@__PURE__*/ S.Array(
-    OnRampsGetResponsePostApplyResourcesValueSectionsItemVisibleItemsItem,
-  ) as any as S.Schema<OnRampsGetResponsePostApplyResourcesValueSectionsItemVisibleItemsList>;
-
-export interface OnRampsGetResponsePostApplyResourcesValueSectionsItem {
-  hiddenItems: OnRampsGetResponsePostApplyResourcesValueSectionsItemHiddenItemsList;
-  name: string;
-  visibleItems: OnRampsGetResponsePostApplyResourcesValueSectionsItemVisibleItemsList;
+  visibleItems: OnRampsGetResponsePostApplyResourcesSectionsItemVisibleItemsList;
   helpText?: string | null;
 }
-export const OnRampsGetResponsePostApplyResourcesValueSectionsItem =
+export const OnRampsGetResponsePostApplyResourcesSectionsItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       hiddenItems:
-        OnRampsGetResponsePostApplyResourcesValueSectionsItemHiddenItemsList.pipe(
+        OnRampsGetResponsePostApplyResourcesSectionsItemHiddenItemsList.pipe(
           T.Body("hidden_items"),
         ),
       name: S.String,
       visibleItems:
-        OnRampsGetResponsePostApplyResourcesValueSectionsItemVisibleItemsList.pipe(
+        OnRampsGetResponsePostApplyResourcesSectionsItemVisibleItemsList.pipe(
           T.Body("visible_items"),
         ),
       helpText: S.optional(S.NullOr(S.String).pipe(T.Body("help_text"))),
     }),
   ).annotate({
-    identifier: "OnRampsGetResponsePostApplyResourcesValueSectionsItem",
-  }) as any as S.Schema<OnRampsGetResponsePostApplyResourcesValueSectionsItem>;
+    identifier: "OnRampsGetResponsePostApplyResourcesSectionsItem",
+  }) as any as S.Schema<OnRampsGetResponsePostApplyResourcesSectionsItem>;
 
-export type OnRampsGetResponsePostApplyResourcesValueSectionsList =
-  Array<OnRampsGetResponsePostApplyResourcesValueSectionsItem>;
-export const OnRampsGetResponsePostApplyResourcesValueSectionsList =
+export type OnRampsGetResponsePostApplyResourcesSectionsList =
+  Array<OnRampsGetResponsePostApplyResourcesSectionsItem>;
+export const OnRampsGetResponsePostApplyResourcesSectionsList =
   /*@__PURE__*/ S.Array(
-    OnRampsGetResponsePostApplyResourcesValueSectionsItem,
-  ) as any as S.Schema<OnRampsGetResponsePostApplyResourcesValueSectionsList>;
+    OnRampsGetResponsePostApplyResourcesSectionsItem,
+  ) as any as S.Schema<OnRampsGetResponsePostApplyResourcesSectionsList>;
 
-export type OnRampsGetResponsePostApplyResourcesValueStateMap = {
-  [key: string]: unknown | undefined;
-};
-export const OnRampsGetResponsePostApplyResourcesValueStateMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<OnRampsGetResponsePostApplyResourcesValueStateMap>;
-
-export type OnRampsGetResponsePostApplyResourcesValueTagsMap = {
-  [key: string]: string | undefined;
-};
-export const OnRampsGetResponsePostApplyResourcesValueTagsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<OnRampsGetResponsePostApplyResourcesValueTagsMap>;
-
-export type OnRampsGetResponsePostApplyResourcesValueManagedByItemClientType =
+export type OnRampsGetResponsePostApplyResourcesManagedByItemClientType =
   "MAGIC_WAN_CLOUD_ONRAMP";
-export const OnRampsGetResponsePostApplyResourcesValueManagedByItemClientType =
+export const OnRampsGetResponsePostApplyResourcesManagedByItemClientType =
   /*@__PURE__*/ S.String;
 
-export interface OnRampsGetResponsePostApplyResourcesValueManagedByItem {
+export interface OnRampsGetResponsePostApplyResourcesManagedByItem {
   id: string;
-  clientType: OnRampsGetResponsePostApplyResourcesValueManagedByItemClientType;
+  clientType: OnRampsGetResponsePostApplyResourcesManagedByItemClientType;
   name: string;
 }
-export const OnRampsGetResponsePostApplyResourcesValueManagedByItem =
+export const OnRampsGetResponsePostApplyResourcesManagedByItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       id: S.String,
       clientType:
-        OnRampsGetResponsePostApplyResourcesValueManagedByItemClientType.pipe(
+        OnRampsGetResponsePostApplyResourcesManagedByItemClientType.pipe(
           T.Body("client_type"),
         ),
       name: S.String,
     }),
   ).annotate({
-    identifier: "OnRampsGetResponsePostApplyResourcesValueManagedByItem",
-  }) as any as S.Schema<OnRampsGetResponsePostApplyResourcesValueManagedByItem>;
+    identifier: "OnRampsGetResponsePostApplyResourcesManagedByItem",
+  }) as any as S.Schema<OnRampsGetResponsePostApplyResourcesManagedByItem>;
 
-export type OnRampsGetResponsePostApplyResourcesValueManagedByList =
-  Array<OnRampsGetResponsePostApplyResourcesValueManagedByItem>;
-export const OnRampsGetResponsePostApplyResourcesValueManagedByList =
+export type OnRampsGetResponsePostApplyResourcesManagedByList =
+  Array<OnRampsGetResponsePostApplyResourcesManagedByItem>;
+export const OnRampsGetResponsePostApplyResourcesManagedByList =
   /*@__PURE__*/ S.Array(
-    OnRampsGetResponsePostApplyResourcesValueManagedByItem,
-  ) as any as S.Schema<OnRampsGetResponsePostApplyResourcesValueManagedByList>;
+    OnRampsGetResponsePostApplyResourcesManagedByItem,
+  ) as any as S.Schema<OnRampsGetResponsePostApplyResourcesManagedByList>;
 
-export interface OnRampsGetResponsePostApplyResourcesValue {
+export interface OnRampsGetResponsePostApplyResources {
   id: string;
   accountId: string;
-  cloudType: OnRampsGetResponsePostApplyResourcesValueCloudType;
-  config: OnRampsGetResponsePostApplyResourcesValueConfigMap;
+  cloudType: OnRampsGetResponsePostApplyResourcesCloudType;
+  config: unknown;
   deploymentProvider: string;
   managed: boolean;
   monthlyCostEstimate: OnRampsCreateResponsePostApplyMonthlyCostEstimate;
   name: string;
   nativeId: string;
-  observations: OnRampsGetResponsePostApplyResourcesValueObservationsMap;
-  providerIds: OnRampsGetResponsePostApplyResourcesValueProviderIdsList;
-  providerNamesById: OnRampsGetResponsePostApplyResourcesValueProviderNamesByIdMap;
+  observations: OnRampsCreateResponsePostApplyResourcesObservations;
+  providerIds: OnRampsGetResponsePostApplyResourcesProviderIdsList;
+  providerNamesById: unknown;
   region: string;
   resourceGroup: string;
-  resourceType: OnRampsGetResponsePostApplyResourcesValueResourceType;
-  sections: OnRampsGetResponsePostApplyResourcesValueSectionsList;
-  state: OnRampsGetResponsePostApplyResourcesValueStateMap;
-  tags: OnRampsGetResponsePostApplyResourcesValueTagsMap;
+  resourceType: string;
+  sections: OnRampsGetResponsePostApplyResourcesSectionsList;
+  state: unknown;
+  tags: unknown;
   updatedAt: string;
   url: string;
-  managedBy?: OnRampsGetResponsePostApplyResourcesValueManagedByList | null;
+  managedBy?: OnRampsGetResponsePostApplyResourcesManagedByList | null;
 }
-export const OnRampsGetResponsePostApplyResourcesValue =
-  /*@__PURE__*/ S.suspend(() =>
+export const OnRampsGetResponsePostApplyResources = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       id: S.String,
       accountId: S.String.pipe(T.Body("account_id")),
-      cloudType: OnRampsGetResponsePostApplyResourcesValueCloudType.pipe(
+      cloudType: OnRampsGetResponsePostApplyResourcesCloudType.pipe(
         T.Body("cloud_type"),
       ),
-      config: OnRampsGetResponsePostApplyResourcesValueConfigMap,
+      config: S.Unknown,
       deploymentProvider: S.String.pipe(T.Body("deployment_provider")),
       managed: S.Boolean,
       monthlyCostEstimate:
@@ -5342,62 +2123,33 @@ export const OnRampsGetResponsePostApplyResourcesValue =
         ),
       name: S.String,
       nativeId: S.String.pipe(T.Body("native_id")),
-      observations: OnRampsGetResponsePostApplyResourcesValueObservationsMap,
-      providerIds:
-        OnRampsGetResponsePostApplyResourcesValueProviderIdsList.pipe(
-          T.Body("provider_ids"),
-        ),
-      providerNamesById:
-        OnRampsGetResponsePostApplyResourcesValueProviderNamesByIdMap.pipe(
-          T.Body("provider_names_by_id"),
-        ),
+      observations: OnRampsCreateResponsePostApplyResourcesObservations,
+      providerIds: OnRampsGetResponsePostApplyResourcesProviderIdsList.pipe(
+        T.Body("provider_ids"),
+      ),
+      providerNamesById: S.Unknown.pipe(T.Body("provider_names_by_id")),
       region: S.String,
       resourceGroup: S.String.pipe(T.Body("resource_group")),
-      resourceType: OnRampsGetResponsePostApplyResourcesValueResourceType.pipe(
-        T.Body("resource_type"),
-      ),
-      sections: OnRampsGetResponsePostApplyResourcesValueSectionsList,
-      state: OnRampsGetResponsePostApplyResourcesValueStateMap,
-      tags: OnRampsGetResponsePostApplyResourcesValueTagsMap,
+      resourceType: S.String.pipe(T.Body("resource_type")),
+      sections: OnRampsGetResponsePostApplyResourcesSectionsList,
+      state: S.Unknown,
+      tags: S.Unknown,
       updatedAt: S.String.pipe(T.Body("updated_at")),
       url: S.String,
       managedBy: S.optional(
-        S.NullOr(OnRampsGetResponsePostApplyResourcesValueManagedByList).pipe(
+        S.NullOr(OnRampsGetResponsePostApplyResourcesManagedByList).pipe(
           T.Body("managed_by"),
         ),
       ),
     }),
-  ).annotate({
-    identifier: "OnRampsGetResponsePostApplyResourcesValue",
-  }) as any as S.Schema<OnRampsGetResponsePostApplyResourcesValue>;
-
-export type OnRampsGetResponsePostApplyResourcesMap = {
-  [key: string]: OnRampsGetResponsePostApplyResourcesValue | undefined;
-};
-export const OnRampsGetResponsePostApplyResourcesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  OnRampsGetResponsePostApplyResourcesValue,
-) as any as S.Schema<OnRampsGetResponsePostApplyResourcesMap>;
+).annotate({
+  identifier: "OnRampsGetResponsePostApplyResources",
+}) as any as S.Schema<OnRampsGetResponsePostApplyResources>;
 
 export type OnRampsGetResponseStatusApplyProgress =
   OnRampsCreateResponseStatusApplyProgress;
 export const OnRampsGetResponseStatusApplyProgress =
   OnRampsCreateResponseStatusApplyProgress;
-
-export type OnRampsGetResponseStatusLifecycleState =
-  | "OnrampNeedsApply"
-  | "OnrampPendingPlan"
-  | "OnrampPlanning"
-  | "OnrampPlanFailed"
-  | "OnrampPendingApproval"
-  | "OnrampPendingApply"
-  | "OnrampApplying"
-  | "OnrampApplyFailed"
-  | "OnrampActive"
-  | "OnrampPendingDestroy"
-  | "OnrampDestroying"
-  | "OnrampDestroyFailed";
-export const OnRampsGetResponseStatusLifecycleState = /*@__PURE__*/ S.String;
 
 export type OnRampsGetResponseStatusPlanProgress =
   OnRampsCreateResponseStatusApplyProgress;
@@ -5414,229 +2166,42 @@ export const OnRampsGetResponseStatusTunnelsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<OnRampsGetResponseStatusTunnelsList>;
 
-export type OnRampsGetResponseStatusLifecycleErrorsValueCode =
-  | 1001
-  | 1002
-  | 1003
-  | 1004
-  | 1005
-  | 1006
-  | 1007
-  | 1008
-  | 1009
-  | 1010
-  | 1011
-  | 1012
-  | 1013
-  | 1014
-  | 1015
-  | 1016
-  | 1017
-  | 1018
-  | 2001
-  | 2002
-  | 2003
-  | 2004
-  | 2005
-  | 2006
-  | 2007
-  | 2008
-  | 2009
-  | 2010
-  | 2011
-  | 2012
-  | 2013
-  | 2014
-  | 2015
-  | 2016
-  | 2017
-  | 2018
-  | 2019
-  | 2020
-  | 2021
-  | 2022
-  | 3001
-  | 3002
-  | 3003
-  | 3004
-  | 3005
-  | 3006
-  | 3007
-  | 4001
-  | 4002
-  | 4003
-  | 4004
-  | 4005
-  | 4006
-  | 4007
-  | 4008
-  | 4009
-  | 4010
-  | 4011
-  | 4012
-  | 4013
-  | 4014
-  | 4015
-  | 4016
-  | 4017
-  | 4018
-  | 4019
-  | 4020
-  | 4021
-  | 4022
-  | 4023
-  | 5001
-  | 5002
-  | 5003
-  | 5004
-  | 102000
-  | 102001
-  | 102002
-  | 102003
-  | 102004
-  | 102005
-  | 102006
-  | 102007
-  | 102008
-  | 102009
-  | 102010
-  | 102011
-  | 102012
-  | 102013
-  | 102014
-  | 102015
-  | 102016
-  | 102017
-  | 102018
-  | 102019
-  | 102020
-  | 102021
-  | 102022
-  | 102023
-  | 102024
-  | 102025
-  | 102026
-  | 102027
-  | 102028
-  | 102029
-  | 102030
-  | 102031
-  | 102032
-  | 102033
-  | 102034
-  | 102035
-  | 102036
-  | 102037
-  | 102038
-  | 102039
-  | 102040
-  | 102041
-  | 102042
-  | 102043
-  | 102044
-  | 102045
-  | 102046
-  | 102047
-  | 102048
-  | 102049
-  | 102050
-  | 102051
-  | 102052
-  | 102053
-  | 102054
-  | 102055
-  | 102056
-  | 102057
-  | 102058
-  | 102059
-  | 102060
-  | 102061
-  | 102062
-  | 102063
-  | 102064
-  | 102065
-  | 102066
-  | 102067
-  | 102068
-  | 102069
-  | 102070
-  | 102071
-  | 102072
-  | 103001
-  | 103002
-  | 103003
-  | 103004
-  | 103005
-  | 103006
-  | 103007
-  | 103008;
-export const OnRampsGetResponseStatusLifecycleErrorsValueCode =
-  /*@__PURE__*/ S.Number;
+export type OnRampsGetResponseStatusLifecycleErrorsMeta =
+  CatalogSyncsCreateResponseErrorsMeta;
+export const OnRampsGetResponseStatusLifecycleErrorsMeta =
+  CatalogSyncsCreateResponseErrorsMeta;
 
-export type OnRampsGetResponseStatusLifecycleErrorsValueMeta =
-  CatalogSyncsCreateResponseErrorsValueMeta;
-export const OnRampsGetResponseStatusLifecycleErrorsValueMeta =
-  CatalogSyncsCreateResponseErrorsValueMeta;
+export type OnRampsGetResponseStatusLifecycleErrorsSource =
+  CatalogSyncsCreateResponseErrorsSource;
+export const OnRampsGetResponseStatusLifecycleErrorsSource =
+  CatalogSyncsCreateResponseErrorsSource;
 
-export type OnRampsGetResponseStatusLifecycleErrorsValueSource =
-  CatalogSyncsCreateResponseErrorsValueSource;
-export const OnRampsGetResponseStatusLifecycleErrorsValueSource =
-  CatalogSyncsCreateResponseErrorsValueSource;
-
-export interface OnRampsGetResponseStatusLifecycleErrorsValue {
-  code: OnRampsGetResponseStatusLifecycleErrorsValueCode;
-  message: string;
-  documentationUrl?: string | null;
-  meta?: CatalogSyncsCreateResponseErrorsValueMeta | null;
-  source?: CatalogSyncsCreateResponseErrorsValueSource | null;
-}
-export const OnRampsGetResponseStatusLifecycleErrorsValue =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      code: OnRampsGetResponseStatusLifecycleErrorsValueCode,
-      message: S.String,
-      documentationUrl: S.optional(
-        S.NullOr(S.String).pipe(T.Body("documentation_url")),
-      ),
-      meta: S.optional(S.NullOr(CatalogSyncsCreateResponseErrorsValueMeta)),
-      source: S.optional(S.NullOr(CatalogSyncsCreateResponseErrorsValueSource)),
-    }),
-  ).annotate({
-    identifier: "OnRampsGetResponseStatusLifecycleErrorsValue",
-  }) as any as S.Schema<OnRampsGetResponseStatusLifecycleErrorsValue>;
-
-export type OnRampsGetResponseStatusLifecycleErrorsMap = {
-  [key: string]: OnRampsGetResponseStatusLifecycleErrorsValue | undefined;
-};
-export const OnRampsGetResponseStatusLifecycleErrorsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    OnRampsGetResponseStatusLifecycleErrorsValue,
-  ) as any as S.Schema<OnRampsGetResponseStatusLifecycleErrorsMap>;
+export type OnRampsGetResponseStatusLifecycleErrors =
+  CatalogSyncsCreateResponseErrors;
+export const OnRampsGetResponseStatusLifecycleErrors =
+  CatalogSyncsCreateResponseErrors;
 
 export interface OnRampsGetResponseStatus {
   applyProgress: OnRampsCreateResponseStatusApplyProgress;
-  lifecycleState: OnRampsGetResponseStatusLifecycleState;
+  lifecycleState: string;
   planProgress: OnRampsCreateResponseStatusApplyProgress;
   routes: OnRampsGetResponseStatusRoutesList;
   tunnels: OnRampsGetResponseStatusTunnelsList;
-  lifecycleErrors?: OnRampsGetResponseStatusLifecycleErrorsMap | null;
+  lifecycleErrors?: CatalogSyncsCreateResponseErrors | null;
 }
 export const OnRampsGetResponseStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     applyProgress: OnRampsCreateResponseStatusApplyProgress.pipe(
       T.Body("apply_progress"),
     ),
-    lifecycleState: OnRampsGetResponseStatusLifecycleState.pipe(
-      T.Body("lifecycle_state"),
-    ),
+    lifecycleState: S.String.pipe(T.Body("lifecycle_state")),
     planProgress: OnRampsCreateResponseStatusApplyProgress.pipe(
       T.Body("plan_progress"),
     ),
     routes: OnRampsGetResponseStatusRoutesList,
     tunnels: OnRampsGetResponseStatusTunnelsList,
     lifecycleErrors: S.optional(
-      S.NullOr(OnRampsGetResponseStatusLifecycleErrorsMap).pipe(
+      S.NullOr(CatalogSyncsCreateResponseErrors).pipe(
         T.Body("lifecycle_errors"),
       ),
     ),
@@ -5645,894 +2210,138 @@ export const OnRampsGetResponseStatus = /*@__PURE__*/ S.suspend(() =>
   identifier: "OnRampsGetResponseStatus",
 }) as any as S.Schema<OnRampsGetResponseStatus>;
 
-export type OnRampsGetResponseVpcsByIdValueCloudType =
+export type OnRampsGetResponseVpcsByIdCloudType =
   | "AWS"
   | "AZURE"
   | "GOOGLE"
   | "CLOUDFLARE";
-export const OnRampsGetResponseVpcsByIdValueCloudType = /*@__PURE__*/ S.String;
+export const OnRampsGetResponseVpcsByIdCloudType = /*@__PURE__*/ S.String;
 
-export type OnRampsGetResponseVpcsByIdValueConfigMap = {
-  [key: string]: unknown | undefined;
-};
-export const OnRampsGetResponseVpcsByIdValueConfigMap = /*@__PURE__*/ S.Record(
+export type OnRampsGetResponseVpcsByIdMonthlyCostEstimate =
+  OnRampsCreateResponsePostApplyMonthlyCostEstimate;
+export const OnRampsGetResponseVpcsByIdMonthlyCostEstimate =
+  OnRampsCreateResponsePostApplyMonthlyCostEstimate;
+
+export type OnRampsGetResponseVpcsByIdObservations =
+  OnRampsCreateResponsePostApplyResourcesObservations;
+export const OnRampsGetResponseVpcsByIdObservations =
+  OnRampsCreateResponsePostApplyResourcesObservations;
+
+export type OnRampsGetResponseVpcsByIdProviderIdsList = Array<string>;
+export const OnRampsGetResponseVpcsByIdProviderIdsList = /*@__PURE__*/ S.Array(
   S.String,
-  S.Unknown,
-) as any as S.Schema<OnRampsGetResponseVpcsByIdValueConfigMap>;
+) as any as S.Schema<OnRampsGetResponseVpcsByIdProviderIdsList>;
 
-export type OnRampsGetResponseVpcsByIdValueMonthlyCostEstimate =
-  OnRampsCreateResponsePostApplyMonthlyCostEstimate;
-export const OnRampsGetResponseVpcsByIdValueMonthlyCostEstimate =
-  OnRampsCreateResponsePostApplyMonthlyCostEstimate;
+export type OnRampsGetResponseVpcsByIdSectionsItemHiddenItemsItem =
+  OnRampsCreateResponsePostApplyResourcesSectionsItemHiddenItemsItem;
+export const OnRampsGetResponseVpcsByIdSectionsItemHiddenItemsItem =
+  OnRampsCreateResponsePostApplyResourcesSectionsItemHiddenItemsItem;
 
-export type OnRampsGetResponseVpcsByIdValueObservationsValue =
-  OnRampsCreateResponsePostApplyResourcesValueObservationsValue;
-export const OnRampsGetResponseVpcsByIdValueObservationsValue =
-  OnRampsCreateResponsePostApplyResourcesValueObservationsValue;
-
-export type OnRampsGetResponseVpcsByIdValueObservationsMap = {
-  [key: string]:
-    | OnRampsCreateResponsePostApplyResourcesValueObservationsValue
-    | undefined;
-};
-export const OnRampsGetResponseVpcsByIdValueObservationsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    OnRampsCreateResponsePostApplyResourcesValueObservationsValue,
-  ) as any as S.Schema<OnRampsGetResponseVpcsByIdValueObservationsMap>;
-
-export type OnRampsGetResponseVpcsByIdValueProviderIdsList = Array<string>;
-export const OnRampsGetResponseVpcsByIdValueProviderIdsList =
+export type OnRampsGetResponseVpcsByIdSectionsItemHiddenItemsList =
+  Array<OnRampsCreateResponsePostApplyResourcesSectionsItemHiddenItemsItem>;
+export const OnRampsGetResponseVpcsByIdSectionsItemHiddenItemsList =
   /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<OnRampsGetResponseVpcsByIdValueProviderIdsList>;
+    OnRampsCreateResponsePostApplyResourcesSectionsItemHiddenItemsItem,
+  ) as any as S.Schema<OnRampsGetResponseVpcsByIdSectionsItemHiddenItemsList>;
 
-export type OnRampsGetResponseVpcsByIdValueProviderNamesByIdMap = {
-  [key: string]: string | undefined;
-};
-export const OnRampsGetResponseVpcsByIdValueProviderNamesByIdMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<OnRampsGetResponseVpcsByIdValueProviderNamesByIdMap>;
+export type OnRampsGetResponseVpcsByIdSectionsItemVisibleItemsItem =
+  OnRampsCreateResponsePostApplyResourcesSectionsItemHiddenItemsItem;
+export const OnRampsGetResponseVpcsByIdSectionsItemVisibleItemsItem =
+  OnRampsCreateResponsePostApplyResourcesSectionsItemHiddenItemsItem;
 
-export type OnRampsGetResponseVpcsByIdValueResourceType =
-  | "aws_customer_gateway"
-  | "aws_egress_only_internet_gateway"
-  | "aws_internet_gateway"
-  | "aws_instance"
-  | "aws_network_interface"
-  | "aws_route"
-  | "aws_route_table"
-  | "aws_route_table_association"
-  | "aws_subnet"
-  | "aws_vpc"
-  | "aws_vpc_ipv4_cidr_block_association"
-  | "aws_vpn_connection"
-  | "aws_vpn_connection_route"
-  | "aws_vpn_gateway"
-  | "aws_security_group"
-  | "aws_vpc_security_group_ingress_rule"
-  | "aws_vpc_security_group_egress_rule"
-  | "aws_ec2_managed_prefix_list"
-  | "aws_ec2_transit_gateway"
-  | "aws_ec2_transit_gateway_prefix_list_reference"
-  | "aws_ec2_transit_gateway_vpc_attachment"
-  | "azurerm_application_security_group"
-  | "azurerm_lb"
-  | "azurerm_lb_backend_address_pool"
-  | "azurerm_lb_nat_pool"
-  | "azurerm_lb_nat_rule"
-  | "azurerm_lb_rule"
-  | "azurerm_local_network_gateway"
-  | "azurerm_network_interface"
-  | "azurerm_network_interface_application_security_group_association"
-  | "azurerm_network_interface_backend_address_pool_association"
-  | "azurerm_network_interface_security_group_association"
-  | "azurerm_network_security_group"
-  | "azurerm_public_ip"
-  | "azurerm_route"
-  | "azurerm_route_table"
-  | "azurerm_subnet"
-  | "azurerm_subnet_route_table_association"
-  | "azurerm_virtual_machine"
-  | "azurerm_virtual_network_gateway_connection"
-  | "azurerm_virtual_network"
-  | "azurerm_virtual_network_gateway"
-  | "google_compute_network"
-  | "google_compute_subnetwork"
-  | "google_compute_vpn_gateway"
-  | "google_compute_vpn_tunnel"
-  | "google_compute_route"
-  | "google_compute_address"
-  | "google_compute_global_address"
-  | "google_compute_router"
-  | "google_compute_interconnect_attachment"
-  | "google_compute_ha_vpn_gateway"
-  | "google_compute_forwarding_rule"
-  | "google_compute_network_firewall_policy"
-  | "google_compute_network_firewall_policy_rule"
-  | "cloudflare_static_route"
-  | "cloudflare_ipsec_tunnel";
-export const OnRampsGetResponseVpcsByIdValueResourceType =
-  /*@__PURE__*/ S.String;
-
-export type OnRampsGetResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnStringItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem;
-export const OnRampsGetResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnStringItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem;
-
-export type OnRampsGetResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnYamlItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlItem;
-export const OnRampsGetResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnYamlItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlItem;
-
-export type OnRampsGetResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnYamlDiffItemYamlDiff =
-  OnRampsCreateResponsePlannedResourcesItemDiff;
-export const OnRampsGetResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnYamlDiffItemYamlDiff =
-  OnRampsCreateResponsePlannedResourcesItemDiff;
-
-export type OnRampsGetResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnYamlDiffItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlDiffItem;
-export const OnRampsGetResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnYamlDiffItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlDiffItem;
-
-export type OnRampsGetResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreviewCloudType =
-  | "AWS"
-  | "AZURE"
-  | "GOOGLE"
-  | "CLOUDFLARE";
-export const OnRampsGetResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreviewCloudType =
-  /*@__PURE__*/ S.String;
-
-export type OnRampsGetResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreviewResourceType =
-  | "aws_customer_gateway"
-  | "aws_egress_only_internet_gateway"
-  | "aws_internet_gateway"
-  | "aws_instance"
-  | "aws_network_interface"
-  | "aws_route"
-  | "aws_route_table"
-  | "aws_route_table_association"
-  | "aws_subnet"
-  | "aws_vpc"
-  | "aws_vpc_ipv4_cidr_block_association"
-  | "aws_vpn_connection"
-  | "aws_vpn_connection_route"
-  | "aws_vpn_gateway"
-  | "aws_security_group"
-  | "aws_vpc_security_group_ingress_rule"
-  | "aws_vpc_security_group_egress_rule"
-  | "aws_ec2_managed_prefix_list"
-  | "aws_ec2_transit_gateway"
-  | "aws_ec2_transit_gateway_prefix_list_reference"
-  | "aws_ec2_transit_gateway_vpc_attachment"
-  | "azurerm_application_security_group"
-  | "azurerm_lb"
-  | "azurerm_lb_backend_address_pool"
-  | "azurerm_lb_nat_pool"
-  | "azurerm_lb_nat_rule"
-  | "azurerm_lb_rule"
-  | "azurerm_local_network_gateway"
-  | "azurerm_network_interface"
-  | "azurerm_network_interface_application_security_group_association"
-  | "azurerm_network_interface_backend_address_pool_association"
-  | "azurerm_network_interface_security_group_association"
-  | "azurerm_network_security_group"
-  | "azurerm_public_ip"
-  | "azurerm_route"
-  | "azurerm_route_table"
-  | "azurerm_subnet"
-  | "azurerm_subnet_route_table_association"
-  | "azurerm_virtual_machine"
-  | "azurerm_virtual_network_gateway_connection"
-  | "azurerm_virtual_network"
-  | "azurerm_virtual_network_gateway"
-  | "google_compute_network"
-  | "google_compute_subnetwork"
-  | "google_compute_vpn_gateway"
-  | "google_compute_vpn_tunnel"
-  | "google_compute_route"
-  | "google_compute_address"
-  | "google_compute_global_address"
-  | "google_compute_router"
-  | "google_compute_interconnect_attachment"
-  | "google_compute_ha_vpn_gateway"
-  | "google_compute_forwarding_rule"
-  | "google_compute_network_firewall_policy"
-  | "google_compute_network_firewall_policy_rule"
-  | "cloudflare_static_route"
-  | "cloudflare_ipsec_tunnel";
-export const OnRampsGetResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreviewResourceType =
-  /*@__PURE__*/ S.String;
-
-export interface OnRampsGetResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview {
-  id: string;
-  cloudType: OnRampsGetResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreviewCloudType;
-  detail: string;
-  name: string;
-  resourceType: OnRampsGetResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreviewResourceType;
-  title: string;
-}
-export const OnRampsGetResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-      cloudType:
-        OnRampsGetResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreviewCloudType.pipe(
-          T.Body("cloud_type"),
-        ),
-      detail: S.String,
-      name: S.String,
-      resourceType:
-        OnRampsGetResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreviewResourceType.pipe(
-          T.Body("resource_type"),
-        ),
-      title: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "OnRampsGetResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview",
-  }) as any as S.Schema<OnRampsGetResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview>;
-
-export interface OnRampsGetResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItem {
-  itemType: string;
-  resourcePreview: OnRampsGetResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview;
-}
-export const OnRampsGetResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      itemType: S.String.pipe(T.Body("item_type")),
-      resourcePreview:
-        OnRampsGetResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview.pipe(
-          T.Body("resource_preview"),
-        ),
-    }),
-  ).annotate({
-    identifier:
-      "OnRampsGetResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItem",
-  }) as any as S.Schema<OnRampsGetResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItem>;
-
-export type OnRampsGetResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnStringItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem;
-export const OnRampsGetResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnStringItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem;
-
-export type OnRampsGetResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewCloudType =
-  | "AWS"
-  | "AZURE"
-  | "GOOGLE"
-  | "CLOUDFLARE";
-export const OnRampsGetResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewCloudType =
-  /*@__PURE__*/ S.String;
-
-export type OnRampsGetResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewResourceType =
-  | "aws_customer_gateway"
-  | "aws_egress_only_internet_gateway"
-  | "aws_internet_gateway"
-  | "aws_instance"
-  | "aws_network_interface"
-  | "aws_route"
-  | "aws_route_table"
-  | "aws_route_table_association"
-  | "aws_subnet"
-  | "aws_vpc"
-  | "aws_vpc_ipv4_cidr_block_association"
-  | "aws_vpn_connection"
-  | "aws_vpn_connection_route"
-  | "aws_vpn_gateway"
-  | "aws_security_group"
-  | "aws_vpc_security_group_ingress_rule"
-  | "aws_vpc_security_group_egress_rule"
-  | "aws_ec2_managed_prefix_list"
-  | "aws_ec2_transit_gateway"
-  | "aws_ec2_transit_gateway_prefix_list_reference"
-  | "aws_ec2_transit_gateway_vpc_attachment"
-  | "azurerm_application_security_group"
-  | "azurerm_lb"
-  | "azurerm_lb_backend_address_pool"
-  | "azurerm_lb_nat_pool"
-  | "azurerm_lb_nat_rule"
-  | "azurerm_lb_rule"
-  | "azurerm_local_network_gateway"
-  | "azurerm_network_interface"
-  | "azurerm_network_interface_application_security_group_association"
-  | "azurerm_network_interface_backend_address_pool_association"
-  | "azurerm_network_interface_security_group_association"
-  | "azurerm_network_security_group"
-  | "azurerm_public_ip"
-  | "azurerm_route"
-  | "azurerm_route_table"
-  | "azurerm_subnet"
-  | "azurerm_subnet_route_table_association"
-  | "azurerm_virtual_machine"
-  | "azurerm_virtual_network_gateway_connection"
-  | "azurerm_virtual_network"
-  | "azurerm_virtual_network_gateway"
-  | "google_compute_network"
-  | "google_compute_subnetwork"
-  | "google_compute_vpn_gateway"
-  | "google_compute_vpn_tunnel"
-  | "google_compute_route"
-  | "google_compute_address"
-  | "google_compute_global_address"
-  | "google_compute_router"
-  | "google_compute_interconnect_attachment"
-  | "google_compute_ha_vpn_gateway"
-  | "google_compute_forwarding_rule"
-  | "google_compute_network_firewall_policy"
-  | "google_compute_network_firewall_policy_rule"
-  | "cloudflare_static_route"
-  | "cloudflare_ipsec_tunnel";
-export const OnRampsGetResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewResourceType =
-  /*@__PURE__*/ S.String;
-
-export interface OnRampsGetResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview {
-  id: string;
-  cloudType: OnRampsGetResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewCloudType;
-  detail: string;
-  name: string;
-  resourceType: OnRampsGetResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewResourceType;
-  title: string;
-}
-export const OnRampsGetResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-      cloudType:
-        OnRampsGetResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewCloudType.pipe(
-          T.Body("cloud_type"),
-        ),
-      detail: S.String,
-      name: S.String,
-      resourceType:
-        OnRampsGetResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewResourceType.pipe(
-          T.Body("resource_type"),
-        ),
-      title: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "OnRampsGetResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview",
-  }) as any as S.Schema<OnRampsGetResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview>;
-
-export interface OnRampsGetResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItem {
-  itemType: string;
-  resourcePreview: OnRampsGetResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview;
-}
-export const OnRampsGetResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      itemType: S.String.pipe(T.Body("item_type")),
-      resourcePreview:
-        OnRampsGetResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview.pipe(
-          T.Body("resource_preview"),
-        ),
-    }),
-  ).annotate({
-    identifier:
-      "OnRampsGetResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItem",
-  }) as any as S.Schema<OnRampsGetResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItem>;
-
-export type OnRampsGetResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItem =
-  | OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem
-  | OnRampsGetResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItem;
-export const OnRampsGetResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItem =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["itemType", "string"],
-      ["itemType", "resourcePreview"],
-    ]),
-  );
-
-export type OnRampsGetResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListList =
-  Array<OnRampsGetResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItem>;
-export const OnRampsGetResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListList =
+export type OnRampsGetResponseVpcsByIdSectionsItemVisibleItemsList =
+  Array<OnRampsCreateResponsePostApplyResourcesSectionsItemHiddenItemsItem>;
+export const OnRampsGetResponseVpcsByIdSectionsItemVisibleItemsList =
   /*@__PURE__*/ S.Array(
-    OnRampsGetResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItem,
-  ) as any as S.Schema<OnRampsGetResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListList>;
+    OnRampsCreateResponsePostApplyResourcesSectionsItemHiddenItemsItem,
+  ) as any as S.Schema<OnRampsGetResponseVpcsByIdSectionsItemVisibleItemsList>;
 
-export interface OnRampsGetResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItem {
-  itemType: string;
-  list: OnRampsGetResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListList;
-}
-export const OnRampsGetResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      itemType: S.String.pipe(T.Body("item_type")),
-      list: OnRampsGetResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListList,
-    }),
-  ).annotate({
-    identifier:
-      "OnRampsGetResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItem",
-  }) as any as S.Schema<OnRampsGetResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItem>;
-
-export type OnRampsGetResponseVpcsByIdValueSectionsItemHiddenItemsItemValue =
-  | OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem
-  | OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlItem
-  | OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlDiffItem
-  | OnRampsGetResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItem
-  | OnRampsGetResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItem;
-export const OnRampsGetResponseVpcsByIdValueSectionsItemHiddenItemsItemValue =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["itemType", "string"],
-      ["itemType", "yaml"],
-      ["itemType", "yamlDiff"],
-      ["itemType", "resourcePreview"],
-      ["itemType", "list"],
-    ]),
-  );
-
-export interface OnRampsGetResponseVpcsByIdValueSectionsItemHiddenItemsItem {
+export interface OnRampsGetResponseVpcsByIdSectionsItem {
+  hiddenItems: OnRampsGetResponseVpcsByIdSectionsItemHiddenItemsList;
+  name: string;
+  visibleItems: OnRampsGetResponseVpcsByIdSectionsItemVisibleItemsList;
   helpText?: string | null;
-  name?: string | null;
-  value?: OnRampsGetResponseVpcsByIdValueSectionsItemHiddenItemsItemValue | null;
 }
-export const OnRampsGetResponseVpcsByIdValueSectionsItemHiddenItemsItem =
-  /*@__PURE__*/ S.suspend(() =>
+export const OnRampsGetResponseVpcsByIdSectionsItem = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
-      helpText: S.optional(S.NullOr(S.String)),
-      name: S.optional(S.NullOr(S.String)),
-      value: S.optional(
-        S.NullOr(
-          OnRampsGetResponseVpcsByIdValueSectionsItemHiddenItemsItemValue,
-        ),
+      hiddenItems: OnRampsGetResponseVpcsByIdSectionsItemHiddenItemsList.pipe(
+        T.Body("hidden_items"),
       ),
-    }),
-  ).annotate({
-    identifier: "OnRampsGetResponseVpcsByIdValueSectionsItemHiddenItemsItem",
-  }) as any as S.Schema<OnRampsGetResponseVpcsByIdValueSectionsItemHiddenItemsItem>;
-
-export type OnRampsGetResponseVpcsByIdValueSectionsItemHiddenItemsList =
-  Array<OnRampsGetResponseVpcsByIdValueSectionsItemHiddenItemsItem>;
-export const OnRampsGetResponseVpcsByIdValueSectionsItemHiddenItemsList =
-  /*@__PURE__*/ S.Array(
-    OnRampsGetResponseVpcsByIdValueSectionsItemHiddenItemsItem,
-  ) as any as S.Schema<OnRampsGetResponseVpcsByIdValueSectionsItemHiddenItemsList>;
-
-export type OnRampsGetResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnStringItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem;
-export const OnRampsGetResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnStringItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem;
-
-export type OnRampsGetResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnYamlItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlItem;
-export const OnRampsGetResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnYamlItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlItem;
-
-export type OnRampsGetResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnYamlDiffItemYamlDiff =
-  OnRampsCreateResponsePlannedResourcesItemDiff;
-export const OnRampsGetResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnYamlDiffItemYamlDiff =
-  OnRampsCreateResponsePlannedResourcesItemDiff;
-
-export type OnRampsGetResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnYamlDiffItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlDiffItem;
-export const OnRampsGetResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnYamlDiffItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlDiffItem;
-
-export type OnRampsGetResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreviewCloudType =
-  | "AWS"
-  | "AZURE"
-  | "GOOGLE"
-  | "CLOUDFLARE";
-export const OnRampsGetResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreviewCloudType =
-  /*@__PURE__*/ S.String;
-
-export type OnRampsGetResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreviewResourceType =
-  | "aws_customer_gateway"
-  | "aws_egress_only_internet_gateway"
-  | "aws_internet_gateway"
-  | "aws_instance"
-  | "aws_network_interface"
-  | "aws_route"
-  | "aws_route_table"
-  | "aws_route_table_association"
-  | "aws_subnet"
-  | "aws_vpc"
-  | "aws_vpc_ipv4_cidr_block_association"
-  | "aws_vpn_connection"
-  | "aws_vpn_connection_route"
-  | "aws_vpn_gateway"
-  | "aws_security_group"
-  | "aws_vpc_security_group_ingress_rule"
-  | "aws_vpc_security_group_egress_rule"
-  | "aws_ec2_managed_prefix_list"
-  | "aws_ec2_transit_gateway"
-  | "aws_ec2_transit_gateway_prefix_list_reference"
-  | "aws_ec2_transit_gateway_vpc_attachment"
-  | "azurerm_application_security_group"
-  | "azurerm_lb"
-  | "azurerm_lb_backend_address_pool"
-  | "azurerm_lb_nat_pool"
-  | "azurerm_lb_nat_rule"
-  | "azurerm_lb_rule"
-  | "azurerm_local_network_gateway"
-  | "azurerm_network_interface"
-  | "azurerm_network_interface_application_security_group_association"
-  | "azurerm_network_interface_backend_address_pool_association"
-  | "azurerm_network_interface_security_group_association"
-  | "azurerm_network_security_group"
-  | "azurerm_public_ip"
-  | "azurerm_route"
-  | "azurerm_route_table"
-  | "azurerm_subnet"
-  | "azurerm_subnet_route_table_association"
-  | "azurerm_virtual_machine"
-  | "azurerm_virtual_network_gateway_connection"
-  | "azurerm_virtual_network"
-  | "azurerm_virtual_network_gateway"
-  | "google_compute_network"
-  | "google_compute_subnetwork"
-  | "google_compute_vpn_gateway"
-  | "google_compute_vpn_tunnel"
-  | "google_compute_route"
-  | "google_compute_address"
-  | "google_compute_global_address"
-  | "google_compute_router"
-  | "google_compute_interconnect_attachment"
-  | "google_compute_ha_vpn_gateway"
-  | "google_compute_forwarding_rule"
-  | "google_compute_network_firewall_policy"
-  | "google_compute_network_firewall_policy_rule"
-  | "cloudflare_static_route"
-  | "cloudflare_ipsec_tunnel";
-export const OnRampsGetResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreviewResourceType =
-  /*@__PURE__*/ S.String;
-
-export interface OnRampsGetResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreview {
-  id: string;
-  cloudType: OnRampsGetResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreviewCloudType;
-  detail: string;
-  name: string;
-  resourceType: OnRampsGetResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreviewResourceType;
-  title: string;
-}
-export const OnRampsGetResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreview =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-      cloudType:
-        OnRampsGetResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreviewCloudType.pipe(
-          T.Body("cloud_type"),
-        ),
-      detail: S.String,
       name: S.String,
-      resourceType:
-        OnRampsGetResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreviewResourceType.pipe(
-          T.Body("resource_type"),
-        ),
-      title: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "OnRampsGetResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreview",
-  }) as any as S.Schema<OnRampsGetResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreview>;
-
-export interface OnRampsGetResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItem {
-  itemType: string;
-  resourcePreview: OnRampsGetResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreview;
-}
-export const OnRampsGetResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      itemType: S.String.pipe(T.Body("item_type")),
-      resourcePreview:
-        OnRampsGetResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreview.pipe(
-          T.Body("resource_preview"),
-        ),
-    }),
-  ).annotate({
-    identifier:
-      "OnRampsGetResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItem",
-  }) as any as S.Schema<OnRampsGetResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItem>;
-
-export type OnRampsGetResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnStringItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem;
-export const OnRampsGetResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnStringItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem;
-
-export type OnRampsGetResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewCloudType =
-  | "AWS"
-  | "AZURE"
-  | "GOOGLE"
-  | "CLOUDFLARE";
-export const OnRampsGetResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewCloudType =
-  /*@__PURE__*/ S.String;
-
-export type OnRampsGetResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewResourceType =
-  | "aws_customer_gateway"
-  | "aws_egress_only_internet_gateway"
-  | "aws_internet_gateway"
-  | "aws_instance"
-  | "aws_network_interface"
-  | "aws_route"
-  | "aws_route_table"
-  | "aws_route_table_association"
-  | "aws_subnet"
-  | "aws_vpc"
-  | "aws_vpc_ipv4_cidr_block_association"
-  | "aws_vpn_connection"
-  | "aws_vpn_connection_route"
-  | "aws_vpn_gateway"
-  | "aws_security_group"
-  | "aws_vpc_security_group_ingress_rule"
-  | "aws_vpc_security_group_egress_rule"
-  | "aws_ec2_managed_prefix_list"
-  | "aws_ec2_transit_gateway"
-  | "aws_ec2_transit_gateway_prefix_list_reference"
-  | "aws_ec2_transit_gateway_vpc_attachment"
-  | "azurerm_application_security_group"
-  | "azurerm_lb"
-  | "azurerm_lb_backend_address_pool"
-  | "azurerm_lb_nat_pool"
-  | "azurerm_lb_nat_rule"
-  | "azurerm_lb_rule"
-  | "azurerm_local_network_gateway"
-  | "azurerm_network_interface"
-  | "azurerm_network_interface_application_security_group_association"
-  | "azurerm_network_interface_backend_address_pool_association"
-  | "azurerm_network_interface_security_group_association"
-  | "azurerm_network_security_group"
-  | "azurerm_public_ip"
-  | "azurerm_route"
-  | "azurerm_route_table"
-  | "azurerm_subnet"
-  | "azurerm_subnet_route_table_association"
-  | "azurerm_virtual_machine"
-  | "azurerm_virtual_network_gateway_connection"
-  | "azurerm_virtual_network"
-  | "azurerm_virtual_network_gateway"
-  | "google_compute_network"
-  | "google_compute_subnetwork"
-  | "google_compute_vpn_gateway"
-  | "google_compute_vpn_tunnel"
-  | "google_compute_route"
-  | "google_compute_address"
-  | "google_compute_global_address"
-  | "google_compute_router"
-  | "google_compute_interconnect_attachment"
-  | "google_compute_ha_vpn_gateway"
-  | "google_compute_forwarding_rule"
-  | "google_compute_network_firewall_policy"
-  | "google_compute_network_firewall_policy_rule"
-  | "cloudflare_static_route"
-  | "cloudflare_ipsec_tunnel";
-export const OnRampsGetResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewResourceType =
-  /*@__PURE__*/ S.String;
-
-export interface OnRampsGetResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview {
-  id: string;
-  cloudType: OnRampsGetResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewCloudType;
-  detail: string;
-  name: string;
-  resourceType: OnRampsGetResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewResourceType;
-  title: string;
-}
-export const OnRampsGetResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-      cloudType:
-        OnRampsGetResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewCloudType.pipe(
-          T.Body("cloud_type"),
-        ),
-      detail: S.String,
-      name: S.String,
-      resourceType:
-        OnRampsGetResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewResourceType.pipe(
-          T.Body("resource_type"),
-        ),
-      title: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "OnRampsGetResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview",
-  }) as any as S.Schema<OnRampsGetResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview>;
-
-export interface OnRampsGetResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItem {
-  itemType: string;
-  resourcePreview: OnRampsGetResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview;
-}
-export const OnRampsGetResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      itemType: S.String.pipe(T.Body("item_type")),
-      resourcePreview:
-        OnRampsGetResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview.pipe(
-          T.Body("resource_preview"),
-        ),
-    }),
-  ).annotate({
-    identifier:
-      "OnRampsGetResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItem",
-  }) as any as S.Schema<OnRampsGetResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItem>;
-
-export type OnRampsGetResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItem =
-  | OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem
-  | OnRampsGetResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItem;
-export const OnRampsGetResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItem =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["itemType", "string"],
-      ["itemType", "resourcePreview"],
-    ]),
-  );
-
-export type OnRampsGetResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListList =
-  Array<OnRampsGetResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItem>;
-export const OnRampsGetResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListList =
-  /*@__PURE__*/ S.Array(
-    OnRampsGetResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItem,
-  ) as any as S.Schema<OnRampsGetResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListList>;
-
-export interface OnRampsGetResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItem {
-  itemType: string;
-  list: OnRampsGetResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListList;
-}
-export const OnRampsGetResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      itemType: S.String.pipe(T.Body("item_type")),
-      list: OnRampsGetResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListList,
-    }),
-  ).annotate({
-    identifier:
-      "OnRampsGetResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItem",
-  }) as any as S.Schema<OnRampsGetResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItem>;
-
-export type OnRampsGetResponseVpcsByIdValueSectionsItemVisibleItemsItemValue =
-  | OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem
-  | OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlItem
-  | OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlDiffItem
-  | OnRampsGetResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItem
-  | OnRampsGetResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItem;
-export const OnRampsGetResponseVpcsByIdValueSectionsItemVisibleItemsItemValue =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["itemType", "string"],
-      ["itemType", "yaml"],
-      ["itemType", "yamlDiff"],
-      ["itemType", "resourcePreview"],
-      ["itemType", "list"],
-    ]),
-  );
-
-export interface OnRampsGetResponseVpcsByIdValueSectionsItemVisibleItemsItem {
-  helpText?: string | null;
-  name?: string | null;
-  value?: OnRampsGetResponseVpcsByIdValueSectionsItemVisibleItemsItemValue | null;
-}
-export const OnRampsGetResponseVpcsByIdValueSectionsItemVisibleItemsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      helpText: S.optional(S.NullOr(S.String)),
-      name: S.optional(S.NullOr(S.String)),
-      value: S.optional(
-        S.NullOr(
-          OnRampsGetResponseVpcsByIdValueSectionsItemVisibleItemsItemValue,
-        ),
+      visibleItems: OnRampsGetResponseVpcsByIdSectionsItemVisibleItemsList.pipe(
+        T.Body("visible_items"),
       ),
-    }),
-  ).annotate({
-    identifier: "OnRampsGetResponseVpcsByIdValueSectionsItemVisibleItemsItem",
-  }) as any as S.Schema<OnRampsGetResponseVpcsByIdValueSectionsItemVisibleItemsItem>;
-
-export type OnRampsGetResponseVpcsByIdValueSectionsItemVisibleItemsList =
-  Array<OnRampsGetResponseVpcsByIdValueSectionsItemVisibleItemsItem>;
-export const OnRampsGetResponseVpcsByIdValueSectionsItemVisibleItemsList =
-  /*@__PURE__*/ S.Array(
-    OnRampsGetResponseVpcsByIdValueSectionsItemVisibleItemsItem,
-  ) as any as S.Schema<OnRampsGetResponseVpcsByIdValueSectionsItemVisibleItemsList>;
-
-export interface OnRampsGetResponseVpcsByIdValueSectionsItem {
-  hiddenItems: OnRampsGetResponseVpcsByIdValueSectionsItemHiddenItemsList;
-  name: string;
-  visibleItems: OnRampsGetResponseVpcsByIdValueSectionsItemVisibleItemsList;
-  helpText?: string | null;
-}
-export const OnRampsGetResponseVpcsByIdValueSectionsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      hiddenItems:
-        OnRampsGetResponseVpcsByIdValueSectionsItemHiddenItemsList.pipe(
-          T.Body("hidden_items"),
-        ),
-      name: S.String,
-      visibleItems:
-        OnRampsGetResponseVpcsByIdValueSectionsItemVisibleItemsList.pipe(
-          T.Body("visible_items"),
-        ),
       helpText: S.optional(S.NullOr(S.String).pipe(T.Body("help_text"))),
     }),
-  ).annotate({
-    identifier: "OnRampsGetResponseVpcsByIdValueSectionsItem",
-  }) as any as S.Schema<OnRampsGetResponseVpcsByIdValueSectionsItem>;
+).annotate({
+  identifier: "OnRampsGetResponseVpcsByIdSectionsItem",
+}) as any as S.Schema<OnRampsGetResponseVpcsByIdSectionsItem>;
 
-export type OnRampsGetResponseVpcsByIdValueSectionsList =
-  Array<OnRampsGetResponseVpcsByIdValueSectionsItem>;
-export const OnRampsGetResponseVpcsByIdValueSectionsList =
-  /*@__PURE__*/ S.Array(
-    OnRampsGetResponseVpcsByIdValueSectionsItem,
-  ) as any as S.Schema<OnRampsGetResponseVpcsByIdValueSectionsList>;
+export type OnRampsGetResponseVpcsByIdSectionsList =
+  Array<OnRampsGetResponseVpcsByIdSectionsItem>;
+export const OnRampsGetResponseVpcsByIdSectionsList = /*@__PURE__*/ S.Array(
+  OnRampsGetResponseVpcsByIdSectionsItem,
+) as any as S.Schema<OnRampsGetResponseVpcsByIdSectionsList>;
 
-export type OnRampsGetResponseVpcsByIdValueStateMap = {
-  [key: string]: unknown | undefined;
-};
-export const OnRampsGetResponseVpcsByIdValueStateMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<OnRampsGetResponseVpcsByIdValueStateMap>;
-
-export type OnRampsGetResponseVpcsByIdValueTagsMap = {
-  [key: string]: string | undefined;
-};
-export const OnRampsGetResponseVpcsByIdValueTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<OnRampsGetResponseVpcsByIdValueTagsMap>;
-
-export type OnRampsGetResponseVpcsByIdValueManagedByItemClientType =
+export type OnRampsGetResponseVpcsByIdManagedByItemClientType =
   "MAGIC_WAN_CLOUD_ONRAMP";
-export const OnRampsGetResponseVpcsByIdValueManagedByItemClientType =
+export const OnRampsGetResponseVpcsByIdManagedByItemClientType =
   /*@__PURE__*/ S.String;
 
-export interface OnRampsGetResponseVpcsByIdValueManagedByItem {
+export interface OnRampsGetResponseVpcsByIdManagedByItem {
   id: string;
-  clientType: OnRampsGetResponseVpcsByIdValueManagedByItemClientType;
+  clientType: OnRampsGetResponseVpcsByIdManagedByItemClientType;
   name: string;
 }
-export const OnRampsGetResponseVpcsByIdValueManagedByItem =
-  /*@__PURE__*/ S.suspend(() =>
+export const OnRampsGetResponseVpcsByIdManagedByItem = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       id: S.String,
-      clientType: OnRampsGetResponseVpcsByIdValueManagedByItemClientType.pipe(
+      clientType: OnRampsGetResponseVpcsByIdManagedByItemClientType.pipe(
         T.Body("client_type"),
       ),
       name: S.String,
     }),
-  ).annotate({
-    identifier: "OnRampsGetResponseVpcsByIdValueManagedByItem",
-  }) as any as S.Schema<OnRampsGetResponseVpcsByIdValueManagedByItem>;
+).annotate({
+  identifier: "OnRampsGetResponseVpcsByIdManagedByItem",
+}) as any as S.Schema<OnRampsGetResponseVpcsByIdManagedByItem>;
 
-export type OnRampsGetResponseVpcsByIdValueManagedByList =
-  Array<OnRampsGetResponseVpcsByIdValueManagedByItem>;
-export const OnRampsGetResponseVpcsByIdValueManagedByList =
-  /*@__PURE__*/ S.Array(
-    OnRampsGetResponseVpcsByIdValueManagedByItem,
-  ) as any as S.Schema<OnRampsGetResponseVpcsByIdValueManagedByList>;
+export type OnRampsGetResponseVpcsByIdManagedByList =
+  Array<OnRampsGetResponseVpcsByIdManagedByItem>;
+export const OnRampsGetResponseVpcsByIdManagedByList = /*@__PURE__*/ S.Array(
+  OnRampsGetResponseVpcsByIdManagedByItem,
+) as any as S.Schema<OnRampsGetResponseVpcsByIdManagedByList>;
 
-export interface OnRampsGetResponseVpcsByIdValue {
+export interface OnRampsGetResponseVpcsById {
   id: string;
   accountId: string;
-  cloudType: OnRampsGetResponseVpcsByIdValueCloudType;
-  config: OnRampsGetResponseVpcsByIdValueConfigMap;
+  cloudType: OnRampsGetResponseVpcsByIdCloudType;
+  config: unknown;
   deploymentProvider: string;
   managed: boolean;
   monthlyCostEstimate: OnRampsCreateResponsePostApplyMonthlyCostEstimate;
   name: string;
   nativeId: string;
-  observations: OnRampsGetResponseVpcsByIdValueObservationsMap;
-  providerIds: OnRampsGetResponseVpcsByIdValueProviderIdsList;
-  providerNamesById: OnRampsGetResponseVpcsByIdValueProviderNamesByIdMap;
+  observations: OnRampsCreateResponsePostApplyResourcesObservations;
+  providerIds: OnRampsGetResponseVpcsByIdProviderIdsList;
+  providerNamesById: unknown;
   region: string;
   resourceGroup: string;
-  resourceType: OnRampsGetResponseVpcsByIdValueResourceType;
-  sections: OnRampsGetResponseVpcsByIdValueSectionsList;
-  state: OnRampsGetResponseVpcsByIdValueStateMap;
-  tags: OnRampsGetResponseVpcsByIdValueTagsMap;
+  resourceType: string;
+  sections: OnRampsGetResponseVpcsByIdSectionsList;
+  state: unknown;
+  tags: unknown;
   updatedAt: string;
   url: string;
-  managedBy?: OnRampsGetResponseVpcsByIdValueManagedByList | null;
+  managedBy?: OnRampsGetResponseVpcsByIdManagedByList | null;
 }
-export const OnRampsGetResponseVpcsByIdValue = /*@__PURE__*/ S.suspend(() =>
+export const OnRampsGetResponseVpcsById = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     accountId: S.String.pipe(T.Body("account_id")),
-    cloudType: OnRampsGetResponseVpcsByIdValueCloudType.pipe(
-      T.Body("cloud_type"),
-    ),
-    config: OnRampsGetResponseVpcsByIdValueConfigMap,
+    cloudType: OnRampsGetResponseVpcsByIdCloudType.pipe(T.Body("cloud_type")),
+    config: S.Unknown,
     deploymentProvider: S.String.pipe(T.Body("deployment_provider")),
     managed: S.Boolean,
     monthlyCostEstimate: OnRampsCreateResponsePostApplyMonthlyCostEstimate.pipe(
@@ -6540,40 +2349,28 @@ export const OnRampsGetResponseVpcsByIdValue = /*@__PURE__*/ S.suspend(() =>
     ),
     name: S.String,
     nativeId: S.String.pipe(T.Body("native_id")),
-    observations: OnRampsGetResponseVpcsByIdValueObservationsMap,
-    providerIds: OnRampsGetResponseVpcsByIdValueProviderIdsList.pipe(
+    observations: OnRampsCreateResponsePostApplyResourcesObservations,
+    providerIds: OnRampsGetResponseVpcsByIdProviderIdsList.pipe(
       T.Body("provider_ids"),
     ),
-    providerNamesById: OnRampsGetResponseVpcsByIdValueProviderNamesByIdMap.pipe(
-      T.Body("provider_names_by_id"),
-    ),
+    providerNamesById: S.Unknown.pipe(T.Body("provider_names_by_id")),
     region: S.String,
     resourceGroup: S.String.pipe(T.Body("resource_group")),
-    resourceType: OnRampsGetResponseVpcsByIdValueResourceType.pipe(
-      T.Body("resource_type"),
-    ),
-    sections: OnRampsGetResponseVpcsByIdValueSectionsList,
-    state: OnRampsGetResponseVpcsByIdValueStateMap,
-    tags: OnRampsGetResponseVpcsByIdValueTagsMap,
+    resourceType: S.String.pipe(T.Body("resource_type")),
+    sections: OnRampsGetResponseVpcsByIdSectionsList,
+    state: S.Unknown,
+    tags: S.Unknown,
     updatedAt: S.String.pipe(T.Body("updated_at")),
     url: S.String,
     managedBy: S.optional(
-      S.NullOr(OnRampsGetResponseVpcsByIdValueManagedByList).pipe(
+      S.NullOr(OnRampsGetResponseVpcsByIdManagedByList).pipe(
         T.Body("managed_by"),
       ),
     ),
   }),
 ).annotate({
-  identifier: "OnRampsGetResponseVpcsByIdValue",
-}) as any as S.Schema<OnRampsGetResponseVpcsByIdValue>;
-
-export type OnRampsGetResponseVpcsByIdMap = {
-  [key: string]: OnRampsGetResponseVpcsByIdValue | undefined;
-};
-export const OnRampsGetResponseVpcsByIdMap = /*@__PURE__*/ S.Record(
-  S.String,
-  OnRampsGetResponseVpcsByIdValue,
-) as any as S.Schema<OnRampsGetResponseVpcsByIdMap>;
+  identifier: "OnRampsGetResponseVpcsById",
+}) as any as S.Schema<OnRampsGetResponseVpcsById>;
 
 export type OnRampsGetResponseVpcsByIdUnavailableList = Array<string>;
 export const OnRampsGetResponseVpcsByIdUnavailableList = /*@__PURE__*/ S.Array(
@@ -6604,12 +2401,12 @@ export interface GetOnRampResponse {
   plannedResources?: OnRampsGetResponsePlannedResourcesList | null;
   plannedResourcesUnavailable?: boolean | null;
   postApplyMonthlyCostEstimate?: OnRampsCreateResponsePostApplyMonthlyCostEstimate | null;
-  postApplyResources?: OnRampsGetResponsePostApplyResourcesMap | null;
+  postApplyResources?: OnRampsGetResponsePostApplyResources | null;
   postApplyResourcesUnavailable?: boolean | null;
   region?: string | null;
   status?: OnRampsGetResponseStatus | null;
   vpc?: string | null;
-  vpcsById?: OnRampsGetResponseVpcsByIdMap | null;
+  vpcsById?: OnRampsGetResponseVpcsById | null;
   /** The list of vpc IDs for which resource details failed to generate. */
   vpcsByIdUnavailable?: OnRampsGetResponseVpcsByIdUnavailableList | null;
 }
@@ -6672,7 +2469,7 @@ export const GetOnRampResponse = /*@__PURE__*/ S.suspend(() =>
       ),
     ),
     postApplyResources: S.optional(
-      S.NullOr(OnRampsGetResponsePostApplyResourcesMap).pipe(
+      S.NullOr(OnRampsGetResponsePostApplyResources).pipe(
         T.Body("post_apply_resources"),
       ),
     ),
@@ -6683,7 +2480,7 @@ export const GetOnRampResponse = /*@__PURE__*/ S.suspend(() =>
     status: S.optional(S.NullOr(OnRampsGetResponseStatus)),
     vpc: S.optional(S.NullOr(S.String)),
     vpcsById: S.optional(
-      S.NullOr(OnRampsGetResponseVpcsByIdMap).pipe(T.Body("vpcs_by_id")),
+      S.NullOr(OnRampsGetResponseVpcsById).pipe(T.Body("vpcs_by_id")),
     ),
     vpcsByIdUnavailable: S.optional(
       S.NullOr(OnRampsGetResponseVpcsByIdUnavailableList).pipe(
@@ -6698,13 +2495,11 @@ export const GetOnRampResponse = /*@__PURE__*/ S.suspend(() =>
 export interface GetResourceRequest {
   accountId: string;
   resourceId: string;
-  v2?: boolean;
 }
 export const GetResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     resourceId: S.String.pipe(T.Label("resource_id")),
-    v2: S.optional(S.Boolean.pipe(T.Query())),
   })
     .pipe(
       T.Http({
@@ -6725,769 +2520,43 @@ export type ResourcesGetResponseCloudType =
   | "CLOUDFLARE";
 export const ResourcesGetResponseCloudType = /*@__PURE__*/ S.String;
 
-export type ResourcesGetResponseConfigMap = {
-  [key: string]: unknown | undefined;
-};
-export const ResourcesGetResponseConfigMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<ResourcesGetResponseConfigMap>;
-
 export type ResourcesGetResponseMonthlyCostEstimate =
   OnRampsCreateResponsePostApplyMonthlyCostEstimate;
 export const ResourcesGetResponseMonthlyCostEstimate =
   OnRampsCreateResponsePostApplyMonthlyCostEstimate;
 
-export type ResourcesGetResponseObservationsValue =
-  OnRampsCreateResponsePostApplyResourcesValueObservationsValue;
-export const ResourcesGetResponseObservationsValue =
-  OnRampsCreateResponsePostApplyResourcesValueObservationsValue;
-
-export type ResourcesGetResponseObservationsMap = {
-  [key: string]:
-    | OnRampsCreateResponsePostApplyResourcesValueObservationsValue
-    | undefined;
-};
-export const ResourcesGetResponseObservationsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  OnRampsCreateResponsePostApplyResourcesValueObservationsValue,
-) as any as S.Schema<ResourcesGetResponseObservationsMap>;
+export type ResourcesGetResponseObservations =
+  OnRampsCreateResponsePostApplyResourcesObservations;
+export const ResourcesGetResponseObservations =
+  OnRampsCreateResponsePostApplyResourcesObservations;
 
 export type ResourcesGetResponseProviderIdsList = Array<string>;
 export const ResourcesGetResponseProviderIdsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ResourcesGetResponseProviderIdsList>;
 
-export type ResourcesGetResponseProviderNamesByIdMap = {
-  [key: string]: string | undefined;
-};
-export const ResourcesGetResponseProviderNamesByIdMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ResourcesGetResponseProviderNamesByIdMap>;
-
-export type ResourcesGetResponseResourceType =
-  | "aws_customer_gateway"
-  | "aws_egress_only_internet_gateway"
-  | "aws_internet_gateway"
-  | "aws_instance"
-  | "aws_network_interface"
-  | "aws_route"
-  | "aws_route_table"
-  | "aws_route_table_association"
-  | "aws_subnet"
-  | "aws_vpc"
-  | "aws_vpc_ipv4_cidr_block_association"
-  | "aws_vpn_connection"
-  | "aws_vpn_connection_route"
-  | "aws_vpn_gateway"
-  | "aws_security_group"
-  | "aws_vpc_security_group_ingress_rule"
-  | "aws_vpc_security_group_egress_rule"
-  | "aws_ec2_managed_prefix_list"
-  | "aws_ec2_transit_gateway"
-  | "aws_ec2_transit_gateway_prefix_list_reference"
-  | "aws_ec2_transit_gateway_vpc_attachment"
-  | "azurerm_application_security_group"
-  | "azurerm_lb"
-  | "azurerm_lb_backend_address_pool"
-  | "azurerm_lb_nat_pool"
-  | "azurerm_lb_nat_rule"
-  | "azurerm_lb_rule"
-  | "azurerm_local_network_gateway"
-  | "azurerm_network_interface"
-  | "azurerm_network_interface_application_security_group_association"
-  | "azurerm_network_interface_backend_address_pool_association"
-  | "azurerm_network_interface_security_group_association"
-  | "azurerm_network_security_group"
-  | "azurerm_public_ip"
-  | "azurerm_route"
-  | "azurerm_route_table"
-  | "azurerm_subnet"
-  | "azurerm_subnet_route_table_association"
-  | "azurerm_virtual_machine"
-  | "azurerm_virtual_network_gateway_connection"
-  | "azurerm_virtual_network"
-  | "azurerm_virtual_network_gateway"
-  | "google_compute_network"
-  | "google_compute_subnetwork"
-  | "google_compute_vpn_gateway"
-  | "google_compute_vpn_tunnel"
-  | "google_compute_route"
-  | "google_compute_address"
-  | "google_compute_global_address"
-  | "google_compute_router"
-  | "google_compute_interconnect_attachment"
-  | "google_compute_ha_vpn_gateway"
-  | "google_compute_forwarding_rule"
-  | "google_compute_network_firewall_policy"
-  | "google_compute_network_firewall_policy_rule"
-  | "cloudflare_static_route"
-  | "cloudflare_ipsec_tunnel";
-export const ResourcesGetResponseResourceType = /*@__PURE__*/ S.String;
-
-export type ResourcesGetResponseSectionsItemHiddenItemsItemValueMcnStringItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem;
-export const ResourcesGetResponseSectionsItemHiddenItemsItemValueMcnStringItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem;
-
-export type ResourcesGetResponseSectionsItemHiddenItemsItemValueMcnYamlItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlItem;
-export const ResourcesGetResponseSectionsItemHiddenItemsItemValueMcnYamlItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlItem;
-
-export type ResourcesGetResponseSectionsItemHiddenItemsItemValueMcnYamlDiffItemYamlDiff =
-  OnRampsCreateResponsePlannedResourcesItemDiff;
-export const ResourcesGetResponseSectionsItemHiddenItemsItemValueMcnYamlDiffItemYamlDiff =
-  OnRampsCreateResponsePlannedResourcesItemDiff;
-
-export type ResourcesGetResponseSectionsItemHiddenItemsItemValueMcnYamlDiffItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlDiffItem;
-export const ResourcesGetResponseSectionsItemHiddenItemsItemValueMcnYamlDiffItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlDiffItem;
-
-export type ResourcesGetResponseSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreviewCloudType =
-  | "AWS"
-  | "AZURE"
-  | "GOOGLE"
-  | "CLOUDFLARE";
-export const ResourcesGetResponseSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreviewCloudType =
-  /*@__PURE__*/ S.String;
-
-export type ResourcesGetResponseSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreviewResourceType =
-  | "aws_customer_gateway"
-  | "aws_egress_only_internet_gateway"
-  | "aws_internet_gateway"
-  | "aws_instance"
-  | "aws_network_interface"
-  | "aws_route"
-  | "aws_route_table"
-  | "aws_route_table_association"
-  | "aws_subnet"
-  | "aws_vpc"
-  | "aws_vpc_ipv4_cidr_block_association"
-  | "aws_vpn_connection"
-  | "aws_vpn_connection_route"
-  | "aws_vpn_gateway"
-  | "aws_security_group"
-  | "aws_vpc_security_group_ingress_rule"
-  | "aws_vpc_security_group_egress_rule"
-  | "aws_ec2_managed_prefix_list"
-  | "aws_ec2_transit_gateway"
-  | "aws_ec2_transit_gateway_prefix_list_reference"
-  | "aws_ec2_transit_gateway_vpc_attachment"
-  | "azurerm_application_security_group"
-  | "azurerm_lb"
-  | "azurerm_lb_backend_address_pool"
-  | "azurerm_lb_nat_pool"
-  | "azurerm_lb_nat_rule"
-  | "azurerm_lb_rule"
-  | "azurerm_local_network_gateway"
-  | "azurerm_network_interface"
-  | "azurerm_network_interface_application_security_group_association"
-  | "azurerm_network_interface_backend_address_pool_association"
-  | "azurerm_network_interface_security_group_association"
-  | "azurerm_network_security_group"
-  | "azurerm_public_ip"
-  | "azurerm_route"
-  | "azurerm_route_table"
-  | "azurerm_subnet"
-  | "azurerm_subnet_route_table_association"
-  | "azurerm_virtual_machine"
-  | "azurerm_virtual_network_gateway_connection"
-  | "azurerm_virtual_network"
-  | "azurerm_virtual_network_gateway"
-  | "google_compute_network"
-  | "google_compute_subnetwork"
-  | "google_compute_vpn_gateway"
-  | "google_compute_vpn_tunnel"
-  | "google_compute_route"
-  | "google_compute_address"
-  | "google_compute_global_address"
-  | "google_compute_router"
-  | "google_compute_interconnect_attachment"
-  | "google_compute_ha_vpn_gateway"
-  | "google_compute_forwarding_rule"
-  | "google_compute_network_firewall_policy"
-  | "google_compute_network_firewall_policy_rule"
-  | "cloudflare_static_route"
-  | "cloudflare_ipsec_tunnel";
-export const ResourcesGetResponseSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreviewResourceType =
-  /*@__PURE__*/ S.String;
-
-export interface ResourcesGetResponseSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview {
-  id: string;
-  cloudType: ResourcesGetResponseSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreviewCloudType;
-  detail: string;
-  name: string;
-  resourceType: ResourcesGetResponseSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreviewResourceType;
-  title: string;
-}
-export const ResourcesGetResponseSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-      cloudType:
-        ResourcesGetResponseSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreviewCloudType.pipe(
-          T.Body("cloud_type"),
-        ),
-      detail: S.String,
-      name: S.String,
-      resourceType:
-        ResourcesGetResponseSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreviewResourceType.pipe(
-          T.Body("resource_type"),
-        ),
-      title: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "ResourcesGetResponseSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview",
-  }) as any as S.Schema<ResourcesGetResponseSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview>;
-
-export interface ResourcesGetResponseSectionsItemHiddenItemsItemValueMcnResourcePreviewItem {
-  itemType: string;
-  resourcePreview: ResourcesGetResponseSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview;
-}
-export const ResourcesGetResponseSectionsItemHiddenItemsItemValueMcnResourcePreviewItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      itemType: S.String.pipe(T.Body("item_type")),
-      resourcePreview:
-        ResourcesGetResponseSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview.pipe(
-          T.Body("resource_preview"),
-        ),
-    }),
-  ).annotate({
-    identifier:
-      "ResourcesGetResponseSectionsItemHiddenItemsItemValueMcnResourcePreviewItem",
-  }) as any as S.Schema<ResourcesGetResponseSectionsItemHiddenItemsItemValueMcnResourcePreviewItem>;
-
-export type ResourcesGetResponseSectionsItemHiddenItemsItemValueMcnListItemListItemMcnStringItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem;
-export const ResourcesGetResponseSectionsItemHiddenItemsItemValueMcnListItemListItemMcnStringItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem;
-
-export type ResourcesGetResponseSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewCloudType =
-  | "AWS"
-  | "AZURE"
-  | "GOOGLE"
-  | "CLOUDFLARE";
-export const ResourcesGetResponseSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewCloudType =
-  /*@__PURE__*/ S.String;
-
-export type ResourcesGetResponseSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewResourceType =
-  | "aws_customer_gateway"
-  | "aws_egress_only_internet_gateway"
-  | "aws_internet_gateway"
-  | "aws_instance"
-  | "aws_network_interface"
-  | "aws_route"
-  | "aws_route_table"
-  | "aws_route_table_association"
-  | "aws_subnet"
-  | "aws_vpc"
-  | "aws_vpc_ipv4_cidr_block_association"
-  | "aws_vpn_connection"
-  | "aws_vpn_connection_route"
-  | "aws_vpn_gateway"
-  | "aws_security_group"
-  | "aws_vpc_security_group_ingress_rule"
-  | "aws_vpc_security_group_egress_rule"
-  | "aws_ec2_managed_prefix_list"
-  | "aws_ec2_transit_gateway"
-  | "aws_ec2_transit_gateway_prefix_list_reference"
-  | "aws_ec2_transit_gateway_vpc_attachment"
-  | "azurerm_application_security_group"
-  | "azurerm_lb"
-  | "azurerm_lb_backend_address_pool"
-  | "azurerm_lb_nat_pool"
-  | "azurerm_lb_nat_rule"
-  | "azurerm_lb_rule"
-  | "azurerm_local_network_gateway"
-  | "azurerm_network_interface"
-  | "azurerm_network_interface_application_security_group_association"
-  | "azurerm_network_interface_backend_address_pool_association"
-  | "azurerm_network_interface_security_group_association"
-  | "azurerm_network_security_group"
-  | "azurerm_public_ip"
-  | "azurerm_route"
-  | "azurerm_route_table"
-  | "azurerm_subnet"
-  | "azurerm_subnet_route_table_association"
-  | "azurerm_virtual_machine"
-  | "azurerm_virtual_network_gateway_connection"
-  | "azurerm_virtual_network"
-  | "azurerm_virtual_network_gateway"
-  | "google_compute_network"
-  | "google_compute_subnetwork"
-  | "google_compute_vpn_gateway"
-  | "google_compute_vpn_tunnel"
-  | "google_compute_route"
-  | "google_compute_address"
-  | "google_compute_global_address"
-  | "google_compute_router"
-  | "google_compute_interconnect_attachment"
-  | "google_compute_ha_vpn_gateway"
-  | "google_compute_forwarding_rule"
-  | "google_compute_network_firewall_policy"
-  | "google_compute_network_firewall_policy_rule"
-  | "cloudflare_static_route"
-  | "cloudflare_ipsec_tunnel";
-export const ResourcesGetResponseSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewResourceType =
-  /*@__PURE__*/ S.String;
-
-export interface ResourcesGetResponseSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview {
-  id: string;
-  cloudType: ResourcesGetResponseSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewCloudType;
-  detail: string;
-  name: string;
-  resourceType: ResourcesGetResponseSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewResourceType;
-  title: string;
-}
-export const ResourcesGetResponseSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-      cloudType:
-        ResourcesGetResponseSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewCloudType.pipe(
-          T.Body("cloud_type"),
-        ),
-      detail: S.String,
-      name: S.String,
-      resourceType:
-        ResourcesGetResponseSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewResourceType.pipe(
-          T.Body("resource_type"),
-        ),
-      title: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "ResourcesGetResponseSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview",
-  }) as any as S.Schema<ResourcesGetResponseSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview>;
-
-export interface ResourcesGetResponseSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItem {
-  itemType: string;
-  resourcePreview: ResourcesGetResponseSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview;
-}
-export const ResourcesGetResponseSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      itemType: S.String.pipe(T.Body("item_type")),
-      resourcePreview:
-        ResourcesGetResponseSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview.pipe(
-          T.Body("resource_preview"),
-        ),
-    }),
-  ).annotate({
-    identifier:
-      "ResourcesGetResponseSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItem",
-  }) as any as S.Schema<ResourcesGetResponseSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItem>;
-
-export type ResourcesGetResponseSectionsItemHiddenItemsItemValueMcnListItemListItem =
-  | OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem
-  | ResourcesGetResponseSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItem;
-export const ResourcesGetResponseSectionsItemHiddenItemsItemValueMcnListItemListItem =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["itemType", "string"],
-      ["itemType", "resourcePreview"],
-    ]),
-  );
-
-export type ResourcesGetResponseSectionsItemHiddenItemsItemValueMcnListItemListList =
-  Array<ResourcesGetResponseSectionsItemHiddenItemsItemValueMcnListItemListItem>;
-export const ResourcesGetResponseSectionsItemHiddenItemsItemValueMcnListItemListList =
-  /*@__PURE__*/ S.Array(
-    ResourcesGetResponseSectionsItemHiddenItemsItemValueMcnListItemListItem,
-  ) as any as S.Schema<ResourcesGetResponseSectionsItemHiddenItemsItemValueMcnListItemListList>;
-
-export interface ResourcesGetResponseSectionsItemHiddenItemsItemValueMcnListItem {
-  itemType: string;
-  list: ResourcesGetResponseSectionsItemHiddenItemsItemValueMcnListItemListList;
-}
-export const ResourcesGetResponseSectionsItemHiddenItemsItemValueMcnListItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      itemType: S.String.pipe(T.Body("item_type")),
-      list: ResourcesGetResponseSectionsItemHiddenItemsItemValueMcnListItemListList,
-    }),
-  ).annotate({
-    identifier:
-      "ResourcesGetResponseSectionsItemHiddenItemsItemValueMcnListItem",
-  }) as any as S.Schema<ResourcesGetResponseSectionsItemHiddenItemsItemValueMcnListItem>;
-
-export type ResourcesGetResponseSectionsItemHiddenItemsItemValue =
-  | OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem
-  | OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlItem
-  | OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlDiffItem
-  | ResourcesGetResponseSectionsItemHiddenItemsItemValueMcnResourcePreviewItem
-  | ResourcesGetResponseSectionsItemHiddenItemsItemValueMcnListItem;
-export const ResourcesGetResponseSectionsItemHiddenItemsItemValue =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["itemType", "string"],
-      ["itemType", "yaml"],
-      ["itemType", "yamlDiff"],
-      ["itemType", "resourcePreview"],
-      ["itemType", "list"],
-    ]),
-  );
-
-export interface ResourcesGetResponseSectionsItemHiddenItemsItem {
-  helpText?: string | null;
-  name?: string | null;
-  value?: ResourcesGetResponseSectionsItemHiddenItemsItemValue | null;
-}
+export type ResourcesGetResponseSectionsItemHiddenItemsItem =
+  OnRampsCreateResponsePostApplyResourcesSectionsItemHiddenItemsItem;
 export const ResourcesGetResponseSectionsItemHiddenItemsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      helpText: S.optional(S.NullOr(S.String)),
-      name: S.optional(S.NullOr(S.String)),
-      value: S.optional(
-        S.NullOr(ResourcesGetResponseSectionsItemHiddenItemsItemValue),
-      ),
-    }),
-  ).annotate({
-    identifier: "ResourcesGetResponseSectionsItemHiddenItemsItem",
-  }) as any as S.Schema<ResourcesGetResponseSectionsItemHiddenItemsItem>;
+  OnRampsCreateResponsePostApplyResourcesSectionsItemHiddenItemsItem;
 
 export type ResourcesGetResponseSectionsItemHiddenItemsList =
-  Array<ResourcesGetResponseSectionsItemHiddenItemsItem>;
+  Array<OnRampsCreateResponsePostApplyResourcesSectionsItemHiddenItemsItem>;
 export const ResourcesGetResponseSectionsItemHiddenItemsList =
   /*@__PURE__*/ S.Array(
-    ResourcesGetResponseSectionsItemHiddenItemsItem,
+    OnRampsCreateResponsePostApplyResourcesSectionsItemHiddenItemsItem,
   ) as any as S.Schema<ResourcesGetResponseSectionsItemHiddenItemsList>;
 
-export type ResourcesGetResponseSectionsItemVisibleItemsItemValueMcnStringItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem;
-export const ResourcesGetResponseSectionsItemVisibleItemsItemValueMcnStringItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem;
-
-export type ResourcesGetResponseSectionsItemVisibleItemsItemValueMcnYamlItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlItem;
-export const ResourcesGetResponseSectionsItemVisibleItemsItemValueMcnYamlItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlItem;
-
-export type ResourcesGetResponseSectionsItemVisibleItemsItemValueMcnYamlDiffItemYamlDiff =
-  OnRampsCreateResponsePlannedResourcesItemDiff;
-export const ResourcesGetResponseSectionsItemVisibleItemsItemValueMcnYamlDiffItemYamlDiff =
-  OnRampsCreateResponsePlannedResourcesItemDiff;
-
-export type ResourcesGetResponseSectionsItemVisibleItemsItemValueMcnYamlDiffItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlDiffItem;
-export const ResourcesGetResponseSectionsItemVisibleItemsItemValueMcnYamlDiffItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlDiffItem;
-
-export type ResourcesGetResponseSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreviewCloudType =
-  | "AWS"
-  | "AZURE"
-  | "GOOGLE"
-  | "CLOUDFLARE";
-export const ResourcesGetResponseSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreviewCloudType =
-  /*@__PURE__*/ S.String;
-
-export type ResourcesGetResponseSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreviewResourceType =
-  | "aws_customer_gateway"
-  | "aws_egress_only_internet_gateway"
-  | "aws_internet_gateway"
-  | "aws_instance"
-  | "aws_network_interface"
-  | "aws_route"
-  | "aws_route_table"
-  | "aws_route_table_association"
-  | "aws_subnet"
-  | "aws_vpc"
-  | "aws_vpc_ipv4_cidr_block_association"
-  | "aws_vpn_connection"
-  | "aws_vpn_connection_route"
-  | "aws_vpn_gateway"
-  | "aws_security_group"
-  | "aws_vpc_security_group_ingress_rule"
-  | "aws_vpc_security_group_egress_rule"
-  | "aws_ec2_managed_prefix_list"
-  | "aws_ec2_transit_gateway"
-  | "aws_ec2_transit_gateway_prefix_list_reference"
-  | "aws_ec2_transit_gateway_vpc_attachment"
-  | "azurerm_application_security_group"
-  | "azurerm_lb"
-  | "azurerm_lb_backend_address_pool"
-  | "azurerm_lb_nat_pool"
-  | "azurerm_lb_nat_rule"
-  | "azurerm_lb_rule"
-  | "azurerm_local_network_gateway"
-  | "azurerm_network_interface"
-  | "azurerm_network_interface_application_security_group_association"
-  | "azurerm_network_interface_backend_address_pool_association"
-  | "azurerm_network_interface_security_group_association"
-  | "azurerm_network_security_group"
-  | "azurerm_public_ip"
-  | "azurerm_route"
-  | "azurerm_route_table"
-  | "azurerm_subnet"
-  | "azurerm_subnet_route_table_association"
-  | "azurerm_virtual_machine"
-  | "azurerm_virtual_network_gateway_connection"
-  | "azurerm_virtual_network"
-  | "azurerm_virtual_network_gateway"
-  | "google_compute_network"
-  | "google_compute_subnetwork"
-  | "google_compute_vpn_gateway"
-  | "google_compute_vpn_tunnel"
-  | "google_compute_route"
-  | "google_compute_address"
-  | "google_compute_global_address"
-  | "google_compute_router"
-  | "google_compute_interconnect_attachment"
-  | "google_compute_ha_vpn_gateway"
-  | "google_compute_forwarding_rule"
-  | "google_compute_network_firewall_policy"
-  | "google_compute_network_firewall_policy_rule"
-  | "cloudflare_static_route"
-  | "cloudflare_ipsec_tunnel";
-export const ResourcesGetResponseSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreviewResourceType =
-  /*@__PURE__*/ S.String;
-
-export interface ResourcesGetResponseSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreview {
-  id: string;
-  cloudType: ResourcesGetResponseSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreviewCloudType;
-  detail: string;
-  name: string;
-  resourceType: ResourcesGetResponseSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreviewResourceType;
-  title: string;
-}
-export const ResourcesGetResponseSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreview =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-      cloudType:
-        ResourcesGetResponseSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreviewCloudType.pipe(
-          T.Body("cloud_type"),
-        ),
-      detail: S.String,
-      name: S.String,
-      resourceType:
-        ResourcesGetResponseSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreviewResourceType.pipe(
-          T.Body("resource_type"),
-        ),
-      title: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "ResourcesGetResponseSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreview",
-  }) as any as S.Schema<ResourcesGetResponseSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreview>;
-
-export interface ResourcesGetResponseSectionsItemVisibleItemsItemValueMcnResourcePreviewItem {
-  itemType: string;
-  resourcePreview: ResourcesGetResponseSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreview;
-}
-export const ResourcesGetResponseSectionsItemVisibleItemsItemValueMcnResourcePreviewItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      itemType: S.String.pipe(T.Body("item_type")),
-      resourcePreview:
-        ResourcesGetResponseSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreview.pipe(
-          T.Body("resource_preview"),
-        ),
-    }),
-  ).annotate({
-    identifier:
-      "ResourcesGetResponseSectionsItemVisibleItemsItemValueMcnResourcePreviewItem",
-  }) as any as S.Schema<ResourcesGetResponseSectionsItemVisibleItemsItemValueMcnResourcePreviewItem>;
-
-export type ResourcesGetResponseSectionsItemVisibleItemsItemValueMcnListItemListItemMcnStringItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem;
-export const ResourcesGetResponseSectionsItemVisibleItemsItemValueMcnListItemListItemMcnStringItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem;
-
-export type ResourcesGetResponseSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewCloudType =
-  | "AWS"
-  | "AZURE"
-  | "GOOGLE"
-  | "CLOUDFLARE";
-export const ResourcesGetResponseSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewCloudType =
-  /*@__PURE__*/ S.String;
-
-export type ResourcesGetResponseSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewResourceType =
-  | "aws_customer_gateway"
-  | "aws_egress_only_internet_gateway"
-  | "aws_internet_gateway"
-  | "aws_instance"
-  | "aws_network_interface"
-  | "aws_route"
-  | "aws_route_table"
-  | "aws_route_table_association"
-  | "aws_subnet"
-  | "aws_vpc"
-  | "aws_vpc_ipv4_cidr_block_association"
-  | "aws_vpn_connection"
-  | "aws_vpn_connection_route"
-  | "aws_vpn_gateway"
-  | "aws_security_group"
-  | "aws_vpc_security_group_ingress_rule"
-  | "aws_vpc_security_group_egress_rule"
-  | "aws_ec2_managed_prefix_list"
-  | "aws_ec2_transit_gateway"
-  | "aws_ec2_transit_gateway_prefix_list_reference"
-  | "aws_ec2_transit_gateway_vpc_attachment"
-  | "azurerm_application_security_group"
-  | "azurerm_lb"
-  | "azurerm_lb_backend_address_pool"
-  | "azurerm_lb_nat_pool"
-  | "azurerm_lb_nat_rule"
-  | "azurerm_lb_rule"
-  | "azurerm_local_network_gateway"
-  | "azurerm_network_interface"
-  | "azurerm_network_interface_application_security_group_association"
-  | "azurerm_network_interface_backend_address_pool_association"
-  | "azurerm_network_interface_security_group_association"
-  | "azurerm_network_security_group"
-  | "azurerm_public_ip"
-  | "azurerm_route"
-  | "azurerm_route_table"
-  | "azurerm_subnet"
-  | "azurerm_subnet_route_table_association"
-  | "azurerm_virtual_machine"
-  | "azurerm_virtual_network_gateway_connection"
-  | "azurerm_virtual_network"
-  | "azurerm_virtual_network_gateway"
-  | "google_compute_network"
-  | "google_compute_subnetwork"
-  | "google_compute_vpn_gateway"
-  | "google_compute_vpn_tunnel"
-  | "google_compute_route"
-  | "google_compute_address"
-  | "google_compute_global_address"
-  | "google_compute_router"
-  | "google_compute_interconnect_attachment"
-  | "google_compute_ha_vpn_gateway"
-  | "google_compute_forwarding_rule"
-  | "google_compute_network_firewall_policy"
-  | "google_compute_network_firewall_policy_rule"
-  | "cloudflare_static_route"
-  | "cloudflare_ipsec_tunnel";
-export const ResourcesGetResponseSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewResourceType =
-  /*@__PURE__*/ S.String;
-
-export interface ResourcesGetResponseSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview {
-  id: string;
-  cloudType: ResourcesGetResponseSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewCloudType;
-  detail: string;
-  name: string;
-  resourceType: ResourcesGetResponseSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewResourceType;
-  title: string;
-}
-export const ResourcesGetResponseSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-      cloudType:
-        ResourcesGetResponseSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewCloudType.pipe(
-          T.Body("cloud_type"),
-        ),
-      detail: S.String,
-      name: S.String,
-      resourceType:
-        ResourcesGetResponseSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewResourceType.pipe(
-          T.Body("resource_type"),
-        ),
-      title: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "ResourcesGetResponseSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview",
-  }) as any as S.Schema<ResourcesGetResponseSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview>;
-
-export interface ResourcesGetResponseSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItem {
-  itemType: string;
-  resourcePreview: ResourcesGetResponseSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview;
-}
-export const ResourcesGetResponseSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      itemType: S.String.pipe(T.Body("item_type")),
-      resourcePreview:
-        ResourcesGetResponseSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview.pipe(
-          T.Body("resource_preview"),
-        ),
-    }),
-  ).annotate({
-    identifier:
-      "ResourcesGetResponseSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItem",
-  }) as any as S.Schema<ResourcesGetResponseSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItem>;
-
-export type ResourcesGetResponseSectionsItemVisibleItemsItemValueMcnListItemListItem =
-  | OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem
-  | ResourcesGetResponseSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItem;
-export const ResourcesGetResponseSectionsItemVisibleItemsItemValueMcnListItemListItem =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["itemType", "string"],
-      ["itemType", "resourcePreview"],
-    ]),
-  );
-
-export type ResourcesGetResponseSectionsItemVisibleItemsItemValueMcnListItemListList =
-  Array<ResourcesGetResponseSectionsItemVisibleItemsItemValueMcnListItemListItem>;
-export const ResourcesGetResponseSectionsItemVisibleItemsItemValueMcnListItemListList =
-  /*@__PURE__*/ S.Array(
-    ResourcesGetResponseSectionsItemVisibleItemsItemValueMcnListItemListItem,
-  ) as any as S.Schema<ResourcesGetResponseSectionsItemVisibleItemsItemValueMcnListItemListList>;
-
-export interface ResourcesGetResponseSectionsItemVisibleItemsItemValueMcnListItem {
-  itemType: string;
-  list: ResourcesGetResponseSectionsItemVisibleItemsItemValueMcnListItemListList;
-}
-export const ResourcesGetResponseSectionsItemVisibleItemsItemValueMcnListItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      itemType: S.String.pipe(T.Body("item_type")),
-      list: ResourcesGetResponseSectionsItemVisibleItemsItemValueMcnListItemListList,
-    }),
-  ).annotate({
-    identifier:
-      "ResourcesGetResponseSectionsItemVisibleItemsItemValueMcnListItem",
-  }) as any as S.Schema<ResourcesGetResponseSectionsItemVisibleItemsItemValueMcnListItem>;
-
-export type ResourcesGetResponseSectionsItemVisibleItemsItemValue =
-  | OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem
-  | OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlItem
-  | OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlDiffItem
-  | ResourcesGetResponseSectionsItemVisibleItemsItemValueMcnResourcePreviewItem
-  | ResourcesGetResponseSectionsItemVisibleItemsItemValueMcnListItem;
-export const ResourcesGetResponseSectionsItemVisibleItemsItemValue =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["itemType", "string"],
-      ["itemType", "yaml"],
-      ["itemType", "yamlDiff"],
-      ["itemType", "resourcePreview"],
-      ["itemType", "list"],
-    ]),
-  );
-
-export interface ResourcesGetResponseSectionsItemVisibleItemsItem {
-  helpText?: string | null;
-  name?: string | null;
-  value?: ResourcesGetResponseSectionsItemVisibleItemsItemValue | null;
-}
+export type ResourcesGetResponseSectionsItemVisibleItemsItem =
+  OnRampsCreateResponsePostApplyResourcesSectionsItemHiddenItemsItem;
 export const ResourcesGetResponseSectionsItemVisibleItemsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      helpText: S.optional(S.NullOr(S.String)),
-      name: S.optional(S.NullOr(S.String)),
-      value: S.optional(
-        S.NullOr(ResourcesGetResponseSectionsItemVisibleItemsItemValue),
-      ),
-    }),
-  ).annotate({
-    identifier: "ResourcesGetResponseSectionsItemVisibleItemsItem",
-  }) as any as S.Schema<ResourcesGetResponseSectionsItemVisibleItemsItem>;
+  OnRampsCreateResponsePostApplyResourcesSectionsItemHiddenItemsItem;
 
 export type ResourcesGetResponseSectionsItemVisibleItemsList =
-  Array<ResourcesGetResponseSectionsItemVisibleItemsItem>;
+  Array<OnRampsCreateResponsePostApplyResourcesSectionsItemHiddenItemsItem>;
 export const ResourcesGetResponseSectionsItemVisibleItemsList =
   /*@__PURE__*/ S.Array(
-    ResourcesGetResponseSectionsItemVisibleItemsItem,
+    OnRampsCreateResponsePostApplyResourcesSectionsItemHiddenItemsItem,
   ) as any as S.Schema<ResourcesGetResponseSectionsItemVisibleItemsList>;
 
 export interface ResourcesGetResponseSectionsItem {
@@ -7516,20 +2585,6 @@ export type ResourcesGetResponseSectionsList =
 export const ResourcesGetResponseSectionsList = /*@__PURE__*/ S.Array(
   ResourcesGetResponseSectionsItem,
 ) as any as S.Schema<ResourcesGetResponseSectionsList>;
-
-export type ResourcesGetResponseStateMap = {
-  [key: string]: unknown | undefined;
-};
-export const ResourcesGetResponseStateMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<ResourcesGetResponseStateMap>;
-
-export type ResourcesGetResponseTagsMap = { [key: string]: string | undefined };
-export const ResourcesGetResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ResourcesGetResponseTagsMap>;
 
 export type ResourcesGetResponseManagedByItemClientType =
   "MAGIC_WAN_CLOUD_ONRAMP";
@@ -7564,21 +2619,21 @@ export interface GetResourceResponse {
   id: string;
   accountId: string;
   cloudType: ResourcesGetResponseCloudType;
-  config: ResourcesGetResponseConfigMap;
+  config: unknown;
   deploymentProvider: string;
   managed: boolean;
   monthlyCostEstimate: OnRampsCreateResponsePostApplyMonthlyCostEstimate;
   name: string;
   nativeId: string;
-  observations: ResourcesGetResponseObservationsMap;
+  observations: OnRampsCreateResponsePostApplyResourcesObservations;
   providerIds: ResourcesGetResponseProviderIdsList;
-  providerNamesById: ResourcesGetResponseProviderNamesByIdMap;
+  providerNamesById: unknown;
   region: string;
   resourceGroup: string;
-  resourceType: ResourcesGetResponseResourceType;
+  resourceType: string;
   sections: ResourcesGetResponseSectionsList;
-  state: ResourcesGetResponseStateMap;
-  tags: ResourcesGetResponseTagsMap;
+  state: unknown;
+  tags: unknown;
   updatedAt: string;
   url: string;
   managedBy?: ResourcesGetResponseManagedByList | null;
@@ -7588,7 +2643,7 @@ export const GetResourceResponse = /*@__PURE__*/ S.suspend(() =>
     id: S.String,
     accountId: S.String.pipe(T.Body("account_id")),
     cloudType: ResourcesGetResponseCloudType.pipe(T.Body("cloud_type")),
-    config: ResourcesGetResponseConfigMap,
+    config: S.Unknown,
     deploymentProvider: S.String.pipe(T.Body("deployment_provider")),
     managed: S.Boolean,
     monthlyCostEstimate: OnRampsCreateResponsePostApplyMonthlyCostEstimate.pipe(
@@ -7596,21 +2651,17 @@ export const GetResourceResponse = /*@__PURE__*/ S.suspend(() =>
     ),
     name: S.String,
     nativeId: S.String.pipe(T.Body("native_id")),
-    observations: ResourcesGetResponseObservationsMap,
+    observations: OnRampsCreateResponsePostApplyResourcesObservations,
     providerIds: ResourcesGetResponseProviderIdsList.pipe(
       T.Body("provider_ids"),
     ),
-    providerNamesById: ResourcesGetResponseProviderNamesByIdMap.pipe(
-      T.Body("provider_names_by_id"),
-    ),
+    providerNamesById: S.Unknown.pipe(T.Body("provider_names_by_id")),
     region: S.String,
     resourceGroup: S.String.pipe(T.Body("resource_group")),
-    resourceType: ResourcesGetResponseResourceType.pipe(
-      T.Body("resource_type"),
-    ),
+    resourceType: S.String.pipe(T.Body("resource_type")),
     sections: ResourcesGetResponseSectionsList,
-    state: ResourcesGetResponseStateMap,
-    tags: ResourcesGetResponseTagsMap,
+    state: S.Unknown,
+    tags: S.Unknown,
     updatedAt: S.String.pipe(T.Body("updated_at")),
     url: S.String,
     managedBy: S.optional(
@@ -7642,100 +2693,21 @@ export const InitialSetupCloudIntegrationRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "InitialSetupCloudIntegrationRequest",
 }) as any as S.Schema<InitialSetupCloudIntegrationRequest>;
 
-export interface CloudIntegrationsInitialSetupResultMcnAwsTrustPolicy {
-  awsTrustPolicy: string;
-  itemType: string;
-}
-export const CloudIntegrationsInitialSetupResultMcnAwsTrustPolicy =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      awsTrustPolicy: S.String.pipe(T.Body("aws_trust_policy")),
-      itemType: S.String.pipe(T.Body("item_type")),
-    }),
-  ).annotate({
-    identifier: "CloudIntegrationsInitialSetupResultMcnAwsTrustPolicy",
-  }) as any as S.Schema<CloudIntegrationsInitialSetupResultMcnAwsTrustPolicy>;
-
-export interface CloudIntegrationsInitialSetupResultMcnAzureSetup {
-  azureConsentUrl: string;
-  integrationIdentityTag: string;
-  itemType: string;
-  tagCliCommand: string;
-}
-export const CloudIntegrationsInitialSetupResultMcnAzureSetup =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      azureConsentUrl: S.String.pipe(T.Body("azure_consent_url")),
-      integrationIdentityTag: S.String.pipe(T.Body("integration_identity_tag")),
-      itemType: S.String.pipe(T.Body("item_type")),
-      tagCliCommand: S.String.pipe(T.Body("tag_cli_command")),
-    }),
-  ).annotate({
-    identifier: "CloudIntegrationsInitialSetupResultMcnAzureSetup",
-  }) as any as S.Schema<CloudIntegrationsInitialSetupResultMcnAzureSetup>;
-
-export interface CloudIntegrationsInitialSetupResultMcnGcpSetup {
-  integrationIdentityTag: string;
-  itemType: string;
-  tagCliCommand: string;
-}
-export const CloudIntegrationsInitialSetupResultMcnGcpSetup =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      integrationIdentityTag: S.String.pipe(T.Body("integration_identity_tag")),
-      itemType: S.String.pipe(T.Body("item_type")),
-      tagCliCommand: S.String.pipe(T.Body("tag_cli_command")),
-    }),
-  ).annotate({
-    identifier: "CloudIntegrationsInitialSetupResultMcnGcpSetup",
-  }) as any as S.Schema<CloudIntegrationsInitialSetupResultMcnGcpSetup>;
-
-export type CloudIntegrationsInitialSetupResult =
-  | CloudIntegrationsInitialSetupResultMcnAwsTrustPolicy
-  | CloudIntegrationsInitialSetupResultMcnAzureSetup
-  | CloudIntegrationsInitialSetupResultMcnGcpSetup;
-export const CloudIntegrationsInitialSetupResult = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
-    ["awsTrustPolicy", "itemType"],
-    ["azureConsentUrl", "integrationIdentityTag", "itemType", "tagCliCommand"],
-    ["integrationIdentityTag", "itemType", "tagCliCommand"],
-  ]),
-);
-
-export type InitialSetupCloudIntegrationResponse =
-  CloudIntegrationsInitialSetupResult;
+export type InitialSetupCloudIntegrationResponse = unknown;
 export const InitialSetupCloudIntegrationResponse = /*@__PURE__*/ S.suspend(
   () =>
-    CloudIntegrationsInitialSetupResult.pipe(
-      T.EnvelopePayloadRoot(),
-      T.KeyDictionary(KEY_DICTIONARY),
-    ),
+    S.Unknown.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "InitialSetupCloudIntegrationResponse",
 }) as any as S.Schema<InitialSetupCloudIntegrationResponse>;
 
-export type CatalogSyncsPrebuiltPoliciesListRequestDestinationType =
-  | "NONE"
-  | "ZERO_TRUST_LIST";
-export const CatalogSyncsPrebuiltPoliciesListRequestDestinationType =
-  /*@__PURE__*/ S.String;
-
 export interface ListCatalogSyncPrebuiltPoliciesRequest {
   accountId: string;
-  /** Specify type of destination, omit to return all. */
-  destinationType?:
-    | CatalogSyncsPrebuiltPoliciesListRequestDestinationType
-    | (string & {});
 }
 export const ListCatalogSyncPrebuiltPoliciesRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       accountId: S.String.pipe(T.Label("account_id")),
-      destinationType: S.optional(
-        CatalogSyncsPrebuiltPoliciesListRequestDestinationType.pipe(
-          T.Query("destination_type"),
-        ),
-      ),
     })
       .pipe(
         T.Http({
@@ -7834,203 +2806,19 @@ export const CatalogSyncsListResultItemDestinationType = /*@__PURE__*/ S.String;
 export type CatalogSyncsListResultItemUpdateMode = "AUTO" | "MANUAL";
 export const CatalogSyncsListResultItemUpdateMode = /*@__PURE__*/ S.String;
 
-export type CatalogSyncsListResultItemErrorsValueCode =
-  | 1001
-  | 1002
-  | 1003
-  | 1004
-  | 1005
-  | 1006
-  | 1007
-  | 1008
-  | 1009
-  | 1010
-  | 1011
-  | 1012
-  | 1013
-  | 1014
-  | 1015
-  | 1016
-  | 1017
-  | 1018
-  | 2001
-  | 2002
-  | 2003
-  | 2004
-  | 2005
-  | 2006
-  | 2007
-  | 2008
-  | 2009
-  | 2010
-  | 2011
-  | 2012
-  | 2013
-  | 2014
-  | 2015
-  | 2016
-  | 2017
-  | 2018
-  | 2019
-  | 2020
-  | 2021
-  | 2022
-  | 3001
-  | 3002
-  | 3003
-  | 3004
-  | 3005
-  | 3006
-  | 3007
-  | 4001
-  | 4002
-  | 4003
-  | 4004
-  | 4005
-  | 4006
-  | 4007
-  | 4008
-  | 4009
-  | 4010
-  | 4011
-  | 4012
-  | 4013
-  | 4014
-  | 4015
-  | 4016
-  | 4017
-  | 4018
-  | 4019
-  | 4020
-  | 4021
-  | 4022
-  | 4023
-  | 5001
-  | 5002
-  | 5003
-  | 5004
-  | 102000
-  | 102001
-  | 102002
-  | 102003
-  | 102004
-  | 102005
-  | 102006
-  | 102007
-  | 102008
-  | 102009
-  | 102010
-  | 102011
-  | 102012
-  | 102013
-  | 102014
-  | 102015
-  | 102016
-  | 102017
-  | 102018
-  | 102019
-  | 102020
-  | 102021
-  | 102022
-  | 102023
-  | 102024
-  | 102025
-  | 102026
-  | 102027
-  | 102028
-  | 102029
-  | 102030
-  | 102031
-  | 102032
-  | 102033
-  | 102034
-  | 102035
-  | 102036
-  | 102037
-  | 102038
-  | 102039
-  | 102040
-  | 102041
-  | 102042
-  | 102043
-  | 102044
-  | 102045
-  | 102046
-  | 102047
-  | 102048
-  | 102049
-  | 102050
-  | 102051
-  | 102052
-  | 102053
-  | 102054
-  | 102055
-  | 102056
-  | 102057
-  | 102058
-  | 102059
-  | 102060
-  | 102061
-  | 102062
-  | 102063
-  | 102064
-  | 102065
-  | 102066
-  | 102067
-  | 102068
-  | 102069
-  | 102070
-  | 102071
-  | 102072
-  | 103001
-  | 103002
-  | 103003
-  | 103004
-  | 103005
-  | 103006
-  | 103007
-  | 103008;
-export const CatalogSyncsListResultItemErrorsValueCode = /*@__PURE__*/ S.Number;
+export type CatalogSyncsListResultItemErrorsMeta =
+  CatalogSyncsCreateResponseErrorsMeta;
+export const CatalogSyncsListResultItemErrorsMeta =
+  CatalogSyncsCreateResponseErrorsMeta;
 
-export type CatalogSyncsListResultItemErrorsValueMeta =
-  CatalogSyncsCreateResponseErrorsValueMeta;
-export const CatalogSyncsListResultItemErrorsValueMeta =
-  CatalogSyncsCreateResponseErrorsValueMeta;
+export type CatalogSyncsListResultItemErrorsSource =
+  CatalogSyncsCreateResponseErrorsSource;
+export const CatalogSyncsListResultItemErrorsSource =
+  CatalogSyncsCreateResponseErrorsSource;
 
-export type CatalogSyncsListResultItemErrorsValueSource =
-  CatalogSyncsCreateResponseErrorsValueSource;
-export const CatalogSyncsListResultItemErrorsValueSource =
-  CatalogSyncsCreateResponseErrorsValueSource;
-
-export interface CatalogSyncsListResultItemErrorsValue {
-  code: CatalogSyncsListResultItemErrorsValueCode;
-  message: string;
-  documentationUrl?: string | null;
-  meta?: CatalogSyncsCreateResponseErrorsValueMeta | null;
-  source?: CatalogSyncsCreateResponseErrorsValueSource | null;
-}
-export const CatalogSyncsListResultItemErrorsValue = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      code: CatalogSyncsListResultItemErrorsValueCode,
-      message: S.String,
-      documentationUrl: S.optional(
-        S.NullOr(S.String).pipe(T.Body("documentation_url")),
-      ),
-      meta: S.optional(S.NullOr(CatalogSyncsCreateResponseErrorsValueMeta)),
-      source: S.optional(S.NullOr(CatalogSyncsCreateResponseErrorsValueSource)),
-    }),
-).annotate({
-  identifier: "CatalogSyncsListResultItemErrorsValue",
-}) as any as S.Schema<CatalogSyncsListResultItemErrorsValue>;
-
-export type CatalogSyncsListResultItemErrorsMap = {
-  [key: string]: CatalogSyncsListResultItemErrorsValue | undefined;
-};
-export const CatalogSyncsListResultItemErrorsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  CatalogSyncsListResultItemErrorsValue,
-) as any as S.Schema<CatalogSyncsListResultItemErrorsMap>;
+export type CatalogSyncsListResultItemErrors = CatalogSyncsCreateResponseErrors;
+export const CatalogSyncsListResultItemErrors =
+  CatalogSyncsCreateResponseErrors;
 
 export interface CatalogSyncsListResultItem {
   id: string;
@@ -8041,7 +2829,7 @@ export interface CatalogSyncsListResultItem {
   name: string;
   policy: string;
   updateMode: CatalogSyncsListResultItemUpdateMode;
-  errors?: CatalogSyncsListResultItemErrorsMap | null;
+  errors?: CatalogSyncsCreateResponseErrors | null;
   includesDiscoveriesUntil?: string | null;
   lastAttemptedUpdateAt?: string | null;
   lastSuccessfulUpdateAt?: string | null;
@@ -8060,7 +2848,7 @@ export const CatalogSyncsListResultItem = /*@__PURE__*/ S.suspend(() =>
     updateMode: CatalogSyncsListResultItemUpdateMode.pipe(
       T.Body("update_mode"),
     ),
-    errors: S.optional(S.NullOr(CatalogSyncsListResultItemErrorsMap)),
+    errors: S.optional(S.NullOr(CatalogSyncsCreateResponseErrors)),
     includesDiscoveriesUntil: S.optional(
       S.NullOr(S.String).pipe(T.Body("includes_discoveries_until")),
     ),
@@ -8097,19 +2885,10 @@ export const ListCatalogSyncsResponse = /*@__PURE__*/ S.suspend(() =>
 
 export interface ListCloudIntegrationsRequest {
   accountId: string;
-  cloudflare?: boolean;
-  desc?: boolean;
-  /** One of ["updated_at", "id", "cloud_type", "name"]. */
-  orderBy?: string;
-  status?: boolean;
 }
 export const ListCloudIntegrationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
-    cloudflare: S.optional(S.Boolean.pipe(T.Query())),
-    desc: S.optional(S.Boolean.pipe(T.Query())),
-    orderBy: S.optional(S.String.pipe(T.Query("order_by"))),
-    status: S.optional(S.Boolean.pipe(T.Query())),
   })
     .pipe(
       T.Http({
@@ -8137,22 +2916,6 @@ export type CloudIntegrationsListResultItemLifecycleState =
 export const CloudIntegrationsListResultItemLifecycleState =
   /*@__PURE__*/ S.String;
 
-export type CloudIntegrationsListResultItemState =
-  | "UNSPECIFIED"
-  | "PENDING"
-  | "DISCOVERING"
-  | "FAILED"
-  | "SUCCEEDED";
-export const CloudIntegrationsListResultItemState = /*@__PURE__*/ S.String;
-
-export type CloudIntegrationsListResultItemStateV2 =
-  | "UNSPECIFIED"
-  | "PENDING"
-  | "DISCOVERING"
-  | "FAILED"
-  | "SUCCEEDED";
-export const CloudIntegrationsListResultItemStateV2 = /*@__PURE__*/ S.String;
-
 export type CloudIntegrationsListResultItemStatusDiscoveryProgress =
   CloudIntegrationsCreateResponseStatusDiscoveryProgress;
 export const CloudIntegrationsListResultItemStatusDiscoveryProgress =
@@ -8162,24 +2925,6 @@ export type CloudIntegrationsListResultItemStatusDiscoveryProgressV2 =
   CloudIntegrationsCreateResponseStatusDiscoveryProgress;
 export const CloudIntegrationsListResultItemStatusDiscoveryProgressV2 =
   CloudIntegrationsCreateResponseStatusDiscoveryProgress;
-
-export type CloudIntegrationsListResultItemStatusLastDiscoveryStatus =
-  | "UNSPECIFIED"
-  | "PENDING"
-  | "DISCOVERING"
-  | "FAILED"
-  | "SUCCEEDED";
-export const CloudIntegrationsListResultItemStatusLastDiscoveryStatus =
-  /*@__PURE__*/ S.String;
-
-export type CloudIntegrationsListResultItemStatusLastDiscoveryStatusV2 =
-  | "UNSPECIFIED"
-  | "PENDING"
-  | "DISCOVERING"
-  | "FAILED"
-  | "SUCCEEDED";
-export const CloudIntegrationsListResultItemStatusLastDiscoveryStatusV2 =
-  /*@__PURE__*/ S.String;
 
 export type CloudIntegrationsListResultItemStatusRegionsList = Array<string>;
 export const CloudIntegrationsListResultItemStatusRegionsList =
@@ -8221,8 +2966,8 @@ export const CloudIntegrationsListResultItemStatusInUseByList =
 export interface CloudIntegrationsListResultItemStatus {
   discoveryProgress: CloudIntegrationsCreateResponseStatusDiscoveryProgress;
   discoveryProgressV2: CloudIntegrationsCreateResponseStatusDiscoveryProgress;
-  lastDiscoveryStatus: CloudIntegrationsListResultItemStatusLastDiscoveryStatus;
-  lastDiscoveryStatusV2: CloudIntegrationsListResultItemStatusLastDiscoveryStatusV2;
+  lastDiscoveryStatus: string;
+  lastDiscoveryStatusV2: string;
   regions: CloudIntegrationsListResultItemStatusRegionsList;
   credentialsGoodSince?: string | null;
   credentialsMissingSince?: string | null;
@@ -8247,14 +2992,8 @@ export const CloudIntegrationsListResultItemStatus = /*@__PURE__*/ S.suspend(
         CloudIntegrationsCreateResponseStatusDiscoveryProgress.pipe(
           T.Body("discovery_progress_v2"),
         ),
-      lastDiscoveryStatus:
-        CloudIntegrationsListResultItemStatusLastDiscoveryStatus.pipe(
-          T.Body("last_discovery_status"),
-        ),
-      lastDiscoveryStatusV2:
-        CloudIntegrationsListResultItemStatusLastDiscoveryStatusV2.pipe(
-          T.Body("last_discovery_status_v2"),
-        ),
+      lastDiscoveryStatus: S.String.pipe(T.Body("last_discovery_status")),
+      lastDiscoveryStatusV2: S.String.pipe(T.Body("last_discovery_status_v2")),
       regions: CloudIntegrationsListResultItemStatusRegionsList,
       credentialsGoodSince: S.optional(
         S.NullOr(S.String).pipe(T.Body("credentials_good_since")),
@@ -8300,8 +3039,8 @@ export interface CloudIntegrationsListResultItem {
   friendlyName: string;
   lastUpdated: string;
   lifecycleState: CloudIntegrationsListResultItemLifecycleState;
-  state: CloudIntegrationsListResultItemState;
-  stateV2: CloudIntegrationsListResultItemStateV2;
+  state: string;
+  stateV2: string;
   awsArn?: string | null;
   azureSubscriptionId?: string | null;
   azureTenantId?: string | null;
@@ -8321,8 +3060,8 @@ export const CloudIntegrationsListResultItem = /*@__PURE__*/ S.suspend(() =>
     lifecycleState: CloudIntegrationsListResultItemLifecycleState.pipe(
       T.Body("lifecycle_state"),
     ),
-    state: CloudIntegrationsListResultItemState,
-    stateV2: CloudIntegrationsListResultItemStateV2.pipe(T.Body("state_v2")),
+    state: S.String,
+    stateV2: S.String.pipe(T.Body("state_v2")),
     awsArn: S.optional(S.NullOr(S.String).pipe(T.Body("aws_arn"))),
     azureSubscriptionId: S.optional(
       S.NullOr(S.String).pipe(T.Body("azure_subscription_id")),
@@ -8401,19 +3140,10 @@ export const ListOnRampAddressSpacesResponse = /*@__PURE__*/ S.suspend(() =>
 
 export interface ListOnRampsRequest {
   accountId: string;
-  desc?: boolean;
-  /** One of ["updated_at", "id", "cloud_type", "name"]. */
-  orderBy?: string;
-  status?: boolean;
-  vpcs?: boolean;
 }
 export const ListOnRampsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
-    desc: S.optional(S.Boolean.pipe(T.Query())),
-    orderBy: S.optional(S.String.pipe(T.Query("order_by"))),
-    status: S.optional(S.Boolean.pipe(T.Query())),
-    vpcs: S.optional(S.Boolean.pipe(T.Query())),
   })
     .pipe(
       T.Http({
@@ -8465,15 +3195,6 @@ export type OnRampsListResultItemPlannedResourcesItemMonthlyCostEstimateDiff =
 export const OnRampsListResultItemPlannedResourcesItemMonthlyCostEstimateDiff =
   OnRampsCreateResponsePlannedMonthlyCostEstimate;
 
-export type OnRampsListResultItemPlannedResourcesItemPlannedAction =
-  | "no_op"
-  | "create"
-  | "update"
-  | "replace"
-  | "destroy";
-export const OnRampsListResultItemPlannedResourcesItemPlannedAction =
-  /*@__PURE__*/ S.String;
-
 export type OnRampsListResultItemPlannedResourcesItemResourceCloudType =
   | "AWS"
   | "AZURE"
@@ -8482,73 +3203,12 @@ export type OnRampsListResultItemPlannedResourcesItemResourceCloudType =
 export const OnRampsListResultItemPlannedResourcesItemResourceCloudType =
   /*@__PURE__*/ S.String;
 
-export type OnRampsListResultItemPlannedResourcesItemResourceResourceType =
-  | "aws_customer_gateway"
-  | "aws_egress_only_internet_gateway"
-  | "aws_internet_gateway"
-  | "aws_instance"
-  | "aws_network_interface"
-  | "aws_route"
-  | "aws_route_table"
-  | "aws_route_table_association"
-  | "aws_subnet"
-  | "aws_vpc"
-  | "aws_vpc_ipv4_cidr_block_association"
-  | "aws_vpn_connection"
-  | "aws_vpn_connection_route"
-  | "aws_vpn_gateway"
-  | "aws_security_group"
-  | "aws_vpc_security_group_ingress_rule"
-  | "aws_vpc_security_group_egress_rule"
-  | "aws_ec2_managed_prefix_list"
-  | "aws_ec2_transit_gateway"
-  | "aws_ec2_transit_gateway_prefix_list_reference"
-  | "aws_ec2_transit_gateway_vpc_attachment"
-  | "azurerm_application_security_group"
-  | "azurerm_lb"
-  | "azurerm_lb_backend_address_pool"
-  | "azurerm_lb_nat_pool"
-  | "azurerm_lb_nat_rule"
-  | "azurerm_lb_rule"
-  | "azurerm_local_network_gateway"
-  | "azurerm_network_interface"
-  | "azurerm_network_interface_application_security_group_association"
-  | "azurerm_network_interface_backend_address_pool_association"
-  | "azurerm_network_interface_security_group_association"
-  | "azurerm_network_security_group"
-  | "azurerm_public_ip"
-  | "azurerm_route"
-  | "azurerm_route_table"
-  | "azurerm_subnet"
-  | "azurerm_subnet_route_table_association"
-  | "azurerm_virtual_machine"
-  | "azurerm_virtual_network_gateway_connection"
-  | "azurerm_virtual_network"
-  | "azurerm_virtual_network_gateway"
-  | "google_compute_network"
-  | "google_compute_subnetwork"
-  | "google_compute_vpn_gateway"
-  | "google_compute_vpn_tunnel"
-  | "google_compute_route"
-  | "google_compute_address"
-  | "google_compute_global_address"
-  | "google_compute_router"
-  | "google_compute_interconnect_attachment"
-  | "google_compute_ha_vpn_gateway"
-  | "google_compute_forwarding_rule"
-  | "google_compute_network_firewall_policy"
-  | "google_compute_network_firewall_policy_rule"
-  | "cloudflare_static_route"
-  | "cloudflare_ipsec_tunnel";
-export const OnRampsListResultItemPlannedResourcesItemResourceResourceType =
-  /*@__PURE__*/ S.String;
-
 export interface OnRampsListResultItemPlannedResourcesItemResource {
   id: string;
   cloudType: OnRampsListResultItemPlannedResourcesItemResourceCloudType;
   detail: string;
   name: string;
-  resourceType: OnRampsListResultItemPlannedResourcesItemResourceResourceType;
+  resourceType: string;
   title: string;
 }
 export const OnRampsListResultItemPlannedResourcesItemResource =
@@ -8561,10 +3221,7 @@ export const OnRampsListResultItemPlannedResourcesItemResource =
         ),
       detail: S.String,
       name: S.String,
-      resourceType:
-        OnRampsListResultItemPlannedResourcesItemResourceResourceType.pipe(
-          T.Body("resource_type"),
-        ),
+      resourceType: S.String.pipe(T.Body("resource_type")),
       title: S.String,
     }),
   ).annotate({
@@ -8575,7 +3232,7 @@ export interface OnRampsListResultItemPlannedResourcesItem {
   diff: OnRampsCreateResponsePlannedResourcesItemDiff;
   keysRequireReplace: OnRampsListResultItemPlannedResourcesItemKeysRequireReplaceList;
   monthlyCostEstimateDiff: OnRampsCreateResponsePlannedMonthlyCostEstimate;
-  plannedAction: OnRampsListResultItemPlannedResourcesItemPlannedAction;
+  plannedAction: string;
   resource: OnRampsListResultItemPlannedResourcesItemResource;
 }
 export const OnRampsListResultItemPlannedResourcesItem =
@@ -8590,10 +3247,7 @@ export const OnRampsListResultItemPlannedResourcesItem =
         OnRampsCreateResponsePlannedMonthlyCostEstimate.pipe(
           T.Body("monthly_cost_estimate_diff"),
         ),
-      plannedAction:
-        OnRampsListResultItemPlannedResourcesItemPlannedAction.pipe(
-          T.Body("planned_action"),
-        ),
+      plannedAction: S.String.pipe(T.Body("planned_action")),
       resource: OnRampsListResultItemPlannedResourcesItemResource,
     }),
   ).annotate({
@@ -8611,903 +3265,149 @@ export type OnRampsListResultItemPostApplyMonthlyCostEstimate =
 export const OnRampsListResultItemPostApplyMonthlyCostEstimate =
   OnRampsCreateResponsePostApplyMonthlyCostEstimate;
 
-export type OnRampsListResultItemPostApplyResourcesValueCloudType =
+export type OnRampsListResultItemPostApplyResourcesCloudType =
   | "AWS"
   | "AZURE"
   | "GOOGLE"
   | "CLOUDFLARE";
-export const OnRampsListResultItemPostApplyResourcesValueCloudType =
+export const OnRampsListResultItemPostApplyResourcesCloudType =
   /*@__PURE__*/ S.String;
 
-export type OnRampsListResultItemPostApplyResourcesValueConfigMap = {
-  [key: string]: unknown | undefined;
-};
-export const OnRampsListResultItemPostApplyResourcesValueConfigMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<OnRampsListResultItemPostApplyResourcesValueConfigMap>;
-
-export type OnRampsListResultItemPostApplyResourcesValueMonthlyCostEstimate =
+export type OnRampsListResultItemPostApplyResourcesMonthlyCostEstimate =
   OnRampsCreateResponsePostApplyMonthlyCostEstimate;
-export const OnRampsListResultItemPostApplyResourcesValueMonthlyCostEstimate =
+export const OnRampsListResultItemPostApplyResourcesMonthlyCostEstimate =
   OnRampsCreateResponsePostApplyMonthlyCostEstimate;
 
-export type OnRampsListResultItemPostApplyResourcesValueObservationsValue =
-  OnRampsCreateResponsePostApplyResourcesValueObservationsValue;
-export const OnRampsListResultItemPostApplyResourcesValueObservationsValue =
-  OnRampsCreateResponsePostApplyResourcesValueObservationsValue;
+export type OnRampsListResultItemPostApplyResourcesObservations =
+  OnRampsCreateResponsePostApplyResourcesObservations;
+export const OnRampsListResultItemPostApplyResourcesObservations =
+  OnRampsCreateResponsePostApplyResourcesObservations;
 
-export type OnRampsListResultItemPostApplyResourcesValueObservationsMap = {
-  [key: string]:
-    | OnRampsCreateResponsePostApplyResourcesValueObservationsValue
-    | undefined;
-};
-export const OnRampsListResultItemPostApplyResourcesValueObservationsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    OnRampsCreateResponsePostApplyResourcesValueObservationsValue,
-  ) as any as S.Schema<OnRampsListResultItemPostApplyResourcesValueObservationsMap>;
-
-export type OnRampsListResultItemPostApplyResourcesValueProviderIdsList =
+export type OnRampsListResultItemPostApplyResourcesProviderIdsList =
   Array<string>;
-export const OnRampsListResultItemPostApplyResourcesValueProviderIdsList =
+export const OnRampsListResultItemPostApplyResourcesProviderIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
-  ) as any as S.Schema<OnRampsListResultItemPostApplyResourcesValueProviderIdsList>;
+  ) as any as S.Schema<OnRampsListResultItemPostApplyResourcesProviderIdsList>;
 
-export type OnRampsListResultItemPostApplyResourcesValueProviderNamesByIdMap = {
-  [key: string]: string | undefined;
-};
-export const OnRampsListResultItemPostApplyResourcesValueProviderNamesByIdMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<OnRampsListResultItemPostApplyResourcesValueProviderNamesByIdMap>;
+export type OnRampsListResultItemPostApplyResourcesSectionsItemHiddenItemsItem =
+  OnRampsCreateResponsePostApplyResourcesSectionsItemHiddenItemsItem;
+export const OnRampsListResultItemPostApplyResourcesSectionsItemHiddenItemsItem =
+  OnRampsCreateResponsePostApplyResourcesSectionsItemHiddenItemsItem;
 
-export type OnRampsListResultItemPostApplyResourcesValueResourceType =
-  | "aws_customer_gateway"
-  | "aws_egress_only_internet_gateway"
-  | "aws_internet_gateway"
-  | "aws_instance"
-  | "aws_network_interface"
-  | "aws_route"
-  | "aws_route_table"
-  | "aws_route_table_association"
-  | "aws_subnet"
-  | "aws_vpc"
-  | "aws_vpc_ipv4_cidr_block_association"
-  | "aws_vpn_connection"
-  | "aws_vpn_connection_route"
-  | "aws_vpn_gateway"
-  | "aws_security_group"
-  | "aws_vpc_security_group_ingress_rule"
-  | "aws_vpc_security_group_egress_rule"
-  | "aws_ec2_managed_prefix_list"
-  | "aws_ec2_transit_gateway"
-  | "aws_ec2_transit_gateway_prefix_list_reference"
-  | "aws_ec2_transit_gateway_vpc_attachment"
-  | "azurerm_application_security_group"
-  | "azurerm_lb"
-  | "azurerm_lb_backend_address_pool"
-  | "azurerm_lb_nat_pool"
-  | "azurerm_lb_nat_rule"
-  | "azurerm_lb_rule"
-  | "azurerm_local_network_gateway"
-  | "azurerm_network_interface"
-  | "azurerm_network_interface_application_security_group_association"
-  | "azurerm_network_interface_backend_address_pool_association"
-  | "azurerm_network_interface_security_group_association"
-  | "azurerm_network_security_group"
-  | "azurerm_public_ip"
-  | "azurerm_route"
-  | "azurerm_route_table"
-  | "azurerm_subnet"
-  | "azurerm_subnet_route_table_association"
-  | "azurerm_virtual_machine"
-  | "azurerm_virtual_network_gateway_connection"
-  | "azurerm_virtual_network"
-  | "azurerm_virtual_network_gateway"
-  | "google_compute_network"
-  | "google_compute_subnetwork"
-  | "google_compute_vpn_gateway"
-  | "google_compute_vpn_tunnel"
-  | "google_compute_route"
-  | "google_compute_address"
-  | "google_compute_global_address"
-  | "google_compute_router"
-  | "google_compute_interconnect_attachment"
-  | "google_compute_ha_vpn_gateway"
-  | "google_compute_forwarding_rule"
-  | "google_compute_network_firewall_policy"
-  | "google_compute_network_firewall_policy_rule"
-  | "cloudflare_static_route"
-  | "cloudflare_ipsec_tunnel";
-export const OnRampsListResultItemPostApplyResourcesValueResourceType =
-  /*@__PURE__*/ S.String;
-
-export type OnRampsListResultItemPostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem;
-export const OnRampsListResultItemPostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem;
-
-export type OnRampsListResultItemPostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlItem;
-export const OnRampsListResultItemPostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlItem;
-
-export type OnRampsListResultItemPostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlDiffItemYamlDiff =
-  OnRampsCreateResponsePlannedResourcesItemDiff;
-export const OnRampsListResultItemPostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlDiffItemYamlDiff =
-  OnRampsCreateResponsePlannedResourcesItemDiff;
-
-export type OnRampsListResultItemPostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlDiffItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlDiffItem;
-export const OnRampsListResultItemPostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlDiffItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlDiffItem;
-
-export type OnRampsListResultItemPostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreviewCloudType =
-  | "AWS"
-  | "AZURE"
-  | "GOOGLE"
-  | "CLOUDFLARE";
-export const OnRampsListResultItemPostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreviewCloudType =
-  /*@__PURE__*/ S.String;
-
-export type OnRampsListResultItemPostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreviewResourceType =
-  | "aws_customer_gateway"
-  | "aws_egress_only_internet_gateway"
-  | "aws_internet_gateway"
-  | "aws_instance"
-  | "aws_network_interface"
-  | "aws_route"
-  | "aws_route_table"
-  | "aws_route_table_association"
-  | "aws_subnet"
-  | "aws_vpc"
-  | "aws_vpc_ipv4_cidr_block_association"
-  | "aws_vpn_connection"
-  | "aws_vpn_connection_route"
-  | "aws_vpn_gateway"
-  | "aws_security_group"
-  | "aws_vpc_security_group_ingress_rule"
-  | "aws_vpc_security_group_egress_rule"
-  | "aws_ec2_managed_prefix_list"
-  | "aws_ec2_transit_gateway"
-  | "aws_ec2_transit_gateway_prefix_list_reference"
-  | "aws_ec2_transit_gateway_vpc_attachment"
-  | "azurerm_application_security_group"
-  | "azurerm_lb"
-  | "azurerm_lb_backend_address_pool"
-  | "azurerm_lb_nat_pool"
-  | "azurerm_lb_nat_rule"
-  | "azurerm_lb_rule"
-  | "azurerm_local_network_gateway"
-  | "azurerm_network_interface"
-  | "azurerm_network_interface_application_security_group_association"
-  | "azurerm_network_interface_backend_address_pool_association"
-  | "azurerm_network_interface_security_group_association"
-  | "azurerm_network_security_group"
-  | "azurerm_public_ip"
-  | "azurerm_route"
-  | "azurerm_route_table"
-  | "azurerm_subnet"
-  | "azurerm_subnet_route_table_association"
-  | "azurerm_virtual_machine"
-  | "azurerm_virtual_network_gateway_connection"
-  | "azurerm_virtual_network"
-  | "azurerm_virtual_network_gateway"
-  | "google_compute_network"
-  | "google_compute_subnetwork"
-  | "google_compute_vpn_gateway"
-  | "google_compute_vpn_tunnel"
-  | "google_compute_route"
-  | "google_compute_address"
-  | "google_compute_global_address"
-  | "google_compute_router"
-  | "google_compute_interconnect_attachment"
-  | "google_compute_ha_vpn_gateway"
-  | "google_compute_forwarding_rule"
-  | "google_compute_network_firewall_policy"
-  | "google_compute_network_firewall_policy_rule"
-  | "cloudflare_static_route"
-  | "cloudflare_ipsec_tunnel";
-export const OnRampsListResultItemPostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreviewResourceType =
-  /*@__PURE__*/ S.String;
-
-export interface OnRampsListResultItemPostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview {
-  id: string;
-  cloudType: OnRampsListResultItemPostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreviewCloudType;
-  detail: string;
-  name: string;
-  resourceType: OnRampsListResultItemPostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreviewResourceType;
-  title: string;
-}
-export const OnRampsListResultItemPostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-      cloudType:
-        OnRampsListResultItemPostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreviewCloudType.pipe(
-          T.Body("cloud_type"),
-        ),
-      detail: S.String,
-      name: S.String,
-      resourceType:
-        OnRampsListResultItemPostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreviewResourceType.pipe(
-          T.Body("resource_type"),
-        ),
-      title: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "OnRampsListResultItemPostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview",
-  }) as any as S.Schema<OnRampsListResultItemPostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview>;
-
-export interface OnRampsListResultItemPostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItem {
-  itemType: string;
-  resourcePreview: OnRampsListResultItemPostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview;
-}
-export const OnRampsListResultItemPostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      itemType: S.String.pipe(T.Body("item_type")),
-      resourcePreview:
-        OnRampsListResultItemPostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview.pipe(
-          T.Body("resource_preview"),
-        ),
-    }),
-  ).annotate({
-    identifier:
-      "OnRampsListResultItemPostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItem",
-  }) as any as S.Schema<OnRampsListResultItemPostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItem>;
-
-export type OnRampsListResultItemPostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnStringItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem;
-export const OnRampsListResultItemPostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnStringItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem;
-
-export type OnRampsListResultItemPostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewCloudType =
-  | "AWS"
-  | "AZURE"
-  | "GOOGLE"
-  | "CLOUDFLARE";
-export const OnRampsListResultItemPostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewCloudType =
-  /*@__PURE__*/ S.String;
-
-export type OnRampsListResultItemPostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewResourceType =
-  | "aws_customer_gateway"
-  | "aws_egress_only_internet_gateway"
-  | "aws_internet_gateway"
-  | "aws_instance"
-  | "aws_network_interface"
-  | "aws_route"
-  | "aws_route_table"
-  | "aws_route_table_association"
-  | "aws_subnet"
-  | "aws_vpc"
-  | "aws_vpc_ipv4_cidr_block_association"
-  | "aws_vpn_connection"
-  | "aws_vpn_connection_route"
-  | "aws_vpn_gateway"
-  | "aws_security_group"
-  | "aws_vpc_security_group_ingress_rule"
-  | "aws_vpc_security_group_egress_rule"
-  | "aws_ec2_managed_prefix_list"
-  | "aws_ec2_transit_gateway"
-  | "aws_ec2_transit_gateway_prefix_list_reference"
-  | "aws_ec2_transit_gateway_vpc_attachment"
-  | "azurerm_application_security_group"
-  | "azurerm_lb"
-  | "azurerm_lb_backend_address_pool"
-  | "azurerm_lb_nat_pool"
-  | "azurerm_lb_nat_rule"
-  | "azurerm_lb_rule"
-  | "azurerm_local_network_gateway"
-  | "azurerm_network_interface"
-  | "azurerm_network_interface_application_security_group_association"
-  | "azurerm_network_interface_backend_address_pool_association"
-  | "azurerm_network_interface_security_group_association"
-  | "azurerm_network_security_group"
-  | "azurerm_public_ip"
-  | "azurerm_route"
-  | "azurerm_route_table"
-  | "azurerm_subnet"
-  | "azurerm_subnet_route_table_association"
-  | "azurerm_virtual_machine"
-  | "azurerm_virtual_network_gateway_connection"
-  | "azurerm_virtual_network"
-  | "azurerm_virtual_network_gateway"
-  | "google_compute_network"
-  | "google_compute_subnetwork"
-  | "google_compute_vpn_gateway"
-  | "google_compute_vpn_tunnel"
-  | "google_compute_route"
-  | "google_compute_address"
-  | "google_compute_global_address"
-  | "google_compute_router"
-  | "google_compute_interconnect_attachment"
-  | "google_compute_ha_vpn_gateway"
-  | "google_compute_forwarding_rule"
-  | "google_compute_network_firewall_policy"
-  | "google_compute_network_firewall_policy_rule"
-  | "cloudflare_static_route"
-  | "cloudflare_ipsec_tunnel";
-export const OnRampsListResultItemPostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewResourceType =
-  /*@__PURE__*/ S.String;
-
-export interface OnRampsListResultItemPostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview {
-  id: string;
-  cloudType: OnRampsListResultItemPostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewCloudType;
-  detail: string;
-  name: string;
-  resourceType: OnRampsListResultItemPostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewResourceType;
-  title: string;
-}
-export const OnRampsListResultItemPostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-      cloudType:
-        OnRampsListResultItemPostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewCloudType.pipe(
-          T.Body("cloud_type"),
-        ),
-      detail: S.String,
-      name: S.String,
-      resourceType:
-        OnRampsListResultItemPostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewResourceType.pipe(
-          T.Body("resource_type"),
-        ),
-      title: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "OnRampsListResultItemPostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview",
-  }) as any as S.Schema<OnRampsListResultItemPostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview>;
-
-export interface OnRampsListResultItemPostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItem {
-  itemType: string;
-  resourcePreview: OnRampsListResultItemPostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview;
-}
-export const OnRampsListResultItemPostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      itemType: S.String.pipe(T.Body("item_type")),
-      resourcePreview:
-        OnRampsListResultItemPostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview.pipe(
-          T.Body("resource_preview"),
-        ),
-    }),
-  ).annotate({
-    identifier:
-      "OnRampsListResultItemPostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItem",
-  }) as any as S.Schema<OnRampsListResultItemPostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItem>;
-
-export type OnRampsListResultItemPostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItem =
-  | OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem
-  | OnRampsListResultItemPostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItem;
-export const OnRampsListResultItemPostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItem =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["itemType", "string"],
-      ["itemType", "resourcePreview"],
-    ]),
-  );
-
-export type OnRampsListResultItemPostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListList =
-  Array<OnRampsListResultItemPostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItem>;
-export const OnRampsListResultItemPostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListList =
+export type OnRampsListResultItemPostApplyResourcesSectionsItemHiddenItemsList =
+  Array<OnRampsCreateResponsePostApplyResourcesSectionsItemHiddenItemsItem>;
+export const OnRampsListResultItemPostApplyResourcesSectionsItemHiddenItemsList =
   /*@__PURE__*/ S.Array(
-    OnRampsListResultItemPostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItem,
-  ) as any as S.Schema<OnRampsListResultItemPostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListList>;
+    OnRampsCreateResponsePostApplyResourcesSectionsItemHiddenItemsItem,
+  ) as any as S.Schema<OnRampsListResultItemPostApplyResourcesSectionsItemHiddenItemsList>;
 
-export interface OnRampsListResultItemPostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItem {
-  itemType: string;
-  list: OnRampsListResultItemPostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListList;
-}
-export const OnRampsListResultItemPostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      itemType: S.String.pipe(T.Body("item_type")),
-      list: OnRampsListResultItemPostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListList,
-    }),
-  ).annotate({
-    identifier:
-      "OnRampsListResultItemPostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItem",
-  }) as any as S.Schema<OnRampsListResultItemPostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItem>;
+export type OnRampsListResultItemPostApplyResourcesSectionsItemVisibleItemsItem =
+  OnRampsCreateResponsePostApplyResourcesSectionsItemHiddenItemsItem;
+export const OnRampsListResultItemPostApplyResourcesSectionsItemVisibleItemsItem =
+  OnRampsCreateResponsePostApplyResourcesSectionsItemHiddenItemsItem;
 
-export type OnRampsListResultItemPostApplyResourcesValueSectionsItemHiddenItemsItemValue =
-  | OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem
-  | OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlItem
-  | OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlDiffItem
-  | OnRampsListResultItemPostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItem
-  | OnRampsListResultItemPostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItem;
-export const OnRampsListResultItemPostApplyResourcesValueSectionsItemHiddenItemsItemValue =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["itemType", "string"],
-      ["itemType", "yaml"],
-      ["itemType", "yamlDiff"],
-      ["itemType", "resourcePreview"],
-      ["itemType", "list"],
-    ]),
-  );
-
-export interface OnRampsListResultItemPostApplyResourcesValueSectionsItemHiddenItemsItem {
-  helpText?: string | null;
-  name?: string | null;
-  value?: OnRampsListResultItemPostApplyResourcesValueSectionsItemHiddenItemsItemValue | null;
-}
-export const OnRampsListResultItemPostApplyResourcesValueSectionsItemHiddenItemsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      helpText: S.optional(S.NullOr(S.String)),
-      name: S.optional(S.NullOr(S.String)),
-      value: S.optional(
-        S.NullOr(
-          OnRampsListResultItemPostApplyResourcesValueSectionsItemHiddenItemsItemValue,
-        ),
-      ),
-    }),
-  ).annotate({
-    identifier:
-      "OnRampsListResultItemPostApplyResourcesValueSectionsItemHiddenItemsItem",
-  }) as any as S.Schema<OnRampsListResultItemPostApplyResourcesValueSectionsItemHiddenItemsItem>;
-
-export type OnRampsListResultItemPostApplyResourcesValueSectionsItemHiddenItemsList =
-  Array<OnRampsListResultItemPostApplyResourcesValueSectionsItemHiddenItemsItem>;
-export const OnRampsListResultItemPostApplyResourcesValueSectionsItemHiddenItemsList =
+export type OnRampsListResultItemPostApplyResourcesSectionsItemVisibleItemsList =
+  Array<OnRampsCreateResponsePostApplyResourcesSectionsItemHiddenItemsItem>;
+export const OnRampsListResultItemPostApplyResourcesSectionsItemVisibleItemsList =
   /*@__PURE__*/ S.Array(
-    OnRampsListResultItemPostApplyResourcesValueSectionsItemHiddenItemsItem,
-  ) as any as S.Schema<OnRampsListResultItemPostApplyResourcesValueSectionsItemHiddenItemsList>;
+    OnRampsCreateResponsePostApplyResourcesSectionsItemHiddenItemsItem,
+  ) as any as S.Schema<OnRampsListResultItemPostApplyResourcesSectionsItemVisibleItemsList>;
 
-export type OnRampsListResultItemPostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnStringItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem;
-export const OnRampsListResultItemPostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnStringItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem;
-
-export type OnRampsListResultItemPostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnYamlItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlItem;
-export const OnRampsListResultItemPostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnYamlItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlItem;
-
-export type OnRampsListResultItemPostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnYamlDiffItemYamlDiff =
-  OnRampsCreateResponsePlannedResourcesItemDiff;
-export const OnRampsListResultItemPostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnYamlDiffItemYamlDiff =
-  OnRampsCreateResponsePlannedResourcesItemDiff;
-
-export type OnRampsListResultItemPostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnYamlDiffItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlDiffItem;
-export const OnRampsListResultItemPostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnYamlDiffItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlDiffItem;
-
-export type OnRampsListResultItemPostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreviewCloudType =
-  | "AWS"
-  | "AZURE"
-  | "GOOGLE"
-  | "CLOUDFLARE";
-export const OnRampsListResultItemPostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreviewCloudType =
-  /*@__PURE__*/ S.String;
-
-export type OnRampsListResultItemPostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreviewResourceType =
-  | "aws_customer_gateway"
-  | "aws_egress_only_internet_gateway"
-  | "aws_internet_gateway"
-  | "aws_instance"
-  | "aws_network_interface"
-  | "aws_route"
-  | "aws_route_table"
-  | "aws_route_table_association"
-  | "aws_subnet"
-  | "aws_vpc"
-  | "aws_vpc_ipv4_cidr_block_association"
-  | "aws_vpn_connection"
-  | "aws_vpn_connection_route"
-  | "aws_vpn_gateway"
-  | "aws_security_group"
-  | "aws_vpc_security_group_ingress_rule"
-  | "aws_vpc_security_group_egress_rule"
-  | "aws_ec2_managed_prefix_list"
-  | "aws_ec2_transit_gateway"
-  | "aws_ec2_transit_gateway_prefix_list_reference"
-  | "aws_ec2_transit_gateway_vpc_attachment"
-  | "azurerm_application_security_group"
-  | "azurerm_lb"
-  | "azurerm_lb_backend_address_pool"
-  | "azurerm_lb_nat_pool"
-  | "azurerm_lb_nat_rule"
-  | "azurerm_lb_rule"
-  | "azurerm_local_network_gateway"
-  | "azurerm_network_interface"
-  | "azurerm_network_interface_application_security_group_association"
-  | "azurerm_network_interface_backend_address_pool_association"
-  | "azurerm_network_interface_security_group_association"
-  | "azurerm_network_security_group"
-  | "azurerm_public_ip"
-  | "azurerm_route"
-  | "azurerm_route_table"
-  | "azurerm_subnet"
-  | "azurerm_subnet_route_table_association"
-  | "azurerm_virtual_machine"
-  | "azurerm_virtual_network_gateway_connection"
-  | "azurerm_virtual_network"
-  | "azurerm_virtual_network_gateway"
-  | "google_compute_network"
-  | "google_compute_subnetwork"
-  | "google_compute_vpn_gateway"
-  | "google_compute_vpn_tunnel"
-  | "google_compute_route"
-  | "google_compute_address"
-  | "google_compute_global_address"
-  | "google_compute_router"
-  | "google_compute_interconnect_attachment"
-  | "google_compute_ha_vpn_gateway"
-  | "google_compute_forwarding_rule"
-  | "google_compute_network_firewall_policy"
-  | "google_compute_network_firewall_policy_rule"
-  | "cloudflare_static_route"
-  | "cloudflare_ipsec_tunnel";
-export const OnRampsListResultItemPostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreviewResourceType =
-  /*@__PURE__*/ S.String;
-
-export interface OnRampsListResultItemPostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreview {
-  id: string;
-  cloudType: OnRampsListResultItemPostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreviewCloudType;
-  detail: string;
+export interface OnRampsListResultItemPostApplyResourcesSectionsItem {
+  hiddenItems: OnRampsListResultItemPostApplyResourcesSectionsItemHiddenItemsList;
   name: string;
-  resourceType: OnRampsListResultItemPostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreviewResourceType;
-  title: string;
-}
-export const OnRampsListResultItemPostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreview =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-      cloudType:
-        OnRampsListResultItemPostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreviewCloudType.pipe(
-          T.Body("cloud_type"),
-        ),
-      detail: S.String,
-      name: S.String,
-      resourceType:
-        OnRampsListResultItemPostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreviewResourceType.pipe(
-          T.Body("resource_type"),
-        ),
-      title: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "OnRampsListResultItemPostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreview",
-  }) as any as S.Schema<OnRampsListResultItemPostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreview>;
-
-export interface OnRampsListResultItemPostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItem {
-  itemType: string;
-  resourcePreview: OnRampsListResultItemPostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreview;
-}
-export const OnRampsListResultItemPostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      itemType: S.String.pipe(T.Body("item_type")),
-      resourcePreview:
-        OnRampsListResultItemPostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreview.pipe(
-          T.Body("resource_preview"),
-        ),
-    }),
-  ).annotate({
-    identifier:
-      "OnRampsListResultItemPostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItem",
-  }) as any as S.Schema<OnRampsListResultItemPostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItem>;
-
-export type OnRampsListResultItemPostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnStringItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem;
-export const OnRampsListResultItemPostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnStringItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem;
-
-export type OnRampsListResultItemPostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewCloudType =
-  | "AWS"
-  | "AZURE"
-  | "GOOGLE"
-  | "CLOUDFLARE";
-export const OnRampsListResultItemPostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewCloudType =
-  /*@__PURE__*/ S.String;
-
-export type OnRampsListResultItemPostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewResourceType =
-  | "aws_customer_gateway"
-  | "aws_egress_only_internet_gateway"
-  | "aws_internet_gateway"
-  | "aws_instance"
-  | "aws_network_interface"
-  | "aws_route"
-  | "aws_route_table"
-  | "aws_route_table_association"
-  | "aws_subnet"
-  | "aws_vpc"
-  | "aws_vpc_ipv4_cidr_block_association"
-  | "aws_vpn_connection"
-  | "aws_vpn_connection_route"
-  | "aws_vpn_gateway"
-  | "aws_security_group"
-  | "aws_vpc_security_group_ingress_rule"
-  | "aws_vpc_security_group_egress_rule"
-  | "aws_ec2_managed_prefix_list"
-  | "aws_ec2_transit_gateway"
-  | "aws_ec2_transit_gateway_prefix_list_reference"
-  | "aws_ec2_transit_gateway_vpc_attachment"
-  | "azurerm_application_security_group"
-  | "azurerm_lb"
-  | "azurerm_lb_backend_address_pool"
-  | "azurerm_lb_nat_pool"
-  | "azurerm_lb_nat_rule"
-  | "azurerm_lb_rule"
-  | "azurerm_local_network_gateway"
-  | "azurerm_network_interface"
-  | "azurerm_network_interface_application_security_group_association"
-  | "azurerm_network_interface_backend_address_pool_association"
-  | "azurerm_network_interface_security_group_association"
-  | "azurerm_network_security_group"
-  | "azurerm_public_ip"
-  | "azurerm_route"
-  | "azurerm_route_table"
-  | "azurerm_subnet"
-  | "azurerm_subnet_route_table_association"
-  | "azurerm_virtual_machine"
-  | "azurerm_virtual_network_gateway_connection"
-  | "azurerm_virtual_network"
-  | "azurerm_virtual_network_gateway"
-  | "google_compute_network"
-  | "google_compute_subnetwork"
-  | "google_compute_vpn_gateway"
-  | "google_compute_vpn_tunnel"
-  | "google_compute_route"
-  | "google_compute_address"
-  | "google_compute_global_address"
-  | "google_compute_router"
-  | "google_compute_interconnect_attachment"
-  | "google_compute_ha_vpn_gateway"
-  | "google_compute_forwarding_rule"
-  | "google_compute_network_firewall_policy"
-  | "google_compute_network_firewall_policy_rule"
-  | "cloudflare_static_route"
-  | "cloudflare_ipsec_tunnel";
-export const OnRampsListResultItemPostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewResourceType =
-  /*@__PURE__*/ S.String;
-
-export interface OnRampsListResultItemPostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview {
-  id: string;
-  cloudType: OnRampsListResultItemPostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewCloudType;
-  detail: string;
-  name: string;
-  resourceType: OnRampsListResultItemPostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewResourceType;
-  title: string;
-}
-export const OnRampsListResultItemPostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-      cloudType:
-        OnRampsListResultItemPostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewCloudType.pipe(
-          T.Body("cloud_type"),
-        ),
-      detail: S.String,
-      name: S.String,
-      resourceType:
-        OnRampsListResultItemPostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewResourceType.pipe(
-          T.Body("resource_type"),
-        ),
-      title: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "OnRampsListResultItemPostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview",
-  }) as any as S.Schema<OnRampsListResultItemPostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview>;
-
-export interface OnRampsListResultItemPostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItem {
-  itemType: string;
-  resourcePreview: OnRampsListResultItemPostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview;
-}
-export const OnRampsListResultItemPostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      itemType: S.String.pipe(T.Body("item_type")),
-      resourcePreview:
-        OnRampsListResultItemPostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview.pipe(
-          T.Body("resource_preview"),
-        ),
-    }),
-  ).annotate({
-    identifier:
-      "OnRampsListResultItemPostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItem",
-  }) as any as S.Schema<OnRampsListResultItemPostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItem>;
-
-export type OnRampsListResultItemPostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItem =
-  | OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem
-  | OnRampsListResultItemPostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItem;
-export const OnRampsListResultItemPostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItem =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["itemType", "string"],
-      ["itemType", "resourcePreview"],
-    ]),
-  );
-
-export type OnRampsListResultItemPostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListList =
-  Array<OnRampsListResultItemPostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItem>;
-export const OnRampsListResultItemPostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListList =
-  /*@__PURE__*/ S.Array(
-    OnRampsListResultItemPostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItem,
-  ) as any as S.Schema<OnRampsListResultItemPostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListList>;
-
-export interface OnRampsListResultItemPostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItem {
-  itemType: string;
-  list: OnRampsListResultItemPostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListList;
-}
-export const OnRampsListResultItemPostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      itemType: S.String.pipe(T.Body("item_type")),
-      list: OnRampsListResultItemPostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListList,
-    }),
-  ).annotate({
-    identifier:
-      "OnRampsListResultItemPostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItem",
-  }) as any as S.Schema<OnRampsListResultItemPostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItem>;
-
-export type OnRampsListResultItemPostApplyResourcesValueSectionsItemVisibleItemsItemValue =
-  | OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem
-  | OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlItem
-  | OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlDiffItem
-  | OnRampsListResultItemPostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItem
-  | OnRampsListResultItemPostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItem;
-export const OnRampsListResultItemPostApplyResourcesValueSectionsItemVisibleItemsItemValue =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["itemType", "string"],
-      ["itemType", "yaml"],
-      ["itemType", "yamlDiff"],
-      ["itemType", "resourcePreview"],
-      ["itemType", "list"],
-    ]),
-  );
-
-export interface OnRampsListResultItemPostApplyResourcesValueSectionsItemVisibleItemsItem {
-  helpText?: string | null;
-  name?: string | null;
-  value?: OnRampsListResultItemPostApplyResourcesValueSectionsItemVisibleItemsItemValue | null;
-}
-export const OnRampsListResultItemPostApplyResourcesValueSectionsItemVisibleItemsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      helpText: S.optional(S.NullOr(S.String)),
-      name: S.optional(S.NullOr(S.String)),
-      value: S.optional(
-        S.NullOr(
-          OnRampsListResultItemPostApplyResourcesValueSectionsItemVisibleItemsItemValue,
-        ),
-      ),
-    }),
-  ).annotate({
-    identifier:
-      "OnRampsListResultItemPostApplyResourcesValueSectionsItemVisibleItemsItem",
-  }) as any as S.Schema<OnRampsListResultItemPostApplyResourcesValueSectionsItemVisibleItemsItem>;
-
-export type OnRampsListResultItemPostApplyResourcesValueSectionsItemVisibleItemsList =
-  Array<OnRampsListResultItemPostApplyResourcesValueSectionsItemVisibleItemsItem>;
-export const OnRampsListResultItemPostApplyResourcesValueSectionsItemVisibleItemsList =
-  /*@__PURE__*/ S.Array(
-    OnRampsListResultItemPostApplyResourcesValueSectionsItemVisibleItemsItem,
-  ) as any as S.Schema<OnRampsListResultItemPostApplyResourcesValueSectionsItemVisibleItemsList>;
-
-export interface OnRampsListResultItemPostApplyResourcesValueSectionsItem {
-  hiddenItems: OnRampsListResultItemPostApplyResourcesValueSectionsItemHiddenItemsList;
-  name: string;
-  visibleItems: OnRampsListResultItemPostApplyResourcesValueSectionsItemVisibleItemsList;
+  visibleItems: OnRampsListResultItemPostApplyResourcesSectionsItemVisibleItemsList;
   helpText?: string | null;
 }
-export const OnRampsListResultItemPostApplyResourcesValueSectionsItem =
+export const OnRampsListResultItemPostApplyResourcesSectionsItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       hiddenItems:
-        OnRampsListResultItemPostApplyResourcesValueSectionsItemHiddenItemsList.pipe(
+        OnRampsListResultItemPostApplyResourcesSectionsItemHiddenItemsList.pipe(
           T.Body("hidden_items"),
         ),
       name: S.String,
       visibleItems:
-        OnRampsListResultItemPostApplyResourcesValueSectionsItemVisibleItemsList.pipe(
+        OnRampsListResultItemPostApplyResourcesSectionsItemVisibleItemsList.pipe(
           T.Body("visible_items"),
         ),
       helpText: S.optional(S.NullOr(S.String).pipe(T.Body("help_text"))),
     }),
   ).annotate({
-    identifier: "OnRampsListResultItemPostApplyResourcesValueSectionsItem",
-  }) as any as S.Schema<OnRampsListResultItemPostApplyResourcesValueSectionsItem>;
+    identifier: "OnRampsListResultItemPostApplyResourcesSectionsItem",
+  }) as any as S.Schema<OnRampsListResultItemPostApplyResourcesSectionsItem>;
 
-export type OnRampsListResultItemPostApplyResourcesValueSectionsList =
-  Array<OnRampsListResultItemPostApplyResourcesValueSectionsItem>;
-export const OnRampsListResultItemPostApplyResourcesValueSectionsList =
+export type OnRampsListResultItemPostApplyResourcesSectionsList =
+  Array<OnRampsListResultItemPostApplyResourcesSectionsItem>;
+export const OnRampsListResultItemPostApplyResourcesSectionsList =
   /*@__PURE__*/ S.Array(
-    OnRampsListResultItemPostApplyResourcesValueSectionsItem,
-  ) as any as S.Schema<OnRampsListResultItemPostApplyResourcesValueSectionsList>;
+    OnRampsListResultItemPostApplyResourcesSectionsItem,
+  ) as any as S.Schema<OnRampsListResultItemPostApplyResourcesSectionsList>;
 
-export type OnRampsListResultItemPostApplyResourcesValueStateMap = {
-  [key: string]: unknown | undefined;
-};
-export const OnRampsListResultItemPostApplyResourcesValueStateMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<OnRampsListResultItemPostApplyResourcesValueStateMap>;
-
-export type OnRampsListResultItemPostApplyResourcesValueTagsMap = {
-  [key: string]: string | undefined;
-};
-export const OnRampsListResultItemPostApplyResourcesValueTagsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<OnRampsListResultItemPostApplyResourcesValueTagsMap>;
-
-export type OnRampsListResultItemPostApplyResourcesValueManagedByItemClientType =
+export type OnRampsListResultItemPostApplyResourcesManagedByItemClientType =
   "MAGIC_WAN_CLOUD_ONRAMP";
-export const OnRampsListResultItemPostApplyResourcesValueManagedByItemClientType =
+export const OnRampsListResultItemPostApplyResourcesManagedByItemClientType =
   /*@__PURE__*/ S.String;
 
-export interface OnRampsListResultItemPostApplyResourcesValueManagedByItem {
+export interface OnRampsListResultItemPostApplyResourcesManagedByItem {
   id: string;
-  clientType: OnRampsListResultItemPostApplyResourcesValueManagedByItemClientType;
+  clientType: OnRampsListResultItemPostApplyResourcesManagedByItemClientType;
   name: string;
 }
-export const OnRampsListResultItemPostApplyResourcesValueManagedByItem =
+export const OnRampsListResultItemPostApplyResourcesManagedByItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       id: S.String,
       clientType:
-        OnRampsListResultItemPostApplyResourcesValueManagedByItemClientType.pipe(
+        OnRampsListResultItemPostApplyResourcesManagedByItemClientType.pipe(
           T.Body("client_type"),
         ),
       name: S.String,
     }),
   ).annotate({
-    identifier: "OnRampsListResultItemPostApplyResourcesValueManagedByItem",
-  }) as any as S.Schema<OnRampsListResultItemPostApplyResourcesValueManagedByItem>;
+    identifier: "OnRampsListResultItemPostApplyResourcesManagedByItem",
+  }) as any as S.Schema<OnRampsListResultItemPostApplyResourcesManagedByItem>;
 
-export type OnRampsListResultItemPostApplyResourcesValueManagedByList =
-  Array<OnRampsListResultItemPostApplyResourcesValueManagedByItem>;
-export const OnRampsListResultItemPostApplyResourcesValueManagedByList =
+export type OnRampsListResultItemPostApplyResourcesManagedByList =
+  Array<OnRampsListResultItemPostApplyResourcesManagedByItem>;
+export const OnRampsListResultItemPostApplyResourcesManagedByList =
   /*@__PURE__*/ S.Array(
-    OnRampsListResultItemPostApplyResourcesValueManagedByItem,
-  ) as any as S.Schema<OnRampsListResultItemPostApplyResourcesValueManagedByList>;
+    OnRampsListResultItemPostApplyResourcesManagedByItem,
+  ) as any as S.Schema<OnRampsListResultItemPostApplyResourcesManagedByList>;
 
-export interface OnRampsListResultItemPostApplyResourcesValue {
+export interface OnRampsListResultItemPostApplyResources {
   id: string;
   accountId: string;
-  cloudType: OnRampsListResultItemPostApplyResourcesValueCloudType;
-  config: OnRampsListResultItemPostApplyResourcesValueConfigMap;
+  cloudType: OnRampsListResultItemPostApplyResourcesCloudType;
+  config: unknown;
   deploymentProvider: string;
   managed: boolean;
   monthlyCostEstimate: OnRampsCreateResponsePostApplyMonthlyCostEstimate;
   name: string;
   nativeId: string;
-  observations: OnRampsListResultItemPostApplyResourcesValueObservationsMap;
-  providerIds: OnRampsListResultItemPostApplyResourcesValueProviderIdsList;
-  providerNamesById: OnRampsListResultItemPostApplyResourcesValueProviderNamesByIdMap;
+  observations: OnRampsCreateResponsePostApplyResourcesObservations;
+  providerIds: OnRampsListResultItemPostApplyResourcesProviderIdsList;
+  providerNamesById: unknown;
   region: string;
   resourceGroup: string;
-  resourceType: OnRampsListResultItemPostApplyResourcesValueResourceType;
-  sections: OnRampsListResultItemPostApplyResourcesValueSectionsList;
-  state: OnRampsListResultItemPostApplyResourcesValueStateMap;
-  tags: OnRampsListResultItemPostApplyResourcesValueTagsMap;
+  resourceType: string;
+  sections: OnRampsListResultItemPostApplyResourcesSectionsList;
+  state: unknown;
+  tags: unknown;
   updatedAt: string;
   url: string;
-  managedBy?: OnRampsListResultItemPostApplyResourcesValueManagedByList | null;
+  managedBy?: OnRampsListResultItemPostApplyResourcesManagedByList | null;
 }
-export const OnRampsListResultItemPostApplyResourcesValue =
-  /*@__PURE__*/ S.suspend(() =>
+export const OnRampsListResultItemPostApplyResources = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       id: S.String,
       accountId: S.String.pipe(T.Body("account_id")),
-      cloudType: OnRampsListResultItemPostApplyResourcesValueCloudType.pipe(
+      cloudType: OnRampsListResultItemPostApplyResourcesCloudType.pipe(
         T.Body("cloud_type"),
       ),
-      config: OnRampsListResultItemPostApplyResourcesValueConfigMap,
+      config: S.Unknown,
       deploymentProvider: S.String.pipe(T.Body("deployment_provider")),
       managed: S.Boolean,
       monthlyCostEstimate:
@@ -9516,64 +3416,33 @@ export const OnRampsListResultItemPostApplyResourcesValue =
         ),
       name: S.String,
       nativeId: S.String.pipe(T.Body("native_id")),
-      observations: OnRampsListResultItemPostApplyResourcesValueObservationsMap,
-      providerIds:
-        OnRampsListResultItemPostApplyResourcesValueProviderIdsList.pipe(
-          T.Body("provider_ids"),
-        ),
-      providerNamesById:
-        OnRampsListResultItemPostApplyResourcesValueProviderNamesByIdMap.pipe(
-          T.Body("provider_names_by_id"),
-        ),
+      observations: OnRampsCreateResponsePostApplyResourcesObservations,
+      providerIds: OnRampsListResultItemPostApplyResourcesProviderIdsList.pipe(
+        T.Body("provider_ids"),
+      ),
+      providerNamesById: S.Unknown.pipe(T.Body("provider_names_by_id")),
       region: S.String,
       resourceGroup: S.String.pipe(T.Body("resource_group")),
-      resourceType:
-        OnRampsListResultItemPostApplyResourcesValueResourceType.pipe(
-          T.Body("resource_type"),
-        ),
-      sections: OnRampsListResultItemPostApplyResourcesValueSectionsList,
-      state: OnRampsListResultItemPostApplyResourcesValueStateMap,
-      tags: OnRampsListResultItemPostApplyResourcesValueTagsMap,
+      resourceType: S.String.pipe(T.Body("resource_type")),
+      sections: OnRampsListResultItemPostApplyResourcesSectionsList,
+      state: S.Unknown,
+      tags: S.Unknown,
       updatedAt: S.String.pipe(T.Body("updated_at")),
       url: S.String,
       managedBy: S.optional(
-        S.NullOr(
-          OnRampsListResultItemPostApplyResourcesValueManagedByList,
-        ).pipe(T.Body("managed_by")),
+        S.NullOr(OnRampsListResultItemPostApplyResourcesManagedByList).pipe(
+          T.Body("managed_by"),
+        ),
       ),
     }),
-  ).annotate({
-    identifier: "OnRampsListResultItemPostApplyResourcesValue",
-  }) as any as S.Schema<OnRampsListResultItemPostApplyResourcesValue>;
-
-export type OnRampsListResultItemPostApplyResourcesMap = {
-  [key: string]: OnRampsListResultItemPostApplyResourcesValue | undefined;
-};
-export const OnRampsListResultItemPostApplyResourcesMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    OnRampsListResultItemPostApplyResourcesValue,
-  ) as any as S.Schema<OnRampsListResultItemPostApplyResourcesMap>;
+).annotate({
+  identifier: "OnRampsListResultItemPostApplyResources",
+}) as any as S.Schema<OnRampsListResultItemPostApplyResources>;
 
 export type OnRampsListResultItemStatusApplyProgress =
   OnRampsCreateResponseStatusApplyProgress;
 export const OnRampsListResultItemStatusApplyProgress =
   OnRampsCreateResponseStatusApplyProgress;
-
-export type OnRampsListResultItemStatusLifecycleState =
-  | "OnrampNeedsApply"
-  | "OnrampPendingPlan"
-  | "OnrampPlanning"
-  | "OnrampPlanFailed"
-  | "OnrampPendingApproval"
-  | "OnrampPendingApply"
-  | "OnrampApplying"
-  | "OnrampApplyFailed"
-  | "OnrampActive"
-  | "OnrampPendingDestroy"
-  | "OnrampDestroying"
-  | "OnrampDestroyFailed";
-export const OnRampsListResultItemStatusLifecycleState = /*@__PURE__*/ S.String;
 
 export type OnRampsListResultItemStatusPlanProgress =
   OnRampsCreateResponseStatusApplyProgress;
@@ -9590,229 +3459,42 @@ export const OnRampsListResultItemStatusTunnelsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<OnRampsListResultItemStatusTunnelsList>;
 
-export type OnRampsListResultItemStatusLifecycleErrorsValueCode =
-  | 1001
-  | 1002
-  | 1003
-  | 1004
-  | 1005
-  | 1006
-  | 1007
-  | 1008
-  | 1009
-  | 1010
-  | 1011
-  | 1012
-  | 1013
-  | 1014
-  | 1015
-  | 1016
-  | 1017
-  | 1018
-  | 2001
-  | 2002
-  | 2003
-  | 2004
-  | 2005
-  | 2006
-  | 2007
-  | 2008
-  | 2009
-  | 2010
-  | 2011
-  | 2012
-  | 2013
-  | 2014
-  | 2015
-  | 2016
-  | 2017
-  | 2018
-  | 2019
-  | 2020
-  | 2021
-  | 2022
-  | 3001
-  | 3002
-  | 3003
-  | 3004
-  | 3005
-  | 3006
-  | 3007
-  | 4001
-  | 4002
-  | 4003
-  | 4004
-  | 4005
-  | 4006
-  | 4007
-  | 4008
-  | 4009
-  | 4010
-  | 4011
-  | 4012
-  | 4013
-  | 4014
-  | 4015
-  | 4016
-  | 4017
-  | 4018
-  | 4019
-  | 4020
-  | 4021
-  | 4022
-  | 4023
-  | 5001
-  | 5002
-  | 5003
-  | 5004
-  | 102000
-  | 102001
-  | 102002
-  | 102003
-  | 102004
-  | 102005
-  | 102006
-  | 102007
-  | 102008
-  | 102009
-  | 102010
-  | 102011
-  | 102012
-  | 102013
-  | 102014
-  | 102015
-  | 102016
-  | 102017
-  | 102018
-  | 102019
-  | 102020
-  | 102021
-  | 102022
-  | 102023
-  | 102024
-  | 102025
-  | 102026
-  | 102027
-  | 102028
-  | 102029
-  | 102030
-  | 102031
-  | 102032
-  | 102033
-  | 102034
-  | 102035
-  | 102036
-  | 102037
-  | 102038
-  | 102039
-  | 102040
-  | 102041
-  | 102042
-  | 102043
-  | 102044
-  | 102045
-  | 102046
-  | 102047
-  | 102048
-  | 102049
-  | 102050
-  | 102051
-  | 102052
-  | 102053
-  | 102054
-  | 102055
-  | 102056
-  | 102057
-  | 102058
-  | 102059
-  | 102060
-  | 102061
-  | 102062
-  | 102063
-  | 102064
-  | 102065
-  | 102066
-  | 102067
-  | 102068
-  | 102069
-  | 102070
-  | 102071
-  | 102072
-  | 103001
-  | 103002
-  | 103003
-  | 103004
-  | 103005
-  | 103006
-  | 103007
-  | 103008;
-export const OnRampsListResultItemStatusLifecycleErrorsValueCode =
-  /*@__PURE__*/ S.Number;
+export type OnRampsListResultItemStatusLifecycleErrorsMeta =
+  CatalogSyncsCreateResponseErrorsMeta;
+export const OnRampsListResultItemStatusLifecycleErrorsMeta =
+  CatalogSyncsCreateResponseErrorsMeta;
 
-export type OnRampsListResultItemStatusLifecycleErrorsValueMeta =
-  CatalogSyncsCreateResponseErrorsValueMeta;
-export const OnRampsListResultItemStatusLifecycleErrorsValueMeta =
-  CatalogSyncsCreateResponseErrorsValueMeta;
+export type OnRampsListResultItemStatusLifecycleErrorsSource =
+  CatalogSyncsCreateResponseErrorsSource;
+export const OnRampsListResultItemStatusLifecycleErrorsSource =
+  CatalogSyncsCreateResponseErrorsSource;
 
-export type OnRampsListResultItemStatusLifecycleErrorsValueSource =
-  CatalogSyncsCreateResponseErrorsValueSource;
-export const OnRampsListResultItemStatusLifecycleErrorsValueSource =
-  CatalogSyncsCreateResponseErrorsValueSource;
-
-export interface OnRampsListResultItemStatusLifecycleErrorsValue {
-  code: OnRampsListResultItemStatusLifecycleErrorsValueCode;
-  message: string;
-  documentationUrl?: string | null;
-  meta?: CatalogSyncsCreateResponseErrorsValueMeta | null;
-  source?: CatalogSyncsCreateResponseErrorsValueSource | null;
-}
-export const OnRampsListResultItemStatusLifecycleErrorsValue =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      code: OnRampsListResultItemStatusLifecycleErrorsValueCode,
-      message: S.String,
-      documentationUrl: S.optional(
-        S.NullOr(S.String).pipe(T.Body("documentation_url")),
-      ),
-      meta: S.optional(S.NullOr(CatalogSyncsCreateResponseErrorsValueMeta)),
-      source: S.optional(S.NullOr(CatalogSyncsCreateResponseErrorsValueSource)),
-    }),
-  ).annotate({
-    identifier: "OnRampsListResultItemStatusLifecycleErrorsValue",
-  }) as any as S.Schema<OnRampsListResultItemStatusLifecycleErrorsValue>;
-
-export type OnRampsListResultItemStatusLifecycleErrorsMap = {
-  [key: string]: OnRampsListResultItemStatusLifecycleErrorsValue | undefined;
-};
-export const OnRampsListResultItemStatusLifecycleErrorsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    OnRampsListResultItemStatusLifecycleErrorsValue,
-  ) as any as S.Schema<OnRampsListResultItemStatusLifecycleErrorsMap>;
+export type OnRampsListResultItemStatusLifecycleErrors =
+  CatalogSyncsCreateResponseErrors;
+export const OnRampsListResultItemStatusLifecycleErrors =
+  CatalogSyncsCreateResponseErrors;
 
 export interface OnRampsListResultItemStatus {
   applyProgress: OnRampsCreateResponseStatusApplyProgress;
-  lifecycleState: OnRampsListResultItemStatusLifecycleState;
+  lifecycleState: string;
   planProgress: OnRampsCreateResponseStatusApplyProgress;
   routes: OnRampsListResultItemStatusRoutesList;
   tunnels: OnRampsListResultItemStatusTunnelsList;
-  lifecycleErrors?: OnRampsListResultItemStatusLifecycleErrorsMap | null;
+  lifecycleErrors?: CatalogSyncsCreateResponseErrors | null;
 }
 export const OnRampsListResultItemStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     applyProgress: OnRampsCreateResponseStatusApplyProgress.pipe(
       T.Body("apply_progress"),
     ),
-    lifecycleState: OnRampsListResultItemStatusLifecycleState.pipe(
-      T.Body("lifecycle_state"),
-    ),
+    lifecycleState: S.String.pipe(T.Body("lifecycle_state")),
     planProgress: OnRampsCreateResponseStatusApplyProgress.pipe(
       T.Body("plan_progress"),
     ),
     routes: OnRampsListResultItemStatusRoutesList,
     tunnels: OnRampsListResultItemStatusTunnelsList,
     lifecycleErrors: S.optional(
-      S.NullOr(OnRampsListResultItemStatusLifecycleErrorsMap).pipe(
+      S.NullOr(CatalogSyncsCreateResponseErrors).pipe(
         T.Body("lifecycle_errors"),
       ),
     ),
@@ -9821,899 +3503,143 @@ export const OnRampsListResultItemStatus = /*@__PURE__*/ S.suspend(() =>
   identifier: "OnRampsListResultItemStatus",
 }) as any as S.Schema<OnRampsListResultItemStatus>;
 
-export type OnRampsListResultItemVpcsByIdValueCloudType =
+export type OnRampsListResultItemVpcsByIdCloudType =
   | "AWS"
   | "AZURE"
   | "GOOGLE"
   | "CLOUDFLARE";
-export const OnRampsListResultItemVpcsByIdValueCloudType =
-  /*@__PURE__*/ S.String;
+export const OnRampsListResultItemVpcsByIdCloudType = /*@__PURE__*/ S.String;
 
-export type OnRampsListResultItemVpcsByIdValueConfigMap = {
-  [key: string]: unknown | undefined;
-};
-export const OnRampsListResultItemVpcsByIdValueConfigMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<OnRampsListResultItemVpcsByIdValueConfigMap>;
-
-export type OnRampsListResultItemVpcsByIdValueMonthlyCostEstimate =
+export type OnRampsListResultItemVpcsByIdMonthlyCostEstimate =
   OnRampsCreateResponsePostApplyMonthlyCostEstimate;
-export const OnRampsListResultItemVpcsByIdValueMonthlyCostEstimate =
+export const OnRampsListResultItemVpcsByIdMonthlyCostEstimate =
   OnRampsCreateResponsePostApplyMonthlyCostEstimate;
 
-export type OnRampsListResultItemVpcsByIdValueObservationsValue =
-  OnRampsCreateResponsePostApplyResourcesValueObservationsValue;
-export const OnRampsListResultItemVpcsByIdValueObservationsValue =
-  OnRampsCreateResponsePostApplyResourcesValueObservationsValue;
+export type OnRampsListResultItemVpcsByIdObservations =
+  OnRampsCreateResponsePostApplyResourcesObservations;
+export const OnRampsListResultItemVpcsByIdObservations =
+  OnRampsCreateResponsePostApplyResourcesObservations;
 
-export type OnRampsListResultItemVpcsByIdValueObservationsMap = {
-  [key: string]:
-    | OnRampsCreateResponsePostApplyResourcesValueObservationsValue
-    | undefined;
-};
-export const OnRampsListResultItemVpcsByIdValueObservationsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    OnRampsCreateResponsePostApplyResourcesValueObservationsValue,
-  ) as any as S.Schema<OnRampsListResultItemVpcsByIdValueObservationsMap>;
-
-export type OnRampsListResultItemVpcsByIdValueProviderIdsList = Array<string>;
-export const OnRampsListResultItemVpcsByIdValueProviderIdsList =
+export type OnRampsListResultItemVpcsByIdProviderIdsList = Array<string>;
+export const OnRampsListResultItemVpcsByIdProviderIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
-  ) as any as S.Schema<OnRampsListResultItemVpcsByIdValueProviderIdsList>;
+  ) as any as S.Schema<OnRampsListResultItemVpcsByIdProviderIdsList>;
 
-export type OnRampsListResultItemVpcsByIdValueProviderNamesByIdMap = {
-  [key: string]: string | undefined;
-};
-export const OnRampsListResultItemVpcsByIdValueProviderNamesByIdMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<OnRampsListResultItemVpcsByIdValueProviderNamesByIdMap>;
+export type OnRampsListResultItemVpcsByIdSectionsItemHiddenItemsItem =
+  OnRampsCreateResponsePostApplyResourcesSectionsItemHiddenItemsItem;
+export const OnRampsListResultItemVpcsByIdSectionsItemHiddenItemsItem =
+  OnRampsCreateResponsePostApplyResourcesSectionsItemHiddenItemsItem;
 
-export type OnRampsListResultItemVpcsByIdValueResourceType =
-  | "aws_customer_gateway"
-  | "aws_egress_only_internet_gateway"
-  | "aws_internet_gateway"
-  | "aws_instance"
-  | "aws_network_interface"
-  | "aws_route"
-  | "aws_route_table"
-  | "aws_route_table_association"
-  | "aws_subnet"
-  | "aws_vpc"
-  | "aws_vpc_ipv4_cidr_block_association"
-  | "aws_vpn_connection"
-  | "aws_vpn_connection_route"
-  | "aws_vpn_gateway"
-  | "aws_security_group"
-  | "aws_vpc_security_group_ingress_rule"
-  | "aws_vpc_security_group_egress_rule"
-  | "aws_ec2_managed_prefix_list"
-  | "aws_ec2_transit_gateway"
-  | "aws_ec2_transit_gateway_prefix_list_reference"
-  | "aws_ec2_transit_gateway_vpc_attachment"
-  | "azurerm_application_security_group"
-  | "azurerm_lb"
-  | "azurerm_lb_backend_address_pool"
-  | "azurerm_lb_nat_pool"
-  | "azurerm_lb_nat_rule"
-  | "azurerm_lb_rule"
-  | "azurerm_local_network_gateway"
-  | "azurerm_network_interface"
-  | "azurerm_network_interface_application_security_group_association"
-  | "azurerm_network_interface_backend_address_pool_association"
-  | "azurerm_network_interface_security_group_association"
-  | "azurerm_network_security_group"
-  | "azurerm_public_ip"
-  | "azurerm_route"
-  | "azurerm_route_table"
-  | "azurerm_subnet"
-  | "azurerm_subnet_route_table_association"
-  | "azurerm_virtual_machine"
-  | "azurerm_virtual_network_gateway_connection"
-  | "azurerm_virtual_network"
-  | "azurerm_virtual_network_gateway"
-  | "google_compute_network"
-  | "google_compute_subnetwork"
-  | "google_compute_vpn_gateway"
-  | "google_compute_vpn_tunnel"
-  | "google_compute_route"
-  | "google_compute_address"
-  | "google_compute_global_address"
-  | "google_compute_router"
-  | "google_compute_interconnect_attachment"
-  | "google_compute_ha_vpn_gateway"
-  | "google_compute_forwarding_rule"
-  | "google_compute_network_firewall_policy"
-  | "google_compute_network_firewall_policy_rule"
-  | "cloudflare_static_route"
-  | "cloudflare_ipsec_tunnel";
-export const OnRampsListResultItemVpcsByIdValueResourceType =
-  /*@__PURE__*/ S.String;
-
-export type OnRampsListResultItemVpcsByIdValueSectionsItemHiddenItemsItemValueMcnStringItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem;
-export const OnRampsListResultItemVpcsByIdValueSectionsItemHiddenItemsItemValueMcnStringItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem;
-
-export type OnRampsListResultItemVpcsByIdValueSectionsItemHiddenItemsItemValueMcnYamlItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlItem;
-export const OnRampsListResultItemVpcsByIdValueSectionsItemHiddenItemsItemValueMcnYamlItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlItem;
-
-export type OnRampsListResultItemVpcsByIdValueSectionsItemHiddenItemsItemValueMcnYamlDiffItemYamlDiff =
-  OnRampsCreateResponsePlannedResourcesItemDiff;
-export const OnRampsListResultItemVpcsByIdValueSectionsItemHiddenItemsItemValueMcnYamlDiffItemYamlDiff =
-  OnRampsCreateResponsePlannedResourcesItemDiff;
-
-export type OnRampsListResultItemVpcsByIdValueSectionsItemHiddenItemsItemValueMcnYamlDiffItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlDiffItem;
-export const OnRampsListResultItemVpcsByIdValueSectionsItemHiddenItemsItemValueMcnYamlDiffItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlDiffItem;
-
-export type OnRampsListResultItemVpcsByIdValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreviewCloudType =
-  | "AWS"
-  | "AZURE"
-  | "GOOGLE"
-  | "CLOUDFLARE";
-export const OnRampsListResultItemVpcsByIdValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreviewCloudType =
-  /*@__PURE__*/ S.String;
-
-export type OnRampsListResultItemVpcsByIdValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreviewResourceType =
-  | "aws_customer_gateway"
-  | "aws_egress_only_internet_gateway"
-  | "aws_internet_gateway"
-  | "aws_instance"
-  | "aws_network_interface"
-  | "aws_route"
-  | "aws_route_table"
-  | "aws_route_table_association"
-  | "aws_subnet"
-  | "aws_vpc"
-  | "aws_vpc_ipv4_cidr_block_association"
-  | "aws_vpn_connection"
-  | "aws_vpn_connection_route"
-  | "aws_vpn_gateway"
-  | "aws_security_group"
-  | "aws_vpc_security_group_ingress_rule"
-  | "aws_vpc_security_group_egress_rule"
-  | "aws_ec2_managed_prefix_list"
-  | "aws_ec2_transit_gateway"
-  | "aws_ec2_transit_gateway_prefix_list_reference"
-  | "aws_ec2_transit_gateway_vpc_attachment"
-  | "azurerm_application_security_group"
-  | "azurerm_lb"
-  | "azurerm_lb_backend_address_pool"
-  | "azurerm_lb_nat_pool"
-  | "azurerm_lb_nat_rule"
-  | "azurerm_lb_rule"
-  | "azurerm_local_network_gateway"
-  | "azurerm_network_interface"
-  | "azurerm_network_interface_application_security_group_association"
-  | "azurerm_network_interface_backend_address_pool_association"
-  | "azurerm_network_interface_security_group_association"
-  | "azurerm_network_security_group"
-  | "azurerm_public_ip"
-  | "azurerm_route"
-  | "azurerm_route_table"
-  | "azurerm_subnet"
-  | "azurerm_subnet_route_table_association"
-  | "azurerm_virtual_machine"
-  | "azurerm_virtual_network_gateway_connection"
-  | "azurerm_virtual_network"
-  | "azurerm_virtual_network_gateway"
-  | "google_compute_network"
-  | "google_compute_subnetwork"
-  | "google_compute_vpn_gateway"
-  | "google_compute_vpn_tunnel"
-  | "google_compute_route"
-  | "google_compute_address"
-  | "google_compute_global_address"
-  | "google_compute_router"
-  | "google_compute_interconnect_attachment"
-  | "google_compute_ha_vpn_gateway"
-  | "google_compute_forwarding_rule"
-  | "google_compute_network_firewall_policy"
-  | "google_compute_network_firewall_policy_rule"
-  | "cloudflare_static_route"
-  | "cloudflare_ipsec_tunnel";
-export const OnRampsListResultItemVpcsByIdValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreviewResourceType =
-  /*@__PURE__*/ S.String;
-
-export interface OnRampsListResultItemVpcsByIdValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview {
-  id: string;
-  cloudType: OnRampsListResultItemVpcsByIdValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreviewCloudType;
-  detail: string;
-  name: string;
-  resourceType: OnRampsListResultItemVpcsByIdValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreviewResourceType;
-  title: string;
-}
-export const OnRampsListResultItemVpcsByIdValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-      cloudType:
-        OnRampsListResultItemVpcsByIdValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreviewCloudType.pipe(
-          T.Body("cloud_type"),
-        ),
-      detail: S.String,
-      name: S.String,
-      resourceType:
-        OnRampsListResultItemVpcsByIdValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreviewResourceType.pipe(
-          T.Body("resource_type"),
-        ),
-      title: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "OnRampsListResultItemVpcsByIdValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview",
-  }) as any as S.Schema<OnRampsListResultItemVpcsByIdValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview>;
-
-export interface OnRampsListResultItemVpcsByIdValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItem {
-  itemType: string;
-  resourcePreview: OnRampsListResultItemVpcsByIdValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview;
-}
-export const OnRampsListResultItemVpcsByIdValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      itemType: S.String.pipe(T.Body("item_type")),
-      resourcePreview:
-        OnRampsListResultItemVpcsByIdValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview.pipe(
-          T.Body("resource_preview"),
-        ),
-    }),
-  ).annotate({
-    identifier:
-      "OnRampsListResultItemVpcsByIdValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItem",
-  }) as any as S.Schema<OnRampsListResultItemVpcsByIdValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItem>;
-
-export type OnRampsListResultItemVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnStringItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem;
-export const OnRampsListResultItemVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnStringItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem;
-
-export type OnRampsListResultItemVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewCloudType =
-  | "AWS"
-  | "AZURE"
-  | "GOOGLE"
-  | "CLOUDFLARE";
-export const OnRampsListResultItemVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewCloudType =
-  /*@__PURE__*/ S.String;
-
-export type OnRampsListResultItemVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewResourceType =
-  | "aws_customer_gateway"
-  | "aws_egress_only_internet_gateway"
-  | "aws_internet_gateway"
-  | "aws_instance"
-  | "aws_network_interface"
-  | "aws_route"
-  | "aws_route_table"
-  | "aws_route_table_association"
-  | "aws_subnet"
-  | "aws_vpc"
-  | "aws_vpc_ipv4_cidr_block_association"
-  | "aws_vpn_connection"
-  | "aws_vpn_connection_route"
-  | "aws_vpn_gateway"
-  | "aws_security_group"
-  | "aws_vpc_security_group_ingress_rule"
-  | "aws_vpc_security_group_egress_rule"
-  | "aws_ec2_managed_prefix_list"
-  | "aws_ec2_transit_gateway"
-  | "aws_ec2_transit_gateway_prefix_list_reference"
-  | "aws_ec2_transit_gateway_vpc_attachment"
-  | "azurerm_application_security_group"
-  | "azurerm_lb"
-  | "azurerm_lb_backend_address_pool"
-  | "azurerm_lb_nat_pool"
-  | "azurerm_lb_nat_rule"
-  | "azurerm_lb_rule"
-  | "azurerm_local_network_gateway"
-  | "azurerm_network_interface"
-  | "azurerm_network_interface_application_security_group_association"
-  | "azurerm_network_interface_backend_address_pool_association"
-  | "azurerm_network_interface_security_group_association"
-  | "azurerm_network_security_group"
-  | "azurerm_public_ip"
-  | "azurerm_route"
-  | "azurerm_route_table"
-  | "azurerm_subnet"
-  | "azurerm_subnet_route_table_association"
-  | "azurerm_virtual_machine"
-  | "azurerm_virtual_network_gateway_connection"
-  | "azurerm_virtual_network"
-  | "azurerm_virtual_network_gateway"
-  | "google_compute_network"
-  | "google_compute_subnetwork"
-  | "google_compute_vpn_gateway"
-  | "google_compute_vpn_tunnel"
-  | "google_compute_route"
-  | "google_compute_address"
-  | "google_compute_global_address"
-  | "google_compute_router"
-  | "google_compute_interconnect_attachment"
-  | "google_compute_ha_vpn_gateway"
-  | "google_compute_forwarding_rule"
-  | "google_compute_network_firewall_policy"
-  | "google_compute_network_firewall_policy_rule"
-  | "cloudflare_static_route"
-  | "cloudflare_ipsec_tunnel";
-export const OnRampsListResultItemVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewResourceType =
-  /*@__PURE__*/ S.String;
-
-export interface OnRampsListResultItemVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview {
-  id: string;
-  cloudType: OnRampsListResultItemVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewCloudType;
-  detail: string;
-  name: string;
-  resourceType: OnRampsListResultItemVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewResourceType;
-  title: string;
-}
-export const OnRampsListResultItemVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-      cloudType:
-        OnRampsListResultItemVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewCloudType.pipe(
-          T.Body("cloud_type"),
-        ),
-      detail: S.String,
-      name: S.String,
-      resourceType:
-        OnRampsListResultItemVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewResourceType.pipe(
-          T.Body("resource_type"),
-        ),
-      title: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "OnRampsListResultItemVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview",
-  }) as any as S.Schema<OnRampsListResultItemVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview>;
-
-export interface OnRampsListResultItemVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItem {
-  itemType: string;
-  resourcePreview: OnRampsListResultItemVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview;
-}
-export const OnRampsListResultItemVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      itemType: S.String.pipe(T.Body("item_type")),
-      resourcePreview:
-        OnRampsListResultItemVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview.pipe(
-          T.Body("resource_preview"),
-        ),
-    }),
-  ).annotate({
-    identifier:
-      "OnRampsListResultItemVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItem",
-  }) as any as S.Schema<OnRampsListResultItemVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItem>;
-
-export type OnRampsListResultItemVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItem =
-  | OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem
-  | OnRampsListResultItemVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItem;
-export const OnRampsListResultItemVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItem =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["itemType", "string"],
-      ["itemType", "resourcePreview"],
-    ]),
-  );
-
-export type OnRampsListResultItemVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListList =
-  Array<OnRampsListResultItemVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItem>;
-export const OnRampsListResultItemVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListList =
+export type OnRampsListResultItemVpcsByIdSectionsItemHiddenItemsList =
+  Array<OnRampsCreateResponsePostApplyResourcesSectionsItemHiddenItemsItem>;
+export const OnRampsListResultItemVpcsByIdSectionsItemHiddenItemsList =
   /*@__PURE__*/ S.Array(
-    OnRampsListResultItemVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItem,
-  ) as any as S.Schema<OnRampsListResultItemVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListList>;
+    OnRampsCreateResponsePostApplyResourcesSectionsItemHiddenItemsItem,
+  ) as any as S.Schema<OnRampsListResultItemVpcsByIdSectionsItemHiddenItemsList>;
 
-export interface OnRampsListResultItemVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItem {
-  itemType: string;
-  list: OnRampsListResultItemVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListList;
-}
-export const OnRampsListResultItemVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      itemType: S.String.pipe(T.Body("item_type")),
-      list: OnRampsListResultItemVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListList,
-    }),
-  ).annotate({
-    identifier:
-      "OnRampsListResultItemVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItem",
-  }) as any as S.Schema<OnRampsListResultItemVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItem>;
+export type OnRampsListResultItemVpcsByIdSectionsItemVisibleItemsItem =
+  OnRampsCreateResponsePostApplyResourcesSectionsItemHiddenItemsItem;
+export const OnRampsListResultItemVpcsByIdSectionsItemVisibleItemsItem =
+  OnRampsCreateResponsePostApplyResourcesSectionsItemHiddenItemsItem;
 
-export type OnRampsListResultItemVpcsByIdValueSectionsItemHiddenItemsItemValue =
-  | OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem
-  | OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlItem
-  | OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlDiffItem
-  | OnRampsListResultItemVpcsByIdValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItem
-  | OnRampsListResultItemVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItem;
-export const OnRampsListResultItemVpcsByIdValueSectionsItemHiddenItemsItemValue =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["itemType", "string"],
-      ["itemType", "yaml"],
-      ["itemType", "yamlDiff"],
-      ["itemType", "resourcePreview"],
-      ["itemType", "list"],
-    ]),
-  );
-
-export interface OnRampsListResultItemVpcsByIdValueSectionsItemHiddenItemsItem {
-  helpText?: string | null;
-  name?: string | null;
-  value?: OnRampsListResultItemVpcsByIdValueSectionsItemHiddenItemsItemValue | null;
-}
-export const OnRampsListResultItemVpcsByIdValueSectionsItemHiddenItemsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      helpText: S.optional(S.NullOr(S.String)),
-      name: S.optional(S.NullOr(S.String)),
-      value: S.optional(
-        S.NullOr(
-          OnRampsListResultItemVpcsByIdValueSectionsItemHiddenItemsItemValue,
-        ),
-      ),
-    }),
-  ).annotate({
-    identifier: "OnRampsListResultItemVpcsByIdValueSectionsItemHiddenItemsItem",
-  }) as any as S.Schema<OnRampsListResultItemVpcsByIdValueSectionsItemHiddenItemsItem>;
-
-export type OnRampsListResultItemVpcsByIdValueSectionsItemHiddenItemsList =
-  Array<OnRampsListResultItemVpcsByIdValueSectionsItemHiddenItemsItem>;
-export const OnRampsListResultItemVpcsByIdValueSectionsItemHiddenItemsList =
+export type OnRampsListResultItemVpcsByIdSectionsItemVisibleItemsList =
+  Array<OnRampsCreateResponsePostApplyResourcesSectionsItemHiddenItemsItem>;
+export const OnRampsListResultItemVpcsByIdSectionsItemVisibleItemsList =
   /*@__PURE__*/ S.Array(
-    OnRampsListResultItemVpcsByIdValueSectionsItemHiddenItemsItem,
-  ) as any as S.Schema<OnRampsListResultItemVpcsByIdValueSectionsItemHiddenItemsList>;
+    OnRampsCreateResponsePostApplyResourcesSectionsItemHiddenItemsItem,
+  ) as any as S.Schema<OnRampsListResultItemVpcsByIdSectionsItemVisibleItemsList>;
 
-export type OnRampsListResultItemVpcsByIdValueSectionsItemVisibleItemsItemValueMcnStringItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem;
-export const OnRampsListResultItemVpcsByIdValueSectionsItemVisibleItemsItemValueMcnStringItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem;
-
-export type OnRampsListResultItemVpcsByIdValueSectionsItemVisibleItemsItemValueMcnYamlItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlItem;
-export const OnRampsListResultItemVpcsByIdValueSectionsItemVisibleItemsItemValueMcnYamlItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlItem;
-
-export type OnRampsListResultItemVpcsByIdValueSectionsItemVisibleItemsItemValueMcnYamlDiffItemYamlDiff =
-  OnRampsCreateResponsePlannedResourcesItemDiff;
-export const OnRampsListResultItemVpcsByIdValueSectionsItemVisibleItemsItemValueMcnYamlDiffItemYamlDiff =
-  OnRampsCreateResponsePlannedResourcesItemDiff;
-
-export type OnRampsListResultItemVpcsByIdValueSectionsItemVisibleItemsItemValueMcnYamlDiffItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlDiffItem;
-export const OnRampsListResultItemVpcsByIdValueSectionsItemVisibleItemsItemValueMcnYamlDiffItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlDiffItem;
-
-export type OnRampsListResultItemVpcsByIdValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreviewCloudType =
-  | "AWS"
-  | "AZURE"
-  | "GOOGLE"
-  | "CLOUDFLARE";
-export const OnRampsListResultItemVpcsByIdValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreviewCloudType =
-  /*@__PURE__*/ S.String;
-
-export type OnRampsListResultItemVpcsByIdValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreviewResourceType =
-  | "aws_customer_gateway"
-  | "aws_egress_only_internet_gateway"
-  | "aws_internet_gateway"
-  | "aws_instance"
-  | "aws_network_interface"
-  | "aws_route"
-  | "aws_route_table"
-  | "aws_route_table_association"
-  | "aws_subnet"
-  | "aws_vpc"
-  | "aws_vpc_ipv4_cidr_block_association"
-  | "aws_vpn_connection"
-  | "aws_vpn_connection_route"
-  | "aws_vpn_gateway"
-  | "aws_security_group"
-  | "aws_vpc_security_group_ingress_rule"
-  | "aws_vpc_security_group_egress_rule"
-  | "aws_ec2_managed_prefix_list"
-  | "aws_ec2_transit_gateway"
-  | "aws_ec2_transit_gateway_prefix_list_reference"
-  | "aws_ec2_transit_gateway_vpc_attachment"
-  | "azurerm_application_security_group"
-  | "azurerm_lb"
-  | "azurerm_lb_backend_address_pool"
-  | "azurerm_lb_nat_pool"
-  | "azurerm_lb_nat_rule"
-  | "azurerm_lb_rule"
-  | "azurerm_local_network_gateway"
-  | "azurerm_network_interface"
-  | "azurerm_network_interface_application_security_group_association"
-  | "azurerm_network_interface_backend_address_pool_association"
-  | "azurerm_network_interface_security_group_association"
-  | "azurerm_network_security_group"
-  | "azurerm_public_ip"
-  | "azurerm_route"
-  | "azurerm_route_table"
-  | "azurerm_subnet"
-  | "azurerm_subnet_route_table_association"
-  | "azurerm_virtual_machine"
-  | "azurerm_virtual_network_gateway_connection"
-  | "azurerm_virtual_network"
-  | "azurerm_virtual_network_gateway"
-  | "google_compute_network"
-  | "google_compute_subnetwork"
-  | "google_compute_vpn_gateway"
-  | "google_compute_vpn_tunnel"
-  | "google_compute_route"
-  | "google_compute_address"
-  | "google_compute_global_address"
-  | "google_compute_router"
-  | "google_compute_interconnect_attachment"
-  | "google_compute_ha_vpn_gateway"
-  | "google_compute_forwarding_rule"
-  | "google_compute_network_firewall_policy"
-  | "google_compute_network_firewall_policy_rule"
-  | "cloudflare_static_route"
-  | "cloudflare_ipsec_tunnel";
-export const OnRampsListResultItemVpcsByIdValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreviewResourceType =
-  /*@__PURE__*/ S.String;
-
-export interface OnRampsListResultItemVpcsByIdValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreview {
-  id: string;
-  cloudType: OnRampsListResultItemVpcsByIdValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreviewCloudType;
-  detail: string;
+export interface OnRampsListResultItemVpcsByIdSectionsItem {
+  hiddenItems: OnRampsListResultItemVpcsByIdSectionsItemHiddenItemsList;
   name: string;
-  resourceType: OnRampsListResultItemVpcsByIdValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreviewResourceType;
-  title: string;
-}
-export const OnRampsListResultItemVpcsByIdValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreview =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-      cloudType:
-        OnRampsListResultItemVpcsByIdValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreviewCloudType.pipe(
-          T.Body("cloud_type"),
-        ),
-      detail: S.String,
-      name: S.String,
-      resourceType:
-        OnRampsListResultItemVpcsByIdValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreviewResourceType.pipe(
-          T.Body("resource_type"),
-        ),
-      title: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "OnRampsListResultItemVpcsByIdValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreview",
-  }) as any as S.Schema<OnRampsListResultItemVpcsByIdValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreview>;
-
-export interface OnRampsListResultItemVpcsByIdValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItem {
-  itemType: string;
-  resourcePreview: OnRampsListResultItemVpcsByIdValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreview;
-}
-export const OnRampsListResultItemVpcsByIdValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      itemType: S.String.pipe(T.Body("item_type")),
-      resourcePreview:
-        OnRampsListResultItemVpcsByIdValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreview.pipe(
-          T.Body("resource_preview"),
-        ),
-    }),
-  ).annotate({
-    identifier:
-      "OnRampsListResultItemVpcsByIdValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItem",
-  }) as any as S.Schema<OnRampsListResultItemVpcsByIdValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItem>;
-
-export type OnRampsListResultItemVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnStringItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem;
-export const OnRampsListResultItemVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnStringItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem;
-
-export type OnRampsListResultItemVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewCloudType =
-  | "AWS"
-  | "AZURE"
-  | "GOOGLE"
-  | "CLOUDFLARE";
-export const OnRampsListResultItemVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewCloudType =
-  /*@__PURE__*/ S.String;
-
-export type OnRampsListResultItemVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewResourceType =
-  | "aws_customer_gateway"
-  | "aws_egress_only_internet_gateway"
-  | "aws_internet_gateway"
-  | "aws_instance"
-  | "aws_network_interface"
-  | "aws_route"
-  | "aws_route_table"
-  | "aws_route_table_association"
-  | "aws_subnet"
-  | "aws_vpc"
-  | "aws_vpc_ipv4_cidr_block_association"
-  | "aws_vpn_connection"
-  | "aws_vpn_connection_route"
-  | "aws_vpn_gateway"
-  | "aws_security_group"
-  | "aws_vpc_security_group_ingress_rule"
-  | "aws_vpc_security_group_egress_rule"
-  | "aws_ec2_managed_prefix_list"
-  | "aws_ec2_transit_gateway"
-  | "aws_ec2_transit_gateway_prefix_list_reference"
-  | "aws_ec2_transit_gateway_vpc_attachment"
-  | "azurerm_application_security_group"
-  | "azurerm_lb"
-  | "azurerm_lb_backend_address_pool"
-  | "azurerm_lb_nat_pool"
-  | "azurerm_lb_nat_rule"
-  | "azurerm_lb_rule"
-  | "azurerm_local_network_gateway"
-  | "azurerm_network_interface"
-  | "azurerm_network_interface_application_security_group_association"
-  | "azurerm_network_interface_backend_address_pool_association"
-  | "azurerm_network_interface_security_group_association"
-  | "azurerm_network_security_group"
-  | "azurerm_public_ip"
-  | "azurerm_route"
-  | "azurerm_route_table"
-  | "azurerm_subnet"
-  | "azurerm_subnet_route_table_association"
-  | "azurerm_virtual_machine"
-  | "azurerm_virtual_network_gateway_connection"
-  | "azurerm_virtual_network"
-  | "azurerm_virtual_network_gateway"
-  | "google_compute_network"
-  | "google_compute_subnetwork"
-  | "google_compute_vpn_gateway"
-  | "google_compute_vpn_tunnel"
-  | "google_compute_route"
-  | "google_compute_address"
-  | "google_compute_global_address"
-  | "google_compute_router"
-  | "google_compute_interconnect_attachment"
-  | "google_compute_ha_vpn_gateway"
-  | "google_compute_forwarding_rule"
-  | "google_compute_network_firewall_policy"
-  | "google_compute_network_firewall_policy_rule"
-  | "cloudflare_static_route"
-  | "cloudflare_ipsec_tunnel";
-export const OnRampsListResultItemVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewResourceType =
-  /*@__PURE__*/ S.String;
-
-export interface OnRampsListResultItemVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview {
-  id: string;
-  cloudType: OnRampsListResultItemVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewCloudType;
-  detail: string;
-  name: string;
-  resourceType: OnRampsListResultItemVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewResourceType;
-  title: string;
-}
-export const OnRampsListResultItemVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-      cloudType:
-        OnRampsListResultItemVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewCloudType.pipe(
-          T.Body("cloud_type"),
-        ),
-      detail: S.String,
-      name: S.String,
-      resourceType:
-        OnRampsListResultItemVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewResourceType.pipe(
-          T.Body("resource_type"),
-        ),
-      title: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "OnRampsListResultItemVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview",
-  }) as any as S.Schema<OnRampsListResultItemVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview>;
-
-export interface OnRampsListResultItemVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItem {
-  itemType: string;
-  resourcePreview: OnRampsListResultItemVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview;
-}
-export const OnRampsListResultItemVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      itemType: S.String.pipe(T.Body("item_type")),
-      resourcePreview:
-        OnRampsListResultItemVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview.pipe(
-          T.Body("resource_preview"),
-        ),
-    }),
-  ).annotate({
-    identifier:
-      "OnRampsListResultItemVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItem",
-  }) as any as S.Schema<OnRampsListResultItemVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItem>;
-
-export type OnRampsListResultItemVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItem =
-  | OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem
-  | OnRampsListResultItemVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItem;
-export const OnRampsListResultItemVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItem =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["itemType", "string"],
-      ["itemType", "resourcePreview"],
-    ]),
-  );
-
-export type OnRampsListResultItemVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListList =
-  Array<OnRampsListResultItemVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItem>;
-export const OnRampsListResultItemVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListList =
-  /*@__PURE__*/ S.Array(
-    OnRampsListResultItemVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItem,
-  ) as any as S.Schema<OnRampsListResultItemVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListList>;
-
-export interface OnRampsListResultItemVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItem {
-  itemType: string;
-  list: OnRampsListResultItemVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListList;
-}
-export const OnRampsListResultItemVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      itemType: S.String.pipe(T.Body("item_type")),
-      list: OnRampsListResultItemVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListList,
-    }),
-  ).annotate({
-    identifier:
-      "OnRampsListResultItemVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItem",
-  }) as any as S.Schema<OnRampsListResultItemVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItem>;
-
-export type OnRampsListResultItemVpcsByIdValueSectionsItemVisibleItemsItemValue =
-  | OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem
-  | OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlItem
-  | OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlDiffItem
-  | OnRampsListResultItemVpcsByIdValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItem
-  | OnRampsListResultItemVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItem;
-export const OnRampsListResultItemVpcsByIdValueSectionsItemVisibleItemsItemValue =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["itemType", "string"],
-      ["itemType", "yaml"],
-      ["itemType", "yamlDiff"],
-      ["itemType", "resourcePreview"],
-      ["itemType", "list"],
-    ]),
-  );
-
-export interface OnRampsListResultItemVpcsByIdValueSectionsItemVisibleItemsItem {
-  helpText?: string | null;
-  name?: string | null;
-  value?: OnRampsListResultItemVpcsByIdValueSectionsItemVisibleItemsItemValue | null;
-}
-export const OnRampsListResultItemVpcsByIdValueSectionsItemVisibleItemsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      helpText: S.optional(S.NullOr(S.String)),
-      name: S.optional(S.NullOr(S.String)),
-      value: S.optional(
-        S.NullOr(
-          OnRampsListResultItemVpcsByIdValueSectionsItemVisibleItemsItemValue,
-        ),
-      ),
-    }),
-  ).annotate({
-    identifier:
-      "OnRampsListResultItemVpcsByIdValueSectionsItemVisibleItemsItem",
-  }) as any as S.Schema<OnRampsListResultItemVpcsByIdValueSectionsItemVisibleItemsItem>;
-
-export type OnRampsListResultItemVpcsByIdValueSectionsItemVisibleItemsList =
-  Array<OnRampsListResultItemVpcsByIdValueSectionsItemVisibleItemsItem>;
-export const OnRampsListResultItemVpcsByIdValueSectionsItemVisibleItemsList =
-  /*@__PURE__*/ S.Array(
-    OnRampsListResultItemVpcsByIdValueSectionsItemVisibleItemsItem,
-  ) as any as S.Schema<OnRampsListResultItemVpcsByIdValueSectionsItemVisibleItemsList>;
-
-export interface OnRampsListResultItemVpcsByIdValueSectionsItem {
-  hiddenItems: OnRampsListResultItemVpcsByIdValueSectionsItemHiddenItemsList;
-  name: string;
-  visibleItems: OnRampsListResultItemVpcsByIdValueSectionsItemVisibleItemsList;
+  visibleItems: OnRampsListResultItemVpcsByIdSectionsItemVisibleItemsList;
   helpText?: string | null;
 }
-export const OnRampsListResultItemVpcsByIdValueSectionsItem =
+export const OnRampsListResultItemVpcsByIdSectionsItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       hiddenItems:
-        OnRampsListResultItemVpcsByIdValueSectionsItemHiddenItemsList.pipe(
+        OnRampsListResultItemVpcsByIdSectionsItemHiddenItemsList.pipe(
           T.Body("hidden_items"),
         ),
       name: S.String,
       visibleItems:
-        OnRampsListResultItemVpcsByIdValueSectionsItemVisibleItemsList.pipe(
+        OnRampsListResultItemVpcsByIdSectionsItemVisibleItemsList.pipe(
           T.Body("visible_items"),
         ),
       helpText: S.optional(S.NullOr(S.String).pipe(T.Body("help_text"))),
     }),
   ).annotate({
-    identifier: "OnRampsListResultItemVpcsByIdValueSectionsItem",
-  }) as any as S.Schema<OnRampsListResultItemVpcsByIdValueSectionsItem>;
+    identifier: "OnRampsListResultItemVpcsByIdSectionsItem",
+  }) as any as S.Schema<OnRampsListResultItemVpcsByIdSectionsItem>;
 
-export type OnRampsListResultItemVpcsByIdValueSectionsList =
-  Array<OnRampsListResultItemVpcsByIdValueSectionsItem>;
-export const OnRampsListResultItemVpcsByIdValueSectionsList =
-  /*@__PURE__*/ S.Array(
-    OnRampsListResultItemVpcsByIdValueSectionsItem,
-  ) as any as S.Schema<OnRampsListResultItemVpcsByIdValueSectionsList>;
+export type OnRampsListResultItemVpcsByIdSectionsList =
+  Array<OnRampsListResultItemVpcsByIdSectionsItem>;
+export const OnRampsListResultItemVpcsByIdSectionsList = /*@__PURE__*/ S.Array(
+  OnRampsListResultItemVpcsByIdSectionsItem,
+) as any as S.Schema<OnRampsListResultItemVpcsByIdSectionsList>;
 
-export type OnRampsListResultItemVpcsByIdValueStateMap = {
-  [key: string]: unknown | undefined;
-};
-export const OnRampsListResultItemVpcsByIdValueStateMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<OnRampsListResultItemVpcsByIdValueStateMap>;
-
-export type OnRampsListResultItemVpcsByIdValueTagsMap = {
-  [key: string]: string | undefined;
-};
-export const OnRampsListResultItemVpcsByIdValueTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<OnRampsListResultItemVpcsByIdValueTagsMap>;
-
-export type OnRampsListResultItemVpcsByIdValueManagedByItemClientType =
+export type OnRampsListResultItemVpcsByIdManagedByItemClientType =
   "MAGIC_WAN_CLOUD_ONRAMP";
-export const OnRampsListResultItemVpcsByIdValueManagedByItemClientType =
+export const OnRampsListResultItemVpcsByIdManagedByItemClientType =
   /*@__PURE__*/ S.String;
 
-export interface OnRampsListResultItemVpcsByIdValueManagedByItem {
+export interface OnRampsListResultItemVpcsByIdManagedByItem {
   id: string;
-  clientType: OnRampsListResultItemVpcsByIdValueManagedByItemClientType;
+  clientType: OnRampsListResultItemVpcsByIdManagedByItemClientType;
   name: string;
 }
-export const OnRampsListResultItemVpcsByIdValueManagedByItem =
+export const OnRampsListResultItemVpcsByIdManagedByItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       id: S.String,
-      clientType:
-        OnRampsListResultItemVpcsByIdValueManagedByItemClientType.pipe(
-          T.Body("client_type"),
-        ),
+      clientType: OnRampsListResultItemVpcsByIdManagedByItemClientType.pipe(
+        T.Body("client_type"),
+      ),
       name: S.String,
     }),
   ).annotate({
-    identifier: "OnRampsListResultItemVpcsByIdValueManagedByItem",
-  }) as any as S.Schema<OnRampsListResultItemVpcsByIdValueManagedByItem>;
+    identifier: "OnRampsListResultItemVpcsByIdManagedByItem",
+  }) as any as S.Schema<OnRampsListResultItemVpcsByIdManagedByItem>;
 
-export type OnRampsListResultItemVpcsByIdValueManagedByList =
-  Array<OnRampsListResultItemVpcsByIdValueManagedByItem>;
-export const OnRampsListResultItemVpcsByIdValueManagedByList =
-  /*@__PURE__*/ S.Array(
-    OnRampsListResultItemVpcsByIdValueManagedByItem,
-  ) as any as S.Schema<OnRampsListResultItemVpcsByIdValueManagedByList>;
+export type OnRampsListResultItemVpcsByIdManagedByList =
+  Array<OnRampsListResultItemVpcsByIdManagedByItem>;
+export const OnRampsListResultItemVpcsByIdManagedByList = /*@__PURE__*/ S.Array(
+  OnRampsListResultItemVpcsByIdManagedByItem,
+) as any as S.Schema<OnRampsListResultItemVpcsByIdManagedByList>;
 
-export interface OnRampsListResultItemVpcsByIdValue {
+export interface OnRampsListResultItemVpcsById {
   id: string;
   accountId: string;
-  cloudType: OnRampsListResultItemVpcsByIdValueCloudType;
-  config: OnRampsListResultItemVpcsByIdValueConfigMap;
+  cloudType: OnRampsListResultItemVpcsByIdCloudType;
+  config: unknown;
   deploymentProvider: string;
   managed: boolean;
   monthlyCostEstimate: OnRampsCreateResponsePostApplyMonthlyCostEstimate;
   name: string;
   nativeId: string;
-  observations: OnRampsListResultItemVpcsByIdValueObservationsMap;
-  providerIds: OnRampsListResultItemVpcsByIdValueProviderIdsList;
-  providerNamesById: OnRampsListResultItemVpcsByIdValueProviderNamesByIdMap;
+  observations: OnRampsCreateResponsePostApplyResourcesObservations;
+  providerIds: OnRampsListResultItemVpcsByIdProviderIdsList;
+  providerNamesById: unknown;
   region: string;
   resourceGroup: string;
-  resourceType: OnRampsListResultItemVpcsByIdValueResourceType;
-  sections: OnRampsListResultItemVpcsByIdValueSectionsList;
-  state: OnRampsListResultItemVpcsByIdValueStateMap;
-  tags: OnRampsListResultItemVpcsByIdValueTagsMap;
+  resourceType: string;
+  sections: OnRampsListResultItemVpcsByIdSectionsList;
+  state: unknown;
+  tags: unknown;
   updatedAt: string;
   url: string;
-  managedBy?: OnRampsListResultItemVpcsByIdValueManagedByList | null;
+  managedBy?: OnRampsListResultItemVpcsByIdManagedByList | null;
 }
-export const OnRampsListResultItemVpcsByIdValue = /*@__PURE__*/ S.suspend(() =>
+export const OnRampsListResultItemVpcsById = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     accountId: S.String.pipe(T.Body("account_id")),
-    cloudType: OnRampsListResultItemVpcsByIdValueCloudType.pipe(
+    cloudType: OnRampsListResultItemVpcsByIdCloudType.pipe(
       T.Body("cloud_type"),
     ),
-    config: OnRampsListResultItemVpcsByIdValueConfigMap,
+    config: S.Unknown,
     deploymentProvider: S.String.pipe(T.Body("deployment_provider")),
     managed: S.Boolean,
     monthlyCostEstimate: OnRampsCreateResponsePostApplyMonthlyCostEstimate.pipe(
@@ -10721,41 +3647,28 @@ export const OnRampsListResultItemVpcsByIdValue = /*@__PURE__*/ S.suspend(() =>
     ),
     name: S.String,
     nativeId: S.String.pipe(T.Body("native_id")),
-    observations: OnRampsListResultItemVpcsByIdValueObservationsMap,
-    providerIds: OnRampsListResultItemVpcsByIdValueProviderIdsList.pipe(
+    observations: OnRampsCreateResponsePostApplyResourcesObservations,
+    providerIds: OnRampsListResultItemVpcsByIdProviderIdsList.pipe(
       T.Body("provider_ids"),
     ),
-    providerNamesById:
-      OnRampsListResultItemVpcsByIdValueProviderNamesByIdMap.pipe(
-        T.Body("provider_names_by_id"),
-      ),
+    providerNamesById: S.Unknown.pipe(T.Body("provider_names_by_id")),
     region: S.String,
     resourceGroup: S.String.pipe(T.Body("resource_group")),
-    resourceType: OnRampsListResultItemVpcsByIdValueResourceType.pipe(
-      T.Body("resource_type"),
-    ),
-    sections: OnRampsListResultItemVpcsByIdValueSectionsList,
-    state: OnRampsListResultItemVpcsByIdValueStateMap,
-    tags: OnRampsListResultItemVpcsByIdValueTagsMap,
+    resourceType: S.String.pipe(T.Body("resource_type")),
+    sections: OnRampsListResultItemVpcsByIdSectionsList,
+    state: S.Unknown,
+    tags: S.Unknown,
     updatedAt: S.String.pipe(T.Body("updated_at")),
     url: S.String,
     managedBy: S.optional(
-      S.NullOr(OnRampsListResultItemVpcsByIdValueManagedByList).pipe(
+      S.NullOr(OnRampsListResultItemVpcsByIdManagedByList).pipe(
         T.Body("managed_by"),
       ),
     ),
   }),
 ).annotate({
-  identifier: "OnRampsListResultItemVpcsByIdValue",
-}) as any as S.Schema<OnRampsListResultItemVpcsByIdValue>;
-
-export type OnRampsListResultItemVpcsByIdMap = {
-  [key: string]: OnRampsListResultItemVpcsByIdValue | undefined;
-};
-export const OnRampsListResultItemVpcsByIdMap = /*@__PURE__*/ S.Record(
-  S.String,
-  OnRampsListResultItemVpcsByIdValue,
-) as any as S.Schema<OnRampsListResultItemVpcsByIdMap>;
+  identifier: "OnRampsListResultItemVpcsById",
+}) as any as S.Schema<OnRampsListResultItemVpcsById>;
 
 export type OnRampsListResultItemVpcsByIdUnavailableList = Array<string>;
 export const OnRampsListResultItemVpcsByIdUnavailableList =
@@ -10786,12 +3699,12 @@ export interface OnRampsListResultItem {
   plannedResources?: OnRampsListResultItemPlannedResourcesList | null;
   plannedResourcesUnavailable?: boolean | null;
   postApplyMonthlyCostEstimate?: OnRampsCreateResponsePostApplyMonthlyCostEstimate | null;
-  postApplyResources?: OnRampsListResultItemPostApplyResourcesMap | null;
+  postApplyResources?: OnRampsListResultItemPostApplyResources | null;
   postApplyResourcesUnavailable?: boolean | null;
   region?: string | null;
   status?: OnRampsListResultItemStatus | null;
   vpc?: string | null;
-  vpcsById?: OnRampsListResultItemVpcsByIdMap | null;
+  vpcsById?: OnRampsListResultItemVpcsById | null;
   /** The list of vpc IDs for which resource details failed to generate. */
   vpcsByIdUnavailable?: OnRampsListResultItemVpcsByIdUnavailableList | null;
 }
@@ -10854,7 +3767,7 @@ export const OnRampsListResultItem = /*@__PURE__*/ S.suspend(() =>
       ),
     ),
     postApplyResources: S.optional(
-      S.NullOr(OnRampsListResultItemPostApplyResourcesMap).pipe(
+      S.NullOr(OnRampsListResultItemPostApplyResources).pipe(
         T.Body("post_apply_resources"),
       ),
     ),
@@ -10865,7 +3778,7 @@ export const OnRampsListResultItem = /*@__PURE__*/ S.suspend(() =>
     status: S.optional(S.NullOr(OnRampsListResultItemStatus)),
     vpc: S.optional(S.NullOr(S.String)),
     vpcsById: S.optional(
-      S.NullOr(OnRampsListResultItemVpcsByIdMap).pipe(T.Body("vpcs_by_id")),
+      S.NullOr(OnRampsListResultItemVpcsById).pipe(T.Body("vpcs_by_id")),
     ),
     vpcsByIdUnavailable: S.optional(
       S.NullOr(OnRampsListResultItemVpcsByIdUnavailableList).pipe(
@@ -10897,120 +3810,12 @@ export const ListOnRampsResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListOnRampsResponse",
 }) as any as S.Schema<ListOnRampsResponse>;
 
-export type ResourcesListRequestResourceIdList = Array<string>;
-export const ResourcesListRequestResourceIdList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ResourcesListRequestResourceIdList>;
-
-export type ResourcesListRequestResourceType =
-  | "aws_customer_gateway"
-  | "aws_egress_only_internet_gateway"
-  | "aws_internet_gateway"
-  | "aws_instance"
-  | "aws_network_interface"
-  | "aws_route"
-  | "aws_route_table"
-  | "aws_route_table_association"
-  | "aws_subnet"
-  | "aws_vpc"
-  | "aws_vpc_ipv4_cidr_block_association"
-  | "aws_vpn_connection"
-  | "aws_vpn_connection_route"
-  | "aws_vpn_gateway"
-  | "aws_security_group"
-  | "aws_vpc_security_group_ingress_rule"
-  | "aws_vpc_security_group_egress_rule"
-  | "aws_ec2_managed_prefix_list"
-  | "aws_ec2_transit_gateway"
-  | "aws_ec2_transit_gateway_prefix_list_reference"
-  | "aws_ec2_transit_gateway_vpc_attachment"
-  | "azurerm_application_security_group"
-  | "azurerm_lb"
-  | "azurerm_lb_backend_address_pool"
-  | "azurerm_lb_nat_pool"
-  | "azurerm_lb_nat_rule"
-  | "azurerm_lb_rule"
-  | "azurerm_local_network_gateway"
-  | "azurerm_network_interface"
-  | "azurerm_network_interface_application_security_group_association"
-  | "azurerm_network_interface_backend_address_pool_association"
-  | "azurerm_network_interface_security_group_association"
-  | "azurerm_network_security_group"
-  | "azurerm_public_ip"
-  | "azurerm_route"
-  | "azurerm_route_table"
-  | "azurerm_subnet"
-  | "azurerm_subnet_route_table_association"
-  | "azurerm_virtual_machine"
-  | "azurerm_virtual_network_gateway_connection"
-  | "azurerm_virtual_network"
-  | "azurerm_virtual_network_gateway"
-  | "google_compute_network"
-  | "google_compute_subnetwork"
-  | "google_compute_vpn_gateway"
-  | "google_compute_vpn_tunnel"
-  | "google_compute_route"
-  | "google_compute_address"
-  | "google_compute_global_address"
-  | "google_compute_router"
-  | "google_compute_interconnect_attachment"
-  | "google_compute_ha_vpn_gateway"
-  | "google_compute_forwarding_rule"
-  | "google_compute_network_firewall_policy"
-  | "google_compute_network_firewall_policy_rule"
-  | "cloudflare_static_route"
-  | "cloudflare_ipsec_tunnel";
-export const ResourcesListRequestResourceType = /*@__PURE__*/ S.String;
-
-export type ResourcesListRequestResourceTypeList = Array<
-  ResourcesListRequestResourceType | (string & {})
->;
-export const ResourcesListRequestResourceTypeList = /*@__PURE__*/ S.Array(
-  ResourcesListRequestResourceType,
-) as any as S.Schema<ResourcesListRequestResourceTypeList>;
-
-export type ResourcesListRequestSearchList = Array<string>;
-export const ResourcesListRequestSearchList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ResourcesListRequestSearchList>;
-
 export interface ListResourcesRequest {
   accountId: string;
-  cloudflare?: boolean;
-  desc?: boolean;
-  managed?: boolean;
-  /** One of ["id", "resource_type", "region"]. */
-  orderBy?: string;
-  page?: number;
-  perPage?: number;
-  providerId?: string;
-  region?: string;
-  resourceGroup?: string;
-  resourceId?: ResourcesListRequestResourceIdList;
-  resourceType?: ResourcesListRequestResourceTypeList;
-  search?: ResourcesListRequestSearchList;
-  v2?: boolean;
 }
 export const ListResourcesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
-    cloudflare: S.optional(S.Boolean.pipe(T.Query())),
-    desc: S.optional(S.Boolean.pipe(T.Query())),
-    managed: S.optional(S.Boolean.pipe(T.Query())),
-    orderBy: S.optional(S.String.pipe(T.Query("order_by"))),
-    page: S.optional(S.Number.pipe(T.Query())),
-    perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
-    providerId: S.optional(S.String.pipe(T.Query("provider_id"))),
-    region: S.optional(S.String.pipe(T.Query())),
-    resourceGroup: S.optional(S.String.pipe(T.Query("resource_group"))),
-    resourceId: S.optional(
-      ResourcesListRequestResourceIdList.pipe(T.Query("resource_id")),
-    ),
-    resourceType: S.optional(
-      ResourcesListRequestResourceTypeList.pipe(T.Query("resource_type")),
-    ),
-    search: S.optional(ResourcesListRequestSearchList.pipe(T.Query())),
-    v2: S.optional(S.Boolean.pipe(T.Query())),
   })
     .pipe(
       T.Http({
@@ -11031,770 +3836,43 @@ export type ResourcesListResultItemCloudType =
   | "CLOUDFLARE";
 export const ResourcesListResultItemCloudType = /*@__PURE__*/ S.String;
 
-export type ResourcesListResultItemConfigMap = {
-  [key: string]: unknown | undefined;
-};
-export const ResourcesListResultItemConfigMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<ResourcesListResultItemConfigMap>;
-
 export type ResourcesListResultItemMonthlyCostEstimate =
   OnRampsCreateResponsePostApplyMonthlyCostEstimate;
 export const ResourcesListResultItemMonthlyCostEstimate =
   OnRampsCreateResponsePostApplyMonthlyCostEstimate;
 
-export type ResourcesListResultItemObservationsValue =
-  OnRampsCreateResponsePostApplyResourcesValueObservationsValue;
-export const ResourcesListResultItemObservationsValue =
-  OnRampsCreateResponsePostApplyResourcesValueObservationsValue;
-
-export type ResourcesListResultItemObservationsMap = {
-  [key: string]:
-    | OnRampsCreateResponsePostApplyResourcesValueObservationsValue
-    | undefined;
-};
-export const ResourcesListResultItemObservationsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  OnRampsCreateResponsePostApplyResourcesValueObservationsValue,
-) as any as S.Schema<ResourcesListResultItemObservationsMap>;
+export type ResourcesListResultItemObservations =
+  OnRampsCreateResponsePostApplyResourcesObservations;
+export const ResourcesListResultItemObservations =
+  OnRampsCreateResponsePostApplyResourcesObservations;
 
 export type ResourcesListResultItemProviderIdsList = Array<string>;
 export const ResourcesListResultItemProviderIdsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ResourcesListResultItemProviderIdsList>;
 
-export type ResourcesListResultItemProviderNamesByIdMap = {
-  [key: string]: string | undefined;
-};
-export const ResourcesListResultItemProviderNamesByIdMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<ResourcesListResultItemProviderNamesByIdMap>;
-
-export type ResourcesListResultItemResourceType =
-  | "aws_customer_gateway"
-  | "aws_egress_only_internet_gateway"
-  | "aws_internet_gateway"
-  | "aws_instance"
-  | "aws_network_interface"
-  | "aws_route"
-  | "aws_route_table"
-  | "aws_route_table_association"
-  | "aws_subnet"
-  | "aws_vpc"
-  | "aws_vpc_ipv4_cidr_block_association"
-  | "aws_vpn_connection"
-  | "aws_vpn_connection_route"
-  | "aws_vpn_gateway"
-  | "aws_security_group"
-  | "aws_vpc_security_group_ingress_rule"
-  | "aws_vpc_security_group_egress_rule"
-  | "aws_ec2_managed_prefix_list"
-  | "aws_ec2_transit_gateway"
-  | "aws_ec2_transit_gateway_prefix_list_reference"
-  | "aws_ec2_transit_gateway_vpc_attachment"
-  | "azurerm_application_security_group"
-  | "azurerm_lb"
-  | "azurerm_lb_backend_address_pool"
-  | "azurerm_lb_nat_pool"
-  | "azurerm_lb_nat_rule"
-  | "azurerm_lb_rule"
-  | "azurerm_local_network_gateway"
-  | "azurerm_network_interface"
-  | "azurerm_network_interface_application_security_group_association"
-  | "azurerm_network_interface_backend_address_pool_association"
-  | "azurerm_network_interface_security_group_association"
-  | "azurerm_network_security_group"
-  | "azurerm_public_ip"
-  | "azurerm_route"
-  | "azurerm_route_table"
-  | "azurerm_subnet"
-  | "azurerm_subnet_route_table_association"
-  | "azurerm_virtual_machine"
-  | "azurerm_virtual_network_gateway_connection"
-  | "azurerm_virtual_network"
-  | "azurerm_virtual_network_gateway"
-  | "google_compute_network"
-  | "google_compute_subnetwork"
-  | "google_compute_vpn_gateway"
-  | "google_compute_vpn_tunnel"
-  | "google_compute_route"
-  | "google_compute_address"
-  | "google_compute_global_address"
-  | "google_compute_router"
-  | "google_compute_interconnect_attachment"
-  | "google_compute_ha_vpn_gateway"
-  | "google_compute_forwarding_rule"
-  | "google_compute_network_firewall_policy"
-  | "google_compute_network_firewall_policy_rule"
-  | "cloudflare_static_route"
-  | "cloudflare_ipsec_tunnel";
-export const ResourcesListResultItemResourceType = /*@__PURE__*/ S.String;
-
-export type ResourcesListResultItemSectionsItemHiddenItemsItemValueMcnStringItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem;
-export const ResourcesListResultItemSectionsItemHiddenItemsItemValueMcnStringItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem;
-
-export type ResourcesListResultItemSectionsItemHiddenItemsItemValueMcnYamlItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlItem;
-export const ResourcesListResultItemSectionsItemHiddenItemsItemValueMcnYamlItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlItem;
-
-export type ResourcesListResultItemSectionsItemHiddenItemsItemValueMcnYamlDiffItemYamlDiff =
-  OnRampsCreateResponsePlannedResourcesItemDiff;
-export const ResourcesListResultItemSectionsItemHiddenItemsItemValueMcnYamlDiffItemYamlDiff =
-  OnRampsCreateResponsePlannedResourcesItemDiff;
-
-export type ResourcesListResultItemSectionsItemHiddenItemsItemValueMcnYamlDiffItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlDiffItem;
-export const ResourcesListResultItemSectionsItemHiddenItemsItemValueMcnYamlDiffItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlDiffItem;
-
-export type ResourcesListResultItemSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreviewCloudType =
-  | "AWS"
-  | "AZURE"
-  | "GOOGLE"
-  | "CLOUDFLARE";
-export const ResourcesListResultItemSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreviewCloudType =
-  /*@__PURE__*/ S.String;
-
-export type ResourcesListResultItemSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreviewResourceType =
-  | "aws_customer_gateway"
-  | "aws_egress_only_internet_gateway"
-  | "aws_internet_gateway"
-  | "aws_instance"
-  | "aws_network_interface"
-  | "aws_route"
-  | "aws_route_table"
-  | "aws_route_table_association"
-  | "aws_subnet"
-  | "aws_vpc"
-  | "aws_vpc_ipv4_cidr_block_association"
-  | "aws_vpn_connection"
-  | "aws_vpn_connection_route"
-  | "aws_vpn_gateway"
-  | "aws_security_group"
-  | "aws_vpc_security_group_ingress_rule"
-  | "aws_vpc_security_group_egress_rule"
-  | "aws_ec2_managed_prefix_list"
-  | "aws_ec2_transit_gateway"
-  | "aws_ec2_transit_gateway_prefix_list_reference"
-  | "aws_ec2_transit_gateway_vpc_attachment"
-  | "azurerm_application_security_group"
-  | "azurerm_lb"
-  | "azurerm_lb_backend_address_pool"
-  | "azurerm_lb_nat_pool"
-  | "azurerm_lb_nat_rule"
-  | "azurerm_lb_rule"
-  | "azurerm_local_network_gateway"
-  | "azurerm_network_interface"
-  | "azurerm_network_interface_application_security_group_association"
-  | "azurerm_network_interface_backend_address_pool_association"
-  | "azurerm_network_interface_security_group_association"
-  | "azurerm_network_security_group"
-  | "azurerm_public_ip"
-  | "azurerm_route"
-  | "azurerm_route_table"
-  | "azurerm_subnet"
-  | "azurerm_subnet_route_table_association"
-  | "azurerm_virtual_machine"
-  | "azurerm_virtual_network_gateway_connection"
-  | "azurerm_virtual_network"
-  | "azurerm_virtual_network_gateway"
-  | "google_compute_network"
-  | "google_compute_subnetwork"
-  | "google_compute_vpn_gateway"
-  | "google_compute_vpn_tunnel"
-  | "google_compute_route"
-  | "google_compute_address"
-  | "google_compute_global_address"
-  | "google_compute_router"
-  | "google_compute_interconnect_attachment"
-  | "google_compute_ha_vpn_gateway"
-  | "google_compute_forwarding_rule"
-  | "google_compute_network_firewall_policy"
-  | "google_compute_network_firewall_policy_rule"
-  | "cloudflare_static_route"
-  | "cloudflare_ipsec_tunnel";
-export const ResourcesListResultItemSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreviewResourceType =
-  /*@__PURE__*/ S.String;
-
-export interface ResourcesListResultItemSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview {
-  id: string;
-  cloudType: ResourcesListResultItemSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreviewCloudType;
-  detail: string;
-  name: string;
-  resourceType: ResourcesListResultItemSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreviewResourceType;
-  title: string;
-}
-export const ResourcesListResultItemSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-      cloudType:
-        ResourcesListResultItemSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreviewCloudType.pipe(
-          T.Body("cloud_type"),
-        ),
-      detail: S.String,
-      name: S.String,
-      resourceType:
-        ResourcesListResultItemSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreviewResourceType.pipe(
-          T.Body("resource_type"),
-        ),
-      title: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "ResourcesListResultItemSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview",
-  }) as any as S.Schema<ResourcesListResultItemSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview>;
-
-export interface ResourcesListResultItemSectionsItemHiddenItemsItemValueMcnResourcePreviewItem {
-  itemType: string;
-  resourcePreview: ResourcesListResultItemSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview;
-}
-export const ResourcesListResultItemSectionsItemHiddenItemsItemValueMcnResourcePreviewItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      itemType: S.String.pipe(T.Body("item_type")),
-      resourcePreview:
-        ResourcesListResultItemSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview.pipe(
-          T.Body("resource_preview"),
-        ),
-    }),
-  ).annotate({
-    identifier:
-      "ResourcesListResultItemSectionsItemHiddenItemsItemValueMcnResourcePreviewItem",
-  }) as any as S.Schema<ResourcesListResultItemSectionsItemHiddenItemsItemValueMcnResourcePreviewItem>;
-
-export type ResourcesListResultItemSectionsItemHiddenItemsItemValueMcnListItemListItemMcnStringItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem;
-export const ResourcesListResultItemSectionsItemHiddenItemsItemValueMcnListItemListItemMcnStringItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem;
-
-export type ResourcesListResultItemSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewCloudType =
-  | "AWS"
-  | "AZURE"
-  | "GOOGLE"
-  | "CLOUDFLARE";
-export const ResourcesListResultItemSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewCloudType =
-  /*@__PURE__*/ S.String;
-
-export type ResourcesListResultItemSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewResourceType =
-  | "aws_customer_gateway"
-  | "aws_egress_only_internet_gateway"
-  | "aws_internet_gateway"
-  | "aws_instance"
-  | "aws_network_interface"
-  | "aws_route"
-  | "aws_route_table"
-  | "aws_route_table_association"
-  | "aws_subnet"
-  | "aws_vpc"
-  | "aws_vpc_ipv4_cidr_block_association"
-  | "aws_vpn_connection"
-  | "aws_vpn_connection_route"
-  | "aws_vpn_gateway"
-  | "aws_security_group"
-  | "aws_vpc_security_group_ingress_rule"
-  | "aws_vpc_security_group_egress_rule"
-  | "aws_ec2_managed_prefix_list"
-  | "aws_ec2_transit_gateway"
-  | "aws_ec2_transit_gateway_prefix_list_reference"
-  | "aws_ec2_transit_gateway_vpc_attachment"
-  | "azurerm_application_security_group"
-  | "azurerm_lb"
-  | "azurerm_lb_backend_address_pool"
-  | "azurerm_lb_nat_pool"
-  | "azurerm_lb_nat_rule"
-  | "azurerm_lb_rule"
-  | "azurerm_local_network_gateway"
-  | "azurerm_network_interface"
-  | "azurerm_network_interface_application_security_group_association"
-  | "azurerm_network_interface_backend_address_pool_association"
-  | "azurerm_network_interface_security_group_association"
-  | "azurerm_network_security_group"
-  | "azurerm_public_ip"
-  | "azurerm_route"
-  | "azurerm_route_table"
-  | "azurerm_subnet"
-  | "azurerm_subnet_route_table_association"
-  | "azurerm_virtual_machine"
-  | "azurerm_virtual_network_gateway_connection"
-  | "azurerm_virtual_network"
-  | "azurerm_virtual_network_gateway"
-  | "google_compute_network"
-  | "google_compute_subnetwork"
-  | "google_compute_vpn_gateway"
-  | "google_compute_vpn_tunnel"
-  | "google_compute_route"
-  | "google_compute_address"
-  | "google_compute_global_address"
-  | "google_compute_router"
-  | "google_compute_interconnect_attachment"
-  | "google_compute_ha_vpn_gateway"
-  | "google_compute_forwarding_rule"
-  | "google_compute_network_firewall_policy"
-  | "google_compute_network_firewall_policy_rule"
-  | "cloudflare_static_route"
-  | "cloudflare_ipsec_tunnel";
-export const ResourcesListResultItemSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewResourceType =
-  /*@__PURE__*/ S.String;
-
-export interface ResourcesListResultItemSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview {
-  id: string;
-  cloudType: ResourcesListResultItemSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewCloudType;
-  detail: string;
-  name: string;
-  resourceType: ResourcesListResultItemSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewResourceType;
-  title: string;
-}
-export const ResourcesListResultItemSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-      cloudType:
-        ResourcesListResultItemSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewCloudType.pipe(
-          T.Body("cloud_type"),
-        ),
-      detail: S.String,
-      name: S.String,
-      resourceType:
-        ResourcesListResultItemSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewResourceType.pipe(
-          T.Body("resource_type"),
-        ),
-      title: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "ResourcesListResultItemSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview",
-  }) as any as S.Schema<ResourcesListResultItemSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview>;
-
-export interface ResourcesListResultItemSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItem {
-  itemType: string;
-  resourcePreview: ResourcesListResultItemSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview;
-}
-export const ResourcesListResultItemSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      itemType: S.String.pipe(T.Body("item_type")),
-      resourcePreview:
-        ResourcesListResultItemSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview.pipe(
-          T.Body("resource_preview"),
-        ),
-    }),
-  ).annotate({
-    identifier:
-      "ResourcesListResultItemSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItem",
-  }) as any as S.Schema<ResourcesListResultItemSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItem>;
-
-export type ResourcesListResultItemSectionsItemHiddenItemsItemValueMcnListItemListItem =
-  | OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem
-  | ResourcesListResultItemSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItem;
-export const ResourcesListResultItemSectionsItemHiddenItemsItemValueMcnListItemListItem =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["itemType", "string"],
-      ["itemType", "resourcePreview"],
-    ]),
-  );
-
-export type ResourcesListResultItemSectionsItemHiddenItemsItemValueMcnListItemListList =
-  Array<ResourcesListResultItemSectionsItemHiddenItemsItemValueMcnListItemListItem>;
-export const ResourcesListResultItemSectionsItemHiddenItemsItemValueMcnListItemListList =
-  /*@__PURE__*/ S.Array(
-    ResourcesListResultItemSectionsItemHiddenItemsItemValueMcnListItemListItem,
-  ) as any as S.Schema<ResourcesListResultItemSectionsItemHiddenItemsItemValueMcnListItemListList>;
-
-export interface ResourcesListResultItemSectionsItemHiddenItemsItemValueMcnListItem {
-  itemType: string;
-  list: ResourcesListResultItemSectionsItemHiddenItemsItemValueMcnListItemListList;
-}
-export const ResourcesListResultItemSectionsItemHiddenItemsItemValueMcnListItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      itemType: S.String.pipe(T.Body("item_type")),
-      list: ResourcesListResultItemSectionsItemHiddenItemsItemValueMcnListItemListList,
-    }),
-  ).annotate({
-    identifier:
-      "ResourcesListResultItemSectionsItemHiddenItemsItemValueMcnListItem",
-  }) as any as S.Schema<ResourcesListResultItemSectionsItemHiddenItemsItemValueMcnListItem>;
-
-export type ResourcesListResultItemSectionsItemHiddenItemsItemValue =
-  | OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem
-  | OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlItem
-  | OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlDiffItem
-  | ResourcesListResultItemSectionsItemHiddenItemsItemValueMcnResourcePreviewItem
-  | ResourcesListResultItemSectionsItemHiddenItemsItemValueMcnListItem;
-export const ResourcesListResultItemSectionsItemHiddenItemsItemValue =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["itemType", "string"],
-      ["itemType", "yaml"],
-      ["itemType", "yamlDiff"],
-      ["itemType", "resourcePreview"],
-      ["itemType", "list"],
-    ]),
-  );
-
-export interface ResourcesListResultItemSectionsItemHiddenItemsItem {
-  helpText?: string | null;
-  name?: string | null;
-  value?: ResourcesListResultItemSectionsItemHiddenItemsItemValue | null;
-}
+export type ResourcesListResultItemSectionsItemHiddenItemsItem =
+  OnRampsCreateResponsePostApplyResourcesSectionsItemHiddenItemsItem;
 export const ResourcesListResultItemSectionsItemHiddenItemsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      helpText: S.optional(S.NullOr(S.String)),
-      name: S.optional(S.NullOr(S.String)),
-      value: S.optional(
-        S.NullOr(ResourcesListResultItemSectionsItemHiddenItemsItemValue),
-      ),
-    }),
-  ).annotate({
-    identifier: "ResourcesListResultItemSectionsItemHiddenItemsItem",
-  }) as any as S.Schema<ResourcesListResultItemSectionsItemHiddenItemsItem>;
+  OnRampsCreateResponsePostApplyResourcesSectionsItemHiddenItemsItem;
 
 export type ResourcesListResultItemSectionsItemHiddenItemsList =
-  Array<ResourcesListResultItemSectionsItemHiddenItemsItem>;
+  Array<OnRampsCreateResponsePostApplyResourcesSectionsItemHiddenItemsItem>;
 export const ResourcesListResultItemSectionsItemHiddenItemsList =
   /*@__PURE__*/ S.Array(
-    ResourcesListResultItemSectionsItemHiddenItemsItem,
+    OnRampsCreateResponsePostApplyResourcesSectionsItemHiddenItemsItem,
   ) as any as S.Schema<ResourcesListResultItemSectionsItemHiddenItemsList>;
 
-export type ResourcesListResultItemSectionsItemVisibleItemsItemValueMcnStringItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem;
-export const ResourcesListResultItemSectionsItemVisibleItemsItemValueMcnStringItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem;
-
-export type ResourcesListResultItemSectionsItemVisibleItemsItemValueMcnYamlItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlItem;
-export const ResourcesListResultItemSectionsItemVisibleItemsItemValueMcnYamlItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlItem;
-
-export type ResourcesListResultItemSectionsItemVisibleItemsItemValueMcnYamlDiffItemYamlDiff =
-  OnRampsCreateResponsePlannedResourcesItemDiff;
-export const ResourcesListResultItemSectionsItemVisibleItemsItemValueMcnYamlDiffItemYamlDiff =
-  OnRampsCreateResponsePlannedResourcesItemDiff;
-
-export type ResourcesListResultItemSectionsItemVisibleItemsItemValueMcnYamlDiffItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlDiffItem;
-export const ResourcesListResultItemSectionsItemVisibleItemsItemValueMcnYamlDiffItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlDiffItem;
-
-export type ResourcesListResultItemSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreviewCloudType =
-  | "AWS"
-  | "AZURE"
-  | "GOOGLE"
-  | "CLOUDFLARE";
-export const ResourcesListResultItemSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreviewCloudType =
-  /*@__PURE__*/ S.String;
-
-export type ResourcesListResultItemSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreviewResourceType =
-  | "aws_customer_gateway"
-  | "aws_egress_only_internet_gateway"
-  | "aws_internet_gateway"
-  | "aws_instance"
-  | "aws_network_interface"
-  | "aws_route"
-  | "aws_route_table"
-  | "aws_route_table_association"
-  | "aws_subnet"
-  | "aws_vpc"
-  | "aws_vpc_ipv4_cidr_block_association"
-  | "aws_vpn_connection"
-  | "aws_vpn_connection_route"
-  | "aws_vpn_gateway"
-  | "aws_security_group"
-  | "aws_vpc_security_group_ingress_rule"
-  | "aws_vpc_security_group_egress_rule"
-  | "aws_ec2_managed_prefix_list"
-  | "aws_ec2_transit_gateway"
-  | "aws_ec2_transit_gateway_prefix_list_reference"
-  | "aws_ec2_transit_gateway_vpc_attachment"
-  | "azurerm_application_security_group"
-  | "azurerm_lb"
-  | "azurerm_lb_backend_address_pool"
-  | "azurerm_lb_nat_pool"
-  | "azurerm_lb_nat_rule"
-  | "azurerm_lb_rule"
-  | "azurerm_local_network_gateway"
-  | "azurerm_network_interface"
-  | "azurerm_network_interface_application_security_group_association"
-  | "azurerm_network_interface_backend_address_pool_association"
-  | "azurerm_network_interface_security_group_association"
-  | "azurerm_network_security_group"
-  | "azurerm_public_ip"
-  | "azurerm_route"
-  | "azurerm_route_table"
-  | "azurerm_subnet"
-  | "azurerm_subnet_route_table_association"
-  | "azurerm_virtual_machine"
-  | "azurerm_virtual_network_gateway_connection"
-  | "azurerm_virtual_network"
-  | "azurerm_virtual_network_gateway"
-  | "google_compute_network"
-  | "google_compute_subnetwork"
-  | "google_compute_vpn_gateway"
-  | "google_compute_vpn_tunnel"
-  | "google_compute_route"
-  | "google_compute_address"
-  | "google_compute_global_address"
-  | "google_compute_router"
-  | "google_compute_interconnect_attachment"
-  | "google_compute_ha_vpn_gateway"
-  | "google_compute_forwarding_rule"
-  | "google_compute_network_firewall_policy"
-  | "google_compute_network_firewall_policy_rule"
-  | "cloudflare_static_route"
-  | "cloudflare_ipsec_tunnel";
-export const ResourcesListResultItemSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreviewResourceType =
-  /*@__PURE__*/ S.String;
-
-export interface ResourcesListResultItemSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreview {
-  id: string;
-  cloudType: ResourcesListResultItemSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreviewCloudType;
-  detail: string;
-  name: string;
-  resourceType: ResourcesListResultItemSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreviewResourceType;
-  title: string;
-}
-export const ResourcesListResultItemSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreview =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-      cloudType:
-        ResourcesListResultItemSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreviewCloudType.pipe(
-          T.Body("cloud_type"),
-        ),
-      detail: S.String,
-      name: S.String,
-      resourceType:
-        ResourcesListResultItemSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreviewResourceType.pipe(
-          T.Body("resource_type"),
-        ),
-      title: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "ResourcesListResultItemSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreview",
-  }) as any as S.Schema<ResourcesListResultItemSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreview>;
-
-export interface ResourcesListResultItemSectionsItemVisibleItemsItemValueMcnResourcePreviewItem {
-  itemType: string;
-  resourcePreview: ResourcesListResultItemSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreview;
-}
-export const ResourcesListResultItemSectionsItemVisibleItemsItemValueMcnResourcePreviewItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      itemType: S.String.pipe(T.Body("item_type")),
-      resourcePreview:
-        ResourcesListResultItemSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreview.pipe(
-          T.Body("resource_preview"),
-        ),
-    }),
-  ).annotate({
-    identifier:
-      "ResourcesListResultItemSectionsItemVisibleItemsItemValueMcnResourcePreviewItem",
-  }) as any as S.Schema<ResourcesListResultItemSectionsItemVisibleItemsItemValueMcnResourcePreviewItem>;
-
-export type ResourcesListResultItemSectionsItemVisibleItemsItemValueMcnListItemListItemMcnStringItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem;
-export const ResourcesListResultItemSectionsItemVisibleItemsItemValueMcnListItemListItemMcnStringItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem;
-
-export type ResourcesListResultItemSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewCloudType =
-  | "AWS"
-  | "AZURE"
-  | "GOOGLE"
-  | "CLOUDFLARE";
-export const ResourcesListResultItemSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewCloudType =
-  /*@__PURE__*/ S.String;
-
-export type ResourcesListResultItemSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewResourceType =
-  | "aws_customer_gateway"
-  | "aws_egress_only_internet_gateway"
-  | "aws_internet_gateway"
-  | "aws_instance"
-  | "aws_network_interface"
-  | "aws_route"
-  | "aws_route_table"
-  | "aws_route_table_association"
-  | "aws_subnet"
-  | "aws_vpc"
-  | "aws_vpc_ipv4_cidr_block_association"
-  | "aws_vpn_connection"
-  | "aws_vpn_connection_route"
-  | "aws_vpn_gateway"
-  | "aws_security_group"
-  | "aws_vpc_security_group_ingress_rule"
-  | "aws_vpc_security_group_egress_rule"
-  | "aws_ec2_managed_prefix_list"
-  | "aws_ec2_transit_gateway"
-  | "aws_ec2_transit_gateway_prefix_list_reference"
-  | "aws_ec2_transit_gateway_vpc_attachment"
-  | "azurerm_application_security_group"
-  | "azurerm_lb"
-  | "azurerm_lb_backend_address_pool"
-  | "azurerm_lb_nat_pool"
-  | "azurerm_lb_nat_rule"
-  | "azurerm_lb_rule"
-  | "azurerm_local_network_gateway"
-  | "azurerm_network_interface"
-  | "azurerm_network_interface_application_security_group_association"
-  | "azurerm_network_interface_backend_address_pool_association"
-  | "azurerm_network_interface_security_group_association"
-  | "azurerm_network_security_group"
-  | "azurerm_public_ip"
-  | "azurerm_route"
-  | "azurerm_route_table"
-  | "azurerm_subnet"
-  | "azurerm_subnet_route_table_association"
-  | "azurerm_virtual_machine"
-  | "azurerm_virtual_network_gateway_connection"
-  | "azurerm_virtual_network"
-  | "azurerm_virtual_network_gateway"
-  | "google_compute_network"
-  | "google_compute_subnetwork"
-  | "google_compute_vpn_gateway"
-  | "google_compute_vpn_tunnel"
-  | "google_compute_route"
-  | "google_compute_address"
-  | "google_compute_global_address"
-  | "google_compute_router"
-  | "google_compute_interconnect_attachment"
-  | "google_compute_ha_vpn_gateway"
-  | "google_compute_forwarding_rule"
-  | "google_compute_network_firewall_policy"
-  | "google_compute_network_firewall_policy_rule"
-  | "cloudflare_static_route"
-  | "cloudflare_ipsec_tunnel";
-export const ResourcesListResultItemSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewResourceType =
-  /*@__PURE__*/ S.String;
-
-export interface ResourcesListResultItemSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview {
-  id: string;
-  cloudType: ResourcesListResultItemSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewCloudType;
-  detail: string;
-  name: string;
-  resourceType: ResourcesListResultItemSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewResourceType;
-  title: string;
-}
-export const ResourcesListResultItemSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-      cloudType:
-        ResourcesListResultItemSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewCloudType.pipe(
-          T.Body("cloud_type"),
-        ),
-      detail: S.String,
-      name: S.String,
-      resourceType:
-        ResourcesListResultItemSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewResourceType.pipe(
-          T.Body("resource_type"),
-        ),
-      title: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "ResourcesListResultItemSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview",
-  }) as any as S.Schema<ResourcesListResultItemSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview>;
-
-export interface ResourcesListResultItemSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItem {
-  itemType: string;
-  resourcePreview: ResourcesListResultItemSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview;
-}
-export const ResourcesListResultItemSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      itemType: S.String.pipe(T.Body("item_type")),
-      resourcePreview:
-        ResourcesListResultItemSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview.pipe(
-          T.Body("resource_preview"),
-        ),
-    }),
-  ).annotate({
-    identifier:
-      "ResourcesListResultItemSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItem",
-  }) as any as S.Schema<ResourcesListResultItemSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItem>;
-
-export type ResourcesListResultItemSectionsItemVisibleItemsItemValueMcnListItemListItem =
-  | OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem
-  | ResourcesListResultItemSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItem;
-export const ResourcesListResultItemSectionsItemVisibleItemsItemValueMcnListItemListItem =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["itemType", "string"],
-      ["itemType", "resourcePreview"],
-    ]),
-  );
-
-export type ResourcesListResultItemSectionsItemVisibleItemsItemValueMcnListItemListList =
-  Array<ResourcesListResultItemSectionsItemVisibleItemsItemValueMcnListItemListItem>;
-export const ResourcesListResultItemSectionsItemVisibleItemsItemValueMcnListItemListList =
-  /*@__PURE__*/ S.Array(
-    ResourcesListResultItemSectionsItemVisibleItemsItemValueMcnListItemListItem,
-  ) as any as S.Schema<ResourcesListResultItemSectionsItemVisibleItemsItemValueMcnListItemListList>;
-
-export interface ResourcesListResultItemSectionsItemVisibleItemsItemValueMcnListItem {
-  itemType: string;
-  list: ResourcesListResultItemSectionsItemVisibleItemsItemValueMcnListItemListList;
-}
-export const ResourcesListResultItemSectionsItemVisibleItemsItemValueMcnListItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      itemType: S.String.pipe(T.Body("item_type")),
-      list: ResourcesListResultItemSectionsItemVisibleItemsItemValueMcnListItemListList,
-    }),
-  ).annotate({
-    identifier:
-      "ResourcesListResultItemSectionsItemVisibleItemsItemValueMcnListItem",
-  }) as any as S.Schema<ResourcesListResultItemSectionsItemVisibleItemsItemValueMcnListItem>;
-
-export type ResourcesListResultItemSectionsItemVisibleItemsItemValue =
-  | OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem
-  | OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlItem
-  | OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlDiffItem
-  | ResourcesListResultItemSectionsItemVisibleItemsItemValueMcnResourcePreviewItem
-  | ResourcesListResultItemSectionsItemVisibleItemsItemValueMcnListItem;
-export const ResourcesListResultItemSectionsItemVisibleItemsItemValue =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["itemType", "string"],
-      ["itemType", "yaml"],
-      ["itemType", "yamlDiff"],
-      ["itemType", "resourcePreview"],
-      ["itemType", "list"],
-    ]),
-  );
-
-export interface ResourcesListResultItemSectionsItemVisibleItemsItem {
-  helpText?: string | null;
-  name?: string | null;
-  value?: ResourcesListResultItemSectionsItemVisibleItemsItemValue | null;
-}
+export type ResourcesListResultItemSectionsItemVisibleItemsItem =
+  OnRampsCreateResponsePostApplyResourcesSectionsItemHiddenItemsItem;
 export const ResourcesListResultItemSectionsItemVisibleItemsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      helpText: S.optional(S.NullOr(S.String)),
-      name: S.optional(S.NullOr(S.String)),
-      value: S.optional(
-        S.NullOr(ResourcesListResultItemSectionsItemVisibleItemsItemValue),
-      ),
-    }),
-  ).annotate({
-    identifier: "ResourcesListResultItemSectionsItemVisibleItemsItem",
-  }) as any as S.Schema<ResourcesListResultItemSectionsItemVisibleItemsItem>;
+  OnRampsCreateResponsePostApplyResourcesSectionsItemHiddenItemsItem;
 
 export type ResourcesListResultItemSectionsItemVisibleItemsList =
-  Array<ResourcesListResultItemSectionsItemVisibleItemsItem>;
+  Array<OnRampsCreateResponsePostApplyResourcesSectionsItemHiddenItemsItem>;
 export const ResourcesListResultItemSectionsItemVisibleItemsList =
   /*@__PURE__*/ S.Array(
-    ResourcesListResultItemSectionsItemVisibleItemsItem,
+    OnRampsCreateResponsePostApplyResourcesSectionsItemHiddenItemsItem,
   ) as any as S.Schema<ResourcesListResultItemSectionsItemVisibleItemsList>;
 
 export interface ResourcesListResultItemSectionsItem {
@@ -11823,22 +3901,6 @@ export type ResourcesListResultItemSectionsList =
 export const ResourcesListResultItemSectionsList = /*@__PURE__*/ S.Array(
   ResourcesListResultItemSectionsItem,
 ) as any as S.Schema<ResourcesListResultItemSectionsList>;
-
-export type ResourcesListResultItemStateMap = {
-  [key: string]: unknown | undefined;
-};
-export const ResourcesListResultItemStateMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<ResourcesListResultItemStateMap>;
-
-export type ResourcesListResultItemTagsMap = {
-  [key: string]: string | undefined;
-};
-export const ResourcesListResultItemTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ResourcesListResultItemTagsMap>;
 
 export type ResourcesListResultItemManagedByItemClientType =
   "MAGIC_WAN_CLOUD_ONRAMP";
@@ -11873,21 +3935,21 @@ export interface ResourcesListResultItem {
   id: string;
   accountId: string;
   cloudType: ResourcesListResultItemCloudType;
-  config: ResourcesListResultItemConfigMap;
+  config: unknown;
   deploymentProvider: string;
   managed: boolean;
   monthlyCostEstimate: OnRampsCreateResponsePostApplyMonthlyCostEstimate;
   name: string;
   nativeId: string;
-  observations: ResourcesListResultItemObservationsMap;
+  observations: OnRampsCreateResponsePostApplyResourcesObservations;
   providerIds: ResourcesListResultItemProviderIdsList;
-  providerNamesById: ResourcesListResultItemProviderNamesByIdMap;
+  providerNamesById: unknown;
   region: string;
   resourceGroup: string;
-  resourceType: ResourcesListResultItemResourceType;
+  resourceType: string;
   sections: ResourcesListResultItemSectionsList;
-  state: ResourcesListResultItemStateMap;
-  tags: ResourcesListResultItemTagsMap;
+  state: unknown;
+  tags: unknown;
   updatedAt: string;
   url: string;
   managedBy?: ResourcesListResultItemManagedByList | null;
@@ -11897,7 +3959,7 @@ export const ResourcesListResultItem = /*@__PURE__*/ S.suspend(() =>
     id: S.String,
     accountId: S.String.pipe(T.Body("account_id")),
     cloudType: ResourcesListResultItemCloudType.pipe(T.Body("cloud_type")),
-    config: ResourcesListResultItemConfigMap,
+    config: S.Unknown,
     deploymentProvider: S.String.pipe(T.Body("deployment_provider")),
     managed: S.Boolean,
     monthlyCostEstimate: OnRampsCreateResponsePostApplyMonthlyCostEstimate.pipe(
@@ -11905,21 +3967,17 @@ export const ResourcesListResultItem = /*@__PURE__*/ S.suspend(() =>
     ),
     name: S.String,
     nativeId: S.String.pipe(T.Body("native_id")),
-    observations: ResourcesListResultItemObservationsMap,
+    observations: OnRampsCreateResponsePostApplyResourcesObservations,
     providerIds: ResourcesListResultItemProviderIdsList.pipe(
       T.Body("provider_ids"),
     ),
-    providerNamesById: ResourcesListResultItemProviderNamesByIdMap.pipe(
-      T.Body("provider_names_by_id"),
-    ),
+    providerNamesById: S.Unknown.pipe(T.Body("provider_names_by_id")),
     region: S.String,
     resourceGroup: S.String.pipe(T.Body("resource_group")),
-    resourceType: ResourcesListResultItemResourceType.pipe(
-      T.Body("resource_type"),
-    ),
+    resourceType: S.String.pipe(T.Body("resource_type")),
     sections: ResourcesListResultItemSectionsList,
-    state: ResourcesListResultItemStateMap,
-    tags: ResourcesListResultItemTagsMap,
+    state: S.Unknown,
+    tags: S.Unknown,
     updatedAt: S.String.pipe(T.Body("updated_at")),
     url: S.String,
     managedBy: S.optional(
@@ -11935,42 +3993,24 @@ export const ResourcesListResultList = /*@__PURE__*/ S.Array(
   ResourcesListResultItem,
 ) as any as S.Schema<ResourcesListResultList>;
 
-export interface ListResourcesResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result: ResourcesListResultList;
-  /** Pagination info from the envelope's `result_info`. */
-  resultInfo?: ResultInfo | null;
-}
+export type ListResourcesResponse = ResourcesListResultList;
 export const ListResourcesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: ResourcesListResultList.pipe(T.EnvelopePayload()),
-    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+  ResourcesListResultList.pipe(
+    T.EnvelopePayloadRoot(),
+    T.KeyDictionary(KEY_DICTIONARY),
+  ),
 ).annotate({
   identifier: "ListResourcesResponse",
 }) as any as S.Schema<ListResourcesResponse>;
 
-export type CatalogSyncsEditRequestUpdateMode = "AUTO" | "MANUAL";
-export const CatalogSyncsEditRequestUpdateMode = /*@__PURE__*/ S.String;
-
 export interface PatchCatalogSyncRequest {
   accountId: string;
   syncId: string;
-  description?: string;
-  name?: string;
-  policy?: string;
-  updateMode?: CatalogSyncsEditRequestUpdateMode | (string & {});
 }
 export const PatchCatalogSyncRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     syncId: S.String.pipe(T.Label("sync_id")),
-    description: S.optional(S.String),
-    name: S.optional(S.String),
-    policy: S.optional(S.String),
-    updateMode: S.optional(
-      CatalogSyncsEditRequestUpdateMode.pipe(T.Body("update_mode")),
-    ),
   })
     .pipe(
       T.Http({
@@ -11992,202 +4032,18 @@ export const CatalogSyncsEditResponseDestinationType = /*@__PURE__*/ S.String;
 export type CatalogSyncsEditResponseUpdateMode = "AUTO" | "MANUAL";
 export const CatalogSyncsEditResponseUpdateMode = /*@__PURE__*/ S.String;
 
-export type CatalogSyncsEditResponseErrorsValueCode =
-  | 1001
-  | 1002
-  | 1003
-  | 1004
-  | 1005
-  | 1006
-  | 1007
-  | 1008
-  | 1009
-  | 1010
-  | 1011
-  | 1012
-  | 1013
-  | 1014
-  | 1015
-  | 1016
-  | 1017
-  | 1018
-  | 2001
-  | 2002
-  | 2003
-  | 2004
-  | 2005
-  | 2006
-  | 2007
-  | 2008
-  | 2009
-  | 2010
-  | 2011
-  | 2012
-  | 2013
-  | 2014
-  | 2015
-  | 2016
-  | 2017
-  | 2018
-  | 2019
-  | 2020
-  | 2021
-  | 2022
-  | 3001
-  | 3002
-  | 3003
-  | 3004
-  | 3005
-  | 3006
-  | 3007
-  | 4001
-  | 4002
-  | 4003
-  | 4004
-  | 4005
-  | 4006
-  | 4007
-  | 4008
-  | 4009
-  | 4010
-  | 4011
-  | 4012
-  | 4013
-  | 4014
-  | 4015
-  | 4016
-  | 4017
-  | 4018
-  | 4019
-  | 4020
-  | 4021
-  | 4022
-  | 4023
-  | 5001
-  | 5002
-  | 5003
-  | 5004
-  | 102000
-  | 102001
-  | 102002
-  | 102003
-  | 102004
-  | 102005
-  | 102006
-  | 102007
-  | 102008
-  | 102009
-  | 102010
-  | 102011
-  | 102012
-  | 102013
-  | 102014
-  | 102015
-  | 102016
-  | 102017
-  | 102018
-  | 102019
-  | 102020
-  | 102021
-  | 102022
-  | 102023
-  | 102024
-  | 102025
-  | 102026
-  | 102027
-  | 102028
-  | 102029
-  | 102030
-  | 102031
-  | 102032
-  | 102033
-  | 102034
-  | 102035
-  | 102036
-  | 102037
-  | 102038
-  | 102039
-  | 102040
-  | 102041
-  | 102042
-  | 102043
-  | 102044
-  | 102045
-  | 102046
-  | 102047
-  | 102048
-  | 102049
-  | 102050
-  | 102051
-  | 102052
-  | 102053
-  | 102054
-  | 102055
-  | 102056
-  | 102057
-  | 102058
-  | 102059
-  | 102060
-  | 102061
-  | 102062
-  | 102063
-  | 102064
-  | 102065
-  | 102066
-  | 102067
-  | 102068
-  | 102069
-  | 102070
-  | 102071
-  | 102072
-  | 103001
-  | 103002
-  | 103003
-  | 103004
-  | 103005
-  | 103006
-  | 103007
-  | 103008;
-export const CatalogSyncsEditResponseErrorsValueCode = /*@__PURE__*/ S.Number;
+export type CatalogSyncsEditResponseErrorsMeta =
+  CatalogSyncsCreateResponseErrorsMeta;
+export const CatalogSyncsEditResponseErrorsMeta =
+  CatalogSyncsCreateResponseErrorsMeta;
 
-export type CatalogSyncsEditResponseErrorsValueMeta =
-  CatalogSyncsCreateResponseErrorsValueMeta;
-export const CatalogSyncsEditResponseErrorsValueMeta =
-  CatalogSyncsCreateResponseErrorsValueMeta;
+export type CatalogSyncsEditResponseErrorsSource =
+  CatalogSyncsCreateResponseErrorsSource;
+export const CatalogSyncsEditResponseErrorsSource =
+  CatalogSyncsCreateResponseErrorsSource;
 
-export type CatalogSyncsEditResponseErrorsValueSource =
-  CatalogSyncsCreateResponseErrorsValueSource;
-export const CatalogSyncsEditResponseErrorsValueSource =
-  CatalogSyncsCreateResponseErrorsValueSource;
-
-export interface CatalogSyncsEditResponseErrorsValue {
-  code: CatalogSyncsEditResponseErrorsValueCode;
-  message: string;
-  documentationUrl?: string | null;
-  meta?: CatalogSyncsCreateResponseErrorsValueMeta | null;
-  source?: CatalogSyncsCreateResponseErrorsValueSource | null;
-}
-export const CatalogSyncsEditResponseErrorsValue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    code: CatalogSyncsEditResponseErrorsValueCode,
-    message: S.String,
-    documentationUrl: S.optional(
-      S.NullOr(S.String).pipe(T.Body("documentation_url")),
-    ),
-    meta: S.optional(S.NullOr(CatalogSyncsCreateResponseErrorsValueMeta)),
-    source: S.optional(S.NullOr(CatalogSyncsCreateResponseErrorsValueSource)),
-  }),
-).annotate({
-  identifier: "CatalogSyncsEditResponseErrorsValue",
-}) as any as S.Schema<CatalogSyncsEditResponseErrorsValue>;
-
-export type CatalogSyncsEditResponseErrorsMap = {
-  [key: string]: CatalogSyncsEditResponseErrorsValue | undefined;
-};
-export const CatalogSyncsEditResponseErrorsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  CatalogSyncsEditResponseErrorsValue,
-) as any as S.Schema<CatalogSyncsEditResponseErrorsMap>;
+export type CatalogSyncsEditResponseErrors = CatalogSyncsCreateResponseErrors;
+export const CatalogSyncsEditResponseErrors = CatalogSyncsCreateResponseErrors;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface PatchCatalogSyncResponse {
@@ -12199,7 +4055,7 @@ export interface PatchCatalogSyncResponse {
   name: string;
   policy: string;
   updateMode: CatalogSyncsEditResponseUpdateMode;
-  errors?: CatalogSyncsEditResponseErrorsMap | null;
+  errors?: CatalogSyncsCreateResponseErrors | null;
   includesDiscoveriesUntil?: string | null;
   lastAttemptedUpdateAt?: string | null;
   lastSuccessfulUpdateAt?: string | null;
@@ -12216,7 +4072,7 @@ export const PatchCatalogSyncResponse = /*@__PURE__*/ S.suspend(() =>
     name: S.String,
     policy: S.String,
     updateMode: CatalogSyncsEditResponseUpdateMode.pipe(T.Body("update_mode")),
-    errors: S.optional(S.NullOr(CatalogSyncsEditResponseErrorsMap)),
+    errors: S.optional(S.NullOr(CatalogSyncsCreateResponseErrors)),
     includesDiscoveriesUntil: S.optional(
       S.NullOr(S.String).pipe(T.Body("includes_discoveries_until")),
     ),
@@ -12234,29 +4090,11 @@ export const PatchCatalogSyncResponse = /*@__PURE__*/ S.suspend(() =>
 export interface PatchCloudIntegrationRequest {
   accountId: string;
   providerId: string;
-  awsArn?: string;
-  azureSubscriptionId?: string;
-  azureTenantId?: string;
-  description?: string;
-  friendlyName?: string;
-  gcpProjectId?: string;
-  gcpServiceAccountEmail?: string;
 }
 export const PatchCloudIntegrationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     providerId: S.String.pipe(T.Label("provider_id")),
-    awsArn: S.optional(S.String.pipe(T.Body("aws_arn"))),
-    azureSubscriptionId: S.optional(
-      S.String.pipe(T.Body("azure_subscription_id")),
-    ),
-    azureTenantId: S.optional(S.String.pipe(T.Body("azure_tenant_id"))),
-    description: S.optional(S.String),
-    friendlyName: S.optional(S.String.pipe(T.Body("friendly_name"))),
-    gcpProjectId: S.optional(S.String.pipe(T.Body("gcp_project_id"))),
-    gcpServiceAccountEmail: S.optional(
-      S.String.pipe(T.Body("gcp_service_account_email")),
-    ),
   })
     .pipe(
       T.Http({
@@ -12284,22 +4122,6 @@ export type CloudIntegrationsEditResponseLifecycleState =
 export const CloudIntegrationsEditResponseLifecycleState =
   /*@__PURE__*/ S.String;
 
-export type CloudIntegrationsEditResponseState =
-  | "UNSPECIFIED"
-  | "PENDING"
-  | "DISCOVERING"
-  | "FAILED"
-  | "SUCCEEDED";
-export const CloudIntegrationsEditResponseState = /*@__PURE__*/ S.String;
-
-export type CloudIntegrationsEditResponseStateV2 =
-  | "UNSPECIFIED"
-  | "PENDING"
-  | "DISCOVERING"
-  | "FAILED"
-  | "SUCCEEDED";
-export const CloudIntegrationsEditResponseStateV2 = /*@__PURE__*/ S.String;
-
 export type CloudIntegrationsEditResponseStatusDiscoveryProgress =
   CloudIntegrationsCreateResponseStatusDiscoveryProgress;
 export const CloudIntegrationsEditResponseStatusDiscoveryProgress =
@@ -12309,24 +4131,6 @@ export type CloudIntegrationsEditResponseStatusDiscoveryProgressV2 =
   CloudIntegrationsCreateResponseStatusDiscoveryProgress;
 export const CloudIntegrationsEditResponseStatusDiscoveryProgressV2 =
   CloudIntegrationsCreateResponseStatusDiscoveryProgress;
-
-export type CloudIntegrationsEditResponseStatusLastDiscoveryStatus =
-  | "UNSPECIFIED"
-  | "PENDING"
-  | "DISCOVERING"
-  | "FAILED"
-  | "SUCCEEDED";
-export const CloudIntegrationsEditResponseStatusLastDiscoveryStatus =
-  /*@__PURE__*/ S.String;
-
-export type CloudIntegrationsEditResponseStatusLastDiscoveryStatusV2 =
-  | "UNSPECIFIED"
-  | "PENDING"
-  | "DISCOVERING"
-  | "FAILED"
-  | "SUCCEEDED";
-export const CloudIntegrationsEditResponseStatusLastDiscoveryStatusV2 =
-  /*@__PURE__*/ S.String;
 
 export type CloudIntegrationsEditResponseStatusRegionsList = Array<string>;
 export const CloudIntegrationsEditResponseStatusRegionsList =
@@ -12367,8 +4171,8 @@ export const CloudIntegrationsEditResponseStatusInUseByList =
 export interface CloudIntegrationsEditResponseStatus {
   discoveryProgress: CloudIntegrationsCreateResponseStatusDiscoveryProgress;
   discoveryProgressV2: CloudIntegrationsCreateResponseStatusDiscoveryProgress;
-  lastDiscoveryStatus: CloudIntegrationsEditResponseStatusLastDiscoveryStatus;
-  lastDiscoveryStatusV2: CloudIntegrationsEditResponseStatusLastDiscoveryStatusV2;
+  lastDiscoveryStatus: string;
+  lastDiscoveryStatusV2: string;
   regions: CloudIntegrationsEditResponseStatusRegionsList;
   credentialsGoodSince?: string | null;
   credentialsMissingSince?: string | null;
@@ -12392,14 +4196,8 @@ export const CloudIntegrationsEditResponseStatus = /*@__PURE__*/ S.suspend(() =>
       CloudIntegrationsCreateResponseStatusDiscoveryProgress.pipe(
         T.Body("discovery_progress_v2"),
       ),
-    lastDiscoveryStatus:
-      CloudIntegrationsEditResponseStatusLastDiscoveryStatus.pipe(
-        T.Body("last_discovery_status"),
-      ),
-    lastDiscoveryStatusV2:
-      CloudIntegrationsEditResponseStatusLastDiscoveryStatusV2.pipe(
-        T.Body("last_discovery_status_v2"),
-      ),
+    lastDiscoveryStatus: S.String.pipe(T.Body("last_discovery_status")),
+    lastDiscoveryStatusV2: S.String.pipe(T.Body("last_discovery_status_v2")),
     regions: CloudIntegrationsEditResponseStatusRegionsList,
     credentialsGoodSince: S.optional(
       S.NullOr(S.String).pipe(T.Body("credentials_good_since")),
@@ -12446,8 +4244,8 @@ export interface PatchCloudIntegrationResponse {
   friendlyName: string;
   lastUpdated: string;
   lifecycleState: CloudIntegrationsEditResponseLifecycleState;
-  state: CloudIntegrationsEditResponseState;
-  stateV2: CloudIntegrationsEditResponseStateV2;
+  state: string;
+  stateV2: string;
   awsArn?: string | null;
   azureSubscriptionId?: string | null;
   azureTenantId?: string | null;
@@ -12467,8 +4265,8 @@ export const PatchCloudIntegrationResponse = /*@__PURE__*/ S.suspend(() =>
     lifecycleState: CloudIntegrationsEditResponseLifecycleState.pipe(
       T.Body("lifecycle_state"),
     ),
-    state: CloudIntegrationsEditResponseState,
-    stateV2: CloudIntegrationsEditResponseStateV2.pipe(T.Body("state_v2")),
+    state: S.String,
+    stateV2: S.String.pipe(T.Body("state_v2")),
     awsArn: S.optional(S.NullOr(S.String).pipe(T.Body("aws_arn"))),
     azureSubscriptionId: S.optional(
       S.NullOr(S.String).pipe(T.Body("azure_subscription_id")),
@@ -12487,54 +4285,14 @@ export const PatchCloudIntegrationResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "PatchCloudIntegrationResponse",
 }) as any as S.Schema<PatchCloudIntegrationResponse>;
 
-export type OnRampsEditRequestAttachedHubsList = Array<string>;
-export const OnRampsEditRequestAttachedHubsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<OnRampsEditRequestAttachedHubsList>;
-
-export type OnRampsEditRequestAttachedVpcsList = Array<string>;
-export const OnRampsEditRequestAttachedVpcsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<OnRampsEditRequestAttachedVpcsList>;
-
 export interface PatchOnRampRequest {
   accountId: string;
   onrampId: string;
-  attachedHubs?: OnRampsEditRequestAttachedHubsList;
-  attachedVpcs?: OnRampsEditRequestAttachedVpcsList;
-  description?: string;
-  installRoutesInCloud?: boolean;
-  installRoutesInMagicWan?: boolean;
-  manageHubToHubAttachments?: boolean;
-  manageVpcToHubAttachments?: boolean;
-  name?: string;
-  vpc?: string;
 }
 export const PatchOnRampRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     onrampId: S.String.pipe(T.Label("onramp_id")),
-    attachedHubs: S.optional(
-      OnRampsEditRequestAttachedHubsList.pipe(T.Body("attached_hubs")),
-    ),
-    attachedVpcs: S.optional(
-      OnRampsEditRequestAttachedVpcsList.pipe(T.Body("attached_vpcs")),
-    ),
-    description: S.optional(S.String),
-    installRoutesInCloud: S.optional(
-      S.Boolean.pipe(T.Body("install_routes_in_cloud")),
-    ),
-    installRoutesInMagicWan: S.optional(
-      S.Boolean.pipe(T.Body("install_routes_in_magic_wan")),
-    ),
-    manageHubToHubAttachments: S.optional(
-      S.Boolean.pipe(T.Body("manage_hub_to_hub_attachments")),
-    ),
-    manageVpcToHubAttachments: S.optional(
-      S.Boolean.pipe(T.Body("manage_vpc_to_hub_attachments")),
-    ),
-    name: S.optional(S.String),
-    vpc: S.optional(S.String),
   })
     .pipe(
       T.Http({
@@ -12586,15 +4344,6 @@ export type OnRampsEditResponsePlannedResourcesItemMonthlyCostEstimateDiff =
 export const OnRampsEditResponsePlannedResourcesItemMonthlyCostEstimateDiff =
   OnRampsCreateResponsePlannedMonthlyCostEstimate;
 
-export type OnRampsEditResponsePlannedResourcesItemPlannedAction =
-  | "no_op"
-  | "create"
-  | "update"
-  | "replace"
-  | "destroy";
-export const OnRampsEditResponsePlannedResourcesItemPlannedAction =
-  /*@__PURE__*/ S.String;
-
 export type OnRampsEditResponsePlannedResourcesItemResourceCloudType =
   | "AWS"
   | "AZURE"
@@ -12603,73 +4352,12 @@ export type OnRampsEditResponsePlannedResourcesItemResourceCloudType =
 export const OnRampsEditResponsePlannedResourcesItemResourceCloudType =
   /*@__PURE__*/ S.String;
 
-export type OnRampsEditResponsePlannedResourcesItemResourceResourceType =
-  | "aws_customer_gateway"
-  | "aws_egress_only_internet_gateway"
-  | "aws_internet_gateway"
-  | "aws_instance"
-  | "aws_network_interface"
-  | "aws_route"
-  | "aws_route_table"
-  | "aws_route_table_association"
-  | "aws_subnet"
-  | "aws_vpc"
-  | "aws_vpc_ipv4_cidr_block_association"
-  | "aws_vpn_connection"
-  | "aws_vpn_connection_route"
-  | "aws_vpn_gateway"
-  | "aws_security_group"
-  | "aws_vpc_security_group_ingress_rule"
-  | "aws_vpc_security_group_egress_rule"
-  | "aws_ec2_managed_prefix_list"
-  | "aws_ec2_transit_gateway"
-  | "aws_ec2_transit_gateway_prefix_list_reference"
-  | "aws_ec2_transit_gateway_vpc_attachment"
-  | "azurerm_application_security_group"
-  | "azurerm_lb"
-  | "azurerm_lb_backend_address_pool"
-  | "azurerm_lb_nat_pool"
-  | "azurerm_lb_nat_rule"
-  | "azurerm_lb_rule"
-  | "azurerm_local_network_gateway"
-  | "azurerm_network_interface"
-  | "azurerm_network_interface_application_security_group_association"
-  | "azurerm_network_interface_backend_address_pool_association"
-  | "azurerm_network_interface_security_group_association"
-  | "azurerm_network_security_group"
-  | "azurerm_public_ip"
-  | "azurerm_route"
-  | "azurerm_route_table"
-  | "azurerm_subnet"
-  | "azurerm_subnet_route_table_association"
-  | "azurerm_virtual_machine"
-  | "azurerm_virtual_network_gateway_connection"
-  | "azurerm_virtual_network"
-  | "azurerm_virtual_network_gateway"
-  | "google_compute_network"
-  | "google_compute_subnetwork"
-  | "google_compute_vpn_gateway"
-  | "google_compute_vpn_tunnel"
-  | "google_compute_route"
-  | "google_compute_address"
-  | "google_compute_global_address"
-  | "google_compute_router"
-  | "google_compute_interconnect_attachment"
-  | "google_compute_ha_vpn_gateway"
-  | "google_compute_forwarding_rule"
-  | "google_compute_network_firewall_policy"
-  | "google_compute_network_firewall_policy_rule"
-  | "cloudflare_static_route"
-  | "cloudflare_ipsec_tunnel";
-export const OnRampsEditResponsePlannedResourcesItemResourceResourceType =
-  /*@__PURE__*/ S.String;
-
 export interface OnRampsEditResponsePlannedResourcesItemResource {
   id: string;
   cloudType: OnRampsEditResponsePlannedResourcesItemResourceCloudType;
   detail: string;
   name: string;
-  resourceType: OnRampsEditResponsePlannedResourcesItemResourceResourceType;
+  resourceType: string;
   title: string;
 }
 export const OnRampsEditResponsePlannedResourcesItemResource =
@@ -12681,10 +4369,7 @@ export const OnRampsEditResponsePlannedResourcesItemResource =
       ),
       detail: S.String,
       name: S.String,
-      resourceType:
-        OnRampsEditResponsePlannedResourcesItemResourceResourceType.pipe(
-          T.Body("resource_type"),
-        ),
+      resourceType: S.String.pipe(T.Body("resource_type")),
       title: S.String,
     }),
   ).annotate({
@@ -12695,7 +4380,7 @@ export interface OnRampsEditResponsePlannedResourcesItem {
   diff: OnRampsCreateResponsePlannedResourcesItemDiff;
   keysRequireReplace: OnRampsEditResponsePlannedResourcesItemKeysRequireReplaceList;
   monthlyCostEstimateDiff: OnRampsCreateResponsePlannedMonthlyCostEstimate;
-  plannedAction: OnRampsEditResponsePlannedResourcesItemPlannedAction;
+  plannedAction: string;
   resource: OnRampsEditResponsePlannedResourcesItemResource;
 }
 export const OnRampsEditResponsePlannedResourcesItem = /*@__PURE__*/ S.suspend(
@@ -12710,9 +4395,7 @@ export const OnRampsEditResponsePlannedResourcesItem = /*@__PURE__*/ S.suspend(
         OnRampsCreateResponsePlannedMonthlyCostEstimate.pipe(
           T.Body("monthly_cost_estimate_diff"),
         ),
-      plannedAction: OnRampsEditResponsePlannedResourcesItemPlannedAction.pipe(
-        T.Body("planned_action"),
-      ),
+      plannedAction: S.String.pipe(T.Body("planned_action")),
       resource: OnRampsEditResponsePlannedResourcesItemResource,
     }),
 ).annotate({
@@ -12730,903 +4413,149 @@ export type OnRampsEditResponsePostApplyMonthlyCostEstimate =
 export const OnRampsEditResponsePostApplyMonthlyCostEstimate =
   OnRampsCreateResponsePostApplyMonthlyCostEstimate;
 
-export type OnRampsEditResponsePostApplyResourcesValueCloudType =
+export type OnRampsEditResponsePostApplyResourcesCloudType =
   | "AWS"
   | "AZURE"
   | "GOOGLE"
   | "CLOUDFLARE";
-export const OnRampsEditResponsePostApplyResourcesValueCloudType =
+export const OnRampsEditResponsePostApplyResourcesCloudType =
   /*@__PURE__*/ S.String;
 
-export type OnRampsEditResponsePostApplyResourcesValueConfigMap = {
-  [key: string]: unknown | undefined;
-};
-export const OnRampsEditResponsePostApplyResourcesValueConfigMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<OnRampsEditResponsePostApplyResourcesValueConfigMap>;
-
-export type OnRampsEditResponsePostApplyResourcesValueMonthlyCostEstimate =
+export type OnRampsEditResponsePostApplyResourcesMonthlyCostEstimate =
   OnRampsCreateResponsePostApplyMonthlyCostEstimate;
-export const OnRampsEditResponsePostApplyResourcesValueMonthlyCostEstimate =
+export const OnRampsEditResponsePostApplyResourcesMonthlyCostEstimate =
   OnRampsCreateResponsePostApplyMonthlyCostEstimate;
 
-export type OnRampsEditResponsePostApplyResourcesValueObservationsValue =
-  OnRampsCreateResponsePostApplyResourcesValueObservationsValue;
-export const OnRampsEditResponsePostApplyResourcesValueObservationsValue =
-  OnRampsCreateResponsePostApplyResourcesValueObservationsValue;
+export type OnRampsEditResponsePostApplyResourcesObservations =
+  OnRampsCreateResponsePostApplyResourcesObservations;
+export const OnRampsEditResponsePostApplyResourcesObservations =
+  OnRampsCreateResponsePostApplyResourcesObservations;
 
-export type OnRampsEditResponsePostApplyResourcesValueObservationsMap = {
-  [key: string]:
-    | OnRampsCreateResponsePostApplyResourcesValueObservationsValue
-    | undefined;
-};
-export const OnRampsEditResponsePostApplyResourcesValueObservationsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    OnRampsCreateResponsePostApplyResourcesValueObservationsValue,
-  ) as any as S.Schema<OnRampsEditResponsePostApplyResourcesValueObservationsMap>;
-
-export type OnRampsEditResponsePostApplyResourcesValueProviderIdsList =
+export type OnRampsEditResponsePostApplyResourcesProviderIdsList =
   Array<string>;
-export const OnRampsEditResponsePostApplyResourcesValueProviderIdsList =
+export const OnRampsEditResponsePostApplyResourcesProviderIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
-  ) as any as S.Schema<OnRampsEditResponsePostApplyResourcesValueProviderIdsList>;
+  ) as any as S.Schema<OnRampsEditResponsePostApplyResourcesProviderIdsList>;
 
-export type OnRampsEditResponsePostApplyResourcesValueProviderNamesByIdMap = {
-  [key: string]: string | undefined;
-};
-export const OnRampsEditResponsePostApplyResourcesValueProviderNamesByIdMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<OnRampsEditResponsePostApplyResourcesValueProviderNamesByIdMap>;
+export type OnRampsEditResponsePostApplyResourcesSectionsItemHiddenItemsItem =
+  OnRampsCreateResponsePostApplyResourcesSectionsItemHiddenItemsItem;
+export const OnRampsEditResponsePostApplyResourcesSectionsItemHiddenItemsItem =
+  OnRampsCreateResponsePostApplyResourcesSectionsItemHiddenItemsItem;
 
-export type OnRampsEditResponsePostApplyResourcesValueResourceType =
-  | "aws_customer_gateway"
-  | "aws_egress_only_internet_gateway"
-  | "aws_internet_gateway"
-  | "aws_instance"
-  | "aws_network_interface"
-  | "aws_route"
-  | "aws_route_table"
-  | "aws_route_table_association"
-  | "aws_subnet"
-  | "aws_vpc"
-  | "aws_vpc_ipv4_cidr_block_association"
-  | "aws_vpn_connection"
-  | "aws_vpn_connection_route"
-  | "aws_vpn_gateway"
-  | "aws_security_group"
-  | "aws_vpc_security_group_ingress_rule"
-  | "aws_vpc_security_group_egress_rule"
-  | "aws_ec2_managed_prefix_list"
-  | "aws_ec2_transit_gateway"
-  | "aws_ec2_transit_gateway_prefix_list_reference"
-  | "aws_ec2_transit_gateway_vpc_attachment"
-  | "azurerm_application_security_group"
-  | "azurerm_lb"
-  | "azurerm_lb_backend_address_pool"
-  | "azurerm_lb_nat_pool"
-  | "azurerm_lb_nat_rule"
-  | "azurerm_lb_rule"
-  | "azurerm_local_network_gateway"
-  | "azurerm_network_interface"
-  | "azurerm_network_interface_application_security_group_association"
-  | "azurerm_network_interface_backend_address_pool_association"
-  | "azurerm_network_interface_security_group_association"
-  | "azurerm_network_security_group"
-  | "azurerm_public_ip"
-  | "azurerm_route"
-  | "azurerm_route_table"
-  | "azurerm_subnet"
-  | "azurerm_subnet_route_table_association"
-  | "azurerm_virtual_machine"
-  | "azurerm_virtual_network_gateway_connection"
-  | "azurerm_virtual_network"
-  | "azurerm_virtual_network_gateway"
-  | "google_compute_network"
-  | "google_compute_subnetwork"
-  | "google_compute_vpn_gateway"
-  | "google_compute_vpn_tunnel"
-  | "google_compute_route"
-  | "google_compute_address"
-  | "google_compute_global_address"
-  | "google_compute_router"
-  | "google_compute_interconnect_attachment"
-  | "google_compute_ha_vpn_gateway"
-  | "google_compute_forwarding_rule"
-  | "google_compute_network_firewall_policy"
-  | "google_compute_network_firewall_policy_rule"
-  | "cloudflare_static_route"
-  | "cloudflare_ipsec_tunnel";
-export const OnRampsEditResponsePostApplyResourcesValueResourceType =
-  /*@__PURE__*/ S.String;
-
-export type OnRampsEditResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem;
-export const OnRampsEditResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem;
-
-export type OnRampsEditResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlItem;
-export const OnRampsEditResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlItem;
-
-export type OnRampsEditResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlDiffItemYamlDiff =
-  OnRampsCreateResponsePlannedResourcesItemDiff;
-export const OnRampsEditResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlDiffItemYamlDiff =
-  OnRampsCreateResponsePlannedResourcesItemDiff;
-
-export type OnRampsEditResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlDiffItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlDiffItem;
-export const OnRampsEditResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlDiffItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlDiffItem;
-
-export type OnRampsEditResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreviewCloudType =
-  | "AWS"
-  | "AZURE"
-  | "GOOGLE"
-  | "CLOUDFLARE";
-export const OnRampsEditResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreviewCloudType =
-  /*@__PURE__*/ S.String;
-
-export type OnRampsEditResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreviewResourceType =
-  | "aws_customer_gateway"
-  | "aws_egress_only_internet_gateway"
-  | "aws_internet_gateway"
-  | "aws_instance"
-  | "aws_network_interface"
-  | "aws_route"
-  | "aws_route_table"
-  | "aws_route_table_association"
-  | "aws_subnet"
-  | "aws_vpc"
-  | "aws_vpc_ipv4_cidr_block_association"
-  | "aws_vpn_connection"
-  | "aws_vpn_connection_route"
-  | "aws_vpn_gateway"
-  | "aws_security_group"
-  | "aws_vpc_security_group_ingress_rule"
-  | "aws_vpc_security_group_egress_rule"
-  | "aws_ec2_managed_prefix_list"
-  | "aws_ec2_transit_gateway"
-  | "aws_ec2_transit_gateway_prefix_list_reference"
-  | "aws_ec2_transit_gateway_vpc_attachment"
-  | "azurerm_application_security_group"
-  | "azurerm_lb"
-  | "azurerm_lb_backend_address_pool"
-  | "azurerm_lb_nat_pool"
-  | "azurerm_lb_nat_rule"
-  | "azurerm_lb_rule"
-  | "azurerm_local_network_gateway"
-  | "azurerm_network_interface"
-  | "azurerm_network_interface_application_security_group_association"
-  | "azurerm_network_interface_backend_address_pool_association"
-  | "azurerm_network_interface_security_group_association"
-  | "azurerm_network_security_group"
-  | "azurerm_public_ip"
-  | "azurerm_route"
-  | "azurerm_route_table"
-  | "azurerm_subnet"
-  | "azurerm_subnet_route_table_association"
-  | "azurerm_virtual_machine"
-  | "azurerm_virtual_network_gateway_connection"
-  | "azurerm_virtual_network"
-  | "azurerm_virtual_network_gateway"
-  | "google_compute_network"
-  | "google_compute_subnetwork"
-  | "google_compute_vpn_gateway"
-  | "google_compute_vpn_tunnel"
-  | "google_compute_route"
-  | "google_compute_address"
-  | "google_compute_global_address"
-  | "google_compute_router"
-  | "google_compute_interconnect_attachment"
-  | "google_compute_ha_vpn_gateway"
-  | "google_compute_forwarding_rule"
-  | "google_compute_network_firewall_policy"
-  | "google_compute_network_firewall_policy_rule"
-  | "cloudflare_static_route"
-  | "cloudflare_ipsec_tunnel";
-export const OnRampsEditResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreviewResourceType =
-  /*@__PURE__*/ S.String;
-
-export interface OnRampsEditResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview {
-  id: string;
-  cloudType: OnRampsEditResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreviewCloudType;
-  detail: string;
-  name: string;
-  resourceType: OnRampsEditResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreviewResourceType;
-  title: string;
-}
-export const OnRampsEditResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-      cloudType:
-        OnRampsEditResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreviewCloudType.pipe(
-          T.Body("cloud_type"),
-        ),
-      detail: S.String,
-      name: S.String,
-      resourceType:
-        OnRampsEditResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreviewResourceType.pipe(
-          T.Body("resource_type"),
-        ),
-      title: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "OnRampsEditResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview",
-  }) as any as S.Schema<OnRampsEditResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview>;
-
-export interface OnRampsEditResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItem {
-  itemType: string;
-  resourcePreview: OnRampsEditResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview;
-}
-export const OnRampsEditResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      itemType: S.String.pipe(T.Body("item_type")),
-      resourcePreview:
-        OnRampsEditResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview.pipe(
-          T.Body("resource_preview"),
-        ),
-    }),
-  ).annotate({
-    identifier:
-      "OnRampsEditResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItem",
-  }) as any as S.Schema<OnRampsEditResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItem>;
-
-export type OnRampsEditResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnStringItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem;
-export const OnRampsEditResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnStringItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem;
-
-export type OnRampsEditResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewCloudType =
-  | "AWS"
-  | "AZURE"
-  | "GOOGLE"
-  | "CLOUDFLARE";
-export const OnRampsEditResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewCloudType =
-  /*@__PURE__*/ S.String;
-
-export type OnRampsEditResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewResourceType =
-  | "aws_customer_gateway"
-  | "aws_egress_only_internet_gateway"
-  | "aws_internet_gateway"
-  | "aws_instance"
-  | "aws_network_interface"
-  | "aws_route"
-  | "aws_route_table"
-  | "aws_route_table_association"
-  | "aws_subnet"
-  | "aws_vpc"
-  | "aws_vpc_ipv4_cidr_block_association"
-  | "aws_vpn_connection"
-  | "aws_vpn_connection_route"
-  | "aws_vpn_gateway"
-  | "aws_security_group"
-  | "aws_vpc_security_group_ingress_rule"
-  | "aws_vpc_security_group_egress_rule"
-  | "aws_ec2_managed_prefix_list"
-  | "aws_ec2_transit_gateway"
-  | "aws_ec2_transit_gateway_prefix_list_reference"
-  | "aws_ec2_transit_gateway_vpc_attachment"
-  | "azurerm_application_security_group"
-  | "azurerm_lb"
-  | "azurerm_lb_backend_address_pool"
-  | "azurerm_lb_nat_pool"
-  | "azurerm_lb_nat_rule"
-  | "azurerm_lb_rule"
-  | "azurerm_local_network_gateway"
-  | "azurerm_network_interface"
-  | "azurerm_network_interface_application_security_group_association"
-  | "azurerm_network_interface_backend_address_pool_association"
-  | "azurerm_network_interface_security_group_association"
-  | "azurerm_network_security_group"
-  | "azurerm_public_ip"
-  | "azurerm_route"
-  | "azurerm_route_table"
-  | "azurerm_subnet"
-  | "azurerm_subnet_route_table_association"
-  | "azurerm_virtual_machine"
-  | "azurerm_virtual_network_gateway_connection"
-  | "azurerm_virtual_network"
-  | "azurerm_virtual_network_gateway"
-  | "google_compute_network"
-  | "google_compute_subnetwork"
-  | "google_compute_vpn_gateway"
-  | "google_compute_vpn_tunnel"
-  | "google_compute_route"
-  | "google_compute_address"
-  | "google_compute_global_address"
-  | "google_compute_router"
-  | "google_compute_interconnect_attachment"
-  | "google_compute_ha_vpn_gateway"
-  | "google_compute_forwarding_rule"
-  | "google_compute_network_firewall_policy"
-  | "google_compute_network_firewall_policy_rule"
-  | "cloudflare_static_route"
-  | "cloudflare_ipsec_tunnel";
-export const OnRampsEditResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewResourceType =
-  /*@__PURE__*/ S.String;
-
-export interface OnRampsEditResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview {
-  id: string;
-  cloudType: OnRampsEditResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewCloudType;
-  detail: string;
-  name: string;
-  resourceType: OnRampsEditResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewResourceType;
-  title: string;
-}
-export const OnRampsEditResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-      cloudType:
-        OnRampsEditResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewCloudType.pipe(
-          T.Body("cloud_type"),
-        ),
-      detail: S.String,
-      name: S.String,
-      resourceType:
-        OnRampsEditResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewResourceType.pipe(
-          T.Body("resource_type"),
-        ),
-      title: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "OnRampsEditResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview",
-  }) as any as S.Schema<OnRampsEditResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview>;
-
-export interface OnRampsEditResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItem {
-  itemType: string;
-  resourcePreview: OnRampsEditResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview;
-}
-export const OnRampsEditResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      itemType: S.String.pipe(T.Body("item_type")),
-      resourcePreview:
-        OnRampsEditResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview.pipe(
-          T.Body("resource_preview"),
-        ),
-    }),
-  ).annotate({
-    identifier:
-      "OnRampsEditResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItem",
-  }) as any as S.Schema<OnRampsEditResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItem>;
-
-export type OnRampsEditResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItem =
-  | OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem
-  | OnRampsEditResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItem;
-export const OnRampsEditResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItem =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["itemType", "string"],
-      ["itemType", "resourcePreview"],
-    ]),
-  );
-
-export type OnRampsEditResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListList =
-  Array<OnRampsEditResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItem>;
-export const OnRampsEditResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListList =
+export type OnRampsEditResponsePostApplyResourcesSectionsItemHiddenItemsList =
+  Array<OnRampsCreateResponsePostApplyResourcesSectionsItemHiddenItemsItem>;
+export const OnRampsEditResponsePostApplyResourcesSectionsItemHiddenItemsList =
   /*@__PURE__*/ S.Array(
-    OnRampsEditResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItem,
-  ) as any as S.Schema<OnRampsEditResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListList>;
+    OnRampsCreateResponsePostApplyResourcesSectionsItemHiddenItemsItem,
+  ) as any as S.Schema<OnRampsEditResponsePostApplyResourcesSectionsItemHiddenItemsList>;
 
-export interface OnRampsEditResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItem {
-  itemType: string;
-  list: OnRampsEditResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListList;
-}
-export const OnRampsEditResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      itemType: S.String.pipe(T.Body("item_type")),
-      list: OnRampsEditResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListList,
-    }),
-  ).annotate({
-    identifier:
-      "OnRampsEditResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItem",
-  }) as any as S.Schema<OnRampsEditResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItem>;
+export type OnRampsEditResponsePostApplyResourcesSectionsItemVisibleItemsItem =
+  OnRampsCreateResponsePostApplyResourcesSectionsItemHiddenItemsItem;
+export const OnRampsEditResponsePostApplyResourcesSectionsItemVisibleItemsItem =
+  OnRampsCreateResponsePostApplyResourcesSectionsItemHiddenItemsItem;
 
-export type OnRampsEditResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValue =
-  | OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem
-  | OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlItem
-  | OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlDiffItem
-  | OnRampsEditResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItem
-  | OnRampsEditResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItem;
-export const OnRampsEditResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValue =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["itemType", "string"],
-      ["itemType", "yaml"],
-      ["itemType", "yamlDiff"],
-      ["itemType", "resourcePreview"],
-      ["itemType", "list"],
-    ]),
-  );
-
-export interface OnRampsEditResponsePostApplyResourcesValueSectionsItemHiddenItemsItem {
-  helpText?: string | null;
-  name?: string | null;
-  value?: OnRampsEditResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValue | null;
-}
-export const OnRampsEditResponsePostApplyResourcesValueSectionsItemHiddenItemsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      helpText: S.optional(S.NullOr(S.String)),
-      name: S.optional(S.NullOr(S.String)),
-      value: S.optional(
-        S.NullOr(
-          OnRampsEditResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValue,
-        ),
-      ),
-    }),
-  ).annotate({
-    identifier:
-      "OnRampsEditResponsePostApplyResourcesValueSectionsItemHiddenItemsItem",
-  }) as any as S.Schema<OnRampsEditResponsePostApplyResourcesValueSectionsItemHiddenItemsItem>;
-
-export type OnRampsEditResponsePostApplyResourcesValueSectionsItemHiddenItemsList =
-  Array<OnRampsEditResponsePostApplyResourcesValueSectionsItemHiddenItemsItem>;
-export const OnRampsEditResponsePostApplyResourcesValueSectionsItemHiddenItemsList =
+export type OnRampsEditResponsePostApplyResourcesSectionsItemVisibleItemsList =
+  Array<OnRampsCreateResponsePostApplyResourcesSectionsItemHiddenItemsItem>;
+export const OnRampsEditResponsePostApplyResourcesSectionsItemVisibleItemsList =
   /*@__PURE__*/ S.Array(
-    OnRampsEditResponsePostApplyResourcesValueSectionsItemHiddenItemsItem,
-  ) as any as S.Schema<OnRampsEditResponsePostApplyResourcesValueSectionsItemHiddenItemsList>;
+    OnRampsCreateResponsePostApplyResourcesSectionsItemHiddenItemsItem,
+  ) as any as S.Schema<OnRampsEditResponsePostApplyResourcesSectionsItemVisibleItemsList>;
 
-export type OnRampsEditResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnStringItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem;
-export const OnRampsEditResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnStringItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem;
-
-export type OnRampsEditResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnYamlItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlItem;
-export const OnRampsEditResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnYamlItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlItem;
-
-export type OnRampsEditResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnYamlDiffItemYamlDiff =
-  OnRampsCreateResponsePlannedResourcesItemDiff;
-export const OnRampsEditResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnYamlDiffItemYamlDiff =
-  OnRampsCreateResponsePlannedResourcesItemDiff;
-
-export type OnRampsEditResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnYamlDiffItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlDiffItem;
-export const OnRampsEditResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnYamlDiffItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlDiffItem;
-
-export type OnRampsEditResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreviewCloudType =
-  | "AWS"
-  | "AZURE"
-  | "GOOGLE"
-  | "CLOUDFLARE";
-export const OnRampsEditResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreviewCloudType =
-  /*@__PURE__*/ S.String;
-
-export type OnRampsEditResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreviewResourceType =
-  | "aws_customer_gateway"
-  | "aws_egress_only_internet_gateway"
-  | "aws_internet_gateway"
-  | "aws_instance"
-  | "aws_network_interface"
-  | "aws_route"
-  | "aws_route_table"
-  | "aws_route_table_association"
-  | "aws_subnet"
-  | "aws_vpc"
-  | "aws_vpc_ipv4_cidr_block_association"
-  | "aws_vpn_connection"
-  | "aws_vpn_connection_route"
-  | "aws_vpn_gateway"
-  | "aws_security_group"
-  | "aws_vpc_security_group_ingress_rule"
-  | "aws_vpc_security_group_egress_rule"
-  | "aws_ec2_managed_prefix_list"
-  | "aws_ec2_transit_gateway"
-  | "aws_ec2_transit_gateway_prefix_list_reference"
-  | "aws_ec2_transit_gateway_vpc_attachment"
-  | "azurerm_application_security_group"
-  | "azurerm_lb"
-  | "azurerm_lb_backend_address_pool"
-  | "azurerm_lb_nat_pool"
-  | "azurerm_lb_nat_rule"
-  | "azurerm_lb_rule"
-  | "azurerm_local_network_gateway"
-  | "azurerm_network_interface"
-  | "azurerm_network_interface_application_security_group_association"
-  | "azurerm_network_interface_backend_address_pool_association"
-  | "azurerm_network_interface_security_group_association"
-  | "azurerm_network_security_group"
-  | "azurerm_public_ip"
-  | "azurerm_route"
-  | "azurerm_route_table"
-  | "azurerm_subnet"
-  | "azurerm_subnet_route_table_association"
-  | "azurerm_virtual_machine"
-  | "azurerm_virtual_network_gateway_connection"
-  | "azurerm_virtual_network"
-  | "azurerm_virtual_network_gateway"
-  | "google_compute_network"
-  | "google_compute_subnetwork"
-  | "google_compute_vpn_gateway"
-  | "google_compute_vpn_tunnel"
-  | "google_compute_route"
-  | "google_compute_address"
-  | "google_compute_global_address"
-  | "google_compute_router"
-  | "google_compute_interconnect_attachment"
-  | "google_compute_ha_vpn_gateway"
-  | "google_compute_forwarding_rule"
-  | "google_compute_network_firewall_policy"
-  | "google_compute_network_firewall_policy_rule"
-  | "cloudflare_static_route"
-  | "cloudflare_ipsec_tunnel";
-export const OnRampsEditResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreviewResourceType =
-  /*@__PURE__*/ S.String;
-
-export interface OnRampsEditResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreview {
-  id: string;
-  cloudType: OnRampsEditResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreviewCloudType;
-  detail: string;
+export interface OnRampsEditResponsePostApplyResourcesSectionsItem {
+  hiddenItems: OnRampsEditResponsePostApplyResourcesSectionsItemHiddenItemsList;
   name: string;
-  resourceType: OnRampsEditResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreviewResourceType;
-  title: string;
-}
-export const OnRampsEditResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreview =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-      cloudType:
-        OnRampsEditResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreviewCloudType.pipe(
-          T.Body("cloud_type"),
-        ),
-      detail: S.String,
-      name: S.String,
-      resourceType:
-        OnRampsEditResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreviewResourceType.pipe(
-          T.Body("resource_type"),
-        ),
-      title: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "OnRampsEditResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreview",
-  }) as any as S.Schema<OnRampsEditResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreview>;
-
-export interface OnRampsEditResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItem {
-  itemType: string;
-  resourcePreview: OnRampsEditResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreview;
-}
-export const OnRampsEditResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      itemType: S.String.pipe(T.Body("item_type")),
-      resourcePreview:
-        OnRampsEditResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreview.pipe(
-          T.Body("resource_preview"),
-        ),
-    }),
-  ).annotate({
-    identifier:
-      "OnRampsEditResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItem",
-  }) as any as S.Schema<OnRampsEditResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItem>;
-
-export type OnRampsEditResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnStringItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem;
-export const OnRampsEditResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnStringItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem;
-
-export type OnRampsEditResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewCloudType =
-  | "AWS"
-  | "AZURE"
-  | "GOOGLE"
-  | "CLOUDFLARE";
-export const OnRampsEditResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewCloudType =
-  /*@__PURE__*/ S.String;
-
-export type OnRampsEditResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewResourceType =
-  | "aws_customer_gateway"
-  | "aws_egress_only_internet_gateway"
-  | "aws_internet_gateway"
-  | "aws_instance"
-  | "aws_network_interface"
-  | "aws_route"
-  | "aws_route_table"
-  | "aws_route_table_association"
-  | "aws_subnet"
-  | "aws_vpc"
-  | "aws_vpc_ipv4_cidr_block_association"
-  | "aws_vpn_connection"
-  | "aws_vpn_connection_route"
-  | "aws_vpn_gateway"
-  | "aws_security_group"
-  | "aws_vpc_security_group_ingress_rule"
-  | "aws_vpc_security_group_egress_rule"
-  | "aws_ec2_managed_prefix_list"
-  | "aws_ec2_transit_gateway"
-  | "aws_ec2_transit_gateway_prefix_list_reference"
-  | "aws_ec2_transit_gateway_vpc_attachment"
-  | "azurerm_application_security_group"
-  | "azurerm_lb"
-  | "azurerm_lb_backend_address_pool"
-  | "azurerm_lb_nat_pool"
-  | "azurerm_lb_nat_rule"
-  | "azurerm_lb_rule"
-  | "azurerm_local_network_gateway"
-  | "azurerm_network_interface"
-  | "azurerm_network_interface_application_security_group_association"
-  | "azurerm_network_interface_backend_address_pool_association"
-  | "azurerm_network_interface_security_group_association"
-  | "azurerm_network_security_group"
-  | "azurerm_public_ip"
-  | "azurerm_route"
-  | "azurerm_route_table"
-  | "azurerm_subnet"
-  | "azurerm_subnet_route_table_association"
-  | "azurerm_virtual_machine"
-  | "azurerm_virtual_network_gateway_connection"
-  | "azurerm_virtual_network"
-  | "azurerm_virtual_network_gateway"
-  | "google_compute_network"
-  | "google_compute_subnetwork"
-  | "google_compute_vpn_gateway"
-  | "google_compute_vpn_tunnel"
-  | "google_compute_route"
-  | "google_compute_address"
-  | "google_compute_global_address"
-  | "google_compute_router"
-  | "google_compute_interconnect_attachment"
-  | "google_compute_ha_vpn_gateway"
-  | "google_compute_forwarding_rule"
-  | "google_compute_network_firewall_policy"
-  | "google_compute_network_firewall_policy_rule"
-  | "cloudflare_static_route"
-  | "cloudflare_ipsec_tunnel";
-export const OnRampsEditResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewResourceType =
-  /*@__PURE__*/ S.String;
-
-export interface OnRampsEditResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview {
-  id: string;
-  cloudType: OnRampsEditResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewCloudType;
-  detail: string;
-  name: string;
-  resourceType: OnRampsEditResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewResourceType;
-  title: string;
-}
-export const OnRampsEditResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-      cloudType:
-        OnRampsEditResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewCloudType.pipe(
-          T.Body("cloud_type"),
-        ),
-      detail: S.String,
-      name: S.String,
-      resourceType:
-        OnRampsEditResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewResourceType.pipe(
-          T.Body("resource_type"),
-        ),
-      title: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "OnRampsEditResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview",
-  }) as any as S.Schema<OnRampsEditResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview>;
-
-export interface OnRampsEditResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItem {
-  itemType: string;
-  resourcePreview: OnRampsEditResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview;
-}
-export const OnRampsEditResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      itemType: S.String.pipe(T.Body("item_type")),
-      resourcePreview:
-        OnRampsEditResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview.pipe(
-          T.Body("resource_preview"),
-        ),
-    }),
-  ).annotate({
-    identifier:
-      "OnRampsEditResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItem",
-  }) as any as S.Schema<OnRampsEditResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItem>;
-
-export type OnRampsEditResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItem =
-  | OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem
-  | OnRampsEditResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItem;
-export const OnRampsEditResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItem =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["itemType", "string"],
-      ["itemType", "resourcePreview"],
-    ]),
-  );
-
-export type OnRampsEditResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListList =
-  Array<OnRampsEditResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItem>;
-export const OnRampsEditResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListList =
-  /*@__PURE__*/ S.Array(
-    OnRampsEditResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItem,
-  ) as any as S.Schema<OnRampsEditResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListList>;
-
-export interface OnRampsEditResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItem {
-  itemType: string;
-  list: OnRampsEditResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListList;
-}
-export const OnRampsEditResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      itemType: S.String.pipe(T.Body("item_type")),
-      list: OnRampsEditResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListList,
-    }),
-  ).annotate({
-    identifier:
-      "OnRampsEditResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItem",
-  }) as any as S.Schema<OnRampsEditResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItem>;
-
-export type OnRampsEditResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValue =
-  | OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem
-  | OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlItem
-  | OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlDiffItem
-  | OnRampsEditResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItem
-  | OnRampsEditResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItem;
-export const OnRampsEditResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValue =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["itemType", "string"],
-      ["itemType", "yaml"],
-      ["itemType", "yamlDiff"],
-      ["itemType", "resourcePreview"],
-      ["itemType", "list"],
-    ]),
-  );
-
-export interface OnRampsEditResponsePostApplyResourcesValueSectionsItemVisibleItemsItem {
-  helpText?: string | null;
-  name?: string | null;
-  value?: OnRampsEditResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValue | null;
-}
-export const OnRampsEditResponsePostApplyResourcesValueSectionsItemVisibleItemsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      helpText: S.optional(S.NullOr(S.String)),
-      name: S.optional(S.NullOr(S.String)),
-      value: S.optional(
-        S.NullOr(
-          OnRampsEditResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValue,
-        ),
-      ),
-    }),
-  ).annotate({
-    identifier:
-      "OnRampsEditResponsePostApplyResourcesValueSectionsItemVisibleItemsItem",
-  }) as any as S.Schema<OnRampsEditResponsePostApplyResourcesValueSectionsItemVisibleItemsItem>;
-
-export type OnRampsEditResponsePostApplyResourcesValueSectionsItemVisibleItemsList =
-  Array<OnRampsEditResponsePostApplyResourcesValueSectionsItemVisibleItemsItem>;
-export const OnRampsEditResponsePostApplyResourcesValueSectionsItemVisibleItemsList =
-  /*@__PURE__*/ S.Array(
-    OnRampsEditResponsePostApplyResourcesValueSectionsItemVisibleItemsItem,
-  ) as any as S.Schema<OnRampsEditResponsePostApplyResourcesValueSectionsItemVisibleItemsList>;
-
-export interface OnRampsEditResponsePostApplyResourcesValueSectionsItem {
-  hiddenItems: OnRampsEditResponsePostApplyResourcesValueSectionsItemHiddenItemsList;
-  name: string;
-  visibleItems: OnRampsEditResponsePostApplyResourcesValueSectionsItemVisibleItemsList;
+  visibleItems: OnRampsEditResponsePostApplyResourcesSectionsItemVisibleItemsList;
   helpText?: string | null;
 }
-export const OnRampsEditResponsePostApplyResourcesValueSectionsItem =
+export const OnRampsEditResponsePostApplyResourcesSectionsItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       hiddenItems:
-        OnRampsEditResponsePostApplyResourcesValueSectionsItemHiddenItemsList.pipe(
+        OnRampsEditResponsePostApplyResourcesSectionsItemHiddenItemsList.pipe(
           T.Body("hidden_items"),
         ),
       name: S.String,
       visibleItems:
-        OnRampsEditResponsePostApplyResourcesValueSectionsItemVisibleItemsList.pipe(
+        OnRampsEditResponsePostApplyResourcesSectionsItemVisibleItemsList.pipe(
           T.Body("visible_items"),
         ),
       helpText: S.optional(S.NullOr(S.String).pipe(T.Body("help_text"))),
     }),
   ).annotate({
-    identifier: "OnRampsEditResponsePostApplyResourcesValueSectionsItem",
-  }) as any as S.Schema<OnRampsEditResponsePostApplyResourcesValueSectionsItem>;
+    identifier: "OnRampsEditResponsePostApplyResourcesSectionsItem",
+  }) as any as S.Schema<OnRampsEditResponsePostApplyResourcesSectionsItem>;
 
-export type OnRampsEditResponsePostApplyResourcesValueSectionsList =
-  Array<OnRampsEditResponsePostApplyResourcesValueSectionsItem>;
-export const OnRampsEditResponsePostApplyResourcesValueSectionsList =
+export type OnRampsEditResponsePostApplyResourcesSectionsList =
+  Array<OnRampsEditResponsePostApplyResourcesSectionsItem>;
+export const OnRampsEditResponsePostApplyResourcesSectionsList =
   /*@__PURE__*/ S.Array(
-    OnRampsEditResponsePostApplyResourcesValueSectionsItem,
-  ) as any as S.Schema<OnRampsEditResponsePostApplyResourcesValueSectionsList>;
+    OnRampsEditResponsePostApplyResourcesSectionsItem,
+  ) as any as S.Schema<OnRampsEditResponsePostApplyResourcesSectionsList>;
 
-export type OnRampsEditResponsePostApplyResourcesValueStateMap = {
-  [key: string]: unknown | undefined;
-};
-export const OnRampsEditResponsePostApplyResourcesValueStateMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<OnRampsEditResponsePostApplyResourcesValueStateMap>;
-
-export type OnRampsEditResponsePostApplyResourcesValueTagsMap = {
-  [key: string]: string | undefined;
-};
-export const OnRampsEditResponsePostApplyResourcesValueTagsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<OnRampsEditResponsePostApplyResourcesValueTagsMap>;
-
-export type OnRampsEditResponsePostApplyResourcesValueManagedByItemClientType =
+export type OnRampsEditResponsePostApplyResourcesManagedByItemClientType =
   "MAGIC_WAN_CLOUD_ONRAMP";
-export const OnRampsEditResponsePostApplyResourcesValueManagedByItemClientType =
+export const OnRampsEditResponsePostApplyResourcesManagedByItemClientType =
   /*@__PURE__*/ S.String;
 
-export interface OnRampsEditResponsePostApplyResourcesValueManagedByItem {
+export interface OnRampsEditResponsePostApplyResourcesManagedByItem {
   id: string;
-  clientType: OnRampsEditResponsePostApplyResourcesValueManagedByItemClientType;
+  clientType: OnRampsEditResponsePostApplyResourcesManagedByItemClientType;
   name: string;
 }
-export const OnRampsEditResponsePostApplyResourcesValueManagedByItem =
+export const OnRampsEditResponsePostApplyResourcesManagedByItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       id: S.String,
       clientType:
-        OnRampsEditResponsePostApplyResourcesValueManagedByItemClientType.pipe(
+        OnRampsEditResponsePostApplyResourcesManagedByItemClientType.pipe(
           T.Body("client_type"),
         ),
       name: S.String,
     }),
   ).annotate({
-    identifier: "OnRampsEditResponsePostApplyResourcesValueManagedByItem",
-  }) as any as S.Schema<OnRampsEditResponsePostApplyResourcesValueManagedByItem>;
+    identifier: "OnRampsEditResponsePostApplyResourcesManagedByItem",
+  }) as any as S.Schema<OnRampsEditResponsePostApplyResourcesManagedByItem>;
 
-export type OnRampsEditResponsePostApplyResourcesValueManagedByList =
-  Array<OnRampsEditResponsePostApplyResourcesValueManagedByItem>;
-export const OnRampsEditResponsePostApplyResourcesValueManagedByList =
+export type OnRampsEditResponsePostApplyResourcesManagedByList =
+  Array<OnRampsEditResponsePostApplyResourcesManagedByItem>;
+export const OnRampsEditResponsePostApplyResourcesManagedByList =
   /*@__PURE__*/ S.Array(
-    OnRampsEditResponsePostApplyResourcesValueManagedByItem,
-  ) as any as S.Schema<OnRampsEditResponsePostApplyResourcesValueManagedByList>;
+    OnRampsEditResponsePostApplyResourcesManagedByItem,
+  ) as any as S.Schema<OnRampsEditResponsePostApplyResourcesManagedByList>;
 
-export interface OnRampsEditResponsePostApplyResourcesValue {
+export interface OnRampsEditResponsePostApplyResources {
   id: string;
   accountId: string;
-  cloudType: OnRampsEditResponsePostApplyResourcesValueCloudType;
-  config: OnRampsEditResponsePostApplyResourcesValueConfigMap;
+  cloudType: OnRampsEditResponsePostApplyResourcesCloudType;
+  config: unknown;
   deploymentProvider: string;
   managed: boolean;
   monthlyCostEstimate: OnRampsCreateResponsePostApplyMonthlyCostEstimate;
   name: string;
   nativeId: string;
-  observations: OnRampsEditResponsePostApplyResourcesValueObservationsMap;
-  providerIds: OnRampsEditResponsePostApplyResourcesValueProviderIdsList;
-  providerNamesById: OnRampsEditResponsePostApplyResourcesValueProviderNamesByIdMap;
+  observations: OnRampsCreateResponsePostApplyResourcesObservations;
+  providerIds: OnRampsEditResponsePostApplyResourcesProviderIdsList;
+  providerNamesById: unknown;
   region: string;
   resourceGroup: string;
-  resourceType: OnRampsEditResponsePostApplyResourcesValueResourceType;
-  sections: OnRampsEditResponsePostApplyResourcesValueSectionsList;
-  state: OnRampsEditResponsePostApplyResourcesValueStateMap;
-  tags: OnRampsEditResponsePostApplyResourcesValueTagsMap;
+  resourceType: string;
+  sections: OnRampsEditResponsePostApplyResourcesSectionsList;
+  state: unknown;
+  tags: unknown;
   updatedAt: string;
   url: string;
-  managedBy?: OnRampsEditResponsePostApplyResourcesValueManagedByList | null;
+  managedBy?: OnRampsEditResponsePostApplyResourcesManagedByList | null;
 }
-export const OnRampsEditResponsePostApplyResourcesValue =
-  /*@__PURE__*/ S.suspend(() =>
+export const OnRampsEditResponsePostApplyResources = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       id: S.String,
       accountId: S.String.pipe(T.Body("account_id")),
-      cloudType: OnRampsEditResponsePostApplyResourcesValueCloudType.pipe(
+      cloudType: OnRampsEditResponsePostApplyResourcesCloudType.pipe(
         T.Body("cloud_type"),
       ),
-      config: OnRampsEditResponsePostApplyResourcesValueConfigMap,
+      config: S.Unknown,
       deploymentProvider: S.String.pipe(T.Body("deployment_provider")),
       managed: S.Boolean,
       monthlyCostEstimate:
@@ -13635,62 +4564,33 @@ export const OnRampsEditResponsePostApplyResourcesValue =
         ),
       name: S.String,
       nativeId: S.String.pipe(T.Body("native_id")),
-      observations: OnRampsEditResponsePostApplyResourcesValueObservationsMap,
-      providerIds:
-        OnRampsEditResponsePostApplyResourcesValueProviderIdsList.pipe(
-          T.Body("provider_ids"),
-        ),
-      providerNamesById:
-        OnRampsEditResponsePostApplyResourcesValueProviderNamesByIdMap.pipe(
-          T.Body("provider_names_by_id"),
-        ),
+      observations: OnRampsCreateResponsePostApplyResourcesObservations,
+      providerIds: OnRampsEditResponsePostApplyResourcesProviderIdsList.pipe(
+        T.Body("provider_ids"),
+      ),
+      providerNamesById: S.Unknown.pipe(T.Body("provider_names_by_id")),
       region: S.String,
       resourceGroup: S.String.pipe(T.Body("resource_group")),
-      resourceType: OnRampsEditResponsePostApplyResourcesValueResourceType.pipe(
-        T.Body("resource_type"),
-      ),
-      sections: OnRampsEditResponsePostApplyResourcesValueSectionsList,
-      state: OnRampsEditResponsePostApplyResourcesValueStateMap,
-      tags: OnRampsEditResponsePostApplyResourcesValueTagsMap,
+      resourceType: S.String.pipe(T.Body("resource_type")),
+      sections: OnRampsEditResponsePostApplyResourcesSectionsList,
+      state: S.Unknown,
+      tags: S.Unknown,
       updatedAt: S.String.pipe(T.Body("updated_at")),
       url: S.String,
       managedBy: S.optional(
-        S.NullOr(OnRampsEditResponsePostApplyResourcesValueManagedByList).pipe(
+        S.NullOr(OnRampsEditResponsePostApplyResourcesManagedByList).pipe(
           T.Body("managed_by"),
         ),
       ),
     }),
-  ).annotate({
-    identifier: "OnRampsEditResponsePostApplyResourcesValue",
-  }) as any as S.Schema<OnRampsEditResponsePostApplyResourcesValue>;
-
-export type OnRampsEditResponsePostApplyResourcesMap = {
-  [key: string]: OnRampsEditResponsePostApplyResourcesValue | undefined;
-};
-export const OnRampsEditResponsePostApplyResourcesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  OnRampsEditResponsePostApplyResourcesValue,
-) as any as S.Schema<OnRampsEditResponsePostApplyResourcesMap>;
+).annotate({
+  identifier: "OnRampsEditResponsePostApplyResources",
+}) as any as S.Schema<OnRampsEditResponsePostApplyResources>;
 
 export type OnRampsEditResponseStatusApplyProgress =
   OnRampsCreateResponseStatusApplyProgress;
 export const OnRampsEditResponseStatusApplyProgress =
   OnRampsCreateResponseStatusApplyProgress;
-
-export type OnRampsEditResponseStatusLifecycleState =
-  | "OnrampNeedsApply"
-  | "OnrampPendingPlan"
-  | "OnrampPlanning"
-  | "OnrampPlanFailed"
-  | "OnrampPendingApproval"
-  | "OnrampPendingApply"
-  | "OnrampApplying"
-  | "OnrampApplyFailed"
-  | "OnrampActive"
-  | "OnrampPendingDestroy"
-  | "OnrampDestroying"
-  | "OnrampDestroyFailed";
-export const OnRampsEditResponseStatusLifecycleState = /*@__PURE__*/ S.String;
 
 export type OnRampsEditResponseStatusPlanProgress =
   OnRampsCreateResponseStatusApplyProgress;
@@ -13707,229 +4607,42 @@ export const OnRampsEditResponseStatusTunnelsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<OnRampsEditResponseStatusTunnelsList>;
 
-export type OnRampsEditResponseStatusLifecycleErrorsValueCode =
-  | 1001
-  | 1002
-  | 1003
-  | 1004
-  | 1005
-  | 1006
-  | 1007
-  | 1008
-  | 1009
-  | 1010
-  | 1011
-  | 1012
-  | 1013
-  | 1014
-  | 1015
-  | 1016
-  | 1017
-  | 1018
-  | 2001
-  | 2002
-  | 2003
-  | 2004
-  | 2005
-  | 2006
-  | 2007
-  | 2008
-  | 2009
-  | 2010
-  | 2011
-  | 2012
-  | 2013
-  | 2014
-  | 2015
-  | 2016
-  | 2017
-  | 2018
-  | 2019
-  | 2020
-  | 2021
-  | 2022
-  | 3001
-  | 3002
-  | 3003
-  | 3004
-  | 3005
-  | 3006
-  | 3007
-  | 4001
-  | 4002
-  | 4003
-  | 4004
-  | 4005
-  | 4006
-  | 4007
-  | 4008
-  | 4009
-  | 4010
-  | 4011
-  | 4012
-  | 4013
-  | 4014
-  | 4015
-  | 4016
-  | 4017
-  | 4018
-  | 4019
-  | 4020
-  | 4021
-  | 4022
-  | 4023
-  | 5001
-  | 5002
-  | 5003
-  | 5004
-  | 102000
-  | 102001
-  | 102002
-  | 102003
-  | 102004
-  | 102005
-  | 102006
-  | 102007
-  | 102008
-  | 102009
-  | 102010
-  | 102011
-  | 102012
-  | 102013
-  | 102014
-  | 102015
-  | 102016
-  | 102017
-  | 102018
-  | 102019
-  | 102020
-  | 102021
-  | 102022
-  | 102023
-  | 102024
-  | 102025
-  | 102026
-  | 102027
-  | 102028
-  | 102029
-  | 102030
-  | 102031
-  | 102032
-  | 102033
-  | 102034
-  | 102035
-  | 102036
-  | 102037
-  | 102038
-  | 102039
-  | 102040
-  | 102041
-  | 102042
-  | 102043
-  | 102044
-  | 102045
-  | 102046
-  | 102047
-  | 102048
-  | 102049
-  | 102050
-  | 102051
-  | 102052
-  | 102053
-  | 102054
-  | 102055
-  | 102056
-  | 102057
-  | 102058
-  | 102059
-  | 102060
-  | 102061
-  | 102062
-  | 102063
-  | 102064
-  | 102065
-  | 102066
-  | 102067
-  | 102068
-  | 102069
-  | 102070
-  | 102071
-  | 102072
-  | 103001
-  | 103002
-  | 103003
-  | 103004
-  | 103005
-  | 103006
-  | 103007
-  | 103008;
-export const OnRampsEditResponseStatusLifecycleErrorsValueCode =
-  /*@__PURE__*/ S.Number;
+export type OnRampsEditResponseStatusLifecycleErrorsMeta =
+  CatalogSyncsCreateResponseErrorsMeta;
+export const OnRampsEditResponseStatusLifecycleErrorsMeta =
+  CatalogSyncsCreateResponseErrorsMeta;
 
-export type OnRampsEditResponseStatusLifecycleErrorsValueMeta =
-  CatalogSyncsCreateResponseErrorsValueMeta;
-export const OnRampsEditResponseStatusLifecycleErrorsValueMeta =
-  CatalogSyncsCreateResponseErrorsValueMeta;
+export type OnRampsEditResponseStatusLifecycleErrorsSource =
+  CatalogSyncsCreateResponseErrorsSource;
+export const OnRampsEditResponseStatusLifecycleErrorsSource =
+  CatalogSyncsCreateResponseErrorsSource;
 
-export type OnRampsEditResponseStatusLifecycleErrorsValueSource =
-  CatalogSyncsCreateResponseErrorsValueSource;
-export const OnRampsEditResponseStatusLifecycleErrorsValueSource =
-  CatalogSyncsCreateResponseErrorsValueSource;
-
-export interface OnRampsEditResponseStatusLifecycleErrorsValue {
-  code: OnRampsEditResponseStatusLifecycleErrorsValueCode;
-  message: string;
-  documentationUrl?: string | null;
-  meta?: CatalogSyncsCreateResponseErrorsValueMeta | null;
-  source?: CatalogSyncsCreateResponseErrorsValueSource | null;
-}
-export const OnRampsEditResponseStatusLifecycleErrorsValue =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      code: OnRampsEditResponseStatusLifecycleErrorsValueCode,
-      message: S.String,
-      documentationUrl: S.optional(
-        S.NullOr(S.String).pipe(T.Body("documentation_url")),
-      ),
-      meta: S.optional(S.NullOr(CatalogSyncsCreateResponseErrorsValueMeta)),
-      source: S.optional(S.NullOr(CatalogSyncsCreateResponseErrorsValueSource)),
-    }),
-  ).annotate({
-    identifier: "OnRampsEditResponseStatusLifecycleErrorsValue",
-  }) as any as S.Schema<OnRampsEditResponseStatusLifecycleErrorsValue>;
-
-export type OnRampsEditResponseStatusLifecycleErrorsMap = {
-  [key: string]: OnRampsEditResponseStatusLifecycleErrorsValue | undefined;
-};
-export const OnRampsEditResponseStatusLifecycleErrorsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    OnRampsEditResponseStatusLifecycleErrorsValue,
-  ) as any as S.Schema<OnRampsEditResponseStatusLifecycleErrorsMap>;
+export type OnRampsEditResponseStatusLifecycleErrors =
+  CatalogSyncsCreateResponseErrors;
+export const OnRampsEditResponseStatusLifecycleErrors =
+  CatalogSyncsCreateResponseErrors;
 
 export interface OnRampsEditResponseStatus {
   applyProgress: OnRampsCreateResponseStatusApplyProgress;
-  lifecycleState: OnRampsEditResponseStatusLifecycleState;
+  lifecycleState: string;
   planProgress: OnRampsCreateResponseStatusApplyProgress;
   routes: OnRampsEditResponseStatusRoutesList;
   tunnels: OnRampsEditResponseStatusTunnelsList;
-  lifecycleErrors?: OnRampsEditResponseStatusLifecycleErrorsMap | null;
+  lifecycleErrors?: CatalogSyncsCreateResponseErrors | null;
 }
 export const OnRampsEditResponseStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     applyProgress: OnRampsCreateResponseStatusApplyProgress.pipe(
       T.Body("apply_progress"),
     ),
-    lifecycleState: OnRampsEditResponseStatusLifecycleState.pipe(
-      T.Body("lifecycle_state"),
-    ),
+    lifecycleState: S.String.pipe(T.Body("lifecycle_state")),
     planProgress: OnRampsCreateResponseStatusApplyProgress.pipe(
       T.Body("plan_progress"),
     ),
     routes: OnRampsEditResponseStatusRoutesList,
     tunnels: OnRampsEditResponseStatusTunnelsList,
     lifecycleErrors: S.optional(
-      S.NullOr(OnRampsEditResponseStatusLifecycleErrorsMap).pipe(
+      S.NullOr(CatalogSyncsCreateResponseErrors).pipe(
         T.Body("lifecycle_errors"),
       ),
     ),
@@ -13938,894 +4651,139 @@ export const OnRampsEditResponseStatus = /*@__PURE__*/ S.suspend(() =>
   identifier: "OnRampsEditResponseStatus",
 }) as any as S.Schema<OnRampsEditResponseStatus>;
 
-export type OnRampsEditResponseVpcsByIdValueCloudType =
+export type OnRampsEditResponseVpcsByIdCloudType =
   | "AWS"
   | "AZURE"
   | "GOOGLE"
   | "CLOUDFLARE";
-export const OnRampsEditResponseVpcsByIdValueCloudType = /*@__PURE__*/ S.String;
+export const OnRampsEditResponseVpcsByIdCloudType = /*@__PURE__*/ S.String;
 
-export type OnRampsEditResponseVpcsByIdValueConfigMap = {
-  [key: string]: unknown | undefined;
-};
-export const OnRampsEditResponseVpcsByIdValueConfigMap = /*@__PURE__*/ S.Record(
+export type OnRampsEditResponseVpcsByIdMonthlyCostEstimate =
+  OnRampsCreateResponsePostApplyMonthlyCostEstimate;
+export const OnRampsEditResponseVpcsByIdMonthlyCostEstimate =
+  OnRampsCreateResponsePostApplyMonthlyCostEstimate;
+
+export type OnRampsEditResponseVpcsByIdObservations =
+  OnRampsCreateResponsePostApplyResourcesObservations;
+export const OnRampsEditResponseVpcsByIdObservations =
+  OnRampsCreateResponsePostApplyResourcesObservations;
+
+export type OnRampsEditResponseVpcsByIdProviderIdsList = Array<string>;
+export const OnRampsEditResponseVpcsByIdProviderIdsList = /*@__PURE__*/ S.Array(
   S.String,
-  S.Unknown,
-) as any as S.Schema<OnRampsEditResponseVpcsByIdValueConfigMap>;
+) as any as S.Schema<OnRampsEditResponseVpcsByIdProviderIdsList>;
 
-export type OnRampsEditResponseVpcsByIdValueMonthlyCostEstimate =
-  OnRampsCreateResponsePostApplyMonthlyCostEstimate;
-export const OnRampsEditResponseVpcsByIdValueMonthlyCostEstimate =
-  OnRampsCreateResponsePostApplyMonthlyCostEstimate;
+export type OnRampsEditResponseVpcsByIdSectionsItemHiddenItemsItem =
+  OnRampsCreateResponsePostApplyResourcesSectionsItemHiddenItemsItem;
+export const OnRampsEditResponseVpcsByIdSectionsItemHiddenItemsItem =
+  OnRampsCreateResponsePostApplyResourcesSectionsItemHiddenItemsItem;
 
-export type OnRampsEditResponseVpcsByIdValueObservationsValue =
-  OnRampsCreateResponsePostApplyResourcesValueObservationsValue;
-export const OnRampsEditResponseVpcsByIdValueObservationsValue =
-  OnRampsCreateResponsePostApplyResourcesValueObservationsValue;
-
-export type OnRampsEditResponseVpcsByIdValueObservationsMap = {
-  [key: string]:
-    | OnRampsCreateResponsePostApplyResourcesValueObservationsValue
-    | undefined;
-};
-export const OnRampsEditResponseVpcsByIdValueObservationsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    OnRampsCreateResponsePostApplyResourcesValueObservationsValue,
-  ) as any as S.Schema<OnRampsEditResponseVpcsByIdValueObservationsMap>;
-
-export type OnRampsEditResponseVpcsByIdValueProviderIdsList = Array<string>;
-export const OnRampsEditResponseVpcsByIdValueProviderIdsList =
+export type OnRampsEditResponseVpcsByIdSectionsItemHiddenItemsList =
+  Array<OnRampsCreateResponsePostApplyResourcesSectionsItemHiddenItemsItem>;
+export const OnRampsEditResponseVpcsByIdSectionsItemHiddenItemsList =
   /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<OnRampsEditResponseVpcsByIdValueProviderIdsList>;
+    OnRampsCreateResponsePostApplyResourcesSectionsItemHiddenItemsItem,
+  ) as any as S.Schema<OnRampsEditResponseVpcsByIdSectionsItemHiddenItemsList>;
 
-export type OnRampsEditResponseVpcsByIdValueProviderNamesByIdMap = {
-  [key: string]: string | undefined;
-};
-export const OnRampsEditResponseVpcsByIdValueProviderNamesByIdMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<OnRampsEditResponseVpcsByIdValueProviderNamesByIdMap>;
+export type OnRampsEditResponseVpcsByIdSectionsItemVisibleItemsItem =
+  OnRampsCreateResponsePostApplyResourcesSectionsItemHiddenItemsItem;
+export const OnRampsEditResponseVpcsByIdSectionsItemVisibleItemsItem =
+  OnRampsCreateResponsePostApplyResourcesSectionsItemHiddenItemsItem;
 
-export type OnRampsEditResponseVpcsByIdValueResourceType =
-  | "aws_customer_gateway"
-  | "aws_egress_only_internet_gateway"
-  | "aws_internet_gateway"
-  | "aws_instance"
-  | "aws_network_interface"
-  | "aws_route"
-  | "aws_route_table"
-  | "aws_route_table_association"
-  | "aws_subnet"
-  | "aws_vpc"
-  | "aws_vpc_ipv4_cidr_block_association"
-  | "aws_vpn_connection"
-  | "aws_vpn_connection_route"
-  | "aws_vpn_gateway"
-  | "aws_security_group"
-  | "aws_vpc_security_group_ingress_rule"
-  | "aws_vpc_security_group_egress_rule"
-  | "aws_ec2_managed_prefix_list"
-  | "aws_ec2_transit_gateway"
-  | "aws_ec2_transit_gateway_prefix_list_reference"
-  | "aws_ec2_transit_gateway_vpc_attachment"
-  | "azurerm_application_security_group"
-  | "azurerm_lb"
-  | "azurerm_lb_backend_address_pool"
-  | "azurerm_lb_nat_pool"
-  | "azurerm_lb_nat_rule"
-  | "azurerm_lb_rule"
-  | "azurerm_local_network_gateway"
-  | "azurerm_network_interface"
-  | "azurerm_network_interface_application_security_group_association"
-  | "azurerm_network_interface_backend_address_pool_association"
-  | "azurerm_network_interface_security_group_association"
-  | "azurerm_network_security_group"
-  | "azurerm_public_ip"
-  | "azurerm_route"
-  | "azurerm_route_table"
-  | "azurerm_subnet"
-  | "azurerm_subnet_route_table_association"
-  | "azurerm_virtual_machine"
-  | "azurerm_virtual_network_gateway_connection"
-  | "azurerm_virtual_network"
-  | "azurerm_virtual_network_gateway"
-  | "google_compute_network"
-  | "google_compute_subnetwork"
-  | "google_compute_vpn_gateway"
-  | "google_compute_vpn_tunnel"
-  | "google_compute_route"
-  | "google_compute_address"
-  | "google_compute_global_address"
-  | "google_compute_router"
-  | "google_compute_interconnect_attachment"
-  | "google_compute_ha_vpn_gateway"
-  | "google_compute_forwarding_rule"
-  | "google_compute_network_firewall_policy"
-  | "google_compute_network_firewall_policy_rule"
-  | "cloudflare_static_route"
-  | "cloudflare_ipsec_tunnel";
-export const OnRampsEditResponseVpcsByIdValueResourceType =
-  /*@__PURE__*/ S.String;
-
-export type OnRampsEditResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnStringItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem;
-export const OnRampsEditResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnStringItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem;
-
-export type OnRampsEditResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnYamlItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlItem;
-export const OnRampsEditResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnYamlItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlItem;
-
-export type OnRampsEditResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnYamlDiffItemYamlDiff =
-  OnRampsCreateResponsePlannedResourcesItemDiff;
-export const OnRampsEditResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnYamlDiffItemYamlDiff =
-  OnRampsCreateResponsePlannedResourcesItemDiff;
-
-export type OnRampsEditResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnYamlDiffItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlDiffItem;
-export const OnRampsEditResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnYamlDiffItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlDiffItem;
-
-export type OnRampsEditResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreviewCloudType =
-  | "AWS"
-  | "AZURE"
-  | "GOOGLE"
-  | "CLOUDFLARE";
-export const OnRampsEditResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreviewCloudType =
-  /*@__PURE__*/ S.String;
-
-export type OnRampsEditResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreviewResourceType =
-  | "aws_customer_gateway"
-  | "aws_egress_only_internet_gateway"
-  | "aws_internet_gateway"
-  | "aws_instance"
-  | "aws_network_interface"
-  | "aws_route"
-  | "aws_route_table"
-  | "aws_route_table_association"
-  | "aws_subnet"
-  | "aws_vpc"
-  | "aws_vpc_ipv4_cidr_block_association"
-  | "aws_vpn_connection"
-  | "aws_vpn_connection_route"
-  | "aws_vpn_gateway"
-  | "aws_security_group"
-  | "aws_vpc_security_group_ingress_rule"
-  | "aws_vpc_security_group_egress_rule"
-  | "aws_ec2_managed_prefix_list"
-  | "aws_ec2_transit_gateway"
-  | "aws_ec2_transit_gateway_prefix_list_reference"
-  | "aws_ec2_transit_gateway_vpc_attachment"
-  | "azurerm_application_security_group"
-  | "azurerm_lb"
-  | "azurerm_lb_backend_address_pool"
-  | "azurerm_lb_nat_pool"
-  | "azurerm_lb_nat_rule"
-  | "azurerm_lb_rule"
-  | "azurerm_local_network_gateway"
-  | "azurerm_network_interface"
-  | "azurerm_network_interface_application_security_group_association"
-  | "azurerm_network_interface_backend_address_pool_association"
-  | "azurerm_network_interface_security_group_association"
-  | "azurerm_network_security_group"
-  | "azurerm_public_ip"
-  | "azurerm_route"
-  | "azurerm_route_table"
-  | "azurerm_subnet"
-  | "azurerm_subnet_route_table_association"
-  | "azurerm_virtual_machine"
-  | "azurerm_virtual_network_gateway_connection"
-  | "azurerm_virtual_network"
-  | "azurerm_virtual_network_gateway"
-  | "google_compute_network"
-  | "google_compute_subnetwork"
-  | "google_compute_vpn_gateway"
-  | "google_compute_vpn_tunnel"
-  | "google_compute_route"
-  | "google_compute_address"
-  | "google_compute_global_address"
-  | "google_compute_router"
-  | "google_compute_interconnect_attachment"
-  | "google_compute_ha_vpn_gateway"
-  | "google_compute_forwarding_rule"
-  | "google_compute_network_firewall_policy"
-  | "google_compute_network_firewall_policy_rule"
-  | "cloudflare_static_route"
-  | "cloudflare_ipsec_tunnel";
-export const OnRampsEditResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreviewResourceType =
-  /*@__PURE__*/ S.String;
-
-export interface OnRampsEditResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview {
-  id: string;
-  cloudType: OnRampsEditResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreviewCloudType;
-  detail: string;
-  name: string;
-  resourceType: OnRampsEditResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreviewResourceType;
-  title: string;
-}
-export const OnRampsEditResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-      cloudType:
-        OnRampsEditResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreviewCloudType.pipe(
-          T.Body("cloud_type"),
-        ),
-      detail: S.String,
-      name: S.String,
-      resourceType:
-        OnRampsEditResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreviewResourceType.pipe(
-          T.Body("resource_type"),
-        ),
-      title: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "OnRampsEditResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview",
-  }) as any as S.Schema<OnRampsEditResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview>;
-
-export interface OnRampsEditResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItem {
-  itemType: string;
-  resourcePreview: OnRampsEditResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview;
-}
-export const OnRampsEditResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      itemType: S.String.pipe(T.Body("item_type")),
-      resourcePreview:
-        OnRampsEditResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview.pipe(
-          T.Body("resource_preview"),
-        ),
-    }),
-  ).annotate({
-    identifier:
-      "OnRampsEditResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItem",
-  }) as any as S.Schema<OnRampsEditResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItem>;
-
-export type OnRampsEditResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnStringItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem;
-export const OnRampsEditResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnStringItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem;
-
-export type OnRampsEditResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewCloudType =
-  | "AWS"
-  | "AZURE"
-  | "GOOGLE"
-  | "CLOUDFLARE";
-export const OnRampsEditResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewCloudType =
-  /*@__PURE__*/ S.String;
-
-export type OnRampsEditResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewResourceType =
-  | "aws_customer_gateway"
-  | "aws_egress_only_internet_gateway"
-  | "aws_internet_gateway"
-  | "aws_instance"
-  | "aws_network_interface"
-  | "aws_route"
-  | "aws_route_table"
-  | "aws_route_table_association"
-  | "aws_subnet"
-  | "aws_vpc"
-  | "aws_vpc_ipv4_cidr_block_association"
-  | "aws_vpn_connection"
-  | "aws_vpn_connection_route"
-  | "aws_vpn_gateway"
-  | "aws_security_group"
-  | "aws_vpc_security_group_ingress_rule"
-  | "aws_vpc_security_group_egress_rule"
-  | "aws_ec2_managed_prefix_list"
-  | "aws_ec2_transit_gateway"
-  | "aws_ec2_transit_gateway_prefix_list_reference"
-  | "aws_ec2_transit_gateway_vpc_attachment"
-  | "azurerm_application_security_group"
-  | "azurerm_lb"
-  | "azurerm_lb_backend_address_pool"
-  | "azurerm_lb_nat_pool"
-  | "azurerm_lb_nat_rule"
-  | "azurerm_lb_rule"
-  | "azurerm_local_network_gateway"
-  | "azurerm_network_interface"
-  | "azurerm_network_interface_application_security_group_association"
-  | "azurerm_network_interface_backend_address_pool_association"
-  | "azurerm_network_interface_security_group_association"
-  | "azurerm_network_security_group"
-  | "azurerm_public_ip"
-  | "azurerm_route"
-  | "azurerm_route_table"
-  | "azurerm_subnet"
-  | "azurerm_subnet_route_table_association"
-  | "azurerm_virtual_machine"
-  | "azurerm_virtual_network_gateway_connection"
-  | "azurerm_virtual_network"
-  | "azurerm_virtual_network_gateway"
-  | "google_compute_network"
-  | "google_compute_subnetwork"
-  | "google_compute_vpn_gateway"
-  | "google_compute_vpn_tunnel"
-  | "google_compute_route"
-  | "google_compute_address"
-  | "google_compute_global_address"
-  | "google_compute_router"
-  | "google_compute_interconnect_attachment"
-  | "google_compute_ha_vpn_gateway"
-  | "google_compute_forwarding_rule"
-  | "google_compute_network_firewall_policy"
-  | "google_compute_network_firewall_policy_rule"
-  | "cloudflare_static_route"
-  | "cloudflare_ipsec_tunnel";
-export const OnRampsEditResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewResourceType =
-  /*@__PURE__*/ S.String;
-
-export interface OnRampsEditResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview {
-  id: string;
-  cloudType: OnRampsEditResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewCloudType;
-  detail: string;
-  name: string;
-  resourceType: OnRampsEditResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewResourceType;
-  title: string;
-}
-export const OnRampsEditResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-      cloudType:
-        OnRampsEditResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewCloudType.pipe(
-          T.Body("cloud_type"),
-        ),
-      detail: S.String,
-      name: S.String,
-      resourceType:
-        OnRampsEditResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewResourceType.pipe(
-          T.Body("resource_type"),
-        ),
-      title: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "OnRampsEditResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview",
-  }) as any as S.Schema<OnRampsEditResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview>;
-
-export interface OnRampsEditResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItem {
-  itemType: string;
-  resourcePreview: OnRampsEditResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview;
-}
-export const OnRampsEditResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      itemType: S.String.pipe(T.Body("item_type")),
-      resourcePreview:
-        OnRampsEditResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview.pipe(
-          T.Body("resource_preview"),
-        ),
-    }),
-  ).annotate({
-    identifier:
-      "OnRampsEditResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItem",
-  }) as any as S.Schema<OnRampsEditResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItem>;
-
-export type OnRampsEditResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItem =
-  | OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem
-  | OnRampsEditResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItem;
-export const OnRampsEditResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItem =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["itemType", "string"],
-      ["itemType", "resourcePreview"],
-    ]),
-  );
-
-export type OnRampsEditResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListList =
-  Array<OnRampsEditResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItem>;
-export const OnRampsEditResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListList =
+export type OnRampsEditResponseVpcsByIdSectionsItemVisibleItemsList =
+  Array<OnRampsCreateResponsePostApplyResourcesSectionsItemHiddenItemsItem>;
+export const OnRampsEditResponseVpcsByIdSectionsItemVisibleItemsList =
   /*@__PURE__*/ S.Array(
-    OnRampsEditResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItem,
-  ) as any as S.Schema<OnRampsEditResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListList>;
+    OnRampsCreateResponsePostApplyResourcesSectionsItemHiddenItemsItem,
+  ) as any as S.Schema<OnRampsEditResponseVpcsByIdSectionsItemVisibleItemsList>;
 
-export interface OnRampsEditResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItem {
-  itemType: string;
-  list: OnRampsEditResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListList;
-}
-export const OnRampsEditResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      itemType: S.String.pipe(T.Body("item_type")),
-      list: OnRampsEditResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListList,
-    }),
-  ).annotate({
-    identifier:
-      "OnRampsEditResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItem",
-  }) as any as S.Schema<OnRampsEditResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItem>;
-
-export type OnRampsEditResponseVpcsByIdValueSectionsItemHiddenItemsItemValue =
-  | OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem
-  | OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlItem
-  | OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlDiffItem
-  | OnRampsEditResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItem
-  | OnRampsEditResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItem;
-export const OnRampsEditResponseVpcsByIdValueSectionsItemHiddenItemsItemValue =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["itemType", "string"],
-      ["itemType", "yaml"],
-      ["itemType", "yamlDiff"],
-      ["itemType", "resourcePreview"],
-      ["itemType", "list"],
-    ]),
-  );
-
-export interface OnRampsEditResponseVpcsByIdValueSectionsItemHiddenItemsItem {
+export interface OnRampsEditResponseVpcsByIdSectionsItem {
+  hiddenItems: OnRampsEditResponseVpcsByIdSectionsItemHiddenItemsList;
+  name: string;
+  visibleItems: OnRampsEditResponseVpcsByIdSectionsItemVisibleItemsList;
   helpText?: string | null;
-  name?: string | null;
-  value?: OnRampsEditResponseVpcsByIdValueSectionsItemHiddenItemsItemValue | null;
 }
-export const OnRampsEditResponseVpcsByIdValueSectionsItemHiddenItemsItem =
-  /*@__PURE__*/ S.suspend(() =>
+export const OnRampsEditResponseVpcsByIdSectionsItem = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
-      helpText: S.optional(S.NullOr(S.String)),
-      name: S.optional(S.NullOr(S.String)),
-      value: S.optional(
-        S.NullOr(
-          OnRampsEditResponseVpcsByIdValueSectionsItemHiddenItemsItemValue,
-        ),
+      hiddenItems: OnRampsEditResponseVpcsByIdSectionsItemHiddenItemsList.pipe(
+        T.Body("hidden_items"),
       ),
-    }),
-  ).annotate({
-    identifier: "OnRampsEditResponseVpcsByIdValueSectionsItemHiddenItemsItem",
-  }) as any as S.Schema<OnRampsEditResponseVpcsByIdValueSectionsItemHiddenItemsItem>;
-
-export type OnRampsEditResponseVpcsByIdValueSectionsItemHiddenItemsList =
-  Array<OnRampsEditResponseVpcsByIdValueSectionsItemHiddenItemsItem>;
-export const OnRampsEditResponseVpcsByIdValueSectionsItemHiddenItemsList =
-  /*@__PURE__*/ S.Array(
-    OnRampsEditResponseVpcsByIdValueSectionsItemHiddenItemsItem,
-  ) as any as S.Schema<OnRampsEditResponseVpcsByIdValueSectionsItemHiddenItemsList>;
-
-export type OnRampsEditResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnStringItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem;
-export const OnRampsEditResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnStringItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem;
-
-export type OnRampsEditResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnYamlItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlItem;
-export const OnRampsEditResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnYamlItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlItem;
-
-export type OnRampsEditResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnYamlDiffItemYamlDiff =
-  OnRampsCreateResponsePlannedResourcesItemDiff;
-export const OnRampsEditResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnYamlDiffItemYamlDiff =
-  OnRampsCreateResponsePlannedResourcesItemDiff;
-
-export type OnRampsEditResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnYamlDiffItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlDiffItem;
-export const OnRampsEditResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnYamlDiffItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlDiffItem;
-
-export type OnRampsEditResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreviewCloudType =
-  | "AWS"
-  | "AZURE"
-  | "GOOGLE"
-  | "CLOUDFLARE";
-export const OnRampsEditResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreviewCloudType =
-  /*@__PURE__*/ S.String;
-
-export type OnRampsEditResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreviewResourceType =
-  | "aws_customer_gateway"
-  | "aws_egress_only_internet_gateway"
-  | "aws_internet_gateway"
-  | "aws_instance"
-  | "aws_network_interface"
-  | "aws_route"
-  | "aws_route_table"
-  | "aws_route_table_association"
-  | "aws_subnet"
-  | "aws_vpc"
-  | "aws_vpc_ipv4_cidr_block_association"
-  | "aws_vpn_connection"
-  | "aws_vpn_connection_route"
-  | "aws_vpn_gateway"
-  | "aws_security_group"
-  | "aws_vpc_security_group_ingress_rule"
-  | "aws_vpc_security_group_egress_rule"
-  | "aws_ec2_managed_prefix_list"
-  | "aws_ec2_transit_gateway"
-  | "aws_ec2_transit_gateway_prefix_list_reference"
-  | "aws_ec2_transit_gateway_vpc_attachment"
-  | "azurerm_application_security_group"
-  | "azurerm_lb"
-  | "azurerm_lb_backend_address_pool"
-  | "azurerm_lb_nat_pool"
-  | "azurerm_lb_nat_rule"
-  | "azurerm_lb_rule"
-  | "azurerm_local_network_gateway"
-  | "azurerm_network_interface"
-  | "azurerm_network_interface_application_security_group_association"
-  | "azurerm_network_interface_backend_address_pool_association"
-  | "azurerm_network_interface_security_group_association"
-  | "azurerm_network_security_group"
-  | "azurerm_public_ip"
-  | "azurerm_route"
-  | "azurerm_route_table"
-  | "azurerm_subnet"
-  | "azurerm_subnet_route_table_association"
-  | "azurerm_virtual_machine"
-  | "azurerm_virtual_network_gateway_connection"
-  | "azurerm_virtual_network"
-  | "azurerm_virtual_network_gateway"
-  | "google_compute_network"
-  | "google_compute_subnetwork"
-  | "google_compute_vpn_gateway"
-  | "google_compute_vpn_tunnel"
-  | "google_compute_route"
-  | "google_compute_address"
-  | "google_compute_global_address"
-  | "google_compute_router"
-  | "google_compute_interconnect_attachment"
-  | "google_compute_ha_vpn_gateway"
-  | "google_compute_forwarding_rule"
-  | "google_compute_network_firewall_policy"
-  | "google_compute_network_firewall_policy_rule"
-  | "cloudflare_static_route"
-  | "cloudflare_ipsec_tunnel";
-export const OnRampsEditResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreviewResourceType =
-  /*@__PURE__*/ S.String;
-
-export interface OnRampsEditResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreview {
-  id: string;
-  cloudType: OnRampsEditResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreviewCloudType;
-  detail: string;
-  name: string;
-  resourceType: OnRampsEditResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreviewResourceType;
-  title: string;
-}
-export const OnRampsEditResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreview =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-      cloudType:
-        OnRampsEditResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreviewCloudType.pipe(
-          T.Body("cloud_type"),
-        ),
-      detail: S.String,
-      name: S.String,
-      resourceType:
-        OnRampsEditResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreviewResourceType.pipe(
-          T.Body("resource_type"),
-        ),
-      title: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "OnRampsEditResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreview",
-  }) as any as S.Schema<OnRampsEditResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreview>;
-
-export interface OnRampsEditResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItem {
-  itemType: string;
-  resourcePreview: OnRampsEditResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreview;
-}
-export const OnRampsEditResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      itemType: S.String.pipe(T.Body("item_type")),
-      resourcePreview:
-        OnRampsEditResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreview.pipe(
-          T.Body("resource_preview"),
-        ),
-    }),
-  ).annotate({
-    identifier:
-      "OnRampsEditResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItem",
-  }) as any as S.Schema<OnRampsEditResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItem>;
-
-export type OnRampsEditResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnStringItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem;
-export const OnRampsEditResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnStringItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem;
-
-export type OnRampsEditResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewCloudType =
-  | "AWS"
-  | "AZURE"
-  | "GOOGLE"
-  | "CLOUDFLARE";
-export const OnRampsEditResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewCloudType =
-  /*@__PURE__*/ S.String;
-
-export type OnRampsEditResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewResourceType =
-  | "aws_customer_gateway"
-  | "aws_egress_only_internet_gateway"
-  | "aws_internet_gateway"
-  | "aws_instance"
-  | "aws_network_interface"
-  | "aws_route"
-  | "aws_route_table"
-  | "aws_route_table_association"
-  | "aws_subnet"
-  | "aws_vpc"
-  | "aws_vpc_ipv4_cidr_block_association"
-  | "aws_vpn_connection"
-  | "aws_vpn_connection_route"
-  | "aws_vpn_gateway"
-  | "aws_security_group"
-  | "aws_vpc_security_group_ingress_rule"
-  | "aws_vpc_security_group_egress_rule"
-  | "aws_ec2_managed_prefix_list"
-  | "aws_ec2_transit_gateway"
-  | "aws_ec2_transit_gateway_prefix_list_reference"
-  | "aws_ec2_transit_gateway_vpc_attachment"
-  | "azurerm_application_security_group"
-  | "azurerm_lb"
-  | "azurerm_lb_backend_address_pool"
-  | "azurerm_lb_nat_pool"
-  | "azurerm_lb_nat_rule"
-  | "azurerm_lb_rule"
-  | "azurerm_local_network_gateway"
-  | "azurerm_network_interface"
-  | "azurerm_network_interface_application_security_group_association"
-  | "azurerm_network_interface_backend_address_pool_association"
-  | "azurerm_network_interface_security_group_association"
-  | "azurerm_network_security_group"
-  | "azurerm_public_ip"
-  | "azurerm_route"
-  | "azurerm_route_table"
-  | "azurerm_subnet"
-  | "azurerm_subnet_route_table_association"
-  | "azurerm_virtual_machine"
-  | "azurerm_virtual_network_gateway_connection"
-  | "azurerm_virtual_network"
-  | "azurerm_virtual_network_gateway"
-  | "google_compute_network"
-  | "google_compute_subnetwork"
-  | "google_compute_vpn_gateway"
-  | "google_compute_vpn_tunnel"
-  | "google_compute_route"
-  | "google_compute_address"
-  | "google_compute_global_address"
-  | "google_compute_router"
-  | "google_compute_interconnect_attachment"
-  | "google_compute_ha_vpn_gateway"
-  | "google_compute_forwarding_rule"
-  | "google_compute_network_firewall_policy"
-  | "google_compute_network_firewall_policy_rule"
-  | "cloudflare_static_route"
-  | "cloudflare_ipsec_tunnel";
-export const OnRampsEditResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewResourceType =
-  /*@__PURE__*/ S.String;
-
-export interface OnRampsEditResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview {
-  id: string;
-  cloudType: OnRampsEditResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewCloudType;
-  detail: string;
-  name: string;
-  resourceType: OnRampsEditResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewResourceType;
-  title: string;
-}
-export const OnRampsEditResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-      cloudType:
-        OnRampsEditResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewCloudType.pipe(
-          T.Body("cloud_type"),
-        ),
-      detail: S.String,
-      name: S.String,
-      resourceType:
-        OnRampsEditResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewResourceType.pipe(
-          T.Body("resource_type"),
-        ),
-      title: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "OnRampsEditResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview",
-  }) as any as S.Schema<OnRampsEditResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview>;
-
-export interface OnRampsEditResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItem {
-  itemType: string;
-  resourcePreview: OnRampsEditResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview;
-}
-export const OnRampsEditResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      itemType: S.String.pipe(T.Body("item_type")),
-      resourcePreview:
-        OnRampsEditResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview.pipe(
-          T.Body("resource_preview"),
-        ),
-    }),
-  ).annotate({
-    identifier:
-      "OnRampsEditResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItem",
-  }) as any as S.Schema<OnRampsEditResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItem>;
-
-export type OnRampsEditResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItem =
-  | OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem
-  | OnRampsEditResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItem;
-export const OnRampsEditResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItem =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["itemType", "string"],
-      ["itemType", "resourcePreview"],
-    ]),
-  );
-
-export type OnRampsEditResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListList =
-  Array<OnRampsEditResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItem>;
-export const OnRampsEditResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListList =
-  /*@__PURE__*/ S.Array(
-    OnRampsEditResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItem,
-  ) as any as S.Schema<OnRampsEditResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListList>;
-
-export interface OnRampsEditResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItem {
-  itemType: string;
-  list: OnRampsEditResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListList;
-}
-export const OnRampsEditResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      itemType: S.String.pipe(T.Body("item_type")),
-      list: OnRampsEditResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListList,
-    }),
-  ).annotate({
-    identifier:
-      "OnRampsEditResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItem",
-  }) as any as S.Schema<OnRampsEditResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItem>;
-
-export type OnRampsEditResponseVpcsByIdValueSectionsItemVisibleItemsItemValue =
-  | OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem
-  | OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlItem
-  | OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlDiffItem
-  | OnRampsEditResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItem
-  | OnRampsEditResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItem;
-export const OnRampsEditResponseVpcsByIdValueSectionsItemVisibleItemsItemValue =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["itemType", "string"],
-      ["itemType", "yaml"],
-      ["itemType", "yamlDiff"],
-      ["itemType", "resourcePreview"],
-      ["itemType", "list"],
-    ]),
-  );
-
-export interface OnRampsEditResponseVpcsByIdValueSectionsItemVisibleItemsItem {
-  helpText?: string | null;
-  name?: string | null;
-  value?: OnRampsEditResponseVpcsByIdValueSectionsItemVisibleItemsItemValue | null;
-}
-export const OnRampsEditResponseVpcsByIdValueSectionsItemVisibleItemsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      helpText: S.optional(S.NullOr(S.String)),
-      name: S.optional(S.NullOr(S.String)),
-      value: S.optional(
-        S.NullOr(
-          OnRampsEditResponseVpcsByIdValueSectionsItemVisibleItemsItemValue,
-        ),
-      ),
-    }),
-  ).annotate({
-    identifier: "OnRampsEditResponseVpcsByIdValueSectionsItemVisibleItemsItem",
-  }) as any as S.Schema<OnRampsEditResponseVpcsByIdValueSectionsItemVisibleItemsItem>;
-
-export type OnRampsEditResponseVpcsByIdValueSectionsItemVisibleItemsList =
-  Array<OnRampsEditResponseVpcsByIdValueSectionsItemVisibleItemsItem>;
-export const OnRampsEditResponseVpcsByIdValueSectionsItemVisibleItemsList =
-  /*@__PURE__*/ S.Array(
-    OnRampsEditResponseVpcsByIdValueSectionsItemVisibleItemsItem,
-  ) as any as S.Schema<OnRampsEditResponseVpcsByIdValueSectionsItemVisibleItemsList>;
-
-export interface OnRampsEditResponseVpcsByIdValueSectionsItem {
-  hiddenItems: OnRampsEditResponseVpcsByIdValueSectionsItemHiddenItemsList;
-  name: string;
-  visibleItems: OnRampsEditResponseVpcsByIdValueSectionsItemVisibleItemsList;
-  helpText?: string | null;
-}
-export const OnRampsEditResponseVpcsByIdValueSectionsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      hiddenItems:
-        OnRampsEditResponseVpcsByIdValueSectionsItemHiddenItemsList.pipe(
-          T.Body("hidden_items"),
-        ),
       name: S.String,
       visibleItems:
-        OnRampsEditResponseVpcsByIdValueSectionsItemVisibleItemsList.pipe(
+        OnRampsEditResponseVpcsByIdSectionsItemVisibleItemsList.pipe(
           T.Body("visible_items"),
         ),
       helpText: S.optional(S.NullOr(S.String).pipe(T.Body("help_text"))),
     }),
-  ).annotate({
-    identifier: "OnRampsEditResponseVpcsByIdValueSectionsItem",
-  }) as any as S.Schema<OnRampsEditResponseVpcsByIdValueSectionsItem>;
+).annotate({
+  identifier: "OnRampsEditResponseVpcsByIdSectionsItem",
+}) as any as S.Schema<OnRampsEditResponseVpcsByIdSectionsItem>;
 
-export type OnRampsEditResponseVpcsByIdValueSectionsList =
-  Array<OnRampsEditResponseVpcsByIdValueSectionsItem>;
-export const OnRampsEditResponseVpcsByIdValueSectionsList =
-  /*@__PURE__*/ S.Array(
-    OnRampsEditResponseVpcsByIdValueSectionsItem,
-  ) as any as S.Schema<OnRampsEditResponseVpcsByIdValueSectionsList>;
+export type OnRampsEditResponseVpcsByIdSectionsList =
+  Array<OnRampsEditResponseVpcsByIdSectionsItem>;
+export const OnRampsEditResponseVpcsByIdSectionsList = /*@__PURE__*/ S.Array(
+  OnRampsEditResponseVpcsByIdSectionsItem,
+) as any as S.Schema<OnRampsEditResponseVpcsByIdSectionsList>;
 
-export type OnRampsEditResponseVpcsByIdValueStateMap = {
-  [key: string]: unknown | undefined;
-};
-export const OnRampsEditResponseVpcsByIdValueStateMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<OnRampsEditResponseVpcsByIdValueStateMap>;
-
-export type OnRampsEditResponseVpcsByIdValueTagsMap = {
-  [key: string]: string | undefined;
-};
-export const OnRampsEditResponseVpcsByIdValueTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<OnRampsEditResponseVpcsByIdValueTagsMap>;
-
-export type OnRampsEditResponseVpcsByIdValueManagedByItemClientType =
+export type OnRampsEditResponseVpcsByIdManagedByItemClientType =
   "MAGIC_WAN_CLOUD_ONRAMP";
-export const OnRampsEditResponseVpcsByIdValueManagedByItemClientType =
+export const OnRampsEditResponseVpcsByIdManagedByItemClientType =
   /*@__PURE__*/ S.String;
 
-export interface OnRampsEditResponseVpcsByIdValueManagedByItem {
+export interface OnRampsEditResponseVpcsByIdManagedByItem {
   id: string;
-  clientType: OnRampsEditResponseVpcsByIdValueManagedByItemClientType;
+  clientType: OnRampsEditResponseVpcsByIdManagedByItemClientType;
   name: string;
 }
-export const OnRampsEditResponseVpcsByIdValueManagedByItem =
-  /*@__PURE__*/ S.suspend(() =>
+export const OnRampsEditResponseVpcsByIdManagedByItem = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       id: S.String,
-      clientType: OnRampsEditResponseVpcsByIdValueManagedByItemClientType.pipe(
+      clientType: OnRampsEditResponseVpcsByIdManagedByItemClientType.pipe(
         T.Body("client_type"),
       ),
       name: S.String,
     }),
-  ).annotate({
-    identifier: "OnRampsEditResponseVpcsByIdValueManagedByItem",
-  }) as any as S.Schema<OnRampsEditResponseVpcsByIdValueManagedByItem>;
+).annotate({
+  identifier: "OnRampsEditResponseVpcsByIdManagedByItem",
+}) as any as S.Schema<OnRampsEditResponseVpcsByIdManagedByItem>;
 
-export type OnRampsEditResponseVpcsByIdValueManagedByList =
-  Array<OnRampsEditResponseVpcsByIdValueManagedByItem>;
-export const OnRampsEditResponseVpcsByIdValueManagedByList =
-  /*@__PURE__*/ S.Array(
-    OnRampsEditResponseVpcsByIdValueManagedByItem,
-  ) as any as S.Schema<OnRampsEditResponseVpcsByIdValueManagedByList>;
+export type OnRampsEditResponseVpcsByIdManagedByList =
+  Array<OnRampsEditResponseVpcsByIdManagedByItem>;
+export const OnRampsEditResponseVpcsByIdManagedByList = /*@__PURE__*/ S.Array(
+  OnRampsEditResponseVpcsByIdManagedByItem,
+) as any as S.Schema<OnRampsEditResponseVpcsByIdManagedByList>;
 
-export interface OnRampsEditResponseVpcsByIdValue {
+export interface OnRampsEditResponseVpcsById {
   id: string;
   accountId: string;
-  cloudType: OnRampsEditResponseVpcsByIdValueCloudType;
-  config: OnRampsEditResponseVpcsByIdValueConfigMap;
+  cloudType: OnRampsEditResponseVpcsByIdCloudType;
+  config: unknown;
   deploymentProvider: string;
   managed: boolean;
   monthlyCostEstimate: OnRampsCreateResponsePostApplyMonthlyCostEstimate;
   name: string;
   nativeId: string;
-  observations: OnRampsEditResponseVpcsByIdValueObservationsMap;
-  providerIds: OnRampsEditResponseVpcsByIdValueProviderIdsList;
-  providerNamesById: OnRampsEditResponseVpcsByIdValueProviderNamesByIdMap;
+  observations: OnRampsCreateResponsePostApplyResourcesObservations;
+  providerIds: OnRampsEditResponseVpcsByIdProviderIdsList;
+  providerNamesById: unknown;
   region: string;
   resourceGroup: string;
-  resourceType: OnRampsEditResponseVpcsByIdValueResourceType;
-  sections: OnRampsEditResponseVpcsByIdValueSectionsList;
-  state: OnRampsEditResponseVpcsByIdValueStateMap;
-  tags: OnRampsEditResponseVpcsByIdValueTagsMap;
+  resourceType: string;
+  sections: OnRampsEditResponseVpcsByIdSectionsList;
+  state: unknown;
+  tags: unknown;
   updatedAt: string;
   url: string;
-  managedBy?: OnRampsEditResponseVpcsByIdValueManagedByList | null;
+  managedBy?: OnRampsEditResponseVpcsByIdManagedByList | null;
 }
-export const OnRampsEditResponseVpcsByIdValue = /*@__PURE__*/ S.suspend(() =>
+export const OnRampsEditResponseVpcsById = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     accountId: S.String.pipe(T.Body("account_id")),
-    cloudType: OnRampsEditResponseVpcsByIdValueCloudType.pipe(
-      T.Body("cloud_type"),
-    ),
-    config: OnRampsEditResponseVpcsByIdValueConfigMap,
+    cloudType: OnRampsEditResponseVpcsByIdCloudType.pipe(T.Body("cloud_type")),
+    config: S.Unknown,
     deploymentProvider: S.String.pipe(T.Body("deployment_provider")),
     managed: S.Boolean,
     monthlyCostEstimate: OnRampsCreateResponsePostApplyMonthlyCostEstimate.pipe(
@@ -14833,41 +4791,28 @@ export const OnRampsEditResponseVpcsByIdValue = /*@__PURE__*/ S.suspend(() =>
     ),
     name: S.String,
     nativeId: S.String.pipe(T.Body("native_id")),
-    observations: OnRampsEditResponseVpcsByIdValueObservationsMap,
-    providerIds: OnRampsEditResponseVpcsByIdValueProviderIdsList.pipe(
+    observations: OnRampsCreateResponsePostApplyResourcesObservations,
+    providerIds: OnRampsEditResponseVpcsByIdProviderIdsList.pipe(
       T.Body("provider_ids"),
     ),
-    providerNamesById:
-      OnRampsEditResponseVpcsByIdValueProviderNamesByIdMap.pipe(
-        T.Body("provider_names_by_id"),
-      ),
+    providerNamesById: S.Unknown.pipe(T.Body("provider_names_by_id")),
     region: S.String,
     resourceGroup: S.String.pipe(T.Body("resource_group")),
-    resourceType: OnRampsEditResponseVpcsByIdValueResourceType.pipe(
-      T.Body("resource_type"),
-    ),
-    sections: OnRampsEditResponseVpcsByIdValueSectionsList,
-    state: OnRampsEditResponseVpcsByIdValueStateMap,
-    tags: OnRampsEditResponseVpcsByIdValueTagsMap,
+    resourceType: S.String.pipe(T.Body("resource_type")),
+    sections: OnRampsEditResponseVpcsByIdSectionsList,
+    state: S.Unknown,
+    tags: S.Unknown,
     updatedAt: S.String.pipe(T.Body("updated_at")),
     url: S.String,
     managedBy: S.optional(
-      S.NullOr(OnRampsEditResponseVpcsByIdValueManagedByList).pipe(
+      S.NullOr(OnRampsEditResponseVpcsByIdManagedByList).pipe(
         T.Body("managed_by"),
       ),
     ),
   }),
 ).annotate({
-  identifier: "OnRampsEditResponseVpcsByIdValue",
-}) as any as S.Schema<OnRampsEditResponseVpcsByIdValue>;
-
-export type OnRampsEditResponseVpcsByIdMap = {
-  [key: string]: OnRampsEditResponseVpcsByIdValue | undefined;
-};
-export const OnRampsEditResponseVpcsByIdMap = /*@__PURE__*/ S.Record(
-  S.String,
-  OnRampsEditResponseVpcsByIdValue,
-) as any as S.Schema<OnRampsEditResponseVpcsByIdMap>;
+  identifier: "OnRampsEditResponseVpcsById",
+}) as any as S.Schema<OnRampsEditResponseVpcsById>;
 
 export type OnRampsEditResponseVpcsByIdUnavailableList = Array<string>;
 export const OnRampsEditResponseVpcsByIdUnavailableList = /*@__PURE__*/ S.Array(
@@ -14898,12 +4843,12 @@ export interface PatchOnRampResponse {
   plannedResources?: OnRampsEditResponsePlannedResourcesList | null;
   plannedResourcesUnavailable?: boolean | null;
   postApplyMonthlyCostEstimate?: OnRampsCreateResponsePostApplyMonthlyCostEstimate | null;
-  postApplyResources?: OnRampsEditResponsePostApplyResourcesMap | null;
+  postApplyResources?: OnRampsEditResponsePostApplyResources | null;
   postApplyResourcesUnavailable?: boolean | null;
   region?: string | null;
   status?: OnRampsEditResponseStatus | null;
   vpc?: string | null;
-  vpcsById?: OnRampsEditResponseVpcsByIdMap | null;
+  vpcsById?: OnRampsEditResponseVpcsById | null;
   /** The list of vpc IDs for which resource details failed to generate. */
   vpcsByIdUnavailable?: OnRampsEditResponseVpcsByIdUnavailableList | null;
 }
@@ -14966,7 +4911,7 @@ export const PatchOnRampResponse = /*@__PURE__*/ S.suspend(() =>
       ),
     ),
     postApplyResources: S.optional(
-      S.NullOr(OnRampsEditResponsePostApplyResourcesMap).pipe(
+      S.NullOr(OnRampsEditResponsePostApplyResources).pipe(
         T.Body("post_apply_resources"),
       ),
     ),
@@ -14977,7 +4922,7 @@ export const PatchOnRampResponse = /*@__PURE__*/ S.suspend(() =>
     status: S.optional(S.NullOr(OnRampsEditResponseStatus)),
     vpc: S.optional(S.NullOr(S.String)),
     vpcsById: S.optional(
-      S.NullOr(OnRampsEditResponseVpcsByIdMap).pipe(T.Body("vpcs_by_id")),
+      S.NullOr(OnRampsEditResponseVpcsById).pipe(T.Body("vpcs_by_id")),
     ),
     vpcsByIdUnavailable: S.optional(
       S.NullOr(OnRampsEditResponseVpcsByIdUnavailableList).pipe(
@@ -14989,20 +4934,12 @@ export const PatchOnRampResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "PatchOnRampResponse",
 }) as any as S.Schema<PatchOnRampResponse>;
 
-export type OnRampsAddressSpacesEditRequestPrefixesList = Array<string>;
-export const OnRampsAddressSpacesEditRequestPrefixesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<OnRampsAddressSpacesEditRequestPrefixesList>;
-
 export interface PatchOnRampAddressSpaceRequest {
   accountId: string;
-  prefixes: OnRampsAddressSpacesEditRequestPrefixesList;
 }
 export const PatchOnRampAddressSpaceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
-    prefixes: OnRampsAddressSpacesEditRequestPrefixesList,
   })
     .pipe(
       T.Http({
@@ -15064,12 +5001,10 @@ export const PlanOnRampResponse = /*@__PURE__*/ S.suspend(() =>
 
 export interface PolicyPreviewResourceRequest {
   accountId: string;
-  policy: string;
 }
 export const PolicyPreviewResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
-    policy: S.String,
   })
     .pipe(
       T.Http({
@@ -15090,20 +5025,12 @@ export const PolicyPreviewResourceResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "PolicyPreviewResourceResponse",
 }) as any as S.Schema<PolicyPreviewResourceResponse>;
 
-export type OnRampsAddressSpacesUpdateRequestPrefixesList = Array<string>;
-export const OnRampsAddressSpacesUpdateRequestPrefixesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<OnRampsAddressSpacesUpdateRequestPrefixesList>;
-
 export interface PutOnRampAddressSpaceRequest {
   accountId: string;
-  prefixes: OnRampsAddressSpacesUpdateRequestPrefixesList;
 }
 export const PutOnRampAddressSpaceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
-    prefixes: OnRampsAddressSpacesUpdateRequestPrefixesList,
   })
     .pipe(
       T.Http({
@@ -15163,27 +5090,14 @@ export const RefreshCatalogSyncResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "RefreshCatalogSyncResponse",
 }) as any as S.Schema<RefreshCatalogSyncResponse>;
 
-export type CatalogSyncsUpdateRequestUpdateMode = "AUTO" | "MANUAL";
-export const CatalogSyncsUpdateRequestUpdateMode = /*@__PURE__*/ S.String;
-
 export interface UpdateCatalogSyncRequest {
   accountId: string;
   syncId: string;
-  description?: string;
-  name?: string;
-  policy?: string;
-  updateMode?: CatalogSyncsUpdateRequestUpdateMode | (string & {});
 }
 export const UpdateCatalogSyncRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     syncId: S.String.pipe(T.Label("sync_id")),
-    description: S.optional(S.String),
-    name: S.optional(S.String),
-    policy: S.optional(S.String),
-    updateMode: S.optional(
-      CatalogSyncsUpdateRequestUpdateMode.pipe(T.Body("update_mode")),
-    ),
   })
     .pipe(
       T.Http({
@@ -15205,203 +5119,19 @@ export const CatalogSyncsUpdateResponseDestinationType = /*@__PURE__*/ S.String;
 export type CatalogSyncsUpdateResponseUpdateMode = "AUTO" | "MANUAL";
 export const CatalogSyncsUpdateResponseUpdateMode = /*@__PURE__*/ S.String;
 
-export type CatalogSyncsUpdateResponseErrorsValueCode =
-  | 1001
-  | 1002
-  | 1003
-  | 1004
-  | 1005
-  | 1006
-  | 1007
-  | 1008
-  | 1009
-  | 1010
-  | 1011
-  | 1012
-  | 1013
-  | 1014
-  | 1015
-  | 1016
-  | 1017
-  | 1018
-  | 2001
-  | 2002
-  | 2003
-  | 2004
-  | 2005
-  | 2006
-  | 2007
-  | 2008
-  | 2009
-  | 2010
-  | 2011
-  | 2012
-  | 2013
-  | 2014
-  | 2015
-  | 2016
-  | 2017
-  | 2018
-  | 2019
-  | 2020
-  | 2021
-  | 2022
-  | 3001
-  | 3002
-  | 3003
-  | 3004
-  | 3005
-  | 3006
-  | 3007
-  | 4001
-  | 4002
-  | 4003
-  | 4004
-  | 4005
-  | 4006
-  | 4007
-  | 4008
-  | 4009
-  | 4010
-  | 4011
-  | 4012
-  | 4013
-  | 4014
-  | 4015
-  | 4016
-  | 4017
-  | 4018
-  | 4019
-  | 4020
-  | 4021
-  | 4022
-  | 4023
-  | 5001
-  | 5002
-  | 5003
-  | 5004
-  | 102000
-  | 102001
-  | 102002
-  | 102003
-  | 102004
-  | 102005
-  | 102006
-  | 102007
-  | 102008
-  | 102009
-  | 102010
-  | 102011
-  | 102012
-  | 102013
-  | 102014
-  | 102015
-  | 102016
-  | 102017
-  | 102018
-  | 102019
-  | 102020
-  | 102021
-  | 102022
-  | 102023
-  | 102024
-  | 102025
-  | 102026
-  | 102027
-  | 102028
-  | 102029
-  | 102030
-  | 102031
-  | 102032
-  | 102033
-  | 102034
-  | 102035
-  | 102036
-  | 102037
-  | 102038
-  | 102039
-  | 102040
-  | 102041
-  | 102042
-  | 102043
-  | 102044
-  | 102045
-  | 102046
-  | 102047
-  | 102048
-  | 102049
-  | 102050
-  | 102051
-  | 102052
-  | 102053
-  | 102054
-  | 102055
-  | 102056
-  | 102057
-  | 102058
-  | 102059
-  | 102060
-  | 102061
-  | 102062
-  | 102063
-  | 102064
-  | 102065
-  | 102066
-  | 102067
-  | 102068
-  | 102069
-  | 102070
-  | 102071
-  | 102072
-  | 103001
-  | 103002
-  | 103003
-  | 103004
-  | 103005
-  | 103006
-  | 103007
-  | 103008;
-export const CatalogSyncsUpdateResponseErrorsValueCode = /*@__PURE__*/ S.Number;
+export type CatalogSyncsUpdateResponseErrorsMeta =
+  CatalogSyncsCreateResponseErrorsMeta;
+export const CatalogSyncsUpdateResponseErrorsMeta =
+  CatalogSyncsCreateResponseErrorsMeta;
 
-export type CatalogSyncsUpdateResponseErrorsValueMeta =
-  CatalogSyncsCreateResponseErrorsValueMeta;
-export const CatalogSyncsUpdateResponseErrorsValueMeta =
-  CatalogSyncsCreateResponseErrorsValueMeta;
+export type CatalogSyncsUpdateResponseErrorsSource =
+  CatalogSyncsCreateResponseErrorsSource;
+export const CatalogSyncsUpdateResponseErrorsSource =
+  CatalogSyncsCreateResponseErrorsSource;
 
-export type CatalogSyncsUpdateResponseErrorsValueSource =
-  CatalogSyncsCreateResponseErrorsValueSource;
-export const CatalogSyncsUpdateResponseErrorsValueSource =
-  CatalogSyncsCreateResponseErrorsValueSource;
-
-export interface CatalogSyncsUpdateResponseErrorsValue {
-  code: CatalogSyncsUpdateResponseErrorsValueCode;
-  message: string;
-  documentationUrl?: string | null;
-  meta?: CatalogSyncsCreateResponseErrorsValueMeta | null;
-  source?: CatalogSyncsCreateResponseErrorsValueSource | null;
-}
-export const CatalogSyncsUpdateResponseErrorsValue = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      code: CatalogSyncsUpdateResponseErrorsValueCode,
-      message: S.String,
-      documentationUrl: S.optional(
-        S.NullOr(S.String).pipe(T.Body("documentation_url")),
-      ),
-      meta: S.optional(S.NullOr(CatalogSyncsCreateResponseErrorsValueMeta)),
-      source: S.optional(S.NullOr(CatalogSyncsCreateResponseErrorsValueSource)),
-    }),
-).annotate({
-  identifier: "CatalogSyncsUpdateResponseErrorsValue",
-}) as any as S.Schema<CatalogSyncsUpdateResponseErrorsValue>;
-
-export type CatalogSyncsUpdateResponseErrorsMap = {
-  [key: string]: CatalogSyncsUpdateResponseErrorsValue | undefined;
-};
-export const CatalogSyncsUpdateResponseErrorsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  CatalogSyncsUpdateResponseErrorsValue,
-) as any as S.Schema<CatalogSyncsUpdateResponseErrorsMap>;
+export type CatalogSyncsUpdateResponseErrors = CatalogSyncsCreateResponseErrors;
+export const CatalogSyncsUpdateResponseErrors =
+  CatalogSyncsCreateResponseErrors;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface UpdateCatalogSyncResponse {
@@ -15413,7 +5143,7 @@ export interface UpdateCatalogSyncResponse {
   name: string;
   policy: string;
   updateMode: CatalogSyncsUpdateResponseUpdateMode;
-  errors?: CatalogSyncsUpdateResponseErrorsMap | null;
+  errors?: CatalogSyncsCreateResponseErrors | null;
   includesDiscoveriesUntil?: string | null;
   lastAttemptedUpdateAt?: string | null;
   lastSuccessfulUpdateAt?: string | null;
@@ -15432,7 +5162,7 @@ export const UpdateCatalogSyncResponse = /*@__PURE__*/ S.suspend(() =>
     updateMode: CatalogSyncsUpdateResponseUpdateMode.pipe(
       T.Body("update_mode"),
     ),
-    errors: S.optional(S.NullOr(CatalogSyncsUpdateResponseErrorsMap)),
+    errors: S.optional(S.NullOr(CatalogSyncsCreateResponseErrors)),
     includesDiscoveriesUntil: S.optional(
       S.NullOr(S.String).pipe(T.Body("includes_discoveries_until")),
     ),
@@ -15450,29 +5180,11 @@ export const UpdateCatalogSyncResponse = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateCloudIntegrationRequest {
   accountId: string;
   providerId: string;
-  awsArn?: string;
-  azureSubscriptionId?: string;
-  azureTenantId?: string;
-  description?: string;
-  friendlyName?: string;
-  gcpProjectId?: string;
-  gcpServiceAccountEmail?: string;
 }
 export const UpdateCloudIntegrationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     providerId: S.String.pipe(T.Label("provider_id")),
-    awsArn: S.optional(S.String.pipe(T.Body("aws_arn"))),
-    azureSubscriptionId: S.optional(
-      S.String.pipe(T.Body("azure_subscription_id")),
-    ),
-    azureTenantId: S.optional(S.String.pipe(T.Body("azure_tenant_id"))),
-    description: S.optional(S.String),
-    friendlyName: S.optional(S.String.pipe(T.Body("friendly_name"))),
-    gcpProjectId: S.optional(S.String.pipe(T.Body("gcp_project_id"))),
-    gcpServiceAccountEmail: S.optional(
-      S.String.pipe(T.Body("gcp_service_account_email")),
-    ),
   })
     .pipe(
       T.Http({
@@ -15500,22 +5212,6 @@ export type CloudIntegrationsUpdateResponseLifecycleState =
 export const CloudIntegrationsUpdateResponseLifecycleState =
   /*@__PURE__*/ S.String;
 
-export type CloudIntegrationsUpdateResponseState =
-  | "UNSPECIFIED"
-  | "PENDING"
-  | "DISCOVERING"
-  | "FAILED"
-  | "SUCCEEDED";
-export const CloudIntegrationsUpdateResponseState = /*@__PURE__*/ S.String;
-
-export type CloudIntegrationsUpdateResponseStateV2 =
-  | "UNSPECIFIED"
-  | "PENDING"
-  | "DISCOVERING"
-  | "FAILED"
-  | "SUCCEEDED";
-export const CloudIntegrationsUpdateResponseStateV2 = /*@__PURE__*/ S.String;
-
 export type CloudIntegrationsUpdateResponseStatusDiscoveryProgress =
   CloudIntegrationsCreateResponseStatusDiscoveryProgress;
 export const CloudIntegrationsUpdateResponseStatusDiscoveryProgress =
@@ -15525,24 +5221,6 @@ export type CloudIntegrationsUpdateResponseStatusDiscoveryProgressV2 =
   CloudIntegrationsCreateResponseStatusDiscoveryProgress;
 export const CloudIntegrationsUpdateResponseStatusDiscoveryProgressV2 =
   CloudIntegrationsCreateResponseStatusDiscoveryProgress;
-
-export type CloudIntegrationsUpdateResponseStatusLastDiscoveryStatus =
-  | "UNSPECIFIED"
-  | "PENDING"
-  | "DISCOVERING"
-  | "FAILED"
-  | "SUCCEEDED";
-export const CloudIntegrationsUpdateResponseStatusLastDiscoveryStatus =
-  /*@__PURE__*/ S.String;
-
-export type CloudIntegrationsUpdateResponseStatusLastDiscoveryStatusV2 =
-  | "UNSPECIFIED"
-  | "PENDING"
-  | "DISCOVERING"
-  | "FAILED"
-  | "SUCCEEDED";
-export const CloudIntegrationsUpdateResponseStatusLastDiscoveryStatusV2 =
-  /*@__PURE__*/ S.String;
 
 export type CloudIntegrationsUpdateResponseStatusRegionsList = Array<string>;
 export const CloudIntegrationsUpdateResponseStatusRegionsList =
@@ -15584,8 +5262,8 @@ export const CloudIntegrationsUpdateResponseStatusInUseByList =
 export interface CloudIntegrationsUpdateResponseStatus {
   discoveryProgress: CloudIntegrationsCreateResponseStatusDiscoveryProgress;
   discoveryProgressV2: CloudIntegrationsCreateResponseStatusDiscoveryProgress;
-  lastDiscoveryStatus: CloudIntegrationsUpdateResponseStatusLastDiscoveryStatus;
-  lastDiscoveryStatusV2: CloudIntegrationsUpdateResponseStatusLastDiscoveryStatusV2;
+  lastDiscoveryStatus: string;
+  lastDiscoveryStatusV2: string;
   regions: CloudIntegrationsUpdateResponseStatusRegionsList;
   credentialsGoodSince?: string | null;
   credentialsMissingSince?: string | null;
@@ -15610,14 +5288,8 @@ export const CloudIntegrationsUpdateResponseStatus = /*@__PURE__*/ S.suspend(
         CloudIntegrationsCreateResponseStatusDiscoveryProgress.pipe(
           T.Body("discovery_progress_v2"),
         ),
-      lastDiscoveryStatus:
-        CloudIntegrationsUpdateResponseStatusLastDiscoveryStatus.pipe(
-          T.Body("last_discovery_status"),
-        ),
-      lastDiscoveryStatusV2:
-        CloudIntegrationsUpdateResponseStatusLastDiscoveryStatusV2.pipe(
-          T.Body("last_discovery_status_v2"),
-        ),
+      lastDiscoveryStatus: S.String.pipe(T.Body("last_discovery_status")),
+      lastDiscoveryStatusV2: S.String.pipe(T.Body("last_discovery_status_v2")),
       regions: CloudIntegrationsUpdateResponseStatusRegionsList,
       credentialsGoodSince: S.optional(
         S.NullOr(S.String).pipe(T.Body("credentials_good_since")),
@@ -15664,8 +5336,8 @@ export interface UpdateCloudIntegrationResponse {
   friendlyName: string;
   lastUpdated: string;
   lifecycleState: CloudIntegrationsUpdateResponseLifecycleState;
-  state: CloudIntegrationsUpdateResponseState;
-  stateV2: CloudIntegrationsUpdateResponseStateV2;
+  state: string;
+  stateV2: string;
   awsArn?: string | null;
   azureSubscriptionId?: string | null;
   azureTenantId?: string | null;
@@ -15685,8 +5357,8 @@ export const UpdateCloudIntegrationResponse = /*@__PURE__*/ S.suspend(() =>
     lifecycleState: CloudIntegrationsUpdateResponseLifecycleState.pipe(
       T.Body("lifecycle_state"),
     ),
-    state: CloudIntegrationsUpdateResponseState,
-    stateV2: CloudIntegrationsUpdateResponseStateV2.pipe(T.Body("state_v2")),
+    state: S.String,
+    stateV2: S.String.pipe(T.Body("state_v2")),
     awsArn: S.optional(S.NullOr(S.String).pipe(T.Body("aws_arn"))),
     azureSubscriptionId: S.optional(
       S.NullOr(S.String).pipe(T.Body("azure_subscription_id")),
@@ -15705,54 +5377,14 @@ export const UpdateCloudIntegrationResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateCloudIntegrationResponse",
 }) as any as S.Schema<UpdateCloudIntegrationResponse>;
 
-export type OnRampsUpdateRequestAttachedHubsList = Array<string>;
-export const OnRampsUpdateRequestAttachedHubsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<OnRampsUpdateRequestAttachedHubsList>;
-
-export type OnRampsUpdateRequestAttachedVpcsList = Array<string>;
-export const OnRampsUpdateRequestAttachedVpcsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<OnRampsUpdateRequestAttachedVpcsList>;
-
 export interface UpdateOnRampRequest {
   accountId: string;
   onrampId: string;
-  attachedHubs?: OnRampsUpdateRequestAttachedHubsList;
-  attachedVpcs?: OnRampsUpdateRequestAttachedVpcsList;
-  description?: string;
-  installRoutesInCloud?: boolean;
-  installRoutesInMagicWan?: boolean;
-  manageHubToHubAttachments?: boolean;
-  manageVpcToHubAttachments?: boolean;
-  name?: string;
-  vpc?: string;
 }
 export const UpdateOnRampRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     onrampId: S.String.pipe(T.Label("onramp_id")),
-    attachedHubs: S.optional(
-      OnRampsUpdateRequestAttachedHubsList.pipe(T.Body("attached_hubs")),
-    ),
-    attachedVpcs: S.optional(
-      OnRampsUpdateRequestAttachedVpcsList.pipe(T.Body("attached_vpcs")),
-    ),
-    description: S.optional(S.String),
-    installRoutesInCloud: S.optional(
-      S.Boolean.pipe(T.Body("install_routes_in_cloud")),
-    ),
-    installRoutesInMagicWan: S.optional(
-      S.Boolean.pipe(T.Body("install_routes_in_magic_wan")),
-    ),
-    manageHubToHubAttachments: S.optional(
-      S.Boolean.pipe(T.Body("manage_hub_to_hub_attachments")),
-    ),
-    manageVpcToHubAttachments: S.optional(
-      S.Boolean.pipe(T.Body("manage_vpc_to_hub_attachments")),
-    ),
-    name: S.optional(S.String),
-    vpc: S.optional(S.String),
   })
     .pipe(
       T.Http({
@@ -15804,15 +5436,6 @@ export type OnRampsUpdateResponsePlannedResourcesItemMonthlyCostEstimateDiff =
 export const OnRampsUpdateResponsePlannedResourcesItemMonthlyCostEstimateDiff =
   OnRampsCreateResponsePlannedMonthlyCostEstimate;
 
-export type OnRampsUpdateResponsePlannedResourcesItemPlannedAction =
-  | "no_op"
-  | "create"
-  | "update"
-  | "replace"
-  | "destroy";
-export const OnRampsUpdateResponsePlannedResourcesItemPlannedAction =
-  /*@__PURE__*/ S.String;
-
 export type OnRampsUpdateResponsePlannedResourcesItemResourceCloudType =
   | "AWS"
   | "AZURE"
@@ -15821,73 +5444,12 @@ export type OnRampsUpdateResponsePlannedResourcesItemResourceCloudType =
 export const OnRampsUpdateResponsePlannedResourcesItemResourceCloudType =
   /*@__PURE__*/ S.String;
 
-export type OnRampsUpdateResponsePlannedResourcesItemResourceResourceType =
-  | "aws_customer_gateway"
-  | "aws_egress_only_internet_gateway"
-  | "aws_internet_gateway"
-  | "aws_instance"
-  | "aws_network_interface"
-  | "aws_route"
-  | "aws_route_table"
-  | "aws_route_table_association"
-  | "aws_subnet"
-  | "aws_vpc"
-  | "aws_vpc_ipv4_cidr_block_association"
-  | "aws_vpn_connection"
-  | "aws_vpn_connection_route"
-  | "aws_vpn_gateway"
-  | "aws_security_group"
-  | "aws_vpc_security_group_ingress_rule"
-  | "aws_vpc_security_group_egress_rule"
-  | "aws_ec2_managed_prefix_list"
-  | "aws_ec2_transit_gateway"
-  | "aws_ec2_transit_gateway_prefix_list_reference"
-  | "aws_ec2_transit_gateway_vpc_attachment"
-  | "azurerm_application_security_group"
-  | "azurerm_lb"
-  | "azurerm_lb_backend_address_pool"
-  | "azurerm_lb_nat_pool"
-  | "azurerm_lb_nat_rule"
-  | "azurerm_lb_rule"
-  | "azurerm_local_network_gateway"
-  | "azurerm_network_interface"
-  | "azurerm_network_interface_application_security_group_association"
-  | "azurerm_network_interface_backend_address_pool_association"
-  | "azurerm_network_interface_security_group_association"
-  | "azurerm_network_security_group"
-  | "azurerm_public_ip"
-  | "azurerm_route"
-  | "azurerm_route_table"
-  | "azurerm_subnet"
-  | "azurerm_subnet_route_table_association"
-  | "azurerm_virtual_machine"
-  | "azurerm_virtual_network_gateway_connection"
-  | "azurerm_virtual_network"
-  | "azurerm_virtual_network_gateway"
-  | "google_compute_network"
-  | "google_compute_subnetwork"
-  | "google_compute_vpn_gateway"
-  | "google_compute_vpn_tunnel"
-  | "google_compute_route"
-  | "google_compute_address"
-  | "google_compute_global_address"
-  | "google_compute_router"
-  | "google_compute_interconnect_attachment"
-  | "google_compute_ha_vpn_gateway"
-  | "google_compute_forwarding_rule"
-  | "google_compute_network_firewall_policy"
-  | "google_compute_network_firewall_policy_rule"
-  | "cloudflare_static_route"
-  | "cloudflare_ipsec_tunnel";
-export const OnRampsUpdateResponsePlannedResourcesItemResourceResourceType =
-  /*@__PURE__*/ S.String;
-
 export interface OnRampsUpdateResponsePlannedResourcesItemResource {
   id: string;
   cloudType: OnRampsUpdateResponsePlannedResourcesItemResourceCloudType;
   detail: string;
   name: string;
-  resourceType: OnRampsUpdateResponsePlannedResourcesItemResourceResourceType;
+  resourceType: string;
   title: string;
 }
 export const OnRampsUpdateResponsePlannedResourcesItemResource =
@@ -15900,10 +5462,7 @@ export const OnRampsUpdateResponsePlannedResourcesItemResource =
         ),
       detail: S.String,
       name: S.String,
-      resourceType:
-        OnRampsUpdateResponsePlannedResourcesItemResourceResourceType.pipe(
-          T.Body("resource_type"),
-        ),
+      resourceType: S.String.pipe(T.Body("resource_type")),
       title: S.String,
     }),
   ).annotate({
@@ -15914,7 +5473,7 @@ export interface OnRampsUpdateResponsePlannedResourcesItem {
   diff: OnRampsCreateResponsePlannedResourcesItemDiff;
   keysRequireReplace: OnRampsUpdateResponsePlannedResourcesItemKeysRequireReplaceList;
   monthlyCostEstimateDiff: OnRampsCreateResponsePlannedMonthlyCostEstimate;
-  plannedAction: OnRampsUpdateResponsePlannedResourcesItemPlannedAction;
+  plannedAction: string;
   resource: OnRampsUpdateResponsePlannedResourcesItemResource;
 }
 export const OnRampsUpdateResponsePlannedResourcesItem =
@@ -15929,10 +5488,7 @@ export const OnRampsUpdateResponsePlannedResourcesItem =
         OnRampsCreateResponsePlannedMonthlyCostEstimate.pipe(
           T.Body("monthly_cost_estimate_diff"),
         ),
-      plannedAction:
-        OnRampsUpdateResponsePlannedResourcesItemPlannedAction.pipe(
-          T.Body("planned_action"),
-        ),
+      plannedAction: S.String.pipe(T.Body("planned_action")),
       resource: OnRampsUpdateResponsePlannedResourcesItemResource,
     }),
   ).annotate({
@@ -15950,903 +5506,149 @@ export type OnRampsUpdateResponsePostApplyMonthlyCostEstimate =
 export const OnRampsUpdateResponsePostApplyMonthlyCostEstimate =
   OnRampsCreateResponsePostApplyMonthlyCostEstimate;
 
-export type OnRampsUpdateResponsePostApplyResourcesValueCloudType =
+export type OnRampsUpdateResponsePostApplyResourcesCloudType =
   | "AWS"
   | "AZURE"
   | "GOOGLE"
   | "CLOUDFLARE";
-export const OnRampsUpdateResponsePostApplyResourcesValueCloudType =
+export const OnRampsUpdateResponsePostApplyResourcesCloudType =
   /*@__PURE__*/ S.String;
 
-export type OnRampsUpdateResponsePostApplyResourcesValueConfigMap = {
-  [key: string]: unknown | undefined;
-};
-export const OnRampsUpdateResponsePostApplyResourcesValueConfigMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<OnRampsUpdateResponsePostApplyResourcesValueConfigMap>;
-
-export type OnRampsUpdateResponsePostApplyResourcesValueMonthlyCostEstimate =
+export type OnRampsUpdateResponsePostApplyResourcesMonthlyCostEstimate =
   OnRampsCreateResponsePostApplyMonthlyCostEstimate;
-export const OnRampsUpdateResponsePostApplyResourcesValueMonthlyCostEstimate =
+export const OnRampsUpdateResponsePostApplyResourcesMonthlyCostEstimate =
   OnRampsCreateResponsePostApplyMonthlyCostEstimate;
 
-export type OnRampsUpdateResponsePostApplyResourcesValueObservationsValue =
-  OnRampsCreateResponsePostApplyResourcesValueObservationsValue;
-export const OnRampsUpdateResponsePostApplyResourcesValueObservationsValue =
-  OnRampsCreateResponsePostApplyResourcesValueObservationsValue;
+export type OnRampsUpdateResponsePostApplyResourcesObservations =
+  OnRampsCreateResponsePostApplyResourcesObservations;
+export const OnRampsUpdateResponsePostApplyResourcesObservations =
+  OnRampsCreateResponsePostApplyResourcesObservations;
 
-export type OnRampsUpdateResponsePostApplyResourcesValueObservationsMap = {
-  [key: string]:
-    | OnRampsCreateResponsePostApplyResourcesValueObservationsValue
-    | undefined;
-};
-export const OnRampsUpdateResponsePostApplyResourcesValueObservationsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    OnRampsCreateResponsePostApplyResourcesValueObservationsValue,
-  ) as any as S.Schema<OnRampsUpdateResponsePostApplyResourcesValueObservationsMap>;
-
-export type OnRampsUpdateResponsePostApplyResourcesValueProviderIdsList =
+export type OnRampsUpdateResponsePostApplyResourcesProviderIdsList =
   Array<string>;
-export const OnRampsUpdateResponsePostApplyResourcesValueProviderIdsList =
+export const OnRampsUpdateResponsePostApplyResourcesProviderIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
-  ) as any as S.Schema<OnRampsUpdateResponsePostApplyResourcesValueProviderIdsList>;
+  ) as any as S.Schema<OnRampsUpdateResponsePostApplyResourcesProviderIdsList>;
 
-export type OnRampsUpdateResponsePostApplyResourcesValueProviderNamesByIdMap = {
-  [key: string]: string | undefined;
-};
-export const OnRampsUpdateResponsePostApplyResourcesValueProviderNamesByIdMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<OnRampsUpdateResponsePostApplyResourcesValueProviderNamesByIdMap>;
+export type OnRampsUpdateResponsePostApplyResourcesSectionsItemHiddenItemsItem =
+  OnRampsCreateResponsePostApplyResourcesSectionsItemHiddenItemsItem;
+export const OnRampsUpdateResponsePostApplyResourcesSectionsItemHiddenItemsItem =
+  OnRampsCreateResponsePostApplyResourcesSectionsItemHiddenItemsItem;
 
-export type OnRampsUpdateResponsePostApplyResourcesValueResourceType =
-  | "aws_customer_gateway"
-  | "aws_egress_only_internet_gateway"
-  | "aws_internet_gateway"
-  | "aws_instance"
-  | "aws_network_interface"
-  | "aws_route"
-  | "aws_route_table"
-  | "aws_route_table_association"
-  | "aws_subnet"
-  | "aws_vpc"
-  | "aws_vpc_ipv4_cidr_block_association"
-  | "aws_vpn_connection"
-  | "aws_vpn_connection_route"
-  | "aws_vpn_gateway"
-  | "aws_security_group"
-  | "aws_vpc_security_group_ingress_rule"
-  | "aws_vpc_security_group_egress_rule"
-  | "aws_ec2_managed_prefix_list"
-  | "aws_ec2_transit_gateway"
-  | "aws_ec2_transit_gateway_prefix_list_reference"
-  | "aws_ec2_transit_gateway_vpc_attachment"
-  | "azurerm_application_security_group"
-  | "azurerm_lb"
-  | "azurerm_lb_backend_address_pool"
-  | "azurerm_lb_nat_pool"
-  | "azurerm_lb_nat_rule"
-  | "azurerm_lb_rule"
-  | "azurerm_local_network_gateway"
-  | "azurerm_network_interface"
-  | "azurerm_network_interface_application_security_group_association"
-  | "azurerm_network_interface_backend_address_pool_association"
-  | "azurerm_network_interface_security_group_association"
-  | "azurerm_network_security_group"
-  | "azurerm_public_ip"
-  | "azurerm_route"
-  | "azurerm_route_table"
-  | "azurerm_subnet"
-  | "azurerm_subnet_route_table_association"
-  | "azurerm_virtual_machine"
-  | "azurerm_virtual_network_gateway_connection"
-  | "azurerm_virtual_network"
-  | "azurerm_virtual_network_gateway"
-  | "google_compute_network"
-  | "google_compute_subnetwork"
-  | "google_compute_vpn_gateway"
-  | "google_compute_vpn_tunnel"
-  | "google_compute_route"
-  | "google_compute_address"
-  | "google_compute_global_address"
-  | "google_compute_router"
-  | "google_compute_interconnect_attachment"
-  | "google_compute_ha_vpn_gateway"
-  | "google_compute_forwarding_rule"
-  | "google_compute_network_firewall_policy"
-  | "google_compute_network_firewall_policy_rule"
-  | "cloudflare_static_route"
-  | "cloudflare_ipsec_tunnel";
-export const OnRampsUpdateResponsePostApplyResourcesValueResourceType =
-  /*@__PURE__*/ S.String;
-
-export type OnRampsUpdateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem;
-export const OnRampsUpdateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem;
-
-export type OnRampsUpdateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlItem;
-export const OnRampsUpdateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlItem;
-
-export type OnRampsUpdateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlDiffItemYamlDiff =
-  OnRampsCreateResponsePlannedResourcesItemDiff;
-export const OnRampsUpdateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlDiffItemYamlDiff =
-  OnRampsCreateResponsePlannedResourcesItemDiff;
-
-export type OnRampsUpdateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlDiffItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlDiffItem;
-export const OnRampsUpdateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlDiffItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlDiffItem;
-
-export type OnRampsUpdateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreviewCloudType =
-  | "AWS"
-  | "AZURE"
-  | "GOOGLE"
-  | "CLOUDFLARE";
-export const OnRampsUpdateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreviewCloudType =
-  /*@__PURE__*/ S.String;
-
-export type OnRampsUpdateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreviewResourceType =
-  | "aws_customer_gateway"
-  | "aws_egress_only_internet_gateway"
-  | "aws_internet_gateway"
-  | "aws_instance"
-  | "aws_network_interface"
-  | "aws_route"
-  | "aws_route_table"
-  | "aws_route_table_association"
-  | "aws_subnet"
-  | "aws_vpc"
-  | "aws_vpc_ipv4_cidr_block_association"
-  | "aws_vpn_connection"
-  | "aws_vpn_connection_route"
-  | "aws_vpn_gateway"
-  | "aws_security_group"
-  | "aws_vpc_security_group_ingress_rule"
-  | "aws_vpc_security_group_egress_rule"
-  | "aws_ec2_managed_prefix_list"
-  | "aws_ec2_transit_gateway"
-  | "aws_ec2_transit_gateway_prefix_list_reference"
-  | "aws_ec2_transit_gateway_vpc_attachment"
-  | "azurerm_application_security_group"
-  | "azurerm_lb"
-  | "azurerm_lb_backend_address_pool"
-  | "azurerm_lb_nat_pool"
-  | "azurerm_lb_nat_rule"
-  | "azurerm_lb_rule"
-  | "azurerm_local_network_gateway"
-  | "azurerm_network_interface"
-  | "azurerm_network_interface_application_security_group_association"
-  | "azurerm_network_interface_backend_address_pool_association"
-  | "azurerm_network_interface_security_group_association"
-  | "azurerm_network_security_group"
-  | "azurerm_public_ip"
-  | "azurerm_route"
-  | "azurerm_route_table"
-  | "azurerm_subnet"
-  | "azurerm_subnet_route_table_association"
-  | "azurerm_virtual_machine"
-  | "azurerm_virtual_network_gateway_connection"
-  | "azurerm_virtual_network"
-  | "azurerm_virtual_network_gateway"
-  | "google_compute_network"
-  | "google_compute_subnetwork"
-  | "google_compute_vpn_gateway"
-  | "google_compute_vpn_tunnel"
-  | "google_compute_route"
-  | "google_compute_address"
-  | "google_compute_global_address"
-  | "google_compute_router"
-  | "google_compute_interconnect_attachment"
-  | "google_compute_ha_vpn_gateway"
-  | "google_compute_forwarding_rule"
-  | "google_compute_network_firewall_policy"
-  | "google_compute_network_firewall_policy_rule"
-  | "cloudflare_static_route"
-  | "cloudflare_ipsec_tunnel";
-export const OnRampsUpdateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreviewResourceType =
-  /*@__PURE__*/ S.String;
-
-export interface OnRampsUpdateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview {
-  id: string;
-  cloudType: OnRampsUpdateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreviewCloudType;
-  detail: string;
-  name: string;
-  resourceType: OnRampsUpdateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreviewResourceType;
-  title: string;
-}
-export const OnRampsUpdateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-      cloudType:
-        OnRampsUpdateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreviewCloudType.pipe(
-          T.Body("cloud_type"),
-        ),
-      detail: S.String,
-      name: S.String,
-      resourceType:
-        OnRampsUpdateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreviewResourceType.pipe(
-          T.Body("resource_type"),
-        ),
-      title: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "OnRampsUpdateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview",
-  }) as any as S.Schema<OnRampsUpdateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview>;
-
-export interface OnRampsUpdateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItem {
-  itemType: string;
-  resourcePreview: OnRampsUpdateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview;
-}
-export const OnRampsUpdateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      itemType: S.String.pipe(T.Body("item_type")),
-      resourcePreview:
-        OnRampsUpdateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview.pipe(
-          T.Body("resource_preview"),
-        ),
-    }),
-  ).annotate({
-    identifier:
-      "OnRampsUpdateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItem",
-  }) as any as S.Schema<OnRampsUpdateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItem>;
-
-export type OnRampsUpdateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnStringItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem;
-export const OnRampsUpdateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnStringItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem;
-
-export type OnRampsUpdateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewCloudType =
-  | "AWS"
-  | "AZURE"
-  | "GOOGLE"
-  | "CLOUDFLARE";
-export const OnRampsUpdateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewCloudType =
-  /*@__PURE__*/ S.String;
-
-export type OnRampsUpdateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewResourceType =
-  | "aws_customer_gateway"
-  | "aws_egress_only_internet_gateway"
-  | "aws_internet_gateway"
-  | "aws_instance"
-  | "aws_network_interface"
-  | "aws_route"
-  | "aws_route_table"
-  | "aws_route_table_association"
-  | "aws_subnet"
-  | "aws_vpc"
-  | "aws_vpc_ipv4_cidr_block_association"
-  | "aws_vpn_connection"
-  | "aws_vpn_connection_route"
-  | "aws_vpn_gateway"
-  | "aws_security_group"
-  | "aws_vpc_security_group_ingress_rule"
-  | "aws_vpc_security_group_egress_rule"
-  | "aws_ec2_managed_prefix_list"
-  | "aws_ec2_transit_gateway"
-  | "aws_ec2_transit_gateway_prefix_list_reference"
-  | "aws_ec2_transit_gateway_vpc_attachment"
-  | "azurerm_application_security_group"
-  | "azurerm_lb"
-  | "azurerm_lb_backend_address_pool"
-  | "azurerm_lb_nat_pool"
-  | "azurerm_lb_nat_rule"
-  | "azurerm_lb_rule"
-  | "azurerm_local_network_gateway"
-  | "azurerm_network_interface"
-  | "azurerm_network_interface_application_security_group_association"
-  | "azurerm_network_interface_backend_address_pool_association"
-  | "azurerm_network_interface_security_group_association"
-  | "azurerm_network_security_group"
-  | "azurerm_public_ip"
-  | "azurerm_route"
-  | "azurerm_route_table"
-  | "azurerm_subnet"
-  | "azurerm_subnet_route_table_association"
-  | "azurerm_virtual_machine"
-  | "azurerm_virtual_network_gateway_connection"
-  | "azurerm_virtual_network"
-  | "azurerm_virtual_network_gateway"
-  | "google_compute_network"
-  | "google_compute_subnetwork"
-  | "google_compute_vpn_gateway"
-  | "google_compute_vpn_tunnel"
-  | "google_compute_route"
-  | "google_compute_address"
-  | "google_compute_global_address"
-  | "google_compute_router"
-  | "google_compute_interconnect_attachment"
-  | "google_compute_ha_vpn_gateway"
-  | "google_compute_forwarding_rule"
-  | "google_compute_network_firewall_policy"
-  | "google_compute_network_firewall_policy_rule"
-  | "cloudflare_static_route"
-  | "cloudflare_ipsec_tunnel";
-export const OnRampsUpdateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewResourceType =
-  /*@__PURE__*/ S.String;
-
-export interface OnRampsUpdateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview {
-  id: string;
-  cloudType: OnRampsUpdateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewCloudType;
-  detail: string;
-  name: string;
-  resourceType: OnRampsUpdateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewResourceType;
-  title: string;
-}
-export const OnRampsUpdateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-      cloudType:
-        OnRampsUpdateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewCloudType.pipe(
-          T.Body("cloud_type"),
-        ),
-      detail: S.String,
-      name: S.String,
-      resourceType:
-        OnRampsUpdateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewResourceType.pipe(
-          T.Body("resource_type"),
-        ),
-      title: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "OnRampsUpdateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview",
-  }) as any as S.Schema<OnRampsUpdateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview>;
-
-export interface OnRampsUpdateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItem {
-  itemType: string;
-  resourcePreview: OnRampsUpdateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview;
-}
-export const OnRampsUpdateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      itemType: S.String.pipe(T.Body("item_type")),
-      resourcePreview:
-        OnRampsUpdateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview.pipe(
-          T.Body("resource_preview"),
-        ),
-    }),
-  ).annotate({
-    identifier:
-      "OnRampsUpdateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItem",
-  }) as any as S.Schema<OnRampsUpdateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItem>;
-
-export type OnRampsUpdateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItem =
-  | OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem
-  | OnRampsUpdateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItem;
-export const OnRampsUpdateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItem =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["itemType", "string"],
-      ["itemType", "resourcePreview"],
-    ]),
-  );
-
-export type OnRampsUpdateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListList =
-  Array<OnRampsUpdateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItem>;
-export const OnRampsUpdateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListList =
+export type OnRampsUpdateResponsePostApplyResourcesSectionsItemHiddenItemsList =
+  Array<OnRampsCreateResponsePostApplyResourcesSectionsItemHiddenItemsItem>;
+export const OnRampsUpdateResponsePostApplyResourcesSectionsItemHiddenItemsList =
   /*@__PURE__*/ S.Array(
-    OnRampsUpdateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItem,
-  ) as any as S.Schema<OnRampsUpdateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListList>;
+    OnRampsCreateResponsePostApplyResourcesSectionsItemHiddenItemsItem,
+  ) as any as S.Schema<OnRampsUpdateResponsePostApplyResourcesSectionsItemHiddenItemsList>;
 
-export interface OnRampsUpdateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItem {
-  itemType: string;
-  list: OnRampsUpdateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListList;
-}
-export const OnRampsUpdateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      itemType: S.String.pipe(T.Body("item_type")),
-      list: OnRampsUpdateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListList,
-    }),
-  ).annotate({
-    identifier:
-      "OnRampsUpdateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItem",
-  }) as any as S.Schema<OnRampsUpdateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItem>;
+export type OnRampsUpdateResponsePostApplyResourcesSectionsItemVisibleItemsItem =
+  OnRampsCreateResponsePostApplyResourcesSectionsItemHiddenItemsItem;
+export const OnRampsUpdateResponsePostApplyResourcesSectionsItemVisibleItemsItem =
+  OnRampsCreateResponsePostApplyResourcesSectionsItemHiddenItemsItem;
 
-export type OnRampsUpdateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValue =
-  | OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem
-  | OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlItem
-  | OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlDiffItem
-  | OnRampsUpdateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItem
-  | OnRampsUpdateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItem;
-export const OnRampsUpdateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValue =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["itemType", "string"],
-      ["itemType", "yaml"],
-      ["itemType", "yamlDiff"],
-      ["itemType", "resourcePreview"],
-      ["itemType", "list"],
-    ]),
-  );
-
-export interface OnRampsUpdateResponsePostApplyResourcesValueSectionsItemHiddenItemsItem {
-  helpText?: string | null;
-  name?: string | null;
-  value?: OnRampsUpdateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValue | null;
-}
-export const OnRampsUpdateResponsePostApplyResourcesValueSectionsItemHiddenItemsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      helpText: S.optional(S.NullOr(S.String)),
-      name: S.optional(S.NullOr(S.String)),
-      value: S.optional(
-        S.NullOr(
-          OnRampsUpdateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValue,
-        ),
-      ),
-    }),
-  ).annotate({
-    identifier:
-      "OnRampsUpdateResponsePostApplyResourcesValueSectionsItemHiddenItemsItem",
-  }) as any as S.Schema<OnRampsUpdateResponsePostApplyResourcesValueSectionsItemHiddenItemsItem>;
-
-export type OnRampsUpdateResponsePostApplyResourcesValueSectionsItemHiddenItemsList =
-  Array<OnRampsUpdateResponsePostApplyResourcesValueSectionsItemHiddenItemsItem>;
-export const OnRampsUpdateResponsePostApplyResourcesValueSectionsItemHiddenItemsList =
+export type OnRampsUpdateResponsePostApplyResourcesSectionsItemVisibleItemsList =
+  Array<OnRampsCreateResponsePostApplyResourcesSectionsItemHiddenItemsItem>;
+export const OnRampsUpdateResponsePostApplyResourcesSectionsItemVisibleItemsList =
   /*@__PURE__*/ S.Array(
-    OnRampsUpdateResponsePostApplyResourcesValueSectionsItemHiddenItemsItem,
-  ) as any as S.Schema<OnRampsUpdateResponsePostApplyResourcesValueSectionsItemHiddenItemsList>;
+    OnRampsCreateResponsePostApplyResourcesSectionsItemHiddenItemsItem,
+  ) as any as S.Schema<OnRampsUpdateResponsePostApplyResourcesSectionsItemVisibleItemsList>;
 
-export type OnRampsUpdateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnStringItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem;
-export const OnRampsUpdateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnStringItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem;
-
-export type OnRampsUpdateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnYamlItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlItem;
-export const OnRampsUpdateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnYamlItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlItem;
-
-export type OnRampsUpdateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnYamlDiffItemYamlDiff =
-  OnRampsCreateResponsePlannedResourcesItemDiff;
-export const OnRampsUpdateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnYamlDiffItemYamlDiff =
-  OnRampsCreateResponsePlannedResourcesItemDiff;
-
-export type OnRampsUpdateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnYamlDiffItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlDiffItem;
-export const OnRampsUpdateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnYamlDiffItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlDiffItem;
-
-export type OnRampsUpdateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreviewCloudType =
-  | "AWS"
-  | "AZURE"
-  | "GOOGLE"
-  | "CLOUDFLARE";
-export const OnRampsUpdateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreviewCloudType =
-  /*@__PURE__*/ S.String;
-
-export type OnRampsUpdateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreviewResourceType =
-  | "aws_customer_gateway"
-  | "aws_egress_only_internet_gateway"
-  | "aws_internet_gateway"
-  | "aws_instance"
-  | "aws_network_interface"
-  | "aws_route"
-  | "aws_route_table"
-  | "aws_route_table_association"
-  | "aws_subnet"
-  | "aws_vpc"
-  | "aws_vpc_ipv4_cidr_block_association"
-  | "aws_vpn_connection"
-  | "aws_vpn_connection_route"
-  | "aws_vpn_gateway"
-  | "aws_security_group"
-  | "aws_vpc_security_group_ingress_rule"
-  | "aws_vpc_security_group_egress_rule"
-  | "aws_ec2_managed_prefix_list"
-  | "aws_ec2_transit_gateway"
-  | "aws_ec2_transit_gateway_prefix_list_reference"
-  | "aws_ec2_transit_gateway_vpc_attachment"
-  | "azurerm_application_security_group"
-  | "azurerm_lb"
-  | "azurerm_lb_backend_address_pool"
-  | "azurerm_lb_nat_pool"
-  | "azurerm_lb_nat_rule"
-  | "azurerm_lb_rule"
-  | "azurerm_local_network_gateway"
-  | "azurerm_network_interface"
-  | "azurerm_network_interface_application_security_group_association"
-  | "azurerm_network_interface_backend_address_pool_association"
-  | "azurerm_network_interface_security_group_association"
-  | "azurerm_network_security_group"
-  | "azurerm_public_ip"
-  | "azurerm_route"
-  | "azurerm_route_table"
-  | "azurerm_subnet"
-  | "azurerm_subnet_route_table_association"
-  | "azurerm_virtual_machine"
-  | "azurerm_virtual_network_gateway_connection"
-  | "azurerm_virtual_network"
-  | "azurerm_virtual_network_gateway"
-  | "google_compute_network"
-  | "google_compute_subnetwork"
-  | "google_compute_vpn_gateway"
-  | "google_compute_vpn_tunnel"
-  | "google_compute_route"
-  | "google_compute_address"
-  | "google_compute_global_address"
-  | "google_compute_router"
-  | "google_compute_interconnect_attachment"
-  | "google_compute_ha_vpn_gateway"
-  | "google_compute_forwarding_rule"
-  | "google_compute_network_firewall_policy"
-  | "google_compute_network_firewall_policy_rule"
-  | "cloudflare_static_route"
-  | "cloudflare_ipsec_tunnel";
-export const OnRampsUpdateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreviewResourceType =
-  /*@__PURE__*/ S.String;
-
-export interface OnRampsUpdateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreview {
-  id: string;
-  cloudType: OnRampsUpdateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreviewCloudType;
-  detail: string;
+export interface OnRampsUpdateResponsePostApplyResourcesSectionsItem {
+  hiddenItems: OnRampsUpdateResponsePostApplyResourcesSectionsItemHiddenItemsList;
   name: string;
-  resourceType: OnRampsUpdateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreviewResourceType;
-  title: string;
-}
-export const OnRampsUpdateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreview =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-      cloudType:
-        OnRampsUpdateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreviewCloudType.pipe(
-          T.Body("cloud_type"),
-        ),
-      detail: S.String,
-      name: S.String,
-      resourceType:
-        OnRampsUpdateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreviewResourceType.pipe(
-          T.Body("resource_type"),
-        ),
-      title: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "OnRampsUpdateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreview",
-  }) as any as S.Schema<OnRampsUpdateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreview>;
-
-export interface OnRampsUpdateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItem {
-  itemType: string;
-  resourcePreview: OnRampsUpdateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreview;
-}
-export const OnRampsUpdateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      itemType: S.String.pipe(T.Body("item_type")),
-      resourcePreview:
-        OnRampsUpdateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreview.pipe(
-          T.Body("resource_preview"),
-        ),
-    }),
-  ).annotate({
-    identifier:
-      "OnRampsUpdateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItem",
-  }) as any as S.Schema<OnRampsUpdateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItem>;
-
-export type OnRampsUpdateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnStringItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem;
-export const OnRampsUpdateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnStringItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem;
-
-export type OnRampsUpdateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewCloudType =
-  | "AWS"
-  | "AZURE"
-  | "GOOGLE"
-  | "CLOUDFLARE";
-export const OnRampsUpdateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewCloudType =
-  /*@__PURE__*/ S.String;
-
-export type OnRampsUpdateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewResourceType =
-  | "aws_customer_gateway"
-  | "aws_egress_only_internet_gateway"
-  | "aws_internet_gateway"
-  | "aws_instance"
-  | "aws_network_interface"
-  | "aws_route"
-  | "aws_route_table"
-  | "aws_route_table_association"
-  | "aws_subnet"
-  | "aws_vpc"
-  | "aws_vpc_ipv4_cidr_block_association"
-  | "aws_vpn_connection"
-  | "aws_vpn_connection_route"
-  | "aws_vpn_gateway"
-  | "aws_security_group"
-  | "aws_vpc_security_group_ingress_rule"
-  | "aws_vpc_security_group_egress_rule"
-  | "aws_ec2_managed_prefix_list"
-  | "aws_ec2_transit_gateway"
-  | "aws_ec2_transit_gateway_prefix_list_reference"
-  | "aws_ec2_transit_gateway_vpc_attachment"
-  | "azurerm_application_security_group"
-  | "azurerm_lb"
-  | "azurerm_lb_backend_address_pool"
-  | "azurerm_lb_nat_pool"
-  | "azurerm_lb_nat_rule"
-  | "azurerm_lb_rule"
-  | "azurerm_local_network_gateway"
-  | "azurerm_network_interface"
-  | "azurerm_network_interface_application_security_group_association"
-  | "azurerm_network_interface_backend_address_pool_association"
-  | "azurerm_network_interface_security_group_association"
-  | "azurerm_network_security_group"
-  | "azurerm_public_ip"
-  | "azurerm_route"
-  | "azurerm_route_table"
-  | "azurerm_subnet"
-  | "azurerm_subnet_route_table_association"
-  | "azurerm_virtual_machine"
-  | "azurerm_virtual_network_gateway_connection"
-  | "azurerm_virtual_network"
-  | "azurerm_virtual_network_gateway"
-  | "google_compute_network"
-  | "google_compute_subnetwork"
-  | "google_compute_vpn_gateway"
-  | "google_compute_vpn_tunnel"
-  | "google_compute_route"
-  | "google_compute_address"
-  | "google_compute_global_address"
-  | "google_compute_router"
-  | "google_compute_interconnect_attachment"
-  | "google_compute_ha_vpn_gateway"
-  | "google_compute_forwarding_rule"
-  | "google_compute_network_firewall_policy"
-  | "google_compute_network_firewall_policy_rule"
-  | "cloudflare_static_route"
-  | "cloudflare_ipsec_tunnel";
-export const OnRampsUpdateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewResourceType =
-  /*@__PURE__*/ S.String;
-
-export interface OnRampsUpdateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview {
-  id: string;
-  cloudType: OnRampsUpdateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewCloudType;
-  detail: string;
-  name: string;
-  resourceType: OnRampsUpdateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewResourceType;
-  title: string;
-}
-export const OnRampsUpdateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-      cloudType:
-        OnRampsUpdateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewCloudType.pipe(
-          T.Body("cloud_type"),
-        ),
-      detail: S.String,
-      name: S.String,
-      resourceType:
-        OnRampsUpdateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewResourceType.pipe(
-          T.Body("resource_type"),
-        ),
-      title: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "OnRampsUpdateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview",
-  }) as any as S.Schema<OnRampsUpdateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview>;
-
-export interface OnRampsUpdateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItem {
-  itemType: string;
-  resourcePreview: OnRampsUpdateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview;
-}
-export const OnRampsUpdateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      itemType: S.String.pipe(T.Body("item_type")),
-      resourcePreview:
-        OnRampsUpdateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview.pipe(
-          T.Body("resource_preview"),
-        ),
-    }),
-  ).annotate({
-    identifier:
-      "OnRampsUpdateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItem",
-  }) as any as S.Schema<OnRampsUpdateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItem>;
-
-export type OnRampsUpdateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItem =
-  | OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem
-  | OnRampsUpdateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItem;
-export const OnRampsUpdateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItem =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["itemType", "string"],
-      ["itemType", "resourcePreview"],
-    ]),
-  );
-
-export type OnRampsUpdateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListList =
-  Array<OnRampsUpdateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItem>;
-export const OnRampsUpdateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListList =
-  /*@__PURE__*/ S.Array(
-    OnRampsUpdateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItem,
-  ) as any as S.Schema<OnRampsUpdateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListList>;
-
-export interface OnRampsUpdateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItem {
-  itemType: string;
-  list: OnRampsUpdateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListList;
-}
-export const OnRampsUpdateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      itemType: S.String.pipe(T.Body("item_type")),
-      list: OnRampsUpdateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListList,
-    }),
-  ).annotate({
-    identifier:
-      "OnRampsUpdateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItem",
-  }) as any as S.Schema<OnRampsUpdateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItem>;
-
-export type OnRampsUpdateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValue =
-  | OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem
-  | OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlItem
-  | OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlDiffItem
-  | OnRampsUpdateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItem
-  | OnRampsUpdateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItem;
-export const OnRampsUpdateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValue =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["itemType", "string"],
-      ["itemType", "yaml"],
-      ["itemType", "yamlDiff"],
-      ["itemType", "resourcePreview"],
-      ["itemType", "list"],
-    ]),
-  );
-
-export interface OnRampsUpdateResponsePostApplyResourcesValueSectionsItemVisibleItemsItem {
-  helpText?: string | null;
-  name?: string | null;
-  value?: OnRampsUpdateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValue | null;
-}
-export const OnRampsUpdateResponsePostApplyResourcesValueSectionsItemVisibleItemsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      helpText: S.optional(S.NullOr(S.String)),
-      name: S.optional(S.NullOr(S.String)),
-      value: S.optional(
-        S.NullOr(
-          OnRampsUpdateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValue,
-        ),
-      ),
-    }),
-  ).annotate({
-    identifier:
-      "OnRampsUpdateResponsePostApplyResourcesValueSectionsItemVisibleItemsItem",
-  }) as any as S.Schema<OnRampsUpdateResponsePostApplyResourcesValueSectionsItemVisibleItemsItem>;
-
-export type OnRampsUpdateResponsePostApplyResourcesValueSectionsItemVisibleItemsList =
-  Array<OnRampsUpdateResponsePostApplyResourcesValueSectionsItemVisibleItemsItem>;
-export const OnRampsUpdateResponsePostApplyResourcesValueSectionsItemVisibleItemsList =
-  /*@__PURE__*/ S.Array(
-    OnRampsUpdateResponsePostApplyResourcesValueSectionsItemVisibleItemsItem,
-  ) as any as S.Schema<OnRampsUpdateResponsePostApplyResourcesValueSectionsItemVisibleItemsList>;
-
-export interface OnRampsUpdateResponsePostApplyResourcesValueSectionsItem {
-  hiddenItems: OnRampsUpdateResponsePostApplyResourcesValueSectionsItemHiddenItemsList;
-  name: string;
-  visibleItems: OnRampsUpdateResponsePostApplyResourcesValueSectionsItemVisibleItemsList;
+  visibleItems: OnRampsUpdateResponsePostApplyResourcesSectionsItemVisibleItemsList;
   helpText?: string | null;
 }
-export const OnRampsUpdateResponsePostApplyResourcesValueSectionsItem =
+export const OnRampsUpdateResponsePostApplyResourcesSectionsItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       hiddenItems:
-        OnRampsUpdateResponsePostApplyResourcesValueSectionsItemHiddenItemsList.pipe(
+        OnRampsUpdateResponsePostApplyResourcesSectionsItemHiddenItemsList.pipe(
           T.Body("hidden_items"),
         ),
       name: S.String,
       visibleItems:
-        OnRampsUpdateResponsePostApplyResourcesValueSectionsItemVisibleItemsList.pipe(
+        OnRampsUpdateResponsePostApplyResourcesSectionsItemVisibleItemsList.pipe(
           T.Body("visible_items"),
         ),
       helpText: S.optional(S.NullOr(S.String).pipe(T.Body("help_text"))),
     }),
   ).annotate({
-    identifier: "OnRampsUpdateResponsePostApplyResourcesValueSectionsItem",
-  }) as any as S.Schema<OnRampsUpdateResponsePostApplyResourcesValueSectionsItem>;
+    identifier: "OnRampsUpdateResponsePostApplyResourcesSectionsItem",
+  }) as any as S.Schema<OnRampsUpdateResponsePostApplyResourcesSectionsItem>;
 
-export type OnRampsUpdateResponsePostApplyResourcesValueSectionsList =
-  Array<OnRampsUpdateResponsePostApplyResourcesValueSectionsItem>;
-export const OnRampsUpdateResponsePostApplyResourcesValueSectionsList =
+export type OnRampsUpdateResponsePostApplyResourcesSectionsList =
+  Array<OnRampsUpdateResponsePostApplyResourcesSectionsItem>;
+export const OnRampsUpdateResponsePostApplyResourcesSectionsList =
   /*@__PURE__*/ S.Array(
-    OnRampsUpdateResponsePostApplyResourcesValueSectionsItem,
-  ) as any as S.Schema<OnRampsUpdateResponsePostApplyResourcesValueSectionsList>;
+    OnRampsUpdateResponsePostApplyResourcesSectionsItem,
+  ) as any as S.Schema<OnRampsUpdateResponsePostApplyResourcesSectionsList>;
 
-export type OnRampsUpdateResponsePostApplyResourcesValueStateMap = {
-  [key: string]: unknown | undefined;
-};
-export const OnRampsUpdateResponsePostApplyResourcesValueStateMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<OnRampsUpdateResponsePostApplyResourcesValueStateMap>;
-
-export type OnRampsUpdateResponsePostApplyResourcesValueTagsMap = {
-  [key: string]: string | undefined;
-};
-export const OnRampsUpdateResponsePostApplyResourcesValueTagsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<OnRampsUpdateResponsePostApplyResourcesValueTagsMap>;
-
-export type OnRampsUpdateResponsePostApplyResourcesValueManagedByItemClientType =
+export type OnRampsUpdateResponsePostApplyResourcesManagedByItemClientType =
   "MAGIC_WAN_CLOUD_ONRAMP";
-export const OnRampsUpdateResponsePostApplyResourcesValueManagedByItemClientType =
+export const OnRampsUpdateResponsePostApplyResourcesManagedByItemClientType =
   /*@__PURE__*/ S.String;
 
-export interface OnRampsUpdateResponsePostApplyResourcesValueManagedByItem {
+export interface OnRampsUpdateResponsePostApplyResourcesManagedByItem {
   id: string;
-  clientType: OnRampsUpdateResponsePostApplyResourcesValueManagedByItemClientType;
+  clientType: OnRampsUpdateResponsePostApplyResourcesManagedByItemClientType;
   name: string;
 }
-export const OnRampsUpdateResponsePostApplyResourcesValueManagedByItem =
+export const OnRampsUpdateResponsePostApplyResourcesManagedByItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       id: S.String,
       clientType:
-        OnRampsUpdateResponsePostApplyResourcesValueManagedByItemClientType.pipe(
+        OnRampsUpdateResponsePostApplyResourcesManagedByItemClientType.pipe(
           T.Body("client_type"),
         ),
       name: S.String,
     }),
   ).annotate({
-    identifier: "OnRampsUpdateResponsePostApplyResourcesValueManagedByItem",
-  }) as any as S.Schema<OnRampsUpdateResponsePostApplyResourcesValueManagedByItem>;
+    identifier: "OnRampsUpdateResponsePostApplyResourcesManagedByItem",
+  }) as any as S.Schema<OnRampsUpdateResponsePostApplyResourcesManagedByItem>;
 
-export type OnRampsUpdateResponsePostApplyResourcesValueManagedByList =
-  Array<OnRampsUpdateResponsePostApplyResourcesValueManagedByItem>;
-export const OnRampsUpdateResponsePostApplyResourcesValueManagedByList =
+export type OnRampsUpdateResponsePostApplyResourcesManagedByList =
+  Array<OnRampsUpdateResponsePostApplyResourcesManagedByItem>;
+export const OnRampsUpdateResponsePostApplyResourcesManagedByList =
   /*@__PURE__*/ S.Array(
-    OnRampsUpdateResponsePostApplyResourcesValueManagedByItem,
-  ) as any as S.Schema<OnRampsUpdateResponsePostApplyResourcesValueManagedByList>;
+    OnRampsUpdateResponsePostApplyResourcesManagedByItem,
+  ) as any as S.Schema<OnRampsUpdateResponsePostApplyResourcesManagedByList>;
 
-export interface OnRampsUpdateResponsePostApplyResourcesValue {
+export interface OnRampsUpdateResponsePostApplyResources {
   id: string;
   accountId: string;
-  cloudType: OnRampsUpdateResponsePostApplyResourcesValueCloudType;
-  config: OnRampsUpdateResponsePostApplyResourcesValueConfigMap;
+  cloudType: OnRampsUpdateResponsePostApplyResourcesCloudType;
+  config: unknown;
   deploymentProvider: string;
   managed: boolean;
   monthlyCostEstimate: OnRampsCreateResponsePostApplyMonthlyCostEstimate;
   name: string;
   nativeId: string;
-  observations: OnRampsUpdateResponsePostApplyResourcesValueObservationsMap;
-  providerIds: OnRampsUpdateResponsePostApplyResourcesValueProviderIdsList;
-  providerNamesById: OnRampsUpdateResponsePostApplyResourcesValueProviderNamesByIdMap;
+  observations: OnRampsCreateResponsePostApplyResourcesObservations;
+  providerIds: OnRampsUpdateResponsePostApplyResourcesProviderIdsList;
+  providerNamesById: unknown;
   region: string;
   resourceGroup: string;
-  resourceType: OnRampsUpdateResponsePostApplyResourcesValueResourceType;
-  sections: OnRampsUpdateResponsePostApplyResourcesValueSectionsList;
-  state: OnRampsUpdateResponsePostApplyResourcesValueStateMap;
-  tags: OnRampsUpdateResponsePostApplyResourcesValueTagsMap;
+  resourceType: string;
+  sections: OnRampsUpdateResponsePostApplyResourcesSectionsList;
+  state: unknown;
+  tags: unknown;
   updatedAt: string;
   url: string;
-  managedBy?: OnRampsUpdateResponsePostApplyResourcesValueManagedByList | null;
+  managedBy?: OnRampsUpdateResponsePostApplyResourcesManagedByList | null;
 }
-export const OnRampsUpdateResponsePostApplyResourcesValue =
-  /*@__PURE__*/ S.suspend(() =>
+export const OnRampsUpdateResponsePostApplyResources = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       id: S.String,
       accountId: S.String.pipe(T.Body("account_id")),
-      cloudType: OnRampsUpdateResponsePostApplyResourcesValueCloudType.pipe(
+      cloudType: OnRampsUpdateResponsePostApplyResourcesCloudType.pipe(
         T.Body("cloud_type"),
       ),
-      config: OnRampsUpdateResponsePostApplyResourcesValueConfigMap,
+      config: S.Unknown,
       deploymentProvider: S.String.pipe(T.Body("deployment_provider")),
       managed: S.Boolean,
       monthlyCostEstimate:
@@ -16855,64 +5657,33 @@ export const OnRampsUpdateResponsePostApplyResourcesValue =
         ),
       name: S.String,
       nativeId: S.String.pipe(T.Body("native_id")),
-      observations: OnRampsUpdateResponsePostApplyResourcesValueObservationsMap,
-      providerIds:
-        OnRampsUpdateResponsePostApplyResourcesValueProviderIdsList.pipe(
-          T.Body("provider_ids"),
-        ),
-      providerNamesById:
-        OnRampsUpdateResponsePostApplyResourcesValueProviderNamesByIdMap.pipe(
-          T.Body("provider_names_by_id"),
-        ),
+      observations: OnRampsCreateResponsePostApplyResourcesObservations,
+      providerIds: OnRampsUpdateResponsePostApplyResourcesProviderIdsList.pipe(
+        T.Body("provider_ids"),
+      ),
+      providerNamesById: S.Unknown.pipe(T.Body("provider_names_by_id")),
       region: S.String,
       resourceGroup: S.String.pipe(T.Body("resource_group")),
-      resourceType:
-        OnRampsUpdateResponsePostApplyResourcesValueResourceType.pipe(
-          T.Body("resource_type"),
-        ),
-      sections: OnRampsUpdateResponsePostApplyResourcesValueSectionsList,
-      state: OnRampsUpdateResponsePostApplyResourcesValueStateMap,
-      tags: OnRampsUpdateResponsePostApplyResourcesValueTagsMap,
+      resourceType: S.String.pipe(T.Body("resource_type")),
+      sections: OnRampsUpdateResponsePostApplyResourcesSectionsList,
+      state: S.Unknown,
+      tags: S.Unknown,
       updatedAt: S.String.pipe(T.Body("updated_at")),
       url: S.String,
       managedBy: S.optional(
-        S.NullOr(
-          OnRampsUpdateResponsePostApplyResourcesValueManagedByList,
-        ).pipe(T.Body("managed_by")),
+        S.NullOr(OnRampsUpdateResponsePostApplyResourcesManagedByList).pipe(
+          T.Body("managed_by"),
+        ),
       ),
     }),
-  ).annotate({
-    identifier: "OnRampsUpdateResponsePostApplyResourcesValue",
-  }) as any as S.Schema<OnRampsUpdateResponsePostApplyResourcesValue>;
-
-export type OnRampsUpdateResponsePostApplyResourcesMap = {
-  [key: string]: OnRampsUpdateResponsePostApplyResourcesValue | undefined;
-};
-export const OnRampsUpdateResponsePostApplyResourcesMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    OnRampsUpdateResponsePostApplyResourcesValue,
-  ) as any as S.Schema<OnRampsUpdateResponsePostApplyResourcesMap>;
+).annotate({
+  identifier: "OnRampsUpdateResponsePostApplyResources",
+}) as any as S.Schema<OnRampsUpdateResponsePostApplyResources>;
 
 export type OnRampsUpdateResponseStatusApplyProgress =
   OnRampsCreateResponseStatusApplyProgress;
 export const OnRampsUpdateResponseStatusApplyProgress =
   OnRampsCreateResponseStatusApplyProgress;
-
-export type OnRampsUpdateResponseStatusLifecycleState =
-  | "OnrampNeedsApply"
-  | "OnrampPendingPlan"
-  | "OnrampPlanning"
-  | "OnrampPlanFailed"
-  | "OnrampPendingApproval"
-  | "OnrampPendingApply"
-  | "OnrampApplying"
-  | "OnrampApplyFailed"
-  | "OnrampActive"
-  | "OnrampPendingDestroy"
-  | "OnrampDestroying"
-  | "OnrampDestroyFailed";
-export const OnRampsUpdateResponseStatusLifecycleState = /*@__PURE__*/ S.String;
 
 export type OnRampsUpdateResponseStatusPlanProgress =
   OnRampsCreateResponseStatusApplyProgress;
@@ -16929,229 +5700,42 @@ export const OnRampsUpdateResponseStatusTunnelsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<OnRampsUpdateResponseStatusTunnelsList>;
 
-export type OnRampsUpdateResponseStatusLifecycleErrorsValueCode =
-  | 1001
-  | 1002
-  | 1003
-  | 1004
-  | 1005
-  | 1006
-  | 1007
-  | 1008
-  | 1009
-  | 1010
-  | 1011
-  | 1012
-  | 1013
-  | 1014
-  | 1015
-  | 1016
-  | 1017
-  | 1018
-  | 2001
-  | 2002
-  | 2003
-  | 2004
-  | 2005
-  | 2006
-  | 2007
-  | 2008
-  | 2009
-  | 2010
-  | 2011
-  | 2012
-  | 2013
-  | 2014
-  | 2015
-  | 2016
-  | 2017
-  | 2018
-  | 2019
-  | 2020
-  | 2021
-  | 2022
-  | 3001
-  | 3002
-  | 3003
-  | 3004
-  | 3005
-  | 3006
-  | 3007
-  | 4001
-  | 4002
-  | 4003
-  | 4004
-  | 4005
-  | 4006
-  | 4007
-  | 4008
-  | 4009
-  | 4010
-  | 4011
-  | 4012
-  | 4013
-  | 4014
-  | 4015
-  | 4016
-  | 4017
-  | 4018
-  | 4019
-  | 4020
-  | 4021
-  | 4022
-  | 4023
-  | 5001
-  | 5002
-  | 5003
-  | 5004
-  | 102000
-  | 102001
-  | 102002
-  | 102003
-  | 102004
-  | 102005
-  | 102006
-  | 102007
-  | 102008
-  | 102009
-  | 102010
-  | 102011
-  | 102012
-  | 102013
-  | 102014
-  | 102015
-  | 102016
-  | 102017
-  | 102018
-  | 102019
-  | 102020
-  | 102021
-  | 102022
-  | 102023
-  | 102024
-  | 102025
-  | 102026
-  | 102027
-  | 102028
-  | 102029
-  | 102030
-  | 102031
-  | 102032
-  | 102033
-  | 102034
-  | 102035
-  | 102036
-  | 102037
-  | 102038
-  | 102039
-  | 102040
-  | 102041
-  | 102042
-  | 102043
-  | 102044
-  | 102045
-  | 102046
-  | 102047
-  | 102048
-  | 102049
-  | 102050
-  | 102051
-  | 102052
-  | 102053
-  | 102054
-  | 102055
-  | 102056
-  | 102057
-  | 102058
-  | 102059
-  | 102060
-  | 102061
-  | 102062
-  | 102063
-  | 102064
-  | 102065
-  | 102066
-  | 102067
-  | 102068
-  | 102069
-  | 102070
-  | 102071
-  | 102072
-  | 103001
-  | 103002
-  | 103003
-  | 103004
-  | 103005
-  | 103006
-  | 103007
-  | 103008;
-export const OnRampsUpdateResponseStatusLifecycleErrorsValueCode =
-  /*@__PURE__*/ S.Number;
+export type OnRampsUpdateResponseStatusLifecycleErrorsMeta =
+  CatalogSyncsCreateResponseErrorsMeta;
+export const OnRampsUpdateResponseStatusLifecycleErrorsMeta =
+  CatalogSyncsCreateResponseErrorsMeta;
 
-export type OnRampsUpdateResponseStatusLifecycleErrorsValueMeta =
-  CatalogSyncsCreateResponseErrorsValueMeta;
-export const OnRampsUpdateResponseStatusLifecycleErrorsValueMeta =
-  CatalogSyncsCreateResponseErrorsValueMeta;
+export type OnRampsUpdateResponseStatusLifecycleErrorsSource =
+  CatalogSyncsCreateResponseErrorsSource;
+export const OnRampsUpdateResponseStatusLifecycleErrorsSource =
+  CatalogSyncsCreateResponseErrorsSource;
 
-export type OnRampsUpdateResponseStatusLifecycleErrorsValueSource =
-  CatalogSyncsCreateResponseErrorsValueSource;
-export const OnRampsUpdateResponseStatusLifecycleErrorsValueSource =
-  CatalogSyncsCreateResponseErrorsValueSource;
-
-export interface OnRampsUpdateResponseStatusLifecycleErrorsValue {
-  code: OnRampsUpdateResponseStatusLifecycleErrorsValueCode;
-  message: string;
-  documentationUrl?: string | null;
-  meta?: CatalogSyncsCreateResponseErrorsValueMeta | null;
-  source?: CatalogSyncsCreateResponseErrorsValueSource | null;
-}
-export const OnRampsUpdateResponseStatusLifecycleErrorsValue =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      code: OnRampsUpdateResponseStatusLifecycleErrorsValueCode,
-      message: S.String,
-      documentationUrl: S.optional(
-        S.NullOr(S.String).pipe(T.Body("documentation_url")),
-      ),
-      meta: S.optional(S.NullOr(CatalogSyncsCreateResponseErrorsValueMeta)),
-      source: S.optional(S.NullOr(CatalogSyncsCreateResponseErrorsValueSource)),
-    }),
-  ).annotate({
-    identifier: "OnRampsUpdateResponseStatusLifecycleErrorsValue",
-  }) as any as S.Schema<OnRampsUpdateResponseStatusLifecycleErrorsValue>;
-
-export type OnRampsUpdateResponseStatusLifecycleErrorsMap = {
-  [key: string]: OnRampsUpdateResponseStatusLifecycleErrorsValue | undefined;
-};
-export const OnRampsUpdateResponseStatusLifecycleErrorsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    OnRampsUpdateResponseStatusLifecycleErrorsValue,
-  ) as any as S.Schema<OnRampsUpdateResponseStatusLifecycleErrorsMap>;
+export type OnRampsUpdateResponseStatusLifecycleErrors =
+  CatalogSyncsCreateResponseErrors;
+export const OnRampsUpdateResponseStatusLifecycleErrors =
+  CatalogSyncsCreateResponseErrors;
 
 export interface OnRampsUpdateResponseStatus {
   applyProgress: OnRampsCreateResponseStatusApplyProgress;
-  lifecycleState: OnRampsUpdateResponseStatusLifecycleState;
+  lifecycleState: string;
   planProgress: OnRampsCreateResponseStatusApplyProgress;
   routes: OnRampsUpdateResponseStatusRoutesList;
   tunnels: OnRampsUpdateResponseStatusTunnelsList;
-  lifecycleErrors?: OnRampsUpdateResponseStatusLifecycleErrorsMap | null;
+  lifecycleErrors?: CatalogSyncsCreateResponseErrors | null;
 }
 export const OnRampsUpdateResponseStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     applyProgress: OnRampsCreateResponseStatusApplyProgress.pipe(
       T.Body("apply_progress"),
     ),
-    lifecycleState: OnRampsUpdateResponseStatusLifecycleState.pipe(
-      T.Body("lifecycle_state"),
-    ),
+    lifecycleState: S.String.pipe(T.Body("lifecycle_state")),
     planProgress: OnRampsCreateResponseStatusApplyProgress.pipe(
       T.Body("plan_progress"),
     ),
     routes: OnRampsUpdateResponseStatusRoutesList,
     tunnels: OnRampsUpdateResponseStatusTunnelsList,
     lifecycleErrors: S.optional(
-      S.NullOr(OnRampsUpdateResponseStatusLifecycleErrorsMap).pipe(
+      S.NullOr(CatalogSyncsCreateResponseErrors).pipe(
         T.Body("lifecycle_errors"),
       ),
     ),
@@ -17160,899 +5744,143 @@ export const OnRampsUpdateResponseStatus = /*@__PURE__*/ S.suspend(() =>
   identifier: "OnRampsUpdateResponseStatus",
 }) as any as S.Schema<OnRampsUpdateResponseStatus>;
 
-export type OnRampsUpdateResponseVpcsByIdValueCloudType =
+export type OnRampsUpdateResponseVpcsByIdCloudType =
   | "AWS"
   | "AZURE"
   | "GOOGLE"
   | "CLOUDFLARE";
-export const OnRampsUpdateResponseVpcsByIdValueCloudType =
-  /*@__PURE__*/ S.String;
+export const OnRampsUpdateResponseVpcsByIdCloudType = /*@__PURE__*/ S.String;
 
-export type OnRampsUpdateResponseVpcsByIdValueConfigMap = {
-  [key: string]: unknown | undefined;
-};
-export const OnRampsUpdateResponseVpcsByIdValueConfigMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<OnRampsUpdateResponseVpcsByIdValueConfigMap>;
-
-export type OnRampsUpdateResponseVpcsByIdValueMonthlyCostEstimate =
+export type OnRampsUpdateResponseVpcsByIdMonthlyCostEstimate =
   OnRampsCreateResponsePostApplyMonthlyCostEstimate;
-export const OnRampsUpdateResponseVpcsByIdValueMonthlyCostEstimate =
+export const OnRampsUpdateResponseVpcsByIdMonthlyCostEstimate =
   OnRampsCreateResponsePostApplyMonthlyCostEstimate;
 
-export type OnRampsUpdateResponseVpcsByIdValueObservationsValue =
-  OnRampsCreateResponsePostApplyResourcesValueObservationsValue;
-export const OnRampsUpdateResponseVpcsByIdValueObservationsValue =
-  OnRampsCreateResponsePostApplyResourcesValueObservationsValue;
+export type OnRampsUpdateResponseVpcsByIdObservations =
+  OnRampsCreateResponsePostApplyResourcesObservations;
+export const OnRampsUpdateResponseVpcsByIdObservations =
+  OnRampsCreateResponsePostApplyResourcesObservations;
 
-export type OnRampsUpdateResponseVpcsByIdValueObservationsMap = {
-  [key: string]:
-    | OnRampsCreateResponsePostApplyResourcesValueObservationsValue
-    | undefined;
-};
-export const OnRampsUpdateResponseVpcsByIdValueObservationsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    OnRampsCreateResponsePostApplyResourcesValueObservationsValue,
-  ) as any as S.Schema<OnRampsUpdateResponseVpcsByIdValueObservationsMap>;
-
-export type OnRampsUpdateResponseVpcsByIdValueProviderIdsList = Array<string>;
-export const OnRampsUpdateResponseVpcsByIdValueProviderIdsList =
+export type OnRampsUpdateResponseVpcsByIdProviderIdsList = Array<string>;
+export const OnRampsUpdateResponseVpcsByIdProviderIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
-  ) as any as S.Schema<OnRampsUpdateResponseVpcsByIdValueProviderIdsList>;
+  ) as any as S.Schema<OnRampsUpdateResponseVpcsByIdProviderIdsList>;
 
-export type OnRampsUpdateResponseVpcsByIdValueProviderNamesByIdMap = {
-  [key: string]: string | undefined;
-};
-export const OnRampsUpdateResponseVpcsByIdValueProviderNamesByIdMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<OnRampsUpdateResponseVpcsByIdValueProviderNamesByIdMap>;
+export type OnRampsUpdateResponseVpcsByIdSectionsItemHiddenItemsItem =
+  OnRampsCreateResponsePostApplyResourcesSectionsItemHiddenItemsItem;
+export const OnRampsUpdateResponseVpcsByIdSectionsItemHiddenItemsItem =
+  OnRampsCreateResponsePostApplyResourcesSectionsItemHiddenItemsItem;
 
-export type OnRampsUpdateResponseVpcsByIdValueResourceType =
-  | "aws_customer_gateway"
-  | "aws_egress_only_internet_gateway"
-  | "aws_internet_gateway"
-  | "aws_instance"
-  | "aws_network_interface"
-  | "aws_route"
-  | "aws_route_table"
-  | "aws_route_table_association"
-  | "aws_subnet"
-  | "aws_vpc"
-  | "aws_vpc_ipv4_cidr_block_association"
-  | "aws_vpn_connection"
-  | "aws_vpn_connection_route"
-  | "aws_vpn_gateway"
-  | "aws_security_group"
-  | "aws_vpc_security_group_ingress_rule"
-  | "aws_vpc_security_group_egress_rule"
-  | "aws_ec2_managed_prefix_list"
-  | "aws_ec2_transit_gateway"
-  | "aws_ec2_transit_gateway_prefix_list_reference"
-  | "aws_ec2_transit_gateway_vpc_attachment"
-  | "azurerm_application_security_group"
-  | "azurerm_lb"
-  | "azurerm_lb_backend_address_pool"
-  | "azurerm_lb_nat_pool"
-  | "azurerm_lb_nat_rule"
-  | "azurerm_lb_rule"
-  | "azurerm_local_network_gateway"
-  | "azurerm_network_interface"
-  | "azurerm_network_interface_application_security_group_association"
-  | "azurerm_network_interface_backend_address_pool_association"
-  | "azurerm_network_interface_security_group_association"
-  | "azurerm_network_security_group"
-  | "azurerm_public_ip"
-  | "azurerm_route"
-  | "azurerm_route_table"
-  | "azurerm_subnet"
-  | "azurerm_subnet_route_table_association"
-  | "azurerm_virtual_machine"
-  | "azurerm_virtual_network_gateway_connection"
-  | "azurerm_virtual_network"
-  | "azurerm_virtual_network_gateway"
-  | "google_compute_network"
-  | "google_compute_subnetwork"
-  | "google_compute_vpn_gateway"
-  | "google_compute_vpn_tunnel"
-  | "google_compute_route"
-  | "google_compute_address"
-  | "google_compute_global_address"
-  | "google_compute_router"
-  | "google_compute_interconnect_attachment"
-  | "google_compute_ha_vpn_gateway"
-  | "google_compute_forwarding_rule"
-  | "google_compute_network_firewall_policy"
-  | "google_compute_network_firewall_policy_rule"
-  | "cloudflare_static_route"
-  | "cloudflare_ipsec_tunnel";
-export const OnRampsUpdateResponseVpcsByIdValueResourceType =
-  /*@__PURE__*/ S.String;
-
-export type OnRampsUpdateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnStringItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem;
-export const OnRampsUpdateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnStringItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem;
-
-export type OnRampsUpdateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnYamlItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlItem;
-export const OnRampsUpdateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnYamlItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlItem;
-
-export type OnRampsUpdateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnYamlDiffItemYamlDiff =
-  OnRampsCreateResponsePlannedResourcesItemDiff;
-export const OnRampsUpdateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnYamlDiffItemYamlDiff =
-  OnRampsCreateResponsePlannedResourcesItemDiff;
-
-export type OnRampsUpdateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnYamlDiffItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlDiffItem;
-export const OnRampsUpdateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnYamlDiffItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlDiffItem;
-
-export type OnRampsUpdateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreviewCloudType =
-  | "AWS"
-  | "AZURE"
-  | "GOOGLE"
-  | "CLOUDFLARE";
-export const OnRampsUpdateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreviewCloudType =
-  /*@__PURE__*/ S.String;
-
-export type OnRampsUpdateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreviewResourceType =
-  | "aws_customer_gateway"
-  | "aws_egress_only_internet_gateway"
-  | "aws_internet_gateway"
-  | "aws_instance"
-  | "aws_network_interface"
-  | "aws_route"
-  | "aws_route_table"
-  | "aws_route_table_association"
-  | "aws_subnet"
-  | "aws_vpc"
-  | "aws_vpc_ipv4_cidr_block_association"
-  | "aws_vpn_connection"
-  | "aws_vpn_connection_route"
-  | "aws_vpn_gateway"
-  | "aws_security_group"
-  | "aws_vpc_security_group_ingress_rule"
-  | "aws_vpc_security_group_egress_rule"
-  | "aws_ec2_managed_prefix_list"
-  | "aws_ec2_transit_gateway"
-  | "aws_ec2_transit_gateway_prefix_list_reference"
-  | "aws_ec2_transit_gateway_vpc_attachment"
-  | "azurerm_application_security_group"
-  | "azurerm_lb"
-  | "azurerm_lb_backend_address_pool"
-  | "azurerm_lb_nat_pool"
-  | "azurerm_lb_nat_rule"
-  | "azurerm_lb_rule"
-  | "azurerm_local_network_gateway"
-  | "azurerm_network_interface"
-  | "azurerm_network_interface_application_security_group_association"
-  | "azurerm_network_interface_backend_address_pool_association"
-  | "azurerm_network_interface_security_group_association"
-  | "azurerm_network_security_group"
-  | "azurerm_public_ip"
-  | "azurerm_route"
-  | "azurerm_route_table"
-  | "azurerm_subnet"
-  | "azurerm_subnet_route_table_association"
-  | "azurerm_virtual_machine"
-  | "azurerm_virtual_network_gateway_connection"
-  | "azurerm_virtual_network"
-  | "azurerm_virtual_network_gateway"
-  | "google_compute_network"
-  | "google_compute_subnetwork"
-  | "google_compute_vpn_gateway"
-  | "google_compute_vpn_tunnel"
-  | "google_compute_route"
-  | "google_compute_address"
-  | "google_compute_global_address"
-  | "google_compute_router"
-  | "google_compute_interconnect_attachment"
-  | "google_compute_ha_vpn_gateway"
-  | "google_compute_forwarding_rule"
-  | "google_compute_network_firewall_policy"
-  | "google_compute_network_firewall_policy_rule"
-  | "cloudflare_static_route"
-  | "cloudflare_ipsec_tunnel";
-export const OnRampsUpdateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreviewResourceType =
-  /*@__PURE__*/ S.String;
-
-export interface OnRampsUpdateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview {
-  id: string;
-  cloudType: OnRampsUpdateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreviewCloudType;
-  detail: string;
-  name: string;
-  resourceType: OnRampsUpdateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreviewResourceType;
-  title: string;
-}
-export const OnRampsUpdateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-      cloudType:
-        OnRampsUpdateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreviewCloudType.pipe(
-          T.Body("cloud_type"),
-        ),
-      detail: S.String,
-      name: S.String,
-      resourceType:
-        OnRampsUpdateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreviewResourceType.pipe(
-          T.Body("resource_type"),
-        ),
-      title: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "OnRampsUpdateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview",
-  }) as any as S.Schema<OnRampsUpdateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview>;
-
-export interface OnRampsUpdateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItem {
-  itemType: string;
-  resourcePreview: OnRampsUpdateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview;
-}
-export const OnRampsUpdateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      itemType: S.String.pipe(T.Body("item_type")),
-      resourcePreview:
-        OnRampsUpdateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview.pipe(
-          T.Body("resource_preview"),
-        ),
-    }),
-  ).annotate({
-    identifier:
-      "OnRampsUpdateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItem",
-  }) as any as S.Schema<OnRampsUpdateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItem>;
-
-export type OnRampsUpdateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnStringItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem;
-export const OnRampsUpdateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnStringItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem;
-
-export type OnRampsUpdateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewCloudType =
-  | "AWS"
-  | "AZURE"
-  | "GOOGLE"
-  | "CLOUDFLARE";
-export const OnRampsUpdateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewCloudType =
-  /*@__PURE__*/ S.String;
-
-export type OnRampsUpdateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewResourceType =
-  | "aws_customer_gateway"
-  | "aws_egress_only_internet_gateway"
-  | "aws_internet_gateway"
-  | "aws_instance"
-  | "aws_network_interface"
-  | "aws_route"
-  | "aws_route_table"
-  | "aws_route_table_association"
-  | "aws_subnet"
-  | "aws_vpc"
-  | "aws_vpc_ipv4_cidr_block_association"
-  | "aws_vpn_connection"
-  | "aws_vpn_connection_route"
-  | "aws_vpn_gateway"
-  | "aws_security_group"
-  | "aws_vpc_security_group_ingress_rule"
-  | "aws_vpc_security_group_egress_rule"
-  | "aws_ec2_managed_prefix_list"
-  | "aws_ec2_transit_gateway"
-  | "aws_ec2_transit_gateway_prefix_list_reference"
-  | "aws_ec2_transit_gateway_vpc_attachment"
-  | "azurerm_application_security_group"
-  | "azurerm_lb"
-  | "azurerm_lb_backend_address_pool"
-  | "azurerm_lb_nat_pool"
-  | "azurerm_lb_nat_rule"
-  | "azurerm_lb_rule"
-  | "azurerm_local_network_gateway"
-  | "azurerm_network_interface"
-  | "azurerm_network_interface_application_security_group_association"
-  | "azurerm_network_interface_backend_address_pool_association"
-  | "azurerm_network_interface_security_group_association"
-  | "azurerm_network_security_group"
-  | "azurerm_public_ip"
-  | "azurerm_route"
-  | "azurerm_route_table"
-  | "azurerm_subnet"
-  | "azurerm_subnet_route_table_association"
-  | "azurerm_virtual_machine"
-  | "azurerm_virtual_network_gateway_connection"
-  | "azurerm_virtual_network"
-  | "azurerm_virtual_network_gateway"
-  | "google_compute_network"
-  | "google_compute_subnetwork"
-  | "google_compute_vpn_gateway"
-  | "google_compute_vpn_tunnel"
-  | "google_compute_route"
-  | "google_compute_address"
-  | "google_compute_global_address"
-  | "google_compute_router"
-  | "google_compute_interconnect_attachment"
-  | "google_compute_ha_vpn_gateway"
-  | "google_compute_forwarding_rule"
-  | "google_compute_network_firewall_policy"
-  | "google_compute_network_firewall_policy_rule"
-  | "cloudflare_static_route"
-  | "cloudflare_ipsec_tunnel";
-export const OnRampsUpdateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewResourceType =
-  /*@__PURE__*/ S.String;
-
-export interface OnRampsUpdateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview {
-  id: string;
-  cloudType: OnRampsUpdateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewCloudType;
-  detail: string;
-  name: string;
-  resourceType: OnRampsUpdateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewResourceType;
-  title: string;
-}
-export const OnRampsUpdateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-      cloudType:
-        OnRampsUpdateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewCloudType.pipe(
-          T.Body("cloud_type"),
-        ),
-      detail: S.String,
-      name: S.String,
-      resourceType:
-        OnRampsUpdateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewResourceType.pipe(
-          T.Body("resource_type"),
-        ),
-      title: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "OnRampsUpdateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview",
-  }) as any as S.Schema<OnRampsUpdateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview>;
-
-export interface OnRampsUpdateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItem {
-  itemType: string;
-  resourcePreview: OnRampsUpdateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview;
-}
-export const OnRampsUpdateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      itemType: S.String.pipe(T.Body("item_type")),
-      resourcePreview:
-        OnRampsUpdateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview.pipe(
-          T.Body("resource_preview"),
-        ),
-    }),
-  ).annotate({
-    identifier:
-      "OnRampsUpdateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItem",
-  }) as any as S.Schema<OnRampsUpdateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItem>;
-
-export type OnRampsUpdateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItem =
-  | OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem
-  | OnRampsUpdateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItem;
-export const OnRampsUpdateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItem =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["itemType", "string"],
-      ["itemType", "resourcePreview"],
-    ]),
-  );
-
-export type OnRampsUpdateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListList =
-  Array<OnRampsUpdateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItem>;
-export const OnRampsUpdateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListList =
+export type OnRampsUpdateResponseVpcsByIdSectionsItemHiddenItemsList =
+  Array<OnRampsCreateResponsePostApplyResourcesSectionsItemHiddenItemsItem>;
+export const OnRampsUpdateResponseVpcsByIdSectionsItemHiddenItemsList =
   /*@__PURE__*/ S.Array(
-    OnRampsUpdateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItem,
-  ) as any as S.Schema<OnRampsUpdateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListList>;
+    OnRampsCreateResponsePostApplyResourcesSectionsItemHiddenItemsItem,
+  ) as any as S.Schema<OnRampsUpdateResponseVpcsByIdSectionsItemHiddenItemsList>;
 
-export interface OnRampsUpdateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItem {
-  itemType: string;
-  list: OnRampsUpdateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListList;
-}
-export const OnRampsUpdateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      itemType: S.String.pipe(T.Body("item_type")),
-      list: OnRampsUpdateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListList,
-    }),
-  ).annotate({
-    identifier:
-      "OnRampsUpdateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItem",
-  }) as any as S.Schema<OnRampsUpdateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItem>;
+export type OnRampsUpdateResponseVpcsByIdSectionsItemVisibleItemsItem =
+  OnRampsCreateResponsePostApplyResourcesSectionsItemHiddenItemsItem;
+export const OnRampsUpdateResponseVpcsByIdSectionsItemVisibleItemsItem =
+  OnRampsCreateResponsePostApplyResourcesSectionsItemHiddenItemsItem;
 
-export type OnRampsUpdateResponseVpcsByIdValueSectionsItemHiddenItemsItemValue =
-  | OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem
-  | OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlItem
-  | OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlDiffItem
-  | OnRampsUpdateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItem
-  | OnRampsUpdateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItem;
-export const OnRampsUpdateResponseVpcsByIdValueSectionsItemHiddenItemsItemValue =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["itemType", "string"],
-      ["itemType", "yaml"],
-      ["itemType", "yamlDiff"],
-      ["itemType", "resourcePreview"],
-      ["itemType", "list"],
-    ]),
-  );
-
-export interface OnRampsUpdateResponseVpcsByIdValueSectionsItemHiddenItemsItem {
-  helpText?: string | null;
-  name?: string | null;
-  value?: OnRampsUpdateResponseVpcsByIdValueSectionsItemHiddenItemsItemValue | null;
-}
-export const OnRampsUpdateResponseVpcsByIdValueSectionsItemHiddenItemsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      helpText: S.optional(S.NullOr(S.String)),
-      name: S.optional(S.NullOr(S.String)),
-      value: S.optional(
-        S.NullOr(
-          OnRampsUpdateResponseVpcsByIdValueSectionsItemHiddenItemsItemValue,
-        ),
-      ),
-    }),
-  ).annotate({
-    identifier: "OnRampsUpdateResponseVpcsByIdValueSectionsItemHiddenItemsItem",
-  }) as any as S.Schema<OnRampsUpdateResponseVpcsByIdValueSectionsItemHiddenItemsItem>;
-
-export type OnRampsUpdateResponseVpcsByIdValueSectionsItemHiddenItemsList =
-  Array<OnRampsUpdateResponseVpcsByIdValueSectionsItemHiddenItemsItem>;
-export const OnRampsUpdateResponseVpcsByIdValueSectionsItemHiddenItemsList =
+export type OnRampsUpdateResponseVpcsByIdSectionsItemVisibleItemsList =
+  Array<OnRampsCreateResponsePostApplyResourcesSectionsItemHiddenItemsItem>;
+export const OnRampsUpdateResponseVpcsByIdSectionsItemVisibleItemsList =
   /*@__PURE__*/ S.Array(
-    OnRampsUpdateResponseVpcsByIdValueSectionsItemHiddenItemsItem,
-  ) as any as S.Schema<OnRampsUpdateResponseVpcsByIdValueSectionsItemHiddenItemsList>;
+    OnRampsCreateResponsePostApplyResourcesSectionsItemHiddenItemsItem,
+  ) as any as S.Schema<OnRampsUpdateResponseVpcsByIdSectionsItemVisibleItemsList>;
 
-export type OnRampsUpdateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnStringItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem;
-export const OnRampsUpdateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnStringItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem;
-
-export type OnRampsUpdateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnYamlItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlItem;
-export const OnRampsUpdateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnYamlItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlItem;
-
-export type OnRampsUpdateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnYamlDiffItemYamlDiff =
-  OnRampsCreateResponsePlannedResourcesItemDiff;
-export const OnRampsUpdateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnYamlDiffItemYamlDiff =
-  OnRampsCreateResponsePlannedResourcesItemDiff;
-
-export type OnRampsUpdateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnYamlDiffItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlDiffItem;
-export const OnRampsUpdateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnYamlDiffItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlDiffItem;
-
-export type OnRampsUpdateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreviewCloudType =
-  | "AWS"
-  | "AZURE"
-  | "GOOGLE"
-  | "CLOUDFLARE";
-export const OnRampsUpdateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreviewCloudType =
-  /*@__PURE__*/ S.String;
-
-export type OnRampsUpdateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreviewResourceType =
-  | "aws_customer_gateway"
-  | "aws_egress_only_internet_gateway"
-  | "aws_internet_gateway"
-  | "aws_instance"
-  | "aws_network_interface"
-  | "aws_route"
-  | "aws_route_table"
-  | "aws_route_table_association"
-  | "aws_subnet"
-  | "aws_vpc"
-  | "aws_vpc_ipv4_cidr_block_association"
-  | "aws_vpn_connection"
-  | "aws_vpn_connection_route"
-  | "aws_vpn_gateway"
-  | "aws_security_group"
-  | "aws_vpc_security_group_ingress_rule"
-  | "aws_vpc_security_group_egress_rule"
-  | "aws_ec2_managed_prefix_list"
-  | "aws_ec2_transit_gateway"
-  | "aws_ec2_transit_gateway_prefix_list_reference"
-  | "aws_ec2_transit_gateway_vpc_attachment"
-  | "azurerm_application_security_group"
-  | "azurerm_lb"
-  | "azurerm_lb_backend_address_pool"
-  | "azurerm_lb_nat_pool"
-  | "azurerm_lb_nat_rule"
-  | "azurerm_lb_rule"
-  | "azurerm_local_network_gateway"
-  | "azurerm_network_interface"
-  | "azurerm_network_interface_application_security_group_association"
-  | "azurerm_network_interface_backend_address_pool_association"
-  | "azurerm_network_interface_security_group_association"
-  | "azurerm_network_security_group"
-  | "azurerm_public_ip"
-  | "azurerm_route"
-  | "azurerm_route_table"
-  | "azurerm_subnet"
-  | "azurerm_subnet_route_table_association"
-  | "azurerm_virtual_machine"
-  | "azurerm_virtual_network_gateway_connection"
-  | "azurerm_virtual_network"
-  | "azurerm_virtual_network_gateway"
-  | "google_compute_network"
-  | "google_compute_subnetwork"
-  | "google_compute_vpn_gateway"
-  | "google_compute_vpn_tunnel"
-  | "google_compute_route"
-  | "google_compute_address"
-  | "google_compute_global_address"
-  | "google_compute_router"
-  | "google_compute_interconnect_attachment"
-  | "google_compute_ha_vpn_gateway"
-  | "google_compute_forwarding_rule"
-  | "google_compute_network_firewall_policy"
-  | "google_compute_network_firewall_policy_rule"
-  | "cloudflare_static_route"
-  | "cloudflare_ipsec_tunnel";
-export const OnRampsUpdateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreviewResourceType =
-  /*@__PURE__*/ S.String;
-
-export interface OnRampsUpdateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreview {
-  id: string;
-  cloudType: OnRampsUpdateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreviewCloudType;
-  detail: string;
+export interface OnRampsUpdateResponseVpcsByIdSectionsItem {
+  hiddenItems: OnRampsUpdateResponseVpcsByIdSectionsItemHiddenItemsList;
   name: string;
-  resourceType: OnRampsUpdateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreviewResourceType;
-  title: string;
-}
-export const OnRampsUpdateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreview =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-      cloudType:
-        OnRampsUpdateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreviewCloudType.pipe(
-          T.Body("cloud_type"),
-        ),
-      detail: S.String,
-      name: S.String,
-      resourceType:
-        OnRampsUpdateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreviewResourceType.pipe(
-          T.Body("resource_type"),
-        ),
-      title: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "OnRampsUpdateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreview",
-  }) as any as S.Schema<OnRampsUpdateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreview>;
-
-export interface OnRampsUpdateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItem {
-  itemType: string;
-  resourcePreview: OnRampsUpdateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreview;
-}
-export const OnRampsUpdateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      itemType: S.String.pipe(T.Body("item_type")),
-      resourcePreview:
-        OnRampsUpdateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreview.pipe(
-          T.Body("resource_preview"),
-        ),
-    }),
-  ).annotate({
-    identifier:
-      "OnRampsUpdateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItem",
-  }) as any as S.Schema<OnRampsUpdateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItem>;
-
-export type OnRampsUpdateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnStringItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem;
-export const OnRampsUpdateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnStringItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem;
-
-export type OnRampsUpdateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewCloudType =
-  | "AWS"
-  | "AZURE"
-  | "GOOGLE"
-  | "CLOUDFLARE";
-export const OnRampsUpdateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewCloudType =
-  /*@__PURE__*/ S.String;
-
-export type OnRampsUpdateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewResourceType =
-  | "aws_customer_gateway"
-  | "aws_egress_only_internet_gateway"
-  | "aws_internet_gateway"
-  | "aws_instance"
-  | "aws_network_interface"
-  | "aws_route"
-  | "aws_route_table"
-  | "aws_route_table_association"
-  | "aws_subnet"
-  | "aws_vpc"
-  | "aws_vpc_ipv4_cidr_block_association"
-  | "aws_vpn_connection"
-  | "aws_vpn_connection_route"
-  | "aws_vpn_gateway"
-  | "aws_security_group"
-  | "aws_vpc_security_group_ingress_rule"
-  | "aws_vpc_security_group_egress_rule"
-  | "aws_ec2_managed_prefix_list"
-  | "aws_ec2_transit_gateway"
-  | "aws_ec2_transit_gateway_prefix_list_reference"
-  | "aws_ec2_transit_gateway_vpc_attachment"
-  | "azurerm_application_security_group"
-  | "azurerm_lb"
-  | "azurerm_lb_backend_address_pool"
-  | "azurerm_lb_nat_pool"
-  | "azurerm_lb_nat_rule"
-  | "azurerm_lb_rule"
-  | "azurerm_local_network_gateway"
-  | "azurerm_network_interface"
-  | "azurerm_network_interface_application_security_group_association"
-  | "azurerm_network_interface_backend_address_pool_association"
-  | "azurerm_network_interface_security_group_association"
-  | "azurerm_network_security_group"
-  | "azurerm_public_ip"
-  | "azurerm_route"
-  | "azurerm_route_table"
-  | "azurerm_subnet"
-  | "azurerm_subnet_route_table_association"
-  | "azurerm_virtual_machine"
-  | "azurerm_virtual_network_gateway_connection"
-  | "azurerm_virtual_network"
-  | "azurerm_virtual_network_gateway"
-  | "google_compute_network"
-  | "google_compute_subnetwork"
-  | "google_compute_vpn_gateway"
-  | "google_compute_vpn_tunnel"
-  | "google_compute_route"
-  | "google_compute_address"
-  | "google_compute_global_address"
-  | "google_compute_router"
-  | "google_compute_interconnect_attachment"
-  | "google_compute_ha_vpn_gateway"
-  | "google_compute_forwarding_rule"
-  | "google_compute_network_firewall_policy"
-  | "google_compute_network_firewall_policy_rule"
-  | "cloudflare_static_route"
-  | "cloudflare_ipsec_tunnel";
-export const OnRampsUpdateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewResourceType =
-  /*@__PURE__*/ S.String;
-
-export interface OnRampsUpdateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview {
-  id: string;
-  cloudType: OnRampsUpdateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewCloudType;
-  detail: string;
-  name: string;
-  resourceType: OnRampsUpdateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewResourceType;
-  title: string;
-}
-export const OnRampsUpdateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-      cloudType:
-        OnRampsUpdateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewCloudType.pipe(
-          T.Body("cloud_type"),
-        ),
-      detail: S.String,
-      name: S.String,
-      resourceType:
-        OnRampsUpdateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewResourceType.pipe(
-          T.Body("resource_type"),
-        ),
-      title: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "OnRampsUpdateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview",
-  }) as any as S.Schema<OnRampsUpdateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview>;
-
-export interface OnRampsUpdateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItem {
-  itemType: string;
-  resourcePreview: OnRampsUpdateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview;
-}
-export const OnRampsUpdateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      itemType: S.String.pipe(T.Body("item_type")),
-      resourcePreview:
-        OnRampsUpdateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview.pipe(
-          T.Body("resource_preview"),
-        ),
-    }),
-  ).annotate({
-    identifier:
-      "OnRampsUpdateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItem",
-  }) as any as S.Schema<OnRampsUpdateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItem>;
-
-export type OnRampsUpdateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItem =
-  | OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem
-  | OnRampsUpdateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItem;
-export const OnRampsUpdateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItem =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["itemType", "string"],
-      ["itemType", "resourcePreview"],
-    ]),
-  );
-
-export type OnRampsUpdateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListList =
-  Array<OnRampsUpdateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItem>;
-export const OnRampsUpdateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListList =
-  /*@__PURE__*/ S.Array(
-    OnRampsUpdateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItem,
-  ) as any as S.Schema<OnRampsUpdateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListList>;
-
-export interface OnRampsUpdateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItem {
-  itemType: string;
-  list: OnRampsUpdateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListList;
-}
-export const OnRampsUpdateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      itemType: S.String.pipe(T.Body("item_type")),
-      list: OnRampsUpdateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListList,
-    }),
-  ).annotate({
-    identifier:
-      "OnRampsUpdateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItem",
-  }) as any as S.Schema<OnRampsUpdateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItem>;
-
-export type OnRampsUpdateResponseVpcsByIdValueSectionsItemVisibleItemsItemValue =
-  | OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem
-  | OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlItem
-  | OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlDiffItem
-  | OnRampsUpdateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItem
-  | OnRampsUpdateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItem;
-export const OnRampsUpdateResponseVpcsByIdValueSectionsItemVisibleItemsItemValue =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["itemType", "string"],
-      ["itemType", "yaml"],
-      ["itemType", "yamlDiff"],
-      ["itemType", "resourcePreview"],
-      ["itemType", "list"],
-    ]),
-  );
-
-export interface OnRampsUpdateResponseVpcsByIdValueSectionsItemVisibleItemsItem {
-  helpText?: string | null;
-  name?: string | null;
-  value?: OnRampsUpdateResponseVpcsByIdValueSectionsItemVisibleItemsItemValue | null;
-}
-export const OnRampsUpdateResponseVpcsByIdValueSectionsItemVisibleItemsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      helpText: S.optional(S.NullOr(S.String)),
-      name: S.optional(S.NullOr(S.String)),
-      value: S.optional(
-        S.NullOr(
-          OnRampsUpdateResponseVpcsByIdValueSectionsItemVisibleItemsItemValue,
-        ),
-      ),
-    }),
-  ).annotate({
-    identifier:
-      "OnRampsUpdateResponseVpcsByIdValueSectionsItemVisibleItemsItem",
-  }) as any as S.Schema<OnRampsUpdateResponseVpcsByIdValueSectionsItemVisibleItemsItem>;
-
-export type OnRampsUpdateResponseVpcsByIdValueSectionsItemVisibleItemsList =
-  Array<OnRampsUpdateResponseVpcsByIdValueSectionsItemVisibleItemsItem>;
-export const OnRampsUpdateResponseVpcsByIdValueSectionsItemVisibleItemsList =
-  /*@__PURE__*/ S.Array(
-    OnRampsUpdateResponseVpcsByIdValueSectionsItemVisibleItemsItem,
-  ) as any as S.Schema<OnRampsUpdateResponseVpcsByIdValueSectionsItemVisibleItemsList>;
-
-export interface OnRampsUpdateResponseVpcsByIdValueSectionsItem {
-  hiddenItems: OnRampsUpdateResponseVpcsByIdValueSectionsItemHiddenItemsList;
-  name: string;
-  visibleItems: OnRampsUpdateResponseVpcsByIdValueSectionsItemVisibleItemsList;
+  visibleItems: OnRampsUpdateResponseVpcsByIdSectionsItemVisibleItemsList;
   helpText?: string | null;
 }
-export const OnRampsUpdateResponseVpcsByIdValueSectionsItem =
+export const OnRampsUpdateResponseVpcsByIdSectionsItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       hiddenItems:
-        OnRampsUpdateResponseVpcsByIdValueSectionsItemHiddenItemsList.pipe(
+        OnRampsUpdateResponseVpcsByIdSectionsItemHiddenItemsList.pipe(
           T.Body("hidden_items"),
         ),
       name: S.String,
       visibleItems:
-        OnRampsUpdateResponseVpcsByIdValueSectionsItemVisibleItemsList.pipe(
+        OnRampsUpdateResponseVpcsByIdSectionsItemVisibleItemsList.pipe(
           T.Body("visible_items"),
         ),
       helpText: S.optional(S.NullOr(S.String).pipe(T.Body("help_text"))),
     }),
   ).annotate({
-    identifier: "OnRampsUpdateResponseVpcsByIdValueSectionsItem",
-  }) as any as S.Schema<OnRampsUpdateResponseVpcsByIdValueSectionsItem>;
+    identifier: "OnRampsUpdateResponseVpcsByIdSectionsItem",
+  }) as any as S.Schema<OnRampsUpdateResponseVpcsByIdSectionsItem>;
 
-export type OnRampsUpdateResponseVpcsByIdValueSectionsList =
-  Array<OnRampsUpdateResponseVpcsByIdValueSectionsItem>;
-export const OnRampsUpdateResponseVpcsByIdValueSectionsList =
-  /*@__PURE__*/ S.Array(
-    OnRampsUpdateResponseVpcsByIdValueSectionsItem,
-  ) as any as S.Schema<OnRampsUpdateResponseVpcsByIdValueSectionsList>;
+export type OnRampsUpdateResponseVpcsByIdSectionsList =
+  Array<OnRampsUpdateResponseVpcsByIdSectionsItem>;
+export const OnRampsUpdateResponseVpcsByIdSectionsList = /*@__PURE__*/ S.Array(
+  OnRampsUpdateResponseVpcsByIdSectionsItem,
+) as any as S.Schema<OnRampsUpdateResponseVpcsByIdSectionsList>;
 
-export type OnRampsUpdateResponseVpcsByIdValueStateMap = {
-  [key: string]: unknown | undefined;
-};
-export const OnRampsUpdateResponseVpcsByIdValueStateMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<OnRampsUpdateResponseVpcsByIdValueStateMap>;
-
-export type OnRampsUpdateResponseVpcsByIdValueTagsMap = {
-  [key: string]: string | undefined;
-};
-export const OnRampsUpdateResponseVpcsByIdValueTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<OnRampsUpdateResponseVpcsByIdValueTagsMap>;
-
-export type OnRampsUpdateResponseVpcsByIdValueManagedByItemClientType =
+export type OnRampsUpdateResponseVpcsByIdManagedByItemClientType =
   "MAGIC_WAN_CLOUD_ONRAMP";
-export const OnRampsUpdateResponseVpcsByIdValueManagedByItemClientType =
+export const OnRampsUpdateResponseVpcsByIdManagedByItemClientType =
   /*@__PURE__*/ S.String;
 
-export interface OnRampsUpdateResponseVpcsByIdValueManagedByItem {
+export interface OnRampsUpdateResponseVpcsByIdManagedByItem {
   id: string;
-  clientType: OnRampsUpdateResponseVpcsByIdValueManagedByItemClientType;
+  clientType: OnRampsUpdateResponseVpcsByIdManagedByItemClientType;
   name: string;
 }
-export const OnRampsUpdateResponseVpcsByIdValueManagedByItem =
+export const OnRampsUpdateResponseVpcsByIdManagedByItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       id: S.String,
-      clientType:
-        OnRampsUpdateResponseVpcsByIdValueManagedByItemClientType.pipe(
-          T.Body("client_type"),
-        ),
+      clientType: OnRampsUpdateResponseVpcsByIdManagedByItemClientType.pipe(
+        T.Body("client_type"),
+      ),
       name: S.String,
     }),
   ).annotate({
-    identifier: "OnRampsUpdateResponseVpcsByIdValueManagedByItem",
-  }) as any as S.Schema<OnRampsUpdateResponseVpcsByIdValueManagedByItem>;
+    identifier: "OnRampsUpdateResponseVpcsByIdManagedByItem",
+  }) as any as S.Schema<OnRampsUpdateResponseVpcsByIdManagedByItem>;
 
-export type OnRampsUpdateResponseVpcsByIdValueManagedByList =
-  Array<OnRampsUpdateResponseVpcsByIdValueManagedByItem>;
-export const OnRampsUpdateResponseVpcsByIdValueManagedByList =
-  /*@__PURE__*/ S.Array(
-    OnRampsUpdateResponseVpcsByIdValueManagedByItem,
-  ) as any as S.Schema<OnRampsUpdateResponseVpcsByIdValueManagedByList>;
+export type OnRampsUpdateResponseVpcsByIdManagedByList =
+  Array<OnRampsUpdateResponseVpcsByIdManagedByItem>;
+export const OnRampsUpdateResponseVpcsByIdManagedByList = /*@__PURE__*/ S.Array(
+  OnRampsUpdateResponseVpcsByIdManagedByItem,
+) as any as S.Schema<OnRampsUpdateResponseVpcsByIdManagedByList>;
 
-export interface OnRampsUpdateResponseVpcsByIdValue {
+export interface OnRampsUpdateResponseVpcsById {
   id: string;
   accountId: string;
-  cloudType: OnRampsUpdateResponseVpcsByIdValueCloudType;
-  config: OnRampsUpdateResponseVpcsByIdValueConfigMap;
+  cloudType: OnRampsUpdateResponseVpcsByIdCloudType;
+  config: unknown;
   deploymentProvider: string;
   managed: boolean;
   monthlyCostEstimate: OnRampsCreateResponsePostApplyMonthlyCostEstimate;
   name: string;
   nativeId: string;
-  observations: OnRampsUpdateResponseVpcsByIdValueObservationsMap;
-  providerIds: OnRampsUpdateResponseVpcsByIdValueProviderIdsList;
-  providerNamesById: OnRampsUpdateResponseVpcsByIdValueProviderNamesByIdMap;
+  observations: OnRampsCreateResponsePostApplyResourcesObservations;
+  providerIds: OnRampsUpdateResponseVpcsByIdProviderIdsList;
+  providerNamesById: unknown;
   region: string;
   resourceGroup: string;
-  resourceType: OnRampsUpdateResponseVpcsByIdValueResourceType;
-  sections: OnRampsUpdateResponseVpcsByIdValueSectionsList;
-  state: OnRampsUpdateResponseVpcsByIdValueStateMap;
-  tags: OnRampsUpdateResponseVpcsByIdValueTagsMap;
+  resourceType: string;
+  sections: OnRampsUpdateResponseVpcsByIdSectionsList;
+  state: unknown;
+  tags: unknown;
   updatedAt: string;
   url: string;
-  managedBy?: OnRampsUpdateResponseVpcsByIdValueManagedByList | null;
+  managedBy?: OnRampsUpdateResponseVpcsByIdManagedByList | null;
 }
-export const OnRampsUpdateResponseVpcsByIdValue = /*@__PURE__*/ S.suspend(() =>
+export const OnRampsUpdateResponseVpcsById = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     accountId: S.String.pipe(T.Body("account_id")),
-    cloudType: OnRampsUpdateResponseVpcsByIdValueCloudType.pipe(
+    cloudType: OnRampsUpdateResponseVpcsByIdCloudType.pipe(
       T.Body("cloud_type"),
     ),
-    config: OnRampsUpdateResponseVpcsByIdValueConfigMap,
+    config: S.Unknown,
     deploymentProvider: S.String.pipe(T.Body("deployment_provider")),
     managed: S.Boolean,
     monthlyCostEstimate: OnRampsCreateResponsePostApplyMonthlyCostEstimate.pipe(
@@ -18060,41 +5888,28 @@ export const OnRampsUpdateResponseVpcsByIdValue = /*@__PURE__*/ S.suspend(() =>
     ),
     name: S.String,
     nativeId: S.String.pipe(T.Body("native_id")),
-    observations: OnRampsUpdateResponseVpcsByIdValueObservationsMap,
-    providerIds: OnRampsUpdateResponseVpcsByIdValueProviderIdsList.pipe(
+    observations: OnRampsCreateResponsePostApplyResourcesObservations,
+    providerIds: OnRampsUpdateResponseVpcsByIdProviderIdsList.pipe(
       T.Body("provider_ids"),
     ),
-    providerNamesById:
-      OnRampsUpdateResponseVpcsByIdValueProviderNamesByIdMap.pipe(
-        T.Body("provider_names_by_id"),
-      ),
+    providerNamesById: S.Unknown.pipe(T.Body("provider_names_by_id")),
     region: S.String,
     resourceGroup: S.String.pipe(T.Body("resource_group")),
-    resourceType: OnRampsUpdateResponseVpcsByIdValueResourceType.pipe(
-      T.Body("resource_type"),
-    ),
-    sections: OnRampsUpdateResponseVpcsByIdValueSectionsList,
-    state: OnRampsUpdateResponseVpcsByIdValueStateMap,
-    tags: OnRampsUpdateResponseVpcsByIdValueTagsMap,
+    resourceType: S.String.pipe(T.Body("resource_type")),
+    sections: OnRampsUpdateResponseVpcsByIdSectionsList,
+    state: S.Unknown,
+    tags: S.Unknown,
     updatedAt: S.String.pipe(T.Body("updated_at")),
     url: S.String,
     managedBy: S.optional(
-      S.NullOr(OnRampsUpdateResponseVpcsByIdValueManagedByList).pipe(
+      S.NullOr(OnRampsUpdateResponseVpcsByIdManagedByList).pipe(
         T.Body("managed_by"),
       ),
     ),
   }),
 ).annotate({
-  identifier: "OnRampsUpdateResponseVpcsByIdValue",
-}) as any as S.Schema<OnRampsUpdateResponseVpcsByIdValue>;
-
-export type OnRampsUpdateResponseVpcsByIdMap = {
-  [key: string]: OnRampsUpdateResponseVpcsByIdValue | undefined;
-};
-export const OnRampsUpdateResponseVpcsByIdMap = /*@__PURE__*/ S.Record(
-  S.String,
-  OnRampsUpdateResponseVpcsByIdValue,
-) as any as S.Schema<OnRampsUpdateResponseVpcsByIdMap>;
+  identifier: "OnRampsUpdateResponseVpcsById",
+}) as any as S.Schema<OnRampsUpdateResponseVpcsById>;
 
 export type OnRampsUpdateResponseVpcsByIdUnavailableList = Array<string>;
 export const OnRampsUpdateResponseVpcsByIdUnavailableList =
@@ -18126,12 +5941,12 @@ export interface UpdateOnRampResponse {
   plannedResources?: OnRampsUpdateResponsePlannedResourcesList | null;
   plannedResourcesUnavailable?: boolean | null;
   postApplyMonthlyCostEstimate?: OnRampsCreateResponsePostApplyMonthlyCostEstimate | null;
-  postApplyResources?: OnRampsUpdateResponsePostApplyResourcesMap | null;
+  postApplyResources?: OnRampsUpdateResponsePostApplyResources | null;
   postApplyResourcesUnavailable?: boolean | null;
   region?: string | null;
   status?: OnRampsUpdateResponseStatus | null;
   vpc?: string | null;
-  vpcsById?: OnRampsUpdateResponseVpcsByIdMap | null;
+  vpcsById?: OnRampsUpdateResponseVpcsById | null;
   /** The list of vpc IDs for which resource details failed to generate. */
   vpcsByIdUnavailable?: OnRampsUpdateResponseVpcsByIdUnavailableList | null;
 }
@@ -18194,7 +6009,7 @@ export const UpdateOnRampResponse = /*@__PURE__*/ S.suspend(() =>
       ),
     ),
     postApplyResources: S.optional(
-      S.NullOr(OnRampsUpdateResponsePostApplyResourcesMap).pipe(
+      S.NullOr(OnRampsUpdateResponsePostApplyResources).pipe(
         T.Body("post_apply_resources"),
       ),
     ),
@@ -18205,7 +6020,7 @@ export const UpdateOnRampResponse = /*@__PURE__*/ S.suspend(() =>
     status: S.optional(S.NullOr(OnRampsUpdateResponseStatus)),
     vpc: S.optional(S.NullOr(S.String)),
     vpcsById: S.optional(
-      S.NullOr(OnRampsUpdateResponseVpcsByIdMap).pipe(T.Body("vpcs_by_id")),
+      S.NullOr(OnRampsUpdateResponseVpcsById).pipe(T.Body("vpcs_by_id")),
     ),
     vpcsByIdUnavailable: S.optional(
       S.NullOr(OnRampsUpdateResponseVpcsByIdUnavailableList).pipe(
@@ -18678,29 +6493,18 @@ export const listOnRamps: API.PaginatedOperationMethod<
 
 export type ListResourcesError = CloudflareOpError;
 /** List resources in the Resource Catalog (Closed Beta). */
-export const listResources: API.PaginatedOperationMethod<
+export const listResources: API.OperationMethod<
   ListResourcesRequest,
   ListResourcesResponse,
   ListResourcesError,
-  CloudflareOpContext,
-  ResourcesListResultItem
-> = /*@__PURE__*/ API.makePaginated(
-  () => ({
-    input: ListResourcesRequest,
-    output: ListResourcesResponse,
-    errors: [CloudflareRateLimited, CloudflareError],
-    protocol: CloudflarePaginatedProtocol,
-    retry: Retry.Retry,
-    pagination: {
-      mode: "page",
-      inputToken: "page",
-      outputToken: "resultInfo.page",
-      items: "result",
-      pageSize: "perPage",
-    } as const,
-  }),
-  cloudflarePaginate,
-) as any;
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListResourcesRequest,
+  output: ListResourcesResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+  retry: Retry.Retry,
+}));
 
 export type PatchCatalogSyncError =
   | FeatureNotEnabled
@@ -18842,7 +6646,7 @@ export type RefreshCatalogSyncError =
   | Forbidden
   | CatalogSyncNotFound
   | CloudflareOpError;
-/** Refresh a Catalog Sync's destination by running the sync policy against latest resource catalog (Closed Beta). */
+/** Refresh a Catalog Sync’s destination by running the sync policy against latest resource catalog (Closed Beta). */
 export const refreshCatalogSync: API.OperationMethod<
   RefreshCatalogSyncRequest,
   RefreshCatalogSyncResponse,

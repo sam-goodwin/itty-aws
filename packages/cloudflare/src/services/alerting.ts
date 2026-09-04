@@ -954,12 +954,41 @@ export const CreateSilenceRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateSilenceRequest",
 }) as any as S.Schema<CreateSilenceRequest>;
 
-export interface CreateSilenceResponse {}
-export const CreateSilenceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+export type SilencesCreateResponseStartTime = "2022-01-01T00:00:00Z";
+export const SilencesCreateResponseStartTime = /*@__PURE__*/ S.String;
+
+export type SilencesCreateResponseCode = 1000;
+export const SilencesCreateResponseCode = /*@__PURE__*/ S.Number;
+
+export type SilencesCreateResponseCode2 = 1000;
+export const SilencesCreateResponseCode2 = /*@__PURE__*/ S.Number;
+
+/** Raw response payload (operation does not use the standard v4 result envelope). */
+export interface SilencesCreateResponse {
+  endTime: unknown;
+  policyId: unknown;
+  /** } */
+  startTime: SilencesCreateResponseStartTime;
+  message: unknown;
+  /** } */
+  code: SilencesCreateResponseCode;
+  message_2: unknown;
+  /** } */
+  code_2: SilencesCreateResponseCode2;
+}
+export const SilencesCreateResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    endTime: S.Unknown.pipe(T.Body("end_time")),
+    policyId: S.Unknown.pipe(T.Body("policy_id")),
+    startTime: SilencesCreateResponseStartTime.pipe(T.Body("start_time")),
+    message: S.Unknown,
+    code: SilencesCreateResponseCode,
+    message_2: S.Unknown.pipe(T.Body("message")),
+    code_2: SilencesCreateResponseCode2.pipe(T.Body("code")),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
-  identifier: "CreateSilenceResponse",
-}) as any as S.Schema<CreateSilenceResponse>;
+  identifier: "SilencesCreateResponse",
+}) as any as S.Schema<SilencesCreateResponse>;
 
 export interface DeleteDestinationPagerdutyRequest {
   /** The account id */
@@ -981,12 +1010,31 @@ export const DeleteDestinationPagerdutyRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteDestinationPagerdutyRequest",
 }) as any as S.Schema<DeleteDestinationPagerdutyRequest>;
 
-export interface DeleteDestinationPagerdutyResponse {}
-export const DeleteDestinationPagerdutyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+export type DestinationsPagerdutyDeleteResponseCode = 1000;
+export const DestinationsPagerdutyDeleteResponseCode = /*@__PURE__*/ S.Number;
+
+export type DestinationsPagerdutyDeleteResponseCode2 = 1000;
+export const DestinationsPagerdutyDeleteResponseCode2 = /*@__PURE__*/ S.Number;
+
+/** Raw response payload (operation does not use the standard v4 result envelope). */
+export interface DestinationsPagerdutyDeleteResponse {
+  message: unknown;
+  /** } */
+  code: DestinationsPagerdutyDeleteResponseCode;
+  message_2: unknown;
+  /** } */
+  code_2: DestinationsPagerdutyDeleteResponseCode2;
+}
+export const DestinationsPagerdutyDeleteResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    message: S.Unknown,
+    code: DestinationsPagerdutyDeleteResponseCode,
+    message_2: S.Unknown.pipe(T.Body("message")),
+    code_2: DestinationsPagerdutyDeleteResponseCode2.pipe(T.Body("code")),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
-  identifier: "DeleteDestinationPagerdutyResponse",
-}) as any as S.Schema<DeleteDestinationPagerdutyResponse>;
+  identifier: "DestinationsPagerdutyDeleteResponse",
+}) as any as S.Schema<DestinationsPagerdutyDeleteResponse>;
 
 export interface DeleteDestinationWebhookRequest {
   /** The account id */
@@ -1011,12 +1059,31 @@ export const DeleteDestinationWebhookRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteDestinationWebhookRequest",
 }) as any as S.Schema<DeleteDestinationWebhookRequest>;
 
-export interface DeleteDestinationWebhookResponse {}
-export const DeleteDestinationWebhookResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+export type DestinationsWebhooksDeleteResponseCode = 1000;
+export const DestinationsWebhooksDeleteResponseCode = /*@__PURE__*/ S.Number;
+
+export type DestinationsWebhooksDeleteResponseCode2 = 1000;
+export const DestinationsWebhooksDeleteResponseCode2 = /*@__PURE__*/ S.Number;
+
+/** Raw response payload (operation does not use the standard v4 result envelope). */
+export interface DestinationsWebhooksDeleteResponse {
+  message: unknown;
+  /** } */
+  code: DestinationsWebhooksDeleteResponseCode;
+  message_2: unknown;
+  /** } */
+  code_2: DestinationsWebhooksDeleteResponseCode2;
+}
+export const DestinationsWebhooksDeleteResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    message: S.Unknown,
+    code: DestinationsWebhooksDeleteResponseCode,
+    message_2: S.Unknown.pipe(T.Body("message")),
+    code_2: DestinationsWebhooksDeleteResponseCode2.pipe(T.Body("code")),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
-  identifier: "DeleteDestinationWebhookResponse",
-}) as any as S.Schema<DeleteDestinationWebhookResponse>;
+  identifier: "DestinationsWebhooksDeleteResponse",
+}) as any as S.Schema<DestinationsWebhooksDeleteResponse>;
 
 export interface DeletePolicyRequest {
   /** The account id */
@@ -1041,12 +1108,43 @@ export const DeletePolicyRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeletePolicyRequest",
 }) as any as S.Schema<DeletePolicyRequest>;
 
-export interface DeletePolicyResponse {}
-export const DeletePolicyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+export type PoliciesDeleteResponseCode = 1000;
+export const PoliciesDeleteResponseCode = /*@__PURE__*/ S.Number;
+
+export type PoliciesDeleteResponseCode2 = 1000;
+export const PoliciesDeleteResponseCode2 = /*@__PURE__*/ S.Number;
+
+export type PoliciesDeleteResponseTotalCount = 2000;
+export const PoliciesDeleteResponseTotalCount = /*@__PURE__*/ S.Number;
+
+/** Raw response payload (operation does not use the standard v4 result envelope). */
+export interface PoliciesDeleteResponse {
+  message: unknown;
+  /** } */
+  code: PoliciesDeleteResponseCode;
+  message_2: unknown;
+  /** } */
+  code_2: PoliciesDeleteResponseCode2;
+  count: unknown;
+  page: unknown;
+  perPage: unknown;
+  /** } */
+  totalCount: PoliciesDeleteResponseTotalCount;
+}
+export const PoliciesDeleteResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    message: S.Unknown,
+    code: PoliciesDeleteResponseCode,
+    message_2: S.Unknown.pipe(T.Body("message")),
+    code_2: PoliciesDeleteResponseCode2.pipe(T.Body("code")),
+    count: S.Unknown,
+    page: S.Unknown,
+    perPage: S.Unknown.pipe(T.Body("per_page")),
+    totalCount: PoliciesDeleteResponseTotalCount.pipe(T.Body("total_count")),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
-  identifier: "DeletePolicyResponse",
-}) as any as S.Schema<DeletePolicyResponse>;
+  identifier: "PoliciesDeleteResponse",
+}) as any as S.Schema<PoliciesDeleteResponse>;
 
 export interface DeleteSilenceRequest {
   /** The account id */
@@ -1071,12 +1169,31 @@ export const DeleteSilenceRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteSilenceRequest",
 }) as any as S.Schema<DeleteSilenceRequest>;
 
-export interface DeleteSilenceResponse {}
-export const DeleteSilenceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+export type SilencesDeleteResponseCode = 1000;
+export const SilencesDeleteResponseCode = /*@__PURE__*/ S.Number;
+
+export type SilencesDeleteResponseCode2 = 1000;
+export const SilencesDeleteResponseCode2 = /*@__PURE__*/ S.Number;
+
+/** Raw response payload (operation does not use the standard v4 result envelope). */
+export interface SilencesDeleteResponse {
+  message: unknown;
+  /** } */
+  code: SilencesDeleteResponseCode;
+  message_2: unknown;
+  /** } */
+  code_2: SilencesDeleteResponseCode2;
+}
+export const SilencesDeleteResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    message: S.Unknown,
+    code: SilencesDeleteResponseCode,
+    message_2: S.Unknown.pipe(T.Body("message")),
+    code_2: SilencesDeleteResponseCode2.pipe(T.Body("code")),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
-  identifier: "DeleteSilenceResponse",
-}) as any as S.Schema<DeleteSilenceResponse>;
+  identifier: "SilencesDeleteResponse",
+}) as any as S.Schema<SilencesDeleteResponse>;
 
 export interface GetDestinationEligibleRequest {
   /** The account id */
@@ -1294,78 +1411,6 @@ export const GetPolicyRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetPolicyRequest",
 }) as any as S.Schema<GetPolicyRequest>;
-
-export type PoliciesGetResponseAlertType =
-  | "abuse_report_alert"
-  | "access_custom_certificate_expiration_type"
-  | "advanced_ddos_attack_l4_alert"
-  | "advanced_ddos_attack_l7_alert"
-  | "advanced_http_alert_error"
-  | "bgp_hijack_notification"
-  | "billing_usage_alert"
-  | "block_notification_block_removed"
-  | "block_notification_new_block"
-  | "block_notification_review_rejected"
-  | "bot_traffic_basic_alert"
-  | "brand_protection_alert"
-  | "brand_protection_digest"
-  | "clickhouse_alert_fw_anomaly"
-  | "clickhouse_alert_fw_ent_anomaly"
-  | "cloudforce_one_request_notification"
-  | "cni_maintenance_notification"
-  | "custom_analytics"
-  | "custom_bot_detection_alert"
-  | "custom_ssl_certificate_event_type"
-  | "dedicated_ssl_certificate_event_type"
-  | "device_connectivity_anomaly_alert"
-  | "dos_attack_l4"
-  | "dos_attack_l7"
-  | "expiring_service_token_alert"
-  | "failing_logpush_job_disabled_alert"
-  | "fbm_auto_advertisement"
-  | "fbm_dosd_attack"
-  | "fbm_volumetric_attack"
-  | "health_check_status_notification"
-  | "hostname_aop_custom_certificate_expiration_type"
-  | "http_alert_edge_error"
-  | "http_alert_origin_error"
-  | "image_notification"
-  | "image_resizing_notification"
-  | "incident_alert"
-  | "load_balancing_health_alert"
-  | "load_balancing_pool_enablement_alert"
-  | "logo_match_alert"
-  | "magic_tunnel_health_check_event"
-  | "magic_wan_tunnel_health"
-  | "maintenance_event_notification"
-  | "mtls_certificate_store_certificate_expiration_type"
-  | "pages_event_alert"
-  | "radar_notification"
-  | "real_origin_monitoring"
-  | "scriptmonitor_alert_new_code_change_detections"
-  | "scriptmonitor_alert_new_hosts"
-  | "scriptmonitor_alert_new_malicious_hosts"
-  | "scriptmonitor_alert_new_malicious_scripts"
-  | "scriptmonitor_alert_new_malicious_url"
-  | "scriptmonitor_alert_new_max_length_resource_url"
-  | "scriptmonitor_alert_new_resources"
-  | "secondary_dns_all_primaries_failing"
-  | "secondary_dns_primaries_failing"
-  | "secondary_dns_warning"
-  | "secondary_dns_zone_successfully_updated"
-  | "secondary_dns_zone_validation_warning"
-  | "security_insights_alert"
-  | "sentinel_alert"
-  | "stream_live_notifications"
-  | "synthetic_test_latency_alert"
-  | "synthetic_test_low_availability_alert"
-  | "traffic_anomalies_alert"
-  | "tunnel_health_event"
-  | "tunnel_update_event"
-  | "universal_ssl_event_type"
-  | "web_analytics_metrics_update"
-  | "zone_aop_custom_certificate_expiration_type";
-export const PoliciesGetResponseAlertType = /*@__PURE__*/ S.String;
 
 export type PoliciesGetResponseFiltersActionsList = Array<string>;
 export const PoliciesGetResponseFiltersActionsList = /*@__PURE__*/ S.Array(
@@ -1908,8 +1953,11 @@ export const PoliciesGetResponseMechanismsWebhooksList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<PoliciesGetResponseMechanismsWebhooksList>;
 
 export interface PoliciesGetResponseMechanisms {
+  /** The email address */
   email?: PoliciesGetResponseMechanismsEmailList | null;
+  /** UUID */
   pagerduty?: PoliciesGetResponseMechanismsPagerdutyList | null;
+  /** UUID */
   webhooks?: PoliciesGetResponseMechanismsWebhooksList | null;
 }
 export const PoliciesGetResponseMechanisms = /*@__PURE__*/ S.suspend(() =>
@@ -1929,7 +1977,7 @@ export interface GetPolicyResponse {
   /** Optional specification of how often to re-alert from the same incident, not support on all alert types. */
   alertInterval?: string | null;
   /** Refers to which event will trigger a Notification dispatch. You can use the endpoint to get available alert types which then will give you a list of possible values. */
-  alertType?: PoliciesGetResponseAlertType | null;
+  alertType?: string | null;
   created?: string | null;
   /** Optional description for the Notification policy. */
   description?: string | null;
@@ -1949,9 +1997,7 @@ export const GetPolicyResponse = /*@__PURE__*/ S.suspend(() =>
     alertInterval: S.optional(
       S.NullOr(S.String).pipe(T.Body("alert_interval")),
     ),
-    alertType: S.optional(
-      S.NullOr(PoliciesGetResponseAlertType).pipe(T.Body("alert_type")),
-    ),
+    alertType: S.optional(S.NullOr(S.String).pipe(T.Body("alert_type"))),
     created: S.optional(S.NullOr(S.String)),
     description: S.optional(S.NullOr(S.String)),
     enabled: S.optional(S.NullOr(S.Boolean)),
@@ -2652,6 +2698,64 @@ export const PoliciesListResultItemFiltersZonesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PoliciesListResultItemFiltersZonesList>;
 
+export type PoliciesListResultItemFiltersMechanismsEmailItem =
+  PoliciesGetResponseMechanismsEmailItem;
+export const PoliciesListResultItemFiltersMechanismsEmailItem =
+  PoliciesGetResponseMechanismsEmailItem;
+
+export type PoliciesListResultItemFiltersMechanismsEmailList =
+  Array<PoliciesGetResponseMechanismsEmailItem>;
+export const PoliciesListResultItemFiltersMechanismsEmailList =
+  /*@__PURE__*/ S.Array(
+    PoliciesGetResponseMechanismsEmailItem,
+  ) as any as S.Schema<PoliciesListResultItemFiltersMechanismsEmailList>;
+
+export type PoliciesListResultItemFiltersMechanismsPagerdutyItem =
+  PoliciesGetResponseMechanismsPagerdutyItem;
+export const PoliciesListResultItemFiltersMechanismsPagerdutyItem =
+  PoliciesGetResponseMechanismsPagerdutyItem;
+
+export type PoliciesListResultItemFiltersMechanismsPagerdutyList =
+  Array<PoliciesGetResponseMechanismsPagerdutyItem>;
+export const PoliciesListResultItemFiltersMechanismsPagerdutyList =
+  /*@__PURE__*/ S.Array(
+    PoliciesGetResponseMechanismsPagerdutyItem,
+  ) as any as S.Schema<PoliciesListResultItemFiltersMechanismsPagerdutyList>;
+
+export type PoliciesListResultItemFiltersMechanismsWebhooksItem =
+  PoliciesGetResponseMechanismsPagerdutyItem;
+export const PoliciesListResultItemFiltersMechanismsWebhooksItem =
+  PoliciesGetResponseMechanismsPagerdutyItem;
+
+export type PoliciesListResultItemFiltersMechanismsWebhooksList =
+  Array<PoliciesGetResponseMechanismsPagerdutyItem>;
+export const PoliciesListResultItemFiltersMechanismsWebhooksList =
+  /*@__PURE__*/ S.Array(
+    PoliciesGetResponseMechanismsPagerdutyItem,
+  ) as any as S.Schema<PoliciesListResultItemFiltersMechanismsWebhooksList>;
+
+export interface PoliciesListResultItemFiltersMechanisms {
+  email?: PoliciesListResultItemFiltersMechanismsEmailList | null;
+  pagerduty?: PoliciesListResultItemFiltersMechanismsPagerdutyList | null;
+  webhooks?: PoliciesListResultItemFiltersMechanismsWebhooksList | null;
+}
+export const PoliciesListResultItemFiltersMechanisms = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      email: S.optional(
+        S.NullOr(PoliciesListResultItemFiltersMechanismsEmailList),
+      ),
+      pagerduty: S.optional(
+        S.NullOr(PoliciesListResultItemFiltersMechanismsPagerdutyList),
+      ),
+      webhooks: S.optional(
+        S.NullOr(PoliciesListResultItemFiltersMechanismsWebhooksList),
+      ),
+    }),
+).annotate({
+  identifier: "PoliciesListResultItemFiltersMechanisms",
+}) as any as S.Schema<PoliciesListResultItemFiltersMechanisms>;
+
 export interface PoliciesListResultItemFilters {
   /** Usage depends on specific alert type */
   actions?: PoliciesListResultItemFiltersActionsList | null;
@@ -2739,6 +2843,12 @@ export interface PoliciesListResultItemFilters {
   where?: PoliciesListResultItemFiltersWhereList | null;
   /** Usage depends on specific alert type */
   zones?: PoliciesListResultItemFiltersZonesList | null;
+  /** List of IDs that will be used when dispatching a notification. IDs for email type will be the email address. */
+  mechanisms?: PoliciesListResultItemFiltersMechanisms | null;
+  /** formatdate-time */
+  modified?: string | null;
+  /** Name of the policy. */
+  name?: string | null;
 }
 export const PoliciesListResultItemFilters = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2901,64 +3011,13 @@ export const PoliciesListResultItemFilters = /*@__PURE__*/ S.suspend(() =>
     type: S.optional(S.NullOr(PoliciesListResultItemFiltersTypeList)),
     where: S.optional(S.NullOr(PoliciesListResultItemFiltersWhereList)),
     zones: S.optional(S.NullOr(PoliciesListResultItemFiltersZonesList)),
+    mechanisms: S.optional(S.NullOr(PoliciesListResultItemFiltersMechanisms)),
+    modified: S.optional(S.NullOr(S.String)),
+    name: S.optional(S.NullOr(S.String)),
   }),
 ).annotate({
   identifier: "PoliciesListResultItemFilters",
 }) as any as S.Schema<PoliciesListResultItemFilters>;
-
-export type PoliciesListResultItemMechanismsEmailItem =
-  PoliciesGetResponseMechanismsEmailItem;
-export const PoliciesListResultItemMechanismsEmailItem =
-  PoliciesGetResponseMechanismsEmailItem;
-
-export type PoliciesListResultItemMechanismsEmailList =
-  Array<PoliciesGetResponseMechanismsEmailItem>;
-export const PoliciesListResultItemMechanismsEmailList = /*@__PURE__*/ S.Array(
-  PoliciesGetResponseMechanismsEmailItem,
-) as any as S.Schema<PoliciesListResultItemMechanismsEmailList>;
-
-export type PoliciesListResultItemMechanismsPagerdutyItem =
-  PoliciesGetResponseMechanismsPagerdutyItem;
-export const PoliciesListResultItemMechanismsPagerdutyItem =
-  PoliciesGetResponseMechanismsPagerdutyItem;
-
-export type PoliciesListResultItemMechanismsPagerdutyList =
-  Array<PoliciesGetResponseMechanismsPagerdutyItem>;
-export const PoliciesListResultItemMechanismsPagerdutyList =
-  /*@__PURE__*/ S.Array(
-    PoliciesGetResponseMechanismsPagerdutyItem,
-  ) as any as S.Schema<PoliciesListResultItemMechanismsPagerdutyList>;
-
-export type PoliciesListResultItemMechanismsWebhooksItem =
-  PoliciesGetResponseMechanismsPagerdutyItem;
-export const PoliciesListResultItemMechanismsWebhooksItem =
-  PoliciesGetResponseMechanismsPagerdutyItem;
-
-export type PoliciesListResultItemMechanismsWebhooksList =
-  Array<PoliciesGetResponseMechanismsPagerdutyItem>;
-export const PoliciesListResultItemMechanismsWebhooksList =
-  /*@__PURE__*/ S.Array(
-    PoliciesGetResponseMechanismsPagerdutyItem,
-  ) as any as S.Schema<PoliciesListResultItemMechanismsWebhooksList>;
-
-export interface PoliciesListResultItemMechanisms {
-  email?: PoliciesListResultItemMechanismsEmailList | null;
-  pagerduty?: PoliciesListResultItemMechanismsPagerdutyList | null;
-  webhooks?: PoliciesListResultItemMechanismsWebhooksList | null;
-}
-export const PoliciesListResultItemMechanisms = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    email: S.optional(S.NullOr(PoliciesListResultItemMechanismsEmailList)),
-    pagerduty: S.optional(
-      S.NullOr(PoliciesListResultItemMechanismsPagerdutyList),
-    ),
-    webhooks: S.optional(
-      S.NullOr(PoliciesListResultItemMechanismsWebhooksList),
-    ),
-  }),
-).annotate({
-  identifier: "PoliciesListResultItemMechanisms",
-}) as any as S.Schema<PoliciesListResultItemMechanisms>;
 
 export interface PoliciesListResultItem {
   /** The unique identifier of a notification policy */
@@ -2967,6 +3026,7 @@ export interface PoliciesListResultItem {
   alertInterval?: string | null;
   /** Refers to which event will trigger a Notification dispatch. You can use the endpoint to get available alert types which then will give you a list of possible values. */
   alertType?: PoliciesListResultItemAlertType | null;
+  /** formatdate-time */
   created?: string | null;
   /** Optional description for the Notification policy. */
   description?: string | null;
@@ -2974,11 +3034,6 @@ export interface PoliciesListResultItem {
   enabled?: boolean | null;
   /** Optional filters that allow you to be alerted only on a subset of events for that alert type based on some criteria. This is only available for select alert types. See alert type documentation for more details. */
   filters?: PoliciesListResultItemFilters | null;
-  /** List of IDs that will be used when dispatching a notification. IDs for email type will be the email address. */
-  mechanisms?: PoliciesListResultItemMechanisms | null;
-  modified?: string | null;
-  /** Name of the policy. */
-  name?: string | null;
 }
 export const PoliciesListResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2993,9 +3048,6 @@ export const PoliciesListResultItem = /*@__PURE__*/ S.suspend(() =>
     description: S.optional(S.NullOr(S.String)),
     enabled: S.optional(S.NullOr(S.Boolean)),
     filters: S.optional(S.NullOr(PoliciesListResultItemFilters)),
-    mechanisms: S.optional(S.NullOr(PoliciesListResultItemMechanisms)),
-    modified: S.optional(S.NullOr(S.String)),
-    name: S.optional(S.NullOr(S.String)),
   }),
 ).annotate({
   identifier: "PoliciesListResultItem",
@@ -3456,6 +3508,60 @@ export const PoliciesUpdateRequestFiltersZonesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PoliciesUpdateRequestFiltersZonesList>;
 
+export type PoliciesUpdateRequestFiltersMechanismsEmailItem =
+  PoliciesCreateRequestMechanismsEmailItem;
+export const PoliciesUpdateRequestFiltersMechanismsEmailItem =
+  PoliciesCreateRequestMechanismsEmailItem;
+
+export type PoliciesUpdateRequestFiltersMechanismsEmailList =
+  Array<PoliciesCreateRequestMechanismsEmailItem>;
+export const PoliciesUpdateRequestFiltersMechanismsEmailList =
+  /*@__PURE__*/ S.Array(
+    PoliciesCreateRequestMechanismsEmailItem,
+  ) as any as S.Schema<PoliciesUpdateRequestFiltersMechanismsEmailList>;
+
+export type PoliciesUpdateRequestFiltersMechanismsPagerdutyItem =
+  PoliciesCreateRequestMechanismsPagerdutyItem;
+export const PoliciesUpdateRequestFiltersMechanismsPagerdutyItem =
+  PoliciesCreateRequestMechanismsPagerdutyItem;
+
+export type PoliciesUpdateRequestFiltersMechanismsPagerdutyList =
+  Array<PoliciesCreateRequestMechanismsPagerdutyItem>;
+export const PoliciesUpdateRequestFiltersMechanismsPagerdutyList =
+  /*@__PURE__*/ S.Array(
+    PoliciesCreateRequestMechanismsPagerdutyItem,
+  ) as any as S.Schema<PoliciesUpdateRequestFiltersMechanismsPagerdutyList>;
+
+export type PoliciesUpdateRequestFiltersMechanismsWebhooksItem =
+  PoliciesCreateRequestMechanismsPagerdutyItem;
+export const PoliciesUpdateRequestFiltersMechanismsWebhooksItem =
+  PoliciesCreateRequestMechanismsPagerdutyItem;
+
+export type PoliciesUpdateRequestFiltersMechanismsWebhooksList =
+  Array<PoliciesCreateRequestMechanismsPagerdutyItem>;
+export const PoliciesUpdateRequestFiltersMechanismsWebhooksList =
+  /*@__PURE__*/ S.Array(
+    PoliciesCreateRequestMechanismsPagerdutyItem,
+  ) as any as S.Schema<PoliciesUpdateRequestFiltersMechanismsWebhooksList>;
+
+export interface PoliciesUpdateRequestFiltersMechanisms {
+  email?: PoliciesUpdateRequestFiltersMechanismsEmailList;
+  pagerduty?: PoliciesUpdateRequestFiltersMechanismsPagerdutyList;
+  webhooks?: PoliciesUpdateRequestFiltersMechanismsWebhooksList;
+}
+export const PoliciesUpdateRequestFiltersMechanisms = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      email: S.optional(PoliciesUpdateRequestFiltersMechanismsEmailList),
+      pagerduty: S.optional(
+        PoliciesUpdateRequestFiltersMechanismsPagerdutyList,
+      ),
+      webhooks: S.optional(PoliciesUpdateRequestFiltersMechanismsWebhooksList),
+    }),
+).annotate({
+  identifier: "PoliciesUpdateRequestFiltersMechanisms",
+}) as any as S.Schema<PoliciesUpdateRequestFiltersMechanisms>;
+
 export interface PoliciesUpdateRequestFilters {
   /** Usage depends on specific alert type */
   actions?: PoliciesUpdateRequestFiltersActionsList;
@@ -3543,6 +3649,10 @@ export interface PoliciesUpdateRequestFilters {
   where?: PoliciesUpdateRequestFiltersWhereList;
   /** Usage depends on specific alert type */
   zones?: PoliciesUpdateRequestFiltersZonesList;
+  /** List of IDs that will be used when dispatching a notification. IDs for email type will be the email address. */
+  mechanisms?: PoliciesUpdateRequestFiltersMechanisms;
+  /** Name of the policy. */
+  name?: string;
 }
 export const PoliciesUpdateRequestFilters = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3675,60 +3785,12 @@ export const PoliciesUpdateRequestFilters = /*@__PURE__*/ S.suspend(() =>
     type: S.optional(PoliciesUpdateRequestFiltersTypeList),
     where: S.optional(PoliciesUpdateRequestFiltersWhereList),
     zones: S.optional(PoliciesUpdateRequestFiltersZonesList),
+    mechanisms: S.optional(PoliciesUpdateRequestFiltersMechanisms),
+    name: S.optional(S.String),
   }),
 ).annotate({
   identifier: "PoliciesUpdateRequestFilters",
 }) as any as S.Schema<PoliciesUpdateRequestFilters>;
-
-export type PoliciesUpdateRequestMechanismsEmailItem =
-  PoliciesCreateRequestMechanismsEmailItem;
-export const PoliciesUpdateRequestMechanismsEmailItem =
-  PoliciesCreateRequestMechanismsEmailItem;
-
-export type PoliciesUpdateRequestMechanismsEmailList =
-  Array<PoliciesCreateRequestMechanismsEmailItem>;
-export const PoliciesUpdateRequestMechanismsEmailList = /*@__PURE__*/ S.Array(
-  PoliciesCreateRequestMechanismsEmailItem,
-) as any as S.Schema<PoliciesUpdateRequestMechanismsEmailList>;
-
-export type PoliciesUpdateRequestMechanismsPagerdutyItem =
-  PoliciesCreateRequestMechanismsPagerdutyItem;
-export const PoliciesUpdateRequestMechanismsPagerdutyItem =
-  PoliciesCreateRequestMechanismsPagerdutyItem;
-
-export type PoliciesUpdateRequestMechanismsPagerdutyList =
-  Array<PoliciesCreateRequestMechanismsPagerdutyItem>;
-export const PoliciesUpdateRequestMechanismsPagerdutyList =
-  /*@__PURE__*/ S.Array(
-    PoliciesCreateRequestMechanismsPagerdutyItem,
-  ) as any as S.Schema<PoliciesUpdateRequestMechanismsPagerdutyList>;
-
-export type PoliciesUpdateRequestMechanismsWebhooksItem =
-  PoliciesCreateRequestMechanismsPagerdutyItem;
-export const PoliciesUpdateRequestMechanismsWebhooksItem =
-  PoliciesCreateRequestMechanismsPagerdutyItem;
-
-export type PoliciesUpdateRequestMechanismsWebhooksList =
-  Array<PoliciesCreateRequestMechanismsPagerdutyItem>;
-export const PoliciesUpdateRequestMechanismsWebhooksList =
-  /*@__PURE__*/ S.Array(
-    PoliciesCreateRequestMechanismsPagerdutyItem,
-  ) as any as S.Schema<PoliciesUpdateRequestMechanismsWebhooksList>;
-
-export interface PoliciesUpdateRequestMechanisms {
-  email?: PoliciesUpdateRequestMechanismsEmailList;
-  pagerduty?: PoliciesUpdateRequestMechanismsPagerdutyList;
-  webhooks?: PoliciesUpdateRequestMechanismsWebhooksList;
-}
-export const PoliciesUpdateRequestMechanisms = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    email: S.optional(PoliciesUpdateRequestMechanismsEmailList),
-    pagerduty: S.optional(PoliciesUpdateRequestMechanismsPagerdutyList),
-    webhooks: S.optional(PoliciesUpdateRequestMechanismsWebhooksList),
-  }),
-).annotate({
-  identifier: "PoliciesUpdateRequestMechanisms",
-}) as any as S.Schema<PoliciesUpdateRequestMechanisms>;
 
 export interface UpdatePolicyRequest {
   /** The account id */
@@ -3745,10 +3807,6 @@ export interface UpdatePolicyRequest {
   enabled?: boolean;
   /** Optional filters that allow you to be alerted only on a subset of events for that alert type based on some criteria. This is only available for select alert types. See alert type documentation for more details. */
   filters?: PoliciesUpdateRequestFilters;
-  /** List of IDs that will be used when dispatching a notification. IDs for email type will be the email address. */
-  mechanisms?: PoliciesUpdateRequestMechanisms;
-  /** Name of the policy. */
-  name?: string;
 }
 export const UpdatePolicyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3761,8 +3819,6 @@ export const UpdatePolicyRequest = /*@__PURE__*/ S.suspend(() =>
     description: S.optional(S.String),
     enabled: S.optional(S.Boolean),
     filters: S.optional(PoliciesUpdateRequestFilters),
-    mechanisms: S.optional(PoliciesUpdateRequestMechanisms),
-    name: S.optional(S.String),
   })
     .pipe(
       T.Http({
@@ -3835,12 +3891,46 @@ export const UpdateSilenceRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateSilenceRequest",
 }) as any as S.Schema<UpdateSilenceRequest>;
 
-export type SilencesUpdateResultItem = SilencesListResultItem;
-export const SilencesUpdateResultItem = SilencesListResultItem;
+export type SilencesUpdateResultItemStartTime = "2022-01-01T00:00:00Z";
+export const SilencesUpdateResultItemStartTime = /*@__PURE__*/ S.String;
 
-export type SilencesUpdateResultList = Array<SilencesListResultItem>;
+export interface SilencesUpdateResultItem {
+  /** Silence ID */
+  id?: string | null;
+  /** When the silence was created. */
+  createdAt?: string | null;
+  /** When the silence ends. */
+  endTime?: string | null;
+  /** The unique identifier of a notification policy */
+  policyId?: string | null;
+  /** When the silence starts. */
+  startTime?: string | null;
+  /** When the silence was modified. */
+  updatedAt?: string | null;
+  id_2: unknown;
+  end_time_2: unknown;
+  /** } */
+  start_time_2: SilencesUpdateResultItemStartTime;
+}
+export const SilencesUpdateResultItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.NullOr(S.String)),
+    createdAt: S.optional(S.NullOr(S.String).pipe(T.Body("created_at"))),
+    endTime: S.optional(S.NullOr(S.String).pipe(T.Body("end_time"))),
+    policyId: S.optional(S.NullOr(S.String).pipe(T.Body("policy_id"))),
+    startTime: S.optional(S.NullOr(S.String).pipe(T.Body("start_time"))),
+    updatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("updated_at"))),
+    id_2: S.Unknown.pipe(T.Body("id")),
+    end_time_2: S.Unknown.pipe(T.Body("end_time")),
+    start_time_2: SilencesUpdateResultItemStartTime.pipe(T.Body("start_time")),
+  }),
+).annotate({
+  identifier: "SilencesUpdateResultItem",
+}) as any as S.Schema<SilencesUpdateResultItem>;
+
+export type SilencesUpdateResultList = Array<SilencesUpdateResultItem>;
 export const SilencesUpdateResultList = /*@__PURE__*/ S.Array(
-  SilencesListResultItem,
+  SilencesUpdateResultItem,
 ) as any as S.Schema<SilencesUpdateResultList>;
 
 export interface UpdateSilenceResponse {
@@ -3929,12 +4019,12 @@ export type CreateSilenceError =
 /** Creates a new silence for an account. */
 export const createSilence: API.OperationMethod<
   CreateSilenceRequest,
-  CreateSilenceResponse,
+  SilencesCreateResponse,
   CreateSilenceError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateSilenceRequest,
-  output: CreateSilenceResponse,
+  output: SilencesCreateResponse,
   errors: [
     InvalidRoute,
     InvalidSilence,
@@ -3950,12 +4040,12 @@ export type DeleteDestinationPagerdutyError = InvalidRoute | CloudflareOpError;
 /** Deletes all the PagerDuty Services connected to the account. */
 export const deleteDestinationPagerduty: API.OperationMethod<
   DeleteDestinationPagerdutyRequest,
-  DeleteDestinationPagerdutyResponse,
+  DestinationsPagerdutyDeleteResponse,
   DeleteDestinationPagerdutyError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteDestinationPagerdutyRequest,
-  output: DeleteDestinationPagerdutyResponse,
+  output: DestinationsPagerdutyDeleteResponse,
   errors: [InvalidRoute, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -3965,12 +4055,12 @@ export type DeleteDestinationWebhookError = InvalidRoute | CloudflareOpError;
 /** Delete a configured webhook destination. */
 export const deleteDestinationWebhook: API.OperationMethod<
   DeleteDestinationWebhookRequest,
-  DeleteDestinationWebhookResponse,
+  DestinationsWebhooksDeleteResponse,
   DeleteDestinationWebhookError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteDestinationWebhookRequest,
-  output: DeleteDestinationWebhookResponse,
+  output: DestinationsWebhooksDeleteResponse,
   errors: [InvalidRoute, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -3983,12 +4073,12 @@ export type DeletePolicyError =
 /** Delete a Notification policy. */
 export const deletePolicy: API.OperationMethod<
   DeletePolicyRequest,
-  DeletePolicyResponse,
+  PoliciesDeleteResponse,
   DeletePolicyError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: DeletePolicyRequest,
-  output: DeletePolicyResponse,
+  output: PoliciesDeleteResponse,
   errors: [
     InvalidRoute,
     PolicyNotFound,
@@ -4006,12 +4096,12 @@ export type DeleteSilenceError =
 /** Deletes an existing silence for an account. */
 export const deleteSilence: API.OperationMethod<
   DeleteSilenceRequest,
-  DeleteSilenceResponse,
+  SilencesDeleteResponse,
   DeleteSilenceError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteSilenceRequest,
-  output: DeleteSilenceResponse,
+  output: SilencesDeleteResponse,
   errors: [
     InvalidRoute,
     SilenceNotFound,
@@ -4301,7 +4391,7 @@ export const updateSilence: API.PaginatedOperationMethod<
   UpdateSilenceResponse,
   UpdateSilenceError,
   CloudflareOpContext,
-  SilencesListResultItem
+  SilencesUpdateResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: UpdateSilenceRequest,

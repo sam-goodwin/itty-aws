@@ -238,9 +238,12 @@ export const ConnectionsGetResponsePageUrlsList = /*@__PURE__*/ S.Array(
 export interface GetConnectionResponse {
   /** Identifier */
   id: string;
+  /** formatdate-time */
   addedAt: string;
+  /** formatdate-time */
   firstSeenAt: string;
   host: string;
+  /** formatdate-time */
   lastSeenAt: string;
   url: string;
   urlContainsCdnCgiPath: boolean;
@@ -323,12 +326,15 @@ export const CookiesGetResponseSameSiteAttribute = /*@__PURE__*/ S.String;
 export interface GetCookyResponse {
   /** Identifier */
   id: string;
+  /** formatdate-time */
   firstSeenAt: string;
   host: string;
+  /** formatdate-time */
   lastSeenAt: string;
   name: string;
   type: CookiesGetResponseType;
   domainAttribute?: string | null;
+  /** formatdate-time */
   expiresAttribute?: string | null;
   httpOnlyAttribute?: boolean | null;
   maxAgeAttribute?: number | null;
@@ -394,11 +400,11 @@ export const GetPageShieldRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetPageShieldResponse {
-  /** When true, indicates that Page Shield is enabled. */
+  /** When true, indicates that Client-Side Security is enabled. */
   enabled: boolean;
-  /** The timestamp of when Page Shield was last updated. */
+  /** The timestamp of when Client-Side Security was last updated. */
   updatedAt: string;
-  /** When true, CSP reports will be sent to https://csp-reporting.cloudflare.com/cdn-cgi/script_monitor/report */
+  /** When true, CSP reports will be sent to <https://csp-reporting.cloudflare.com/cdn-cgi/script%5Fmonitor/report> */
   useCloudflareReportingEndpoint: boolean;
   /** When true, the paths associated with connections URLs will also be analyzed. */
   useConnectionUrlPath: boolean;
@@ -517,7 +523,7 @@ export interface ScriptsGetResponseVersionsItem {
   /** The cryptomining score of the JavaScript content. */
   cryptominingScore?: number | null;
   /** The dataflow score of the JavaScript content. This field has been deprecated in favour of js_integrity_score. */
-  dataflowScore?: number | null;
+  deprecateddataflowScore?: number | null;
   /** The timestamp of when the script was last fetched. */
   fetchedAt?: string | null;
   /** The computed hash of the analyzed script. */
@@ -529,15 +535,15 @@ export interface ScriptsGetResponseVersionsItem {
   /** The malware score of the JavaScript content. */
   malwareScore?: number | null;
   /** The obfuscation score of the JavaScript content. This field has been deprecated in favour of js_integrity_score. */
-  obfuscationScore?: number | null;
+  deprecatedobfuscationScore?: number | null;
 }
 export const ScriptsGetResponseVersionsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cryptominingScore: S.optional(
       S.NullOr(S.Number).pipe(T.Body("cryptomining_score")),
     ),
-    dataflowScore: S.optional(
-      S.NullOr(S.Number).pipe(T.Body("dataflow_score")),
+    deprecateddataflowScore: S.optional(
+      S.NullOr(S.Number).pipe(T.Body("Deprecateddataflow_score")),
     ),
     fetchedAt: S.optional(S.NullOr(S.String).pipe(T.Body("fetched_at"))),
     hash: S.optional(S.NullOr(S.String)),
@@ -548,8 +554,8 @@ export const ScriptsGetResponseVersionsItem = /*@__PURE__*/ S.suspend(() =>
       S.NullOr(S.Number).pipe(T.Body("magecart_score")),
     ),
     malwareScore: S.optional(S.NullOr(S.Number).pipe(T.Body("malware_score"))),
-    obfuscationScore: S.optional(
-      S.NullOr(S.Number).pipe(T.Body("obfuscation_score")),
+    deprecatedobfuscationScore: S.optional(
+      S.NullOr(S.Number).pipe(T.Body("Deprecatedobfuscation_score")),
     ),
   }),
 ).annotate({
@@ -566,16 +572,19 @@ export const ScriptsGetResponseVersionsList = /*@__PURE__*/ S.Array(
 export interface GetScriptResponse {
   /** Identifier */
   id: string;
+  /** formatdate-time */
   addedAt: string;
+  /** formatdate-time */
   firstSeenAt: string;
   host: string;
+  /** formatdate-time */
   lastSeenAt: string;
   url: string;
   urlContainsCdnCgiPath: boolean;
   /** The cryptomining score of the JavaScript content. */
   cryptominingScore?: number | null;
   /** The dataflow score of the JavaScript content. This field has been deprecated in favour of js_integrity_score. */
-  dataflowScore?: number | null;
+  deprecateddataflowScore?: number | null;
   domainReportedMalicious?: boolean | null;
   /** The timestamp of when the script was last fetched. */
   fetchedAt?: string | null;
@@ -591,7 +600,7 @@ export interface GetScriptResponse {
   /** The malware score of the JavaScript content. */
   malwareScore?: number | null;
   /** The obfuscation score of the JavaScript content. This field has been deprecated in favour of js_integrity_score. */
-  obfuscationScore?: number | null;
+  deprecatedobfuscationScore?: number | null;
   pageUrls?: ScriptsGetResponsePageUrlsList | null;
   urlReportedMalicious?: boolean | null;
   versions?: ScriptsGetResponseVersionsList | null;
@@ -608,8 +617,8 @@ export const GetScriptResponse = /*@__PURE__*/ S.suspend(() =>
     cryptominingScore: S.optional(
       S.NullOr(S.Number).pipe(T.Body("cryptomining_score")),
     ),
-    dataflowScore: S.optional(
-      S.NullOr(S.Number).pipe(T.Body("dataflow_score")),
+    deprecateddataflowScore: S.optional(
+      S.NullOr(S.Number).pipe(T.Body("Deprecateddataflow_score")),
     ),
     domainReportedMalicious: S.optional(
       S.NullOr(S.Boolean).pipe(T.Body("domain_reported_malicious")),
@@ -634,8 +643,8 @@ export const GetScriptResponse = /*@__PURE__*/ S.suspend(() =>
       ),
     ),
     malwareScore: S.optional(S.NullOr(S.Number).pipe(T.Body("malware_score"))),
-    obfuscationScore: S.optional(
-      S.NullOr(S.Number).pipe(T.Body("obfuscation_score")),
+    deprecatedobfuscationScore: S.optional(
+      S.NullOr(S.Number).pipe(T.Body("Deprecatedobfuscation_score")),
     ),
     pageUrls: S.optional(
       S.NullOr(ScriptsGetResponsePageUrlsList).pipe(T.Body("page_urls")),
@@ -739,9 +748,12 @@ export const ConnectionsListResultItemPageUrlsList = /*@__PURE__*/ S.Array(
 export interface ConnectionsListResultItem {
   /** Identifier */
   id: string;
+  /** formatdate-time */
   addedAt: string;
+  /** formatdate-time */
   firstSeenAt: string;
   host: string;
+  /** formatdate-time */
   lastSeenAt: string;
   url: string;
   urlContainsCdnCgiPath: boolean;
@@ -750,6 +762,7 @@ export interface ConnectionsListResultItem {
   maliciousDomainCategories?: ConnectionsListResultItemMaliciousDomainCategoriesList | null;
   maliciousUrlCategories?: ConnectionsListResultItemMaliciousUrlCategoriesList | null;
   pageUrls?: ConnectionsListResultItemPageUrlsList | null;
+  /** HTTP */
   urlReportedMalicious?: boolean | null;
 }
 export const ConnectionsListResultItem = /*@__PURE__*/ S.suspend(() =>
@@ -824,7 +837,7 @@ export const CookiesListRequestType = /*@__PURE__*/ S.String;
 export interface ListCookiesRequest {
   /** Identifier */
   zoneId: string;
-  /** The direction used to sort returned cookies.' */
+  /** The direction used to sort returned cookies.’ */
   direction?: CookiesListRequestDirection | (string & {});
   /** Filters the returned cookies that match the specified domain attribute */
   domain?: string;
@@ -834,7 +847,7 @@ export interface ListCookiesRequest {
   hosts?: string;
   /** Filters the returned cookies that are set with HttpOnly */
   httpOnly?: boolean;
-  /** Filters the returned cookies that match the specified name. */
+  /** Filters the returned cookies that match the specified name. Wildcards are supported at the start and end to support starts with, ends with and contains. e.g. session* */
   name?: string;
   /** The field used to sort returned cookies. */
   orderBy?: CookiesListRequestOrderBy | (string & {});
@@ -897,12 +910,15 @@ export const CookiesListResultItemSameSiteAttribute = /*@__PURE__*/ S.String;
 export interface CookiesListResultItem {
   /** Identifier */
   id: string;
+  /** formatdate-time */
   firstSeenAt: string;
   host: string;
+  /** formatdate-time */
   lastSeenAt: string;
   name: string;
   type: CookiesListResultItemType;
   domainAttribute?: string | null;
+  /** formatdate-time */
   expiresAttribute?: string | null;
   httpOnlyAttribute?: boolean | null;
   maxAgeAttribute?: number | null;
@@ -1059,7 +1075,7 @@ export interface ListScriptsRequest {
   direction?: ScriptsListRequestDirection | (string & {});
   /** When true, excludes scripts seen in a `/cdn-cgi` path from the returned scripts. The default value is true. */
   excludeCdnCgi?: boolean;
-  /** When true, excludes duplicate scripts. We consider a script duplicate of another if their javascript */
+  /** When true, excludes duplicate scripts. We consider a script duplicate of another if their javascript content matches and they share the same url host and zone hostname. In such case, we return the most recent script for the URL host and zone hostname combination. */
   excludeDuplicates?: boolean;
   /** Excludes scripts whose URL contains one of the URL-encoded URLs separated by commas. */
   excludeUrls?: string;
@@ -1135,16 +1151,19 @@ export const ScriptsListResultItemPageUrlsList = /*@__PURE__*/ S.Array(
 export interface ScriptsListResultItem {
   /** Identifier */
   id: string;
+  /** formatdate-time */
   addedAt: string;
+  /** formatdate-time */
   firstSeenAt: string;
   host: string;
+  /** formatdate-time */
   lastSeenAt: string;
   url: string;
   urlContainsCdnCgiPath: boolean;
   /** The cryptomining score of the JavaScript content. */
   cryptominingScore?: number | null;
   /** The dataflow score of the JavaScript content. This field has been deprecated in favour of js_integrity_score. */
-  dataflowScore?: number | null;
+  deprecateddataflowScore?: number | null;
   domainReportedMalicious?: boolean | null;
   /** The timestamp of when the script was last fetched. */
   fetchedAt?: string | null;
@@ -1160,7 +1179,7 @@ export interface ScriptsListResultItem {
   /** The malware score of the JavaScript content. */
   malwareScore?: number | null;
   /** The obfuscation score of the JavaScript content. This field has been deprecated in favour of js_integrity_score. */
-  obfuscationScore?: number | null;
+  deprecatedobfuscationScore?: number | null;
   pageUrls?: ScriptsListResultItemPageUrlsList | null;
   urlReportedMalicious?: boolean | null;
 }
@@ -1176,8 +1195,8 @@ export const ScriptsListResultItem = /*@__PURE__*/ S.suspend(() =>
     cryptominingScore: S.optional(
       S.NullOr(S.Number).pipe(T.Body("cryptomining_score")),
     ),
-    dataflowScore: S.optional(
-      S.NullOr(S.Number).pipe(T.Body("dataflow_score")),
+    deprecateddataflowScore: S.optional(
+      S.NullOr(S.Number).pipe(T.Body("Deprecateddataflow_score")),
     ),
     domainReportedMalicious: S.optional(
       S.NullOr(S.Boolean).pipe(T.Body("domain_reported_malicious")),
@@ -1202,8 +1221,8 @@ export const ScriptsListResultItem = /*@__PURE__*/ S.suspend(() =>
       ),
     ),
     malwareScore: S.optional(S.NullOr(S.Number).pipe(T.Body("malware_score"))),
-    obfuscationScore: S.optional(
-      S.NullOr(S.Number).pipe(T.Body("obfuscation_score")),
+    deprecatedobfuscationScore: S.optional(
+      S.NullOr(S.Number).pipe(T.Body("Deprecatedobfuscation_score")),
     ),
     pageUrls: S.optional(
       S.NullOr(ScriptsListResultItemPageUrlsList).pipe(T.Body("page_urls")),
@@ -1239,9 +1258,9 @@ export const ListScriptsResponse = /*@__PURE__*/ S.suspend(() =>
 export interface PutPageShieldRequest {
   /** Identifier */
   zoneId: string;
-  /** When true, indicates that Page Shield is enabled. */
+  /** When true, indicates that Client-Side Security is enabled. */
   enabled?: boolean;
-  /** When true, CSP reports will be sent to https://csp-reporting.cloudflare.com/cdn-cgi/script_monitor/report */
+  /** When true, CSP reports will be sent to <https://csp-reporting.cloudflare.com/cdn-cgi/script%5Fmonitor/report> */
   useCloudflareReportingEndpoint?: boolean;
   /** When true, the paths associated with connections URLs will also be analyzed. */
   useConnectionUrlPath?: boolean;
@@ -1267,14 +1286,18 @@ export const PutPageShieldRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface PutPageShieldResponse {
-  /** When true, indicates that Page Shield is enabled. */
+  /** When true, indicates that Client-Side Security is enabled. */
   enabled: boolean;
-  /** The timestamp of when Page Shield was last updated. */
+  /** The timestamp of when Client-Side Security was last updated. */
   updatedAt: string;
-  /** When true, CSP reports will be sent to https://csp-reporting.cloudflare.com/cdn-cgi/script_monitor/report */
+  /** When true, CSP reports will be sent to <https://csp-reporting.cloudflare.com/cdn-cgi/script%5Fmonitor/report> */
   useCloudflareReportingEndpoint: boolean;
   /** When true, the paths associated with connections URLs will also be analyzed. */
   useConnectionUrlPath: boolean;
+  enabled_2: unknown;
+  use_cloudflare_reporting_endpoint_2: unknown;
+  /** }' */
+  use_connection_url_path_2: boolean;
 }
 export const PutPageShieldResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1284,6 +1307,13 @@ export const PutPageShieldResponse = /*@__PURE__*/ S.suspend(() =>
       T.Body("use_cloudflare_reporting_endpoint"),
     ),
     useConnectionUrlPath: S.Boolean.pipe(T.Body("use_connection_url_path")),
+    enabled_2: S.Unknown.pipe(T.Body("enabled")),
+    use_cloudflare_reporting_endpoint_2: S.Unknown.pipe(
+      T.Body("use_cloudflare_reporting_endpoint"),
+    ),
+    use_connection_url_path_2: S.Boolean.pipe(
+      T.Body("use_connection_url_path"),
+    ),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PutPageShieldResponse",
@@ -1371,7 +1401,7 @@ export type CreatePolicyError =
   | PolicyQuotaExceeded
   | Forbidden
   | CloudflareOpError;
-/** Create a Page Shield policy. */
+/** Creates a rule that applies a client-side security action when its filter expression matches. */
 export const createPolicy: API.OperationMethod<
   CreatePolicyRequest,
   CreatePolicyResponse,
@@ -1391,7 +1421,7 @@ export const createPolicy: API.OperationMethod<
 }));
 
 export type DeletePolicyError = PolicyNotFound | Forbidden | CloudflareOpError;
-/** Delete a Page Shield policy by ID. */
+/** Permanently deletes a content security rule by ID. */
 export const deletePolicy: API.OperationMethod<
   DeletePolicyRequest,
   DeletePolicyResponse,
@@ -1406,7 +1436,7 @@ export const deletePolicy: API.OperationMethod<
 }));
 
 export type GetConnectionError = CloudflareOpError;
-/** Fetches a connection detected by Page Shield by connection ID. */
+/** Returns a webpage connection detected on the zone by connection ID. */
 export const getConnection: API.OperationMethod<
   GetConnectionRequest,
   GetConnectionResponse,
@@ -1421,7 +1451,7 @@ export const getConnection: API.OperationMethod<
 }));
 
 export type GetCookyError = CloudflareOpError;
-/** Fetches a cookie collected by Page Shield by cookie ID. */
+/** Returns a cookie detected on the zone by cookie ID. */
 export const getCooky: API.OperationMethod<
   GetCookyRequest,
   GetCookyResponse,
@@ -1436,7 +1466,7 @@ export const getCooky: API.OperationMethod<
 }));
 
 export type GetPageShieldError = Forbidden | CloudflareOpError;
-/** Fetches the Page Shield settings. */
+/** Returns the client-side security product enablement status and reporting behaviors. */
 export const getPageShield: API.OperationMethod<
   GetPageShieldRequest,
   GetPageShieldResponse,
@@ -1451,7 +1481,7 @@ export const getPageShield: API.OperationMethod<
 }));
 
 export type GetPolicyError = PolicyNotFound | Forbidden | CloudflareOpError;
-/** Fetches a Page Shield policy by ID. */
+/** Returns a content security rule by ID. */
 export const getPolicy: API.OperationMethod<
   GetPolicyRequest,
   GetPolicyResponse,
@@ -1466,7 +1496,7 @@ export const getPolicy: API.OperationMethod<
 }));
 
 export type GetScriptError = CloudflareOpError;
-/** Fetches a script detected by Page Shield by script ID. */
+/** Returns a script detected on the zone by script ID. */
 export const getScript: API.OperationMethod<
   GetScriptRequest,
   GetScriptResponse,
@@ -1481,7 +1511,7 @@ export const getScript: API.OperationMethod<
 }));
 
 export type ListConnectionsError = CloudflareOpError;
-/** Lists all connections detected by Page Shield. */
+/** Lists outbound connections made by webpages in the zone. */
 export const listConnections: API.PaginatedOperationMethod<
   ListConnectionsRequest,
   ListConnectionsResponse,
@@ -1501,7 +1531,7 @@ export const listConnections: API.PaginatedOperationMethod<
 ) as any;
 
 export type ListCookiesError = CloudflareOpError;
-/** Lists all cookies collected by Page Shield. */
+/** Lists cookies detected on the zone. */
 export const listCookies: API.PaginatedOperationMethod<
   ListCookiesRequest,
   ListCookiesResponse,
@@ -1521,7 +1551,7 @@ export const listCookies: API.PaginatedOperationMethod<
 ) as any;
 
 export type ListPoliciesError = Forbidden | CloudflareOpError;
-/** Lists all Page Shield policies. */
+/** Lists content security rules configured for the zone. */
 export const listPolicies: API.PaginatedOperationMethod<
   ListPoliciesRequest,
   ListPoliciesResponse,
@@ -1541,7 +1571,7 @@ export const listPolicies: API.PaginatedOperationMethod<
 ) as any;
 
 export type ListScriptsError = CloudflareOpError;
-/** Lists all scripts detected by Page Shield. */
+/** Lists scripts detected on webpages in the zone, with filtering and pagination. */
 export const listScripts: API.PaginatedOperationMethod<
   ListScriptsRequest,
   ListScriptsResponse,
@@ -1561,7 +1591,7 @@ export const listScripts: API.PaginatedOperationMethod<
 ) as any;
 
 export type PutPageShieldError = NotEntitled | Forbidden | CloudflareOpError;
-/** Updates Page Shield settings. */
+/** Updates client-side security enablement and reporting behaviors for the zone. */
 export const putPageShield: API.OperationMethod<
   PutPageShieldRequest,
   PutPageShieldResponse,
@@ -1576,7 +1606,7 @@ export const putPageShield: API.OperationMethod<
 }));
 
 export type UpdatePolicyError = PolicyNotFound | Forbidden | CloudflareOpError;
-/** Update a Page Shield policy by ID. */
+/** Updates the description, action, expression, enabled state, and policy value for a content security rule. */
 export const updatePolicy: API.OperationMethod<
   UpdatePolicyRequest,
   UpdatePolicyResponse,

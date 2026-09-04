@@ -233,13 +233,49 @@ export const BulkDeleteAdvancedTcpProtectionAllowlistsRequest =
     identifier: "BulkDeleteAdvancedTcpProtectionAllowlistsRequest",
   }) as any as S.Schema<BulkDeleteAdvancedTcpProtectionAllowlistsRequest>;
 
-export interface BulkDeleteAdvancedTcpProtectionAllowlistsResponse {}
-export const BulkDeleteAdvancedTcpProtectionAllowlistsResponse =
+export type AdvancedTcpProtectionAllowlistBulkDeleteResponsePointer = "pointer";
+export const AdvancedTcpProtectionAllowlistBulkDeleteResponsePointer =
+  /*@__PURE__*/ S.String;
+
+export type AdvancedTcpProtectionAllowlistBulkDeleteResponsePointer2 =
+  "pointer";
+export const AdvancedTcpProtectionAllowlistBulkDeleteResponsePointer2 =
+  /*@__PURE__*/ S.String;
+
+/** Raw response payload (operation does not use the standard v4 result envelope). */
+export interface AdvancedTcpProtectionAllowlistBulkDeleteResponse {
+  code: unknown;
+  message: unknown;
+  documentationUrl: unknown;
+  source: unknown;
+  /** } */
+  pointer: AdvancedTcpProtectionAllowlistBulkDeleteResponsePointer;
+  code_2: unknown;
+  message_2: unknown;
+  documentation_url_2: unknown;
+  source_2: unknown;
+  /** } */
+  pointer_2: AdvancedTcpProtectionAllowlistBulkDeleteResponsePointer2;
+}
+export const AdvancedTcpProtectionAllowlistBulkDeleteResponse =
   /*@__PURE__*/ S.suspend(() =>
-    S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+    S.Struct({
+      code: S.Unknown,
+      message: S.Unknown,
+      documentationUrl: S.Unknown.pipe(T.Body("documentation_url")),
+      source: S.Unknown,
+      pointer: AdvancedTcpProtectionAllowlistBulkDeleteResponsePointer,
+      code_2: S.Unknown.pipe(T.Body("code")),
+      message_2: S.Unknown.pipe(T.Body("message")),
+      documentation_url_2: S.Unknown.pipe(T.Body("documentation_url")),
+      source_2: S.Unknown.pipe(T.Body("source")),
+      pointer_2: AdvancedTcpProtectionAllowlistBulkDeleteResponsePointer2.pipe(
+        T.Body("pointer"),
+      ),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
-    identifier: "BulkDeleteAdvancedTcpProtectionAllowlistsResponse",
-  }) as any as S.Schema<BulkDeleteAdvancedTcpProtectionAllowlistsResponse>;
+    identifier: "AdvancedTcpProtectionAllowlistBulkDeleteResponse",
+  }) as any as S.Schema<AdvancedTcpProtectionAllowlistBulkDeleteResponse>;
 
 export interface BulkDeleteAdvancedTcpProtectionPrefixesRequest {
   /** Identifier. */
@@ -262,13 +298,48 @@ export const BulkDeleteAdvancedTcpProtectionPrefixesRequest =
     identifier: "BulkDeleteAdvancedTcpProtectionPrefixesRequest",
   }) as any as S.Schema<BulkDeleteAdvancedTcpProtectionPrefixesRequest>;
 
-export interface BulkDeleteAdvancedTcpProtectionPrefixesResponse {}
-export const BulkDeleteAdvancedTcpProtectionPrefixesResponse =
+export type AdvancedTcpProtectionPrefixesBulkDeleteResponsePointer = "pointer";
+export const AdvancedTcpProtectionPrefixesBulkDeleteResponsePointer =
+  /*@__PURE__*/ S.String;
+
+export type AdvancedTcpProtectionPrefixesBulkDeleteResponsePointer2 = "pointer";
+export const AdvancedTcpProtectionPrefixesBulkDeleteResponsePointer2 =
+  /*@__PURE__*/ S.String;
+
+/** Raw response payload (operation does not use the standard v4 result envelope). */
+export interface AdvancedTcpProtectionPrefixesBulkDeleteResponse {
+  code: unknown;
+  message: unknown;
+  documentationUrl: unknown;
+  source: unknown;
+  /** } */
+  pointer: AdvancedTcpProtectionPrefixesBulkDeleteResponsePointer;
+  code_2: unknown;
+  message_2: unknown;
+  documentation_url_2: unknown;
+  source_2: unknown;
+  /** } */
+  pointer_2: AdvancedTcpProtectionPrefixesBulkDeleteResponsePointer2;
+}
+export const AdvancedTcpProtectionPrefixesBulkDeleteResponse =
   /*@__PURE__*/ S.suspend(() =>
-    S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+    S.Struct({
+      code: S.Unknown,
+      message: S.Unknown,
+      documentationUrl: S.Unknown.pipe(T.Body("documentation_url")),
+      source: S.Unknown,
+      pointer: AdvancedTcpProtectionPrefixesBulkDeleteResponsePointer,
+      code_2: S.Unknown.pipe(T.Body("code")),
+      message_2: S.Unknown.pipe(T.Body("message")),
+      documentation_url_2: S.Unknown.pipe(T.Body("documentation_url")),
+      source_2: S.Unknown.pipe(T.Body("source")),
+      pointer_2: AdvancedTcpProtectionPrefixesBulkDeleteResponsePointer2.pipe(
+        T.Body("pointer"),
+      ),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
-    identifier: "BulkDeleteAdvancedTcpProtectionPrefixesResponse",
-  }) as any as S.Schema<BulkDeleteAdvancedTcpProtectionPrefixesResponse>;
+    identifier: "AdvancedTcpProtectionPrefixesBulkDeleteResponse",
+  }) as any as S.Schema<AdvancedTcpProtectionPrefixesBulkDeleteResponse>;
 
 export interface BulkDeleteAdvancedTcpProtectionSynProtectionFiltersRequest {
   /** Identifier. */
@@ -291,13 +362,52 @@ export const BulkDeleteAdvancedTcpProtectionSynProtectionFiltersRequest =
     identifier: "BulkDeleteAdvancedTcpProtectionSynProtectionFiltersRequest",
   }) as any as S.Schema<BulkDeleteAdvancedTcpProtectionSynProtectionFiltersRequest>;
 
-export interface BulkDeleteAdvancedTcpProtectionSynProtectionFiltersResponse {}
-export const BulkDeleteAdvancedTcpProtectionSynProtectionFiltersResponse =
+export type AdvancedTcpProtectionSynProtectionFiltersBulkDeleteResponsePointer =
+  "pointer";
+export const AdvancedTcpProtectionSynProtectionFiltersBulkDeleteResponsePointer =
+  /*@__PURE__*/ S.String;
+
+export type AdvancedTcpProtectionSynProtectionFiltersBulkDeleteResponsePointer2 =
+  "pointer";
+export const AdvancedTcpProtectionSynProtectionFiltersBulkDeleteResponsePointer2 =
+  /*@__PURE__*/ S.String;
+
+/** Raw response payload (operation does not use the standard v4 result envelope). */
+export interface AdvancedTcpProtectionSynProtectionFiltersBulkDeleteResponse {
+  code: unknown;
+  message: unknown;
+  documentationUrl: unknown;
+  source: unknown;
+  /** } */
+  pointer: AdvancedTcpProtectionSynProtectionFiltersBulkDeleteResponsePointer;
+  code_2: unknown;
+  message_2: unknown;
+  documentation_url_2: unknown;
+  source_2: unknown;
+  /** } */
+  pointer_2: AdvancedTcpProtectionSynProtectionFiltersBulkDeleteResponsePointer2;
+}
+export const AdvancedTcpProtectionSynProtectionFiltersBulkDeleteResponse =
   /*@__PURE__*/ S.suspend(() =>
-    S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+    S.Struct({
+      code: S.Unknown,
+      message: S.Unknown,
+      documentationUrl: S.Unknown.pipe(T.Body("documentation_url")),
+      source: S.Unknown,
+      pointer:
+        AdvancedTcpProtectionSynProtectionFiltersBulkDeleteResponsePointer,
+      code_2: S.Unknown.pipe(T.Body("code")),
+      message_2: S.Unknown.pipe(T.Body("message")),
+      documentation_url_2: S.Unknown.pipe(T.Body("documentation_url")),
+      source_2: S.Unknown.pipe(T.Body("source")),
+      pointer_2:
+        AdvancedTcpProtectionSynProtectionFiltersBulkDeleteResponsePointer2.pipe(
+          T.Body("pointer"),
+        ),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
-    identifier: "BulkDeleteAdvancedTcpProtectionSynProtectionFiltersResponse",
-  }) as any as S.Schema<BulkDeleteAdvancedTcpProtectionSynProtectionFiltersResponse>;
+    identifier: "AdvancedTcpProtectionSynProtectionFiltersBulkDeleteResponse",
+  }) as any as S.Schema<AdvancedTcpProtectionSynProtectionFiltersBulkDeleteResponse>;
 
 export interface BulkDeleteAdvancedTcpProtectionSynProtectionRulesRequest {
   /** Identifier. */
@@ -320,13 +430,51 @@ export const BulkDeleteAdvancedTcpProtectionSynProtectionRulesRequest =
     identifier: "BulkDeleteAdvancedTcpProtectionSynProtectionRulesRequest",
   }) as any as S.Schema<BulkDeleteAdvancedTcpProtectionSynProtectionRulesRequest>;
 
-export interface BulkDeleteAdvancedTcpProtectionSynProtectionRulesResponse {}
-export const BulkDeleteAdvancedTcpProtectionSynProtectionRulesResponse =
+export type AdvancedTcpProtectionSynProtectionRulesBulkDeleteResponsePointer =
+  "pointer";
+export const AdvancedTcpProtectionSynProtectionRulesBulkDeleteResponsePointer =
+  /*@__PURE__*/ S.String;
+
+export type AdvancedTcpProtectionSynProtectionRulesBulkDeleteResponsePointer2 =
+  "pointer";
+export const AdvancedTcpProtectionSynProtectionRulesBulkDeleteResponsePointer2 =
+  /*@__PURE__*/ S.String;
+
+/** Raw response payload (operation does not use the standard v4 result envelope). */
+export interface AdvancedTcpProtectionSynProtectionRulesBulkDeleteResponse {
+  code: unknown;
+  message: unknown;
+  documentationUrl: unknown;
+  source: unknown;
+  /** } */
+  pointer: AdvancedTcpProtectionSynProtectionRulesBulkDeleteResponsePointer;
+  code_2: unknown;
+  message_2: unknown;
+  documentation_url_2: unknown;
+  source_2: unknown;
+  /** } */
+  pointer_2: AdvancedTcpProtectionSynProtectionRulesBulkDeleteResponsePointer2;
+}
+export const AdvancedTcpProtectionSynProtectionRulesBulkDeleteResponse =
   /*@__PURE__*/ S.suspend(() =>
-    S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+    S.Struct({
+      code: S.Unknown,
+      message: S.Unknown,
+      documentationUrl: S.Unknown.pipe(T.Body("documentation_url")),
+      source: S.Unknown,
+      pointer: AdvancedTcpProtectionSynProtectionRulesBulkDeleteResponsePointer,
+      code_2: S.Unknown.pipe(T.Body("code")),
+      message_2: S.Unknown.pipe(T.Body("message")),
+      documentation_url_2: S.Unknown.pipe(T.Body("documentation_url")),
+      source_2: S.Unknown.pipe(T.Body("source")),
+      pointer_2:
+        AdvancedTcpProtectionSynProtectionRulesBulkDeleteResponsePointer2.pipe(
+          T.Body("pointer"),
+        ),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
-    identifier: "BulkDeleteAdvancedTcpProtectionSynProtectionRulesResponse",
-  }) as any as S.Schema<BulkDeleteAdvancedTcpProtectionSynProtectionRulesResponse>;
+    identifier: "AdvancedTcpProtectionSynProtectionRulesBulkDeleteResponse",
+  }) as any as S.Schema<AdvancedTcpProtectionSynProtectionRulesBulkDeleteResponse>;
 
 export interface BulkDeleteAdvancedTcpProtectionTcpFlowProtectionFiltersRequest {
   /** Identifier. */
@@ -350,14 +498,53 @@ export const BulkDeleteAdvancedTcpProtectionTcpFlowProtectionFiltersRequest =
       "BulkDeleteAdvancedTcpProtectionTcpFlowProtectionFiltersRequest",
   }) as any as S.Schema<BulkDeleteAdvancedTcpProtectionTcpFlowProtectionFiltersRequest>;
 
-export interface BulkDeleteAdvancedTcpProtectionTcpFlowProtectionFiltersResponse {}
-export const BulkDeleteAdvancedTcpProtectionTcpFlowProtectionFiltersResponse =
+export type AdvancedTcpProtectionTcpFlowProtectionFiltersBulkDeleteResponsePointer =
+  "pointer";
+export const AdvancedTcpProtectionTcpFlowProtectionFiltersBulkDeleteResponsePointer =
+  /*@__PURE__*/ S.String;
+
+export type AdvancedTcpProtectionTcpFlowProtectionFiltersBulkDeleteResponsePointer2 =
+  "pointer";
+export const AdvancedTcpProtectionTcpFlowProtectionFiltersBulkDeleteResponsePointer2 =
+  /*@__PURE__*/ S.String;
+
+/** Raw response payload (operation does not use the standard v4 result envelope). */
+export interface AdvancedTcpProtectionTcpFlowProtectionFiltersBulkDeleteResponse {
+  code: unknown;
+  message: unknown;
+  documentationUrl: unknown;
+  source: unknown;
+  /** } */
+  pointer: AdvancedTcpProtectionTcpFlowProtectionFiltersBulkDeleteResponsePointer;
+  code_2: unknown;
+  message_2: unknown;
+  documentation_url_2: unknown;
+  source_2: unknown;
+  /** } */
+  pointer_2: AdvancedTcpProtectionTcpFlowProtectionFiltersBulkDeleteResponsePointer2;
+}
+export const AdvancedTcpProtectionTcpFlowProtectionFiltersBulkDeleteResponse =
   /*@__PURE__*/ S.suspend(() =>
-    S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+    S.Struct({
+      code: S.Unknown,
+      message: S.Unknown,
+      documentationUrl: S.Unknown.pipe(T.Body("documentation_url")),
+      source: S.Unknown,
+      pointer:
+        AdvancedTcpProtectionTcpFlowProtectionFiltersBulkDeleteResponsePointer,
+      code_2: S.Unknown.pipe(T.Body("code")),
+      message_2: S.Unknown.pipe(T.Body("message")),
+      documentation_url_2: S.Unknown.pipe(T.Body("documentation_url")),
+      source_2: S.Unknown.pipe(T.Body("source")),
+      pointer_2:
+        AdvancedTcpProtectionTcpFlowProtectionFiltersBulkDeleteResponsePointer2.pipe(
+          T.Body("pointer"),
+        ),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier:
-      "BulkDeleteAdvancedTcpProtectionTcpFlowProtectionFiltersResponse",
-  }) as any as S.Schema<BulkDeleteAdvancedTcpProtectionTcpFlowProtectionFiltersResponse>;
+      "AdvancedTcpProtectionTcpFlowProtectionFiltersBulkDeleteResponse",
+  }) as any as S.Schema<AdvancedTcpProtectionTcpFlowProtectionFiltersBulkDeleteResponse>;
 
 export interface BulkDeleteAdvancedTcpProtectionTcpFlowProtectionRulesRequest {
   /** Identifier. */
@@ -380,13 +567,52 @@ export const BulkDeleteAdvancedTcpProtectionTcpFlowProtectionRulesRequest =
     identifier: "BulkDeleteAdvancedTcpProtectionTcpFlowProtectionRulesRequest",
   }) as any as S.Schema<BulkDeleteAdvancedTcpProtectionTcpFlowProtectionRulesRequest>;
 
-export interface BulkDeleteAdvancedTcpProtectionTcpFlowProtectionRulesResponse {}
-export const BulkDeleteAdvancedTcpProtectionTcpFlowProtectionRulesResponse =
+export type AdvancedTcpProtectionTcpFlowProtectionRulesBulkDeleteResponsePointer =
+  "pointer";
+export const AdvancedTcpProtectionTcpFlowProtectionRulesBulkDeleteResponsePointer =
+  /*@__PURE__*/ S.String;
+
+export type AdvancedTcpProtectionTcpFlowProtectionRulesBulkDeleteResponsePointer2 =
+  "pointer";
+export const AdvancedTcpProtectionTcpFlowProtectionRulesBulkDeleteResponsePointer2 =
+  /*@__PURE__*/ S.String;
+
+/** Raw response payload (operation does not use the standard v4 result envelope). */
+export interface AdvancedTcpProtectionTcpFlowProtectionRulesBulkDeleteResponse {
+  code: unknown;
+  message: unknown;
+  documentationUrl: unknown;
+  source: unknown;
+  /** } */
+  pointer: AdvancedTcpProtectionTcpFlowProtectionRulesBulkDeleteResponsePointer;
+  code_2: unknown;
+  message_2: unknown;
+  documentation_url_2: unknown;
+  source_2: unknown;
+  /** } */
+  pointer_2: AdvancedTcpProtectionTcpFlowProtectionRulesBulkDeleteResponsePointer2;
+}
+export const AdvancedTcpProtectionTcpFlowProtectionRulesBulkDeleteResponse =
   /*@__PURE__*/ S.suspend(() =>
-    S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+    S.Struct({
+      code: S.Unknown,
+      message: S.Unknown,
+      documentationUrl: S.Unknown.pipe(T.Body("documentation_url")),
+      source: S.Unknown,
+      pointer:
+        AdvancedTcpProtectionTcpFlowProtectionRulesBulkDeleteResponsePointer,
+      code_2: S.Unknown.pipe(T.Body("code")),
+      message_2: S.Unknown.pipe(T.Body("message")),
+      documentation_url_2: S.Unknown.pipe(T.Body("documentation_url")),
+      source_2: S.Unknown.pipe(T.Body("source")),
+      pointer_2:
+        AdvancedTcpProtectionTcpFlowProtectionRulesBulkDeleteResponsePointer2.pipe(
+          T.Body("pointer"),
+        ),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
-    identifier: "BulkDeleteAdvancedTcpProtectionTcpFlowProtectionRulesResponse",
-  }) as any as S.Schema<BulkDeleteAdvancedTcpProtectionTcpFlowProtectionRulesResponse>;
+    identifier: "AdvancedTcpProtectionTcpFlowProtectionRulesBulkDeleteResponse",
+  }) as any as S.Schema<AdvancedTcpProtectionTcpFlowProtectionRulesBulkDeleteResponse>;
 
 export interface CreateAdvancedTcpProtectionAllowlistRequest {
   /** Identifier. */
@@ -418,6 +644,10 @@ export const CreateAdvancedTcpProtectionAllowlistRequest =
     identifier: "CreateAdvancedTcpProtectionAllowlistRequest",
   }) as any as S.Schema<CreateAdvancedTcpProtectionAllowlistRequest>;
 
+export type AdvancedTcpProtectionAllowlistCreateResponsePrefix = "prefix";
+export const AdvancedTcpProtectionAllowlistCreateResponsePrefix =
+  /*@__PURE__*/ S.String;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateAdvancedTcpProtectionAllowlistResponse {
   /** The unique ID of the allowlist prefix. */
@@ -432,6 +662,10 @@ export interface CreateAdvancedTcpProtectionAllowlistResponse {
   modifiedOn: string;
   /** The allowlist prefix in CIDR format. */
   prefix: string;
+  comment_2: unknown;
+  enabled_2: unknown;
+  /** }' */
+  prefix_2: AdvancedTcpProtectionAllowlistCreateResponsePrefix;
 }
 export const CreateAdvancedTcpProtectionAllowlistResponse =
   /*@__PURE__*/ S.suspend(() =>
@@ -442,6 +676,11 @@ export const CreateAdvancedTcpProtectionAllowlistResponse =
       enabled: S.Boolean,
       modifiedOn: S.String.pipe(T.Body("modified_on")),
       prefix: S.String,
+      comment_2: S.Unknown.pipe(T.Body("comment")),
+      enabled_2: S.Unknown.pipe(T.Body("enabled")),
+      prefix_2: AdvancedTcpProtectionAllowlistCreateResponsePrefix.pipe(
+        T.Body("prefix"),
+      ),
     }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "CreateAdvancedTcpProtectionAllowlistResponse",
@@ -477,6 +716,10 @@ export const CreateAdvancedTcpProtectionPrefixRequest = /*@__PURE__*/ S.suspend(
   identifier: "CreateAdvancedTcpProtectionPrefixRequest",
 }) as any as S.Schema<CreateAdvancedTcpProtectionPrefixRequest>;
 
+export type AdvancedTcpProtectionPrefixesCreateResponsePrefix = "192.0.2.0/24";
+export const AdvancedTcpProtectionPrefixesCreateResponsePrefix =
+  /*@__PURE__*/ S.String;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateAdvancedTcpProtectionPrefixResponse {
   /** The unique ID of the prefix. */
@@ -491,6 +734,10 @@ export interface CreateAdvancedTcpProtectionPrefixResponse {
   modifiedOn: string;
   /** The prefix in CIDR format. */
   prefix: string;
+  comment_2: unknown;
+  excluded_2: unknown;
+  /** }' */
+  prefix_2: AdvancedTcpProtectionPrefixesCreateResponsePrefix;
 }
 export const CreateAdvancedTcpProtectionPrefixResponse =
   /*@__PURE__*/ S.suspend(() =>
@@ -501,6 +748,11 @@ export const CreateAdvancedTcpProtectionPrefixResponse =
       excluded: S.Boolean,
       modifiedOn: S.String.pipe(T.Body("modified_on")),
       prefix: S.String,
+      comment_2: S.Unknown.pipe(T.Body("comment")),
+      excluded_2: S.Unknown.pipe(T.Body("excluded")),
+      prefix_2: AdvancedTcpProtectionPrefixesCreateResponsePrefix.pipe(
+        T.Body("prefix"),
+      ),
     }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "CreateAdvancedTcpProtectionPrefixResponse",
@@ -511,7 +763,7 @@ export interface CreateAdvancedTcpProtectionSynProtectionFilterRequest {
   accountId: string;
   /** The filter expression. */
   expression: string;
-  /** The filter's mode. Must be one of 'enabled', 'disabled', 'monitoring'. */
+  /** The filter’s mode. Must be one of ‘enabled’, ‘disabled’, ‘monitoring’. */
   mode: string;
 }
 export const CreateAdvancedTcpProtectionSynProtectionFilterRequest =
@@ -533,6 +785,11 @@ export const CreateAdvancedTcpProtectionSynProtectionFilterRequest =
     identifier: "CreateAdvancedTcpProtectionSynProtectionFilterRequest",
   }) as any as S.Schema<CreateAdvancedTcpProtectionSynProtectionFilterRequest>;
 
+export type AdvancedTcpProtectionSynProtectionFiltersCreateResponseMode =
+  "mode";
+export const AdvancedTcpProtectionSynProtectionFiltersCreateResponseMode =
+  /*@__PURE__*/ S.String;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateAdvancedTcpProtectionSynProtectionFilterResponse {
   /** The unique ID of the expression filter. */
@@ -541,10 +798,13 @@ export interface CreateAdvancedTcpProtectionSynProtectionFilterResponse {
   createdOn: string;
   /** The filter expression. */
   expression: string;
-  /** The filter's mode. Must be one of 'enabled', 'disabled', 'monitoring'. */
+  /** The filter’s mode. Must be one of ‘enabled’, ‘disabled’, ‘monitoring’. */
   mode: string;
   /** The last modification timestamp of the expression filter. */
   modifiedOn: string;
+  expression_2: unknown;
+  /** }' */
+  mode_2: AdvancedTcpProtectionSynProtectionFiltersCreateResponseMode;
 }
 export const CreateAdvancedTcpProtectionSynProtectionFilterResponse =
   /*@__PURE__*/ S.suspend(() =>
@@ -554,6 +814,10 @@ export const CreateAdvancedTcpProtectionSynProtectionFilterResponse =
       expression: S.String,
       mode: S.String,
       modifiedOn: S.String.pipe(T.Body("modified_on")),
+      expression_2: S.Unknown.pipe(T.Body("expression")),
+      mode_2: AdvancedTcpProtectionSynProtectionFiltersCreateResponseMode.pipe(
+        T.Body("mode"),
+      ),
     }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "CreateAdvancedTcpProtectionSynProtectionFilterResponse",
@@ -562,17 +826,17 @@ export const CreateAdvancedTcpProtectionSynProtectionFilterResponse =
 export interface CreateAdvancedTcpProtectionSynProtectionRuleRequest {
   /** Identifier. */
   accountId: string;
-  /** The burst sensitivity. Must be one of 'low', 'medium', 'high'. */
+  /** The burst sensitivity. Must be one of ‘low’, ‘medium’, ‘high’. */
   burstSensitivity: string;
-  /** The mode for SYN Protection. Must be one of 'enabled', 'disabled', 'monitoring'. */
+  /** The mode for SYN Protection. Must be one of ‘enabled’, ‘disabled’, ‘monitoring’. */
   mode: string;
-  /** The name of the SYN Protection rule. Value is relative to the 'scope' setting. For 'global' scope, name should be 'global'. For either the 'region' or 'datacenter' scope, name should be the actual name of the region or datacenter, e.g., 'wnam' or 'lax'. */
+  /** The name of the SYN Protection rule. Value is relative to the ‘scope’ setting. For ‘global’ scope, name should be ‘global’. For either the ‘region’ or ‘datacenter’ scope, name should be the actual name of the region or datacenter, e.g., ‘wnam’ or ‘lax’. */
   name: string;
-  /** The rate sensitivity. Must be one of 'low', 'medium', 'high'. */
+  /** The rate sensitivity. Must be one of ‘low’, ‘medium’, ‘high’. */
   rateSensitivity: string;
-  /** The scope for the SYN Protection rule. Must be one of 'global', 'region', or 'datacenter'. */
+  /** The scope for the SYN Protection rule. Must be one of ‘global’, ‘region’, or ‘datacenter’. */
   scope: string;
-  /** The type of mitigation. Must be one of 'challenge' or 'retransmit'. Optional. Defaults to 'challenge'. */
+  /** The type of mitigation. Must be one of ‘challenge’ or ‘retransmit’. Optional. Defaults to ‘challenge’. */
   mitigationType?: string;
 }
 export const CreateAdvancedTcpProtectionSynProtectionRuleRequest =
@@ -598,26 +862,37 @@ export const CreateAdvancedTcpProtectionSynProtectionRuleRequest =
     identifier: "CreateAdvancedTcpProtectionSynProtectionRuleRequest",
   }) as any as S.Schema<CreateAdvancedTcpProtectionSynProtectionRuleRequest>;
 
+export type AdvancedTcpProtectionSynProtectionRulesCreateResponseScope =
+  "scope";
+export const AdvancedTcpProtectionSynProtectionRulesCreateResponseScope =
+  /*@__PURE__*/ S.String;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateAdvancedTcpProtectionSynProtectionRuleResponse {
   /** The unique ID of the SYN Protection rule. */
   id: string;
-  /** The burst sensitivity. Must be one of 'low', 'medium', 'high'. */
+  /** The burst sensitivity. Must be one of ‘low’, ‘medium’, ‘high’. */
   burstSensitivity: string;
   /** The creation timestamp of the SYN Protection rule. */
   createdOn: string;
-  /** The type of mitigation for SYN Protection. Must be one of 'challenge' or 'retransmit'. */
+  /** The type of mitigation for SYN Protection. Must be one of ‘challenge’ or ‘retransmit’. */
   mitigationType: string;
-  /** The mode for SYN Protection. Must be one of 'enabled', 'disabled', 'monitoring'. */
+  /** The mode for SYN Protection. Must be one of ‘enabled’, ‘disabled’, ‘monitoring’. */
   mode: string;
   /** The last modification timestamp of the SYN Protection rule. */
   modifiedOn: string;
-  /** The name of the SYN Protection rule. Value is relative to the 'scope' setting. For 'global' scope, name should be 'global'. For either the 'region' or 'datacenter' scope, name should be the actual name of the region or datacenter, e.g., 'wnam' or 'lax'. */
+  /** The name of the SYN Protection rule. Value is relative to the ‘scope’ setting. For ‘global’ scope, name should be ‘global’. For either the ‘region’ or ‘datacenter’ scope, name should be the actual name of the region or datacenter, e.g., ‘wnam’ or ‘lax’. */
   name: string;
-  /** The rate sensitivity. Must be one of 'low', 'medium', 'high'. */
+  /** The rate sensitivity. Must be one of ‘low’, ‘medium’, ‘high’. */
   rateSensitivity: string;
-  /** The scope for the SYN Protection rule. Must be one of 'global', 'region', or 'datacenter'. */
+  /** The scope for the SYN Protection rule. Must be one of ‘global’, ‘region’, or ‘datacenter’. */
   scope: string;
+  burst_sensitivity_2: unknown;
+  mode_2: unknown;
+  name_2: unknown;
+  rate_sensitivity_2: unknown;
+  /** }' */
+  scope_2: AdvancedTcpProtectionSynProtectionRulesCreateResponseScope;
 }
 export const CreateAdvancedTcpProtectionSynProtectionRuleResponse =
   /*@__PURE__*/ S.suspend(() =>
@@ -631,6 +906,13 @@ export const CreateAdvancedTcpProtectionSynProtectionRuleResponse =
       name: S.String,
       rateSensitivity: S.String.pipe(T.Body("rate_sensitivity")),
       scope: S.String,
+      burst_sensitivity_2: S.Unknown.pipe(T.Body("burst_sensitivity")),
+      mode_2: S.Unknown.pipe(T.Body("mode")),
+      name_2: S.Unknown.pipe(T.Body("name")),
+      rate_sensitivity_2: S.Unknown.pipe(T.Body("rate_sensitivity")),
+      scope_2: AdvancedTcpProtectionSynProtectionRulesCreateResponseScope.pipe(
+        T.Body("scope"),
+      ),
     }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "CreateAdvancedTcpProtectionSynProtectionRuleResponse",
@@ -641,7 +923,7 @@ export interface CreateAdvancedTcpProtectionTcpFlowProtectionFilterRequest {
   accountId: string;
   /** The filter expression. */
   expression: string;
-  /** The filter's mode. Must be one of 'enabled', 'disabled', 'monitoring'. */
+  /** The filter’s mode. Must be one of ‘enabled’, ‘disabled’, ‘monitoring’. */
   mode: string;
 }
 export const CreateAdvancedTcpProtectionTcpFlowProtectionFilterRequest =
@@ -663,6 +945,11 @@ export const CreateAdvancedTcpProtectionTcpFlowProtectionFilterRequest =
     identifier: "CreateAdvancedTcpProtectionTcpFlowProtectionFilterRequest",
   }) as any as S.Schema<CreateAdvancedTcpProtectionTcpFlowProtectionFilterRequest>;
 
+export type AdvancedTcpProtectionTcpFlowProtectionFiltersCreateResponseMode =
+  "mode";
+export const AdvancedTcpProtectionTcpFlowProtectionFiltersCreateResponseMode =
+  /*@__PURE__*/ S.String;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateAdvancedTcpProtectionTcpFlowProtectionFilterResponse {
   /** The unique ID of the expression filter. */
@@ -671,10 +958,13 @@ export interface CreateAdvancedTcpProtectionTcpFlowProtectionFilterResponse {
   createdOn: string;
   /** The filter expression. */
   expression: string;
-  /** The filter's mode. Must be one of 'enabled', 'disabled', 'monitoring'. */
+  /** The filter’s mode. Must be one of ‘enabled’, ‘disabled’, ‘monitoring’. */
   mode: string;
   /** The last modification timestamp of the expression filter. */
   modifiedOn: string;
+  expression_2: unknown;
+  /** }' */
+  mode_2: AdvancedTcpProtectionTcpFlowProtectionFiltersCreateResponseMode;
 }
 export const CreateAdvancedTcpProtectionTcpFlowProtectionFilterResponse =
   /*@__PURE__*/ S.suspend(() =>
@@ -684,6 +974,11 @@ export const CreateAdvancedTcpProtectionTcpFlowProtectionFilterResponse =
       expression: S.String,
       mode: S.String,
       modifiedOn: S.String.pipe(T.Body("modified_on")),
+      expression_2: S.Unknown.pipe(T.Body("expression")),
+      mode_2:
+        AdvancedTcpProtectionTcpFlowProtectionFiltersCreateResponseMode.pipe(
+          T.Body("mode"),
+        ),
     }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "CreateAdvancedTcpProtectionTcpFlowProtectionFilterResponse",
@@ -692,13 +987,13 @@ export const CreateAdvancedTcpProtectionTcpFlowProtectionFilterResponse =
 export interface CreateAdvancedTcpProtectionTcpFlowProtectionRuleRequest {
   /** Identifier. */
   accountId: string;
-  /** The burst sensitivity. Must be one of 'low', 'medium', 'high'. */
+  /** The burst sensitivity. Must be one of ‘low’, ‘medium’, ‘high’. */
   burstSensitivity: string;
-  /** The mode for the TCP Flow Protection. Must be one of 'enabled', 'disabled', 'monitoring'. */
+  /** The mode for the TCP Flow Protection. Must be one of ‘enabled’, ‘disabled’, ‘monitoring’. */
   mode: string;
-  /** The name of the TCP Flow Protection rule. Value is relative to the 'scope' setting. For 'global' scope, name should be 'global'. For either the 'region' or 'datacenter' scope, name should be the actual name of the region or datacenter, e.g., 'wnam' or 'lax'. */
+  /** The name of the TCP Flow Protection rule. Value is relative to the ‘scope’ setting. For ‘global’ scope, name should be ‘global’. For either the ‘region’ or ‘datacenter’ scope, name should be the actual name of the region or datacenter, e.g., ‘wnam’ or ‘lax’. */
   name: string;
-  /** The rate sensitivity. Must be one of 'low', 'medium', 'high'. */
+  /** The rate sensitivity. Must be one of ‘low’, ‘medium’, ‘high’. */
   rateSensitivity: string;
   /** The scope for the TCP Flow Protection rule. */
   scope: string;
@@ -725,24 +1020,35 @@ export const CreateAdvancedTcpProtectionTcpFlowProtectionRuleRequest =
     identifier: "CreateAdvancedTcpProtectionTcpFlowProtectionRuleRequest",
   }) as any as S.Schema<CreateAdvancedTcpProtectionTcpFlowProtectionRuleRequest>;
 
+export type AdvancedTcpProtectionTcpFlowProtectionRulesCreateResponseScope =
+  "scope";
+export const AdvancedTcpProtectionTcpFlowProtectionRulesCreateResponseScope =
+  /*@__PURE__*/ S.String;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateAdvancedTcpProtectionTcpFlowProtectionRuleResponse {
   /** The unique ID of the TCP Flow Protection rule. */
   id: string;
-  /** The burst sensitivity. Must be one of 'low', 'medium', 'high'. */
+  /** The burst sensitivity. Must be one of ‘low’, ‘medium’, ‘high’. */
   burstSensitivity: string;
   /** The creation timestamp of the TCP Flow Protection rule. */
   createdOn: string;
-  /** The mode for TCP Flow Protection. Must be one of 'enabled', 'disabled', 'monitoring'. */
+  /** The mode for TCP Flow Protection. Must be one of ‘enabled’, ‘disabled’, ‘monitoring’. */
   mode: string;
   /** The last modification timestamp of the TCP Flow Protection rule. */
   modifiedOn: string;
-  /** The name of the TCP Flow Protection rule. Value is relative to the 'scope' setting. For 'global' scope, name should be 'global'. For either the 'region' or 'datacenter' scope, name should be the actual name of the region or datacenter, e.g., 'wnam' or 'lax'. */
+  /** The name of the TCP Flow Protection rule. Value is relative to the ‘scope’ setting. For ‘global’ scope, name should be ‘global’. For either the ‘region’ or ‘datacenter’ scope, name should be the actual name of the region or datacenter, e.g., ‘wnam’ or ‘lax’. */
   name: string;
-  /** The rate sensitivity. Must be one of 'low', 'medium', 'high'. */
+  /** The rate sensitivity. Must be one of ‘low’, ‘medium’, ‘high’. */
   rateSensitivity: string;
-  /** The scope for the TCP Flow Protection rule. Must be one of 'global', 'region', or 'datacenter'. */
+  /** The scope for the TCP Flow Protection rule. Must be one of ‘global’, ‘region’, or ‘datacenter’. */
   scope: string;
+  burst_sensitivity_2: unknown;
+  mode_2: unknown;
+  name_2: unknown;
+  rate_sensitivity_2: unknown;
+  /** }' */
+  scope_2: AdvancedTcpProtectionTcpFlowProtectionRulesCreateResponseScope;
 }
 export const CreateAdvancedTcpProtectionTcpFlowProtectionRuleResponse =
   /*@__PURE__*/ S.suspend(() =>
@@ -755,6 +1061,14 @@ export const CreateAdvancedTcpProtectionTcpFlowProtectionRuleResponse =
       name: S.String,
       rateSensitivity: S.String.pipe(T.Body("rate_sensitivity")),
       scope: S.String,
+      burst_sensitivity_2: S.Unknown.pipe(T.Body("burst_sensitivity")),
+      mode_2: S.Unknown.pipe(T.Body("mode")),
+      name_2: S.Unknown.pipe(T.Body("name")),
+      rate_sensitivity_2: S.Unknown.pipe(T.Body("rate_sensitivity")),
+      scope_2:
+        AdvancedTcpProtectionTcpFlowProtectionRulesCreateResponseScope.pipe(
+          T.Body("scope"),
+        ),
     }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "CreateAdvancedTcpProtectionTcpFlowProtectionRuleResponse",
@@ -784,13 +1098,50 @@ export const DeleteAdvancedTcpProtectionAllowlistItemRequest =
     identifier: "DeleteAdvancedTcpProtectionAllowlistItemRequest",
   }) as any as S.Schema<DeleteAdvancedTcpProtectionAllowlistItemRequest>;
 
-export interface DeleteAdvancedTcpProtectionAllowlistItemResponse {}
-export const DeleteAdvancedTcpProtectionAllowlistItemResponse =
+export type AdvancedTcpProtectionAllowlistItemsDeleteResponsePointer =
+  "pointer";
+export const AdvancedTcpProtectionAllowlistItemsDeleteResponsePointer =
+  /*@__PURE__*/ S.String;
+
+export type AdvancedTcpProtectionAllowlistItemsDeleteResponsePointer2 =
+  "pointer";
+export const AdvancedTcpProtectionAllowlistItemsDeleteResponsePointer2 =
+  /*@__PURE__*/ S.String;
+
+/** Raw response payload (operation does not use the standard v4 result envelope). */
+export interface AdvancedTcpProtectionAllowlistItemsDeleteResponse {
+  code: unknown;
+  message: unknown;
+  documentationUrl: unknown;
+  source: unknown;
+  /** } */
+  pointer: AdvancedTcpProtectionAllowlistItemsDeleteResponsePointer;
+  code_2: unknown;
+  message_2: unknown;
+  documentation_url_2: unknown;
+  source_2: unknown;
+  /** } */
+  pointer_2: AdvancedTcpProtectionAllowlistItemsDeleteResponsePointer2;
+}
+export const AdvancedTcpProtectionAllowlistItemsDeleteResponse =
   /*@__PURE__*/ S.suspend(() =>
-    S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+    S.Struct({
+      code: S.Unknown,
+      message: S.Unknown,
+      documentationUrl: S.Unknown.pipe(T.Body("documentation_url")),
+      source: S.Unknown,
+      pointer: AdvancedTcpProtectionAllowlistItemsDeleteResponsePointer,
+      code_2: S.Unknown.pipe(T.Body("code")),
+      message_2: S.Unknown.pipe(T.Body("message")),
+      documentation_url_2: S.Unknown.pipe(T.Body("documentation_url")),
+      source_2: S.Unknown.pipe(T.Body("source")),
+      pointer_2: AdvancedTcpProtectionAllowlistItemsDeleteResponsePointer2.pipe(
+        T.Body("pointer"),
+      ),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
-    identifier: "DeleteAdvancedTcpProtectionAllowlistItemResponse",
-  }) as any as S.Schema<DeleteAdvancedTcpProtectionAllowlistItemResponse>;
+    identifier: "AdvancedTcpProtectionAllowlistItemsDeleteResponse",
+  }) as any as S.Schema<AdvancedTcpProtectionAllowlistItemsDeleteResponse>;
 
 export interface DeleteAdvancedTcpProtectionPrefixItemRequest {
   /** Identifier. */
@@ -816,13 +1167,49 @@ export const DeleteAdvancedTcpProtectionPrefixItemRequest =
     identifier: "DeleteAdvancedTcpProtectionPrefixItemRequest",
   }) as any as S.Schema<DeleteAdvancedTcpProtectionPrefixItemRequest>;
 
-export interface DeleteAdvancedTcpProtectionPrefixItemResponse {}
-export const DeleteAdvancedTcpProtectionPrefixItemResponse =
+export type AdvancedTcpProtectionPrefixesItemsDeleteResponsePointer = "pointer";
+export const AdvancedTcpProtectionPrefixesItemsDeleteResponsePointer =
+  /*@__PURE__*/ S.String;
+
+export type AdvancedTcpProtectionPrefixesItemsDeleteResponsePointer2 =
+  "pointer";
+export const AdvancedTcpProtectionPrefixesItemsDeleteResponsePointer2 =
+  /*@__PURE__*/ S.String;
+
+/** Raw response payload (operation does not use the standard v4 result envelope). */
+export interface AdvancedTcpProtectionPrefixesItemsDeleteResponse {
+  code: unknown;
+  message: unknown;
+  documentationUrl: unknown;
+  source: unknown;
+  /** } */
+  pointer: AdvancedTcpProtectionPrefixesItemsDeleteResponsePointer;
+  code_2: unknown;
+  message_2: unknown;
+  documentation_url_2: unknown;
+  source_2: unknown;
+  /** } */
+  pointer_2: AdvancedTcpProtectionPrefixesItemsDeleteResponsePointer2;
+}
+export const AdvancedTcpProtectionPrefixesItemsDeleteResponse =
   /*@__PURE__*/ S.suspend(() =>
-    S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+    S.Struct({
+      code: S.Unknown,
+      message: S.Unknown,
+      documentationUrl: S.Unknown.pipe(T.Body("documentation_url")),
+      source: S.Unknown,
+      pointer: AdvancedTcpProtectionPrefixesItemsDeleteResponsePointer,
+      code_2: S.Unknown.pipe(T.Body("code")),
+      message_2: S.Unknown.pipe(T.Body("message")),
+      documentation_url_2: S.Unknown.pipe(T.Body("documentation_url")),
+      source_2: S.Unknown.pipe(T.Body("source")),
+      pointer_2: AdvancedTcpProtectionPrefixesItemsDeleteResponsePointer2.pipe(
+        T.Body("pointer"),
+      ),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
-    identifier: "DeleteAdvancedTcpProtectionPrefixItemResponse",
-  }) as any as S.Schema<DeleteAdvancedTcpProtectionPrefixItemResponse>;
+    identifier: "AdvancedTcpProtectionPrefixesItemsDeleteResponse",
+  }) as any as S.Schema<AdvancedTcpProtectionPrefixesItemsDeleteResponse>;
 
 export interface DeleteAdvancedTcpProtectionSynProtectionFilterItemRequest {
   /** Identifier. */
@@ -848,13 +1235,52 @@ export const DeleteAdvancedTcpProtectionSynProtectionFilterItemRequest =
     identifier: "DeleteAdvancedTcpProtectionSynProtectionFilterItemRequest",
   }) as any as S.Schema<DeleteAdvancedTcpProtectionSynProtectionFilterItemRequest>;
 
-export interface DeleteAdvancedTcpProtectionSynProtectionFilterItemResponse {}
-export const DeleteAdvancedTcpProtectionSynProtectionFilterItemResponse =
+export type AdvancedTcpProtectionSynProtectionFiltersItemsDeleteResponsePointer =
+  "pointer";
+export const AdvancedTcpProtectionSynProtectionFiltersItemsDeleteResponsePointer =
+  /*@__PURE__*/ S.String;
+
+export type AdvancedTcpProtectionSynProtectionFiltersItemsDeleteResponsePointer2 =
+  "pointer";
+export const AdvancedTcpProtectionSynProtectionFiltersItemsDeleteResponsePointer2 =
+  /*@__PURE__*/ S.String;
+
+/** Raw response payload (operation does not use the standard v4 result envelope). */
+export interface AdvancedTcpProtectionSynProtectionFiltersItemsDeleteResponse {
+  code: unknown;
+  message: unknown;
+  documentationUrl: unknown;
+  source: unknown;
+  /** } */
+  pointer: AdvancedTcpProtectionSynProtectionFiltersItemsDeleteResponsePointer;
+  code_2: unknown;
+  message_2: unknown;
+  documentation_url_2: unknown;
+  source_2: unknown;
+  /** } */
+  pointer_2: AdvancedTcpProtectionSynProtectionFiltersItemsDeleteResponsePointer2;
+}
+export const AdvancedTcpProtectionSynProtectionFiltersItemsDeleteResponse =
   /*@__PURE__*/ S.suspend(() =>
-    S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+    S.Struct({
+      code: S.Unknown,
+      message: S.Unknown,
+      documentationUrl: S.Unknown.pipe(T.Body("documentation_url")),
+      source: S.Unknown,
+      pointer:
+        AdvancedTcpProtectionSynProtectionFiltersItemsDeleteResponsePointer,
+      code_2: S.Unknown.pipe(T.Body("code")),
+      message_2: S.Unknown.pipe(T.Body("message")),
+      documentation_url_2: S.Unknown.pipe(T.Body("documentation_url")),
+      source_2: S.Unknown.pipe(T.Body("source")),
+      pointer_2:
+        AdvancedTcpProtectionSynProtectionFiltersItemsDeleteResponsePointer2.pipe(
+          T.Body("pointer"),
+        ),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
-    identifier: "DeleteAdvancedTcpProtectionSynProtectionFilterItemResponse",
-  }) as any as S.Schema<DeleteAdvancedTcpProtectionSynProtectionFilterItemResponse>;
+    identifier: "AdvancedTcpProtectionSynProtectionFiltersItemsDeleteResponse",
+  }) as any as S.Schema<AdvancedTcpProtectionSynProtectionFiltersItemsDeleteResponse>;
 
 export interface DeleteAdvancedTcpProtectionSynProtectionRuleItemRequest {
   /** Identifier. */
@@ -880,13 +1306,52 @@ export const DeleteAdvancedTcpProtectionSynProtectionRuleItemRequest =
     identifier: "DeleteAdvancedTcpProtectionSynProtectionRuleItemRequest",
   }) as any as S.Schema<DeleteAdvancedTcpProtectionSynProtectionRuleItemRequest>;
 
-export interface DeleteAdvancedTcpProtectionSynProtectionRuleItemResponse {}
-export const DeleteAdvancedTcpProtectionSynProtectionRuleItemResponse =
+export type AdvancedTcpProtectionSynProtectionRulesItemsDeleteResponsePointer =
+  "pointer";
+export const AdvancedTcpProtectionSynProtectionRulesItemsDeleteResponsePointer =
+  /*@__PURE__*/ S.String;
+
+export type AdvancedTcpProtectionSynProtectionRulesItemsDeleteResponsePointer2 =
+  "pointer";
+export const AdvancedTcpProtectionSynProtectionRulesItemsDeleteResponsePointer2 =
+  /*@__PURE__*/ S.String;
+
+/** Raw response payload (operation does not use the standard v4 result envelope). */
+export interface AdvancedTcpProtectionSynProtectionRulesItemsDeleteResponse {
+  code: unknown;
+  message: unknown;
+  documentationUrl: unknown;
+  source: unknown;
+  /** } */
+  pointer: AdvancedTcpProtectionSynProtectionRulesItemsDeleteResponsePointer;
+  code_2: unknown;
+  message_2: unknown;
+  documentation_url_2: unknown;
+  source_2: unknown;
+  /** } */
+  pointer_2: AdvancedTcpProtectionSynProtectionRulesItemsDeleteResponsePointer2;
+}
+export const AdvancedTcpProtectionSynProtectionRulesItemsDeleteResponse =
   /*@__PURE__*/ S.suspend(() =>
-    S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+    S.Struct({
+      code: S.Unknown,
+      message: S.Unknown,
+      documentationUrl: S.Unknown.pipe(T.Body("documentation_url")),
+      source: S.Unknown,
+      pointer:
+        AdvancedTcpProtectionSynProtectionRulesItemsDeleteResponsePointer,
+      code_2: S.Unknown.pipe(T.Body("code")),
+      message_2: S.Unknown.pipe(T.Body("message")),
+      documentation_url_2: S.Unknown.pipe(T.Body("documentation_url")),
+      source_2: S.Unknown.pipe(T.Body("source")),
+      pointer_2:
+        AdvancedTcpProtectionSynProtectionRulesItemsDeleteResponsePointer2.pipe(
+          T.Body("pointer"),
+        ),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
-    identifier: "DeleteAdvancedTcpProtectionSynProtectionRuleItemResponse",
-  }) as any as S.Schema<DeleteAdvancedTcpProtectionSynProtectionRuleItemResponse>;
+    identifier: "AdvancedTcpProtectionSynProtectionRulesItemsDeleteResponse",
+  }) as any as S.Schema<AdvancedTcpProtectionSynProtectionRulesItemsDeleteResponse>;
 
 export interface DeleteAdvancedTcpProtectionTcpFlowProtectionFilterItemRequest {
   /** Identifier. */
@@ -912,14 +1377,53 @@ export const DeleteAdvancedTcpProtectionTcpFlowProtectionFilterItemRequest =
     identifier: "DeleteAdvancedTcpProtectionTcpFlowProtectionFilterItemRequest",
   }) as any as S.Schema<DeleteAdvancedTcpProtectionTcpFlowProtectionFilterItemRequest>;
 
-export interface DeleteAdvancedTcpProtectionTcpFlowProtectionFilterItemResponse {}
-export const DeleteAdvancedTcpProtectionTcpFlowProtectionFilterItemResponse =
+export type AdvancedTcpProtectionTcpFlowProtectionFiltersItemsDeleteResponsePointer =
+  "pointer";
+export const AdvancedTcpProtectionTcpFlowProtectionFiltersItemsDeleteResponsePointer =
+  /*@__PURE__*/ S.String;
+
+export type AdvancedTcpProtectionTcpFlowProtectionFiltersItemsDeleteResponsePointer2 =
+  "pointer";
+export const AdvancedTcpProtectionTcpFlowProtectionFiltersItemsDeleteResponsePointer2 =
+  /*@__PURE__*/ S.String;
+
+/** Raw response payload (operation does not use the standard v4 result envelope). */
+export interface AdvancedTcpProtectionTcpFlowProtectionFiltersItemsDeleteResponse {
+  code: unknown;
+  message: unknown;
+  documentationUrl: unknown;
+  source: unknown;
+  /** } */
+  pointer: AdvancedTcpProtectionTcpFlowProtectionFiltersItemsDeleteResponsePointer;
+  code_2: unknown;
+  message_2: unknown;
+  documentation_url_2: unknown;
+  source_2: unknown;
+  /** } */
+  pointer_2: AdvancedTcpProtectionTcpFlowProtectionFiltersItemsDeleteResponsePointer2;
+}
+export const AdvancedTcpProtectionTcpFlowProtectionFiltersItemsDeleteResponse =
   /*@__PURE__*/ S.suspend(() =>
-    S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+    S.Struct({
+      code: S.Unknown,
+      message: S.Unknown,
+      documentationUrl: S.Unknown.pipe(T.Body("documentation_url")),
+      source: S.Unknown,
+      pointer:
+        AdvancedTcpProtectionTcpFlowProtectionFiltersItemsDeleteResponsePointer,
+      code_2: S.Unknown.pipe(T.Body("code")),
+      message_2: S.Unknown.pipe(T.Body("message")),
+      documentation_url_2: S.Unknown.pipe(T.Body("documentation_url")),
+      source_2: S.Unknown.pipe(T.Body("source")),
+      pointer_2:
+        AdvancedTcpProtectionTcpFlowProtectionFiltersItemsDeleteResponsePointer2.pipe(
+          T.Body("pointer"),
+        ),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier:
-      "DeleteAdvancedTcpProtectionTcpFlowProtectionFilterItemResponse",
-  }) as any as S.Schema<DeleteAdvancedTcpProtectionTcpFlowProtectionFilterItemResponse>;
+      "AdvancedTcpProtectionTcpFlowProtectionFiltersItemsDeleteResponse",
+  }) as any as S.Schema<AdvancedTcpProtectionTcpFlowProtectionFiltersItemsDeleteResponse>;
 
 export interface DeleteAdvancedTcpProtectionTcpFlowProtectionRuleItemRequest {
   /** Identifier. */
@@ -945,13 +1449,53 @@ export const DeleteAdvancedTcpProtectionTcpFlowProtectionRuleItemRequest =
     identifier: "DeleteAdvancedTcpProtectionTcpFlowProtectionRuleItemRequest",
   }) as any as S.Schema<DeleteAdvancedTcpProtectionTcpFlowProtectionRuleItemRequest>;
 
-export interface DeleteAdvancedTcpProtectionTcpFlowProtectionRuleItemResponse {}
-export const DeleteAdvancedTcpProtectionTcpFlowProtectionRuleItemResponse =
+export type AdvancedTcpProtectionTcpFlowProtectionRulesItemsDeleteResponsePointer =
+  "pointer";
+export const AdvancedTcpProtectionTcpFlowProtectionRulesItemsDeleteResponsePointer =
+  /*@__PURE__*/ S.String;
+
+export type AdvancedTcpProtectionTcpFlowProtectionRulesItemsDeleteResponsePointer2 =
+  "pointer";
+export const AdvancedTcpProtectionTcpFlowProtectionRulesItemsDeleteResponsePointer2 =
+  /*@__PURE__*/ S.String;
+
+/** Raw response payload (operation does not use the standard v4 result envelope). */
+export interface AdvancedTcpProtectionTcpFlowProtectionRulesItemsDeleteResponse {
+  code: unknown;
+  message: unknown;
+  documentationUrl: unknown;
+  source: unknown;
+  /** } */
+  pointer: AdvancedTcpProtectionTcpFlowProtectionRulesItemsDeleteResponsePointer;
+  code_2: unknown;
+  message_2: unknown;
+  documentation_url_2: unknown;
+  source_2: unknown;
+  /** } */
+  pointer_2: AdvancedTcpProtectionTcpFlowProtectionRulesItemsDeleteResponsePointer2;
+}
+export const AdvancedTcpProtectionTcpFlowProtectionRulesItemsDeleteResponse =
   /*@__PURE__*/ S.suspend(() =>
-    S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+    S.Struct({
+      code: S.Unknown,
+      message: S.Unknown,
+      documentationUrl: S.Unknown.pipe(T.Body("documentation_url")),
+      source: S.Unknown,
+      pointer:
+        AdvancedTcpProtectionTcpFlowProtectionRulesItemsDeleteResponsePointer,
+      code_2: S.Unknown.pipe(T.Body("code")),
+      message_2: S.Unknown.pipe(T.Body("message")),
+      documentation_url_2: S.Unknown.pipe(T.Body("documentation_url")),
+      source_2: S.Unknown.pipe(T.Body("source")),
+      pointer_2:
+        AdvancedTcpProtectionTcpFlowProtectionRulesItemsDeleteResponsePointer2.pipe(
+          T.Body("pointer"),
+        ),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
-    identifier: "DeleteAdvancedTcpProtectionTcpFlowProtectionRuleItemResponse",
-  }) as any as S.Schema<DeleteAdvancedTcpProtectionTcpFlowProtectionRuleItemResponse>;
+    identifier:
+      "AdvancedTcpProtectionTcpFlowProtectionRulesItemsDeleteResponse",
+  }) as any as S.Schema<AdvancedTcpProtectionTcpFlowProtectionRulesItemsDeleteResponse>;
 
 export interface GetAdvancedTcpProtectionAllowlistItemRequest {
   /** Identifier. */
@@ -1082,6 +1626,7 @@ export const GetAdvancedTcpProtectionStatusRequest = /*@__PURE__*/ S.suspend(
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetAdvancedTcpProtectionStatusResponse {
+  /** HTTP */
   enabled: boolean;
 }
 export const GetAdvancedTcpProtectionStatusResponse = /*@__PURE__*/ S.suspend(
@@ -1125,7 +1670,7 @@ export interface GetAdvancedTcpProtectionSynProtectionFilterItemResponse {
   createdOn: string;
   /** The filter expression. */
   expression: string;
-  /** The filter's mode. Must be one of 'enabled', 'disabled', 'monitoring'. */
+  /** The filter’s mode. Must be one of ‘enabled’, ‘disabled’, ‘monitoring’. */
   mode: string;
   /** The last modification timestamp of the expression filter. */
   modifiedOn: string;
@@ -1171,21 +1716,21 @@ export const GetAdvancedTcpProtectionSynProtectionRuleItemRequest =
 export interface GetAdvancedTcpProtectionSynProtectionRuleItemResponse {
   /** The unique ID of the SYN Protection rule. */
   id: string;
-  /** The burst sensitivity. Must be one of 'low', 'medium', 'high'. */
+  /** The burst sensitivity. Must be one of ‘low’, ‘medium’, ‘high’. */
   burstSensitivity: string;
   /** The creation timestamp of the SYN Protection rule. */
   createdOn: string;
-  /** The type of mitigation for SYN Protection. Must be one of 'challenge' or 'retransmit'. */
+  /** The type of mitigation for SYN Protection. Must be one of ‘challenge’ or ‘retransmit’. */
   mitigationType: string;
-  /** The mode for SYN Protection. Must be one of 'enabled', 'disabled', 'monitoring'. */
+  /** The mode for SYN Protection. Must be one of ‘enabled’, ‘disabled’, ‘monitoring’. */
   mode: string;
   /** The last modification timestamp of the SYN Protection rule. */
   modifiedOn: string;
-  /** The name of the SYN Protection rule. Value is relative to the 'scope' setting. For 'global' scope, name should be 'global'. For either the 'region' or 'datacenter' scope, name should be the actual name of the region or datacenter, e.g., 'wnam' or 'lax'. */
+  /** The name of the SYN Protection rule. Value is relative to the ‘scope’ setting. For ‘global’ scope, name should be ‘global’. For either the ‘region’ or ‘datacenter’ scope, name should be the actual name of the region or datacenter, e.g., ‘wnam’ or ‘lax’. */
   name: string;
-  /** The rate sensitivity. Must be one of 'low', 'medium', 'high'. */
+  /** The rate sensitivity. Must be one of ‘low’, ‘medium’, ‘high’. */
   rateSensitivity: string;
-  /** The scope for the SYN Protection rule. Must be one of 'global', 'region', or 'datacenter'. */
+  /** The scope for the SYN Protection rule. Must be one of ‘global’, ‘region’, or ‘datacenter’. */
   scope: string;
 }
 export const GetAdvancedTcpProtectionSynProtectionRuleItemResponse =
@@ -1237,7 +1782,7 @@ export interface GetAdvancedTcpProtectionTcpFlowProtectionFilterItemResponse {
   createdOn: string;
   /** The filter expression. */
   expression: string;
-  /** The filter's mode. Must be one of 'enabled', 'disabled', 'monitoring'. */
+  /** The filter’s mode. Must be one of ‘enabled’, ‘disabled’, ‘monitoring’. */
   mode: string;
   /** The last modification timestamp of the expression filter. */
   modifiedOn: string;
@@ -1283,19 +1828,19 @@ export const GetAdvancedTcpProtectionTcpFlowProtectionRuleItemRequest =
 export interface GetAdvancedTcpProtectionTcpFlowProtectionRuleItemResponse {
   /** The unique ID of the TCP Flow Protection rule. */
   id: string;
-  /** The burst sensitivity. Must be one of 'low', 'medium', 'high'. */
+  /** The burst sensitivity. Must be one of ‘low’, ‘medium’, ‘high’. */
   burstSensitivity: string;
   /** The creation timestamp of the TCP Flow Protection rule. */
   createdOn: string;
-  /** The mode for TCP Flow Protection. Must be one of 'enabled', 'disabled', 'monitoring'. */
+  /** The mode for TCP Flow Protection. Must be one of ‘enabled’, ‘disabled’, ‘monitoring’. */
   mode: string;
   /** The last modification timestamp of the TCP Flow Protection rule. */
   modifiedOn: string;
-  /** The name of the TCP Flow Protection rule. Value is relative to the 'scope' setting. For 'global' scope, name should be 'global'. For either the 'region' or 'datacenter' scope, name should be the actual name of the region or datacenter, e.g., 'wnam' or 'lax'. */
+  /** The name of the TCP Flow Protection rule. Value is relative to the ‘scope’ setting. For ‘global’ scope, name should be ‘global’. For either the ‘region’ or ‘datacenter’ scope, name should be the actual name of the region or datacenter, e.g., ‘wnam’ or ‘lax’. */
   name: string;
-  /** The rate sensitivity. Must be one of 'low', 'medium', 'high'. */
+  /** The rate sensitivity. Must be one of ‘low’, ‘medium’, ‘high’. */
   rateSensitivity: string;
-  /** The scope for the TCP Flow Protection rule. Must be one of 'global', 'region', or 'datacenter'. */
+  /** The scope for the TCP Flow Protection rule. Must be one of ‘global’, ‘region’, or ‘datacenter’. */
   scope: string;
 }
 export const GetAdvancedTcpProtectionTcpFlowProtectionRuleItemResponse =
@@ -1317,9 +1862,9 @@ export const GetAdvancedTcpProtectionTcpFlowProtectionRuleItemResponse =
 export interface ListAdvancedTcpProtectionAllowlistsRequest {
   /** Identifier. */
   accountId: string;
-  /** The direction of ordering (ASC or DESC). Defaults to 'ASC'. */
+  /** The direction of ordering (ASC or DESC). Defaults to ‘ASC’. */
   direction?: string;
-  /** The field to order by. Defaults to 'prefix'. */
+  /** The field to order by. Defaults to ‘prefix’. */
   order?: string;
   /** The page number for pagination. Defaults to 1. */
   page?: number;
@@ -1403,9 +1948,9 @@ export const ListAdvancedTcpProtectionAllowlistsResponse =
 export interface ListAdvancedTcpProtectionPrefixesRequest {
   /** Identifier. */
   accountId: string;
-  /** The direction of ordering (ASC or DESC). Defaults to 'ASC'. */
+  /** The direction of ordering (ASC or DESC). Defaults to ‘ASC’. */
   direction?: string;
-  /** The field to order by. Defaults to 'prefix'. */
+  /** The field to order by. Defaults to ‘prefix’. */
   order?: string;
   /** The page number for pagination. Defaults to 1. */
   page?: number;
@@ -1466,11 +2011,11 @@ export const ListAdvancedTcpProtectionPrefixesResponse =
 export interface ListAdvancedTcpProtectionSynProtectionFiltersRequest {
   /** Identifier. */
   accountId: string;
-  /** The direction of ordering (ASC or DESC). Defaults to 'ASC'. */
+  /** The direction of ordering (ASC or DESC). Defaults to ‘ASC’. */
   direction?: string;
-  /** The mode of the filters to get. Optional. Valid values: 'enabled', 'disabled', 'monitoring'. */
+  /** The mode of the filters to get. Optional. Valid values: ‘enabled’, ‘disabled’, ‘monitoring’. */
   mode?: string;
-  /** The field to order by. Defaults to 'prefix'. */
+  /** The field to order by. Defaults to ‘prefix’. */
   order?: string;
   /** The page number for pagination. Defaults to 1. */
   page?: number;
@@ -1506,7 +2051,7 @@ export interface AdvancedTcpProtectionSynProtectionFiltersListResultItem {
   createdOn: string;
   /** The filter expression. */
   expression: string;
-  /** The filter's mode. Must be one of 'enabled', 'disabled', 'monitoring'. */
+  /** The filter’s mode. Must be one of ‘enabled’, ‘disabled’, ‘monitoring’. */
   mode: string;
   /** The last modification timestamp of the expression filter. */
   modifiedOn: string;
@@ -1552,9 +2097,9 @@ export const ListAdvancedTcpProtectionSynProtectionFiltersResponse =
 export interface ListAdvancedTcpProtectionSynProtectionRulesRequest {
   /** Identifier. */
   accountId: string;
-  /** The direction of ordering (ASC or DESC). Defaults to 'ASC'. */
+  /** The direction of ordering (ASC or DESC). Defaults to ‘ASC’. */
   direction?: string;
-  /** The field to order by. Defaults to 'prefix'. */
+  /** The field to order by. Defaults to ‘prefix’. */
   order?: string;
   /** The page number for pagination. Defaults to 1. */
   page?: number;
@@ -1585,21 +2130,21 @@ export const ListAdvancedTcpProtectionSynProtectionRulesRequest =
 export interface AdvancedTcpProtectionSynProtectionRulesListResultItem {
   /** The unique ID of the SYN Protection rule. */
   id: string;
-  /** The burst sensitivity. Must be one of 'low', 'medium', 'high'. */
+  /** The burst sensitivity. Must be one of ‘low’, ‘medium’, ‘high’. */
   burstSensitivity: string;
   /** The creation timestamp of the SYN Protection rule. */
   createdOn: string;
-  /** The type of mitigation for SYN Protection. Must be one of 'challenge' or 'retransmit'. */
+  /** The type of mitigation for SYN Protection. Must be one of ‘challenge’ or ‘retransmit’. */
   mitigationType: string;
-  /** The mode for SYN Protection. Must be one of 'enabled', 'disabled', 'monitoring'. */
+  /** The mode for SYN Protection. Must be one of ‘enabled’, ‘disabled’, ‘monitoring’. */
   mode: string;
   /** The last modification timestamp of the SYN Protection rule. */
   modifiedOn: string;
-  /** The name of the SYN Protection rule. Value is relative to the 'scope' setting. For 'global' scope, name should be 'global'. For either the 'region' or 'datacenter' scope, name should be the actual name of the region or datacenter, e.g., 'wnam' or 'lax'. */
+  /** The name of the SYN Protection rule. Value is relative to the ‘scope’ setting. For ‘global’ scope, name should be ‘global’. For either the ‘region’ or ‘datacenter’ scope, name should be the actual name of the region or datacenter, e.g., ‘wnam’ or ‘lax’. */
   name: string;
-  /** The rate sensitivity. Must be one of 'low', 'medium', 'high'. */
+  /** The rate sensitivity. Must be one of ‘low’, ‘medium’, ‘high’. */
   rateSensitivity: string;
-  /** The scope for the SYN Protection rule. Must be one of 'global', 'region', or 'datacenter'. */
+  /** The scope for the SYN Protection rule. Must be one of ‘global’, ‘region’, or ‘datacenter’. */
   scope: string;
 }
 export const AdvancedTcpProtectionSynProtectionRulesListResultItem =
@@ -1647,11 +2192,11 @@ export const ListAdvancedTcpProtectionSynProtectionRulesResponse =
 export interface ListAdvancedTcpProtectionTcpFlowProtectionFiltersRequest {
   /** Identifier. */
   accountId: string;
-  /** The direction of ordering (ASC or DESC). Defaults to 'ASC'. */
+  /** The direction of ordering (ASC or DESC). Defaults to ‘ASC’. */
   direction?: string;
-  /** The mode of the filters to get. Optional. Valid values: 'enabled', 'disabled', 'monitoring'. */
+  /** The mode of the filters to get. Optional. Valid values: ‘enabled’, ‘disabled’, ‘monitoring’. */
   mode?: string;
-  /** The field to order by. Defaults to 'prefix'. */
+  /** The field to order by. Defaults to ‘prefix’. */
   order?: string;
   /** The page number for pagination. Defaults to 1. */
   page?: number;
@@ -1713,9 +2258,9 @@ export const ListAdvancedTcpProtectionTcpFlowProtectionFiltersResponse =
 export interface ListAdvancedTcpProtectionTcpFlowProtectionRulesRequest {
   /** Identifier. */
   accountId: string;
-  /** The direction of ordering (ASC or DESC). Defaults to 'ASC'. */
+  /** The direction of ordering (ASC or DESC). Defaults to ‘ASC’. */
   direction?: string;
-  /** The field to order by. Defaults to 'prefix'. */
+  /** The field to order by. Defaults to ‘prefix’. */
   order?: string;
   /** The page number for pagination. Defaults to 1. */
   page?: number;
@@ -1746,19 +2291,19 @@ export const ListAdvancedTcpProtectionTcpFlowProtectionRulesRequest =
 export interface AdvancedTcpProtectionTcpFlowProtectionRulesListResultItem {
   /** The unique ID of the TCP Flow Protection rule. */
   id: string;
-  /** The burst sensitivity. Must be one of 'low', 'medium', 'high'. */
+  /** The burst sensitivity. Must be one of ‘low’, ‘medium’, ‘high’. */
   burstSensitivity: string;
   /** The creation timestamp of the TCP Flow Protection rule. */
   createdOn: string;
-  /** The mode for TCP Flow Protection. Must be one of 'enabled', 'disabled', 'monitoring'. */
+  /** The mode for TCP Flow Protection. Must be one of ‘enabled’, ‘disabled’, ‘monitoring’. */
   mode: string;
   /** The last modification timestamp of the TCP Flow Protection rule. */
   modifiedOn: string;
-  /** The name of the TCP Flow Protection rule. Value is relative to the 'scope' setting. For 'global' scope, name should be 'global'. For either the 'region' or 'datacenter' scope, name should be the actual name of the region or datacenter, e.g., 'wnam' or 'lax'. */
+  /** The name of the TCP Flow Protection rule. Value is relative to the ‘scope’ setting. For ‘global’ scope, name should be ‘global’. For either the ‘region’ or ‘datacenter’ scope, name should be the actual name of the region or datacenter, e.g., ‘wnam’ or ‘lax’. */
   name: string;
-  /** The rate sensitivity. Must be one of 'low', 'medium', 'high'. */
+  /** The rate sensitivity. Must be one of ‘low’, ‘medium’, ‘high’. */
   rateSensitivity: string;
-  /** The scope for the TCP Flow Protection rule. Must be one of 'global', 'region', or 'datacenter'. */
+  /** The scope for the TCP Flow Protection rule. Must be one of ‘global’, ‘region’, or ‘datacenter’. */
   scope: string;
 }
 export const AdvancedTcpProtectionTcpFlowProtectionRulesListResultItem =
@@ -1946,12 +2491,16 @@ export const PatchAdvancedTcpProtectionStatusRequest = /*@__PURE__*/ S.suspend(
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface PatchAdvancedTcpProtectionStatusResponse {
+  /** HTTP */
   enabled: boolean;
+  /** }' */
+  enabled_2: boolean;
 }
 export const PatchAdvancedTcpProtectionStatusResponse = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       enabled: S.Boolean,
+      enabled_2: S.Boolean.pipe(T.Body("enabled")),
     }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchAdvancedTcpProtectionStatusResponse",
@@ -1964,7 +2513,7 @@ export interface PatchAdvancedTcpProtectionSynProtectionFilterItemRequest {
   filterId: string;
   /** The new filter expression. Optional. */
   expression?: string;
-  /** The new mode for the filter. Optional. Must be one of 'enabled', 'disabled', 'monitoring'. */
+  /** The new mode for the filter. Optional. Must be one of ‘enabled’, ‘disabled’, ‘monitoring’. */
   mode?: string;
 }
 export const PatchAdvancedTcpProtectionSynProtectionFilterItemRequest =
@@ -1987,6 +2536,11 @@ export const PatchAdvancedTcpProtectionSynProtectionFilterItemRequest =
     identifier: "PatchAdvancedTcpProtectionSynProtectionFilterItemRequest",
   }) as any as S.Schema<PatchAdvancedTcpProtectionSynProtectionFilterItemRequest>;
 
+export type AdvancedTcpProtectionSynProtectionFiltersItemsEditResponseExpression =
+  "ip.dst in { 192.0.2.0/24 198.51.100.0/24 } and tcp.srcport in { 80 443 10000..65535 }";
+export const AdvancedTcpProtectionSynProtectionFiltersItemsEditResponseExpression =
+  /*@__PURE__*/ S.String;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface PatchAdvancedTcpProtectionSynProtectionFilterItemResponse {
   /** The unique ID of the expression filter. */
@@ -1995,10 +2549,12 @@ export interface PatchAdvancedTcpProtectionSynProtectionFilterItemResponse {
   createdOn: string;
   /** The filter expression. */
   expression: string;
-  /** The filter's mode. Must be one of 'enabled', 'disabled', 'monitoring'. */
+  /** The filter’s mode. Must be one of ‘enabled’, ‘disabled’, ‘monitoring’. */
   mode: string;
   /** The last modification timestamp of the expression filter. */
   modifiedOn: string;
+  /** }' */
+  expression_2: AdvancedTcpProtectionSynProtectionFiltersItemsEditResponseExpression;
 }
 export const PatchAdvancedTcpProtectionSynProtectionFilterItemResponse =
   /*@__PURE__*/ S.suspend(() =>
@@ -2008,6 +2564,10 @@ export const PatchAdvancedTcpProtectionSynProtectionFilterItemResponse =
       expression: S.String,
       mode: S.String,
       modifiedOn: S.String.pipe(T.Body("modified_on")),
+      expression_2:
+        AdvancedTcpProtectionSynProtectionFiltersItemsEditResponseExpression.pipe(
+          T.Body("expression"),
+        ),
     }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "PatchAdvancedTcpProtectionSynProtectionFilterItemResponse",
@@ -2018,13 +2578,13 @@ export interface PatchAdvancedTcpProtectionSynProtectionRuleItemRequest {
   accountId: string;
   /** UUID. */
   ruleId: string;
-  /** The new burst sensitivity. Optional. Must be one of 'low', 'medium', 'high'. */
+  /** The new burst sensitivity. Optional. Must be one of ‘low’, ‘medium’, ‘high’. */
   burstSensitivity?: string;
-  /** The new mitigation type. Optional. Must be one of 'challenge' or 'retransmit'. */
+  /** The new mitigation type. Optional. Must be one of ‘challenge’ or ‘retransmit’. */
   mitigationType?: string;
-  /** The new mode for SYN Protection. Optional. Must be one of 'enabled', 'disabled', 'monitoring'. */
+  /** The new mode for SYN Protection. Optional. Must be one of ‘enabled’, ‘disabled’, ‘monitoring’. */
   mode?: string;
-  /** The new rate sensitivity. Optional. Must be one of 'low', 'medium', 'high'. */
+  /** The new rate sensitivity. Optional. Must be one of ‘low’, ‘medium’, ‘high’. */
   rateSensitivity?: string;
 }
 export const PatchAdvancedTcpProtectionSynProtectionRuleItemRequest =
@@ -2053,21 +2613,21 @@ export const PatchAdvancedTcpProtectionSynProtectionRuleItemRequest =
 export interface PatchAdvancedTcpProtectionSynProtectionRuleItemResponse {
   /** The unique ID of the SYN Protection rule. */
   id: string;
-  /** The burst sensitivity. Must be one of 'low', 'medium', 'high'. */
+  /** The burst sensitivity. Must be one of ‘low’, ‘medium’, ‘high’. */
   burstSensitivity: string;
   /** The creation timestamp of the SYN Protection rule. */
   createdOn: string;
-  /** The type of mitigation for SYN Protection. Must be one of 'challenge' or 'retransmit'. */
+  /** The type of mitigation for SYN Protection. Must be one of ‘challenge’ or ‘retransmit’. */
   mitigationType: string;
-  /** The mode for SYN Protection. Must be one of 'enabled', 'disabled', 'monitoring'. */
+  /** The mode for SYN Protection. Must be one of ‘enabled’, ‘disabled’, ‘monitoring’. */
   mode: string;
   /** The last modification timestamp of the SYN Protection rule. */
   modifiedOn: string;
-  /** The name of the SYN Protection rule. Value is relative to the 'scope' setting. For 'global' scope, name should be 'global'. For either the 'region' or 'datacenter' scope, name should be the actual name of the region or datacenter, e.g., 'wnam' or 'lax'. */
+  /** The name of the SYN Protection rule. Value is relative to the ‘scope’ setting. For ‘global’ scope, name should be ‘global’. For either the ‘region’ or ‘datacenter’ scope, name should be the actual name of the region or datacenter, e.g., ‘wnam’ or ‘lax’. */
   name: string;
-  /** The rate sensitivity. Must be one of 'low', 'medium', 'high'. */
+  /** The rate sensitivity. Must be one of ‘low’, ‘medium’, ‘high’. */
   rateSensitivity: string;
-  /** The scope for the SYN Protection rule. Must be one of 'global', 'region', or 'datacenter'. */
+  /** The scope for the SYN Protection rule. Must be one of ‘global’, ‘region’, or ‘datacenter’. */
   scope: string;
 }
 export const PatchAdvancedTcpProtectionSynProtectionRuleItemResponse =
@@ -2094,7 +2654,7 @@ export interface PatchAdvancedTcpProtectionTcpFlowProtectionFilterItemRequest {
   filterId: string;
   /** The new filter expression. Optional. */
   expression?: string;
-  /** The new mode for the filter. Optional. Must be one of 'enabled', 'disabled', 'monitoring'. */
+  /** The new mode for the filter. Optional. Must be one of ‘enabled’, ‘disabled’, ‘monitoring’. */
   mode?: string;
 }
 export const PatchAdvancedTcpProtectionTcpFlowProtectionFilterItemRequest =
@@ -2117,6 +2677,11 @@ export const PatchAdvancedTcpProtectionTcpFlowProtectionFilterItemRequest =
     identifier: "PatchAdvancedTcpProtectionTcpFlowProtectionFilterItemRequest",
   }) as any as S.Schema<PatchAdvancedTcpProtectionTcpFlowProtectionFilterItemRequest>;
 
+export type AdvancedTcpProtectionTcpFlowProtectionFiltersItemsEditResponseExpression =
+  "ip.dst in { 192.0.2.0/24 198.51.100.0/24 } and tcp.srcport in { 80 443 10000..65535 }";
+export const AdvancedTcpProtectionTcpFlowProtectionFiltersItemsEditResponseExpression =
+  /*@__PURE__*/ S.String;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface PatchAdvancedTcpProtectionTcpFlowProtectionFilterItemResponse {
   /** The unique ID of the expression filter. */
@@ -2125,10 +2690,12 @@ export interface PatchAdvancedTcpProtectionTcpFlowProtectionFilterItemResponse {
   createdOn: string;
   /** The filter expression. */
   expression: string;
-  /** The filter's mode. Must be one of 'enabled', 'disabled', 'monitoring'. */
+  /** The filter’s mode. Must be one of ‘enabled’, ‘disabled’, ‘monitoring’. */
   mode: string;
   /** The last modification timestamp of the expression filter. */
   modifiedOn: string;
+  /** }' */
+  expression_2: AdvancedTcpProtectionTcpFlowProtectionFiltersItemsEditResponseExpression;
 }
 export const PatchAdvancedTcpProtectionTcpFlowProtectionFilterItemResponse =
   /*@__PURE__*/ S.suspend(() =>
@@ -2138,6 +2705,10 @@ export const PatchAdvancedTcpProtectionTcpFlowProtectionFilterItemResponse =
       expression: S.String,
       mode: S.String,
       modifiedOn: S.String.pipe(T.Body("modified_on")),
+      expression_2:
+        AdvancedTcpProtectionTcpFlowProtectionFiltersItemsEditResponseExpression.pipe(
+          T.Body("expression"),
+        ),
     }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "PatchAdvancedTcpProtectionTcpFlowProtectionFilterItemResponse",
@@ -2148,11 +2719,11 @@ export interface PatchAdvancedTcpProtectionTcpFlowProtectionRuleItemRequest {
   accountId: string;
   /** UUID. */
   ruleId: string;
-  /** The new burst sensitivity. Optional. Must be one of 'low', 'medium', 'high'. */
+  /** The new burst sensitivity. Optional. Must be one of ‘low’, ‘medium’, ‘high’. */
   burstSensitivity?: string;
-  /** The new mode for TCP Flow Protection. Optional. Must be one of 'enabled', 'disabled', 'monitoring'. */
+  /** The new mode for TCP Flow Protection. Optional. Must be one of ‘enabled’, ‘disabled’, ‘monitoring’. */
   mode?: string;
-  /** The new rate sensitivity. Optional. Must be one of 'low', 'medium', 'high'. */
+  /** The new rate sensitivity. Optional. Must be one of ‘low’, ‘medium’, ‘high’. */
   rateSensitivity?: string;
 }
 export const PatchAdvancedTcpProtectionTcpFlowProtectionRuleItemRequest =
@@ -2180,19 +2751,19 @@ export const PatchAdvancedTcpProtectionTcpFlowProtectionRuleItemRequest =
 export interface PatchAdvancedTcpProtectionTcpFlowProtectionRuleItemResponse {
   /** The unique ID of the TCP Flow Protection rule. */
   id: string;
-  /** The burst sensitivity. Must be one of 'low', 'medium', 'high'. */
+  /** The burst sensitivity. Must be one of ‘low’, ‘medium’, ‘high’. */
   burstSensitivity: string;
   /** The creation timestamp of the TCP Flow Protection rule. */
   createdOn: string;
-  /** The mode for TCP Flow Protection. Must be one of 'enabled', 'disabled', 'monitoring'. */
+  /** The mode for TCP Flow Protection. Must be one of ‘enabled’, ‘disabled’, ‘monitoring’. */
   mode: string;
   /** The last modification timestamp of the TCP Flow Protection rule. */
   modifiedOn: string;
-  /** The name of the TCP Flow Protection rule. Value is relative to the 'scope' setting. For 'global' scope, name should be 'global'. For either the 'region' or 'datacenter' scope, name should be the actual name of the region or datacenter, e.g., 'wnam' or 'lax'. */
+  /** The name of the TCP Flow Protection rule. Value is relative to the ‘scope’ setting. For ‘global’ scope, name should be ‘global’. For either the ‘region’ or ‘datacenter’ scope, name should be the actual name of the region or datacenter, e.g., ‘wnam’ or ‘lax’. */
   name: string;
-  /** The rate sensitivity. Must be one of 'low', 'medium', 'high'. */
+  /** The rate sensitivity. Must be one of ‘low’, ‘medium’, ‘high’. */
   rateSensitivity: string;
-  /** The scope for the TCP Flow Protection rule. Must be one of 'global', 'region', or 'datacenter'. */
+  /** The scope for the TCP Flow Protection rule. Must be one of ‘global’, ‘region’, or ‘datacenter’. */
   scope: string;
 }
 export const PatchAdvancedTcpProtectionTcpFlowProtectionRuleItemResponse =
@@ -2235,12 +2806,12 @@ export type BulkDeleteAdvancedTcpProtectionAllowlistsError = CloudflareOpError;
 /** Delete all allowlist prefixes for an account. */
 export const bulkDeleteAdvancedTcpProtectionAllowlists: API.OperationMethod<
   BulkDeleteAdvancedTcpProtectionAllowlistsRequest,
-  BulkDeleteAdvancedTcpProtectionAllowlistsResponse,
+  AdvancedTcpProtectionAllowlistBulkDeleteResponse,
   BulkDeleteAdvancedTcpProtectionAllowlistsError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: BulkDeleteAdvancedTcpProtectionAllowlistsRequest,
-  output: BulkDeleteAdvancedTcpProtectionAllowlistsResponse,
+  output: AdvancedTcpProtectionAllowlistBulkDeleteResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -2250,12 +2821,12 @@ export type BulkDeleteAdvancedTcpProtectionPrefixesError = CloudflareOpError;
 /** Delete all prefixes for an account. */
 export const bulkDeleteAdvancedTcpProtectionPrefixes: API.OperationMethod<
   BulkDeleteAdvancedTcpProtectionPrefixesRequest,
-  BulkDeleteAdvancedTcpProtectionPrefixesResponse,
+  AdvancedTcpProtectionPrefixesBulkDeleteResponse,
   BulkDeleteAdvancedTcpProtectionPrefixesError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: BulkDeleteAdvancedTcpProtectionPrefixesRequest,
-  output: BulkDeleteAdvancedTcpProtectionPrefixesResponse,
+  output: AdvancedTcpProtectionPrefixesBulkDeleteResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -2266,12 +2837,12 @@ export type BulkDeleteAdvancedTcpProtectionSynProtectionFiltersError =
 /** Delete all SYN Protection filters for an account. */
 export const bulkDeleteAdvancedTcpProtectionSynProtectionFilters: API.OperationMethod<
   BulkDeleteAdvancedTcpProtectionSynProtectionFiltersRequest,
-  BulkDeleteAdvancedTcpProtectionSynProtectionFiltersResponse,
+  AdvancedTcpProtectionSynProtectionFiltersBulkDeleteResponse,
   BulkDeleteAdvancedTcpProtectionSynProtectionFiltersError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: BulkDeleteAdvancedTcpProtectionSynProtectionFiltersRequest,
-  output: BulkDeleteAdvancedTcpProtectionSynProtectionFiltersResponse,
+  output: AdvancedTcpProtectionSynProtectionFiltersBulkDeleteResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -2282,12 +2853,12 @@ export type BulkDeleteAdvancedTcpProtectionSynProtectionRulesError =
 /** Delete all SYN Protection rules for an account. */
 export const bulkDeleteAdvancedTcpProtectionSynProtectionRules: API.OperationMethod<
   BulkDeleteAdvancedTcpProtectionSynProtectionRulesRequest,
-  BulkDeleteAdvancedTcpProtectionSynProtectionRulesResponse,
+  AdvancedTcpProtectionSynProtectionRulesBulkDeleteResponse,
   BulkDeleteAdvancedTcpProtectionSynProtectionRulesError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: BulkDeleteAdvancedTcpProtectionSynProtectionRulesRequest,
-  output: BulkDeleteAdvancedTcpProtectionSynProtectionRulesResponse,
+  output: AdvancedTcpProtectionSynProtectionRulesBulkDeleteResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -2298,12 +2869,12 @@ export type BulkDeleteAdvancedTcpProtectionTcpFlowProtectionFiltersError =
 /** Delete all TCP Flow Protection filters for an account. */
 export const bulkDeleteAdvancedTcpProtectionTcpFlowProtectionFilters: API.OperationMethod<
   BulkDeleteAdvancedTcpProtectionTcpFlowProtectionFiltersRequest,
-  BulkDeleteAdvancedTcpProtectionTcpFlowProtectionFiltersResponse,
+  AdvancedTcpProtectionTcpFlowProtectionFiltersBulkDeleteResponse,
   BulkDeleteAdvancedTcpProtectionTcpFlowProtectionFiltersError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: BulkDeleteAdvancedTcpProtectionTcpFlowProtectionFiltersRequest,
-  output: BulkDeleteAdvancedTcpProtectionTcpFlowProtectionFiltersResponse,
+  output: AdvancedTcpProtectionTcpFlowProtectionFiltersBulkDeleteResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -2314,12 +2885,12 @@ export type BulkDeleteAdvancedTcpProtectionTcpFlowProtectionRulesError =
 /** Delete all TCP Flow Protection rules for an account. */
 export const bulkDeleteAdvancedTcpProtectionTcpFlowProtectionRules: API.OperationMethod<
   BulkDeleteAdvancedTcpProtectionTcpFlowProtectionRulesRequest,
-  BulkDeleteAdvancedTcpProtectionTcpFlowProtectionRulesResponse,
+  AdvancedTcpProtectionTcpFlowProtectionRulesBulkDeleteResponse,
   BulkDeleteAdvancedTcpProtectionTcpFlowProtectionRulesError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: BulkDeleteAdvancedTcpProtectionTcpFlowProtectionRulesRequest,
-  output: BulkDeleteAdvancedTcpProtectionTcpFlowProtectionRulesResponse,
+  output: AdvancedTcpProtectionTcpFlowProtectionRulesBulkDeleteResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -2463,12 +3034,12 @@ export type DeleteAdvancedTcpProtectionAllowlistItemError =
 /** Delete the allowlist prefix for an account given a UUID. */
 export const deleteAdvancedTcpProtectionAllowlistItem: API.OperationMethod<
   DeleteAdvancedTcpProtectionAllowlistItemRequest,
-  DeleteAdvancedTcpProtectionAllowlistItemResponse,
+  AdvancedTcpProtectionAllowlistItemsDeleteResponse,
   DeleteAdvancedTcpProtectionAllowlistItemError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteAdvancedTcpProtectionAllowlistItemRequest,
-  output: DeleteAdvancedTcpProtectionAllowlistItemResponse,
+  output: AdvancedTcpProtectionAllowlistItemsDeleteResponse,
   errors: [
     AllowlistEntryNotFound,
     AdvancedTcpProtectionNotEntitled,
@@ -2484,12 +3055,12 @@ export type DeleteAdvancedTcpProtectionPrefixItemError = CloudflareOpError;
 /** Delete the prefix for an account given a UUID. */
 export const deleteAdvancedTcpProtectionPrefixItem: API.OperationMethod<
   DeleteAdvancedTcpProtectionPrefixItemRequest,
-  DeleteAdvancedTcpProtectionPrefixItemResponse,
+  AdvancedTcpProtectionPrefixesItemsDeleteResponse,
   DeleteAdvancedTcpProtectionPrefixItemError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteAdvancedTcpProtectionPrefixItemRequest,
-  output: DeleteAdvancedTcpProtectionPrefixItemResponse,
+  output: AdvancedTcpProtectionPrefixesItemsDeleteResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -2503,12 +3074,12 @@ export type DeleteAdvancedTcpProtectionSynProtectionFilterItemError =
 /** Delete a SYN Protection filter specified by the given UUID. */
 export const deleteAdvancedTcpProtectionSynProtectionFilterItem: API.OperationMethod<
   DeleteAdvancedTcpProtectionSynProtectionFilterItemRequest,
-  DeleteAdvancedTcpProtectionSynProtectionFilterItemResponse,
+  AdvancedTcpProtectionSynProtectionFiltersItemsDeleteResponse,
   DeleteAdvancedTcpProtectionSynProtectionFilterItemError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteAdvancedTcpProtectionSynProtectionFilterItemRequest,
-  output: DeleteAdvancedTcpProtectionSynProtectionFilterItemResponse,
+  output: AdvancedTcpProtectionSynProtectionFiltersItemsDeleteResponse,
   errors: [
     SynProtectionFilterNotFound,
     AdvancedTcpProtectionNotEntitled,
@@ -2528,12 +3099,12 @@ export type DeleteAdvancedTcpProtectionSynProtectionRuleItemError =
 /** Delete a SYN Protection rule specified by the given UUID. */
 export const deleteAdvancedTcpProtectionSynProtectionRuleItem: API.OperationMethod<
   DeleteAdvancedTcpProtectionSynProtectionRuleItemRequest,
-  DeleteAdvancedTcpProtectionSynProtectionRuleItemResponse,
+  AdvancedTcpProtectionSynProtectionRulesItemsDeleteResponse,
   DeleteAdvancedTcpProtectionSynProtectionRuleItemError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteAdvancedTcpProtectionSynProtectionRuleItemRequest,
-  output: DeleteAdvancedTcpProtectionSynProtectionRuleItemResponse,
+  output: AdvancedTcpProtectionSynProtectionRulesItemsDeleteResponse,
   errors: [
     SynProtectionRuleNotFound,
     AdvancedTcpProtectionNotEntitled,
@@ -2553,12 +3124,12 @@ export type DeleteAdvancedTcpProtectionTcpFlowProtectionFilterItemError =
 /** Delete a TCP Flow Protection filter specified by the given UUID. */
 export const deleteAdvancedTcpProtectionTcpFlowProtectionFilterItem: API.OperationMethod<
   DeleteAdvancedTcpProtectionTcpFlowProtectionFilterItemRequest,
-  DeleteAdvancedTcpProtectionTcpFlowProtectionFilterItemResponse,
+  AdvancedTcpProtectionTcpFlowProtectionFiltersItemsDeleteResponse,
   DeleteAdvancedTcpProtectionTcpFlowProtectionFilterItemError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteAdvancedTcpProtectionTcpFlowProtectionFilterItemRequest,
-  output: DeleteAdvancedTcpProtectionTcpFlowProtectionFilterItemResponse,
+  output: AdvancedTcpProtectionTcpFlowProtectionFiltersItemsDeleteResponse,
   errors: [
     TcpFlowProtectionFilterNotFound,
     AdvancedTcpProtectionNotEntitled,
@@ -2578,12 +3149,12 @@ export type DeleteAdvancedTcpProtectionTcpFlowProtectionRuleItemError =
 /** Delete a TCP Flow Protection rule specified by the given UUID. */
 export const deleteAdvancedTcpProtectionTcpFlowProtectionRuleItem: API.OperationMethod<
   DeleteAdvancedTcpProtectionTcpFlowProtectionRuleItemRequest,
-  DeleteAdvancedTcpProtectionTcpFlowProtectionRuleItemResponse,
+  AdvancedTcpProtectionTcpFlowProtectionRulesItemsDeleteResponse,
   DeleteAdvancedTcpProtectionTcpFlowProtectionRuleItemError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteAdvancedTcpProtectionTcpFlowProtectionRuleItemRequest,
-  output: DeleteAdvancedTcpProtectionTcpFlowProtectionRuleItemResponse,
+  output: AdvancedTcpProtectionTcpFlowProtectionRulesItemsDeleteResponse,
   errors: [
     TcpFlowProtectionRuleNotFound,
     AdvancedTcpProtectionNotEntitled,

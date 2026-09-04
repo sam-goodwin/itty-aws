@@ -71,8 +71,11 @@ export const CreateResponseDnsRecordsList = /*@__PURE__*/ S.Array(
   CreateResponseDnsRecordsItem,
 ) as any as S.Schema<CreateResponseDnsRecordsList>;
 
-export type CreateResponseStatus = "moved" | "pending" | "verified";
-export const CreateResponseStatus = /*@__PURE__*/ S.String;
+export type CreateResponseDeprecatedstatus = "moved" | "pending" | "verified";
+export const CreateResponseDeprecatedstatus = /*@__PURE__*/ S.String;
+
+export type CreateResponseNsSet = 1;
+export const CreateResponseNsSet = /*@__PURE__*/ S.Number;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateTenantCustomNameserverResponse {
@@ -81,20 +84,27 @@ export interface CreateTenantCustomNameserverResponse {
   /** The FQDN of the name server. */
   nsName: string;
   /** Verification status of the nameserver. */
-  status: CreateResponseStatus;
+  deprecatedstatus: CreateResponseDeprecatedstatus;
   /** Identifier. */
   zoneTag: string;
   /** The number of the set that this name server belongs to. */
   nsSet?: number | null;
+  ns_name_2: unknown;
+  /** }' */
+  ns_set_2: CreateResponseNsSet;
 }
 export const CreateTenantCustomNameserverResponse = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       dnsRecords: CreateResponseDnsRecordsList.pipe(T.Body("dns_records")),
       nsName: S.String.pipe(T.Body("ns_name")),
-      status: CreateResponseStatus,
+      deprecatedstatus: CreateResponseDeprecatedstatus.pipe(
+        T.Body("Deprecatedstatus"),
+      ),
       zoneTag: S.String.pipe(T.Body("zone_tag")),
       nsSet: S.optional(S.NullOr(S.Number).pipe(T.Body("ns_set"))),
+      ns_name_2: S.Unknown.pipe(T.Body("ns_name")),
+      ns_set_2: CreateResponseNsSet.pipe(T.Body("ns_set")),
     }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateTenantCustomNameserverResponse",
@@ -187,8 +197,8 @@ export const GetResultItemDnsRecordsList = /*@__PURE__*/ S.Array(
   GetResultItemDnsRecordsItem,
 ) as any as S.Schema<GetResultItemDnsRecordsList>;
 
-export type GetResultItemStatus = "moved" | "pending" | "verified";
-export const GetResultItemStatus = /*@__PURE__*/ S.String;
+export type GetResultItemDeprecatedstatus = "moved" | "pending" | "verified";
+export const GetResultItemDeprecatedstatus = /*@__PURE__*/ S.String;
 
 export interface GetResultItem {
   /** A and AAAA records associated with the nameserver. */
@@ -196,7 +206,7 @@ export interface GetResultItem {
   /** The FQDN of the name server. */
   nsName: string;
   /** Verification status of the nameserver. */
-  status: GetResultItemStatus;
+  deprecatedstatus: GetResultItemDeprecatedstatus;
   /** Identifier. */
   zoneTag: string;
   /** The number of the set that this name server belongs to. */
@@ -206,7 +216,9 @@ export const GetResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dnsRecords: GetResultItemDnsRecordsList.pipe(T.Body("dns_records")),
     nsName: S.String.pipe(T.Body("ns_name")),
-    status: GetResultItemStatus,
+    deprecatedstatus: GetResultItemDeprecatedstatus.pipe(
+      T.Body("Deprecatedstatus"),
+    ),
     zoneTag: S.String.pipe(T.Body("zone_tag")),
     nsSet: S.optional(S.NullOr(S.Number).pipe(T.Body("ns_set"))),
   }),
@@ -233,7 +245,7 @@ export const GetTenantCustomNameserverResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetTenantCustomNameserverResponse>;
 
 export type CreateTenantCustomNameserverError = CloudflareOpError;
-/** Add Tenant Custom Nameserver */
+/** Adds a custom nameserver for a tenant. */
 export const createTenantCustomNameserver: API.OperationMethod<
   CreateTenantCustomNameserverRequest,
   CreateTenantCustomNameserverResponse,
@@ -248,7 +260,7 @@ export const createTenantCustomNameserver: API.OperationMethod<
 }));
 
 export type DeleteTenantCustomNameserverError = CloudflareOpError;
-/** Delete Tenant Custom Nameserver */
+/** Deletes a tenant’s custom nameserver. */
 export const deleteTenantCustomNameserver: API.PaginatedOperationMethod<
   DeleteTenantCustomNameserverRequest,
   DeleteTenantCustomNameserverResponse,
@@ -268,7 +280,7 @@ export const deleteTenantCustomNameserver: API.PaginatedOperationMethod<
 ) as any;
 
 export type GetTenantCustomNameserverError = CloudflareOpError;
-/** List a tenant's custom nameservers. */
+/** Lists a tenant’s custom nameservers. */
 export const getTenantCustomNameserver: API.PaginatedOperationMethod<
   GetTenantCustomNameserverRequest,
   GetTenantCustomNameserverResponse,

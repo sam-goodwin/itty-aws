@@ -31,94 +31,68 @@ export const ListIpsRequest = /*@__PURE__*/ S.suspend(() =>
     .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({ identifier: "ListIpsRequest" }) as any as S.Schema<ListIpsRequest>;
 
-export type ListResultPublicIPIPsIpv4CidrsList = Array<string>;
-export const ListResultPublicIPIPsIpv4CidrsList = /*@__PURE__*/ S.Array(
+export type ListResultIpv4CidrsList = Array<string>;
+export const ListResultIpv4CidrsList = /*@__PURE__*/ S.Array(
   S.String,
-) as any as S.Schema<ListResultPublicIPIPsIpv4CidrsList>;
+) as any as S.Schema<ListResultIpv4CidrsList>;
 
-export type ListResultPublicIPIPsIpv6CidrsList = Array<string>;
-export const ListResultPublicIPIPsIpv6CidrsList = /*@__PURE__*/ S.Array(
+export type ListResultIpv6CidrsList = Array<string>;
+export const ListResultIpv6CidrsList = /*@__PURE__*/ S.Array(
   S.String,
-) as any as S.Schema<ListResultPublicIPIPsIpv6CidrsList>;
+) as any as S.Schema<ListResultIpv6CidrsList>;
 
-export interface ListResultPublicIPIPs {
+export type ListResultIpv4CidrsList2 = Array<string>;
+export const ListResultIpv4CidrsList2 = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<ListResultIpv4CidrsList2>;
+
+export type ListResultIpv6CidrsList2 = Array<string>;
+export const ListResultIpv6CidrsList2 = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<ListResultIpv6CidrsList2>;
+
+export type ListResultJdcloudCidrsList = Array<string>;
+export const ListResultJdcloudCidrsList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<ListResultJdcloudCidrsList>;
+
+export interface ListResult {
   /** A digest of the IP data. Useful for determining if the data has changed. */
   etag?: string | null;
   /** List of Cloudflare IPv4 CIDR addresses. */
-  ipv4Cidrs?: ListResultPublicIPIPsIpv4CidrsList | null;
+  ipv4Cidrs?: ListResultIpv4CidrsList | null;
   /** List of Cloudflare IPv6 CIDR addresses. */
-  ipv6Cidrs?: ListResultPublicIPIPsIpv6CidrsList | null;
-}
-export const ListResultPublicIPIPs = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    etag: S.optional(S.NullOr(S.String)),
-    ipv4Cidrs: S.optional(
-      S.NullOr(ListResultPublicIPIPsIpv4CidrsList).pipe(T.Body("ipv4_cidrs")),
-    ),
-    ipv6Cidrs: S.optional(
-      S.NullOr(ListResultPublicIPIPsIpv6CidrsList).pipe(T.Body("ipv6_cidrs")),
-    ),
-  }),
-).annotate({
-  identifier: "ListResultPublicIPIPs",
-}) as any as S.Schema<ListResultPublicIPIPs>;
-
-export type ListResultPublicIPIPsJDCloudIpv4CidrsList = Array<string>;
-export const ListResultPublicIPIPsJDCloudIpv4CidrsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListResultPublicIPIPsJDCloudIpv4CidrsList>;
-
-export type ListResultPublicIPIPsJDCloudIpv6CidrsList = Array<string>;
-export const ListResultPublicIPIPsJDCloudIpv6CidrsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListResultPublicIPIPsJDCloudIpv6CidrsList>;
-
-export type ListResultPublicIPIPsJDCloudJdcloudCidrsList = Array<string>;
-export const ListResultPublicIPIPsJDCloudJdcloudCidrsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ListResultPublicIPIPsJDCloudJdcloudCidrsList>;
-
-export interface ListResultPublicIPIPsJDCloud {
+  ipv6Cidrs?: ListResultIpv6CidrsList | null;
   /** A digest of the IP data. Useful for determining if the data has changed. */
-  etag?: string | null;
+  etag_2?: string | null;
   /** List of Cloudflare IPv4 CIDR addresses. */
-  ipv4Cidrs?: ListResultPublicIPIPsJDCloudIpv4CidrsList | null;
+  ipv4_cidrs_2?: ListResultIpv4CidrsList2 | null;
   /** List of Cloudflare IPv6 CIDR addresses. */
-  ipv6Cidrs?: ListResultPublicIPIPsJDCloudIpv6CidrsList | null;
+  ipv6_cidrs_2?: ListResultIpv6CidrsList2 | null;
   /** List IPv4 and IPv6 CIDRs, only populated if `?networks=jdcloud` is used. */
-  jdcloudCidrs?: ListResultPublicIPIPsJDCloudJdcloudCidrsList | null;
+  jdcloudCidrs?: ListResultJdcloudCidrsList | null;
 }
-export const ListResultPublicIPIPsJDCloud = /*@__PURE__*/ S.suspend(() =>
+export const ListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     etag: S.optional(S.NullOr(S.String)),
     ipv4Cidrs: S.optional(
-      S.NullOr(ListResultPublicIPIPsJDCloudIpv4CidrsList).pipe(
-        T.Body("ipv4_cidrs"),
-      ),
+      S.NullOr(ListResultIpv4CidrsList).pipe(T.Body("ipv4_cidrs")),
     ),
     ipv6Cidrs: S.optional(
-      S.NullOr(ListResultPublicIPIPsJDCloudIpv6CidrsList).pipe(
-        T.Body("ipv6_cidrs"),
-      ),
+      S.NullOr(ListResultIpv6CidrsList).pipe(T.Body("ipv6_cidrs")),
+    ),
+    etag_2: S.optional(S.NullOr(S.String).pipe(T.Body("etag"))),
+    ipv4_cidrs_2: S.optional(
+      S.NullOr(ListResultIpv4CidrsList2).pipe(T.Body("ipv4_cidrs")),
+    ),
+    ipv6_cidrs_2: S.optional(
+      S.NullOr(ListResultIpv6CidrsList2).pipe(T.Body("ipv6_cidrs")),
     ),
     jdcloudCidrs: S.optional(
-      S.NullOr(ListResultPublicIPIPsJDCloudJdcloudCidrsList).pipe(
-        T.Body("jdcloud_cidrs"),
-      ),
+      S.NullOr(ListResultJdcloudCidrsList).pipe(T.Body("jdcloud_cidrs")),
     ),
   }),
-).annotate({
-  identifier: "ListResultPublicIPIPsJDCloud",
-}) as any as S.Schema<ListResultPublicIPIPsJDCloud>;
-
-export type ListResult = ListResultPublicIPIPs | ListResultPublicIPIPsJDCloud;
-export const ListResult = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
-    ["etag", "ipv4Cidrs", "ipv6Cidrs"],
-    ["etag", "ipv4Cidrs", "ipv6Cidrs", "jdcloudCidrs"],
-  ]),
-);
+).annotate({ identifier: "ListResult" }) as any as S.Schema<ListResult>;
 
 export type ListIpsResponse = ListResult;
 export const ListIpsResponse = /*@__PURE__*/ S.suspend(() =>
@@ -128,7 +102,7 @@ export const ListIpsResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListIpsResponse>;
 
 export type ListIpsError = CloudflareOpError;
-/** Get IPs used on the Cloudflare/JD Cloud network, see https://www.cloudflare.com/ips for Cloudflare IPs or https://developers.cloudflare.com/china-network/reference/infrastructure/ for JD Cloud IPs. */
+/** Get IPs used on the Cloudflare/JD Cloud network, see <https://www.cloudflare.com/ips> for Cloudflare IPs or <https://developers.cloudflare.com/china-network/reference/infrastructure/> for JD Cloud IPs. */
 export const listIps: API.OperationMethod<
   ListIpsRequest,
   ListIpsResponse,

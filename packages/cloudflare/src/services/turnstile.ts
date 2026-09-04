@@ -82,7 +82,7 @@ export interface CreateWidgetRequest {
   accountId: string;
   /** Direction to order widgets. */
   direction?: WidgetsCreateRequestDirection | (string & {});
-  /** Filter widgets by field using case-insensitive substring matching. */
+  /** Filter widgets by field using case-insensitive substring matching. Format: `field:value` */
   filter?: string;
   /** Field to order widgets by. */
   order?: WidgetsCreateRequestOrder | (string & {});
@@ -90,14 +90,15 @@ export interface CreateWidgetRequest {
   page?: number;
   /** Number of items per page. */
   perPage?: number;
+  /** maxLength10 */
   domains: WidgetsCreateRequestDomainsList;
   /** Widget Mode */
   mode: WidgetsCreateRequestMode | (string & {});
-  /** Human readable widget name. Not unique. Cloudflare suggests that you */
+  /** Human readable widget name. Not unique. Cloudflare suggests that you set this to a meaningful string to make it easier to identify your widget, and where it is used. */
   name: string;
-  /** If bot_fight_mode is set to `true`, Cloudflare issues computationally */
+  /** If bot_fight_mode is set to `true`, Cloudflare issues computationally expensive challenges in response to malicious bots (ENT only). */
   botFightMode?: boolean;
-  /** If Turnstile is embedded on a Cloudflare site and the widget should grant challenge clearance, */
+  /** If Turnstile is embedded on a Cloudflare site and the widget should grant challenge clearance, this setting can determine the clearance level to be set */
   clearanceLevel?: WidgetsCreateRequestClearanceLevel | (string & {});
   /** Return the Ephemeral ID in /siteverify (ENT only). */
   ephemeralId?: boolean;
@@ -160,12 +161,13 @@ export const WidgetsCreateResponseRegion = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateWidgetResponse {
-  /** If bot_fight_mode is set to `true`, Cloudflare issues computationally */
+  /** If bot_fight_mode is set to `true`, Cloudflare issues computationally expensive challenges in response to malicious bots (ENT only). */
   botFightMode: boolean;
-  /** If Turnstile is embedded on a Cloudflare site and the widget should grant challenge clearance, */
+  /** If Turnstile is embedded on a Cloudflare site and the widget should grant challenge clearance, this setting can determine the clearance level to be set */
   clearanceLevel: WidgetsCreateResponseClearanceLevel;
   /** When the widget was created. */
   createdOn: string;
+  /** maxLength10 */
   domains: WidgetsCreateResponseDomainsList;
   /** Return the Ephemeral ID in /siteverify (ENT only). */
   ephemeralId: boolean;
@@ -173,7 +175,7 @@ export interface CreateWidgetResponse {
   mode: WidgetsCreateResponseMode;
   /** When the widget was modified. */
   modifiedOn: string;
-  /** Human readable widget name. Not unique. Cloudflare suggests that you */
+  /** Human readable widget name. Not unique. Cloudflare suggests that you set this to a meaningful string to make it easier to identify your widget, and where it is used. */
   name: string;
   /** Do not show any Cloudflare branding on the widget (ENT only). */
   offlabel: boolean;
@@ -251,12 +253,13 @@ export const WidgetsDeleteResponseRegion = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface DeleteWidgetResponse {
-  /** If bot_fight_mode is set to `true`, Cloudflare issues computationally */
+  /** If bot_fight_mode is set to `true`, Cloudflare issues computationally expensive challenges in response to malicious bots (ENT only). */
   botFightMode: boolean;
-  /** If Turnstile is embedded on a Cloudflare site and the widget should grant challenge clearance, */
+  /** If Turnstile is embedded on a Cloudflare site and the widget should grant challenge clearance, this setting can determine the clearance level to be set */
   clearanceLevel: WidgetsDeleteResponseClearanceLevel;
   /** When the widget was created. */
   createdOn: string;
+  /** maxLength10 */
   domains: WidgetsDeleteResponseDomainsList;
   /** Return the Ephemeral ID in /siteverify (ENT only). */
   ephemeralId: boolean;
@@ -264,7 +267,7 @@ export interface DeleteWidgetResponse {
   mode: WidgetsDeleteResponseMode;
   /** When the widget was modified. */
   modifiedOn: string;
-  /** Human readable widget name. Not unique. Cloudflare suggests that you */
+  /** Human readable widget name. Not unique. Cloudflare suggests that you set this to a meaningful string to make it easier to identify your widget, and where it is used. */
   name: string;
   /** Do not show any Cloudflare branding on the widget (ENT only). */
   offlabel: boolean;
@@ -342,12 +345,13 @@ export const WidgetsGetResponseRegion = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetWidgetResponse {
-  /** If bot_fight_mode is set to `true`, Cloudflare issues computationally */
+  /** If bot_fight_mode is set to `true`, Cloudflare issues computationally expensive challenges in response to malicious bots (ENT only). */
   botFightMode: boolean;
-  /** If Turnstile is embedded on a Cloudflare site and the widget should grant challenge clearance, */
+  /** If Turnstile is embedded on a Cloudflare site and the widget should grant challenge clearance, this setting can determine the clearance level to be set */
   clearanceLevel: WidgetsGetResponseClearanceLevel;
   /** When the widget was created. */
   createdOn: string;
+  /** maxLength10 */
   domains: WidgetsGetResponseDomainsList;
   /** Return the Ephemeral ID in /siteverify (ENT only). */
   ephemeralId: boolean;
@@ -355,7 +359,7 @@ export interface GetWidgetResponse {
   mode: WidgetsGetResponseMode;
   /** When the widget was modified. */
   modifiedOn: string;
-  /** Human readable widget name. Not unique. Cloudflare suggests that you */
+  /** Human readable widget name. Not unique. Cloudflare suggests that you set this to a meaningful string to make it easier to identify your widget, and where it is used. */
   name: string;
   /** Do not show any Cloudflare branding on the widget (ENT only). */
   offlabel: boolean;
@@ -403,7 +407,7 @@ export interface ListWidgetsRequest {
   accountId: string;
   /** Direction to order widgets. */
   direction?: WidgetsListRequestDirection | (string & {});
-  /** Filter widgets by field using case-insensitive substring matching. */
+  /** Filter widgets by field using case-insensitive substring matching. Format: `field:value` */
   filter?: string;
   /** Field to order widgets by. */
   order?: WidgetsListRequestOrder | (string & {});
@@ -455,12 +459,13 @@ export type WidgetsListResultItemRegion = "world" | "china";
 export const WidgetsListResultItemRegion = /*@__PURE__*/ S.String;
 
 export interface WidgetsListResultItem {
-  /** If bot_fight_mode is set to `true`, Cloudflare issues computationally */
+  /** If bot_fight_mode is set to `true`, Cloudflare issues computationally expensive challenges in response to malicious bots (ENT only). */
   botFightMode: boolean;
-  /** If Turnstile is embedded on a Cloudflare site and the widget should grant challenge clearance, */
+  /** If Turnstile is embedded on a Cloudflare site and the widget should grant challenge clearance, this setting can determine the clearance level to be set */
   clearanceLevel: WidgetsListResultItemClearanceLevel;
   /** When the widget was created. */
   createdOn: string;
+  /** maxLength10 */
   domains: WidgetsListResultItemDomainsList;
   /** Return the Ephemeral ID in /siteverify (ENT only). */
   ephemeralId: boolean;
@@ -468,7 +473,7 @@ export interface WidgetsListResultItem {
   mode: WidgetsListResultItemMode;
   /** When the widget was modified. */
   modifiedOn: string;
-  /** Human readable widget name. Not unique. Cloudflare suggests that you */
+  /** Human readable widget name. Not unique. Cloudflare suggests that you set this to a meaningful string to make it easier to identify your widget, and where it is used. */
   name: string;
   /** Do not show any Cloudflare branding on the widget (ENT only). */
   offlabel: boolean;
@@ -522,7 +527,7 @@ export interface RotateSecretWidgetRequest {
   accountId: string;
   /** Widget item identifier tag. */
   sitekey: string;
-  /** If `invalidate_immediately` is set to `false`, the previous secret will */
+  /** If `invalidate_immediately` is set to `false`, the previous secret will remain valid for two hours. Otherwise, the secret is immediately invalidated, and requests using it will be rejected. */
   invalidateImmediately?: boolean;
 }
 export const RotateSecretWidgetRequest = /*@__PURE__*/ S.suspend(() =>
@@ -568,12 +573,13 @@ export const WidgetsRotateSecretResponseRegion = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface RotateSecretWidgetResponse {
-  /** If bot_fight_mode is set to `true`, Cloudflare issues computationally */
+  /** If bot_fight_mode is set to `true`, Cloudflare issues computationally expensive challenges in response to malicious bots (ENT only). */
   botFightMode: boolean;
-  /** If Turnstile is embedded on a Cloudflare site and the widget should grant challenge clearance, */
+  /** If Turnstile is embedded on a Cloudflare site and the widget should grant challenge clearance, this setting can determine the clearance level to be set */
   clearanceLevel: WidgetsRotateSecretResponseClearanceLevel;
   /** When the widget was created. */
   createdOn: string;
+  /** maxLength10 */
   domains: WidgetsRotateSecretResponseDomainsList;
   /** Return the Ephemeral ID in /siteverify (ENT only). */
   ephemeralId: boolean;
@@ -581,7 +587,7 @@ export interface RotateSecretWidgetResponse {
   mode: WidgetsRotateSecretResponseMode;
   /** When the widget was modified. */
   modifiedOn: string;
-  /** Human readable widget name. Not unique. Cloudflare suggests that you */
+  /** Human readable widget name. Not unique. Cloudflare suggests that you set this to a meaningful string to make it easier to identify your widget, and where it is used. */
   name: string;
   /** Do not show any Cloudflare branding on the widget (ENT only). */
   offlabel: boolean;
@@ -639,14 +645,15 @@ export interface UpdateWidgetRequest {
   accountId: string;
   /** Widget item identifier tag. */
   sitekey: string;
+  /** maxLength10 */
   domains: WidgetsUpdateRequestDomainsList;
   /** Widget Mode */
   mode: WidgetsUpdateRequestMode | (string & {});
-  /** Human readable widget name. Not unique. Cloudflare suggests that you */
+  /** Human readable widget name. Not unique. Cloudflare suggests that you set this to a meaningful string to make it easier to identify your widget, and where it is used. */
   name: string;
-  /** If bot_fight_mode is set to `true`, Cloudflare issues computationally */
+  /** If bot_fight_mode is set to `true`, Cloudflare issues computationally expensive challenges in response to malicious bots (ENT only). */
   botFightMode?: boolean;
-  /** If Turnstile is embedded on a Cloudflare site and the widget should grant challenge clearance, */
+  /** If Turnstile is embedded on a Cloudflare site and the widget should grant challenge clearance, this setting can determine the clearance level to be set */
   clearanceLevel?: WidgetsUpdateRequestClearanceLevel | (string & {});
   /** Return the Ephemeral ID in /siteverify (ENT only). */
   ephemeralId?: boolean;
@@ -703,14 +710,18 @@ export const WidgetsUpdateResponseMode = /*@__PURE__*/ S.String;
 export type WidgetsUpdateResponseRegion = "world" | "china";
 export const WidgetsUpdateResponseRegion = /*@__PURE__*/ S.String;
 
+export type WidgetsUpdateResponseClearanceLevel2 = "interactive";
+export const WidgetsUpdateResponseClearanceLevel2 = /*@__PURE__*/ S.String;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface UpdateWidgetResponse {
-  /** If bot_fight_mode is set to `true`, Cloudflare issues computationally */
+  /** If bot_fight_mode is set to `true`, Cloudflare issues computationally expensive challenges in response to malicious bots (ENT only). */
   botFightMode: boolean;
-  /** If Turnstile is embedded on a Cloudflare site and the widget should grant challenge clearance, */
+  /** If Turnstile is embedded on a Cloudflare site and the widget should grant challenge clearance, this setting can determine the clearance level to be set */
   clearanceLevel: WidgetsUpdateResponseClearanceLevel;
   /** When the widget was created. */
   createdOn: string;
+  /** maxLength10 */
   domains: WidgetsUpdateResponseDomainsList;
   /** Return the Ephemeral ID in /siteverify (ENT only). */
   ephemeralId: boolean;
@@ -718,7 +729,7 @@ export interface UpdateWidgetResponse {
   mode: WidgetsUpdateResponseMode;
   /** When the widget was modified. */
   modifiedOn: string;
-  /** Human readable widget name. Not unique. Cloudflare suggests that you */
+  /** Human readable widget name. Not unique. Cloudflare suggests that you set this to a meaningful string to make it easier to identify your widget, and where it is used. */
   name: string;
   /** Do not show any Cloudflare branding on the widget (ENT only). */
   offlabel: boolean;
@@ -728,6 +739,12 @@ export interface UpdateWidgetResponse {
   secret: string;
   /** Widget item identifier tag. */
   sitekey: string;
+  /** "203.0.113.1", */
+  domains_2: unknown;
+  mode_2: unknown;
+  name_2: unknown;
+  /** }' */
+  clearance_level_2: WidgetsUpdateResponseClearanceLevel2;
 }
 export const UpdateWidgetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -745,6 +762,12 @@ export const UpdateWidgetResponse = /*@__PURE__*/ S.suspend(() =>
     region: WidgetsUpdateResponseRegion,
     secret: S.String,
     sitekey: S.String,
+    domains_2: S.Unknown.pipe(T.Body("domains")),
+    mode_2: S.Unknown.pipe(T.Body("mode")),
+    name_2: S.Unknown.pipe(T.Body("name")),
+    clearance_level_2: WidgetsUpdateResponseClearanceLevel2.pipe(
+      T.Body("clearance_level"),
+    ),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateWidgetResponse",
@@ -822,7 +845,7 @@ export const listWidgets: API.PaginatedOperationMethod<
 ) as any;
 
 export type RotateSecretWidgetError = CloudflareOpError;
-/** Generate a new secret key for this widget. If `invalidate_immediately` is set to `false`, the previous secret remains valid for 2 hours. Note that secrets cannot be rotated again during the grace period. */
+/** Generate a new secret key for this widget. If `invalidate_immediately`is set to `false`, the previous secret remains valid for 2 hours. Note that secrets cannot be rotated again during the grace period. */
 export const rotateSecretWidget: API.OperationMethod<
   RotateSecretWidgetRequest,
   RotateSecretWidgetResponse,

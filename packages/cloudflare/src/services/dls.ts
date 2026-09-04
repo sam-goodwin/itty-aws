@@ -33,7 +33,7 @@ export interface CreateRegionalServicePrefixBindingRequest {
   cidr: string;
   /** The ID of the parent IP prefix that contains the CIDR. */
   prefixId: string;
-  /** Region key from managed regions (e.g., "us", "eu"). */
+  /** Region key from managed regions (e.g., “us”, “eu”). */
   regionKey: string;
 }
 export const CreateRegionalServicePrefixBindingRequest =
@@ -103,13 +103,48 @@ export const DeleteRegionalServicePrefixBindingRequest =
     identifier: "DeleteRegionalServicePrefixBindingRequest",
   }) as any as S.Schema<DeleteRegionalServicePrefixBindingRequest>;
 
-export interface DeleteRegionalServicePrefixBindingResponse {}
-export const DeleteRegionalServicePrefixBindingResponse =
+export type RegionalServicesPrefixBindingsDeleteResponsePointer = "pointer";
+export const RegionalServicesPrefixBindingsDeleteResponsePointer =
+  /*@__PURE__*/ S.String;
+
+export type RegionalServicesPrefixBindingsDeleteResponsePointer2 = "pointer";
+export const RegionalServicesPrefixBindingsDeleteResponsePointer2 =
+  /*@__PURE__*/ S.String;
+
+/** Raw response payload (operation does not use the standard v4 result envelope). */
+export interface RegionalServicesPrefixBindingsDeleteResponse {
+  code: unknown;
+  message: unknown;
+  documentationUrl: unknown;
+  source: unknown;
+  /** } */
+  pointer: RegionalServicesPrefixBindingsDeleteResponsePointer;
+  code_2: unknown;
+  message_2: unknown;
+  documentation_url_2: unknown;
+  source_2: unknown;
+  /** } */
+  pointer_2: RegionalServicesPrefixBindingsDeleteResponsePointer2;
+}
+export const RegionalServicesPrefixBindingsDeleteResponse =
   /*@__PURE__*/ S.suspend(() =>
-    S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+    S.Struct({
+      code: S.Unknown,
+      message: S.Unknown,
+      documentationUrl: S.Unknown.pipe(T.Body("documentation_url")),
+      source: S.Unknown,
+      pointer: RegionalServicesPrefixBindingsDeleteResponsePointer,
+      code_2: S.Unknown.pipe(T.Body("code")),
+      message_2: S.Unknown.pipe(T.Body("message")),
+      documentation_url_2: S.Unknown.pipe(T.Body("documentation_url")),
+      source_2: S.Unknown.pipe(T.Body("source")),
+      pointer_2: RegionalServicesPrefixBindingsDeleteResponsePointer2.pipe(
+        T.Body("pointer"),
+      ),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
-    identifier: "DeleteRegionalServicePrefixBindingResponse",
-  }) as any as S.Schema<DeleteRegionalServicePrefixBindingResponse>;
+    identifier: "RegionalServicesPrefixBindingsDeleteResponse",
+  }) as any as S.Schema<RegionalServicesPrefixBindingsDeleteResponse>;
 
 export interface GetRegionRequest {
   /** Identifier of a Cloudflare account. */
@@ -137,11 +172,15 @@ export const GetRegionRequest = /*@__PURE__*/ S.suspend(() =>
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetRegionResponse {
   id: string;
+  /** formatdate-time */
   createdOn: string;
+  /** formatdate-time */
   modifiedOn: string;
   name: string;
+  /** maxLength128 */
   regionKey: string;
   version: number;
+  /** formatdate-time */
   versionCreatedOn: string;
 }
 export const GetRegionResponse = /*@__PURE__*/ S.suspend(() =>
@@ -210,6 +249,7 @@ export interface ListRegionalServicePrefixBindingsRequest {
   accountId: string;
   /** Opaque token for cursor-based pagination. Omit for the first page. Pass the value from a previous response to fetch the next page. */
   cursor?: string;
+  /** maximum100 */
   perPage?: number;
 }
 export const ListRegionalServicePrefixBindingsRequest = /*@__PURE__*/ S.suspend(
@@ -286,6 +326,7 @@ export interface ListRegionsRequest {
   accountId: string;
   /** Opaque token for cursor-based pagination. Omit for the first page. Pass the value from a previous response to fetch the next page. */
   cursor?: string;
+  /** maximum100 */
   perPage?: number;
   /** Filter regions by type. Omit to return all regions. */
   type?: RegionsListRequestType | (string & {});
@@ -311,11 +352,15 @@ export const ListRegionsRequest = /*@__PURE__*/ S.suspend(() =>
 
 export interface RegionsListResultItem {
   id: string;
+  /** formatdate-time */
   createdOn: string;
+  /** formatdate-time */
   modifiedOn: string;
   name: string;
+  /** maxLength128 */
   regionKey: string;
   version: number;
+  /** formatdate-time */
   versionCreatedOn: string;
 }
 export const RegionsListResultItem = /*@__PURE__*/ S.suspend(() =>
@@ -357,7 +402,7 @@ export interface PatchRegionalServicePrefixBindingRequest {
   accountId: string;
   /** Unique identifier for the prefix binding. */
   bindingId: string;
-  /** New region key to assign (e.g., "us", "eu", "cfcanary"). */
+  /** New region key to assign (e.g., “us”, “eu”, “cfcanary”). */
   regionKey: string;
 }
 export const PatchRegionalServicePrefixBindingRequest = /*@__PURE__*/ S.suspend(
@@ -421,12 +466,12 @@ export type DeleteRegionalServicePrefixBindingError = CloudflareOpError;
 /** Delete a DLS prefix binding */
 export const deleteRegionalServicePrefixBinding: API.OperationMethod<
   DeleteRegionalServicePrefixBindingRequest,
-  DeleteRegionalServicePrefixBindingResponse,
+  RegionalServicesPrefixBindingsDeleteResponse,
   DeleteRegionalServicePrefixBindingError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteRegionalServicePrefixBindingRequest,
-  output: DeleteRegionalServicePrefixBindingResponse,
+  output: RegionalServicesPrefixBindingsDeleteResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,

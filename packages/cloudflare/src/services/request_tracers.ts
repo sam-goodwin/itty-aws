@@ -47,6 +47,24 @@ export const TracesCreateRequestBody = /*@__PURE__*/ S.suspend(() =>
   identifier: "TracesCreateRequestBody",
 }) as any as S.Schema<TracesCreateRequestBody>;
 
+export type TracesCreateRequestContextGeolocCookiesMap = {
+  [key: string]: string | undefined;
+};
+export const TracesCreateRequestContextGeolocCookiesMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<TracesCreateRequestContextGeolocCookiesMap>;
+
+export type TracesCreateRequestContextGeolocHeadersMap = {
+  [key: string]: string | undefined;
+};
+export const TracesCreateRequestContextGeolocHeadersMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<TracesCreateRequestContextGeolocHeadersMap>;
+
 export interface TracesCreateRequestContextGeoloc {
   city?: string;
   continent?: string;
@@ -58,6 +76,18 @@ export interface TracesCreateRequestContextGeoloc {
   regionCode?: string;
   subdivision_2_iso_code?: string;
   timezone?: string;
+  /** Whether to skip any challenges for tracing request (e.g.: captcha) */
+  skipChallenge?: boolean;
+  /** Threat score used for evaluating tracing request processing */
+  threatScore?: number;
+  /** Cookies added to tracing request */
+  cookies?: TracesCreateRequestContextGeolocCookiesMap;
+  /** Headers added to tracing request */
+  headers?: TracesCreateRequestContextGeolocHeadersMap;
+  /** HTTP Protocol of tracing request */
+  protocol?: string;
+  /** Skip sending the request to the Origin server after all rules evaluation */
+  skipResponse?: boolean;
 }
 export const TracesCreateRequestContextGeoloc = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -71,6 +101,12 @@ export const TracesCreateRequestContextGeoloc = /*@__PURE__*/ S.suspend(() =>
     regionCode: S.optional(S.String.pipe(T.Body("region_code"))),
     subdivision_2_iso_code: S.optional(S.String),
     timezone: S.optional(S.String),
+    skipChallenge: S.optional(S.Boolean.pipe(T.Body("skip_challenge"))),
+    threatScore: S.optional(S.Number.pipe(T.Body("threat_score"))),
+    cookies: S.optional(TracesCreateRequestContextGeolocCookiesMap),
+    headers: S.optional(TracesCreateRequestContextGeolocHeadersMap),
+    protocol: S.optional(S.String),
+    skipResponse: S.optional(S.Boolean.pipe(T.Body("skip_response"))),
   }),
 ).annotate({
   identifier: "TracesCreateRequestContextGeoloc",
@@ -81,37 +117,15 @@ export interface TracesCreateRequestContext {
   botScore?: number;
   /** Geodata for tracing request */
   geoloc?: TracesCreateRequestContextGeoloc;
-  /** Whether to skip any challenges for tracing request (e.g.: captcha) */
-  skipChallenge?: boolean;
-  /** Threat score used for evaluating tracing request processing */
-  threatScore?: number;
 }
 export const TracesCreateRequestContext = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     botScore: S.optional(S.Number.pipe(T.Body("bot_score"))),
     geoloc: S.optional(TracesCreateRequestContextGeoloc),
-    skipChallenge: S.optional(S.Boolean.pipe(T.Body("skip_challenge"))),
-    threatScore: S.optional(S.Number.pipe(T.Body("threat_score"))),
   }),
 ).annotate({
   identifier: "TracesCreateRequestContext",
 }) as any as S.Schema<TracesCreateRequestContext>;
-
-export type TracesCreateRequestCookiesMap = {
-  [key: string]: string | undefined;
-};
-export const TracesCreateRequestCookiesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<TracesCreateRequestCookiesMap>;
-
-export type TracesCreateRequestHeadersMap = {
-  [key: string]: string | undefined;
-};
-export const TracesCreateRequestHeadersMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<TracesCreateRequestHeadersMap>;
 
 export interface CreateTraceRequest {
   /** Identifier. */
@@ -123,14 +137,6 @@ export interface CreateTraceRequest {
   body?: TracesCreateRequestBody;
   /** Additional request parameters */
   context?: TracesCreateRequestContext;
-  /** Cookies added to tracing request */
-  cookies?: TracesCreateRequestCookiesMap;
-  /** Headers added to tracing request */
-  headers?: TracesCreateRequestHeadersMap;
-  /** HTTP Protocol of tracing request */
-  protocol?: string;
-  /** Skip sending the request to the Origin server after all rules evaluation */
-  skipResponse?: boolean;
 }
 export const CreateTraceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -139,10 +145,6 @@ export const CreateTraceRequest = /*@__PURE__*/ S.suspend(() =>
     url: S.String,
     body: S.optional(TracesCreateRequestBody),
     context: S.optional(TracesCreateRequestContext),
-    cookies: S.optional(TracesCreateRequestCookiesMap),
-    headers: S.optional(TracesCreateRequestHeadersMap),
-    protocol: S.optional(S.String),
-    skipResponse: S.optional(S.Boolean.pipe(T.Body("skip_response"))),
   })
     .pipe(
       T.Http({
@@ -160,6 +162,7 @@ export const CreateTraceRequest = /*@__PURE__*/ S.suspend(() =>
 export interface CreateTraceResponse {
   /** HTTP Status code of zone response */
   statusCode?: number | null;
+  /** HTTP */
   trace?: unknown | null;
 }
 export const CreateTraceResponse = /*@__PURE__*/ S.suspend(() =>
@@ -172,7 +175,7 @@ export const CreateTraceResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateTraceResponse>;
 
 export type CreateTraceError = CloudflareOpError;
-/** Request Trace */
+/** Traces a simulated HTTP request through Cloudflare’s edge to analyze how rules, settings, and configurations would process the request. Useful for debugging firewall rules, page rules, and other request transformations without sending actual traffic. Supports custom headers, cookies, body content, and geolocation context. */
 export const createTrace: API.OperationMethod<
   CreateTraceRequest,
   CreateTraceResponse,

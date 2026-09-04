@@ -130,6 +130,9 @@ export const UpdateResponseId = /*@__PURE__*/ S.String;
 export type UpdateResponseValue = "preferred" | "supported" | "off";
 export const UpdateResponseValue = /*@__PURE__*/ S.String;
 
+export type UpdateResponseValue2 = "preferred";
+export const UpdateResponseValue2 = /*@__PURE__*/ S.String;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface PutOriginPostQuantumEncryptionResponse {
   /** The identifier of the caching setting. */
@@ -140,6 +143,8 @@ export interface PutOriginPostQuantumEncryptionResponse {
   value: UpdateResponseValue;
   /** Last time this setting was modified. */
   modifiedOn?: string | null;
+  /** }' */
+  value_2: UpdateResponseValue2;
 }
 export const PutOriginPostQuantumEncryptionResponse = /*@__PURE__*/ S.suspend(
   () =>
@@ -148,6 +153,7 @@ export const PutOriginPostQuantumEncryptionResponse = /*@__PURE__*/ S.suspend(
       editable: S.Boolean,
       value: UpdateResponseValue,
       modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
+      value_2: UpdateResponseValue2.pipe(T.Body("value")),
     }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PutOriginPostQuantumEncryptionResponse",

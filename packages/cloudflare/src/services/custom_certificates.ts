@@ -105,7 +105,7 @@ export const CreateRequestType = /*@__PURE__*/ S.String;
 export interface CreateCustomCertificateRequest {
   /** Identifier. */
   zoneId: string;
-  /** The zone's SSL certificate or certificate and the intermediate(s). */
+  /** The zone’s SSL certificate or certificate and the intermediate(s). */
   certificate: string;
   /** A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it. */
   bundleMethod?: CreateRequestBundleMethod | (string & {});
@@ -115,11 +115,11 @@ export interface CreateCustomCertificateRequest {
   deploy?: CreateRequestDeploy | (string & {});
   /** Specify the region where your private key can be held locally for optimal TLS performance. HTTPS connections to any excluded data center will still be fully encrypted, but will incur some latency while Keyless SSL is used to complete the handshake with the nearest allowed data center. Options allow distribution to only to U.S. data centers, only to E.U. data centers, or only to highest security data centers. Default distribution is to all Cloudflare datacenters, for optimal performance. */
   geoRestrictions?: CreateRequestGeoRestrictions;
-  /** Specify the policy that determines the region where your private key will be held locally. HTTPS connections to any excluded data center will still be fully encrypted, but will incur some latency while Keyless SSL is used to complete the handshake with the nearest allowed data center. Any combination of countries, specified by their two letter country code (https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2#Officially_assigned_code_elements) can be chosen, such as 'country: IN', as well as 'region: EU' which refers to the EU region. If there are too few data centers satisfying the policy, it will be rejected. */
+  /** Specify the policy that determines the region where your private key will be held locally. HTTPS connections to any excluded data center will still be fully encrypted, but will incur some latency while Keyless SSL is used to complete the handshake with the nearest allowed data center. Any combination of countries, specified by their two letter country code (<https://en.wikipedia.org/wiki/ISO%5F3166-1%5Falpha-2#Officially%5Fassigned%5Fcode%5Felements>) can be chosen, such as ‘country: IN’, as well as ‘region: EU’ which refers to the EU region. If there are too few data centers satisfying the policy, it will be rejected. Note: The API accepts this field as either “policy” or “policy_restrictions” in requests. Responses return this field as “policy_restrictions”. */
   policy?: string;
-  /** The zone's private key. Not required if custom_csr_id is provided, in which case the private key is retrieved from the CSR record held by Cloudflare. */
+  /** The zone’s private key. Not required if custom_csr_id is provided, in which case the private key is retrieved from the CSR record held by Cloudflare. */
   privateKey?: string;
-  /** The type 'legacy_custom' enables support for legacy clients which do not include SNI in the TLS handshake. */
+  /** The type ‘legacy_custom’ enables support for legacy clients which do not include SNI in the TLS handshake. */
   type?: CreateRequestType | (string & {});
 }
 export const CreateCustomCertificateRequest = /*@__PURE__*/ S.suspend(() =>
@@ -198,6 +198,17 @@ export const CreateResponseKeylessServerTunnel = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateResponseKeylessServerTunnel",
 }) as any as S.Schema<CreateResponseKeylessServerTunnel>;
 
+export type CreateResponseKeylessServerStatus2 =
+  | "active"
+  | "expired"
+  | "deleted"
+  | "pending"
+  | "initializing";
+export const CreateResponseKeylessServerStatus2 = /*@__PURE__*/ S.String;
+
+export type CreateResponseKeylessServerType = "sni_custom";
+export const CreateResponseKeylessServerType = /*@__PURE__*/ S.String;
+
 export interface CreateResponseKeylessServer {
   /** Keyless certificate identifier tag. */
   id: string;
@@ -213,12 +224,32 @@ export interface CreateResponseKeylessServer {
   name: string;
   /** Available permissions for the Keyless SSL for the current user requesting the item. */
   permissions: CreateResponseKeylessServerPermissionsList;
-  /** The keyless SSL port used to communicate between Cloudflare and the client's Keyless SSL server. */
+  /** The keyless SSL port used to communicate between Cloudflare and the client’s Keyless SSL server. */
   port: number;
   /** Status of the Keyless SSL. */
   status: CreateResponseKeylessServerStatus;
   /** Configuration for using Keyless SSL through a Cloudflare Tunnel. */
   tunnel?: CreateResponseKeylessServerTunnel | null;
+  /** When the certificate was last modified. */
+  modified_on_2?: string | null;
+  /** The policy restrictions returned by the API. This field is returned in responses when a policy has been set. The API accepts the “policy” field in requests but returns this field as “policy_restrictions” in responses. */
+  policyRestrictions?: string | null;
+  /** The order/priority in which the certificate will be used in a request. The higher priority will break ties across overlapping ‘legacy_custom’ certificates, but ‘legacy_custom’ certificates will always supercede ‘sni_custom’ certificates. */
+  priority?: number | null;
+  /** The type of hash used for the certificate. */
+  signature?: string | null;
+  /** Status of the zone’s custom SSL. */
+  status_2?: CreateResponseKeylessServerStatus2 | null;
+  /** When the certificate was uploaded to Cloudflare. */
+  uploadedOn?: string | null;
+  certificate: unknown;
+  bundleMethod: unknown;
+  customCsrId: unknown;
+  deploy: unknown;
+  policy: unknown;
+  privateKey: unknown;
+  /** }' */
+  type: CreateResponseKeylessServerType;
 }
 export const CreateResponseKeylessServer = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -232,18 +263,27 @@ export const CreateResponseKeylessServer = /*@__PURE__*/ S.suspend(() =>
     port: S.Number,
     status: CreateResponseKeylessServerStatus,
     tunnel: S.optional(S.NullOr(CreateResponseKeylessServerTunnel)),
+    modified_on_2: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
+    policyRestrictions: S.optional(
+      S.NullOr(S.String).pipe(T.Body("policy_restrictions")),
+    ),
+    priority: S.optional(S.NullOr(S.Number)),
+    signature: S.optional(S.NullOr(S.String)),
+    status_2: S.optional(
+      S.NullOr(CreateResponseKeylessServerStatus2).pipe(T.Body("status")),
+    ),
+    uploadedOn: S.optional(S.NullOr(S.String).pipe(T.Body("uploaded_on"))),
+    certificate: S.Unknown,
+    bundleMethod: S.Unknown.pipe(T.Body("bundle_method")),
+    customCsrId: S.Unknown.pipe(T.Body("custom_csr_id")),
+    deploy: S.Unknown,
+    policy: S.Unknown,
+    privateKey: S.Unknown.pipe(T.Body("private_key")),
+    type: CreateResponseKeylessServerType,
   }),
 ).annotate({
   identifier: "CreateResponseKeylessServer",
 }) as any as S.Schema<CreateResponseKeylessServer>;
-
-export type CreateResponseStatus =
-  | "active"
-  | "expired"
-  | "deleted"
-  | "pending"
-  | "initializing";
-export const CreateResponseStatus = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateCustomCertificateResponse {
@@ -263,18 +303,6 @@ export interface CreateCustomCertificateResponse {
   /** The certificate authority that issued the certificate. */
   issuer?: string | null;
   keylessServer?: CreateResponseKeylessServer | null;
-  /** When the certificate was last modified. */
-  modifiedOn?: string | null;
-  /** The policy restrictions returned by the API. This field is returned in responses */
-  policyRestrictions?: string | null;
-  /** The order/priority in which the certificate will be used in a request. The higher priority will break ties across overlapping 'legacy_custom' certificates, but 'legacy_custom' certificates will always supercede 'sni_custom' certificates. */
-  priority?: number | null;
-  /** The type of hash used for the certificate. */
-  signature?: string | null;
-  /** Status of the zone's custom SSL. */
-  status?: CreateResponseStatus | null;
-  /** When the certificate was uploaded to Cloudflare. */
-  uploadedOn?: string | null;
 }
 export const CreateCustomCertificateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -293,14 +321,6 @@ export const CreateCustomCertificateResponse = /*@__PURE__*/ S.suspend(() =>
     keylessServer: S.optional(
       S.NullOr(CreateResponseKeylessServer).pipe(T.Body("keyless_server")),
     ),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-    policyRestrictions: S.optional(
-      S.NullOr(S.String).pipe(T.Body("policy_restrictions")),
-    ),
-    priority: S.optional(S.NullOr(S.Number)),
-    signature: S.optional(S.NullOr(S.String)),
-    status: S.optional(S.NullOr(CreateResponseStatus)),
-    uploadedOn: S.optional(S.NullOr(S.String).pipe(T.Body("uploaded_on"))),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateCustomCertificateResponse",
@@ -398,6 +418,14 @@ export const GetResponseKeylessServerStatus = /*@__PURE__*/ S.String;
 export type GetResponseKeylessServerTunnel = CreateResponseKeylessServerTunnel;
 export const GetResponseKeylessServerTunnel = CreateResponseKeylessServerTunnel;
 
+export type GetResponseKeylessServerStatus2 =
+  | "active"
+  | "expired"
+  | "deleted"
+  | "pending"
+  | "initializing";
+export const GetResponseKeylessServerStatus2 = /*@__PURE__*/ S.String;
+
 export interface GetResponseKeylessServer {
   /** Keyless certificate identifier tag. */
   id: string;
@@ -413,12 +441,24 @@ export interface GetResponseKeylessServer {
   name: string;
   /** Available permissions for the Keyless SSL for the current user requesting the item. */
   permissions: GetResponseKeylessServerPermissionsList;
-  /** The keyless SSL port used to communicate between Cloudflare and the client's Keyless SSL server. */
+  /** The keyless SSL port used to communicate between Cloudflare and the client’s Keyless SSL server. */
   port: number;
   /** Status of the Keyless SSL. */
   status: GetResponseKeylessServerStatus;
   /** Configuration for using Keyless SSL through a Cloudflare Tunnel. */
   tunnel?: CreateResponseKeylessServerTunnel | null;
+  /** When the certificate was last modified. */
+  modified_on_2?: string | null;
+  /** The policy restrictions returned by the API. This field is returned in responses when a policy has been set. The API accepts the “policy” field in requests but returns this field as “policy_restrictions” in responses. */
+  policyRestrictions?: string | null;
+  /** The order/priority in which the certificate will be used in a request. The higher priority will break ties across overlapping ‘legacy_custom’ certificates, but ‘legacy_custom’ certificates will always supercede ‘sni_custom’ certificates. */
+  priority?: number | null;
+  /** The type of hash used for the certificate. */
+  signature?: string | null;
+  /** Status of the zone’s custom SSL. */
+  status_2?: GetResponseKeylessServerStatus2 | null;
+  /** When the certificate was uploaded to Cloudflare. */
+  uploadedOn?: string | null;
 }
 export const GetResponseKeylessServer = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -432,18 +472,20 @@ export const GetResponseKeylessServer = /*@__PURE__*/ S.suspend(() =>
     port: S.Number,
     status: GetResponseKeylessServerStatus,
     tunnel: S.optional(S.NullOr(CreateResponseKeylessServerTunnel)),
+    modified_on_2: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
+    policyRestrictions: S.optional(
+      S.NullOr(S.String).pipe(T.Body("policy_restrictions")),
+    ),
+    priority: S.optional(S.NullOr(S.Number)),
+    signature: S.optional(S.NullOr(S.String)),
+    status_2: S.optional(
+      S.NullOr(GetResponseKeylessServerStatus2).pipe(T.Body("status")),
+    ),
+    uploadedOn: S.optional(S.NullOr(S.String).pipe(T.Body("uploaded_on"))),
   }),
 ).annotate({
   identifier: "GetResponseKeylessServer",
 }) as any as S.Schema<GetResponseKeylessServer>;
-
-export type GetResponseStatus =
-  | "active"
-  | "expired"
-  | "deleted"
-  | "pending"
-  | "initializing";
-export const GetResponseStatus = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetCustomCertificateResponse {
@@ -463,18 +505,6 @@ export interface GetCustomCertificateResponse {
   /** The certificate authority that issued the certificate. */
   issuer?: string | null;
   keylessServer?: GetResponseKeylessServer | null;
-  /** When the certificate was last modified. */
-  modifiedOn?: string | null;
-  /** The policy restrictions returned by the API. This field is returned in responses */
-  policyRestrictions?: string | null;
-  /** The order/priority in which the certificate will be used in a request. The higher priority will break ties across overlapping 'legacy_custom' certificates, but 'legacy_custom' certificates will always supercede 'sni_custom' certificates. */
-  priority?: number | null;
-  /** The type of hash used for the certificate. */
-  signature?: string | null;
-  /** Status of the zone's custom SSL. */
-  status?: GetResponseStatus | null;
-  /** When the certificate was uploaded to Cloudflare. */
-  uploadedOn?: string | null;
 }
 export const GetCustomCertificateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -493,14 +523,6 @@ export const GetCustomCertificateResponse = /*@__PURE__*/ S.suspend(() =>
     keylessServer: S.optional(
       S.NullOr(GetResponseKeylessServer).pipe(T.Body("keyless_server")),
     ),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-    policyRestrictions: S.optional(
-      S.NullOr(S.String).pipe(T.Body("policy_restrictions")),
-    ),
-    priority: S.optional(S.NullOr(S.Number)),
-    signature: S.optional(S.NullOr(S.String)),
-    status: S.optional(S.NullOr(GetResponseStatus)),
-    uploadedOn: S.optional(S.NullOr(S.String).pipe(T.Body("uploaded_on"))),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetCustomCertificateResponse",
@@ -526,7 +548,7 @@ export interface ListCustomCertificatesRequest {
   page?: number;
   /** Number of zones per page. */
   perPage?: number;
-  /** Status of the zone's custom SSL. */
+  /** Status of the zone’s custom SSL. */
   status?: ListRequestStatus | (string & {});
 }
 export const ListCustomCertificatesRequest = /*@__PURE__*/ S.suspend(() =>
@@ -587,6 +609,14 @@ export type ListResultItemKeylessServerTunnel =
 export const ListResultItemKeylessServerTunnel =
   CreateResponseKeylessServerTunnel;
 
+export type ListResultItemKeylessServerStatus2 =
+  | "active"
+  | "expired"
+  | "deleted"
+  | "pending"
+  | "initializing";
+export const ListResultItemKeylessServerStatus2 = /*@__PURE__*/ S.String;
+
 export interface ListResultItemKeylessServer {
   /** Keyless certificate identifier tag. */
   id: string;
@@ -602,12 +632,24 @@ export interface ListResultItemKeylessServer {
   name: string;
   /** Available permissions for the Keyless SSL for the current user requesting the item. */
   permissions: ListResultItemKeylessServerPermissionsList;
-  /** The keyless SSL port used to communicate between Cloudflare and the client's Keyless SSL server. */
+  /** The keyless SSL port used to communicate between Cloudflare and the client’s Keyless SSL server. */
   port: number;
   /** Status of the Keyless SSL. */
   status: ListResultItemKeylessServerStatus;
   /** Configuration for using Keyless SSL through a Cloudflare Tunnel. */
   tunnel?: CreateResponseKeylessServerTunnel | null;
+  /** When the certificate was last modified. */
+  modified_on_2?: string | null;
+  /** The policy restrictions returned by the API. This field is returned in responses when a policy has been set. The API accepts the “policy” field in requests but returns this field as “policy_restrictions” in responses. */
+  policyRestrictions?: string | null;
+  /** The order/priority in which the certificate will be used in a request. The higher priority will break ties across overlapping ‘legacy_custom’ certificates, but ‘legacy_custom’ certificates will always supercede ‘sni_custom’ certificates. */
+  priority?: number | null;
+  /** The type of hash used for the certificate. */
+  signature?: string | null;
+  /** Status of the zone’s custom SSL. */
+  status_2?: ListResultItemKeylessServerStatus2 | null;
+  /** When the certificate was uploaded to Cloudflare. */
+  uploadedOn?: string | null;
 }
 export const ListResultItemKeylessServer = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -621,18 +663,20 @@ export const ListResultItemKeylessServer = /*@__PURE__*/ S.suspend(() =>
     port: S.Number,
     status: ListResultItemKeylessServerStatus,
     tunnel: S.optional(S.NullOr(CreateResponseKeylessServerTunnel)),
+    modified_on_2: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
+    policyRestrictions: S.optional(
+      S.NullOr(S.String).pipe(T.Body("policy_restrictions")),
+    ),
+    priority: S.optional(S.NullOr(S.Number)),
+    signature: S.optional(S.NullOr(S.String)),
+    status_2: S.optional(
+      S.NullOr(ListResultItemKeylessServerStatus2).pipe(T.Body("status")),
+    ),
+    uploadedOn: S.optional(S.NullOr(S.String).pipe(T.Body("uploaded_on"))),
   }),
 ).annotate({
   identifier: "ListResultItemKeylessServer",
 }) as any as S.Schema<ListResultItemKeylessServer>;
-
-export type ListResultItemStatus =
-  | "active"
-  | "expired"
-  | "deleted"
-  | "pending"
-  | "initializing";
-export const ListResultItemStatus = /*@__PURE__*/ S.String;
 
 export interface ListResultItem {
   /** Identifier. */
@@ -651,18 +695,6 @@ export interface ListResultItem {
   /** The certificate authority that issued the certificate. */
   issuer?: string | null;
   keylessServer?: ListResultItemKeylessServer | null;
-  /** When the certificate was last modified. */
-  modifiedOn?: string | null;
-  /** The policy restrictions returned by the API. This field is returned in responses */
-  policyRestrictions?: string | null;
-  /** The order/priority in which the certificate will be used in a request. The higher priority will break ties across overlapping 'legacy_custom' certificates, but 'legacy_custom' certificates will always supercede 'sni_custom' certificates. */
-  priority?: number | null;
-  /** The type of hash used for the certificate. */
-  signature?: string | null;
-  /** Status of the zone's custom SSL. */
-  status?: ListResultItemStatus | null;
-  /** When the certificate was uploaded to Cloudflare. */
-  uploadedOn?: string | null;
 }
 export const ListResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -681,14 +713,6 @@ export const ListResultItem = /*@__PURE__*/ S.suspend(() =>
     keylessServer: S.optional(
       S.NullOr(ListResultItemKeylessServer).pipe(T.Body("keyless_server")),
     ),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-    policyRestrictions: S.optional(
-      S.NullOr(S.String).pipe(T.Body("policy_restrictions")),
-    ),
-    priority: S.optional(S.NullOr(S.Number)),
-    signature: S.optional(S.NullOr(S.String)),
-    status: S.optional(S.NullOr(ListResultItemStatus)),
-    uploadedOn: S.optional(S.NullOr(S.String).pipe(T.Body("uploaded_on"))),
   }),
 ).annotate({ identifier: "ListResultItem" }) as any as S.Schema<ListResultItem>;
 
@@ -739,7 +763,7 @@ export interface PatchCustomCertificateRequest {
   customCertificateId: string;
   /** A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it. */
   bundleMethod?: EditRequestBundleMethod | (string & {});
-  /** The zone's SSL certificate or certificate and the intermediate(s). */
+  /** The zone’s SSL certificate or certificate and the intermediate(s). */
   certificate?: string;
   /** The identifier for the Custom CSR that was used. */
   customCsrId?: string;
@@ -747,9 +771,9 @@ export interface PatchCustomCertificateRequest {
   deploy?: EditRequestDeploy | (string & {});
   /** Specify the region where your private key can be held locally for optimal TLS performance. HTTPS connections to any excluded data center will still be fully encrypted, but will incur some latency while Keyless SSL is used to complete the handshake with the nearest allowed data center. Options allow distribution to only to U.S. data centers, only to E.U. data centers, or only to highest security data centers. Default distribution is to all Cloudflare datacenters, for optimal performance. */
   geoRestrictions?: EditRequestGeoRestrictions;
-  /** Specify the policy that determines the region where your private key will be held locally. HTTPS connections to any excluded data center will still be fully encrypted, but will incur some latency while Keyless SSL is used to complete the handshake with the nearest allowed data center. Any combination of countries, specified by their two letter country code (https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2#Officially_assigned_code_elements) can be chosen, such as 'country: IN', as well as 'region: EU' which refers to the EU region. If there are too few data centers satisfying the policy, it will be rejected. */
+  /** Specify the policy that determines the region where your private key will be held locally. HTTPS connections to any excluded data center will still be fully encrypted, but will incur some latency while Keyless SSL is used to complete the handshake with the nearest allowed data center. Any combination of countries, specified by their two letter country code (<https://en.wikipedia.org/wiki/ISO%5F3166-1%5Falpha-2#Officially%5Fassigned%5Fcode%5Felements>) can be chosen, such as ‘country: IN’, as well as ‘region: EU’ which refers to the EU region. If there are too few data centers satisfying the policy, it will be rejected. Note: The API accepts this field as either “policy” or “policy_restrictions” in requests. Responses return this field as “policy_restrictions”. */
   policy?: string;
-  /** The zone's private key. Not required if custom_csr_id is provided, in which case the private key is retrieved from the CSR record held by Cloudflare. */
+  /** The zone’s private key. Not required if custom_csr_id is provided, in which case the private key is retrieved from the CSR record held by Cloudflare. */
   privateKey?: string;
 }
 export const PatchCustomCertificateRequest = /*@__PURE__*/ S.suspend(() =>
@@ -814,6 +838,18 @@ export type EditResponseKeylessServerTunnel = CreateResponseKeylessServerTunnel;
 export const EditResponseKeylessServerTunnel =
   CreateResponseKeylessServerTunnel;
 
+export type EditResponseKeylessServerStatus2 =
+  | "active"
+  | "expired"
+  | "deleted"
+  | "pending"
+  | "initializing";
+export const EditResponseKeylessServerStatus2 = /*@__PURE__*/ S.String;
+
+export type EditResponseKeylessServerPrivateKey =
+  "-----BEGIN RSA PRIVATE KEY-----\nMIIEowIBAAKCAQEAwQHoetcl9+5ikGzV6cMzWtWPJHqXT3wpbEkRU9Yz7lgvddmG\ndtcGbg/1CGZu0jJGkMoppoUo4c3dts3iwqRYmBikUP77wwY2QGmDZw2FvkJCJlKn\nabIRuGvBKwzESIXgKk2016aTP6/dAjEHyo6SeoK8lkIySUvK0fyOVlsiEsCmOpid\ntnKX/a+50GjB79CJH4ER2lLVZnhePFR/zUOyPxZQQ4naHf7yu/b5jhO0f8fwt+py\nFxIXjbEIdZliWRkRMtzrHOJIhrmJ2A1J7iOrirbbwillwjjNVUWPf3IJ3M12S9pE\newooaeO2izNTERcG9HzAacbVRn2Y2SWIyT/18QIDAQABAoIBACbhTYXBZYKmYPCb\nHBR1IBlCQA2nLGf0qRuJNJZg5iEzXows/6tc8YymZkQE7nolapWsQ+upk2y5Xdp/\naxiuprIs9JzkYK8Ox0r+dlwCG1kSW+UAbX0bQ/qUqlsTvU6muVuMP8vZYHxJ3wmb\n+ufRBKztPTQ/rYWaYQcgC0RWI20HTFBMxlTAyNxYNWzX7RKFkGVVyB9RsAtmcc8g\n+j4OdosbfNoJPS0HeIfNpAznDfHKdxDk2Yc1tV6RHBrC1ynyLE9+TaflIAdo2MVv\nKLMLq51GqYKtgJFIlBRPQqKoyXdz3fGvXrTkf/WY9QNq0J1Vk5ERePZ54mN8iZB7\n9lwy/AkCgYEA6FXzosxswaJ2wQLeoYc7ceaweX/SwTvxHgXzRyJIIT0eJWgx13Wo\n/WA3Iziimsjf6qE+SI/8laxPp2A86VMaIt3Z3mJN/CqSVGw8LK2AQst+OwdPyDMu\niacE8lj/IFGC8mwNUAb9CzGU3JpU4PxxGFjS/eMtGeRXCWkK4NE+G08CgYEA1Kp9\nN2JrVlqUz+gAX+LPmE9OEMAS9WQSQsfCHGogIFDGGcNf7+uwBM7GAaSJIP01zcoe\nVAgWdzXCv3FLhsaZoJ6RyLOLay5phbu1iaTr4UNYm5WtYTzMzqh8l1+MFFDl9xDB\nvULuCIIrglM5MeS/qnSg1uMoH2oVPj9TVst/ir8CgYEAxrI7Ws9Zc4Bt70N1As+U\nlySjaEVZCMkqvHJ6TCuVZFfQoE0r0whdLdRLU2PsLFP+q7qaeZQqgBaNSKeVcDYR\n9B+nY/jOmQoPewPVsp/vQTCnE/R81spu0mp0YI6cIheT1Z9zAy322svcc43JaWB7\nmEbeqyLOP4Z4qSOcmghZBSECgYACvR9Xs0DGn+wCsW4vze/2ei77MD4OQvepPIFX\ndFZtlBy5ADcgE9z0cuVB6CiL8DbdK5kwY9pGNr8HUCI03iHkW6Zs+0L0YmihfEVe\nPG19PSzK9CaDdhD9KFZSbLyVFmWfxOt50H7YRTTiPMgjyFpfi5j2q348yVT0tEQS\nfhRqaQKBgAcWPokmJ7EbYQGeMbS7HC8eWO/RyamlnSffdCdSc7ue3zdVJxpAkQ8W\nqu80pEIF6raIQfAf8MXiiZ7auFOSnHQTXUbhCpvDLKi0Mwq3G8Pl07l+2s6dQG6T\nlv6XTQaMyf6n1yjzL+fzDrH3qXMxHMO/b13EePXpDMpY7HQpoLDi\n-----END RSA PRIVATE KEY-----\n";
+export const EditResponseKeylessServerPrivateKey = /*@__PURE__*/ S.String;
+
 export interface EditResponseKeylessServer {
   /** Keyless certificate identifier tag. */
   id: string;
@@ -829,12 +865,31 @@ export interface EditResponseKeylessServer {
   name: string;
   /** Available permissions for the Keyless SSL for the current user requesting the item. */
   permissions: EditResponseKeylessServerPermissionsList;
-  /** The keyless SSL port used to communicate between Cloudflare and the client's Keyless SSL server. */
+  /** The keyless SSL port used to communicate between Cloudflare and the client’s Keyless SSL server. */
   port: number;
   /** Status of the Keyless SSL. */
   status: EditResponseKeylessServerStatus;
   /** Configuration for using Keyless SSL through a Cloudflare Tunnel. */
   tunnel?: CreateResponseKeylessServerTunnel | null;
+  /** When the certificate was last modified. */
+  modified_on_2?: string | null;
+  /** The policy restrictions returned by the API. This field is returned in responses when a policy has been set. The API accepts the “policy” field in requests but returns this field as “policy_restrictions” in responses. */
+  policyRestrictions?: string | null;
+  /** The order/priority in which the certificate will be used in a request. The higher priority will break ties across overlapping ‘legacy_custom’ certificates, but ‘legacy_custom’ certificates will always supercede ‘sni_custom’ certificates. */
+  priority?: number | null;
+  /** The type of hash used for the certificate. */
+  signature?: string | null;
+  /** Status of the zone’s custom SSL. */
+  status_2?: EditResponseKeylessServerStatus2 | null;
+  /** When the certificate was uploaded to Cloudflare. */
+  uploadedOn?: string | null;
+  bundleMethod: unknown;
+  certificate: unknown;
+  customCsrId: unknown;
+  deploy: unknown;
+  policy: unknown;
+  /** }' */
+  privateKey: EditResponseKeylessServerPrivateKey;
 }
 export const EditResponseKeylessServer = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -848,18 +903,26 @@ export const EditResponseKeylessServer = /*@__PURE__*/ S.suspend(() =>
     port: S.Number,
     status: EditResponseKeylessServerStatus,
     tunnel: S.optional(S.NullOr(CreateResponseKeylessServerTunnel)),
+    modified_on_2: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
+    policyRestrictions: S.optional(
+      S.NullOr(S.String).pipe(T.Body("policy_restrictions")),
+    ),
+    priority: S.optional(S.NullOr(S.Number)),
+    signature: S.optional(S.NullOr(S.String)),
+    status_2: S.optional(
+      S.NullOr(EditResponseKeylessServerStatus2).pipe(T.Body("status")),
+    ),
+    uploadedOn: S.optional(S.NullOr(S.String).pipe(T.Body("uploaded_on"))),
+    bundleMethod: S.Unknown.pipe(T.Body("bundle_method")),
+    certificate: S.Unknown,
+    customCsrId: S.Unknown.pipe(T.Body("custom_csr_id")),
+    deploy: S.Unknown,
+    policy: S.Unknown,
+    privateKey: EditResponseKeylessServerPrivateKey.pipe(T.Body("private_key")),
   }),
 ).annotate({
   identifier: "EditResponseKeylessServer",
 }) as any as S.Schema<EditResponseKeylessServer>;
-
-export type EditResponseStatus =
-  | "active"
-  | "expired"
-  | "deleted"
-  | "pending"
-  | "initializing";
-export const EditResponseStatus = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface PatchCustomCertificateResponse {
@@ -879,18 +942,6 @@ export interface PatchCustomCertificateResponse {
   /** The certificate authority that issued the certificate. */
   issuer?: string | null;
   keylessServer?: EditResponseKeylessServer | null;
-  /** When the certificate was last modified. */
-  modifiedOn?: string | null;
-  /** The policy restrictions returned by the API. This field is returned in responses */
-  policyRestrictions?: string | null;
-  /** The order/priority in which the certificate will be used in a request. The higher priority will break ties across overlapping 'legacy_custom' certificates, but 'legacy_custom' certificates will always supercede 'sni_custom' certificates. */
-  priority?: number | null;
-  /** The type of hash used for the certificate. */
-  signature?: string | null;
-  /** Status of the zone's custom SSL. */
-  status?: EditResponseStatus | null;
-  /** When the certificate was uploaded to Cloudflare. */
-  uploadedOn?: string | null;
 }
 export const PatchCustomCertificateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -909,14 +960,6 @@ export const PatchCustomCertificateResponse = /*@__PURE__*/ S.suspend(() =>
     keylessServer: S.optional(
       S.NullOr(EditResponseKeylessServer).pipe(T.Body("keyless_server")),
     ),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-    policyRestrictions: S.optional(
-      S.NullOr(S.String).pipe(T.Body("policy_restrictions")),
-    ),
-    priority: S.optional(S.NullOr(S.Number)),
-    signature: S.optional(S.NullOr(S.String)),
-    status: S.optional(S.NullOr(EditResponseStatus)),
-    uploadedOn: S.optional(S.NullOr(S.String).pipe(T.Body("uploaded_on"))),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchCustomCertificateResponse",
@@ -925,7 +968,7 @@ export const PatchCustomCertificateResponse = /*@__PURE__*/ S.suspend(() =>
 export interface PrioritizeUpdateRequestCertificatesItem {
   /** Identifier. */
   id?: string;
-  /** The order/priority in which the certificate will be used in a request. The higher priority will break ties across overlapping 'legacy_custom' certificates, but 'legacy_custom' certificates will always supercede 'sni_custom' certificates. */
+  /** The order/priority in which the certificate will be used in a request. The higher priority will break ties across overlapping ‘legacy_custom’ certificates, but ‘legacy_custom’ certificates will always supercede ‘sni_custom’ certificates. */
   priority?: number;
 }
 export const PrioritizeUpdateRequestCertificatesItem = /*@__PURE__*/ S.suspend(
@@ -1017,6 +1060,15 @@ export type PrioritizeUpdateResultItemKeylessServerTunnel =
 export const PrioritizeUpdateResultItemKeylessServerTunnel =
   CreateResponseKeylessServerTunnel;
 
+export type PrioritizeUpdateResultItemKeylessServerStatus2 =
+  | "active"
+  | "expired"
+  | "deleted"
+  | "pending"
+  | "initializing";
+export const PrioritizeUpdateResultItemKeylessServerStatus2 =
+  /*@__PURE__*/ S.String;
+
 export interface PrioritizeUpdateResultItemKeylessServer {
   /** Keyless certificate identifier tag. */
   id: string;
@@ -1032,12 +1084,24 @@ export interface PrioritizeUpdateResultItemKeylessServer {
   name: string;
   /** Available permissions for the Keyless SSL for the current user requesting the item. */
   permissions: PrioritizeUpdateResultItemKeylessServerPermissionsList;
-  /** The keyless SSL port used to communicate between Cloudflare and the client's Keyless SSL server. */
+  /** The keyless SSL port used to communicate between Cloudflare and the client’s Keyless SSL server. */
   port: number;
   /** Status of the Keyless SSL. */
   status: PrioritizeUpdateResultItemKeylessServerStatus;
   /** Configuration for using Keyless SSL through a Cloudflare Tunnel. */
   tunnel?: CreateResponseKeylessServerTunnel | null;
+  /** When the certificate was last modified. */
+  modified_on_2?: string | null;
+  /** The policy restrictions returned by the API. This field is returned in responses when a policy has been set. The API accepts the “policy” field in requests but returns this field as “policy_restrictions” in responses. */
+  policyRestrictions?: string | null;
+  /** The order/priority in which the certificate will be used in a request. The higher priority will break ties across overlapping ‘legacy_custom’ certificates, but ‘legacy_custom’ certificates will always supercede ‘sni_custom’ certificates. */
+  priority?: number | null;
+  /** The type of hash used for the certificate. */
+  signature?: string | null;
+  /** Status of the zone’s custom SSL. */
+  status_2?: PrioritizeUpdateResultItemKeylessServerStatus2 | null;
+  /** When the certificate was uploaded to Cloudflare. */
+  uploadedOn?: string | null;
 }
 export const PrioritizeUpdateResultItemKeylessServer = /*@__PURE__*/ S.suspend(
   () =>
@@ -1052,18 +1116,22 @@ export const PrioritizeUpdateResultItemKeylessServer = /*@__PURE__*/ S.suspend(
       port: S.Number,
       status: PrioritizeUpdateResultItemKeylessServerStatus,
       tunnel: S.optional(S.NullOr(CreateResponseKeylessServerTunnel)),
+      modified_on_2: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
+      policyRestrictions: S.optional(
+        S.NullOr(S.String).pipe(T.Body("policy_restrictions")),
+      ),
+      priority: S.optional(S.NullOr(S.Number)),
+      signature: S.optional(S.NullOr(S.String)),
+      status_2: S.optional(
+        S.NullOr(PrioritizeUpdateResultItemKeylessServerStatus2).pipe(
+          T.Body("status"),
+        ),
+      ),
+      uploadedOn: S.optional(S.NullOr(S.String).pipe(T.Body("uploaded_on"))),
     }),
 ).annotate({
   identifier: "PrioritizeUpdateResultItemKeylessServer",
 }) as any as S.Schema<PrioritizeUpdateResultItemKeylessServer>;
-
-export type PrioritizeUpdateResultItemStatus =
-  | "active"
-  | "expired"
-  | "deleted"
-  | "pending"
-  | "initializing";
-export const PrioritizeUpdateResultItemStatus = /*@__PURE__*/ S.String;
 
 export interface PrioritizeUpdateResultItem {
   /** Identifier. */
@@ -1082,18 +1150,6 @@ export interface PrioritizeUpdateResultItem {
   /** The certificate authority that issued the certificate. */
   issuer?: string | null;
   keylessServer?: PrioritizeUpdateResultItemKeylessServer | null;
-  /** When the certificate was last modified. */
-  modifiedOn?: string | null;
-  /** The policy restrictions returned by the API. This field is returned in responses */
-  policyRestrictions?: string | null;
-  /** The order/priority in which the certificate will be used in a request. The higher priority will break ties across overlapping 'legacy_custom' certificates, but 'legacy_custom' certificates will always supercede 'sni_custom' certificates. */
-  priority?: number | null;
-  /** The type of hash used for the certificate. */
-  signature?: string | null;
-  /** Status of the zone's custom SSL. */
-  status?: PrioritizeUpdateResultItemStatus | null;
-  /** When the certificate was uploaded to Cloudflare. */
-  uploadedOn?: string | null;
 }
 export const PrioritizeUpdateResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1118,14 +1174,6 @@ export const PrioritizeUpdateResultItem = /*@__PURE__*/ S.suspend(() =>
         T.Body("keyless_server"),
       ),
     ),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-    policyRestrictions: S.optional(
-      S.NullOr(S.String).pipe(T.Body("policy_restrictions")),
-    ),
-    priority: S.optional(S.NullOr(S.Number)),
-    signature: S.optional(S.NullOr(S.String)),
-    status: S.optional(S.NullOr(PrioritizeUpdateResultItemStatus)),
-    uploadedOn: S.optional(S.NullOr(S.String).pipe(T.Body("uploaded_on"))),
   }),
 ).annotate({
   identifier: "PrioritizeUpdateResultItem",
@@ -1229,7 +1277,7 @@ export type ListCustomCertificatesError =
   | ZoneNotFound
   | Forbidden
   | CloudflareOpError;
-/** List, search, and filter all of your custom SSL certificates. The higher priority will break ties across overlapping 'legacy_custom' certificates, but 'legacy_custom' certificates will always supercede 'sni_custom' certificates. */
+/** List, search, and filter all of your custom SSL certificates. The higher priority will break ties across overlapping ‘legacy_custom’ certificates, but ‘legacy_custom’ certificates will always supercede ‘sni_custom’ certificates. */
 export const listCustomCertificates: API.PaginatedOperationMethod<
   ListCustomCertificatesRequest,
   ListCustomCertificatesResponse,
@@ -1289,7 +1337,7 @@ export type PutPrioritizeError =
   | PlanLevelNotAllowed
   | Forbidden
   | CloudflareOpError;
-/** If a zone has multiple SSL certificates, you can set the order in which they should be used during a request. The higher priority will break ties across overlapping 'legacy_custom' certificates. */
+/** If a zone has multiple SSL certificates, you can set the order in which they should be used during a request. The higher priority will break ties across overlapping ‘legacy_custom’ certificates. */
 export const putPrioritize: API.PaginatedOperationMethod<
   PutPrioritizeRequest,
   PutPrioritizeResponse,

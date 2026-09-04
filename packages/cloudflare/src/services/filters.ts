@@ -76,7 +76,7 @@ export interface BulkUpdateRequestBodyItem {
   id?: string;
   /** An informative summary of the filter. */
   description?: string;
-  /** The filter expression. For more information, refer to [Expressions](https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/). */
+  /** The filter expression. For more information, refer to Expressions. */
   expression?: string;
   /** When true, indicates that the filter is currently paused. */
   paused?: boolean;
@@ -121,7 +121,7 @@ export interface BulkUpdateResultItem {
   id?: string | null;
   /** An informative summary of the filter. */
   description?: string | null;
-  /** The filter expression. For more information, refer to [Expressions](https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/). */
+  /** The filter expression. For more information, refer to Expressions. */
   expression?: string | null;
   /** When true, indicates that the filter is currently paused. */
   paused?: boolean | null;
@@ -274,7 +274,7 @@ export interface GetFilterResponse {
   id?: string | null;
   /** An informative summary of the filter. */
   description?: string | null;
-  /** The filter expression. For more information, refer to [Expressions](https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/). */
+  /** The filter expression. For more information, refer to Expressions. */
   expression?: string | null;
   /** When true, indicates that the filter is currently paused. */
   paused?: boolean | null;
@@ -358,7 +358,7 @@ export interface UpdateFilterRequest {
   filterId: string;
   /** An informative summary of the filter. */
   description?: string;
-  /** The filter expression. For more information, refer to [Expressions](https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/). */
+  /** The filter expression. For more information, refer to Expressions. */
   expression?: string;
   /** When true, indicates that the filter is currently paused. */
   paused?: boolean;
@@ -392,7 +392,7 @@ export interface UpdateFilterResponse {
   id?: string | null;
   /** An informative summary of the filter. */
   description?: string | null;
-  /** The filter expression. For more information, refer to [Expressions](https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/). */
+  /** The filter expression. For more information, refer to Expressions. */
   expression?: string | null;
   /** When true, indicates that the filter is currently paused. */
   paused?: boolean | null;

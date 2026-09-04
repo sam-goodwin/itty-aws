@@ -232,6 +232,9 @@ export const TieredCachingEditResponseId = /*@__PURE__*/ S.String;
 export type TieredCachingEditResponseValue = "on" | "off";
 export const TieredCachingEditResponseValue = /*@__PURE__*/ S.String;
 
+export type TieredCachingEditResponseValue2 = "on";
+export const TieredCachingEditResponseValue2 = /*@__PURE__*/ S.String;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface PatchTieredCachingResponse {
   /** The identifier of the caching setting. */
@@ -242,6 +245,8 @@ export interface PatchTieredCachingResponse {
   value: TieredCachingEditResponseValue;
   /** Last time this setting was modified. */
   modifiedOn?: string | null;
+  /** }' */
+  value_2: TieredCachingEditResponseValue2;
 }
 export const PatchTieredCachingResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -249,6 +254,7 @@ export const PatchTieredCachingResponse = /*@__PURE__*/ S.suspend(() =>
     editable: S.Boolean,
     value: TieredCachingEditResponseValue,
     modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
+    value_2: TieredCachingEditResponseValue2.pipe(T.Body("value")),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchTieredCachingResponse",
@@ -284,7 +290,7 @@ export type GetTieredCachingError =
   | ZoneNotFound
   | Forbidden
   | CloudflareOpError;
-/** Tiered Cache works by dividing Cloudflare's data centers into a hierarchy of lower-tiers and upper-tiers. If content is not cached in lower-tier data centers (generally the ones closest to a visitor), the lower-tier must ask an upper-tier to see if it has the content. If the upper-tier does not have the content, only the upper-tier can ask the origin for content. This practice improves bandwidth efficiency by limiting the number of data centers that can ask the origin for content, which reduces origin load and makes websites more cost-effective to operate. Additionally, Tiered Cache concentrates connections to origin servers so they come from a small number of data centers rather than the full set of network locations. This results in fewer open connections using server resources. */
+/** Tiered Cache works by dividing Cloudflare’s data centers into a hierarchy of lower-tiers and upper-tiers. If content is not cached in lower-tier data centers (generally the ones closest to a visitor), the lower-tier must ask an upper-tier to see if it has the content. If the upper-tier does not have the content, only the upper-tier can ask the origin for content. This practice improves bandwidth efficiency by limiting the number of data centers that can ask the origin for content, which reduces origin load and makes websites more cost-effective to operate. Additionally, Tiered Cache concentrates connections to origin servers so they come from a small number of data centers rather than the full set of network locations. This results in fewer open connections using server resources. */
 export const getTieredCaching: API.OperationMethod<
   GetTieredCachingRequest,
   GetTieredCachingResponse,
@@ -333,7 +339,7 @@ export type PatchTieredCachingError =
   | InvalidObjectIdentifier
   | Forbidden
   | CloudflareOpError;
-/** Tiered Cache works by dividing Cloudflare's data centers into a hierarchy of lower-tiers and upper-tiers. If content is not cached in lower-tier data centers (generally the ones closest to a visitor), the lower-tier must ask an upper-tier to see if it has the content. If the upper-tier does not have the content, only the upper-tier can ask the origin for content. This practice improves bandwidth efficiency by limiting the number of data centers that can ask the origin for content, which reduces origin load and makes websites more cost-effective to operate. Additionally, Tiered Cache concentrates connections to origin servers so they come from a small number of data centers rather than the full set of network locations. This results in fewer open connections using server resources. */
+/** Tiered Cache works by dividing Cloudflare’s data centers into a hierarchy of lower-tiers and upper-tiers. If content is not cached in lower-tier data centers (generally the ones closest to a visitor), the lower-tier must ask an upper-tier to see if it has the content. If the upper-tier does not have the content, only the upper-tier can ask the origin for content. This practice improves bandwidth efficiency by limiting the number of data centers that can ask the origin for content, which reduces origin load and makes websites more cost-effective to operate. Additionally, Tiered Cache concentrates connections to origin servers so they come from a small number of data centers rather than the full set of network locations. This results in fewer open connections using server resources. */
 export const patchTieredCaching: API.OperationMethod<
   PatchTieredCachingRequest,
   PatchTieredCachingResponse,

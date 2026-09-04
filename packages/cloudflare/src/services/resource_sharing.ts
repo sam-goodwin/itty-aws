@@ -83,6 +83,8 @@ export interface CreateRecipientRequest {
   accountId: string;
   /** Share identifier tag. */
   shareId: string;
+  /** This field has been renamed to `recipient_account_id`. Both names are accepted during the deprecation period. */
+  deprecatedaccountId?: string;
   /** Organization identifier. */
   organizationId?: string;
   /** The account that will receive the share. */
@@ -92,6 +94,9 @@ export const CreateRecipientRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     shareId: S.String.pipe(T.Label("share_id")),
+    deprecatedaccountId: S.optional(
+      S.String.pipe(T.Body("Deprecatedaccount_id")),
+    ),
     organizationId: S.optional(S.String.pipe(T.Body("organization_id"))),
     recipientAccountId: S.optional(
       S.String.pipe(T.Body("recipient_account_id")),
@@ -144,19 +149,28 @@ export const RecipientsCreateResponseResourcesList = /*@__PURE__*/ S.Array(
   RecipientsCreateResponseResourcesItem,
 ) as any as S.Schema<RecipientsCreateResponseResourcesList>;
 
+export type RecipientsCreateResponseRecipientAccountId =
+  "023e105f4ecef8ad9ca31a8372d0c353";
+export const RecipientsCreateResponseRecipientAccountId =
+  /*@__PURE__*/ S.String;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateRecipientResponse {
   /** Share Recipient identifier tag. */
   id: string;
   /** Account identifier. */
   accountId: string;
-  /** Share Recipient association status. */
+  /** The current state of the recipient relative to the share. The `desired_association_status` (not exposed in the response) tracks the target state set by the API; the background reconciliation workflow drives `current_association_status` toward it. */
   associationStatus: RecipientsCreateResponseAssociationStatus;
   /** When the share was created. */
   created: string;
   /** When the share was modified. */
   modified: string;
   resources?: RecipientsCreateResponseResourcesList | null;
+  account_id_2: unknown;
+  organizationId: unknown;
+  /** }' */
+  recipientAccountId: RecipientsCreateResponseRecipientAccountId;
 }
 export const CreateRecipientResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -168,6 +182,11 @@ export const CreateRecipientResponse = /*@__PURE__*/ S.suspend(() =>
     created: S.String,
     modified: S.String,
     resources: S.optional(S.NullOr(RecipientsCreateResponseResourcesList)),
+    account_id_2: S.Unknown.pipe(T.Body("account_id")),
+    organizationId: S.Unknown.pipe(T.Body("organization_id")),
+    recipientAccountId: RecipientsCreateResponseRecipientAccountId.pipe(
+      T.Body("recipient_account_id"),
+    ),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateRecipientResponse",
@@ -179,7 +198,8 @@ export type ResourcesCreateRequestResourceType =
   | "gateway-destination-ip"
   | "gateway-block-page-settings"
   | "gateway-extended-email-matching"
-  | "idp-federation-grant";
+  | "idp-federation-grant"
+  | "trust-grant";
 export const ResourcesCreateRequestResourceType = /*@__PURE__*/ S.String;
 
 export interface CreateResourceRequest {
@@ -225,11 +245,15 @@ export type ResourcesCreateResponseResourceType =
   | "gateway-destination-ip"
   | "gateway-block-page-settings"
   | "gateway-extended-email-matching"
-  | "idp-federation-grant";
+  | "idp-federation-grant"
+  | "trust-grant";
 export const ResourcesCreateResponseResourceType = /*@__PURE__*/ S.String;
 
 export type ResourcesCreateResponseStatus = "active" | "deleting" | "deleted";
 export const ResourcesCreateResponseStatus = /*@__PURE__*/ S.String;
+
+export type ResourcesCreateResponseResourceType2 = "custom-ruleset";
+export const ResourcesCreateResponseResourceType2 = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateResourceResponse {
@@ -251,6 +275,11 @@ export interface CreateResourceResponse {
   resourceVersion: number;
   /** Resource Status. */
   status: ResourcesCreateResponseStatus;
+  meta_2: unknown;
+  resource_account_id_2: unknown;
+  resource_id_2: unknown;
+  /** }' */
+  resource_type_2: ResourcesCreateResponseResourceType2;
 }
 export const CreateResourceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -265,34 +294,20 @@ export const CreateResourceResponse = /*@__PURE__*/ S.suspend(() =>
     ),
     resourceVersion: S.Number.pipe(T.Body("resource_version")),
     status: ResourcesCreateResponseStatus,
+    meta_2: S.Unknown.pipe(T.Body("meta")),
+    resource_account_id_2: S.Unknown.pipe(T.Body("resource_account_id")),
+    resource_id_2: S.Unknown.pipe(T.Body("resource_id")),
+    resource_type_2: ResourcesCreateResponseResourceType2.pipe(
+      T.Body("resource_type"),
+    ),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateResourceResponse",
 }) as any as S.Schema<CreateResourceResponse>;
 
-export interface CreateRequestRecipientsItem {
-  /** Deprecated alias for `recipient_account_id`. Use `recipient_account_id` instead. */
-  accountId?: string;
-  /** Organization identifier. */
-  organizationId?: string;
-  /** The account that will receive the share. */
-  recipientAccountId?: string;
-}
-export const CreateRequestRecipientsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.optional(S.String.pipe(T.Body("account_id"))),
-    organizationId: S.optional(S.String.pipe(T.Body("organization_id"))),
-    recipientAccountId: S.optional(
-      S.String.pipe(T.Body("recipient_account_id")),
-    ),
-  }),
-).annotate({
-  identifier: "CreateRequestRecipientsItem",
-}) as any as S.Schema<CreateRequestRecipientsItem>;
-
-export type CreateRequestRecipientsList = Array<CreateRequestRecipientsItem>;
+export type CreateRequestRecipientsList = Array<unknown>;
 export const CreateRequestRecipientsList = /*@__PURE__*/ S.Array(
-  CreateRequestRecipientsItem,
+  S.Unknown,
 ) as any as S.Schema<CreateRequestRecipientsList>;
 
 export type CreateRequestResourcesItemResourceType =
@@ -301,7 +316,8 @@ export type CreateRequestResourcesItemResourceType =
   | "gateway-destination-ip"
   | "gateway-block-page-settings"
   | "gateway-extended-email-matching"
-  | "idp-federation-grant";
+  | "idp-federation-grant"
+  | "trust-grant";
 export const CreateRequestResourcesItemResourceType = /*@__PURE__*/ S.String;
 
 export interface CreateRequestResourcesItem {
@@ -338,6 +354,12 @@ export interface CreateResourceSharingRequest {
   /** The name of the share. */
   name: string;
   recipients: CreateRequestRecipientsList;
+  /** This field has been renamed to `recipient_account_id`. Both names are accepted during the deprecation period. */
+  deprecatedaccountId?: string;
+  /** Organization identifier. */
+  organizationId?: string;
+  /** The account that will receive the share. */
+  recipientAccountId?: string;
   resources: CreateRequestResourcesList;
 }
 export const CreateResourceSharingRequest = /*@__PURE__*/ S.suspend(() =>
@@ -345,6 +367,13 @@ export const CreateResourceSharingRequest = /*@__PURE__*/ S.suspend(() =>
     accountId: S.String.pipe(T.Label("account_id")),
     name: S.String,
     recipients: CreateRequestRecipientsList,
+    deprecatedaccountId: S.optional(
+      S.String.pipe(T.Body("Deprecatedaccount_id")),
+    ),
+    organizationId: S.optional(S.String.pipe(T.Body("organization_id"))),
+    recipientAccountId: S.optional(
+      S.String.pipe(T.Body("recipient_account_id")),
+    ),
     resources: CreateRequestResourcesList,
   })
     .pipe(
@@ -374,7 +403,8 @@ export type CreateResponseResourcesItemResourceType =
   | "gateway-destination-ip"
   | "gateway-block-page-settings"
   | "gateway-extended-email-matching"
-  | "idp-federation-grant";
+  | "idp-federation-grant"
+  | "trust-grant";
 export const CreateResponseResourcesItemResourceType = /*@__PURE__*/ S.String;
 
 export type CreateResponseResourcesItemStatus =
@@ -382,6 +412,9 @@ export type CreateResponseResourcesItemStatus =
   | "deleting"
   | "deleted";
 export const CreateResponseResourcesItemStatus = /*@__PURE__*/ S.String;
+
+export type CreateResponseResourcesItemResourceType2 = "custom-ruleset";
+export const CreateResponseResourcesItemResourceType2 = /*@__PURE__*/ S.String;
 
 export interface CreateResponseResourcesItem {
   /** Share Resource identifier. */
@@ -402,6 +435,16 @@ export interface CreateResponseResourcesItem {
   resourceVersion: number;
   /** Resource Status. */
   status: CreateResponseResourcesItemStatus;
+  name: unknown;
+  /** {} */
+  recipients: unknown;
+  /** { */
+  resources: unknown;
+  meta_2: unknown;
+  resource_account_id_2: unknown;
+  resource_id_2: unknown;
+  /** } */
+  resource_type_2: CreateResponseResourcesItemResourceType2;
 }
 export const CreateResponseResourcesItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -416,6 +459,15 @@ export const CreateResponseResourcesItem = /*@__PURE__*/ S.suspend(() =>
     ),
     resourceVersion: S.Number.pipe(T.Body("resource_version")),
     status: CreateResponseResourcesItemStatus,
+    name: S.Unknown,
+    recipients: S.Unknown,
+    resources: S.Unknown,
+    meta_2: S.Unknown.pipe(T.Body("meta")),
+    resource_account_id_2: S.Unknown.pipe(T.Body("resource_account_id")),
+    resource_id_2: S.Unknown.pipe(T.Body("resource_id")),
+    resource_type_2: CreateResponseResourcesItemResourceType2.pipe(
+      T.Body("resource_type"),
+    ),
   }),
 ).annotate({
   identifier: "CreateResponseResourcesItem",
@@ -444,16 +496,16 @@ export interface CreateResourceSharingResponse {
   organizationId: string;
   status: CreateResponseStatus;
   targetType: CreateResponseTargetType;
-  /** The number of recipients in the 'associated' state. This field is only included when requested via the 'include_recipient_counts' parameter. */
+  /** The number of recipients in the ‘associated’ state. This field is only included when requested via the ‘include_recipient_counts’ parameter. */
   associatedRecipientCount?: number | null;
-  /** The number of recipients in the 'associating' state. This field is only included when requested via the 'include_recipient_counts' parameter. */
+  /** The number of recipients in the ‘associating’ state. This field is only included when requested via the ‘include_recipient_counts’ parameter. */
   associatingRecipientCount?: number | null;
-  /** The number of recipients in the 'disassociated' state. This field is only included when requested via the 'include_recipient_counts' parameter. */
+  /** The number of recipients in the ‘disassociated’ state. This field is only included when requested via the ‘include_recipient_counts’ parameter. */
   disassociatedRecipientCount?: number | null;
-  /** The number of recipients in the 'disassociating' state. This field is only included when requested via the 'include_recipient_counts' parameter. */
+  /** The number of recipients in the ‘disassociating’ state. This field is only included when requested via the ‘include_recipient_counts’ parameter. */
   disassociatingRecipientCount?: number | null;
   kind?: CreateResponseKind | null;
-  /** A list of resources that are part of the share. This field is only included when requested via the 'include_resources' parameter. */
+  /** A list of resources that are part of the share. This field is only included when requested via the ‘include_resources’ parameter. */
   resources?: CreateResponseResourcesList | null;
 }
 export const CreateResourceSharingResponse = /*@__PURE__*/ S.suspend(() =>
@@ -536,7 +588,7 @@ export interface DeleteRecipientResponse {
   id: string;
   /** Account identifier. */
   accountId: string;
-  /** Share Recipient association status. */
+  /** The current state of the recipient relative to the share. The `desired_association_status` (not exposed in the response) tracks the target state set by the API; the background reconciliation workflow drives `current_association_status` toward it. */
   associationStatus: RecipientsDeleteResponseAssociationStatus;
   /** When the share was created. */
   created: string;
@@ -591,7 +643,8 @@ export type ResourcesDeleteResponseResourceType =
   | "gateway-destination-ip"
   | "gateway-block-page-settings"
   | "gateway-extended-email-matching"
-  | "idp-federation-grant";
+  | "idp-federation-grant"
+  | "trust-grant";
 export const ResourcesDeleteResponseResourceType = /*@__PURE__*/ S.String;
 
 export type ResourcesDeleteResponseStatus = "active" | "deleting" | "deleted";
@@ -674,7 +727,8 @@ export type DeleteResponseResourcesItemResourceType =
   | "gateway-destination-ip"
   | "gateway-block-page-settings"
   | "gateway-extended-email-matching"
-  | "idp-federation-grant";
+  | "idp-federation-grant"
+  | "trust-grant";
 export const DeleteResponseResourcesItemResourceType = /*@__PURE__*/ S.String;
 
 export type DeleteResponseResourcesItemStatus =
@@ -744,16 +798,16 @@ export interface DeleteResourceSharingResponse {
   organizationId: string;
   status: DeleteResponseStatus;
   targetType: DeleteResponseTargetType;
-  /** The number of recipients in the 'associated' state. This field is only included when requested via the 'include_recipient_counts' parameter. */
+  /** The number of recipients in the ‘associated’ state. This field is only included when requested via the ‘include_recipient_counts’ parameter. */
   associatedRecipientCount?: number | null;
-  /** The number of recipients in the 'associating' state. This field is only included when requested via the 'include_recipient_counts' parameter. */
+  /** The number of recipients in the ‘associating’ state. This field is only included when requested via the ‘include_recipient_counts’ parameter. */
   associatingRecipientCount?: number | null;
-  /** The number of recipients in the 'disassociated' state. This field is only included when requested via the 'include_recipient_counts' parameter. */
+  /** The number of recipients in the ‘disassociated’ state. This field is only included when requested via the ‘include_recipient_counts’ parameter. */
   disassociatedRecipientCount?: number | null;
-  /** The number of recipients in the 'disassociating' state. This field is only included when requested via the 'include_recipient_counts' parameter. */
+  /** The number of recipients in the ‘disassociating’ state. This field is only included when requested via the ‘include_recipient_counts’ parameter. */
   disassociatingRecipientCount?: number | null;
   kind?: DeleteResponseKind | null;
-  /** A list of resources that are part of the share. This field is only included when requested via the 'include_resources' parameter. */
+  /** A list of resources that are part of the share. This field is only included when requested via the ‘include_resources’ parameter. */
   resources?: DeleteResponseResourcesList | null;
 }
 export const DeleteResourceSharingResponse = /*@__PURE__*/ S.suspend(() =>
@@ -839,7 +893,7 @@ export interface GetRecipientResponse {
   id: string;
   /** Account identifier. */
   accountId: string;
-  /** Share Recipient association status. */
+  /** The current state of the recipient relative to the share. The `desired_association_status` (not exposed in the response) tracks the target state set by the API; the background reconciliation workflow drives `current_association_status` toward it. */
   associationStatus: RecipientsGetResponseAssociationStatus;
   /** When the share was created. */
   created: string;
@@ -894,7 +948,8 @@ export type ResourcesGetResponseResourceType =
   | "gateway-destination-ip"
   | "gateway-block-page-settings"
   | "gateway-extended-email-matching"
-  | "idp-federation-grant";
+  | "idp-federation-grant"
+  | "trust-grant";
 export const ResourcesGetResponseResourceType = /*@__PURE__*/ S.String;
 
 export type ResourcesGetResponseStatus = "active" | "deleting" | "deleted";
@@ -985,7 +1040,8 @@ export type GetResponseResourcesItemResourceType =
   | "gateway-destination-ip"
   | "gateway-block-page-settings"
   | "gateway-extended-email-matching"
-  | "idp-federation-grant";
+  | "idp-federation-grant"
+  | "trust-grant";
 export const GetResponseResourcesItemResourceType = /*@__PURE__*/ S.String;
 
 export type GetResponseResourcesItemStatus = "active" | "deleting" | "deleted";
@@ -1052,16 +1108,16 @@ export interface GetResourceSharingResponse {
   organizationId: string;
   status: GetResponseStatus;
   targetType: GetResponseTargetType;
-  /** The number of recipients in the 'associated' state. This field is only included when requested via the 'include_recipient_counts' parameter. */
+  /** The number of recipients in the ‘associated’ state. This field is only included when requested via the ‘include_recipient_counts’ parameter. */
   associatedRecipientCount?: number | null;
-  /** The number of recipients in the 'associating' state. This field is only included when requested via the 'include_recipient_counts' parameter. */
+  /** The number of recipients in the ‘associating’ state. This field is only included when requested via the ‘include_recipient_counts’ parameter. */
   associatingRecipientCount?: number | null;
-  /** The number of recipients in the 'disassociated' state. This field is only included when requested via the 'include_recipient_counts' parameter. */
+  /** The number of recipients in the ‘disassociated’ state. This field is only included when requested via the ‘include_recipient_counts’ parameter. */
   disassociatedRecipientCount?: number | null;
-  /** The number of recipients in the 'disassociating' state. This field is only included when requested via the 'include_recipient_counts' parameter. */
+  /** The number of recipients in the ‘disassociating’ state. This field is only included when requested via the ‘include_recipient_counts’ parameter. */
   disassociatingRecipientCount?: number | null;
   kind?: GetResponseKind | null;
-  /** A list of resources that are part of the share. This field is only included when requested via the 'include_resources' parameter. */
+  /** A list of resources that are part of the share. This field is only included when requested via the ‘include_resources’ parameter. */
   resources?: GetResponseResourcesList | null;
 }
 export const GetResourceSharingResponse = /*@__PURE__*/ S.suspend(() =>
@@ -1101,9 +1157,9 @@ export interface ListRecipientsRequest {
   shareId: string;
   /** Include resources in the response. */
   includeResources?: boolean;
-  /** Page number. Defaults to `1` when `per_page` is supplied without */
+  /** Page number. Defaults to `1` when `per_page` is supplied without `page`. May be omitted entirely along with `per_page` to receive a non-paginated response. */
   page?: number;
-  /** Number of objects to return per page. Defaults to `20` when `page` */
+  /** Number of objects to return per page. Defaults to `20` when `page`is supplied without `per_page`. May be omitted entirely along with `page` to receive a non-paginated response. */
   perPage?: number;
 }
 export const ListRecipientsRequest = /*@__PURE__*/ S.suspend(() =>
@@ -1149,7 +1205,7 @@ export interface RecipientsListResultItem {
   id: string;
   /** Account identifier. */
   accountId: string;
-  /** Share Recipient association status. */
+  /** The current state of the recipient relative to the share. The `desired_association_status` (not exposed in the response) tracks the target state set by the API; the background reconciliation workflow drives `current_association_status` toward it. */
   associationStatus: RecipientsListResultItemAssociationStatus;
   /** When the share was created. */
   created: string;
@@ -1198,7 +1254,8 @@ export type ResourcesListRequestResourceType =
   | "gateway-destination-ip"
   | "gateway-block-page-settings"
   | "gateway-extended-email-matching"
-  | "idp-federation-grant";
+  | "idp-federation-grant"
+  | "trust-grant";
 export const ResourcesListRequestResourceType = /*@__PURE__*/ S.String;
 
 export type ResourcesListRequestStatus = "active" | "deleting" | "deleted";
@@ -1209,9 +1266,9 @@ export interface ListResourcesRequest {
   accountId: string;
   /** Share identifier tag. */
   shareId: string;
-  /** Page number. Defaults to `1` when `per_page` is supplied without */
+  /** Page number. Defaults to `1` when `per_page` is supplied without `page`. May be omitted entirely along with `per_page` to receive a non-paginated response. */
   page?: number;
-  /** Number of objects to return per page. Defaults to `20` when `page` */
+  /** Number of objects to return per page. Defaults to `20` when `page`is supplied without `per_page`. May be omitted entirely along with `page` to receive a non-paginated response. */
   perPage?: number;
   /** Filter share resources by resource_type. */
   resourceType?: ResourcesListRequestResourceType | (string & {});
@@ -1247,7 +1304,8 @@ export type ResourcesListResultItemResourceType =
   | "gateway-destination-ip"
   | "gateway-block-page-settings"
   | "gateway-extended-email-matching"
-  | "idp-federation-grant";
+  | "idp-federation-grant"
+  | "trust-grant";
 export const ResourcesListResultItemResourceType = /*@__PURE__*/ S.String;
 
 export type ResourcesListResultItemStatus = "active" | "deleting" | "deleted";
@@ -1326,7 +1384,8 @@ export type ListRequestResourceTypes =
   | "gateway-destination-ip"
   | "gateway-block-page-settings"
   | "gateway-extended-email-matching"
-  | "idp-federation-grant";
+  | "idp-federation-grant"
+  | "trust-grant";
 export const ListRequestResourceTypes = /*@__PURE__*/ S.String;
 
 export type ListRequestResourceTypesList = Array<
@@ -1360,9 +1419,9 @@ export interface ListResourceSharingsRequest {
   kind?: ListRequestKind | (string & {});
   /** Order shares by values in the given field. */
   order?: ListRequestOrder | (string & {});
-  /** Page number. Defaults to `1` when `per_page` is supplied without */
+  /** Page number. Defaults to `1` when `per_page` is supplied without `page`. May be omitted entirely along with `per_page` to receive a non-paginated response. */
   page?: number;
-  /** Number of objects to return per page. Defaults to `20` when `page` */
+  /** Number of objects to return per page. Defaults to `20` when `page`is supplied without `per_page`. May be omitted entirely along with `page` to receive a non-paginated response. */
   perPage?: number;
   /** Filter share resources by resource_types. */
   resourceTypes?: ListRequestResourceTypesList;
@@ -1419,7 +1478,8 @@ export type ListResultItemResourcesItemResourceType =
   | "gateway-destination-ip"
   | "gateway-block-page-settings"
   | "gateway-extended-email-matching"
-  | "idp-federation-grant";
+  | "idp-federation-grant"
+  | "trust-grant";
 export const ListResultItemResourcesItemResourceType = /*@__PURE__*/ S.String;
 
 export type ListResultItemResourcesItemStatus =
@@ -1488,16 +1548,16 @@ export interface ListResultItem {
   organizationId: string;
   status: ListResultItemStatus;
   targetType: ListResultItemTargetType;
-  /** The number of recipients in the 'associated' state. This field is only included when requested via the 'include_recipient_counts' parameter. */
+  /** The number of recipients in the ‘associated’ state. This field is only included when requested via the ‘include_recipient_counts’ parameter. */
   associatedRecipientCount?: number | null;
-  /** The number of recipients in the 'associating' state. This field is only included when requested via the 'include_recipient_counts' parameter. */
+  /** The number of recipients in the ‘associating’ state. This field is only included when requested via the ‘include_recipient_counts’ parameter. */
   associatingRecipientCount?: number | null;
-  /** The number of recipients in the 'disassociated' state. This field is only included when requested via the 'include_recipient_counts' parameter. */
+  /** The number of recipients in the ‘disassociated’ state. This field is only included when requested via the ‘include_recipient_counts’ parameter. */
   disassociatedRecipientCount?: number | null;
-  /** The number of recipients in the 'disassociating' state. This field is only included when requested via the 'include_recipient_counts' parameter. */
+  /** The number of recipients in the ‘disassociating’ state. This field is only included when requested via the ‘include_recipient_counts’ parameter. */
   disassociatingRecipientCount?: number | null;
   kind?: ListResultItemKind | null;
-  /** A list of resources that are part of the share. This field is only included when requested via the 'include_resources' parameter. */
+  /** A list of resources that are part of the share. This field is only included when requested via the ‘include_resources’ parameter. */
   resources?: ListResultItemResourcesList | null;
 }
 export const ListResultItem = /*@__PURE__*/ S.suspend(() =>
@@ -1583,7 +1643,8 @@ export type ResourcesUpdateResponseResourceType =
   | "gateway-destination-ip"
   | "gateway-block-page-settings"
   | "gateway-extended-email-matching"
-  | "idp-federation-grant";
+  | "idp-federation-grant"
+  | "trust-grant";
 export const ResourcesUpdateResponseResourceType = /*@__PURE__*/ S.String;
 
 export type ResourcesUpdateResponseStatus = "active" | "deleting" | "deleted";
@@ -1609,6 +1670,8 @@ export interface UpdateResourceResponse {
   resourceVersion: number;
   /** Resource Status. */
   status: ResourcesUpdateResponseStatus;
+  /** }' */
+  meta_2: unknown;
 }
 export const UpdateResourceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1623,6 +1686,7 @@ export const UpdateResourceResponse = /*@__PURE__*/ S.suspend(() =>
     ),
     resourceVersion: S.Number.pipe(T.Body("resource_version")),
     status: ResourcesUpdateResponseStatus,
+    meta_2: S.Unknown.pipe(T.Body("meta")),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateResourceResponse",
@@ -1669,7 +1733,8 @@ export type UpdateResponseResourcesItemResourceType =
   | "gateway-destination-ip"
   | "gateway-block-page-settings"
   | "gateway-extended-email-matching"
-  | "idp-federation-grant";
+  | "idp-federation-grant"
+  | "trust-grant";
 export const UpdateResponseResourcesItemResourceType = /*@__PURE__*/ S.String;
 
 export type UpdateResponseResourcesItemStatus =
@@ -1677,6 +1742,9 @@ export type UpdateResponseResourcesItemStatus =
   | "deleting"
   | "deleted";
 export const UpdateResponseResourcesItemStatus = /*@__PURE__*/ S.String;
+
+export type UpdateResponseResourcesItemName = "My Shared WAF Managed Rule";
+export const UpdateResponseResourcesItemName = /*@__PURE__*/ S.String;
 
 export interface UpdateResponseResourcesItem {
   /** Share Resource identifier. */
@@ -1697,6 +1765,8 @@ export interface UpdateResponseResourcesItem {
   resourceVersion: number;
   /** Resource Status. */
   status: UpdateResponseResourcesItemStatus;
+  /** }' */
+  name: UpdateResponseResourcesItemName;
 }
 export const UpdateResponseResourcesItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1711,6 +1781,7 @@ export const UpdateResponseResourcesItem = /*@__PURE__*/ S.suspend(() =>
     ),
     resourceVersion: S.Number.pipe(T.Body("resource_version")),
     status: UpdateResponseResourcesItemStatus,
+    name: UpdateResponseResourcesItemName,
   }),
 ).annotate({
   identifier: "UpdateResponseResourcesItem",
@@ -1739,16 +1810,16 @@ export interface UpdateResourceSharingResponse {
   organizationId: string;
   status: UpdateResponseStatus;
   targetType: UpdateResponseTargetType;
-  /** The number of recipients in the 'associated' state. This field is only included when requested via the 'include_recipient_counts' parameter. */
+  /** The number of recipients in the ‘associated’ state. This field is only included when requested via the ‘include_recipient_counts’ parameter. */
   associatedRecipientCount?: number | null;
-  /** The number of recipients in the 'associating' state. This field is only included when requested via the 'include_recipient_counts' parameter. */
+  /** The number of recipients in the ‘associating’ state. This field is only included when requested via the ‘include_recipient_counts’ parameter. */
   associatingRecipientCount?: number | null;
-  /** The number of recipients in the 'disassociated' state. This field is only included when requested via the 'include_recipient_counts' parameter. */
+  /** The number of recipients in the ‘disassociated’ state. This field is only included when requested via the ‘include_recipient_counts’ parameter. */
   disassociatedRecipientCount?: number | null;
-  /** The number of recipients in the 'disassociating' state. This field is only included when requested via the 'include_recipient_counts' parameter. */
+  /** The number of recipients in the ‘disassociating’ state. This field is only included when requested via the ‘include_recipient_counts’ parameter. */
   disassociatingRecipientCount?: number | null;
   kind?: UpdateResponseKind | null;
-  /** A list of resources that are part of the share. This field is only included when requested via the 'include_resources' parameter. */
+  /** A list of resources that are part of the share. This field is only included when requested via the ‘include_resources’ parameter. */
   resources?: UpdateResponseResourcesList | null;
 }
 export const UpdateResourceSharingResponse = /*@__PURE__*/ S.suspend(() =>
@@ -1785,7 +1856,7 @@ export type CreateRecipientError =
   | ShareNotFound
   | Forbidden
   | CloudflareOpError;
-/** Adds a recipient to a resource share, granting them access to the shared resources. */
+/** Adds a single recipient to an account-targeted resource share, granting them access to the shared resources. The recipient account must belong to the same organization as the share owner. To replace the entire recipient list in one call, use `PUT /accounts/{account_id}/shares/{share_id}/recipients` instead. */
 export const createRecipient: API.OperationMethod<
   CreateRecipientRequest,
   CreateRecipientResponse,
@@ -1833,7 +1904,7 @@ export type DeleteRecipientError =
   | ShareRecipientNotFound
   | Forbidden
   | CloudflareOpError;
-/** Deletion is not immediate, an updated share recipient object with a new status will be returned. */
+/** Performs a **soft delete**: sets the recipient’s `desired_association_status` to `disassociated`, which signals the background reconciliation workflow (Temporal) to remove the shared resources from the recipient account. The recipient record remains in the database for audit purposes and is still returned by `GET /accounts/{account_id}/shares/{share_id}/recipients` with its updated status. Resource access is not fully removed until the workflow completes and `current_association_status` transitions to `disassociated`. The recipient record itself is never physically deleted. */
 export const deleteRecipient: API.OperationMethod<
   DeleteRecipientRequest,
   DeleteRecipientResponse,
@@ -1958,7 +2029,7 @@ export const getResourceSharing: API.OperationMethod<
 }));
 
 export type ListRecipientsError = ShareNotFound | Forbidden | CloudflareOpError;
-/** List share recipients by share ID. */
+/** List share recipients by share ID. Returns **all** recipients regardless of their `association_status` (associating, associated, disassociating, disassociated). Callers that want only “active” recipients must filter client-side on the `association_status` field. */
 export const listRecipients: API.PaginatedOperationMethod<
   ListRecipientsRequest,
   ListRecipientsResponse,
@@ -2062,7 +2133,7 @@ export type UpdateResourceSharingError =
   | ShareNotFound
   | Forbidden
   | CloudflareOpError;
-/** Updating is not immediate, an updated share object with a new status will be returned. */
+/** Updates the share’s display name and tags. This endpoint does **not**modify recipients or resources — those are managed via dedicated subresource endpoints: * **Recipients**: Use `POST /accounts/{account_id}/shares/{share_id}/recipients`to add a single recipient, `PUT /accounts/{account_id}/shares/{share_id}/recipients`to replace the full recipient list, or `DELETE /accounts/{account_id}/shares/{share_id}/recipients/{recipient_id}`to remove a recipient. * **Resources**: Use the share’s resource subresource endpoints. Updating is not immediate; an updated share object with a new status will be returned. */
 export const updateResourceSharing: API.OperationMethod<
   UpdateResourceSharingRequest,
   UpdateResourceSharingResponse,

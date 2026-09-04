@@ -136,7 +136,7 @@ export interface CreateV1Response {
   filename?: string | null;
   /** User modifiable key-value store. Can be used for keeping references to another system of record for managing images. Metadata must not exceed 1024 bytes. */
   meta?: unknown | null;
-  /** Indicates whether the image can be a accessed only using it's UID. If set to true, a signed token needs to be generated with a signing key to view the image. */
+  /** Indicates whether the image can be a accessed only using it’s UID. If set to true, a signed token needs to be generated with a signing key to view the image. */
   requireSignedURLs?: boolean | null;
   /** When the media item was uploaded. */
   uploaded?: string | null;
@@ -195,6 +195,7 @@ export const V1VariantsCreateRequestOptions = /*@__PURE__*/ S.suspend(() =>
 export interface CreateV1VariantRequest {
   /** Account identifier tag. */
   accountId: string;
+  /** maxLength99 */
   id: string;
   /** Allows you to define image resizing sizes for different use cases. */
   options: V1VariantsCreateRequestOptions;
@@ -258,6 +259,7 @@ export const V1VariantsCreateResponseVariantOptions = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<V1VariantsCreateResponseVariantOptions>;
 
 export interface V1VariantsCreateResponseVariant {
+  /** maxLength99 */
   id: string;
   /** Allows you to define image resizing sizes for different use cases. */
   options: V1VariantsCreateResponseVariantOptions;
@@ -355,6 +357,7 @@ export const DeleteV1Response = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteV1KeyRequest {
   /** Account identifier tag. */
   accountId: string;
+  /** maxLength20 */
   signingKeyName: string;
 }
 export const DeleteV1KeyRequest = /*@__PURE__*/ S.suspend(() =>
@@ -409,6 +412,7 @@ export const DeleteV1KeyResponse = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteV1VariantRequest {
   /** Account identifier tag. */
   accountId: string;
+  /** maxLength99 */
   variantId: string;
 }
 export const DeleteV1VariantRequest = /*@__PURE__*/ S.suspend(() =>
@@ -471,7 +475,7 @@ export interface GetV1Response {
   filename?: string | null;
   /** User modifiable key-value store. Can be used for keeping references to another system of record for managing images. Metadata must not exceed 1024 bytes. */
   meta?: unknown | null;
-  /** Indicates whether the image can be a accessed only using it's UID. If set to true, a signed token needs to be generated with a signing key to view the image. */
+  /** Indicates whether the image can be a accessed only using it’s UID. If set to true, a signed token needs to be generated with a signing key to view the image. */
   requireSignedURLs?: boolean | null;
   /** When the media item was uploaded. */
   uploaded?: string | null;
@@ -570,6 +574,7 @@ export const GetV1StatResponse = /*@__PURE__*/ S.suspend(() =>
 export interface GetV1VariantRequest {
   /** Account identifier tag. */
   accountId: string;
+  /** maxLength99 */
   variantId: string;
 }
 export const GetV1VariantRequest = /*@__PURE__*/ S.suspend(() =>
@@ -626,6 +631,7 @@ export const V1VariantsGetResponseVariantOptions = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<V1VariantsGetResponseVariantOptions>;
 
 export interface V1VariantsGetResponseVariant {
+  /** maxLength99 */
   id: string;
   /** Allows you to define image resizing sizes for different use cases. */
   options: V1VariantsGetResponseVariantOptions;
@@ -735,7 +741,7 @@ export interface V1ListResponseImagesItem {
   filename?: string | null;
   /** User modifiable key-value store. Can be used for keeping references to another system of record for managing images. Metadata must not exceed 1024 bytes. */
   meta?: unknown | null;
-  /** Indicates whether the image can be a accessed only using it's UID. If set to true, a signed token needs to be generated with a signing key to view the image. */
+  /** Indicates whether the image can be a accessed only using it’s UID. If set to true, a signed token needs to be generated with a signing key to view the image. */
   requireSignedURLs?: boolean | null;
   /** When the media item was uploaded. */
   uploaded?: string | null;
@@ -832,6 +838,7 @@ export const V1VariantsListResponseVariantsHeroOptions =
   }) as any as S.Schema<V1VariantsListResponseVariantsHeroOptions>;
 
 export interface V1VariantsListResponseVariantsHero {
+  /** maxLength99 */
   id: string;
   /** Allows you to define image resizing sizes for different use cases. */
   options: V1VariantsListResponseVariantsHeroOptions;
@@ -871,18 +878,6 @@ export const ListV1VariantsResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListV1VariantsResponse",
 }) as any as S.Schema<ListV1VariantsResponse>;
 
-export interface V2ListRequestMeta {
-  /** Optional metadata filter(s). Multiple filters can be combined with AND logic. */
-  fieldOperator__?: unknown;
-}
-export const V2ListRequestMeta = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    fieldOperator__: S.optional(S.Unknown.pipe(T.Body("<field>[<operator>]"))),
-  }),
-).annotate({
-  identifier: "V2ListRequestMeta",
-}) as any as S.Schema<V2ListRequestMeta>;
-
 export type V2ListRequestSortOrder = "asc" | "desc";
 export const V2ListRequestSortOrder = /*@__PURE__*/ S.String;
 
@@ -893,7 +888,8 @@ export interface ListV2sRequest {
   continuationToken?: string;
   /** Internal user ID set within the creator field. Setting to empty string "" will return images where creator field is not set */
   creator?: string;
-  meta?: V2ListRequestMeta;
+  /** "<field>[<operator>]": optional string */
+  meta?: string;
   /** Number of items per page */
   perPage?: number;
   /** Sorting order by upload time */
@@ -904,7 +900,7 @@ export const ListV2sRequest = /*@__PURE__*/ S.suspend(() =>
     accountId: S.String.pipe(T.Label("account_id")),
     continuationToken: S.optional(S.String.pipe(T.Query("continuation_token"))),
     creator: S.optional(S.String.pipe(T.Query())),
-    meta: S.optional(V2ListRequestMeta.pipe(T.DeepQuery("meta"))),
+    meta: S.optional(S.String.pipe(T.Query())),
     perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
     sortOrder: S.optional(V2ListRequestSortOrder.pipe(T.Query("sort_order"))),
   })
@@ -932,7 +928,7 @@ export interface V2ListResponseImagesItem {
   filename?: string | null;
   /** User modifiable key-value store. Can be used for keeping references to another system of record for managing images. Metadata must not exceed 1024 bytes. */
   meta?: unknown | null;
-  /** Indicates whether the image can be a accessed only using it's UID. If set to true, a signed token needs to be generated with a signing key to view the image. */
+  /** Indicates whether the image can be a accessed only using it’s UID. If set to true, a signed token needs to be generated with a signing key to view the image. */
   requireSignedURLs?: boolean | null;
   /** When the media item was uploaded. */
   uploaded?: string | null;
@@ -1020,7 +1016,7 @@ export interface PatchV1Response {
   filename?: string | null;
   /** User modifiable key-value store. Can be used for keeping references to another system of record for managing images. Metadata must not exceed 1024 bytes. */
   meta?: unknown | null;
-  /** Indicates whether the image can be a accessed only using it's UID. If set to true, a signed token needs to be generated with a signing key to view the image. */
+  /** Indicates whether the image can be a accessed only using it’s UID. If set to true, a signed token needs to be generated with a signing key to view the image. */
   requireSignedURLs?: boolean | null;
   /** When the media item was uploaded. */
   uploaded?: string | null;
@@ -1079,6 +1075,7 @@ export const V1VariantsEditRequestOptions = /*@__PURE__*/ S.suspend(() =>
 export interface PatchV1VariantRequest {
   /** Account identifier tag. */
   accountId: string;
+  /** maxLength99 */
   variantId: string;
   /** Allows you to define image resizing sizes for different use cases. */
   options: V1VariantsEditRequestOptions;
@@ -1142,6 +1139,7 @@ export const V1VariantsEditResponseVariantOptions = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<V1VariantsEditResponseVariantOptions>;
 
 export interface V1VariantsEditResponseVariant {
+  /** maxLength99 */
   id: string;
   /** Allows you to define image resizing sizes for different use cases. */
   options: V1VariantsEditResponseVariantOptions;
@@ -1173,6 +1171,7 @@ export const PatchV1VariantResponse = /*@__PURE__*/ S.suspend(() =>
 export interface PutV1KeyRequest {
   /** Account identifier tag. */
   accountId: string;
+  /** maxLength20 */
   signingKeyName: string;
 }
 export const PutV1KeyRequest = /*@__PURE__*/ S.suspend(() =>
@@ -1395,7 +1394,7 @@ export const getV1Blob: API.OperationMethod<
 }));
 
 export type GetV1StatError = ImagesAccessNotEnabled | CloudflareOpError;
-/** Fetch image statistics details for Cloudflare Images. The returned statistics detail storage usage, including the current image count vs this account's allowance. */
+/** Fetch image statistics details for Cloudflare Images. The returned statistics detail storage usage, including the current image count vs this account’s allowance. */
 export const getV1Stat: API.OperationMethod<
   GetV1StatRequest,
   GetV1StatResponse,
@@ -1480,7 +1479,7 @@ export const listV1Variants: API.OperationMethod<
 }));
 
 export type ListV2sError = ImagesAccessNotEnabled | CloudflareOpError;
-/** List up to 10000 images from CF Images, with up to 1000 results per page. Use the optional parameters below to get a specific range of images. Pagination is supported via continuation_token. **Metadata Filtering (Optional):** You can optionally filter images by custom metadata fields using the `meta.<field>[<operator>]=<value>` syntax. **Supported Operators:** - `eq` / `eq:string` / `eq:number` / `eq:boolean` - Exact match - `gt` / `gt:number` - Greater than (number only) - `gte` / `gte:number` - Greater than or equal (number only) - `lt` / `lt:number` - Less than (number only) - `lte` / `lte:number` - Less than or equal (number only) - `in` / `in:string` / `in:number` - Match any value in list (pipe-separated) **Metadata Filter Constraints:** - Maximum 5 metadata filters per request - Maximum 5 levels of nesting (e.g., `meta.first.second.third.fourth.fifth`) - Maximum 10 elements for list operators (`in`) - Supports string, number, and boolean value types - Range operators (`gt`, `gte`, `lt`, `lte`) only accept numeric values **Filter Consistency:** Filters are combined with AND logic. The system does not validate whether filter combinations are logically consistent. For example, `meta.priority[eq:number]=5&meta.priority[lte:number]=3` will return zero results because no value can satisfy both conditions simultaneously. It is the caller's responsibility to ensure filter combinations make sense. **Examples:** ``` # List all images /images/v2 # Filter by metadata [eq] /images/v2?meta.status[eq:string]=active # Filter by metadata [in] /images/v2?meta.status[in]=pending|deleted|flagged # Filter by metadata [in:number] /images/v2?meta.ratings[in:number]=4|5 # Filter by metadata range [gte:number] /images/v2?meta.priority[gte:number]=1 # Filter by bounded range /images/v2?meta.priority[gte:number]=1&meta.priority[lte:number]=5 # Filter by nested metadata /images/v2?meta.region.name[eq]=eu-west # Combine metadata filters with creator /images/v2?meta.status[eq]=active&creator=user123 # Multiple metadata filters (AND logic) /images/v2?meta.status[eq]=active&meta.priority[eq:number]=5 ``` */
+/** List up to 10000 images from CF Images, with up to 1000 results per page. Use the optional parameters below to get a specific range of images. Pagination is supported via continuation_token. You can optionally filter images by custom metadata fields using the `meta.<field>[<operator>]=<value>` syntax. * `eq` / `eq:string` / `eq:number` / `eq:boolean` - Exact match * `gt` / `gt:number` - Greater than (number only) * `gte` / `gte:number` - Greater than or equal (number only) * `lt` / `lt:number` - Less than (number only) * `lte` / `lte:number` - Less than or equal (number only) * `in` / `in:string` / `in:number` - Match any value in list (pipe-separated) * Maximum 5 metadata filters per request * Maximum 5 levels of nesting (e.g., `meta.first.second.third.fourth.fifth`) * Maximum 10 elements for list operators (`in`) * Supports string, number, and boolean value types * Range operators (`gt`, `gte`, `lt`, `lte`) only accept numeric values ```plaintext # List all images /images/v2 # Filter by metadata [eq] /images/v2?meta.status[eq:string]=active # Filter by metadata [in] /images/v2?meta.status[in]=pending|deleted|flagged # Filter by metadata [in:number] /images/v2?meta.ratings[in:number]=4|5 # Filter by metadata range [gte:number] /images/v2?meta.priority[gte:number]=1 # Filter by bounded range /images/v2?meta.priority[gte:number]=1&meta.priority[lte:number]=5 # Filter by nested metadata /images/v2?meta.region.name[eq]=eu-west # Combine metadata filters with creator /images/v2?meta.status[eq]=active&creator=user123 # Multiple metadata filters (AND logic) /images/v2?meta.status[eq]=active&meta.priority[eq:number]=5 ``` */
 export const listV2s: API.OperationMethod<
   ListV2sRequest,
   ListV2sResponse,
@@ -1498,7 +1497,7 @@ export type PatchV1Error =
   | ImagesAccessNotEnabled
   | ImageNotFound
   | CloudflareOpError;
-/** Update a CF Images image's metadata, creator, or access control. On access control change, all copies of the image are purged from cache. */
+/** Update a CF Images image’s metadata, creator, or access control. On access control change, all copies of the image are purged from cache. */
 export const patchV1: API.OperationMethod<
   PatchV1Request,
   PatchV1Response,

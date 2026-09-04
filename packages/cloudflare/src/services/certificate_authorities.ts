@@ -59,6 +59,7 @@ export const HostnameAssociationsGetResponseHostnamesList =
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetHostnameAssociationResponse {
+  /** HTTP */
   hostnames?: HostnameAssociationsGetResponseHostnamesList | null;
 }
 export const GetHostnameAssociationResponse = /*@__PURE__*/ S.suspend(() =>
@@ -110,6 +111,7 @@ export const HostnameAssociationsUpdateResponseHostnamesList =
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface PutHostnameAssociationResponse {
+  /** HTTP */
   hostnames?: HostnameAssociationsUpdateResponseHostnamesList | null;
 }
 export const PutHostnameAssociationResponse = /*@__PURE__*/ S.suspend(() =>

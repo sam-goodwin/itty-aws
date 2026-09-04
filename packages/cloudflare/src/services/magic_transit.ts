@@ -472,11 +472,18 @@ export const BulkPutCfInterconnectsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "BulkPutCfInterconnectsRequest",
 }) as any as S.Schema<BulkPutCfInterconnectsRequest>;
 
-export interface CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemGre {
+export type CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemBgpExtraPrefixesList =
+  Array<string>;
+export const CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemBgpExtraPrefixesList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemBgpExtraPrefixesList>;
+
+export interface CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemBgpGre {
   /** The IP address assigned to the Cloudflare side of the GRE tunnel created as part of the Interconnect. */
   cloudflareEndpoint?: string | null;
 }
-export const CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemGre =
+export const CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemBgpGre =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       cloudflareEndpoint: S.optional(
@@ -484,23 +491,30 @@ export const CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemGre =
       ),
     }),
   ).annotate({
-    identifier: "CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemGre",
-  }) as any as S.Schema<CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemGre>;
+    identifier:
+      "CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemBgpGre",
+  }) as any as S.Schema<CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemBgpGre>;
 
-export type CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemHealthCheckRate =
+export type CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemBgpHealthCheckDirection =
+  | "unidirectional"
+  | "bidirectional";
+export const CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemBgpHealthCheckDirection =
+  /*@__PURE__*/ S.String;
+
+export type CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemBgpHealthCheckRate =
   | "low"
   | "mid"
   | "high";
-export const CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemHealthCheckRate =
+export const CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemBgpHealthCheckRate =
   /*@__PURE__*/ S.String;
 
-export interface CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemHealthCheckTargetMagicHealthCheckTarget {
-  /** The effective health check target. If 'saved' is empty, then this field will be populated with the calculated default value on GET requests. Ignored in POST, PUT, and PATCH requests. */
+export interface CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemBgpHealthCheckTarget {
+  /** The effective health check target. If ‘saved’ is empty, then this field will be populated with the calculated default value on GET requests. Ignored in POST, PUT, and PATCH requests. */
   effective?: string | null;
   /** The saved health check target. Setting the value to the empty string indicates that the calculated default value will be used. */
   saved?: string | null;
 }
-export const CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemHealthCheckTargetMagicHealthCheckTarget =
+export const CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemBgpHealthCheckTarget =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       effective: S.optional(S.NullOr(S.String)),
@@ -508,71 +522,35 @@ export const CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemHealthChe
     }),
   ).annotate({
     identifier:
-      "CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemHealthCheckTargetMagicHealthCheckTarget",
-  }) as any as S.Schema<CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemHealthCheckTargetMagicHealthCheckTarget>;
+      "CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemBgpHealthCheckTarget",
+  }) as any as S.Schema<CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemBgpHealthCheckTarget>;
 
-export type CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemHealthCheckTarget =
+export type CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemBgpHealthCheckTarget2 =
   | string
-  | CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemHealthCheckTargetMagicHealthCheckTarget;
-export const CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemHealthCheckTarget =
+  | CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemBgpHealthCheckTarget;
+export const CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemBgpHealthCheckTarget2 =
   /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], ["effective", "saved"]]));
 
-export type CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemHealthCheckType =
+export type CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemBgpHealthCheckType =
   | "reply"
   | "request";
-export const CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemHealthCheckType =
+export const CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemBgpHealthCheckType =
   /*@__PURE__*/ S.String;
 
-export interface CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemHealthCheck {
+export interface CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemBgpHealthCheck {
+  /** The direction of the flow of the healthcheck. Either unidirectional, where the probe comes to you via the interconnect and the result comes back to Cloudflare via the open Internet, or bidirectional where both the probe and result come and go via the interconnect. */
+  direction?: CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemBgpHealthCheckDirection | null;
   /** Determines whether to run healthchecks for a tunnel. */
   enabled?: boolean | null;
   /** How frequent the health check is run. The default value is `mid`. */
-  rate?: CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemHealthCheckRate | null;
+  rate?: CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemBgpHealthCheckRate | null;
+  /** The source IPv4 address used for bidirectional health checks. Supported only for version 1.5 interconnects. It is required when `direction` is `bidirectional` and must be omitted (and is cleared) when `direction` is `unidirectional`. The address must be within RFC1918 space, the approved link-local range 169.254.240.0/20, or the Cloudflare reserved range 198.41.199.224/27. */
+  source?: string | null;
   /** The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customer_gre_endpoint address`. This field is ignored for bidirectional healthchecks as the interface_address (not assigned to the Cloudflare side of the tunnel) is used as the target. Must be in object form if the x-magic-new-hc-target header is set to true and string form if x-magic-new-hc-target is absent or set to false. */
-  target?: CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemHealthCheckTarget | null;
+  target?: CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemBgpHealthCheckTarget2 | null;
   /** The type of healthcheck to run, reply or request. The default value is `reply`. */
-  type?: CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemHealthCheckType | null;
-}
-export const CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemHealthCheck =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      enabled: S.optional(S.NullOr(S.Boolean)),
-      rate: S.optional(
-        S.NullOr(
-          CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemHealthCheckRate,
-        ),
-      ),
-      target: S.optional(
-        S.NullOr(
-          CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemHealthCheckTarget,
-        ),
-      ),
-      type: S.optional(
-        S.NullOr(
-          CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemHealthCheckType,
-        ),
-      ),
-    }),
-  ).annotate({
-    identifier:
-      "CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemHealthCheck",
-  }) as any as S.Schema<CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemHealthCheck>;
-
-export interface CfInterconnectsBulkUpdateResponseModifiedInterconnectsItem {
-  /** Identifier */
-  id?: string | null;
-  /** True if automatic stateful return routing should be enabled for a tunnel, false otherwise. Requires the `coupler_integration` account flag to be enabled; requests setting this to `true` without that flag will be rejected. */
-  automaticReturnRouting?: boolean | null;
-  /** The name of the interconnect. The name cannot share a name with other tunnels. */
-  coloName?: string | null;
-  /** The date and time the tunnel was created. */
-  createdOn?: string | null;
-  /** An optional description of the interconnect. */
-  description?: string | null;
-  /** The configuration specific to GRE interconnects. */
-  gre?: CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemGre | null;
-  healthCheck?: CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemHealthCheck | null;
-  /** A 31-bit prefix (/31 in CIDR notation) supporting two hosts, one for each side of the tunnel. Select the subnet from the following private IP space: 10.0.0.0–10.255.255.255, 172.16.0.0–172.31.255.255, 192.168.0.0–192.168.255.255. */
+  type?: CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemBgpHealthCheckType | null;
+  /** The IPv4 interface address for the interconnect. For MPLS Interconnects, use a /30 or /31 prefix. For GRE Interconnects, a /30 or /31 prefix may be used. Version 1.5 interconnects require a /31 prefix and may also use a prefix from the account’s authorized prefixes; otherwise, select the subnet from RFC 1918 or the approved link-local ranges. */
   interfaceAddress?: string | null;
   /** A 127 bit IPV6 prefix from within the virtual_subnet6 prefix space with the address being the first IP of the subnet and not same as the address of virtual_subnet6. Eg if virtual_subnet6 is 2606:54c1:7:0:a9fe:12d2::/127 , interface_address6 could be 2606:54c1:7:0:a9fe:12d2:1:200/127 */
   interfaceAddress6?: string | null;
@@ -582,26 +560,35 @@ export interface CfInterconnectsBulkUpdateResponseModifiedInterconnectsItem {
   mtu?: number | null;
   /** The name of the interconnect. The name cannot share a name with other tunnels. */
   name?: string | null;
+  /** Immutable interconnect version configured at creation time. One of: */
+  version?: string | null;
   /** An identifier that correlates this interconnect with the corresponding V2 CNI interconnect resource. */
   virtualPortReservationId?: string | null;
 }
-export const CfInterconnectsBulkUpdateResponseModifiedInterconnectsItem =
+export const CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemBgpHealthCheck =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      id: S.optional(S.NullOr(S.String)),
-      automaticReturnRouting: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("automatic_return_routing")),
-      ),
-      coloName: S.optional(S.NullOr(S.String).pipe(T.Body("colo_name"))),
-      createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
-      description: S.optional(S.NullOr(S.String)),
-      gre: S.optional(
-        S.NullOr(CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemGre),
-      ),
-      healthCheck: S.optional(
+      direction: S.optional(
         S.NullOr(
-          CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemHealthCheck,
-        ).pipe(T.Body("health_check")),
+          CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemBgpHealthCheckDirection,
+        ),
+      ),
+      enabled: S.optional(S.NullOr(S.Boolean)),
+      rate: S.optional(
+        S.NullOr(
+          CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemBgpHealthCheckRate,
+        ),
+      ),
+      source: S.optional(S.NullOr(S.String)),
+      target: S.optional(
+        S.NullOr(
+          CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemBgpHealthCheckTarget2,
+        ),
+      ),
+      type: S.optional(
+        S.NullOr(
+          CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemBgpHealthCheckType,
+        ),
       ),
       interfaceAddress: S.optional(
         S.NullOr(S.String).pipe(T.Body("interface_address")),
@@ -612,8 +599,102 @@ export const CfInterconnectsBulkUpdateResponseModifiedInterconnectsItem =
       modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
       mtu: S.optional(S.NullOr(S.Number)),
       name: S.optional(S.NullOr(S.String)),
+      version: S.optional(S.NullOr(S.String)),
       virtualPortReservationId: S.optional(
         S.NullOr(S.String).pipe(T.Body("virtual_port_reservation_id")),
+      ),
+    }),
+  ).annotate({
+    identifier:
+      "CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemBgpHealthCheck",
+  }) as any as S.Schema<CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemBgpHealthCheck>;
+
+export interface CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemBgp {
+  /** Deprecated. Use customer_asn. */
+  deprecatedasNo?: number | null;
+  /** Read-only for v1.5; derived from interface_address. */
+  deprecatedcloudflareEndpoint?: string | null;
+  /** ASN used on the customer end of the BGP session. */
+  customerAsn?: number | null;
+  /** Read-only for v1.5; derived from interface_address. */
+  deprecatedcustomerEndpoint?: string | null;
+  /** ID of the BGP filter profile applied to routes advertised to the customer. */
+  exportFilterId?: string | null;
+  /** Prefixes in this list will be advertised to the customer device, in addition to the routes in the Magic routing table. */
+  extraPrefixes?: CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemBgpExtraPrefixesList | null;
+  /** ID of the BGP filter profile applied to routes received from the customer. */
+  importFilterId?: string | null;
+  /** MD5 key to use for session authentication. */
+  md5Key?: string | null;
+  /** The name of the interconnect. The name cannot share a name with other tunnels. */
+  coloName?: string | null;
+  /** The date and time the tunnel was created. */
+  createdOn?: string | null;
+  /** An optional description of the interconnect. */
+  description?: string | null;
+  /** Omitted in responses for version 1.5 interconnects. */
+  gre?: CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemBgpGre | null;
+  healthCheck?: CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemBgpHealthCheck | null;
+}
+export const CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemBgp =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      deprecatedasNo: S.optional(
+        S.NullOr(S.Number).pipe(T.Body("Deprecatedas_no")),
+      ),
+      deprecatedcloudflareEndpoint: S.optional(
+        S.NullOr(S.String).pipe(T.Body("Deprecatedcloudflare_endpoint")),
+      ),
+      customerAsn: S.optional(S.NullOr(S.Number).pipe(T.Body("customer_asn"))),
+      deprecatedcustomerEndpoint: S.optional(
+        S.NullOr(S.String).pipe(T.Body("Deprecatedcustomer_endpoint")),
+      ),
+      exportFilterId: S.optional(
+        S.NullOr(S.String).pipe(T.Body("export_filter_id")),
+      ),
+      extraPrefixes: S.optional(
+        S.NullOr(
+          CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemBgpExtraPrefixesList,
+        ).pipe(T.Body("extra_prefixes")),
+      ),
+      importFilterId: S.optional(
+        S.NullOr(S.String).pipe(T.Body("import_filter_id")),
+      ),
+      md5Key: S.optional(S.NullOr(S.String).pipe(T.Body("md5_key"))),
+      coloName: S.optional(S.NullOr(S.String).pipe(T.Body("colo_name"))),
+      createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
+      description: S.optional(S.NullOr(S.String)),
+      gre: S.optional(
+        S.NullOr(
+          CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemBgpGre,
+        ),
+      ),
+      healthCheck: S.optional(
+        S.NullOr(
+          CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemBgpHealthCheck,
+        ).pipe(T.Body("health_check")),
+      ),
+    }),
+  ).annotate({
+    identifier: "CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemBgp",
+  }) as any as S.Schema<CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemBgp>;
+
+export interface CfInterconnectsBulkUpdateResponseModifiedInterconnectsItem {
+  /** Identifier */
+  id?: string | null;
+  /** True if automatic stateful return routing should be enabled for a tunnel, false otherwise. Requires the `coupler_integration` account flag to be enabled; requests setting this to `true` without that flag will be rejected. */
+  automaticReturnRouting?: boolean | null;
+  bgp?: CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemBgp | null;
+}
+export const CfInterconnectsBulkUpdateResponseModifiedInterconnectsItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      id: S.optional(S.NullOr(S.String)),
+      automaticReturnRouting: S.optional(
+        S.NullOr(S.Boolean).pipe(T.Body("automatic_return_routing")),
+      ),
+      bgp: S.optional(
+        S.NullOr(CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemBgp),
       ),
     }),
   ).annotate({
@@ -676,6 +757,150 @@ export const GreTunnelsBulkUpdateResponseModifiedGreTunnelsItemBgpExtraPrefixesL
     S.String,
   ) as any as S.Schema<GreTunnelsBulkUpdateResponseModifiedGreTunnelsItemBgpExtraPrefixesList>;
 
+export type GreTunnelsBulkUpdateResponseModifiedGreTunnelsItemBgpBgpStatusState =
+  | "BGP_DOWN"
+  | "BGP_UP"
+  | "BGP_ESTABLISHING";
+export const GreTunnelsBulkUpdateResponseModifiedGreTunnelsItemBgpBgpStatusState =
+  /*@__PURE__*/ S.String;
+
+export type GreTunnelsBulkUpdateResponseModifiedGreTunnelsItemBgpBgpStatusHealthCheckDirection =
+  | "unidirectional"
+  | "bidirectional";
+export const GreTunnelsBulkUpdateResponseModifiedGreTunnelsItemBgpBgpStatusHealthCheckDirection =
+  /*@__PURE__*/ S.String;
+
+export type GreTunnelsBulkUpdateResponseModifiedGreTunnelsItemBgpBgpStatusHealthCheckRate =
+  | "low"
+  | "mid"
+  | "high";
+export const GreTunnelsBulkUpdateResponseModifiedGreTunnelsItemBgpBgpStatusHealthCheckRate =
+  /*@__PURE__*/ S.String;
+
+export type GreTunnelsBulkUpdateResponseModifiedGreTunnelsItemBgpBgpStatusHealthCheckTarget =
+  CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemBgpHealthCheckTarget;
+export const GreTunnelsBulkUpdateResponseModifiedGreTunnelsItemBgpBgpStatusHealthCheckTarget =
+  CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemBgpHealthCheckTarget;
+
+export type GreTunnelsBulkUpdateResponseModifiedGreTunnelsItemBgpBgpStatusHealthCheckTarget2 =
+  | string
+  | CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemBgpHealthCheckTarget;
+export const GreTunnelsBulkUpdateResponseModifiedGreTunnelsItemBgpBgpStatusHealthCheckTarget2 =
+  /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], ["effective", "saved"]]));
+
+export type GreTunnelsBulkUpdateResponseModifiedGreTunnelsItemBgpBgpStatusHealthCheckType =
+  | "reply"
+  | "request";
+export const GreTunnelsBulkUpdateResponseModifiedGreTunnelsItemBgpBgpStatusHealthCheckType =
+  /*@__PURE__*/ S.String;
+
+export interface GreTunnelsBulkUpdateResponseModifiedGreTunnelsItemBgpBgpStatusHealthCheck {
+  /** The direction of the flow of the healthcheck. Either unidirectional, where the probe comes to you via the tunnel and the result comes back to Cloudflare via the open Internet, or bidirectional where both the probe and result come and go via the tunnel. */
+  direction?: GreTunnelsBulkUpdateResponseModifiedGreTunnelsItemBgpBgpStatusHealthCheckDirection | null;
+  /** Determines whether to run healthchecks for a tunnel. */
+  enabled?: boolean | null;
+  /** How frequent the health check is run. The default value is `mid`. */
+  rate?: GreTunnelsBulkUpdateResponseModifiedGreTunnelsItemBgpBgpStatusHealthCheckRate | null;
+  /** The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customer_gre_endpoint address`. This field is ignored for bidirectional healthchecks as the interface_address (not assigned to the Cloudflare side of the tunnel) is used as the target. Must be in object form if the x-magic-new-hc-target header is set to true and string form if x-magic-new-hc-target is absent or set to false. */
+  target?: GreTunnelsBulkUpdateResponseModifiedGreTunnelsItemBgpBgpStatusHealthCheckTarget2 | null;
+  /** The type of healthcheck to run, reply or request. The default value is `reply`. */
+  type?: GreTunnelsBulkUpdateResponseModifiedGreTunnelsItemBgpBgpStatusHealthCheckType | null;
+  /** A 127 bit IPV6 prefix from within the virtual_subnet6 prefix space with the address being the first IP of the subnet and not same as the address of virtual_subnet6. Eg if virtual_subnet6 is 2606:54c1:7:0:a9fe:12d2::/127 , interface_address6 could be 2606:54c1:7:0:a9fe:12d2:1:200/127 */
+  interfaceAddress6?: string | null;
+  /** The date and time the tunnel was last modified. */
+  modifiedOn?: string | null;
+  /** Maximum Transmission Unit (MTU) in bytes for the GRE tunnel. The minimum value is 576. */
+  mtu?: number | null;
+  /** Time To Live (TTL) in number of hops of the GRE tunnel. */
+  ttl?: number | null;
+}
+export const GreTunnelsBulkUpdateResponseModifiedGreTunnelsItemBgpBgpStatusHealthCheck =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      direction: S.optional(
+        S.NullOr(
+          GreTunnelsBulkUpdateResponseModifiedGreTunnelsItemBgpBgpStatusHealthCheckDirection,
+        ),
+      ),
+      enabled: S.optional(S.NullOr(S.Boolean)),
+      rate: S.optional(
+        S.NullOr(
+          GreTunnelsBulkUpdateResponseModifiedGreTunnelsItemBgpBgpStatusHealthCheckRate,
+        ),
+      ),
+      target: S.optional(
+        S.NullOr(
+          GreTunnelsBulkUpdateResponseModifiedGreTunnelsItemBgpBgpStatusHealthCheckTarget2,
+        ),
+      ),
+      type: S.optional(
+        S.NullOr(
+          GreTunnelsBulkUpdateResponseModifiedGreTunnelsItemBgpBgpStatusHealthCheckType,
+        ),
+      ),
+      interfaceAddress6: S.optional(
+        S.NullOr(S.String).pipe(T.Body("interface_address6")),
+      ),
+      modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
+      mtu: S.optional(S.NullOr(S.Number)),
+      ttl: S.optional(S.NullOr(S.Number)),
+    }),
+  ).annotate({
+    identifier:
+      "GreTunnelsBulkUpdateResponseModifiedGreTunnelsItemBgpBgpStatusHealthCheck",
+  }) as any as S.Schema<GreTunnelsBulkUpdateResponseModifiedGreTunnelsItemBgpBgpStatusHealthCheck>;
+
+export interface GreTunnelsBulkUpdateResponseModifiedGreTunnelsItemBgpBgpStatus {
+  state: GreTunnelsBulkUpdateResponseModifiedGreTunnelsItemBgpBgpStatusState;
+  tcpEstablished: boolean;
+  /** formatdate-time */
+  updatedAt: string;
+  bgpState?: string | null;
+  /** formatipv4 */
+  cfSpeakerIp?: string | null;
+  /** maximum65535 */
+  cfSpeakerPort?: number | null;
+  /** formatipv4 */
+  customerSpeakerIp?: string | null;
+  /** maximum65535 */
+  customerSpeakerPort?: number | null;
+  /** The date and time the tunnel was created. */
+  createdOn?: string | null;
+  /** An optional description of the GRE tunnel. */
+  description?: string | null;
+  healthCheck?: GreTunnelsBulkUpdateResponseModifiedGreTunnelsItemBgpBgpStatusHealthCheck | null;
+}
+export const GreTunnelsBulkUpdateResponseModifiedGreTunnelsItemBgpBgpStatus =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      state:
+        GreTunnelsBulkUpdateResponseModifiedGreTunnelsItemBgpBgpStatusState,
+      tcpEstablished: S.Boolean.pipe(T.Body("tcp_established")),
+      updatedAt: S.String.pipe(T.Body("updated_at")),
+      bgpState: S.optional(S.NullOr(S.String).pipe(T.Body("bgp_state"))),
+      cfSpeakerIp: S.optional(S.NullOr(S.String).pipe(T.Body("cf_speaker_ip"))),
+      cfSpeakerPort: S.optional(
+        S.NullOr(S.Number).pipe(T.Body("cf_speaker_port")),
+      ),
+      customerSpeakerIp: S.optional(
+        S.NullOr(S.String).pipe(T.Body("customer_speaker_ip")),
+      ),
+      customerSpeakerPort: S.optional(
+        S.NullOr(S.Number).pipe(T.Body("customer_speaker_port")),
+      ),
+      createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
+      description: S.optional(S.NullOr(S.String)),
+      healthCheck: S.optional(
+        S.NullOr(
+          GreTunnelsBulkUpdateResponseModifiedGreTunnelsItemBgpBgpStatusHealthCheck,
+        ).pipe(T.Body("health_check")),
+      ),
+    }),
+  ).annotate({
+    identifier:
+      "GreTunnelsBulkUpdateResponseModifiedGreTunnelsItemBgpBgpStatus",
+  }) as any as S.Schema<GreTunnelsBulkUpdateResponseModifiedGreTunnelsItemBgpBgpStatus>;
+
 export interface GreTunnelsBulkUpdateResponseModifiedGreTunnelsItemBgp {
   /** ASN used on the customer end of the BGP session */
   customerAsn: number;
@@ -687,6 +912,7 @@ export interface GreTunnelsBulkUpdateResponseModifiedGreTunnelsItemBgp {
   importFilterId?: string | null;
   /** MD5 key to use for session authentication. */
   md5Key?: string | null;
+  bgpStatus?: GreTunnelsBulkUpdateResponseModifiedGreTunnelsItemBgpBgpStatus | null;
 }
 export const GreTunnelsBulkUpdateResponseModifiedGreTunnelsItemBgp =
   /*@__PURE__*/ S.suspend(() =>
@@ -704,120 +930,15 @@ export const GreTunnelsBulkUpdateResponseModifiedGreTunnelsItemBgp =
         S.NullOr(S.String).pipe(T.Body("import_filter_id")),
       ),
       md5Key: S.optional(S.NullOr(S.String).pipe(T.Body("md5_key"))),
+      bgpStatus: S.optional(
+        S.NullOr(
+          GreTunnelsBulkUpdateResponseModifiedGreTunnelsItemBgpBgpStatus,
+        ).pipe(T.Body("bgp_status")),
+      ),
     }),
   ).annotate({
     identifier: "GreTunnelsBulkUpdateResponseModifiedGreTunnelsItemBgp",
   }) as any as S.Schema<GreTunnelsBulkUpdateResponseModifiedGreTunnelsItemBgp>;
-
-export type GreTunnelsBulkUpdateResponseModifiedGreTunnelsItemBgpStatusState =
-  | "BGP_DOWN"
-  | "BGP_UP"
-  | "BGP_ESTABLISHING";
-export const GreTunnelsBulkUpdateResponseModifiedGreTunnelsItemBgpStatusState =
-  /*@__PURE__*/ S.String;
-
-export interface GreTunnelsBulkUpdateResponseModifiedGreTunnelsItemBgpStatus {
-  state: GreTunnelsBulkUpdateResponseModifiedGreTunnelsItemBgpStatusState;
-  tcpEstablished: boolean;
-  updatedAt: string;
-  bgpState?: string | null;
-  cfSpeakerIp?: string | null;
-  cfSpeakerPort?: number | null;
-  customerSpeakerIp?: string | null;
-  customerSpeakerPort?: number | null;
-}
-export const GreTunnelsBulkUpdateResponseModifiedGreTunnelsItemBgpStatus =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      state: GreTunnelsBulkUpdateResponseModifiedGreTunnelsItemBgpStatusState,
-      tcpEstablished: S.Boolean.pipe(T.Body("tcp_established")),
-      updatedAt: S.String.pipe(T.Body("updated_at")),
-      bgpState: S.optional(S.NullOr(S.String).pipe(T.Body("bgp_state"))),
-      cfSpeakerIp: S.optional(S.NullOr(S.String).pipe(T.Body("cf_speaker_ip"))),
-      cfSpeakerPort: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("cf_speaker_port")),
-      ),
-      customerSpeakerIp: S.optional(
-        S.NullOr(S.String).pipe(T.Body("customer_speaker_ip")),
-      ),
-      customerSpeakerPort: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("customer_speaker_port")),
-      ),
-    }),
-  ).annotate({
-    identifier: "GreTunnelsBulkUpdateResponseModifiedGreTunnelsItemBgpStatus",
-  }) as any as S.Schema<GreTunnelsBulkUpdateResponseModifiedGreTunnelsItemBgpStatus>;
-
-export type GreTunnelsBulkUpdateResponseModifiedGreTunnelsItemHealthCheckDirection =
-  | "unidirectional"
-  | "bidirectional";
-export const GreTunnelsBulkUpdateResponseModifiedGreTunnelsItemHealthCheckDirection =
-  /*@__PURE__*/ S.String;
-
-export type GreTunnelsBulkUpdateResponseModifiedGreTunnelsItemHealthCheckRate =
-  | "low"
-  | "mid"
-  | "high";
-export const GreTunnelsBulkUpdateResponseModifiedGreTunnelsItemHealthCheckRate =
-  /*@__PURE__*/ S.String;
-
-export type GreTunnelsBulkUpdateResponseModifiedGreTunnelsItemHealthCheckTargetMagicHealthCheckTarget =
-  CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemHealthCheckTargetMagicHealthCheckTarget;
-export const GreTunnelsBulkUpdateResponseModifiedGreTunnelsItemHealthCheckTargetMagicHealthCheckTarget =
-  CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemHealthCheckTargetMagicHealthCheckTarget;
-
-export type GreTunnelsBulkUpdateResponseModifiedGreTunnelsItemHealthCheckTarget =
-  | string
-  | CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemHealthCheckTargetMagicHealthCheckTarget;
-export const GreTunnelsBulkUpdateResponseModifiedGreTunnelsItemHealthCheckTarget =
-  /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], ["effective", "saved"]]));
-
-export type GreTunnelsBulkUpdateResponseModifiedGreTunnelsItemHealthCheckType =
-  | "reply"
-  | "request";
-export const GreTunnelsBulkUpdateResponseModifiedGreTunnelsItemHealthCheckType =
-  /*@__PURE__*/ S.String;
-
-export interface GreTunnelsBulkUpdateResponseModifiedGreTunnelsItemHealthCheck {
-  /** The direction of the flow of the healthcheck. Either unidirectional, where the probe comes to you via the tunnel and the result comes back to Cloudflare via the open Internet, or bidirectional where both the probe and result come and go via the tunnel. */
-  direction?: GreTunnelsBulkUpdateResponseModifiedGreTunnelsItemHealthCheckDirection | null;
-  /** Determines whether to run healthchecks for a tunnel. */
-  enabled?: boolean | null;
-  /** How frequent the health check is run. The default value is `mid`. */
-  rate?: GreTunnelsBulkUpdateResponseModifiedGreTunnelsItemHealthCheckRate | null;
-  /** The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customer_gre_endpoint address`. This field is ignored for bidirectional healthchecks as the interface_address (not assigned to the Cloudflare side of the tunnel) is used as the target. Must be in object form if the x-magic-new-hc-target header is set to true and string form if x-magic-new-hc-target is absent or set to false. */
-  target?: GreTunnelsBulkUpdateResponseModifiedGreTunnelsItemHealthCheckTarget | null;
-  /** The type of healthcheck to run, reply or request. The default value is `reply`. */
-  type?: GreTunnelsBulkUpdateResponseModifiedGreTunnelsItemHealthCheckType | null;
-}
-export const GreTunnelsBulkUpdateResponseModifiedGreTunnelsItemHealthCheck =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      direction: S.optional(
-        S.NullOr(
-          GreTunnelsBulkUpdateResponseModifiedGreTunnelsItemHealthCheckDirection,
-        ),
-      ),
-      enabled: S.optional(S.NullOr(S.Boolean)),
-      rate: S.optional(
-        S.NullOr(
-          GreTunnelsBulkUpdateResponseModifiedGreTunnelsItemHealthCheckRate,
-        ),
-      ),
-      target: S.optional(
-        S.NullOr(
-          GreTunnelsBulkUpdateResponseModifiedGreTunnelsItemHealthCheckTarget,
-        ),
-      ),
-      type: S.optional(
-        S.NullOr(
-          GreTunnelsBulkUpdateResponseModifiedGreTunnelsItemHealthCheckType,
-        ),
-      ),
-    }),
-  ).annotate({
-    identifier: "GreTunnelsBulkUpdateResponseModifiedGreTunnelsItemHealthCheck",
-  }) as any as S.Schema<GreTunnelsBulkUpdateResponseModifiedGreTunnelsItemHealthCheck>;
 
 export interface GreTunnelsBulkUpdateResponseModifiedGreTunnelsItem {
   /** Identifier */
@@ -833,20 +954,6 @@ export interface GreTunnelsBulkUpdateResponseModifiedGreTunnelsItem {
   /** True if automatic stateful return routing should be enabled for a tunnel, false otherwise. Requires the `coupler_integration` account flag to be enabled; requests setting this to `true` without that flag will be rejected. */
   automaticReturnRouting?: boolean | null;
   bgp?: GreTunnelsBulkUpdateResponseModifiedGreTunnelsItemBgp | null;
-  bgpStatus?: GreTunnelsBulkUpdateResponseModifiedGreTunnelsItemBgpStatus | null;
-  /** The date and time the tunnel was created. */
-  createdOn?: string | null;
-  /** An optional description of the GRE tunnel. */
-  description?: string | null;
-  healthCheck?: GreTunnelsBulkUpdateResponseModifiedGreTunnelsItemHealthCheck | null;
-  /** A 127 bit IPV6 prefix from within the virtual_subnet6 prefix space with the address being the first IP of the subnet and not same as the address of virtual_subnet6. Eg if virtual_subnet6 is 2606:54c1:7:0:a9fe:12d2::/127 , interface_address6 could be 2606:54c1:7:0:a9fe:12d2:1:200/127 */
-  interfaceAddress6?: string | null;
-  /** The date and time the tunnel was last modified. */
-  modifiedOn?: string | null;
-  /** Maximum Transmission Unit (MTU) in bytes for the GRE tunnel. The minimum value is 576. */
-  mtu?: number | null;
-  /** Time To Live (TTL) in number of hops of the GRE tunnel. */
-  ttl?: number | null;
 }
 export const GreTunnelsBulkUpdateResponseModifiedGreTunnelsItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -862,24 +969,6 @@ export const GreTunnelsBulkUpdateResponseModifiedGreTunnelsItem =
       bgp: S.optional(
         S.NullOr(GreTunnelsBulkUpdateResponseModifiedGreTunnelsItemBgp),
       ),
-      bgpStatus: S.optional(
-        S.NullOr(
-          GreTunnelsBulkUpdateResponseModifiedGreTunnelsItemBgpStatus,
-        ).pipe(T.Body("bgp_status")),
-      ),
-      createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
-      description: S.optional(S.NullOr(S.String)),
-      healthCheck: S.optional(
-        S.NullOr(
-          GreTunnelsBulkUpdateResponseModifiedGreTunnelsItemHealthCheck,
-        ).pipe(T.Body("health_check")),
-      ),
-      interfaceAddress6: S.optional(
-        S.NullOr(S.String).pipe(T.Body("interface_address6")),
-      ),
-      modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-      mtu: S.optional(S.NullOr(S.Number)),
-      ttl: S.optional(S.NullOr(S.Number)),
     }),
   ).annotate({
     identifier: "GreTunnelsBulkUpdateResponseModifiedGreTunnelsItem",
@@ -941,6 +1030,197 @@ export const IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemBgpExtraPrefi
     S.String,
   ) as any as S.Schema<IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemBgpExtraPrefixesList>;
 
+export type IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemBgpBgpStatusState =
+  | "BGP_DOWN"
+  | "BGP_UP"
+  | "BGP_ESTABLISHING";
+export const IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemBgpBgpStatusState =
+  /*@__PURE__*/ S.String;
+
+export interface IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemBgpBgpStatusCustomRemoteIdentities {
+  /** A custom IKE ID of type FQDN that may be used to identity the IPsec tunnel. The generated IKE IDs can still be used even if this custom value is specified. */
+  fqdnId?: string | null;
+}
+export const IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemBgpBgpStatusCustomRemoteIdentities =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      fqdnId: S.optional(S.NullOr(S.String).pipe(T.Body("fqdn_id"))),
+    }),
+  ).annotate({
+    identifier:
+      "IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemBgpBgpStatusCustomRemoteIdentities",
+  }) as any as S.Schema<IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemBgpBgpStatusCustomRemoteIdentities>;
+
+export type IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemBgpBgpStatusHealthCheckDirection =
+  | "unidirectional"
+  | "bidirectional";
+export const IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemBgpBgpStatusHealthCheckDirection =
+  /*@__PURE__*/ S.String;
+
+export type IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemBgpBgpStatusHealthCheckRate =
+  | "low"
+  | "mid"
+  | "high";
+export const IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemBgpBgpStatusHealthCheckRate =
+  /*@__PURE__*/ S.String;
+
+export type IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemBgpBgpStatusHealthCheckTarget =
+  CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemBgpHealthCheckTarget;
+export const IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemBgpBgpStatusHealthCheckTarget =
+  CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemBgpHealthCheckTarget;
+
+export type IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemBgpBgpStatusHealthCheckTarget2 =
+  | string
+  | CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemBgpHealthCheckTarget;
+export const IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemBgpBgpStatusHealthCheckTarget2 =
+  /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], ["effective", "saved"]]));
+
+export type IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemBgpBgpStatusHealthCheckType =
+  | "reply"
+  | "request";
+export const IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemBgpBgpStatusHealthCheckType =
+  /*@__PURE__*/ S.String;
+
+export interface IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemBgpBgpStatusHealthCheckPskMetadata {
+  /** The date and time the tunnel was last modified. */
+  lastGeneratedOn?: string | null;
+}
+export const IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemBgpBgpStatusHealthCheckPskMetadata =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      lastGeneratedOn: S.optional(
+        S.NullOr(S.String).pipe(T.Body("last_generated_on")),
+      ),
+    }),
+  ).annotate({
+    identifier:
+      "IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemBgpBgpStatusHealthCheckPskMetadata",
+  }) as any as S.Schema<IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemBgpBgpStatusHealthCheckPskMetadata>;
+
+export interface IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemBgpBgpStatusHealthCheck {
+  /** The direction of the flow of the healthcheck. Either unidirectional, where the probe comes to you via the tunnel and the result comes back to Cloudflare via the open Internet, or bidirectional where both the probe and result come and go via the tunnel. */
+  direction?: IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemBgpBgpStatusHealthCheckDirection | null;
+  /** Determines whether to run healthchecks for a tunnel. */
+  enabled?: boolean | null;
+  /** How frequent the health check is run. The default value is `mid`. */
+  rate?: IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemBgpBgpStatusHealthCheckRate | null;
+  /** The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customer_gre_endpoint address`. This field is ignored for bidirectional healthchecks as the interface_address (not assigned to the Cloudflare side of the tunnel) is used as the target. Must be in object form if the x-magic-new-hc-target header is set to true and string form if x-magic-new-hc-target is absent or set to false. */
+  target?: IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemBgpBgpStatusHealthCheckTarget2 | null;
+  /** The type of healthcheck to run, reply or request. The default value is `reply`. */
+  type?: IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemBgpBgpStatusHealthCheckType | null;
+  /** A 127 bit IPV6 prefix from within the virtual_subnet6 prefix space with the address being the first IP of the subnet and not same as the address of virtual_subnet6. Eg if virtual_subnet6 is 2606:54c1:7:0:a9fe:12d2::/127 , interface_address6 could be 2606:54c1:7:0:a9fe:12d2:1:200/127 */
+  interfaceAddress6?: string | null;
+  /** The date and time the tunnel was last modified. */
+  modifiedOn?: string | null;
+  /** The PSK metadata that includes when the PSK was generated. */
+  pskMetadata?: IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemBgpBgpStatusHealthCheckPskMetadata | null;
+  /** If `true`, then IPsec replay protection will be supported in the Cloudflare-to-customer direction. */
+  replayProtection?: boolean | null;
+}
+export const IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemBgpBgpStatusHealthCheck =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      direction: S.optional(
+        S.NullOr(
+          IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemBgpBgpStatusHealthCheckDirection,
+        ),
+      ),
+      enabled: S.optional(S.NullOr(S.Boolean)),
+      rate: S.optional(
+        S.NullOr(
+          IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemBgpBgpStatusHealthCheckRate,
+        ),
+      ),
+      target: S.optional(
+        S.NullOr(
+          IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemBgpBgpStatusHealthCheckTarget2,
+        ),
+      ),
+      type: S.optional(
+        S.NullOr(
+          IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemBgpBgpStatusHealthCheckType,
+        ),
+      ),
+      interfaceAddress6: S.optional(
+        S.NullOr(S.String).pipe(T.Body("interface_address6")),
+      ),
+      modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
+      pskMetadata: S.optional(
+        S.NullOr(
+          IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemBgpBgpStatusHealthCheckPskMetadata,
+        ).pipe(T.Body("psk_metadata")),
+      ),
+      replayProtection: S.optional(
+        S.NullOr(S.Boolean).pipe(T.Body("replay_protection")),
+      ),
+    }),
+  ).annotate({
+    identifier:
+      "IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemBgpBgpStatusHealthCheck",
+  }) as any as S.Schema<IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemBgpBgpStatusHealthCheck>;
+
+export interface IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemBgpBgpStatus {
+  state: IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemBgpBgpStatusState;
+  tcpEstablished: boolean;
+  /** formatdate-time */
+  updatedAt: string;
+  bgpState?: string | null;
+  /** formatipv4 */
+  cfSpeakerIp?: string | null;
+  /** maximum65535 */
+  cfSpeakerPort?: number | null;
+  /** formatipv4 */
+  customerSpeakerIp?: string | null;
+  /** maximum65535 */
+  customerSpeakerPort?: number | null;
+  /** The date and time the tunnel was created. */
+  createdOn?: string | null;
+  customRemoteIdentities?: IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemBgpBgpStatusCustomRemoteIdentities | null;
+  /** The IP address assigned to the customer side of the IPsec tunnel. Not required, but must be set for proactive traceroutes to work. */
+  customerEndpoint?: string | null;
+  /** An optional description forthe IPsec tunnel. */
+  description?: string | null;
+  healthCheck?: IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemBgpBgpStatusHealthCheck | null;
+}
+export const IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemBgpBgpStatus =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      state:
+        IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemBgpBgpStatusState,
+      tcpEstablished: S.Boolean.pipe(T.Body("tcp_established")),
+      updatedAt: S.String.pipe(T.Body("updated_at")),
+      bgpState: S.optional(S.NullOr(S.String).pipe(T.Body("bgp_state"))),
+      cfSpeakerIp: S.optional(S.NullOr(S.String).pipe(T.Body("cf_speaker_ip"))),
+      cfSpeakerPort: S.optional(
+        S.NullOr(S.Number).pipe(T.Body("cf_speaker_port")),
+      ),
+      customerSpeakerIp: S.optional(
+        S.NullOr(S.String).pipe(T.Body("customer_speaker_ip")),
+      ),
+      customerSpeakerPort: S.optional(
+        S.NullOr(S.Number).pipe(T.Body("customer_speaker_port")),
+      ),
+      createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
+      customRemoteIdentities: S.optional(
+        S.NullOr(
+          IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemBgpBgpStatusCustomRemoteIdentities,
+        ).pipe(T.Body("custom_remote_identities")),
+      ),
+      customerEndpoint: S.optional(
+        S.NullOr(S.String).pipe(T.Body("customer_endpoint")),
+      ),
+      description: S.optional(S.NullOr(S.String)),
+      healthCheck: S.optional(
+        S.NullOr(
+          IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemBgpBgpStatusHealthCheck,
+        ).pipe(T.Body("health_check")),
+      ),
+    }),
+  ).annotate({
+    identifier:
+      "IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemBgpBgpStatus",
+  }) as any as S.Schema<IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemBgpBgpStatus>;
+
 export interface IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemBgp {
   /** ASN used on the customer end of the BGP session */
   customerAsn: number;
@@ -952,6 +1232,7 @@ export interface IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemBgp {
   importFilterId?: string | null;
   /** MD5 key to use for session authentication. */
   md5Key?: string | null;
+  bgpStatus?: IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemBgpBgpStatus | null;
 }
 export const IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemBgp =
   /*@__PURE__*/ S.suspend(() =>
@@ -969,153 +1250,15 @@ export const IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemBgp =
         S.NullOr(S.String).pipe(T.Body("import_filter_id")),
       ),
       md5Key: S.optional(S.NullOr(S.String).pipe(T.Body("md5_key"))),
+      bgpStatus: S.optional(
+        S.NullOr(
+          IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemBgpBgpStatus,
+        ).pipe(T.Body("bgp_status")),
+      ),
     }),
   ).annotate({
     identifier: "IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemBgp",
   }) as any as S.Schema<IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemBgp>;
-
-export type IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemBgpStatusState =
-  | "BGP_DOWN"
-  | "BGP_UP"
-  | "BGP_ESTABLISHING";
-export const IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemBgpStatusState =
-  /*@__PURE__*/ S.String;
-
-export interface IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemBgpStatus {
-  state: IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemBgpStatusState;
-  tcpEstablished: boolean;
-  updatedAt: string;
-  bgpState?: string | null;
-  cfSpeakerIp?: string | null;
-  cfSpeakerPort?: number | null;
-  customerSpeakerIp?: string | null;
-  customerSpeakerPort?: number | null;
-}
-export const IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemBgpStatus =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      state:
-        IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemBgpStatusState,
-      tcpEstablished: S.Boolean.pipe(T.Body("tcp_established")),
-      updatedAt: S.String.pipe(T.Body("updated_at")),
-      bgpState: S.optional(S.NullOr(S.String).pipe(T.Body("bgp_state"))),
-      cfSpeakerIp: S.optional(S.NullOr(S.String).pipe(T.Body("cf_speaker_ip"))),
-      cfSpeakerPort: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("cf_speaker_port")),
-      ),
-      customerSpeakerIp: S.optional(
-        S.NullOr(S.String).pipe(T.Body("customer_speaker_ip")),
-      ),
-      customerSpeakerPort: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("customer_speaker_port")),
-      ),
-    }),
-  ).annotate({
-    identifier:
-      "IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemBgpStatus",
-  }) as any as S.Schema<IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemBgpStatus>;
-
-export interface IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemCustomRemoteIdentities {
-  /** A custom IKE ID of type FQDN that may be used to identity the IPsec tunnel. The */
-  fqdnId?: string | null;
-}
-export const IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemCustomRemoteIdentities =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      fqdnId: S.optional(S.NullOr(S.String).pipe(T.Body("fqdn_id"))),
-    }),
-  ).annotate({
-    identifier:
-      "IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemCustomRemoteIdentities",
-  }) as any as S.Schema<IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemCustomRemoteIdentities>;
-
-export type IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemHealthCheckDirection =
-  | "unidirectional"
-  | "bidirectional";
-export const IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemHealthCheckDirection =
-  /*@__PURE__*/ S.String;
-
-export type IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemHealthCheckRate =
-  | "low"
-  | "mid"
-  | "high";
-export const IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemHealthCheckRate =
-  /*@__PURE__*/ S.String;
-
-export type IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemHealthCheckTargetMagicHealthCheckTarget =
-  CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemHealthCheckTargetMagicHealthCheckTarget;
-export const IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemHealthCheckTargetMagicHealthCheckTarget =
-  CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemHealthCheckTargetMagicHealthCheckTarget;
-
-export type IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemHealthCheckTarget =
-  | string
-  | CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemHealthCheckTargetMagicHealthCheckTarget;
-export const IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemHealthCheckTarget =
-  /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], ["effective", "saved"]]));
-
-export type IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemHealthCheckType =
-  | "reply"
-  | "request";
-export const IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemHealthCheckType =
-  /*@__PURE__*/ S.String;
-
-export interface IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemHealthCheck {
-  /** The direction of the flow of the healthcheck. Either unidirectional, where the probe comes to you via the tunnel and the result comes back to Cloudflare via the open Internet, or bidirectional where both the probe and result come and go via the tunnel. */
-  direction?: IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemHealthCheckDirection | null;
-  /** Determines whether to run healthchecks for a tunnel. */
-  enabled?: boolean | null;
-  /** How frequent the health check is run. The default value is `mid`. */
-  rate?: IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemHealthCheckRate | null;
-  /** The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customer_gre_endpoint address`. This field is ignored for bidirectional healthchecks as the interface_address (not assigned to the Cloudflare side of the tunnel) is used as the target. Must be in object form if the x-magic-new-hc-target header is set to true and string form if x-magic-new-hc-target is absent or set to false. */
-  target?: IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemHealthCheckTarget | null;
-  /** The type of healthcheck to run, reply or request. The default value is `reply`. */
-  type?: IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemHealthCheckType | null;
-}
-export const IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemHealthCheck =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      direction: S.optional(
-        S.NullOr(
-          IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemHealthCheckDirection,
-        ),
-      ),
-      enabled: S.optional(S.NullOr(S.Boolean)),
-      rate: S.optional(
-        S.NullOr(
-          IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemHealthCheckRate,
-        ),
-      ),
-      target: S.optional(
-        S.NullOr(
-          IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemHealthCheckTarget,
-        ),
-      ),
-      type: S.optional(
-        S.NullOr(
-          IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemHealthCheckType,
-        ),
-      ),
-    }),
-  ).annotate({
-    identifier:
-      "IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemHealthCheck",
-  }) as any as S.Schema<IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemHealthCheck>;
-
-export interface IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemPskMetadata {
-  /** The date and time the tunnel was last modified. */
-  lastGeneratedOn?: string | null;
-}
-export const IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemPskMetadata =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      lastGeneratedOn: S.optional(
-        S.NullOr(S.String).pipe(T.Body("last_generated_on")),
-      ),
-    }),
-  ).annotate({
-    identifier:
-      "IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemPskMetadata",
-  }) as any as S.Schema<IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemPskMetadata>;
 
 export interface IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItem {
   /** Identifier */
@@ -1131,23 +1274,6 @@ export interface IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItem {
   /** True if automatic stateful return routing should be enabled for a tunnel, false otherwise. Requires the `coupler_integration` account flag to be enabled; requests setting this to `true` without that flag will be rejected. */
   automaticReturnRouting?: boolean | null;
   bgp?: IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemBgp | null;
-  bgpStatus?: IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemBgpStatus | null;
-  /** The date and time the tunnel was created. */
-  createdOn?: string | null;
-  customRemoteIdentities?: IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemCustomRemoteIdentities | null;
-  /** The IP address assigned to the customer side of the IPsec tunnel. Not required, but must be set for proactive traceroutes to work. */
-  customerEndpoint?: string | null;
-  /** An optional description forthe IPsec tunnel. */
-  description?: string | null;
-  healthCheck?: IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemHealthCheck | null;
-  /** A 127 bit IPV6 prefix from within the virtual_subnet6 prefix space with the address being the first IP of the subnet and not same as the address of virtual_subnet6. Eg if virtual_subnet6 is 2606:54c1:7:0:a9fe:12d2::/127 , interface_address6 could be 2606:54c1:7:0:a9fe:12d2:1:200/127 */
-  interfaceAddress6?: string | null;
-  /** The date and time the tunnel was last modified. */
-  modifiedOn?: string | null;
-  /** The PSK metadata that includes when the PSK was generated. */
-  pskMetadata?: IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemPskMetadata | null;
-  /** If `true`, then IPsec replay protection will be supported in the Cloudflare-to-customer direction. */
-  replayProtection?: boolean | null;
 }
 export const IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -1164,38 +1290,6 @@ export const IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItem =
       ),
       bgp: S.optional(
         S.NullOr(IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemBgp),
-      ),
-      bgpStatus: S.optional(
-        S.NullOr(
-          IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemBgpStatus,
-        ).pipe(T.Body("bgp_status")),
-      ),
-      createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
-      customRemoteIdentities: S.optional(
-        S.NullOr(
-          IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemCustomRemoteIdentities,
-        ).pipe(T.Body("custom_remote_identities")),
-      ),
-      customerEndpoint: S.optional(
-        S.NullOr(S.String).pipe(T.Body("customer_endpoint")),
-      ),
-      description: S.optional(S.NullOr(S.String)),
-      healthCheck: S.optional(
-        S.NullOr(
-          IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemHealthCheck,
-        ).pipe(T.Body("health_check")),
-      ),
-      interfaceAddress6: S.optional(
-        S.NullOr(S.String).pipe(T.Body("interface_address6")),
-      ),
-      modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-      pskMetadata: S.optional(
-        S.NullOr(
-          IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemPskMetadata,
-        ).pipe(T.Body("psk_metadata")),
-      ),
-      replayProtection: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("replay_protection")),
       ),
     }),
   ).annotate({
@@ -1423,6 +1517,173 @@ export const BulkPutRoutesResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "BulkPutRoutesResponse",
 }) as any as S.Schema<BulkPutRoutesResponse>;
 
+export interface ConnectorsInterruptsCreateRequestReboot {
+  /** Purge connector state. */
+  purge?: boolean;
+}
+export const ConnectorsInterruptsCreateRequestReboot = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      purge: S.optional(S.Boolean),
+    }),
+).annotate({
+  identifier: "ConnectorsInterruptsCreateRequestReboot",
+}) as any as S.Schema<ConnectorsInterruptsCreateRequestReboot>;
+
+export type ConnectorsInterruptsCreateRequestRestart =
+  ConnectorsInterruptsCreateRequestReboot;
+export const ConnectorsInterruptsCreateRequestRestart =
+  ConnectorsInterruptsCreateRequestReboot;
+
+export type ConnectorsInterruptsCreateRequestShutdown =
+  ConnectorsInterruptsCreateRequestReboot;
+export const ConnectorsInterruptsCreateRequestShutdown =
+  ConnectorsInterruptsCreateRequestReboot;
+
+export interface ConnectorsInterruptsCreateRequest {
+  /** Account identifier */
+  accountId: string;
+  connectorId: string;
+  reboot?: ConnectorsInterruptsCreateRequestReboot;
+  restart?: ConnectorsInterruptsCreateRequestReboot;
+  shutdown?: ConnectorsInterruptsCreateRequestReboot;
+}
+export const ConnectorsInterruptsCreateRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    connectorId: S.String.pipe(T.Label("connector_id")),
+    reboot: S.optional(ConnectorsInterruptsCreateRequestReboot),
+    restart: S.optional(ConnectorsInterruptsCreateRequestReboot),
+    shutdown: S.optional(ConnectorsInterruptsCreateRequestReboot),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/magic/connectors/{connector_id}/interrupts",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+).annotate({
+  identifier: "ConnectorsInterruptsCreateRequest",
+}) as any as S.Schema<ConnectorsInterruptsCreateRequest>;
+
+export interface ConnectorsInterruptsCreateResponseReboot {
+  /** Purge connector state. */
+  purge?: boolean | null;
+}
+export const ConnectorsInterruptsCreateResponseReboot = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      purge: S.optional(S.NullOr(S.Boolean)),
+    }),
+).annotate({
+  identifier: "ConnectorsInterruptsCreateResponseReboot",
+}) as any as S.Schema<ConnectorsInterruptsCreateResponseReboot>;
+
+export type ConnectorsInterruptsCreateResponseRestart =
+  ConnectorsInterruptsCreateResponseReboot;
+export const ConnectorsInterruptsCreateResponseRestart =
+  ConnectorsInterruptsCreateResponseReboot;
+
+export type ConnectorsInterruptsCreateResponseShutdown =
+  ConnectorsInterruptsCreateResponseReboot;
+export const ConnectorsInterruptsCreateResponseShutdown =
+  ConnectorsInterruptsCreateResponseReboot;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface ConnectorsInterruptsCreateResponse {
+  submittedAt: string;
+  reboot?: ConnectorsInterruptsCreateResponseReboot | null;
+  restart?: ConnectorsInterruptsCreateResponseReboot | null;
+  shutdown?: ConnectorsInterruptsCreateResponseReboot | null;
+  triggeredAt?: string | null;
+}
+export const ConnectorsInterruptsCreateResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    submittedAt: S.String.pipe(T.Body("submitted_at")),
+    reboot: S.optional(S.NullOr(ConnectorsInterruptsCreateResponseReboot)),
+    restart: S.optional(S.NullOr(ConnectorsInterruptsCreateResponseReboot)),
+    shutdown: S.optional(S.NullOr(ConnectorsInterruptsCreateResponseReboot)),
+    triggeredAt: S.optional(S.NullOr(S.String).pipe(T.Body("triggered_at"))),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+).annotate({
+  identifier: "ConnectorsInterruptsCreateResponse",
+}) as any as S.Schema<ConnectorsInterruptsCreateResponse>;
+
+export interface ConnectorsInterruptsListRequest {
+  /** Account identifier */
+  accountId: string;
+  connectorId: string;
+}
+export const ConnectorsInterruptsListRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    connectorId: S.String.pipe(T.Label("connector_id")),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/magic/connectors/{connector_id}/interrupts",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+).annotate({
+  identifier: "ConnectorsInterruptsListRequest",
+}) as any as S.Schema<ConnectorsInterruptsListRequest>;
+
+export type ConnectorsInterruptsListResultItemReboot =
+  ConnectorsInterruptsCreateResponseReboot;
+export const ConnectorsInterruptsListResultItemReboot =
+  ConnectorsInterruptsCreateResponseReboot;
+
+export type ConnectorsInterruptsListResultItemRestart =
+  ConnectorsInterruptsCreateResponseReboot;
+export const ConnectorsInterruptsListResultItemRestart =
+  ConnectorsInterruptsCreateResponseReboot;
+
+export type ConnectorsInterruptsListResultItemShutdown =
+  ConnectorsInterruptsCreateResponseReboot;
+export const ConnectorsInterruptsListResultItemShutdown =
+  ConnectorsInterruptsCreateResponseReboot;
+
+export interface ConnectorsInterruptsListResultItem {
+  submittedAt: string;
+  reboot?: ConnectorsInterruptsCreateResponseReboot | null;
+  restart?: ConnectorsInterruptsCreateResponseReboot | null;
+  shutdown?: ConnectorsInterruptsCreateResponseReboot | null;
+  triggeredAt?: string | null;
+}
+export const ConnectorsInterruptsListResultItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    submittedAt: S.String.pipe(T.Body("submitted_at")),
+    reboot: S.optional(S.NullOr(ConnectorsInterruptsCreateResponseReboot)),
+    restart: S.optional(S.NullOr(ConnectorsInterruptsCreateResponseReboot)),
+    shutdown: S.optional(S.NullOr(ConnectorsInterruptsCreateResponseReboot)),
+    triggeredAt: S.optional(S.NullOr(S.String).pipe(T.Body("triggered_at"))),
+  }),
+).annotate({
+  identifier: "ConnectorsInterruptsListResultItem",
+}) as any as S.Schema<ConnectorsInterruptsListResultItem>;
+
+export type ConnectorsInterruptsListResultList =
+  Array<ConnectorsInterruptsListResultItem>;
+export const ConnectorsInterruptsListResultList = /*@__PURE__*/ S.Array(
+  ConnectorsInterruptsListResultItem,
+) as any as S.Schema<ConnectorsInterruptsListResultList>;
+
+export type ConnectorsInterruptsListResponse =
+  ConnectorsInterruptsListResultList;
+export const ConnectorsInterruptsListResponse = /*@__PURE__*/ S.suspend(() =>
+  ConnectorsInterruptsListResultList.pipe(
+    T.EnvelopePayloadRoot(),
+    T.KeyDictionary(KEY_DICTIONARY),
+  ),
+).annotate({
+  identifier: "ConnectorsInterruptsListResponse",
+}) as any as S.Schema<ConnectorsInterruptsListResponse>;
+
 export type AppsCreateRequestHostnamesList = Array<string>;
 export const AppsCreateRequestHostnamesList = /*@__PURE__*/ S.Array(
   S.String,
@@ -1550,10 +1811,12 @@ export interface Cf1SitesCreateRequestBodyItem {
   name: string;
   /** Identifier */
   id?: string;
+  /** formatdate-time */
   createdOn?: string;
   /** A human-provided description of the CF1 Site. */
   description?: string;
   location?: Cf1SitesCreateRequestBodyItemLocation;
+  /** formatdate-time */
   modifiedOn?: string;
 }
 export const Cf1SitesCreateRequestBodyItem = /*@__PURE__*/ S.suspend(() =>
@@ -1620,10 +1883,12 @@ export interface Cf1SitesCreateResultItem {
   name: string;
   /** Identifier */
   id?: string | null;
+  /** formatdate-time */
   createdOn?: string | null;
   /** A human-provided description of the CF1 Site. */
   description?: string | null;
   location?: Cf1SitesCreateResultItemLocation | null;
+  /** formatdate-time */
   modifiedOn?: string | null;
 }
 export const Cf1SitesCreateResultItem = /*@__PURE__*/ S.suspend(() =>
@@ -1670,7 +1935,7 @@ export const Cf1SitesRampsCreateRequestBodyItemType = /*@__PURE__*/ S.String;
 export interface Cf1SitesRampsCreateRequestBodyItem {
   /** Identifier of the source network resource to associate as a ramp. */
   sourceRampId: string;
-  /** The type of network connection (ramp) linking a CF1 Site to Cloudflare's network. */
+  /** The type of network connection (ramp) linking a CF1 Site to Cloudflare’s network. */
   type: Cf1SitesRampsCreateRequestBodyItemType | (string & {});
 }
 export const Cf1SitesRampsCreateRequestBodyItem = /*@__PURE__*/ S.suspend(() =>
@@ -1756,11 +2021,13 @@ export const Cf1SitesRampsCreateResultItemMplsInterconnect =
 export interface Cf1SitesRampsCreateResultItem {
   /** Identifier */
   id: string;
+  /** formatdate-time */
   createdOn: string;
+  /** formatdate-time */
   modifiedOn: string;
   /** A human-provided name describing the ramp that should be unique within the CF1 Site. */
   name: string;
-  /** The type of network connection (ramp) linking a CF1 Site to Cloudflare's network. */
+  /** The type of network connection (ramp) linking a CF1 Site to Cloudflare’s network. */
   type: Cf1SitesRampsCreateResultItemType;
   /** A human-provided description of the ramp. */
   description?: string | null;
@@ -1867,6 +2134,7 @@ export interface CreateConnectorRequest {
   activated?: boolean;
   /** Allowed days of the week for upgrades. Default is all days. */
   interruptWindowDaysOfWeek?: ConnectorsCreateRequestInterruptWindowDaysOfWeekList;
+  /** maximum24 */
   interruptWindowDurationHours?: number;
   /** List of dates (YYYY-MM-DD) when upgrades are blocked. */
   interruptWindowEmbargoDates?: ConnectorsCreateRequestInterruptWindowEmbargoDatesList;
@@ -1963,6 +2231,7 @@ export interface CreateConnectorResponse {
   activated: boolean;
   /** Allowed days of the week for upgrades. Default is all days. */
   interruptWindowDaysOfWeek: ConnectorsCreateResponseInterruptWindowDaysOfWeekList;
+  /** maximum24 */
   interruptWindowDurationHours: number;
   /** List of dates (YYYY-MM-DD) when upgrades are blocked. */
   interruptWindowEmbargoDates: ConnectorsCreateResponseInterruptWindowEmbargoDatesList;
@@ -2019,6 +2288,76 @@ export const GreTunnelsCreateRequestBgpExtraPrefixesList =
     S.String,
   ) as any as S.Schema<GreTunnelsCreateRequestBgpExtraPrefixesList>;
 
+export type GreTunnelsCreateRequestBgpHealthCheckDirection =
+  | "unidirectional"
+  | "bidirectional";
+export const GreTunnelsCreateRequestBgpHealthCheckDirection =
+  /*@__PURE__*/ S.String;
+
+export type GreTunnelsCreateRequestBgpHealthCheckRate = "low" | "mid" | "high";
+export const GreTunnelsCreateRequestBgpHealthCheckRate = /*@__PURE__*/ S.String;
+
+export interface GreTunnelsCreateRequestBgpHealthCheckTarget {
+  /** The effective health check target. If ‘saved’ is empty, then this field will be populated with the calculated default value on GET requests. Ignored in POST, PUT, and PATCH requests. */
+  effective?: string;
+  /** The saved health check target. Setting the value to the empty string indicates that the calculated default value will be used. */
+  saved?: string;
+}
+export const GreTunnelsCreateRequestBgpHealthCheckTarget =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      effective: S.optional(S.String),
+      saved: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "GreTunnelsCreateRequestBgpHealthCheckTarget",
+  }) as any as S.Schema<GreTunnelsCreateRequestBgpHealthCheckTarget>;
+
+export type GreTunnelsCreateRequestBgpHealthCheckTarget2 =
+  | string
+  | GreTunnelsCreateRequestBgpHealthCheckTarget;
+export const GreTunnelsCreateRequestBgpHealthCheckTarget2 =
+  /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], ["effective", "saved"]]));
+
+export type GreTunnelsCreateRequestBgpHealthCheckType = "reply" | "request";
+export const GreTunnelsCreateRequestBgpHealthCheckType = /*@__PURE__*/ S.String;
+
+export interface GreTunnelsCreateRequestBgpHealthCheck {
+  /** The direction of the flow of the healthcheck. Either unidirectional, where the probe comes to you via the tunnel and the result comes back to Cloudflare via the open Internet, or bidirectional where both the probe and result come and go via the tunnel. */
+  direction?: GreTunnelsCreateRequestBgpHealthCheckDirection | (string & {});
+  /** Determines whether to run healthchecks for a tunnel. */
+  enabled?: boolean;
+  /** How frequent the health check is run. The default value is `mid`. */
+  rate?: GreTunnelsCreateRequestBgpHealthCheckRate | (string & {});
+  /** The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customer_gre_endpoint address`. This field is ignored for bidirectional healthchecks as the interface_address (not assigned to the Cloudflare side of the tunnel) is used as the target. Must be in object form if the x-magic-new-hc-target header is set to true and string form if x-magic-new-hc-target is absent or set to false. */
+  target?: GreTunnelsCreateRequestBgpHealthCheckTarget2;
+  /** The type of healthcheck to run, reply or request. The default value is `reply`. */
+  type?: GreTunnelsCreateRequestBgpHealthCheckType | (string & {});
+  /** A 127 bit IPV6 prefix from within the virtual_subnet6 prefix space with the address being the first IP of the subnet and not same as the address of virtual_subnet6. Eg if virtual_subnet6 is 2606:54c1:7:0:a9fe:12d2::/127 , interface_address6 could be 2606:54c1:7:0:a9fe:12d2:1:200/127 */
+  interfaceAddress6?: string;
+  /** Maximum Transmission Unit (MTU) in bytes for the GRE tunnel. The minimum value is 576. */
+  mtu?: number;
+  /** Time To Live (TTL) in number of hops of the GRE tunnel. */
+  ttl?: number;
+}
+export const GreTunnelsCreateRequestBgpHealthCheck = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      direction: S.optional(GreTunnelsCreateRequestBgpHealthCheckDirection),
+      enabled: S.optional(S.Boolean),
+      rate: S.optional(GreTunnelsCreateRequestBgpHealthCheckRate),
+      target: S.optional(GreTunnelsCreateRequestBgpHealthCheckTarget2),
+      type: S.optional(GreTunnelsCreateRequestBgpHealthCheckType),
+      interfaceAddress6: S.optional(
+        S.String.pipe(T.Body("interface_address6")),
+      ),
+      mtu: S.optional(S.Number),
+      ttl: S.optional(S.Number),
+    }),
+).annotate({
+  identifier: "GreTunnelsCreateRequestBgpHealthCheck",
+}) as any as S.Schema<GreTunnelsCreateRequestBgpHealthCheck>;
+
 export interface GreTunnelsCreateRequestBgp {
   /** ASN used on the customer end of the BGP session */
   customerAsn: number;
@@ -2030,6 +2369,9 @@ export interface GreTunnelsCreateRequestBgp {
   importFilterId?: string;
   /** MD5 key to use for session authentication. */
   md5Key?: string;
+  /** An optional description of the GRE tunnel. */
+  description?: string;
+  healthCheck?: GreTunnelsCreateRequestBgpHealthCheck;
 }
 export const GreTunnelsCreateRequestBgp = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2042,69 +2384,14 @@ export const GreTunnelsCreateRequestBgp = /*@__PURE__*/ S.suspend(() =>
     ),
     importFilterId: S.optional(S.String.pipe(T.Body("import_filter_id"))),
     md5Key: S.optional(S.String.pipe(T.Body("md5_key"))),
+    description: S.optional(S.String),
+    healthCheck: S.optional(
+      GreTunnelsCreateRequestBgpHealthCheck.pipe(T.Body("health_check")),
+    ),
   }),
 ).annotate({
   identifier: "GreTunnelsCreateRequestBgp",
 }) as any as S.Schema<GreTunnelsCreateRequestBgp>;
-
-export type GreTunnelsCreateRequestHealthCheckDirection =
-  | "unidirectional"
-  | "bidirectional";
-export const GreTunnelsCreateRequestHealthCheckDirection =
-  /*@__PURE__*/ S.String;
-
-export type GreTunnelsCreateRequestHealthCheckRate = "low" | "mid" | "high";
-export const GreTunnelsCreateRequestHealthCheckRate = /*@__PURE__*/ S.String;
-
-export interface GreTunnelsCreateRequestHealthCheckTargetMagicHealthCheckTarget {
-  /** The effective health check target. If 'saved' is empty, then this field will be populated with the calculated default value on GET requests. Ignored in POST, PUT, and PATCH requests. */
-  effective?: string;
-  /** The saved health check target. Setting the value to the empty string indicates that the calculated default value will be used. */
-  saved?: string;
-}
-export const GreTunnelsCreateRequestHealthCheckTargetMagicHealthCheckTarget =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      effective: S.optional(S.String),
-      saved: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier:
-      "GreTunnelsCreateRequestHealthCheckTargetMagicHealthCheckTarget",
-  }) as any as S.Schema<GreTunnelsCreateRequestHealthCheckTargetMagicHealthCheckTarget>;
-
-export type GreTunnelsCreateRequestHealthCheckTarget =
-  | string
-  | GreTunnelsCreateRequestHealthCheckTargetMagicHealthCheckTarget;
-export const GreTunnelsCreateRequestHealthCheckTarget =
-  /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], ["effective", "saved"]]));
-
-export type GreTunnelsCreateRequestHealthCheckType = "reply" | "request";
-export const GreTunnelsCreateRequestHealthCheckType = /*@__PURE__*/ S.String;
-
-export interface GreTunnelsCreateRequestHealthCheck {
-  /** The direction of the flow of the healthcheck. Either unidirectional, where the probe comes to you via the tunnel and the result comes back to Cloudflare via the open Internet, or bidirectional where both the probe and result come and go via the tunnel. */
-  direction?: GreTunnelsCreateRequestHealthCheckDirection | (string & {});
-  /** Determines whether to run healthchecks for a tunnel. */
-  enabled?: boolean;
-  /** How frequent the health check is run. The default value is `mid`. */
-  rate?: GreTunnelsCreateRequestHealthCheckRate | (string & {});
-  /** The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customer_gre_endpoint address`. This field is ignored for bidirectional healthchecks as the interface_address (not assigned to the Cloudflare side of the tunnel) is used as the target. Must be in object form if the x-magic-new-hc-target header is set to true and string form if x-magic-new-hc-target is absent or set to false. */
-  target?: GreTunnelsCreateRequestHealthCheckTarget;
-  /** The type of healthcheck to run, reply or request. The default value is `reply`. */
-  type?: GreTunnelsCreateRequestHealthCheckType | (string & {});
-}
-export const GreTunnelsCreateRequestHealthCheck = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    direction: S.optional(GreTunnelsCreateRequestHealthCheckDirection),
-    enabled: S.optional(S.Boolean),
-    rate: S.optional(GreTunnelsCreateRequestHealthCheckRate),
-    target: S.optional(GreTunnelsCreateRequestHealthCheckTarget),
-    type: S.optional(GreTunnelsCreateRequestHealthCheckType),
-  }),
-).annotate({
-  identifier: "GreTunnelsCreateRequestHealthCheck",
-}) as any as S.Schema<GreTunnelsCreateRequestHealthCheck>;
 
 export interface CreateGreTunnelRequest {
   /** Identifier */
@@ -2120,15 +2407,6 @@ export interface CreateGreTunnelRequest {
   /** True if automatic stateful return routing should be enabled for a tunnel, false otherwise. Requires the `coupler_integration` account flag to be enabled; requests setting this to `true` without that flag will be rejected. */
   automaticReturnRouting?: boolean;
   bgp?: GreTunnelsCreateRequestBgp;
-  /** An optional description of the GRE tunnel. */
-  description?: string;
-  healthCheck?: GreTunnelsCreateRequestHealthCheck;
-  /** A 127 bit IPV6 prefix from within the virtual_subnet6 prefix space with the address being the first IP of the subnet and not same as the address of virtual_subnet6. Eg if virtual_subnet6 is 2606:54c1:7:0:a9fe:12d2::/127 , interface_address6 could be 2606:54c1:7:0:a9fe:12d2:1:200/127 */
-  interfaceAddress6?: string;
-  /** Maximum Transmission Unit (MTU) in bytes for the GRE tunnel. The minimum value is 576. */
-  mtu?: number;
-  /** Time To Live (TTL) in number of hops of the GRE tunnel. */
-  ttl?: number;
   xMagicNewHcTarget?: boolean;
 }
 export const CreateGreTunnelRequest = /*@__PURE__*/ S.suspend(() =>
@@ -2142,13 +2420,6 @@ export const CreateGreTunnelRequest = /*@__PURE__*/ S.suspend(() =>
       S.Boolean.pipe(T.Body("automatic_return_routing")),
     ),
     bgp: S.optional(GreTunnelsCreateRequestBgp),
-    description: S.optional(S.String),
-    healthCheck: S.optional(
-      GreTunnelsCreateRequestHealthCheck.pipe(T.Body("health_check")),
-    ),
-    interfaceAddress6: S.optional(S.String.pipe(T.Body("interface_address6"))),
-    mtu: S.optional(S.Number),
-    ttl: S.optional(S.Number),
     xMagicNewHcTarget: S.optional(
       S.Boolean.pipe(T.Header("x-magic-new-hc-target")),
     ),
@@ -2171,6 +2442,138 @@ export const GreTunnelsCreateResponseBgpExtraPrefixesList =
     S.String,
   ) as any as S.Schema<GreTunnelsCreateResponseBgpExtraPrefixesList>;
 
+export type GreTunnelsCreateResponseBgpBgpStatusState =
+  | "BGP_DOWN"
+  | "BGP_UP"
+  | "BGP_ESTABLISHING";
+export const GreTunnelsCreateResponseBgpBgpStatusState = /*@__PURE__*/ S.String;
+
+export type GreTunnelsCreateResponseBgpBgpStatusHealthCheckDirection =
+  | "unidirectional"
+  | "bidirectional";
+export const GreTunnelsCreateResponseBgpBgpStatusHealthCheckDirection =
+  /*@__PURE__*/ S.String;
+
+export type GreTunnelsCreateResponseBgpBgpStatusHealthCheckRate =
+  | "low"
+  | "mid"
+  | "high";
+export const GreTunnelsCreateResponseBgpBgpStatusHealthCheckRate =
+  /*@__PURE__*/ S.String;
+
+export type GreTunnelsCreateResponseBgpBgpStatusHealthCheckTarget =
+  CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemBgpHealthCheckTarget;
+export const GreTunnelsCreateResponseBgpBgpStatusHealthCheckTarget =
+  CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemBgpHealthCheckTarget;
+
+export type GreTunnelsCreateResponseBgpBgpStatusHealthCheckTarget2 =
+  | string
+  | CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemBgpHealthCheckTarget;
+export const GreTunnelsCreateResponseBgpBgpStatusHealthCheckTarget2 =
+  /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], ["effective", "saved"]]));
+
+export type GreTunnelsCreateResponseBgpBgpStatusHealthCheckType =
+  | "reply"
+  | "request";
+export const GreTunnelsCreateResponseBgpBgpStatusHealthCheckType =
+  /*@__PURE__*/ S.String;
+
+export interface GreTunnelsCreateResponseBgpBgpStatusHealthCheck {
+  /** The direction of the flow of the healthcheck. Either unidirectional, where the probe comes to you via the tunnel and the result comes back to Cloudflare via the open Internet, or bidirectional where both the probe and result come and go via the tunnel. */
+  direction?: GreTunnelsCreateResponseBgpBgpStatusHealthCheckDirection | null;
+  /** Determines whether to run healthchecks for a tunnel. */
+  enabled?: boolean | null;
+  /** How frequent the health check is run. The default value is `mid`. */
+  rate?: GreTunnelsCreateResponseBgpBgpStatusHealthCheckRate | null;
+  /** The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customer_gre_endpoint address`. This field is ignored for bidirectional healthchecks as the interface_address (not assigned to the Cloudflare side of the tunnel) is used as the target. Must be in object form if the x-magic-new-hc-target header is set to true and string form if x-magic-new-hc-target is absent or set to false. */
+  target?: GreTunnelsCreateResponseBgpBgpStatusHealthCheckTarget2 | null;
+  /** The type of healthcheck to run, reply or request. The default value is `reply`. */
+  type?: GreTunnelsCreateResponseBgpBgpStatusHealthCheckType | null;
+  /** A 127 bit IPV6 prefix from within the virtual_subnet6 prefix space with the address being the first IP of the subnet and not same as the address of virtual_subnet6. Eg if virtual_subnet6 is 2606:54c1:7:0:a9fe:12d2::/127 , interface_address6 could be 2606:54c1:7:0:a9fe:12d2:1:200/127 */
+  interfaceAddress6?: string | null;
+  /** The date and time the tunnel was last modified. */
+  modifiedOn?: string | null;
+  /** Maximum Transmission Unit (MTU) in bytes for the GRE tunnel. The minimum value is 576. */
+  mtu?: number | null;
+  /** Time To Live (TTL) in number of hops of the GRE tunnel. */
+  ttl?: number | null;
+}
+export const GreTunnelsCreateResponseBgpBgpStatusHealthCheck =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      direction: S.optional(
+        S.NullOr(GreTunnelsCreateResponseBgpBgpStatusHealthCheckDirection),
+      ),
+      enabled: S.optional(S.NullOr(S.Boolean)),
+      rate: S.optional(
+        S.NullOr(GreTunnelsCreateResponseBgpBgpStatusHealthCheckRate),
+      ),
+      target: S.optional(
+        S.NullOr(GreTunnelsCreateResponseBgpBgpStatusHealthCheckTarget2),
+      ),
+      type: S.optional(
+        S.NullOr(GreTunnelsCreateResponseBgpBgpStatusHealthCheckType),
+      ),
+      interfaceAddress6: S.optional(
+        S.NullOr(S.String).pipe(T.Body("interface_address6")),
+      ),
+      modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
+      mtu: S.optional(S.NullOr(S.Number)),
+      ttl: S.optional(S.NullOr(S.Number)),
+    }),
+  ).annotate({
+    identifier: "GreTunnelsCreateResponseBgpBgpStatusHealthCheck",
+  }) as any as S.Schema<GreTunnelsCreateResponseBgpBgpStatusHealthCheck>;
+
+export interface GreTunnelsCreateResponseBgpBgpStatus {
+  state: GreTunnelsCreateResponseBgpBgpStatusState;
+  tcpEstablished: boolean;
+  /** formatdate-time */
+  updatedAt: string;
+  bgpState?: string | null;
+  /** formatipv4 */
+  cfSpeakerIp?: string | null;
+  /** maximum65535 */
+  cfSpeakerPort?: number | null;
+  /** formatipv4 */
+  customerSpeakerIp?: string | null;
+  /** maximum65535 */
+  customerSpeakerPort?: number | null;
+  /** The date and time the tunnel was created. */
+  createdOn?: string | null;
+  /** An optional description of the GRE tunnel. */
+  description?: string | null;
+  healthCheck?: GreTunnelsCreateResponseBgpBgpStatusHealthCheck | null;
+}
+export const GreTunnelsCreateResponseBgpBgpStatus = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      state: GreTunnelsCreateResponseBgpBgpStatusState,
+      tcpEstablished: S.Boolean.pipe(T.Body("tcp_established")),
+      updatedAt: S.String.pipe(T.Body("updated_at")),
+      bgpState: S.optional(S.NullOr(S.String).pipe(T.Body("bgp_state"))),
+      cfSpeakerIp: S.optional(S.NullOr(S.String).pipe(T.Body("cf_speaker_ip"))),
+      cfSpeakerPort: S.optional(
+        S.NullOr(S.Number).pipe(T.Body("cf_speaker_port")),
+      ),
+      customerSpeakerIp: S.optional(
+        S.NullOr(S.String).pipe(T.Body("customer_speaker_ip")),
+      ),
+      customerSpeakerPort: S.optional(
+        S.NullOr(S.Number).pipe(T.Body("customer_speaker_port")),
+      ),
+      createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
+      description: S.optional(S.NullOr(S.String)),
+      healthCheck: S.optional(
+        S.NullOr(GreTunnelsCreateResponseBgpBgpStatusHealthCheck).pipe(
+          T.Body("health_check"),
+        ),
+      ),
+    }),
+).annotate({
+  identifier: "GreTunnelsCreateResponseBgpBgpStatus",
+}) as any as S.Schema<GreTunnelsCreateResponseBgpBgpStatus>;
+
 export interface GreTunnelsCreateResponseBgp {
   /** ASN used on the customer end of the BGP session */
   customerAsn: number;
@@ -2182,6 +2585,7 @@ export interface GreTunnelsCreateResponseBgp {
   importFilterId?: string | null;
   /** MD5 key to use for session authentication. */
   md5Key?: string | null;
+  bgpStatus?: GreTunnelsCreateResponseBgpBgpStatus | null;
 }
 export const GreTunnelsCreateResponseBgp = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2198,96 +2602,13 @@ export const GreTunnelsCreateResponseBgp = /*@__PURE__*/ S.suspend(() =>
       S.NullOr(S.String).pipe(T.Body("import_filter_id")),
     ),
     md5Key: S.optional(S.NullOr(S.String).pipe(T.Body("md5_key"))),
+    bgpStatus: S.optional(
+      S.NullOr(GreTunnelsCreateResponseBgpBgpStatus).pipe(T.Body("bgp_status")),
+    ),
   }),
 ).annotate({
   identifier: "GreTunnelsCreateResponseBgp",
 }) as any as S.Schema<GreTunnelsCreateResponseBgp>;
-
-export type GreTunnelsCreateResponseBgpStatusState =
-  | "BGP_DOWN"
-  | "BGP_UP"
-  | "BGP_ESTABLISHING";
-export const GreTunnelsCreateResponseBgpStatusState = /*@__PURE__*/ S.String;
-
-export interface GreTunnelsCreateResponseBgpStatus {
-  state: GreTunnelsCreateResponseBgpStatusState;
-  tcpEstablished: boolean;
-  updatedAt: string;
-  bgpState?: string | null;
-  cfSpeakerIp?: string | null;
-  cfSpeakerPort?: number | null;
-  customerSpeakerIp?: string | null;
-  customerSpeakerPort?: number | null;
-}
-export const GreTunnelsCreateResponseBgpStatus = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    state: GreTunnelsCreateResponseBgpStatusState,
-    tcpEstablished: S.Boolean.pipe(T.Body("tcp_established")),
-    updatedAt: S.String.pipe(T.Body("updated_at")),
-    bgpState: S.optional(S.NullOr(S.String).pipe(T.Body("bgp_state"))),
-    cfSpeakerIp: S.optional(S.NullOr(S.String).pipe(T.Body("cf_speaker_ip"))),
-    cfSpeakerPort: S.optional(
-      S.NullOr(S.Number).pipe(T.Body("cf_speaker_port")),
-    ),
-    customerSpeakerIp: S.optional(
-      S.NullOr(S.String).pipe(T.Body("customer_speaker_ip")),
-    ),
-    customerSpeakerPort: S.optional(
-      S.NullOr(S.Number).pipe(T.Body("customer_speaker_port")),
-    ),
-  }),
-).annotate({
-  identifier: "GreTunnelsCreateResponseBgpStatus",
-}) as any as S.Schema<GreTunnelsCreateResponseBgpStatus>;
-
-export type GreTunnelsCreateResponseHealthCheckDirection =
-  | "unidirectional"
-  | "bidirectional";
-export const GreTunnelsCreateResponseHealthCheckDirection =
-  /*@__PURE__*/ S.String;
-
-export type GreTunnelsCreateResponseHealthCheckRate = "low" | "mid" | "high";
-export const GreTunnelsCreateResponseHealthCheckRate = /*@__PURE__*/ S.String;
-
-export type GreTunnelsCreateResponseHealthCheckTargetMagicHealthCheckTarget =
-  CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemHealthCheckTargetMagicHealthCheckTarget;
-export const GreTunnelsCreateResponseHealthCheckTargetMagicHealthCheckTarget =
-  CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemHealthCheckTargetMagicHealthCheckTarget;
-
-export type GreTunnelsCreateResponseHealthCheckTarget =
-  | string
-  | CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemHealthCheckTargetMagicHealthCheckTarget;
-export const GreTunnelsCreateResponseHealthCheckTarget =
-  /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], ["effective", "saved"]]));
-
-export type GreTunnelsCreateResponseHealthCheckType = "reply" | "request";
-export const GreTunnelsCreateResponseHealthCheckType = /*@__PURE__*/ S.String;
-
-export interface GreTunnelsCreateResponseHealthCheck {
-  /** The direction of the flow of the healthcheck. Either unidirectional, where the probe comes to you via the tunnel and the result comes back to Cloudflare via the open Internet, or bidirectional where both the probe and result come and go via the tunnel. */
-  direction?: GreTunnelsCreateResponseHealthCheckDirection | null;
-  /** Determines whether to run healthchecks for a tunnel. */
-  enabled?: boolean | null;
-  /** How frequent the health check is run. The default value is `mid`. */
-  rate?: GreTunnelsCreateResponseHealthCheckRate | null;
-  /** The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customer_gre_endpoint address`. This field is ignored for bidirectional healthchecks as the interface_address (not assigned to the Cloudflare side of the tunnel) is used as the target. Must be in object form if the x-magic-new-hc-target header is set to true and string form if x-magic-new-hc-target is absent or set to false. */
-  target?: GreTunnelsCreateResponseHealthCheckTarget | null;
-  /** The type of healthcheck to run, reply or request. The default value is `reply`. */
-  type?: GreTunnelsCreateResponseHealthCheckType | null;
-}
-export const GreTunnelsCreateResponseHealthCheck = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    direction: S.optional(
-      S.NullOr(GreTunnelsCreateResponseHealthCheckDirection),
-    ),
-    enabled: S.optional(S.NullOr(S.Boolean)),
-    rate: S.optional(S.NullOr(GreTunnelsCreateResponseHealthCheckRate)),
-    target: S.optional(S.NullOr(GreTunnelsCreateResponseHealthCheckTarget)),
-    type: S.optional(S.NullOr(GreTunnelsCreateResponseHealthCheckType)),
-  }),
-).annotate({
-  identifier: "GreTunnelsCreateResponseHealthCheck",
-}) as any as S.Schema<GreTunnelsCreateResponseHealthCheck>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateGreTunnelResponse {
@@ -2304,20 +2625,6 @@ export interface CreateGreTunnelResponse {
   /** True if automatic stateful return routing should be enabled for a tunnel, false otherwise. Requires the `coupler_integration` account flag to be enabled; requests setting this to `true` without that flag will be rejected. */
   automaticReturnRouting?: boolean | null;
   bgp?: GreTunnelsCreateResponseBgp | null;
-  bgpStatus?: GreTunnelsCreateResponseBgpStatus | null;
-  /** The date and time the tunnel was created. */
-  createdOn?: string | null;
-  /** An optional description of the GRE tunnel. */
-  description?: string | null;
-  healthCheck?: GreTunnelsCreateResponseHealthCheck | null;
-  /** A 127 bit IPV6 prefix from within the virtual_subnet6 prefix space with the address being the first IP of the subnet and not same as the address of virtual_subnet6. Eg if virtual_subnet6 is 2606:54c1:7:0:a9fe:12d2::/127 , interface_address6 could be 2606:54c1:7:0:a9fe:12d2:1:200/127 */
-  interfaceAddress6?: string | null;
-  /** The date and time the tunnel was last modified. */
-  modifiedOn?: string | null;
-  /** Maximum Transmission Unit (MTU) in bytes for the GRE tunnel. The minimum value is 576. */
-  mtu?: number | null;
-  /** Time To Live (TTL) in number of hops of the GRE tunnel. */
-  ttl?: number | null;
 }
 export const CreateGreTunnelResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2330,22 +2637,6 @@ export const CreateGreTunnelResponse = /*@__PURE__*/ S.suspend(() =>
       S.NullOr(S.Boolean).pipe(T.Body("automatic_return_routing")),
     ),
     bgp: S.optional(S.NullOr(GreTunnelsCreateResponseBgp)),
-    bgpStatus: S.optional(
-      S.NullOr(GreTunnelsCreateResponseBgpStatus).pipe(T.Body("bgp_status")),
-    ),
-    createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
-    description: S.optional(S.NullOr(S.String)),
-    healthCheck: S.optional(
-      S.NullOr(GreTunnelsCreateResponseHealthCheck).pipe(
-        T.Body("health_check"),
-      ),
-    ),
-    interfaceAddress6: S.optional(
-      S.NullOr(S.String).pipe(T.Body("interface_address6")),
-    ),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-    mtu: S.optional(S.NullOr(S.Number)),
-    ttl: S.optional(S.NullOr(S.Number)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateGreTunnelResponse",
@@ -2356,6 +2647,83 @@ export const IpsecTunnelsCreateRequestBgpExtraPrefixesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<IpsecTunnelsCreateRequestBgpExtraPrefixesList>;
+
+export interface IpsecTunnelsCreateRequestBgpCustomRemoteIdentities {
+  /** A custom IKE ID of type FQDN that may be used to identity the IPsec tunnel. The generated IKE IDs can still be used even if this custom value is specified. */
+  fqdnId?: string;
+}
+export const IpsecTunnelsCreateRequestBgpCustomRemoteIdentities =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      fqdnId: S.optional(S.String.pipe(T.Body("fqdn_id"))),
+    }),
+  ).annotate({
+    identifier: "IpsecTunnelsCreateRequestBgpCustomRemoteIdentities",
+  }) as any as S.Schema<IpsecTunnelsCreateRequestBgpCustomRemoteIdentities>;
+
+export type IpsecTunnelsCreateRequestBgpHealthCheckDirection =
+  | "unidirectional"
+  | "bidirectional";
+export const IpsecTunnelsCreateRequestBgpHealthCheckDirection =
+  /*@__PURE__*/ S.String;
+
+export type IpsecTunnelsCreateRequestBgpHealthCheckRate =
+  | "low"
+  | "mid"
+  | "high";
+export const IpsecTunnelsCreateRequestBgpHealthCheckRate =
+  /*@__PURE__*/ S.String;
+
+export type IpsecTunnelsCreateRequestBgpHealthCheckTarget =
+  GreTunnelsCreateRequestBgpHealthCheckTarget;
+export const IpsecTunnelsCreateRequestBgpHealthCheckTarget =
+  GreTunnelsCreateRequestBgpHealthCheckTarget;
+
+export type IpsecTunnelsCreateRequestBgpHealthCheckTarget2 =
+  | string
+  | GreTunnelsCreateRequestBgpHealthCheckTarget;
+export const IpsecTunnelsCreateRequestBgpHealthCheckTarget2 =
+  /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], ["effective", "saved"]]));
+
+export type IpsecTunnelsCreateRequestBgpHealthCheckType = "reply" | "request";
+export const IpsecTunnelsCreateRequestBgpHealthCheckType =
+  /*@__PURE__*/ S.String;
+
+export interface IpsecTunnelsCreateRequestBgpHealthCheck {
+  /** The direction of the flow of the healthcheck. Either unidirectional, where the probe comes to you via the tunnel and the result comes back to Cloudflare via the open Internet, or bidirectional where both the probe and result come and go via the tunnel. */
+  direction?: IpsecTunnelsCreateRequestBgpHealthCheckDirection | (string & {});
+  /** Determines whether to run healthchecks for a tunnel. */
+  enabled?: boolean;
+  /** How frequent the health check is run. The default value is `mid`. */
+  rate?: IpsecTunnelsCreateRequestBgpHealthCheckRate | (string & {});
+  /** The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customer_gre_endpoint address`. This field is ignored for bidirectional healthchecks as the interface_address (not assigned to the Cloudflare side of the tunnel) is used as the target. Must be in object form if the x-magic-new-hc-target header is set to true and string form if x-magic-new-hc-target is absent or set to false. */
+  target?: IpsecTunnelsCreateRequestBgpHealthCheckTarget2;
+  /** The type of healthcheck to run, reply or request. The default value is `reply`. */
+  type?: IpsecTunnelsCreateRequestBgpHealthCheckType | (string & {});
+  /** A 127 bit IPV6 prefix from within the virtual_subnet6 prefix space with the address being the first IP of the subnet and not same as the address of virtual_subnet6. Eg if virtual_subnet6 is 2606:54c1:7:0:a9fe:12d2::/127 , interface_address6 could be 2606:54c1:7:0:a9fe:12d2:1:200/127 */
+  interfaceAddress6?: string;
+  /** A randomly generated or provided string for use in the IPsec tunnel. */
+  psk?: string;
+  /** If `true`, then IPsec replay protection will be supported in the Cloudflare-to-customer direction. */
+  replayProtection?: boolean;
+}
+export const IpsecTunnelsCreateRequestBgpHealthCheck = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      direction: S.optional(IpsecTunnelsCreateRequestBgpHealthCheckDirection),
+      enabled: S.optional(S.Boolean),
+      rate: S.optional(IpsecTunnelsCreateRequestBgpHealthCheckRate),
+      target: S.optional(IpsecTunnelsCreateRequestBgpHealthCheckTarget2),
+      type: S.optional(IpsecTunnelsCreateRequestBgpHealthCheckType),
+      interfaceAddress6: S.optional(
+        S.String.pipe(T.Body("interface_address6")),
+      ),
+      psk: S.optional(S.String),
+      replayProtection: S.optional(S.Boolean.pipe(T.Body("replay_protection"))),
+    }),
+).annotate({
+  identifier: "IpsecTunnelsCreateRequestBgpHealthCheck",
+}) as any as S.Schema<IpsecTunnelsCreateRequestBgpHealthCheck>;
 
 export interface IpsecTunnelsCreateRequestBgp {
   /** ASN used on the customer end of the BGP session */
@@ -2368,6 +2736,12 @@ export interface IpsecTunnelsCreateRequestBgp {
   importFilterId?: string;
   /** MD5 key to use for session authentication. */
   md5Key?: string;
+  customRemoteIdentities?: IpsecTunnelsCreateRequestBgpCustomRemoteIdentities;
+  /** The IP address assigned to the customer side of the IPsec tunnel. Not required, but must be set for proactive traceroutes to work. */
+  customerEndpoint?: string;
+  /** An optional description forthe IPsec tunnel. */
+  description?: string;
+  healthCheck?: IpsecTunnelsCreateRequestBgpHealthCheck;
 }
 export const IpsecTunnelsCreateRequestBgp = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2380,71 +2754,20 @@ export const IpsecTunnelsCreateRequestBgp = /*@__PURE__*/ S.suspend(() =>
     ),
     importFilterId: S.optional(S.String.pipe(T.Body("import_filter_id"))),
     md5Key: S.optional(S.String.pipe(T.Body("md5_key"))),
+    customRemoteIdentities: S.optional(
+      IpsecTunnelsCreateRequestBgpCustomRemoteIdentities.pipe(
+        T.Body("custom_remote_identities"),
+      ),
+    ),
+    customerEndpoint: S.optional(S.String.pipe(T.Body("customer_endpoint"))),
+    description: S.optional(S.String),
+    healthCheck: S.optional(
+      IpsecTunnelsCreateRequestBgpHealthCheck.pipe(T.Body("health_check")),
+    ),
   }),
 ).annotate({
   identifier: "IpsecTunnelsCreateRequestBgp",
 }) as any as S.Schema<IpsecTunnelsCreateRequestBgp>;
-
-export interface IpsecTunnelsCreateRequestCustomRemoteIdentities {
-  /** A custom IKE ID of type FQDN that may be used to identity the IPsec tunnel. The */
-  fqdnId?: string;
-}
-export const IpsecTunnelsCreateRequestCustomRemoteIdentities =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      fqdnId: S.optional(S.String.pipe(T.Body("fqdn_id"))),
-    }),
-  ).annotate({
-    identifier: "IpsecTunnelsCreateRequestCustomRemoteIdentities",
-  }) as any as S.Schema<IpsecTunnelsCreateRequestCustomRemoteIdentities>;
-
-export type IpsecTunnelsCreateRequestHealthCheckDirection =
-  | "unidirectional"
-  | "bidirectional";
-export const IpsecTunnelsCreateRequestHealthCheckDirection =
-  /*@__PURE__*/ S.String;
-
-export type IpsecTunnelsCreateRequestHealthCheckRate = "low" | "mid" | "high";
-export const IpsecTunnelsCreateRequestHealthCheckRate = /*@__PURE__*/ S.String;
-
-export type IpsecTunnelsCreateRequestHealthCheckTargetMagicHealthCheckTarget =
-  GreTunnelsCreateRequestHealthCheckTargetMagicHealthCheckTarget;
-export const IpsecTunnelsCreateRequestHealthCheckTargetMagicHealthCheckTarget =
-  GreTunnelsCreateRequestHealthCheckTargetMagicHealthCheckTarget;
-
-export type IpsecTunnelsCreateRequestHealthCheckTarget =
-  | string
-  | GreTunnelsCreateRequestHealthCheckTargetMagicHealthCheckTarget;
-export const IpsecTunnelsCreateRequestHealthCheckTarget =
-  /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], ["effective", "saved"]]));
-
-export type IpsecTunnelsCreateRequestHealthCheckType = "reply" | "request";
-export const IpsecTunnelsCreateRequestHealthCheckType = /*@__PURE__*/ S.String;
-
-export interface IpsecTunnelsCreateRequestHealthCheck {
-  /** The direction of the flow of the healthcheck. Either unidirectional, where the probe comes to you via the tunnel and the result comes back to Cloudflare via the open Internet, or bidirectional where both the probe and result come and go via the tunnel. */
-  direction?: IpsecTunnelsCreateRequestHealthCheckDirection | (string & {});
-  /** Determines whether to run healthchecks for a tunnel. */
-  enabled?: boolean;
-  /** How frequent the health check is run. The default value is `mid`. */
-  rate?: IpsecTunnelsCreateRequestHealthCheckRate | (string & {});
-  /** The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customer_gre_endpoint address`. This field is ignored for bidirectional healthchecks as the interface_address (not assigned to the Cloudflare side of the tunnel) is used as the target. Must be in object form if the x-magic-new-hc-target header is set to true and string form if x-magic-new-hc-target is absent or set to false. */
-  target?: IpsecTunnelsCreateRequestHealthCheckTarget;
-  /** The type of healthcheck to run, reply or request. The default value is `reply`. */
-  type?: IpsecTunnelsCreateRequestHealthCheckType | (string & {});
-}
-export const IpsecTunnelsCreateRequestHealthCheck = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      direction: S.optional(IpsecTunnelsCreateRequestHealthCheckDirection),
-      enabled: S.optional(S.Boolean),
-      rate: S.optional(IpsecTunnelsCreateRequestHealthCheckRate),
-      target: S.optional(IpsecTunnelsCreateRequestHealthCheckTarget),
-      type: S.optional(IpsecTunnelsCreateRequestHealthCheckType),
-    }),
-).annotate({
-  identifier: "IpsecTunnelsCreateRequestHealthCheck",
-}) as any as S.Schema<IpsecTunnelsCreateRequestHealthCheck>;
 
 export interface CreateIpsecTunnelRequest {
   /** Identifier */
@@ -2458,18 +2781,6 @@ export interface CreateIpsecTunnelRequest {
   /** True if automatic stateful return routing should be enabled for a tunnel, false otherwise. Requires the `coupler_integration` account flag to be enabled; requests setting this to `true` without that flag will be rejected. */
   automaticReturnRouting?: boolean;
   bgp?: IpsecTunnelsCreateRequestBgp;
-  customRemoteIdentities?: IpsecTunnelsCreateRequestCustomRemoteIdentities;
-  /** The IP address assigned to the customer side of the IPsec tunnel. Not required, but must be set for proactive traceroutes to work. */
-  customerEndpoint?: string;
-  /** An optional description forthe IPsec tunnel. */
-  description?: string;
-  healthCheck?: IpsecTunnelsCreateRequestHealthCheck;
-  /** A 127 bit IPV6 prefix from within the virtual_subnet6 prefix space with the address being the first IP of the subnet and not same as the address of virtual_subnet6. Eg if virtual_subnet6 is 2606:54c1:7:0:a9fe:12d2::/127 , interface_address6 could be 2606:54c1:7:0:a9fe:12d2:1:200/127 */
-  interfaceAddress6?: string;
-  /** A randomly generated or provided string for use in the IPsec tunnel. */
-  psk?: string;
-  /** If `true`, then IPsec replay protection will be supported in the Cloudflare-to-customer direction. */
-  replayProtection?: boolean;
   xMagicNewHcTarget?: boolean;
 }
 export const CreateIpsecTunnelRequest = /*@__PURE__*/ S.suspend(() =>
@@ -2482,19 +2793,6 @@ export const CreateIpsecTunnelRequest = /*@__PURE__*/ S.suspend(() =>
       S.Boolean.pipe(T.Body("automatic_return_routing")),
     ),
     bgp: S.optional(IpsecTunnelsCreateRequestBgp),
-    customRemoteIdentities: S.optional(
-      IpsecTunnelsCreateRequestCustomRemoteIdentities.pipe(
-        T.Body("custom_remote_identities"),
-      ),
-    ),
-    customerEndpoint: S.optional(S.String.pipe(T.Body("customer_endpoint"))),
-    description: S.optional(S.String),
-    healthCheck: S.optional(
-      IpsecTunnelsCreateRequestHealthCheck.pipe(T.Body("health_check")),
-    ),
-    interfaceAddress6: S.optional(S.String.pipe(T.Body("interface_address6"))),
-    psk: S.optional(S.String),
-    replayProtection: S.optional(S.Boolean.pipe(T.Body("replay_protection"))),
     xMagicNewHcTarget: S.optional(
       S.Boolean.pipe(T.Header("x-magic-new-hc-target")),
     ),
@@ -2517,6 +2815,166 @@ export const IpsecTunnelsCreateResponseBgpExtraPrefixesList =
     S.String,
   ) as any as S.Schema<IpsecTunnelsCreateResponseBgpExtraPrefixesList>;
 
+export type IpsecTunnelsCreateResponseBgpBgpStatusState =
+  | "BGP_DOWN"
+  | "BGP_UP"
+  | "BGP_ESTABLISHING";
+export const IpsecTunnelsCreateResponseBgpBgpStatusState =
+  /*@__PURE__*/ S.String;
+
+export type IpsecTunnelsCreateResponseBgpBgpStatusCustomRemoteIdentities =
+  IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemBgpBgpStatusCustomRemoteIdentities;
+export const IpsecTunnelsCreateResponseBgpBgpStatusCustomRemoteIdentities =
+  IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemBgpBgpStatusCustomRemoteIdentities;
+
+export type IpsecTunnelsCreateResponseBgpBgpStatusHealthCheckDirection =
+  | "unidirectional"
+  | "bidirectional";
+export const IpsecTunnelsCreateResponseBgpBgpStatusHealthCheckDirection =
+  /*@__PURE__*/ S.String;
+
+export type IpsecTunnelsCreateResponseBgpBgpStatusHealthCheckRate =
+  | "low"
+  | "mid"
+  | "high";
+export const IpsecTunnelsCreateResponseBgpBgpStatusHealthCheckRate =
+  /*@__PURE__*/ S.String;
+
+export type IpsecTunnelsCreateResponseBgpBgpStatusHealthCheckTarget =
+  CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemBgpHealthCheckTarget;
+export const IpsecTunnelsCreateResponseBgpBgpStatusHealthCheckTarget =
+  CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemBgpHealthCheckTarget;
+
+export type IpsecTunnelsCreateResponseBgpBgpStatusHealthCheckTarget2 =
+  | string
+  | CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemBgpHealthCheckTarget;
+export const IpsecTunnelsCreateResponseBgpBgpStatusHealthCheckTarget2 =
+  /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], ["effective", "saved"]]));
+
+export type IpsecTunnelsCreateResponseBgpBgpStatusHealthCheckType =
+  | "reply"
+  | "request";
+export const IpsecTunnelsCreateResponseBgpBgpStatusHealthCheckType =
+  /*@__PURE__*/ S.String;
+
+export type IpsecTunnelsCreateResponseBgpBgpStatusHealthCheckPskMetadata =
+  IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemBgpBgpStatusHealthCheckPskMetadata;
+export const IpsecTunnelsCreateResponseBgpBgpStatusHealthCheckPskMetadata =
+  IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemBgpBgpStatusHealthCheckPskMetadata;
+
+export interface IpsecTunnelsCreateResponseBgpBgpStatusHealthCheck {
+  /** The direction of the flow of the healthcheck. Either unidirectional, where the probe comes to you via the tunnel and the result comes back to Cloudflare via the open Internet, or bidirectional where both the probe and result come and go via the tunnel. */
+  direction?: IpsecTunnelsCreateResponseBgpBgpStatusHealthCheckDirection | null;
+  /** Determines whether to run healthchecks for a tunnel. */
+  enabled?: boolean | null;
+  /** How frequent the health check is run. The default value is `mid`. */
+  rate?: IpsecTunnelsCreateResponseBgpBgpStatusHealthCheckRate | null;
+  /** The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customer_gre_endpoint address`. This field is ignored for bidirectional healthchecks as the interface_address (not assigned to the Cloudflare side of the tunnel) is used as the target. Must be in object form if the x-magic-new-hc-target header is set to true and string form if x-magic-new-hc-target is absent or set to false. */
+  target?: IpsecTunnelsCreateResponseBgpBgpStatusHealthCheckTarget2 | null;
+  /** The type of healthcheck to run, reply or request. The default value is `reply`. */
+  type?: IpsecTunnelsCreateResponseBgpBgpStatusHealthCheckType | null;
+  /** A 127 bit IPV6 prefix from within the virtual_subnet6 prefix space with the address being the first IP of the subnet and not same as the address of virtual_subnet6. Eg if virtual_subnet6 is 2606:54c1:7:0:a9fe:12d2::/127 , interface_address6 could be 2606:54c1:7:0:a9fe:12d2:1:200/127 */
+  interfaceAddress6?: string | null;
+  /** The date and time the tunnel was last modified. */
+  modifiedOn?: string | null;
+  /** The PSK metadata that includes when the PSK was generated. */
+  pskMetadata?: IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemBgpBgpStatusHealthCheckPskMetadata | null;
+  /** If `true`, then IPsec replay protection will be supported in the Cloudflare-to-customer direction. */
+  replayProtection?: boolean | null;
+}
+export const IpsecTunnelsCreateResponseBgpBgpStatusHealthCheck =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      direction: S.optional(
+        S.NullOr(IpsecTunnelsCreateResponseBgpBgpStatusHealthCheckDirection),
+      ),
+      enabled: S.optional(S.NullOr(S.Boolean)),
+      rate: S.optional(
+        S.NullOr(IpsecTunnelsCreateResponseBgpBgpStatusHealthCheckRate),
+      ),
+      target: S.optional(
+        S.NullOr(IpsecTunnelsCreateResponseBgpBgpStatusHealthCheckTarget2),
+      ),
+      type: S.optional(
+        S.NullOr(IpsecTunnelsCreateResponseBgpBgpStatusHealthCheckType),
+      ),
+      interfaceAddress6: S.optional(
+        S.NullOr(S.String).pipe(T.Body("interface_address6")),
+      ),
+      modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
+      pskMetadata: S.optional(
+        S.NullOr(
+          IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemBgpBgpStatusHealthCheckPskMetadata,
+        ).pipe(T.Body("psk_metadata")),
+      ),
+      replayProtection: S.optional(
+        S.NullOr(S.Boolean).pipe(T.Body("replay_protection")),
+      ),
+    }),
+  ).annotate({
+    identifier: "IpsecTunnelsCreateResponseBgpBgpStatusHealthCheck",
+  }) as any as S.Schema<IpsecTunnelsCreateResponseBgpBgpStatusHealthCheck>;
+
+export interface IpsecTunnelsCreateResponseBgpBgpStatus {
+  state: IpsecTunnelsCreateResponseBgpBgpStatusState;
+  tcpEstablished: boolean;
+  /** formatdate-time */
+  updatedAt: string;
+  bgpState?: string | null;
+  /** formatipv4 */
+  cfSpeakerIp?: string | null;
+  /** maximum65535 */
+  cfSpeakerPort?: number | null;
+  /** formatipv4 */
+  customerSpeakerIp?: string | null;
+  /** maximum65535 */
+  customerSpeakerPort?: number | null;
+  /** The date and time the tunnel was created. */
+  createdOn?: string | null;
+  customRemoteIdentities?: IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemBgpBgpStatusCustomRemoteIdentities | null;
+  /** The IP address assigned to the customer side of the IPsec tunnel. Not required, but must be set for proactive traceroutes to work. */
+  customerEndpoint?: string | null;
+  /** An optional description forthe IPsec tunnel. */
+  description?: string | null;
+  healthCheck?: IpsecTunnelsCreateResponseBgpBgpStatusHealthCheck | null;
+}
+export const IpsecTunnelsCreateResponseBgpBgpStatus = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      state: IpsecTunnelsCreateResponseBgpBgpStatusState,
+      tcpEstablished: S.Boolean.pipe(T.Body("tcp_established")),
+      updatedAt: S.String.pipe(T.Body("updated_at")),
+      bgpState: S.optional(S.NullOr(S.String).pipe(T.Body("bgp_state"))),
+      cfSpeakerIp: S.optional(S.NullOr(S.String).pipe(T.Body("cf_speaker_ip"))),
+      cfSpeakerPort: S.optional(
+        S.NullOr(S.Number).pipe(T.Body("cf_speaker_port")),
+      ),
+      customerSpeakerIp: S.optional(
+        S.NullOr(S.String).pipe(T.Body("customer_speaker_ip")),
+      ),
+      customerSpeakerPort: S.optional(
+        S.NullOr(S.Number).pipe(T.Body("customer_speaker_port")),
+      ),
+      createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
+      customRemoteIdentities: S.optional(
+        S.NullOr(
+          IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemBgpBgpStatusCustomRemoteIdentities,
+        ).pipe(T.Body("custom_remote_identities")),
+      ),
+      customerEndpoint: S.optional(
+        S.NullOr(S.String).pipe(T.Body("customer_endpoint")),
+      ),
+      description: S.optional(S.NullOr(S.String)),
+      healthCheck: S.optional(
+        S.NullOr(IpsecTunnelsCreateResponseBgpBgpStatusHealthCheck).pipe(
+          T.Body("health_check"),
+        ),
+      ),
+    }),
+).annotate({
+  identifier: "IpsecTunnelsCreateResponseBgpBgpStatus",
+}) as any as S.Schema<IpsecTunnelsCreateResponseBgpBgpStatus>;
+
 export interface IpsecTunnelsCreateResponseBgp {
   /** ASN used on the customer end of the BGP session */
   customerAsn: number;
@@ -2528,6 +2986,7 @@ export interface IpsecTunnelsCreateResponseBgp {
   importFilterId?: string | null;
   /** MD5 key to use for session authentication. */
   md5Key?: string | null;
+  bgpStatus?: IpsecTunnelsCreateResponseBgpBgpStatus | null;
 }
 export const IpsecTunnelsCreateResponseBgp = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2544,107 +3003,15 @@ export const IpsecTunnelsCreateResponseBgp = /*@__PURE__*/ S.suspend(() =>
       S.NullOr(S.String).pipe(T.Body("import_filter_id")),
     ),
     md5Key: S.optional(S.NullOr(S.String).pipe(T.Body("md5_key"))),
+    bgpStatus: S.optional(
+      S.NullOr(IpsecTunnelsCreateResponseBgpBgpStatus).pipe(
+        T.Body("bgp_status"),
+      ),
+    ),
   }),
 ).annotate({
   identifier: "IpsecTunnelsCreateResponseBgp",
 }) as any as S.Schema<IpsecTunnelsCreateResponseBgp>;
-
-export type IpsecTunnelsCreateResponseBgpStatusState =
-  | "BGP_DOWN"
-  | "BGP_UP"
-  | "BGP_ESTABLISHING";
-export const IpsecTunnelsCreateResponseBgpStatusState = /*@__PURE__*/ S.String;
-
-export interface IpsecTunnelsCreateResponseBgpStatus {
-  state: IpsecTunnelsCreateResponseBgpStatusState;
-  tcpEstablished: boolean;
-  updatedAt: string;
-  bgpState?: string | null;
-  cfSpeakerIp?: string | null;
-  cfSpeakerPort?: number | null;
-  customerSpeakerIp?: string | null;
-  customerSpeakerPort?: number | null;
-}
-export const IpsecTunnelsCreateResponseBgpStatus = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    state: IpsecTunnelsCreateResponseBgpStatusState,
-    tcpEstablished: S.Boolean.pipe(T.Body("tcp_established")),
-    updatedAt: S.String.pipe(T.Body("updated_at")),
-    bgpState: S.optional(S.NullOr(S.String).pipe(T.Body("bgp_state"))),
-    cfSpeakerIp: S.optional(S.NullOr(S.String).pipe(T.Body("cf_speaker_ip"))),
-    cfSpeakerPort: S.optional(
-      S.NullOr(S.Number).pipe(T.Body("cf_speaker_port")),
-    ),
-    customerSpeakerIp: S.optional(
-      S.NullOr(S.String).pipe(T.Body("customer_speaker_ip")),
-    ),
-    customerSpeakerPort: S.optional(
-      S.NullOr(S.Number).pipe(T.Body("customer_speaker_port")),
-    ),
-  }),
-).annotate({
-  identifier: "IpsecTunnelsCreateResponseBgpStatus",
-}) as any as S.Schema<IpsecTunnelsCreateResponseBgpStatus>;
-
-export type IpsecTunnelsCreateResponseCustomRemoteIdentities =
-  IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemCustomRemoteIdentities;
-export const IpsecTunnelsCreateResponseCustomRemoteIdentities =
-  IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemCustomRemoteIdentities;
-
-export type IpsecTunnelsCreateResponseHealthCheckDirection =
-  | "unidirectional"
-  | "bidirectional";
-export const IpsecTunnelsCreateResponseHealthCheckDirection =
-  /*@__PURE__*/ S.String;
-
-export type IpsecTunnelsCreateResponseHealthCheckRate = "low" | "mid" | "high";
-export const IpsecTunnelsCreateResponseHealthCheckRate = /*@__PURE__*/ S.String;
-
-export type IpsecTunnelsCreateResponseHealthCheckTargetMagicHealthCheckTarget =
-  CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemHealthCheckTargetMagicHealthCheckTarget;
-export const IpsecTunnelsCreateResponseHealthCheckTargetMagicHealthCheckTarget =
-  CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemHealthCheckTargetMagicHealthCheckTarget;
-
-export type IpsecTunnelsCreateResponseHealthCheckTarget =
-  | string
-  | CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemHealthCheckTargetMagicHealthCheckTarget;
-export const IpsecTunnelsCreateResponseHealthCheckTarget =
-  /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], ["effective", "saved"]]));
-
-export type IpsecTunnelsCreateResponseHealthCheckType = "reply" | "request";
-export const IpsecTunnelsCreateResponseHealthCheckType = /*@__PURE__*/ S.String;
-
-export interface IpsecTunnelsCreateResponseHealthCheck {
-  /** The direction of the flow of the healthcheck. Either unidirectional, where the probe comes to you via the tunnel and the result comes back to Cloudflare via the open Internet, or bidirectional where both the probe and result come and go via the tunnel. */
-  direction?: IpsecTunnelsCreateResponseHealthCheckDirection | null;
-  /** Determines whether to run healthchecks for a tunnel. */
-  enabled?: boolean | null;
-  /** How frequent the health check is run. The default value is `mid`. */
-  rate?: IpsecTunnelsCreateResponseHealthCheckRate | null;
-  /** The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customer_gre_endpoint address`. This field is ignored for bidirectional healthchecks as the interface_address (not assigned to the Cloudflare side of the tunnel) is used as the target. Must be in object form if the x-magic-new-hc-target header is set to true and string form if x-magic-new-hc-target is absent or set to false. */
-  target?: IpsecTunnelsCreateResponseHealthCheckTarget | null;
-  /** The type of healthcheck to run, reply or request. The default value is `reply`. */
-  type?: IpsecTunnelsCreateResponseHealthCheckType | null;
-}
-export const IpsecTunnelsCreateResponseHealthCheck = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      direction: S.optional(
-        S.NullOr(IpsecTunnelsCreateResponseHealthCheckDirection),
-      ),
-      enabled: S.optional(S.NullOr(S.Boolean)),
-      rate: S.optional(S.NullOr(IpsecTunnelsCreateResponseHealthCheckRate)),
-      target: S.optional(S.NullOr(IpsecTunnelsCreateResponseHealthCheckTarget)),
-      type: S.optional(S.NullOr(IpsecTunnelsCreateResponseHealthCheckType)),
-    }),
-).annotate({
-  identifier: "IpsecTunnelsCreateResponseHealthCheck",
-}) as any as S.Schema<IpsecTunnelsCreateResponseHealthCheck>;
-
-export type IpsecTunnelsCreateResponsePskMetadata =
-  IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemPskMetadata;
-export const IpsecTunnelsCreateResponsePskMetadata =
-  IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemPskMetadata;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateIpsecTunnelResponse {
@@ -2661,23 +3028,6 @@ export interface CreateIpsecTunnelResponse {
   /** True if automatic stateful return routing should be enabled for a tunnel, false otherwise. Requires the `coupler_integration` account flag to be enabled; requests setting this to `true` without that flag will be rejected. */
   automaticReturnRouting?: boolean | null;
   bgp?: IpsecTunnelsCreateResponseBgp | null;
-  bgpStatus?: IpsecTunnelsCreateResponseBgpStatus | null;
-  /** The date and time the tunnel was created. */
-  createdOn?: string | null;
-  customRemoteIdentities?: IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemCustomRemoteIdentities | null;
-  /** The IP address assigned to the customer side of the IPsec tunnel. Not required, but must be set for proactive traceroutes to work. */
-  customerEndpoint?: string | null;
-  /** An optional description forthe IPsec tunnel. */
-  description?: string | null;
-  healthCheck?: IpsecTunnelsCreateResponseHealthCheck | null;
-  /** A 127 bit IPV6 prefix from within the virtual_subnet6 prefix space with the address being the first IP of the subnet and not same as the address of virtual_subnet6. Eg if virtual_subnet6 is 2606:54c1:7:0:a9fe:12d2::/127 , interface_address6 could be 2606:54c1:7:0:a9fe:12d2:1:200/127 */
-  interfaceAddress6?: string | null;
-  /** The date and time the tunnel was last modified. */
-  modifiedOn?: string | null;
-  /** The PSK metadata that includes when the PSK was generated. */
-  pskMetadata?: IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemPskMetadata | null;
-  /** If `true`, then IPsec replay protection will be supported in the Cloudflare-to-customer direction. */
-  replayProtection?: boolean | null;
 }
 export const CreateIpsecTunnelResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2692,48 +3042,24 @@ export const CreateIpsecTunnelResponse = /*@__PURE__*/ S.suspend(() =>
       S.NullOr(S.Boolean).pipe(T.Body("automatic_return_routing")),
     ),
     bgp: S.optional(S.NullOr(IpsecTunnelsCreateResponseBgp)),
-    bgpStatus: S.optional(
-      S.NullOr(IpsecTunnelsCreateResponseBgpStatus).pipe(T.Body("bgp_status")),
-    ),
-    createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
-    customRemoteIdentities: S.optional(
-      S.NullOr(
-        IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemCustomRemoteIdentities,
-      ).pipe(T.Body("custom_remote_identities")),
-    ),
-    customerEndpoint: S.optional(
-      S.NullOr(S.String).pipe(T.Body("customer_endpoint")),
-    ),
-    description: S.optional(S.NullOr(S.String)),
-    healthCheck: S.optional(
-      S.NullOr(IpsecTunnelsCreateResponseHealthCheck).pipe(
-        T.Body("health_check"),
-      ),
-    ),
-    interfaceAddress6: S.optional(
-      S.NullOr(S.String).pipe(T.Body("interface_address6")),
-    ),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-    pskMetadata: S.optional(
-      S.NullOr(
-        IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemPskMetadata,
-      ).pipe(T.Body("psk_metadata")),
-    ),
-    replayProtection: S.optional(
-      S.NullOr(S.Boolean).pipe(T.Body("replay_protection")),
-    ),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateIpsecTunnelResponse",
 }) as any as S.Schema<CreateIpsecTunnelResponse>;
 
-export type PcapsCreateRequestSystem = "magic-transit";
-export const PcapsCreateRequestSystem = /*@__PURE__*/ S.String;
+export type PcapsCreateRequestBodySystem = "magic-transit";
+export const PcapsCreateRequestBodySystem = /*@__PURE__*/ S.String;
 
-export type PcapsCreateRequestType = "simple" | "full";
-export const PcapsCreateRequestType = /*@__PURE__*/ S.String;
+export type PcapsCreateRequestBodyType = "simple" | "full";
+export const PcapsCreateRequestBodyType = /*@__PURE__*/ S.String;
 
-export interface PcapsCreateRequestFilterV1MagicVisibilityPCAPsPCAPsRequestSimple {
+export type PcapsCreateRequestBodyFilterV1System = "magic-transit";
+export const PcapsCreateRequestBodyFilterV1System = /*@__PURE__*/ S.String;
+
+export type PcapsCreateRequestBodyFilterV1Type = "simple" | "full";
+export const PcapsCreateRequestBodyFilterV1Type = /*@__PURE__*/ S.String;
+
+export interface PcapsCreateRequestBodyFilterV1FilterV1 {
   /** The destination IP address of the packet. */
   destinationAddress?: string;
   /** The destination port of the packet. */
@@ -2744,9 +3070,11 @@ export interface PcapsCreateRequestFilterV1MagicVisibilityPCAPsPCAPsRequestSimpl
   sourceAddress?: string;
   /** The source port of the packet. */
   sourcePort?: number;
+  /** The limit of packets contained in a packet capture. */
+  packetLimit?: number;
 }
-export const PcapsCreateRequestFilterV1MagicVisibilityPCAPsPCAPsRequestSimple =
-  /*@__PURE__*/ S.suspend(() =>
+export const PcapsCreateRequestBodyFilterV1FilterV1 = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       destinationAddress: S.optional(
         S.String.pipe(T.Body("destination_address")),
@@ -2755,50 +3083,100 @@ export const PcapsCreateRequestFilterV1MagicVisibilityPCAPsPCAPsRequestSimple =
       protocol: S.optional(S.Number),
       sourceAddress: S.optional(S.String.pipe(T.Body("source_address"))),
       sourcePort: S.optional(S.Number.pipe(T.Body("source_port"))),
+      packetLimit: S.optional(S.Number.pipe(T.Body("packet_limit"))),
     }),
-  ).annotate({
-    identifier:
-      "PcapsCreateRequestFilterV1MagicVisibilityPCAPsPCAPsRequestSimple",
-  }) as any as S.Schema<PcapsCreateRequestFilterV1MagicVisibilityPCAPsPCAPsRequestSimple>;
+).annotate({
+  identifier: "PcapsCreateRequestBodyFilterV1FilterV1",
+}) as any as S.Schema<PcapsCreateRequestBodyFilterV1FilterV1>;
+
+export interface PcapsCreateRequestBodyFilterV1 {
+  /** The destination IP address of the packet. */
+  destinationAddress?: string;
+  /** The destination port of the packet. */
+  destinationPort?: number;
+  /** The protocol number of the packet. */
+  protocol?: number;
+  /** The source IP address of the packet. */
+  sourceAddress?: string;
+  /** The source port of the packet. */
+  sourcePort?: number;
+  /** The RFC 3339 offset timestamp from which to query backwards for packets. Must be within the last 24h. When this field is empty, defaults to time of request. */
+  offsetTime?: string;
+  /** The name of the data center used for the packet capture. This can be a specific colo (ord02) or a multi-colo name (ORD). This field only applies to `full` packet captures. */
+  coloName: string;
+  /** The full URI for the bucket. This field only applies to `full` packet captures. */
+  destinationConf: string;
+  /** The system used to collect packet captures. */
+  system: PcapsCreateRequestBodyFilterV1System | (string & {});
+  /** The packet capture duration in seconds. */
+  timeLimit: number;
+  /** The type of packet capture. `Simple` captures sampled packets, and `full` captures entire payloads and non-sampled packets. */
+  type: PcapsCreateRequestBodyFilterV1Type | (string & {});
+  /** The maximum number of bytes to capture. This field only applies to `full` packet captures. */
+  byteLimit?: number;
+  /** The packet capture filter. When this field is empty, all packets are captured. */
+  filterV1?: PcapsCreateRequestBodyFilterV1FilterV1;
+}
+export const PcapsCreateRequestBodyFilterV1 = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    destinationAddress: S.optional(
+      S.String.pipe(T.Body("destination_address")),
+    ),
+    destinationPort: S.optional(S.Number.pipe(T.Body("destination_port"))),
+    protocol: S.optional(S.Number),
+    sourceAddress: S.optional(S.String.pipe(T.Body("source_address"))),
+    sourcePort: S.optional(S.Number.pipe(T.Body("source_port"))),
+    offsetTime: S.optional(S.String.pipe(T.Body("offset_time"))),
+    coloName: S.String.pipe(T.Body("colo_name")),
+    destinationConf: S.String.pipe(T.Body("destination_conf")),
+    system: PcapsCreateRequestBodyFilterV1System,
+    timeLimit: S.Number.pipe(T.Body("time_limit")),
+    type: PcapsCreateRequestBodyFilterV1Type,
+    byteLimit: S.optional(S.Number.pipe(T.Body("byte_limit"))),
+    filterV1: S.optional(
+      PcapsCreateRequestBodyFilterV1FilterV1.pipe(T.Body("filter_v1")),
+    ),
+  }),
+).annotate({
+  identifier: "PcapsCreateRequestBodyFilterV1",
+}) as any as S.Schema<PcapsCreateRequestBodyFilterV1>;
+
+export interface PcapsCreateRequestBody {
+  /** The limit of packets contained in a packet capture. */
+  packetLimit: number;
+  /** The system used to collect packet captures. */
+  system: PcapsCreateRequestBodySystem | (string & {});
+  /** The packet capture duration in seconds. */
+  timeLimit: number;
+  /** The type of packet capture. `Simple` captures sampled packets, and `full` captures entire payloads and non-sampled packets. */
+  type: PcapsCreateRequestBodyType | (string & {});
+  /** The packet capture filter. When this field is empty, all packets are captured. */
+  filterV1?: PcapsCreateRequestBodyFilterV1;
+}
+export const PcapsCreateRequestBody = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    packetLimit: S.Number.pipe(T.Body("packet_limit")),
+    system: PcapsCreateRequestBodySystem,
+    timeLimit: S.Number.pipe(T.Body("time_limit")),
+    type: PcapsCreateRequestBodyType,
+    filterV1: S.optional(
+      PcapsCreateRequestBodyFilterV1.pipe(T.Body("filter_v1")),
+    ),
+  }),
+).annotate({
+  identifier: "PcapsCreateRequestBody",
+}) as any as S.Schema<PcapsCreateRequestBody>;
 
 export interface CreatePcapRequest {
   /** Identifier. */
   accountId: string;
-  /** The limit of packets contained in a packet capture. */
-  packetLimit?: number;
-  /** The system used to collect packet captures. */
-  system: PcapsCreateRequestSystem | (string & {});
-  /** The packet capture duration in seconds. */
-  timeLimit: number;
-  /** The type of packet capture. `Simple` captures sampled packets, and `full` captures entire payloads and non-sampled packets. */
-  type: PcapsCreateRequestType | (string & {});
-  /** The packet capture filter. When this field is empty, all packets are captured. */
-  filterV1?: PcapsCreateRequestFilterV1MagicVisibilityPCAPsPCAPsRequestSimple;
-  /** The RFC 3339 offset timestamp from which to query backwards for packets. Must be within the last 24h. When this field is empty, defaults to time of request. */
-  offsetTime?: string;
-  /** The name of the data center used for the packet capture. This can be a specific colo (ord02) or a multi-colo name (ORD). This field only applies to `full` packet captures. */
-  coloName?: string;
-  /** The full URI for the bucket. This field only applies to `full` packet captures. */
-  destinationConf?: string;
-  /** The maximum number of bytes to capture. This field only applies to `full` packet captures. */
-  byteLimit?: number;
+  /** MagicVisibilityPCAPsPCAPsRequestSimple object { packet_limit, system, time_limit, 3 more } */
+  body: PcapsCreateRequestBody;
 }
 export const CreatePcapRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
-    packetLimit: S.optional(S.Number.pipe(T.Body("packet_limit"))),
-    system: PcapsCreateRequestSystem,
-    timeLimit: S.Number.pipe(T.Body("time_limit")),
-    type: PcapsCreateRequestType,
-    filterV1: S.optional(
-      PcapsCreateRequestFilterV1MagicVisibilityPCAPsPCAPsRequestSimple.pipe(
-        T.Body("filter_v1"),
-      ),
-    ),
-    offsetTime: S.optional(S.String.pipe(T.Body("offset_time"))),
-    coloName: S.optional(S.String.pipe(T.Body("colo_name"))),
-    destinationConf: S.optional(S.String.pipe(T.Body("destination_conf"))),
-    byteLimit: S.optional(S.Number.pipe(T.Body("byte_limit"))),
+    body: PcapsCreateRequestBody.pipe(T.HttpBody()),
   })
     .pipe(
       T.Http({
@@ -2812,215 +3190,9 @@ export const CreatePcapRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreatePcapRequest",
 }) as any as S.Schema<CreatePcapRequest>;
 
-export interface PcapsCreateResultPCAPFilterV1 {
-  /** The destination IP address of the packet. */
-  destinationAddress?: string | null;
-  /** The destination port of the packet. */
-  destinationPort?: number | null;
-  /** The protocol number of the packet. */
-  protocol?: number | null;
-  /** The source IP address of the packet. */
-  sourceAddress?: string | null;
-  /** The source port of the packet. */
-  sourcePort?: number | null;
-}
-export const PcapsCreateResultPCAPFilterV1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    destinationAddress: S.optional(
-      S.NullOr(S.String).pipe(T.Body("destination_address")),
-    ),
-    destinationPort: S.optional(
-      S.NullOr(S.Number).pipe(T.Body("destination_port")),
-    ),
-    protocol: S.optional(S.NullOr(S.Number)),
-    sourceAddress: S.optional(
-      S.NullOr(S.String).pipe(T.Body("source_address")),
-    ),
-    sourcePort: S.optional(S.NullOr(S.Number).pipe(T.Body("source_port"))),
-  }),
-).annotate({
-  identifier: "PcapsCreateResultPCAPFilterV1",
-}) as any as S.Schema<PcapsCreateResultPCAPFilterV1>;
-
-export type PcapsCreateResultPCAPStatus =
-  | "unknown"
-  | "success"
-  | "pending"
-  | "running"
-  | "conversion_pending"
-  | "conversion_running"
-  | "complete"
-  | "failed";
-export const PcapsCreateResultPCAPStatus = /*@__PURE__*/ S.String;
-
-export type PcapsCreateResultPCAPSystem = "magic-transit";
-export const PcapsCreateResultPCAPSystem = /*@__PURE__*/ S.String;
-
-export type PcapsCreateResultPCAPType = "simple" | "full";
-export const PcapsCreateResultPCAPType = /*@__PURE__*/ S.String;
-
-export interface PcapsCreateResultPCAP {
-  /** The ID for the packet capture. */
-  id?: string | null;
-  /** The packet capture filter. When this field is empty, all packets are captured. */
-  filterV1?: PcapsCreateResultPCAPFilterV1 | null;
-  /** The RFC 3339 offset timestamp from which to query backwards for packets. Must be within the last 24h. When this field is empty, defaults to time of request. */
-  offsetTime?: string | null;
-  /** The status of the packet capture request. */
-  status?: PcapsCreateResultPCAPStatus | null;
-  /** The RFC 3339 timestamp when the packet capture was created. */
-  submitted?: string | null;
-  /** The system used to collect packet captures. */
-  system?: PcapsCreateResultPCAPSystem | null;
-  /** The packet capture duration in seconds. */
-  timeLimit?: number | null;
-  /** The type of packet capture. `Simple` captures sampled packets, and `full` captures entire payloads and non-sampled packets. */
-  type?: PcapsCreateResultPCAPType | null;
-}
-export const PcapsCreateResultPCAP = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.NullOr(S.String)),
-    filterV1: S.optional(
-      S.NullOr(PcapsCreateResultPCAPFilterV1).pipe(T.Body("filter_v1")),
-    ),
-    offsetTime: S.optional(S.NullOr(S.String).pipe(T.Body("offset_time"))),
-    status: S.optional(S.NullOr(PcapsCreateResultPCAPStatus)),
-    submitted: S.optional(S.NullOr(S.String)),
-    system: S.optional(S.NullOr(PcapsCreateResultPCAPSystem)),
-    timeLimit: S.optional(S.NullOr(S.Number).pipe(T.Body("time_limit"))),
-    type: S.optional(S.NullOr(PcapsCreateResultPCAPType)),
-  }),
-).annotate({
-  identifier: "PcapsCreateResultPCAP",
-}) as any as S.Schema<PcapsCreateResultPCAP>;
-
-export type PcapsCreateResultMagicVisibilityPCAPsPCAPsResponseFullStatus =
-  | "unknown"
-  | "success"
-  | "pending"
-  | "running"
-  | "conversion_pending"
-  | "conversion_running"
-  | "complete"
-  | "failed";
-export const PcapsCreateResultMagicVisibilityPCAPsPCAPsResponseFullStatus =
-  /*@__PURE__*/ S.String;
-
-export type PcapsCreateResultMagicVisibilityPCAPsPCAPsResponseFullSystem =
-  "magic-transit";
-export const PcapsCreateResultMagicVisibilityPCAPsPCAPsResponseFullSystem =
-  /*@__PURE__*/ S.String;
-
-export type PcapsCreateResultMagicVisibilityPCAPsPCAPsResponseFullType =
-  | "simple"
-  | "full";
-export const PcapsCreateResultMagicVisibilityPCAPsPCAPsResponseFullType =
-  /*@__PURE__*/ S.String;
-
-export interface PcapsCreateResultMagicVisibilityPCAPsPCAPsResponseFull {
-  /** The ID for the packet capture. */
-  id?: string | null;
-  /** The maximum number of bytes to capture. This field only applies to `full` packet captures. */
-  byteLimit?: number | null;
-  /** The name of the data center used for the packet capture. This can be a specific colo (ord02) or a multi-colo name (ORD). This field only applies to `full` packet captures. */
-  coloName?: string | null;
-  /** The full URI for the bucket. This field only applies to `full` packet captures. */
-  destinationConf?: string | null;
-  /** An error message that describes why the packet capture failed. This field only applies to `full` packet captures. */
-  errorMessage?: string | null;
-  /** The packet capture filter. When this field is empty, all packets are captured. */
-  filterV1?: PcapsCreateResultPCAPFilterV1 | null;
-  /** The number of packets captured. */
-  packetsCaptured?: number | null;
-  /** The status of the packet capture request. */
-  status?: PcapsCreateResultMagicVisibilityPCAPsPCAPsResponseFullStatus | null;
-  /** The RFC 3339 timestamp when stopping the packet capture was requested. This field only applies to `full` packet captures. */
-  stopRequested?: string | null;
-  /** The RFC 3339 timestamp when the packet capture was created. */
-  submitted?: string | null;
-  /** The system used to collect packet captures. */
-  system?: PcapsCreateResultMagicVisibilityPCAPsPCAPsResponseFullSystem | null;
-  /** The packet capture duration in seconds. */
-  timeLimit?: number | null;
-  /** The type of packet capture. `Simple` captures sampled packets, and `full` captures entire payloads and non-sampled packets. */
-  type?: PcapsCreateResultMagicVisibilityPCAPsPCAPsResponseFullType | null;
-}
-export const PcapsCreateResultMagicVisibilityPCAPsPCAPsResponseFull =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.optional(S.NullOr(S.String)),
-      byteLimit: S.optional(S.NullOr(S.Number).pipe(T.Body("byte_limit"))),
-      coloName: S.optional(S.NullOr(S.String).pipe(T.Body("colo_name"))),
-      destinationConf: S.optional(
-        S.NullOr(S.String).pipe(T.Body("destination_conf")),
-      ),
-      errorMessage: S.optional(
-        S.NullOr(S.String).pipe(T.Body("error_message")),
-      ),
-      filterV1: S.optional(
-        S.NullOr(PcapsCreateResultPCAPFilterV1).pipe(T.Body("filter_v1")),
-      ),
-      packetsCaptured: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("packets_captured")),
-      ),
-      status: S.optional(
-        S.NullOr(PcapsCreateResultMagicVisibilityPCAPsPCAPsResponseFullStatus),
-      ),
-      stopRequested: S.optional(
-        S.NullOr(S.String).pipe(T.Body("stop_requested")),
-      ),
-      submitted: S.optional(S.NullOr(S.String)),
-      system: S.optional(
-        S.NullOr(PcapsCreateResultMagicVisibilityPCAPsPCAPsResponseFullSystem),
-      ),
-      timeLimit: S.optional(S.NullOr(S.Number).pipe(T.Body("time_limit"))),
-      type: S.optional(
-        S.NullOr(PcapsCreateResultMagicVisibilityPCAPsPCAPsResponseFullType),
-      ),
-    }),
-  ).annotate({
-    identifier: "PcapsCreateResultMagicVisibilityPCAPsPCAPsResponseFull",
-  }) as any as S.Schema<PcapsCreateResultMagicVisibilityPCAPsPCAPsResponseFull>;
-
-export type PcapsCreateResult =
-  | PcapsCreateResultPCAP
-  | PcapsCreateResultMagicVisibilityPCAPsPCAPsResponseFull;
-export const PcapsCreateResult = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
-    [
-      "id",
-      "filterV1",
-      "offsetTime",
-      "status",
-      "submitted",
-      "system",
-      "timeLimit",
-      "type",
-    ],
-    [
-      "id",
-      "byteLimit",
-      "coloName",
-      "destinationConf",
-      "errorMessage",
-      "filterV1",
-      "packetsCaptured",
-      "status",
-      "stopRequested",
-      "submitted",
-      "system",
-      "timeLimit",
-      "type",
-    ],
-  ]),
-);
-
-export type CreatePcapResponse = PcapsCreateResult;
+export type CreatePcapResponse = unknown;
 export const CreatePcapResponse = /*@__PURE__*/ S.suspend(() =>
-  PcapsCreateResult.pipe(
-    T.EnvelopePayloadRoot(),
-    T.KeyDictionary(KEY_DICTIONARY),
-  ),
+  S.Unknown.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreatePcapResponse",
 }) as any as S.Schema<CreatePcapResponse>;
@@ -3335,6 +3507,77 @@ export const SitesAclsCreateRequestLan1SubnetsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SitesAclsCreateRequestLan1SubnetsList>;
 
+export type SitesAclsCreateRequestLan1Lan2PortRangesList = Array<string>;
+export const SitesAclsCreateRequestLan1Lan2PortRangesList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<SitesAclsCreateRequestLan1Lan2PortRangesList>;
+
+export type SitesAclsCreateRequestLan1Lan2PortsList = Array<number>;
+export const SitesAclsCreateRequestLan1Lan2PortsList = /*@__PURE__*/ S.Array(
+  S.Number,
+) as any as S.Schema<SitesAclsCreateRequestLan1Lan2PortsList>;
+
+export type SitesAclsCreateRequestLan1Lan2SubnetsList = Array<unknown>;
+export const SitesAclsCreateRequestLan1Lan2SubnetsList = /*@__PURE__*/ S.Array(
+  S.Unknown,
+) as any as S.Schema<SitesAclsCreateRequestLan1Lan2SubnetsList>;
+
+export type SitesAclsCreateRequestLan1Lan2ProtocolsItem =
+  | "tcp"
+  | "udp"
+  | "icmp";
+export const SitesAclsCreateRequestLan1Lan2ProtocolsItem =
+  /*@__PURE__*/ S.String;
+
+export type SitesAclsCreateRequestLan1Lan2ProtocolsList = Array<
+  SitesAclsCreateRequestLan1Lan2ProtocolsItem | (string & {})
+>;
+export const SitesAclsCreateRequestLan1Lan2ProtocolsList =
+  /*@__PURE__*/ S.Array(
+    SitesAclsCreateRequestLan1Lan2ProtocolsItem,
+  ) as any as S.Schema<SitesAclsCreateRequestLan1Lan2ProtocolsList>;
+
+export interface SitesAclsCreateRequestLan1Lan2 {
+  /** The identifier for the LAN you want to create an ACL policy with. */
+  lanId: string;
+  /** The name of the LAN based on the provided lan_id. */
+  lanName?: string;
+  /** Array of port ranges on the provided LAN that will be included in the ACL. If no ports or port rangess are provided, communication on any port on this LAN is allowed. */
+  portRanges?: SitesAclsCreateRequestLan1Lan2PortRangesList;
+  /** Array of ports on the provided LAN that will be included in the ACL. If no ports or port ranges are provided, communication on any port on this LAN is allowed. */
+  ports?: SitesAclsCreateRequestLan1Lan2PortsList;
+  /** Array of subnet IPs within the LAN that will be included in the ACL. If no subnets are provided, communication on any subnets on this LAN are allowed. */
+  subnets?: SitesAclsCreateRequestLan1Lan2SubnetsList;
+  /** The name of the ACL. */
+  name: string;
+  /** Description for the ACL. */
+  description?: string;
+  /** The desired forwarding action for this ACL policy. If set to “false”, the policy will forward traffic to Cloudflare. If set to “true”, the policy will forward traffic locally on the Magic Connector. If not included in request, will default to false. */
+  forwardLocally?: boolean;
+  protocols?: SitesAclsCreateRequestLan1Lan2ProtocolsList;
+  /** The desired traffic direction for this ACL policy. If set to “false”, the policy will allow bidirectional traffic. If set to “true”, the policy will only allow traffic in one direction. If not included in request, will default to false. */
+  unidirectional?: boolean;
+}
+export const SitesAclsCreateRequestLan1Lan2 = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    lanId: S.String.pipe(T.Body("lan_id")),
+    lanName: S.optional(S.String.pipe(T.Body("lan_name"))),
+    portRanges: S.optional(
+      SitesAclsCreateRequestLan1Lan2PortRangesList.pipe(T.Body("port_ranges")),
+    ),
+    ports: S.optional(SitesAclsCreateRequestLan1Lan2PortsList),
+    subnets: S.optional(SitesAclsCreateRequestLan1Lan2SubnetsList),
+    name: S.String,
+    description: S.optional(S.String),
+    forwardLocally: S.optional(S.Boolean.pipe(T.Body("forward_locally"))),
+    protocols: S.optional(SitesAclsCreateRequestLan1Lan2ProtocolsList),
+    unidirectional: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "SitesAclsCreateRequestLan1Lan2",
+}) as any as S.Schema<SitesAclsCreateRequestLan1Lan2>;
+
 export interface SitesAclsCreateRequestLan1 {
   /** The identifier for the LAN you want to create an ACL policy with. */
   lanId: string;
@@ -3346,6 +3589,7 @@ export interface SitesAclsCreateRequestLan1 {
   ports?: SitesAclsCreateRequestLan1PortsList;
   /** Array of subnet IPs within the LAN that will be included in the ACL. If no subnets are provided, communication on any subnets on this LAN are allowed. */
   subnets?: SitesAclsCreateRequestLan1SubnetsList;
+  lan_2: SitesAclsCreateRequestLan1Lan2;
 }
 export const SitesAclsCreateRequestLan1 = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3356,20 +3600,11 @@ export const SitesAclsCreateRequestLan1 = /*@__PURE__*/ S.suspend(() =>
     ),
     ports: S.optional(SitesAclsCreateRequestLan1PortsList),
     subnets: S.optional(SitesAclsCreateRequestLan1SubnetsList),
+    lan_2: SitesAclsCreateRequestLan1Lan2,
   }),
 ).annotate({
   identifier: "SitesAclsCreateRequestLan1",
 }) as any as S.Schema<SitesAclsCreateRequestLan1>;
-
-export type SitesAclsCreateRequestProtocolsItem = "tcp" | "udp" | "icmp";
-export const SitesAclsCreateRequestProtocolsItem = /*@__PURE__*/ S.String;
-
-export type SitesAclsCreateRequestProtocolsList = Array<
-  SitesAclsCreateRequestProtocolsItem | (string & {})
->;
-export const SitesAclsCreateRequestProtocolsList = /*@__PURE__*/ S.Array(
-  SitesAclsCreateRequestProtocolsItem,
-) as any as S.Schema<SitesAclsCreateRequestProtocolsList>;
 
 export interface CreateSiteAclRequest {
   /** Identifier */
@@ -3377,28 +3612,12 @@ export interface CreateSiteAclRequest {
   /** Identifier */
   siteId: string;
   lan_1: SitesAclsCreateRequestLan1;
-  lan_2: SitesAclsCreateRequestLan1;
-  /** The name of the ACL. */
-  name: string;
-  /** Description for the ACL. */
-  description?: string;
-  /** The desired forwarding action for this ACL policy. If set to "false", the policy will forward traffic to Cloudflare. If set to "true", the policy will forward traffic locally on the Magic Connector. If not included in request, will default to false. */
-  forwardLocally?: boolean;
-  protocols?: SitesAclsCreateRequestProtocolsList;
-  /** The desired traffic direction for this ACL policy. If set to "false", the policy will allow bidirectional traffic. If set to "true", the policy will only allow traffic in one direction. If not included in request, will default to false. */
-  unidirectional?: boolean;
 }
 export const CreateSiteAclRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     siteId: S.String.pipe(T.Label("site_id")),
     lan_1: SitesAclsCreateRequestLan1,
-    lan_2: SitesAclsCreateRequestLan1,
-    name: S.String,
-    description: S.optional(S.String),
-    forwardLocally: S.optional(S.Boolean.pipe(T.Body("forward_locally"))),
-    protocols: S.optional(SitesAclsCreateRequestProtocolsList),
-    unidirectional: S.optional(S.Boolean),
   })
     .pipe(
       T.Http({
@@ -3427,6 +3646,74 @@ export const SitesAclsCreateResponseLan1SubnetsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SitesAclsCreateResponseLan1SubnetsList>;
 
+export type SitesAclsCreateResponseLan1Lan2PortRangesList = Array<string>;
+export const SitesAclsCreateResponseLan1Lan2PortRangesList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<SitesAclsCreateResponseLan1Lan2PortRangesList>;
+
+export type SitesAclsCreateResponseLan1Lan2PortsList = Array<number>;
+export const SitesAclsCreateResponseLan1Lan2PortsList = /*@__PURE__*/ S.Array(
+  S.Number,
+) as any as S.Schema<SitesAclsCreateResponseLan1Lan2PortsList>;
+
+export type SitesAclsCreateResponseLan1Lan2SubnetsList = Array<unknown>;
+export const SitesAclsCreateResponseLan1Lan2SubnetsList = /*@__PURE__*/ S.Array(
+  S.Unknown,
+) as any as S.Schema<SitesAclsCreateResponseLan1Lan2SubnetsList>;
+
+export type SitesAclsCreateResponseLan1Lan2ProtocolsItem =
+  | "tcp"
+  | "udp"
+  | "icmp";
+export const SitesAclsCreateResponseLan1Lan2ProtocolsItem =
+  /*@__PURE__*/ S.String;
+
+export type SitesAclsCreateResponseLan1Lan2ProtocolsList =
+  Array<SitesAclsCreateResponseLan1Lan2ProtocolsItem>;
+export const SitesAclsCreateResponseLan1Lan2ProtocolsList =
+  /*@__PURE__*/ S.Array(
+    SitesAclsCreateResponseLan1Lan2ProtocolsItem,
+  ) as any as S.Schema<SitesAclsCreateResponseLan1Lan2ProtocolsList>;
+
+export interface SitesAclsCreateResponseLan1Lan2 {
+  /** The identifier for the LAN you want to create an ACL policy with. */
+  lanId: string;
+  /** The name of the LAN based on the provided lan_id. */
+  lanName?: string | null;
+  /** Array of port ranges on the provided LAN that will be included in the ACL. If no ports or port rangess are provided, communication on any port on this LAN is allowed. */
+  portRanges?: SitesAclsCreateResponseLan1Lan2PortRangesList | null;
+  /** Array of ports on the provided LAN that will be included in the ACL. If no ports or port ranges are provided, communication on any port on this LAN is allowed. */
+  ports?: SitesAclsCreateResponseLan1Lan2PortsList | null;
+  /** Array of subnet IPs within the LAN that will be included in the ACL. If no subnets are provided, communication on any subnets on this LAN are allowed. */
+  subnets?: SitesAclsCreateResponseLan1Lan2SubnetsList | null;
+  /** The name of the ACL. */
+  name?: string | null;
+  protocols?: SitesAclsCreateResponseLan1Lan2ProtocolsList | null;
+  /** The desired traffic direction for this ACL policy. If set to “false”, the policy will allow bidirectional traffic. If set to “true”, the policy will only allow traffic in one direction. If not included in request, will default to false. */
+  unidirectional?: boolean | null;
+}
+export const SitesAclsCreateResponseLan1Lan2 = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    lanId: S.String.pipe(T.Body("lan_id")),
+    lanName: S.optional(S.NullOr(S.String).pipe(T.Body("lan_name"))),
+    portRanges: S.optional(
+      S.NullOr(SitesAclsCreateResponseLan1Lan2PortRangesList).pipe(
+        T.Body("port_ranges"),
+      ),
+    ),
+    ports: S.optional(S.NullOr(SitesAclsCreateResponseLan1Lan2PortsList)),
+    subnets: S.optional(S.NullOr(SitesAclsCreateResponseLan1Lan2SubnetsList)),
+    name: S.optional(S.NullOr(S.String)),
+    protocols: S.optional(
+      S.NullOr(SitesAclsCreateResponseLan1Lan2ProtocolsList),
+    ),
+    unidirectional: S.optional(S.NullOr(S.Boolean)),
+  }),
+).annotate({
+  identifier: "SitesAclsCreateResponseLan1Lan2",
+}) as any as S.Schema<SitesAclsCreateResponseLan1Lan2>;
+
 export interface SitesAclsCreateResponseLan1 {
   /** The identifier for the LAN you want to create an ACL policy with. */
   lanId: string;
@@ -3438,6 +3725,7 @@ export interface SitesAclsCreateResponseLan1 {
   ports?: SitesAclsCreateResponseLan1PortsList | null;
   /** Array of subnet IPs within the LAN that will be included in the ACL. If no subnets are provided, communication on any subnets on this LAN are allowed. */
   subnets?: SitesAclsCreateResponseLan1SubnetsList | null;
+  lan_2?: SitesAclsCreateResponseLan1Lan2 | null;
 }
 export const SitesAclsCreateResponseLan1 = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3450,19 +3738,11 @@ export const SitesAclsCreateResponseLan1 = /*@__PURE__*/ S.suspend(() =>
     ),
     ports: S.optional(S.NullOr(SitesAclsCreateResponseLan1PortsList)),
     subnets: S.optional(S.NullOr(SitesAclsCreateResponseLan1SubnetsList)),
+    lan_2: S.optional(S.NullOr(SitesAclsCreateResponseLan1Lan2)),
   }),
 ).annotate({
   identifier: "SitesAclsCreateResponseLan1",
 }) as any as S.Schema<SitesAclsCreateResponseLan1>;
-
-export type SitesAclsCreateResponseProtocolsItem = "tcp" | "udp" | "icmp";
-export const SitesAclsCreateResponseProtocolsItem = /*@__PURE__*/ S.String;
-
-export type SitesAclsCreateResponseProtocolsList =
-  Array<SitesAclsCreateResponseProtocolsItem>;
-export const SitesAclsCreateResponseProtocolsList = /*@__PURE__*/ S.Array(
-  SitesAclsCreateResponseProtocolsItem,
-) as any as S.Schema<SitesAclsCreateResponseProtocolsList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateSiteAclResponse {
@@ -3470,15 +3750,9 @@ export interface CreateSiteAclResponse {
   id?: string | null;
   /** Description for the ACL. */
   description?: string | null;
-  /** The desired forwarding action for this ACL policy. If set to "false", the policy will forward traffic to Cloudflare. If set to "true", the policy will forward traffic locally on the Magic Connector. If not included in request, will default to false. */
+  /** The desired forwarding action for this ACL policy. If set to “false”, the policy will forward traffic to Cloudflare. If set to “true”, the policy will forward traffic locally on the Magic Connector. If not included in request, will default to false. */
   forwardLocally?: boolean | null;
   lan_1?: SitesAclsCreateResponseLan1 | null;
-  lan_2?: SitesAclsCreateResponseLan1 | null;
-  /** The name of the ACL. */
-  name?: string | null;
-  protocols?: SitesAclsCreateResponseProtocolsList | null;
-  /** The desired traffic direction for this ACL policy. If set to "false", the policy will allow bidirectional traffic. If set to "true", the policy will only allow traffic in one direction. If not included in request, will default to false. */
-  unidirectional?: boolean | null;
 }
 export const CreateSiteAclResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3488,10 +3762,6 @@ export const CreateSiteAclResponse = /*@__PURE__*/ S.suspend(() =>
       S.NullOr(S.Boolean).pipe(T.Body("forward_locally")),
     ),
     lan_1: S.optional(S.NullOr(SitesAclsCreateResponseLan1)),
-    lan_2: S.optional(S.NullOr(SitesAclsCreateResponseLan1)),
-    name: S.optional(S.NullOr(S.String)),
-    protocols: S.optional(S.NullOr(SitesAclsCreateResponseProtocolsList)),
-    unidirectional: S.optional(S.NullOr(S.Boolean)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateSiteAclResponse",
@@ -3508,6 +3778,11 @@ export const SitesLansCreateRequestNat = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "SitesLansCreateRequestNat",
 }) as any as S.Schema<SitesLansCreateRequestNat>;
+
+export type SitesLansCreateRequestRoutedSubnetsItemNat =
+  SitesLansCreateRequestNat;
+export const SitesLansCreateRequestRoutedSubnetsItemNat =
+  SitesLansCreateRequestNat;
 
 export interface SitesLansCreateRequestRoutedSubnetsItem {
   /** A valid IPv4 address. */
@@ -3570,7 +3845,7 @@ export const SitesLansCreateRequestStaticAddressingDhcpServerDhcpOptionsItemType
 export interface SitesLansCreateRequestStaticAddressingDhcpServerDhcpOptionsItem {
   /** DHCP option number (1-254). Options 0 and 255 are reserved by RFC 2132. Options 3, 6, and 51 are not allowed because they conflict with connector-managed configuration. */
   code: number;
-  /** The type of the option value. text: a string (max 255 bytes). hex: colon-separated hex bytes (e.g. "01:04:aa:bb:cc", max 255 bytes). ip: an IPv4 address (e.g. "10.20.30.40"). byte: an unsigned integer 0-255 (1 byte). short: an unsigned integer 0-65535 (2 bytes). integer: an unsigned integer 0-4294967295 (4 bytes). */
+  /** The type of the option value. text: a string (max 255 bytes). hex: colon-separated hex bytes (e.g. “01:04:aa:bb:cc”, max 255 bytes). ip: an IPv4 address (e.g. “10.20.30.40”). byte: an unsigned integer 0-255 (1 byte). short: an unsigned integer 0-65535 (2 bytes). integer: an unsigned integer 0-4294967295 (4 bytes). */
   type:
     | SitesLansCreateRequestStaticAddressingDhcpServerDhcpOptionsItemType
     | (string & {});
@@ -3624,6 +3899,12 @@ export interface SitesLansCreateRequestStaticAddressingDhcpServer {
   dnsServers?: SitesLansCreateRequestStaticAddressingDhcpServerDnsServersList;
   /** Mapping of MAC addresses to IP addresses */
   reservations?: SitesLansCreateRequestStaticAddressingDhcpServerReservationsMap;
+  /** A valid CIDR notation representing an IP range. */
+  secondaryAddress?: string;
+  /** A valid CIDR notation representing an IP range. */
+  virtualAddress?: string;
+  /** VLAN ID. Use zero for untagged. */
+  vlanTag?: number;
 }
 export const SitesLansCreateRequestStaticAddressingDhcpServer =
   /*@__PURE__*/ S.suspend(() =>
@@ -3644,6 +3925,9 @@ export const SitesLansCreateRequestStaticAddressingDhcpServer =
       reservations: S.optional(
         SitesLansCreateRequestStaticAddressingDhcpServerReservationsMap,
       ),
+      secondaryAddress: S.optional(S.String.pipe(T.Body("secondary_address"))),
+      virtualAddress: S.optional(S.String.pipe(T.Body("virtual_address"))),
+      vlanTag: S.optional(S.Number.pipe(T.Body("vlan_tag"))),
     }),
   ).annotate({
     identifier: "SitesLansCreateRequestStaticAddressingDhcpServer",
@@ -3654,10 +3938,6 @@ export interface SitesLansCreateRequestStaticAddressing {
   address: string;
   dhcpRelay?: SitesLansCreateRequestStaticAddressingDhcpRelay;
   dhcpServer?: SitesLansCreateRequestStaticAddressingDhcpServer;
-  /** A valid CIDR notation representing an IP range. */
-  secondaryAddress?: string;
-  /** A valid CIDR notation representing an IP range. */
-  virtualAddress?: string;
 }
 export const SitesLansCreateRequestStaticAddressing = /*@__PURE__*/ S.suspend(
   () =>
@@ -3673,8 +3953,6 @@ export const SitesLansCreateRequestStaticAddressing = /*@__PURE__*/ S.suspend(
           T.Body("dhcp_server"),
         ),
       ),
-      secondaryAddress: S.optional(S.String.pipe(T.Body("secondary_address"))),
-      virtualAddress: S.optional(S.String.pipe(T.Body("virtual_address"))),
     }),
 ).annotate({
   identifier: "SitesLansCreateRequestStaticAddressing",
@@ -3698,8 +3976,6 @@ export interface CreateSiteLanRequest {
   routedSubnets?: SitesLansCreateRequestRoutedSubnetsList;
   /** If the site is not configured in high availability mode, this configuration is optional (if omitted, use DHCP). However, if in high availability mode, static_address is required along with secondary and virtual address. */
   staticAddressing?: SitesLansCreateRequestStaticAddressing;
-  /** VLAN ID. Use zero for untagged. */
-  vlanTag?: number;
 }
 export const CreateSiteLanRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3718,7 +3994,6 @@ export const CreateSiteLanRequest = /*@__PURE__*/ S.suspend(() =>
     staticAddressing: S.optional(
       SitesLansCreateRequestStaticAddressing.pipe(T.Body("static_addressing")),
     ),
-    vlanTag: S.optional(S.Number.pipe(T.Body("vlan_tag"))),
   })
     .pipe(
       T.Http({
@@ -3743,6 +4018,11 @@ export const SitesLansCreateResultItemNat = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "SitesLansCreateResultItemNat",
 }) as any as S.Schema<SitesLansCreateResultItemNat>;
+
+export type SitesLansCreateResultItemRoutedSubnetsItemNat =
+  SitesLansCreateResultItemNat;
+export const SitesLansCreateResultItemRoutedSubnetsItemNat =
+  SitesLansCreateResultItemNat;
 
 export interface SitesLansCreateResultItemRoutedSubnetsItem {
   /** A valid IPv4 address. */
@@ -3805,7 +4085,7 @@ export const SitesLansCreateResultItemStaticAddressingDhcpServerDhcpOptionsItemT
 export interface SitesLansCreateResultItemStaticAddressingDhcpServerDhcpOptionsItem {
   /** DHCP option number (1-254). Options 0 and 255 are reserved by RFC 2132. Options 3, 6, and 51 are not allowed because they conflict with connector-managed configuration. */
   code: number;
-  /** The type of the option value. text: a string (max 255 bytes). hex: colon-separated hex bytes (e.g. "01:04:aa:bb:cc", max 255 bytes). ip: an IPv4 address (e.g. "10.20.30.40"). byte: an unsigned integer 0-255 (1 byte). short: an unsigned integer 0-65535 (2 bytes). integer: an unsigned integer 0-4294967295 (4 bytes). */
+  /** The type of the option value. text: a string (max 255 bytes). hex: colon-separated hex bytes (e.g. “01:04:aa:bb:cc”, max 255 bytes). ip: an IPv4 address (e.g. “10.20.30.40”). byte: an unsigned integer 0-255 (1 byte). short: an unsigned integer 0-65535 (2 bytes). integer: an unsigned integer 0-4294967295 (4 bytes). */
   type: SitesLansCreateResultItemStaticAddressingDhcpServerDhcpOptionsItemType;
   /** The option value, interpreted according to the type field. */
   value: string;
@@ -3856,6 +4136,12 @@ export interface SitesLansCreateResultItemStaticAddressingDhcpServer {
   dnsServers?: SitesLansCreateResultItemStaticAddressingDhcpServerDnsServersList | null;
   /** Mapping of MAC addresses to IP addresses */
   reservations?: SitesLansCreateResultItemStaticAddressingDhcpServerReservationsMap | null;
+  /** A valid CIDR notation representing an IP range. */
+  secondaryAddress?: string | null;
+  /** A valid CIDR notation representing an IP range. */
+  virtualAddress?: string | null;
+  /** VLAN ID. Use zero for untagged. */
+  vlanTag?: number | null;
 }
 export const SitesLansCreateResultItemStaticAddressingDhcpServer =
   /*@__PURE__*/ S.suspend(() =>
@@ -3880,6 +4166,13 @@ export const SitesLansCreateResultItemStaticAddressingDhcpServer =
           SitesLansCreateResultItemStaticAddressingDhcpServerReservationsMap,
         ),
       ),
+      secondaryAddress: S.optional(
+        S.NullOr(S.String).pipe(T.Body("secondary_address")),
+      ),
+      virtualAddress: S.optional(
+        S.NullOr(S.String).pipe(T.Body("virtual_address")),
+      ),
+      vlanTag: S.optional(S.NullOr(S.Number).pipe(T.Body("vlan_tag"))),
     }),
   ).annotate({
     identifier: "SitesLansCreateResultItemStaticAddressingDhcpServer",
@@ -3890,10 +4183,6 @@ export interface SitesLansCreateResultItemStaticAddressing {
   address: string;
   dhcpRelay?: SitesLansCreateResultItemStaticAddressingDhcpRelay | null;
   dhcpServer?: SitesLansCreateResultItemStaticAddressingDhcpServer | null;
-  /** A valid CIDR notation representing an IP range. */
-  secondaryAddress?: string | null;
-  /** A valid CIDR notation representing an IP range. */
-  virtualAddress?: string | null;
 }
 export const SitesLansCreateResultItemStaticAddressing =
   /*@__PURE__*/ S.suspend(() =>
@@ -3908,12 +4197,6 @@ export const SitesLansCreateResultItemStaticAddressing =
         S.NullOr(SitesLansCreateResultItemStaticAddressingDhcpServer).pipe(
           T.Body("dhcp_server"),
         ),
-      ),
-      secondaryAddress: S.optional(
-        S.NullOr(S.String).pipe(T.Body("secondary_address")),
-      ),
-      virtualAddress: S.optional(
-        S.NullOr(S.String).pipe(T.Body("virtual_address")),
       ),
     }),
   ).annotate({
@@ -3938,8 +4221,6 @@ export interface SitesLansCreateResultItem {
   siteId?: string | null;
   /** If the site is not configured in high availability mode, this configuration is optional (if omitted, use DHCP). However, if in high availability mode, static_address is required along with secondary and virtual address. */
   staticAddressing?: SitesLansCreateResultItemStaticAddressing | null;
-  /** VLAN ID. Use zero for untagged. */
-  vlanTag?: number | null;
 }
 export const SitesLansCreateResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3964,7 +4245,6 @@ export const SitesLansCreateResultItem = /*@__PURE__*/ S.suspend(() =>
         T.Body("static_addressing"),
       ),
     ),
-    vlanTag: S.optional(S.NullOr(S.Number).pipe(T.Body("vlan_tag"))),
   }),
 ).annotate({
   identifier: "SitesLansCreateResultItem",
@@ -4233,10 +4513,12 @@ export interface DeleteCf1SiteResponse {
   name: string;
   /** Identifier */
   id?: string | null;
+  /** formatdate-time */
   createdOn?: string | null;
   /** A human-provided description of the CF1 Site. */
   description?: string | null;
   location?: Cf1SitesCreateResultItemLocation | null;
+  /** formatdate-time */
   modifiedOn?: string | null;
 }
 export const DeleteCf1SiteResponse = /*@__PURE__*/ S.suspend(() =>
@@ -4311,11 +4593,13 @@ export const Cf1SitesRampsDeleteResponseMplsInterconnect =
 export interface DeleteCf1SiteRampResponse {
   /** Identifier */
   id: string;
+  /** formatdate-time */
   createdOn: string;
+  /** formatdate-time */
   modifiedOn: string;
   /** A human-provided name describing the ramp that should be unique within the CF1 Site. */
   name: string;
-  /** The type of network connection (ramp) linking a CF1 Site to Cloudflare's network. */
+  /** The type of network connection (ramp) linking a CF1 Site to Cloudflare’s network. */
   type: Cf1SitesRampsDeleteResponseType;
   /** A human-provided description of the ramp. */
   description?: string | null;
@@ -4422,6 +4706,7 @@ export interface DeleteConnectorResponse {
   activated: boolean;
   /** Allowed days of the week for upgrades. Default is all days. */
   interruptWindowDaysOfWeek: ConnectorsDeleteResponseInterruptWindowDaysOfWeekList;
+  /** maximum24 */
   interruptWindowDurationHours: number;
   /** List of dates (YYYY-MM-DD) when upgrades are blocked. */
   interruptWindowEmbargoDates: ConnectorsDeleteResponseInterruptWindowEmbargoDatesList;
@@ -4506,6 +4791,148 @@ export const GreTunnelsDeleteResponseDeletedGreTunnelBgpExtraPrefixesList =
     S.String,
   ) as any as S.Schema<GreTunnelsDeleteResponseDeletedGreTunnelBgpExtraPrefixesList>;
 
+export type GreTunnelsDeleteResponseDeletedGreTunnelBgpBgpStatusState =
+  | "BGP_DOWN"
+  | "BGP_UP"
+  | "BGP_ESTABLISHING";
+export const GreTunnelsDeleteResponseDeletedGreTunnelBgpBgpStatusState =
+  /*@__PURE__*/ S.String;
+
+export type GreTunnelsDeleteResponseDeletedGreTunnelBgpBgpStatusHealthCheckDirection =
+  | "unidirectional"
+  | "bidirectional";
+export const GreTunnelsDeleteResponseDeletedGreTunnelBgpBgpStatusHealthCheckDirection =
+  /*@__PURE__*/ S.String;
+
+export type GreTunnelsDeleteResponseDeletedGreTunnelBgpBgpStatusHealthCheckRate =
+  | "low"
+  | "mid"
+  | "high";
+export const GreTunnelsDeleteResponseDeletedGreTunnelBgpBgpStatusHealthCheckRate =
+  /*@__PURE__*/ S.String;
+
+export type GreTunnelsDeleteResponseDeletedGreTunnelBgpBgpStatusHealthCheckTarget =
+  CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemBgpHealthCheckTarget;
+export const GreTunnelsDeleteResponseDeletedGreTunnelBgpBgpStatusHealthCheckTarget =
+  CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemBgpHealthCheckTarget;
+
+export type GreTunnelsDeleteResponseDeletedGreTunnelBgpBgpStatusHealthCheckTarget2 =
+  | string
+  | CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemBgpHealthCheckTarget;
+export const GreTunnelsDeleteResponseDeletedGreTunnelBgpBgpStatusHealthCheckTarget2 =
+  /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], ["effective", "saved"]]));
+
+export type GreTunnelsDeleteResponseDeletedGreTunnelBgpBgpStatusHealthCheckType =
+  | "reply"
+  | "request";
+export const GreTunnelsDeleteResponseDeletedGreTunnelBgpBgpStatusHealthCheckType =
+  /*@__PURE__*/ S.String;
+
+export interface GreTunnelsDeleteResponseDeletedGreTunnelBgpBgpStatusHealthCheck {
+  /** The direction of the flow of the healthcheck. Either unidirectional, where the probe comes to you via the tunnel and the result comes back to Cloudflare via the open Internet, or bidirectional where both the probe and result come and go via the tunnel. */
+  direction?: GreTunnelsDeleteResponseDeletedGreTunnelBgpBgpStatusHealthCheckDirection | null;
+  /** Determines whether to run healthchecks for a tunnel. */
+  enabled?: boolean | null;
+  /** How frequent the health check is run. The default value is `mid`. */
+  rate?: GreTunnelsDeleteResponseDeletedGreTunnelBgpBgpStatusHealthCheckRate | null;
+  /** The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customer_gre_endpoint address`. This field is ignored for bidirectional healthchecks as the interface_address (not assigned to the Cloudflare side of the tunnel) is used as the target. Must be in object form if the x-magic-new-hc-target header is set to true and string form if x-magic-new-hc-target is absent or set to false. */
+  target?: GreTunnelsDeleteResponseDeletedGreTunnelBgpBgpStatusHealthCheckTarget2 | null;
+  /** The type of healthcheck to run, reply or request. The default value is `reply`. */
+  type?: GreTunnelsDeleteResponseDeletedGreTunnelBgpBgpStatusHealthCheckType | null;
+  /** A 127 bit IPV6 prefix from within the virtual_subnet6 prefix space with the address being the first IP of the subnet and not same as the address of virtual_subnet6. Eg if virtual_subnet6 is 2606:54c1:7:0:a9fe:12d2::/127 , interface_address6 could be 2606:54c1:7:0:a9fe:12d2:1:200/127 */
+  interfaceAddress6?: string | null;
+  /** The date and time the tunnel was last modified. */
+  modifiedOn?: string | null;
+  /** Maximum Transmission Unit (MTU) in bytes for the GRE tunnel. The minimum value is 576. */
+  mtu?: number | null;
+  /** Time To Live (TTL) in number of hops of the GRE tunnel. */
+  ttl?: number | null;
+}
+export const GreTunnelsDeleteResponseDeletedGreTunnelBgpBgpStatusHealthCheck =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      direction: S.optional(
+        S.NullOr(
+          GreTunnelsDeleteResponseDeletedGreTunnelBgpBgpStatusHealthCheckDirection,
+        ),
+      ),
+      enabled: S.optional(S.NullOr(S.Boolean)),
+      rate: S.optional(
+        S.NullOr(
+          GreTunnelsDeleteResponseDeletedGreTunnelBgpBgpStatusHealthCheckRate,
+        ),
+      ),
+      target: S.optional(
+        S.NullOr(
+          GreTunnelsDeleteResponseDeletedGreTunnelBgpBgpStatusHealthCheckTarget2,
+        ),
+      ),
+      type: S.optional(
+        S.NullOr(
+          GreTunnelsDeleteResponseDeletedGreTunnelBgpBgpStatusHealthCheckType,
+        ),
+      ),
+      interfaceAddress6: S.optional(
+        S.NullOr(S.String).pipe(T.Body("interface_address6")),
+      ),
+      modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
+      mtu: S.optional(S.NullOr(S.Number)),
+      ttl: S.optional(S.NullOr(S.Number)),
+    }),
+  ).annotate({
+    identifier:
+      "GreTunnelsDeleteResponseDeletedGreTunnelBgpBgpStatusHealthCheck",
+  }) as any as S.Schema<GreTunnelsDeleteResponseDeletedGreTunnelBgpBgpStatusHealthCheck>;
+
+export interface GreTunnelsDeleteResponseDeletedGreTunnelBgpBgpStatus {
+  state: GreTunnelsDeleteResponseDeletedGreTunnelBgpBgpStatusState;
+  tcpEstablished: boolean;
+  /** formatdate-time */
+  updatedAt: string;
+  bgpState?: string | null;
+  /** formatipv4 */
+  cfSpeakerIp?: string | null;
+  /** maximum65535 */
+  cfSpeakerPort?: number | null;
+  /** formatipv4 */
+  customerSpeakerIp?: string | null;
+  /** maximum65535 */
+  customerSpeakerPort?: number | null;
+  /** The date and time the tunnel was created. */
+  createdOn?: string | null;
+  /** An optional description of the GRE tunnel. */
+  description?: string | null;
+  healthCheck?: GreTunnelsDeleteResponseDeletedGreTunnelBgpBgpStatusHealthCheck | null;
+}
+export const GreTunnelsDeleteResponseDeletedGreTunnelBgpBgpStatus =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      state: GreTunnelsDeleteResponseDeletedGreTunnelBgpBgpStatusState,
+      tcpEstablished: S.Boolean.pipe(T.Body("tcp_established")),
+      updatedAt: S.String.pipe(T.Body("updated_at")),
+      bgpState: S.optional(S.NullOr(S.String).pipe(T.Body("bgp_state"))),
+      cfSpeakerIp: S.optional(S.NullOr(S.String).pipe(T.Body("cf_speaker_ip"))),
+      cfSpeakerPort: S.optional(
+        S.NullOr(S.Number).pipe(T.Body("cf_speaker_port")),
+      ),
+      customerSpeakerIp: S.optional(
+        S.NullOr(S.String).pipe(T.Body("customer_speaker_ip")),
+      ),
+      customerSpeakerPort: S.optional(
+        S.NullOr(S.Number).pipe(T.Body("customer_speaker_port")),
+      ),
+      createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
+      description: S.optional(S.NullOr(S.String)),
+      healthCheck: S.optional(
+        S.NullOr(
+          GreTunnelsDeleteResponseDeletedGreTunnelBgpBgpStatusHealthCheck,
+        ).pipe(T.Body("health_check")),
+      ),
+    }),
+  ).annotate({
+    identifier: "GreTunnelsDeleteResponseDeletedGreTunnelBgpBgpStatus",
+  }) as any as S.Schema<GreTunnelsDeleteResponseDeletedGreTunnelBgpBgpStatus>;
+
 export interface GreTunnelsDeleteResponseDeletedGreTunnelBgp {
   /** ASN used on the customer end of the BGP session */
   customerAsn: number;
@@ -4517,6 +4944,7 @@ export interface GreTunnelsDeleteResponseDeletedGreTunnelBgp {
   importFilterId?: string | null;
   /** MD5 key to use for session authentication. */
   md5Key?: string | null;
+  bgpStatus?: GreTunnelsDeleteResponseDeletedGreTunnelBgpBgpStatus | null;
 }
 export const GreTunnelsDeleteResponseDeletedGreTunnelBgp =
   /*@__PURE__*/ S.suspend(() =>
@@ -4534,112 +4962,15 @@ export const GreTunnelsDeleteResponseDeletedGreTunnelBgp =
         S.NullOr(S.String).pipe(T.Body("import_filter_id")),
       ),
       md5Key: S.optional(S.NullOr(S.String).pipe(T.Body("md5_key"))),
+      bgpStatus: S.optional(
+        S.NullOr(GreTunnelsDeleteResponseDeletedGreTunnelBgpBgpStatus).pipe(
+          T.Body("bgp_status"),
+        ),
+      ),
     }),
   ).annotate({
     identifier: "GreTunnelsDeleteResponseDeletedGreTunnelBgp",
   }) as any as S.Schema<GreTunnelsDeleteResponseDeletedGreTunnelBgp>;
-
-export type GreTunnelsDeleteResponseDeletedGreTunnelBgpStatusState =
-  | "BGP_DOWN"
-  | "BGP_UP"
-  | "BGP_ESTABLISHING";
-export const GreTunnelsDeleteResponseDeletedGreTunnelBgpStatusState =
-  /*@__PURE__*/ S.String;
-
-export interface GreTunnelsDeleteResponseDeletedGreTunnelBgpStatus {
-  state: GreTunnelsDeleteResponseDeletedGreTunnelBgpStatusState;
-  tcpEstablished: boolean;
-  updatedAt: string;
-  bgpState?: string | null;
-  cfSpeakerIp?: string | null;
-  cfSpeakerPort?: number | null;
-  customerSpeakerIp?: string | null;
-  customerSpeakerPort?: number | null;
-}
-export const GreTunnelsDeleteResponseDeletedGreTunnelBgpStatus =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      state: GreTunnelsDeleteResponseDeletedGreTunnelBgpStatusState,
-      tcpEstablished: S.Boolean.pipe(T.Body("tcp_established")),
-      updatedAt: S.String.pipe(T.Body("updated_at")),
-      bgpState: S.optional(S.NullOr(S.String).pipe(T.Body("bgp_state"))),
-      cfSpeakerIp: S.optional(S.NullOr(S.String).pipe(T.Body("cf_speaker_ip"))),
-      cfSpeakerPort: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("cf_speaker_port")),
-      ),
-      customerSpeakerIp: S.optional(
-        S.NullOr(S.String).pipe(T.Body("customer_speaker_ip")),
-      ),
-      customerSpeakerPort: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("customer_speaker_port")),
-      ),
-    }),
-  ).annotate({
-    identifier: "GreTunnelsDeleteResponseDeletedGreTunnelBgpStatus",
-  }) as any as S.Schema<GreTunnelsDeleteResponseDeletedGreTunnelBgpStatus>;
-
-export type GreTunnelsDeleteResponseDeletedGreTunnelHealthCheckDirection =
-  | "unidirectional"
-  | "bidirectional";
-export const GreTunnelsDeleteResponseDeletedGreTunnelHealthCheckDirection =
-  /*@__PURE__*/ S.String;
-
-export type GreTunnelsDeleteResponseDeletedGreTunnelHealthCheckRate =
-  | "low"
-  | "mid"
-  | "high";
-export const GreTunnelsDeleteResponseDeletedGreTunnelHealthCheckRate =
-  /*@__PURE__*/ S.String;
-
-export type GreTunnelsDeleteResponseDeletedGreTunnelHealthCheckTargetMagicHealthCheckTarget =
-  CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemHealthCheckTargetMagicHealthCheckTarget;
-export const GreTunnelsDeleteResponseDeletedGreTunnelHealthCheckTargetMagicHealthCheckTarget =
-  CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemHealthCheckTargetMagicHealthCheckTarget;
-
-export type GreTunnelsDeleteResponseDeletedGreTunnelHealthCheckTarget =
-  | string
-  | CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemHealthCheckTargetMagicHealthCheckTarget;
-export const GreTunnelsDeleteResponseDeletedGreTunnelHealthCheckTarget =
-  /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], ["effective", "saved"]]));
-
-export type GreTunnelsDeleteResponseDeletedGreTunnelHealthCheckType =
-  | "reply"
-  | "request";
-export const GreTunnelsDeleteResponseDeletedGreTunnelHealthCheckType =
-  /*@__PURE__*/ S.String;
-
-export interface GreTunnelsDeleteResponseDeletedGreTunnelHealthCheck {
-  /** The direction of the flow of the healthcheck. Either unidirectional, where the probe comes to you via the tunnel and the result comes back to Cloudflare via the open Internet, or bidirectional where both the probe and result come and go via the tunnel. */
-  direction?: GreTunnelsDeleteResponseDeletedGreTunnelHealthCheckDirection | null;
-  /** Determines whether to run healthchecks for a tunnel. */
-  enabled?: boolean | null;
-  /** How frequent the health check is run. The default value is `mid`. */
-  rate?: GreTunnelsDeleteResponseDeletedGreTunnelHealthCheckRate | null;
-  /** The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customer_gre_endpoint address`. This field is ignored for bidirectional healthchecks as the interface_address (not assigned to the Cloudflare side of the tunnel) is used as the target. Must be in object form if the x-magic-new-hc-target header is set to true and string form if x-magic-new-hc-target is absent or set to false. */
-  target?: GreTunnelsDeleteResponseDeletedGreTunnelHealthCheckTarget | null;
-  /** The type of healthcheck to run, reply or request. The default value is `reply`. */
-  type?: GreTunnelsDeleteResponseDeletedGreTunnelHealthCheckType | null;
-}
-export const GreTunnelsDeleteResponseDeletedGreTunnelHealthCheck =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      direction: S.optional(
-        S.NullOr(GreTunnelsDeleteResponseDeletedGreTunnelHealthCheckDirection),
-      ),
-      enabled: S.optional(S.NullOr(S.Boolean)),
-      rate: S.optional(
-        S.NullOr(GreTunnelsDeleteResponseDeletedGreTunnelHealthCheckRate),
-      ),
-      target: S.optional(
-        S.NullOr(GreTunnelsDeleteResponseDeletedGreTunnelHealthCheckTarget),
-      ),
-      type: S.optional(
-        S.NullOr(GreTunnelsDeleteResponseDeletedGreTunnelHealthCheckType),
-      ),
-    }),
-  ).annotate({
-    identifier: "GreTunnelsDeleteResponseDeletedGreTunnelHealthCheck",
-  }) as any as S.Schema<GreTunnelsDeleteResponseDeletedGreTunnelHealthCheck>;
 
 export interface GreTunnelsDeleteResponseDeletedGreTunnel {
   /** Identifier */
@@ -4655,20 +4986,6 @@ export interface GreTunnelsDeleteResponseDeletedGreTunnel {
   /** True if automatic stateful return routing should be enabled for a tunnel, false otherwise. Requires the `coupler_integration` account flag to be enabled; requests setting this to `true` without that flag will be rejected. */
   automaticReturnRouting?: boolean | null;
   bgp?: GreTunnelsDeleteResponseDeletedGreTunnelBgp | null;
-  bgpStatus?: GreTunnelsDeleteResponseDeletedGreTunnelBgpStatus | null;
-  /** The date and time the tunnel was created. */
-  createdOn?: string | null;
-  /** An optional description of the GRE tunnel. */
-  description?: string | null;
-  healthCheck?: GreTunnelsDeleteResponseDeletedGreTunnelHealthCheck | null;
-  /** A 127 bit IPV6 prefix from within the virtual_subnet6 prefix space with the address being the first IP of the subnet and not same as the address of virtual_subnet6. Eg if virtual_subnet6 is 2606:54c1:7:0:a9fe:12d2::/127 , interface_address6 could be 2606:54c1:7:0:a9fe:12d2:1:200/127 */
-  interfaceAddress6?: string | null;
-  /** The date and time the tunnel was last modified. */
-  modifiedOn?: string | null;
-  /** Maximum Transmission Unit (MTU) in bytes for the GRE tunnel. The minimum value is 576. */
-  mtu?: number | null;
-  /** Time To Live (TTL) in number of hops of the GRE tunnel. */
-  ttl?: number | null;
 }
 export const GreTunnelsDeleteResponseDeletedGreTunnel = /*@__PURE__*/ S.suspend(
   () =>
@@ -4682,24 +4999,6 @@ export const GreTunnelsDeleteResponseDeletedGreTunnel = /*@__PURE__*/ S.suspend(
         S.NullOr(S.Boolean).pipe(T.Body("automatic_return_routing")),
       ),
       bgp: S.optional(S.NullOr(GreTunnelsDeleteResponseDeletedGreTunnelBgp)),
-      bgpStatus: S.optional(
-        S.NullOr(GreTunnelsDeleteResponseDeletedGreTunnelBgpStatus).pipe(
-          T.Body("bgp_status"),
-        ),
-      ),
-      createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
-      description: S.optional(S.NullOr(S.String)),
-      healthCheck: S.optional(
-        S.NullOr(GreTunnelsDeleteResponseDeletedGreTunnelHealthCheck).pipe(
-          T.Body("health_check"),
-        ),
-      ),
-      interfaceAddress6: S.optional(
-        S.NullOr(S.String).pipe(T.Body("interface_address6")),
-      ),
-      modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-      mtu: S.optional(S.NullOr(S.Number)),
-      ttl: S.optional(S.NullOr(S.Number)),
     }),
 ).annotate({
   identifier: "GreTunnelsDeleteResponseDeletedGreTunnel",
@@ -4757,6 +5056,175 @@ export const IpsecTunnelsDeleteResponseDeletedIpsecTunnelBgpExtraPrefixesList =
     S.String,
   ) as any as S.Schema<IpsecTunnelsDeleteResponseDeletedIpsecTunnelBgpExtraPrefixesList>;
 
+export type IpsecTunnelsDeleteResponseDeletedIpsecTunnelBgpBgpStatusState =
+  | "BGP_DOWN"
+  | "BGP_UP"
+  | "BGP_ESTABLISHING";
+export const IpsecTunnelsDeleteResponseDeletedIpsecTunnelBgpBgpStatusState =
+  /*@__PURE__*/ S.String;
+
+export type IpsecTunnelsDeleteResponseDeletedIpsecTunnelBgpBgpStatusCustomRemoteIdentities =
+  IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemBgpBgpStatusCustomRemoteIdentities;
+export const IpsecTunnelsDeleteResponseDeletedIpsecTunnelBgpBgpStatusCustomRemoteIdentities =
+  IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemBgpBgpStatusCustomRemoteIdentities;
+
+export type IpsecTunnelsDeleteResponseDeletedIpsecTunnelBgpBgpStatusHealthCheckDirection =
+  | "unidirectional"
+  | "bidirectional";
+export const IpsecTunnelsDeleteResponseDeletedIpsecTunnelBgpBgpStatusHealthCheckDirection =
+  /*@__PURE__*/ S.String;
+
+export type IpsecTunnelsDeleteResponseDeletedIpsecTunnelBgpBgpStatusHealthCheckRate =
+  | "low"
+  | "mid"
+  | "high";
+export const IpsecTunnelsDeleteResponseDeletedIpsecTunnelBgpBgpStatusHealthCheckRate =
+  /*@__PURE__*/ S.String;
+
+export type IpsecTunnelsDeleteResponseDeletedIpsecTunnelBgpBgpStatusHealthCheckTarget =
+  CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemBgpHealthCheckTarget;
+export const IpsecTunnelsDeleteResponseDeletedIpsecTunnelBgpBgpStatusHealthCheckTarget =
+  CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemBgpHealthCheckTarget;
+
+export type IpsecTunnelsDeleteResponseDeletedIpsecTunnelBgpBgpStatusHealthCheckTarget2 =
+  | string
+  | CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemBgpHealthCheckTarget;
+export const IpsecTunnelsDeleteResponseDeletedIpsecTunnelBgpBgpStatusHealthCheckTarget2 =
+  /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], ["effective", "saved"]]));
+
+export type IpsecTunnelsDeleteResponseDeletedIpsecTunnelBgpBgpStatusHealthCheckType =
+  | "reply"
+  | "request";
+export const IpsecTunnelsDeleteResponseDeletedIpsecTunnelBgpBgpStatusHealthCheckType =
+  /*@__PURE__*/ S.String;
+
+export type IpsecTunnelsDeleteResponseDeletedIpsecTunnelBgpBgpStatusHealthCheckPskMetadata =
+  IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemBgpBgpStatusHealthCheckPskMetadata;
+export const IpsecTunnelsDeleteResponseDeletedIpsecTunnelBgpBgpStatusHealthCheckPskMetadata =
+  IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemBgpBgpStatusHealthCheckPskMetadata;
+
+export interface IpsecTunnelsDeleteResponseDeletedIpsecTunnelBgpBgpStatusHealthCheck {
+  /** The direction of the flow of the healthcheck. Either unidirectional, where the probe comes to you via the tunnel and the result comes back to Cloudflare via the open Internet, or bidirectional where both the probe and result come and go via the tunnel. */
+  direction?: IpsecTunnelsDeleteResponseDeletedIpsecTunnelBgpBgpStatusHealthCheckDirection | null;
+  /** Determines whether to run healthchecks for a tunnel. */
+  enabled?: boolean | null;
+  /** How frequent the health check is run. The default value is `mid`. */
+  rate?: IpsecTunnelsDeleteResponseDeletedIpsecTunnelBgpBgpStatusHealthCheckRate | null;
+  /** The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customer_gre_endpoint address`. This field is ignored for bidirectional healthchecks as the interface_address (not assigned to the Cloudflare side of the tunnel) is used as the target. Must be in object form if the x-magic-new-hc-target header is set to true and string form if x-magic-new-hc-target is absent or set to false. */
+  target?: IpsecTunnelsDeleteResponseDeletedIpsecTunnelBgpBgpStatusHealthCheckTarget2 | null;
+  /** The type of healthcheck to run, reply or request. The default value is `reply`. */
+  type?: IpsecTunnelsDeleteResponseDeletedIpsecTunnelBgpBgpStatusHealthCheckType | null;
+  /** A 127 bit IPV6 prefix from within the virtual_subnet6 prefix space with the address being the first IP of the subnet and not same as the address of virtual_subnet6. Eg if virtual_subnet6 is 2606:54c1:7:0:a9fe:12d2::/127 , interface_address6 could be 2606:54c1:7:0:a9fe:12d2:1:200/127 */
+  interfaceAddress6?: string | null;
+  /** The date and time the tunnel was last modified. */
+  modifiedOn?: string | null;
+  /** The PSK metadata that includes when the PSK was generated. */
+  pskMetadata?: IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemBgpBgpStatusHealthCheckPskMetadata | null;
+  /** If `true`, then IPsec replay protection will be supported in the Cloudflare-to-customer direction. */
+  replayProtection?: boolean | null;
+}
+export const IpsecTunnelsDeleteResponseDeletedIpsecTunnelBgpBgpStatusHealthCheck =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      direction: S.optional(
+        S.NullOr(
+          IpsecTunnelsDeleteResponseDeletedIpsecTunnelBgpBgpStatusHealthCheckDirection,
+        ),
+      ),
+      enabled: S.optional(S.NullOr(S.Boolean)),
+      rate: S.optional(
+        S.NullOr(
+          IpsecTunnelsDeleteResponseDeletedIpsecTunnelBgpBgpStatusHealthCheckRate,
+        ),
+      ),
+      target: S.optional(
+        S.NullOr(
+          IpsecTunnelsDeleteResponseDeletedIpsecTunnelBgpBgpStatusHealthCheckTarget2,
+        ),
+      ),
+      type: S.optional(
+        S.NullOr(
+          IpsecTunnelsDeleteResponseDeletedIpsecTunnelBgpBgpStatusHealthCheckType,
+        ),
+      ),
+      interfaceAddress6: S.optional(
+        S.NullOr(S.String).pipe(T.Body("interface_address6")),
+      ),
+      modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
+      pskMetadata: S.optional(
+        S.NullOr(
+          IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemBgpBgpStatusHealthCheckPskMetadata,
+        ).pipe(T.Body("psk_metadata")),
+      ),
+      replayProtection: S.optional(
+        S.NullOr(S.Boolean).pipe(T.Body("replay_protection")),
+      ),
+    }),
+  ).annotate({
+    identifier:
+      "IpsecTunnelsDeleteResponseDeletedIpsecTunnelBgpBgpStatusHealthCheck",
+  }) as any as S.Schema<IpsecTunnelsDeleteResponseDeletedIpsecTunnelBgpBgpStatusHealthCheck>;
+
+export interface IpsecTunnelsDeleteResponseDeletedIpsecTunnelBgpBgpStatus {
+  state: IpsecTunnelsDeleteResponseDeletedIpsecTunnelBgpBgpStatusState;
+  tcpEstablished: boolean;
+  /** formatdate-time */
+  updatedAt: string;
+  bgpState?: string | null;
+  /** formatipv4 */
+  cfSpeakerIp?: string | null;
+  /** maximum65535 */
+  cfSpeakerPort?: number | null;
+  /** formatipv4 */
+  customerSpeakerIp?: string | null;
+  /** maximum65535 */
+  customerSpeakerPort?: number | null;
+  /** The date and time the tunnel was created. */
+  createdOn?: string | null;
+  customRemoteIdentities?: IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemBgpBgpStatusCustomRemoteIdentities | null;
+  /** The IP address assigned to the customer side of the IPsec tunnel. Not required, but must be set for proactive traceroutes to work. */
+  customerEndpoint?: string | null;
+  /** An optional description forthe IPsec tunnel. */
+  description?: string | null;
+  healthCheck?: IpsecTunnelsDeleteResponseDeletedIpsecTunnelBgpBgpStatusHealthCheck | null;
+}
+export const IpsecTunnelsDeleteResponseDeletedIpsecTunnelBgpBgpStatus =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      state: IpsecTunnelsDeleteResponseDeletedIpsecTunnelBgpBgpStatusState,
+      tcpEstablished: S.Boolean.pipe(T.Body("tcp_established")),
+      updatedAt: S.String.pipe(T.Body("updated_at")),
+      bgpState: S.optional(S.NullOr(S.String).pipe(T.Body("bgp_state"))),
+      cfSpeakerIp: S.optional(S.NullOr(S.String).pipe(T.Body("cf_speaker_ip"))),
+      cfSpeakerPort: S.optional(
+        S.NullOr(S.Number).pipe(T.Body("cf_speaker_port")),
+      ),
+      customerSpeakerIp: S.optional(
+        S.NullOr(S.String).pipe(T.Body("customer_speaker_ip")),
+      ),
+      customerSpeakerPort: S.optional(
+        S.NullOr(S.Number).pipe(T.Body("customer_speaker_port")),
+      ),
+      createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
+      customRemoteIdentities: S.optional(
+        S.NullOr(
+          IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemBgpBgpStatusCustomRemoteIdentities,
+        ).pipe(T.Body("custom_remote_identities")),
+      ),
+      customerEndpoint: S.optional(
+        S.NullOr(S.String).pipe(T.Body("customer_endpoint")),
+      ),
+      description: S.optional(S.NullOr(S.String)),
+      healthCheck: S.optional(
+        S.NullOr(
+          IpsecTunnelsDeleteResponseDeletedIpsecTunnelBgpBgpStatusHealthCheck,
+        ).pipe(T.Body("health_check")),
+      ),
+    }),
+  ).annotate({
+    identifier: "IpsecTunnelsDeleteResponseDeletedIpsecTunnelBgpBgpStatus",
+  }) as any as S.Schema<IpsecTunnelsDeleteResponseDeletedIpsecTunnelBgpBgpStatus>;
+
 export interface IpsecTunnelsDeleteResponseDeletedIpsecTunnelBgp {
   /** ASN used on the customer end of the BGP session */
   customerAsn: number;
@@ -4768,6 +5236,7 @@ export interface IpsecTunnelsDeleteResponseDeletedIpsecTunnelBgp {
   importFilterId?: string | null;
   /** MD5 key to use for session authentication. */
   md5Key?: string | null;
+  bgpStatus?: IpsecTunnelsDeleteResponseDeletedIpsecTunnelBgpBgpStatus | null;
 }
 export const IpsecTunnelsDeleteResponseDeletedIpsecTunnelBgp =
   /*@__PURE__*/ S.suspend(() =>
@@ -4785,124 +5254,15 @@ export const IpsecTunnelsDeleteResponseDeletedIpsecTunnelBgp =
         S.NullOr(S.String).pipe(T.Body("import_filter_id")),
       ),
       md5Key: S.optional(S.NullOr(S.String).pipe(T.Body("md5_key"))),
+      bgpStatus: S.optional(
+        S.NullOr(IpsecTunnelsDeleteResponseDeletedIpsecTunnelBgpBgpStatus).pipe(
+          T.Body("bgp_status"),
+        ),
+      ),
     }),
   ).annotate({
     identifier: "IpsecTunnelsDeleteResponseDeletedIpsecTunnelBgp",
   }) as any as S.Schema<IpsecTunnelsDeleteResponseDeletedIpsecTunnelBgp>;
-
-export type IpsecTunnelsDeleteResponseDeletedIpsecTunnelBgpStatusState =
-  | "BGP_DOWN"
-  | "BGP_UP"
-  | "BGP_ESTABLISHING";
-export const IpsecTunnelsDeleteResponseDeletedIpsecTunnelBgpStatusState =
-  /*@__PURE__*/ S.String;
-
-export interface IpsecTunnelsDeleteResponseDeletedIpsecTunnelBgpStatus {
-  state: IpsecTunnelsDeleteResponseDeletedIpsecTunnelBgpStatusState;
-  tcpEstablished: boolean;
-  updatedAt: string;
-  bgpState?: string | null;
-  cfSpeakerIp?: string | null;
-  cfSpeakerPort?: number | null;
-  customerSpeakerIp?: string | null;
-  customerSpeakerPort?: number | null;
-}
-export const IpsecTunnelsDeleteResponseDeletedIpsecTunnelBgpStatus =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      state: IpsecTunnelsDeleteResponseDeletedIpsecTunnelBgpStatusState,
-      tcpEstablished: S.Boolean.pipe(T.Body("tcp_established")),
-      updatedAt: S.String.pipe(T.Body("updated_at")),
-      bgpState: S.optional(S.NullOr(S.String).pipe(T.Body("bgp_state"))),
-      cfSpeakerIp: S.optional(S.NullOr(S.String).pipe(T.Body("cf_speaker_ip"))),
-      cfSpeakerPort: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("cf_speaker_port")),
-      ),
-      customerSpeakerIp: S.optional(
-        S.NullOr(S.String).pipe(T.Body("customer_speaker_ip")),
-      ),
-      customerSpeakerPort: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("customer_speaker_port")),
-      ),
-    }),
-  ).annotate({
-    identifier: "IpsecTunnelsDeleteResponseDeletedIpsecTunnelBgpStatus",
-  }) as any as S.Schema<IpsecTunnelsDeleteResponseDeletedIpsecTunnelBgpStatus>;
-
-export type IpsecTunnelsDeleteResponseDeletedIpsecTunnelCustomRemoteIdentities =
-  IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemCustomRemoteIdentities;
-export const IpsecTunnelsDeleteResponseDeletedIpsecTunnelCustomRemoteIdentities =
-  IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemCustomRemoteIdentities;
-
-export type IpsecTunnelsDeleteResponseDeletedIpsecTunnelHealthCheckDirection =
-  | "unidirectional"
-  | "bidirectional";
-export const IpsecTunnelsDeleteResponseDeletedIpsecTunnelHealthCheckDirection =
-  /*@__PURE__*/ S.String;
-
-export type IpsecTunnelsDeleteResponseDeletedIpsecTunnelHealthCheckRate =
-  | "low"
-  | "mid"
-  | "high";
-export const IpsecTunnelsDeleteResponseDeletedIpsecTunnelHealthCheckRate =
-  /*@__PURE__*/ S.String;
-
-export type IpsecTunnelsDeleteResponseDeletedIpsecTunnelHealthCheckTargetMagicHealthCheckTarget =
-  CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemHealthCheckTargetMagicHealthCheckTarget;
-export const IpsecTunnelsDeleteResponseDeletedIpsecTunnelHealthCheckTargetMagicHealthCheckTarget =
-  CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemHealthCheckTargetMagicHealthCheckTarget;
-
-export type IpsecTunnelsDeleteResponseDeletedIpsecTunnelHealthCheckTarget =
-  | string
-  | CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemHealthCheckTargetMagicHealthCheckTarget;
-export const IpsecTunnelsDeleteResponseDeletedIpsecTunnelHealthCheckTarget =
-  /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], ["effective", "saved"]]));
-
-export type IpsecTunnelsDeleteResponseDeletedIpsecTunnelHealthCheckType =
-  | "reply"
-  | "request";
-export const IpsecTunnelsDeleteResponseDeletedIpsecTunnelHealthCheckType =
-  /*@__PURE__*/ S.String;
-
-export interface IpsecTunnelsDeleteResponseDeletedIpsecTunnelHealthCheck {
-  /** The direction of the flow of the healthcheck. Either unidirectional, where the probe comes to you via the tunnel and the result comes back to Cloudflare via the open Internet, or bidirectional where both the probe and result come and go via the tunnel. */
-  direction?: IpsecTunnelsDeleteResponseDeletedIpsecTunnelHealthCheckDirection | null;
-  /** Determines whether to run healthchecks for a tunnel. */
-  enabled?: boolean | null;
-  /** How frequent the health check is run. The default value is `mid`. */
-  rate?: IpsecTunnelsDeleteResponseDeletedIpsecTunnelHealthCheckRate | null;
-  /** The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customer_gre_endpoint address`. This field is ignored for bidirectional healthchecks as the interface_address (not assigned to the Cloudflare side of the tunnel) is used as the target. Must be in object form if the x-magic-new-hc-target header is set to true and string form if x-magic-new-hc-target is absent or set to false. */
-  target?: IpsecTunnelsDeleteResponseDeletedIpsecTunnelHealthCheckTarget | null;
-  /** The type of healthcheck to run, reply or request. The default value is `reply`. */
-  type?: IpsecTunnelsDeleteResponseDeletedIpsecTunnelHealthCheckType | null;
-}
-export const IpsecTunnelsDeleteResponseDeletedIpsecTunnelHealthCheck =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      direction: S.optional(
-        S.NullOr(
-          IpsecTunnelsDeleteResponseDeletedIpsecTunnelHealthCheckDirection,
-        ),
-      ),
-      enabled: S.optional(S.NullOr(S.Boolean)),
-      rate: S.optional(
-        S.NullOr(IpsecTunnelsDeleteResponseDeletedIpsecTunnelHealthCheckRate),
-      ),
-      target: S.optional(
-        S.NullOr(IpsecTunnelsDeleteResponseDeletedIpsecTunnelHealthCheckTarget),
-      ),
-      type: S.optional(
-        S.NullOr(IpsecTunnelsDeleteResponseDeletedIpsecTunnelHealthCheckType),
-      ),
-    }),
-  ).annotate({
-    identifier: "IpsecTunnelsDeleteResponseDeletedIpsecTunnelHealthCheck",
-  }) as any as S.Schema<IpsecTunnelsDeleteResponseDeletedIpsecTunnelHealthCheck>;
-
-export type IpsecTunnelsDeleteResponseDeletedIpsecTunnelPskMetadata =
-  IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemPskMetadata;
-export const IpsecTunnelsDeleteResponseDeletedIpsecTunnelPskMetadata =
-  IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemPskMetadata;
 
 export interface IpsecTunnelsDeleteResponseDeletedIpsecTunnel {
   /** Identifier */
@@ -4918,23 +5278,6 @@ export interface IpsecTunnelsDeleteResponseDeletedIpsecTunnel {
   /** True if automatic stateful return routing should be enabled for a tunnel, false otherwise. Requires the `coupler_integration` account flag to be enabled; requests setting this to `true` without that flag will be rejected. */
   automaticReturnRouting?: boolean | null;
   bgp?: IpsecTunnelsDeleteResponseDeletedIpsecTunnelBgp | null;
-  bgpStatus?: IpsecTunnelsDeleteResponseDeletedIpsecTunnelBgpStatus | null;
-  /** The date and time the tunnel was created. */
-  createdOn?: string | null;
-  customRemoteIdentities?: IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemCustomRemoteIdentities | null;
-  /** The IP address assigned to the customer side of the IPsec tunnel. Not required, but must be set for proactive traceroutes to work. */
-  customerEndpoint?: string | null;
-  /** An optional description forthe IPsec tunnel. */
-  description?: string | null;
-  healthCheck?: IpsecTunnelsDeleteResponseDeletedIpsecTunnelHealthCheck | null;
-  /** A 127 bit IPV6 prefix from within the virtual_subnet6 prefix space with the address being the first IP of the subnet and not same as the address of virtual_subnet6. Eg if virtual_subnet6 is 2606:54c1:7:0:a9fe:12d2::/127 , interface_address6 could be 2606:54c1:7:0:a9fe:12d2:1:200/127 */
-  interfaceAddress6?: string | null;
-  /** The date and time the tunnel was last modified. */
-  modifiedOn?: string | null;
-  /** The PSK metadata that includes when the PSK was generated. */
-  pskMetadata?: IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemPskMetadata | null;
-  /** If `true`, then IPsec replay protection will be supported in the Cloudflare-to-customer direction. */
-  replayProtection?: boolean | null;
 }
 export const IpsecTunnelsDeleteResponseDeletedIpsecTunnel =
   /*@__PURE__*/ S.suspend(() =>
@@ -4951,38 +5294,6 @@ export const IpsecTunnelsDeleteResponseDeletedIpsecTunnel =
       ),
       bgp: S.optional(
         S.NullOr(IpsecTunnelsDeleteResponseDeletedIpsecTunnelBgp),
-      ),
-      bgpStatus: S.optional(
-        S.NullOr(IpsecTunnelsDeleteResponseDeletedIpsecTunnelBgpStatus).pipe(
-          T.Body("bgp_status"),
-        ),
-      ),
-      createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
-      customRemoteIdentities: S.optional(
-        S.NullOr(
-          IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemCustomRemoteIdentities,
-        ).pipe(T.Body("custom_remote_identities")),
-      ),
-      customerEndpoint: S.optional(
-        S.NullOr(S.String).pipe(T.Body("customer_endpoint")),
-      ),
-      description: S.optional(S.NullOr(S.String)),
-      healthCheck: S.optional(
-        S.NullOr(IpsecTunnelsDeleteResponseDeletedIpsecTunnelHealthCheck).pipe(
-          T.Body("health_check"),
-        ),
-      ),
-      interfaceAddress6: S.optional(
-        S.NullOr(S.String).pipe(T.Body("interface_address6")),
-      ),
-      modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-      pskMetadata: S.optional(
-        S.NullOr(
-          IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemPskMetadata,
-        ).pipe(T.Body("psk_metadata")),
-      ),
-      replayProtection: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("replay_protection")),
       ),
     }),
   ).annotate({
@@ -5248,6 +5559,74 @@ export const SitesAclsDeleteResponseLan1SubnetsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SitesAclsDeleteResponseLan1SubnetsList>;
 
+export type SitesAclsDeleteResponseLan1Lan2PortRangesList = Array<string>;
+export const SitesAclsDeleteResponseLan1Lan2PortRangesList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<SitesAclsDeleteResponseLan1Lan2PortRangesList>;
+
+export type SitesAclsDeleteResponseLan1Lan2PortsList = Array<number>;
+export const SitesAclsDeleteResponseLan1Lan2PortsList = /*@__PURE__*/ S.Array(
+  S.Number,
+) as any as S.Schema<SitesAclsDeleteResponseLan1Lan2PortsList>;
+
+export type SitesAclsDeleteResponseLan1Lan2SubnetsList = Array<unknown>;
+export const SitesAclsDeleteResponseLan1Lan2SubnetsList = /*@__PURE__*/ S.Array(
+  S.Unknown,
+) as any as S.Schema<SitesAclsDeleteResponseLan1Lan2SubnetsList>;
+
+export type SitesAclsDeleteResponseLan1Lan2ProtocolsItem =
+  | "tcp"
+  | "udp"
+  | "icmp";
+export const SitesAclsDeleteResponseLan1Lan2ProtocolsItem =
+  /*@__PURE__*/ S.String;
+
+export type SitesAclsDeleteResponseLan1Lan2ProtocolsList =
+  Array<SitesAclsDeleteResponseLan1Lan2ProtocolsItem>;
+export const SitesAclsDeleteResponseLan1Lan2ProtocolsList =
+  /*@__PURE__*/ S.Array(
+    SitesAclsDeleteResponseLan1Lan2ProtocolsItem,
+  ) as any as S.Schema<SitesAclsDeleteResponseLan1Lan2ProtocolsList>;
+
+export interface SitesAclsDeleteResponseLan1Lan2 {
+  /** The identifier for the LAN you want to create an ACL policy with. */
+  lanId: string;
+  /** The name of the LAN based on the provided lan_id. */
+  lanName?: string | null;
+  /** Array of port ranges on the provided LAN that will be included in the ACL. If no ports or port rangess are provided, communication on any port on this LAN is allowed. */
+  portRanges?: SitesAclsDeleteResponseLan1Lan2PortRangesList | null;
+  /** Array of ports on the provided LAN that will be included in the ACL. If no ports or port ranges are provided, communication on any port on this LAN is allowed. */
+  ports?: SitesAclsDeleteResponseLan1Lan2PortsList | null;
+  /** Array of subnet IPs within the LAN that will be included in the ACL. If no subnets are provided, communication on any subnets on this LAN are allowed. */
+  subnets?: SitesAclsDeleteResponseLan1Lan2SubnetsList | null;
+  /** The name of the ACL. */
+  name?: string | null;
+  protocols?: SitesAclsDeleteResponseLan1Lan2ProtocolsList | null;
+  /** The desired traffic direction for this ACL policy. If set to “false”, the policy will allow bidirectional traffic. If set to “true”, the policy will only allow traffic in one direction. If not included in request, will default to false. */
+  unidirectional?: boolean | null;
+}
+export const SitesAclsDeleteResponseLan1Lan2 = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    lanId: S.String.pipe(T.Body("lan_id")),
+    lanName: S.optional(S.NullOr(S.String).pipe(T.Body("lan_name"))),
+    portRanges: S.optional(
+      S.NullOr(SitesAclsDeleteResponseLan1Lan2PortRangesList).pipe(
+        T.Body("port_ranges"),
+      ),
+    ),
+    ports: S.optional(S.NullOr(SitesAclsDeleteResponseLan1Lan2PortsList)),
+    subnets: S.optional(S.NullOr(SitesAclsDeleteResponseLan1Lan2SubnetsList)),
+    name: S.optional(S.NullOr(S.String)),
+    protocols: S.optional(
+      S.NullOr(SitesAclsDeleteResponseLan1Lan2ProtocolsList),
+    ),
+    unidirectional: S.optional(S.NullOr(S.Boolean)),
+  }),
+).annotate({
+  identifier: "SitesAclsDeleteResponseLan1Lan2",
+}) as any as S.Schema<SitesAclsDeleteResponseLan1Lan2>;
+
 export interface SitesAclsDeleteResponseLan1 {
   /** The identifier for the LAN you want to create an ACL policy with. */
   lanId: string;
@@ -5259,6 +5638,7 @@ export interface SitesAclsDeleteResponseLan1 {
   ports?: SitesAclsDeleteResponseLan1PortsList | null;
   /** Array of subnet IPs within the LAN that will be included in the ACL. If no subnets are provided, communication on any subnets on this LAN are allowed. */
   subnets?: SitesAclsDeleteResponseLan1SubnetsList | null;
+  lan_2?: SitesAclsDeleteResponseLan1Lan2 | null;
 }
 export const SitesAclsDeleteResponseLan1 = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -5271,19 +5651,11 @@ export const SitesAclsDeleteResponseLan1 = /*@__PURE__*/ S.suspend(() =>
     ),
     ports: S.optional(S.NullOr(SitesAclsDeleteResponseLan1PortsList)),
     subnets: S.optional(S.NullOr(SitesAclsDeleteResponseLan1SubnetsList)),
+    lan_2: S.optional(S.NullOr(SitesAclsDeleteResponseLan1Lan2)),
   }),
 ).annotate({
   identifier: "SitesAclsDeleteResponseLan1",
 }) as any as S.Schema<SitesAclsDeleteResponseLan1>;
-
-export type SitesAclsDeleteResponseProtocolsItem = "tcp" | "udp" | "icmp";
-export const SitesAclsDeleteResponseProtocolsItem = /*@__PURE__*/ S.String;
-
-export type SitesAclsDeleteResponseProtocolsList =
-  Array<SitesAclsDeleteResponseProtocolsItem>;
-export const SitesAclsDeleteResponseProtocolsList = /*@__PURE__*/ S.Array(
-  SitesAclsDeleteResponseProtocolsItem,
-) as any as S.Schema<SitesAclsDeleteResponseProtocolsList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface DeleteSiteAclResponse {
@@ -5291,15 +5663,9 @@ export interface DeleteSiteAclResponse {
   id?: string | null;
   /** Description for the ACL. */
   description?: string | null;
-  /** The desired forwarding action for this ACL policy. If set to "false", the policy will forward traffic to Cloudflare. If set to "true", the policy will forward traffic locally on the Magic Connector. If not included in request, will default to false. */
+  /** The desired forwarding action for this ACL policy. If set to “false”, the policy will forward traffic to Cloudflare. If set to “true”, the policy will forward traffic locally on the Magic Connector. If not included in request, will default to false. */
   forwardLocally?: boolean | null;
   lan_1?: SitesAclsDeleteResponseLan1 | null;
-  lan_2?: SitesAclsDeleteResponseLan1 | null;
-  /** The name of the ACL. */
-  name?: string | null;
-  protocols?: SitesAclsDeleteResponseProtocolsList | null;
-  /** The desired traffic direction for this ACL policy. If set to "false", the policy will allow bidirectional traffic. If set to "true", the policy will only allow traffic in one direction. If not included in request, will default to false. */
-  unidirectional?: boolean | null;
 }
 export const DeleteSiteAclResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -5309,10 +5675,6 @@ export const DeleteSiteAclResponse = /*@__PURE__*/ S.suspend(() =>
       S.NullOr(S.Boolean).pipe(T.Body("forward_locally")),
     ),
     lan_1: S.optional(S.NullOr(SitesAclsDeleteResponseLan1)),
-    lan_2: S.optional(S.NullOr(SitesAclsDeleteResponseLan1)),
-    name: S.optional(S.NullOr(S.String)),
-    protocols: S.optional(S.NullOr(SitesAclsDeleteResponseProtocolsList)),
-    unidirectional: S.optional(S.NullOr(S.Boolean)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteSiteAclResponse",
@@ -5346,6 +5708,11 @@ export const DeleteSiteLanRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type SitesLansDeleteResponseNat = SitesLansCreateResultItemNat;
 export const SitesLansDeleteResponseNat = SitesLansCreateResultItemNat;
+
+export type SitesLansDeleteResponseRoutedSubnetsItemNat =
+  SitesLansCreateResultItemNat;
+export const SitesLansDeleteResponseRoutedSubnetsItemNat =
+  SitesLansCreateResultItemNat;
 
 export type SitesLansDeleteResponseRoutedSubnetsItem =
   SitesLansCreateResultItemRoutedSubnetsItem;
@@ -5395,7 +5762,7 @@ export const SitesLansDeleteResponseStaticAddressingDhcpServerDhcpOptionsItemTyp
 export interface SitesLansDeleteResponseStaticAddressingDhcpServerDhcpOptionsItem {
   /** DHCP option number (1-254). Options 0 and 255 are reserved by RFC 2132. Options 3, 6, and 51 are not allowed because they conflict with connector-managed configuration. */
   code: number;
-  /** The type of the option value. text: a string (max 255 bytes). hex: colon-separated hex bytes (e.g. "01:04:aa:bb:cc", max 255 bytes). ip: an IPv4 address (e.g. "10.20.30.40"). byte: an unsigned integer 0-255 (1 byte). short: an unsigned integer 0-65535 (2 bytes). integer: an unsigned integer 0-4294967295 (4 bytes). */
+  /** The type of the option value. text: a string (max 255 bytes). hex: colon-separated hex bytes (e.g. “01:04:aa:bb:cc”, max 255 bytes). ip: an IPv4 address (e.g. “10.20.30.40”). byte: an unsigned integer 0-255 (1 byte). short: an unsigned integer 0-65535 (2 bytes). integer: an unsigned integer 0-4294967295 (4 bytes). */
   type: SitesLansDeleteResponseStaticAddressingDhcpServerDhcpOptionsItemType;
   /** The option value, interpreted according to the type field. */
   value: string;
@@ -5447,6 +5814,12 @@ export interface SitesLansDeleteResponseStaticAddressingDhcpServer {
   dnsServers?: SitesLansDeleteResponseStaticAddressingDhcpServerDnsServersList | null;
   /** Mapping of MAC addresses to IP addresses */
   reservations?: SitesLansDeleteResponseStaticAddressingDhcpServerReservationsMap | null;
+  /** A valid CIDR notation representing an IP range. */
+  secondaryAddress?: string | null;
+  /** A valid CIDR notation representing an IP range. */
+  virtualAddress?: string | null;
+  /** VLAN ID. Use zero for untagged. */
+  vlanTag?: number | null;
 }
 export const SitesLansDeleteResponseStaticAddressingDhcpServer =
   /*@__PURE__*/ S.suspend(() =>
@@ -5471,6 +5844,13 @@ export const SitesLansDeleteResponseStaticAddressingDhcpServer =
           SitesLansDeleteResponseStaticAddressingDhcpServerReservationsMap,
         ),
       ),
+      secondaryAddress: S.optional(
+        S.NullOr(S.String).pipe(T.Body("secondary_address")),
+      ),
+      virtualAddress: S.optional(
+        S.NullOr(S.String).pipe(T.Body("virtual_address")),
+      ),
+      vlanTag: S.optional(S.NullOr(S.Number).pipe(T.Body("vlan_tag"))),
     }),
   ).annotate({
     identifier: "SitesLansDeleteResponseStaticAddressingDhcpServer",
@@ -5481,10 +5861,6 @@ export interface SitesLansDeleteResponseStaticAddressing {
   address: string;
   dhcpRelay?: SitesLansDeleteResponseStaticAddressingDhcpRelay | null;
   dhcpServer?: SitesLansDeleteResponseStaticAddressingDhcpServer | null;
-  /** A valid CIDR notation representing an IP range. */
-  secondaryAddress?: string | null;
-  /** A valid CIDR notation representing an IP range. */
-  virtualAddress?: string | null;
 }
 export const SitesLansDeleteResponseStaticAddressing = /*@__PURE__*/ S.suspend(
   () =>
@@ -5499,12 +5875,6 @@ export const SitesLansDeleteResponseStaticAddressing = /*@__PURE__*/ S.suspend(
         S.NullOr(SitesLansDeleteResponseStaticAddressingDhcpServer).pipe(
           T.Body("dhcp_server"),
         ),
-      ),
-      secondaryAddress: S.optional(
-        S.NullOr(S.String).pipe(T.Body("secondary_address")),
-      ),
-      virtualAddress: S.optional(
-        S.NullOr(S.String).pipe(T.Body("virtual_address")),
       ),
     }),
 ).annotate({
@@ -5530,8 +5900,6 @@ export interface DeleteSiteLanResponse {
   siteId?: string | null;
   /** If the site is not configured in high availability mode, this configuration is optional (if omitted, use DHCP). However, if in high availability mode, static_address is required along with secondary and virtual address. */
   staticAddressing?: SitesLansDeleteResponseStaticAddressing | null;
-  /** VLAN ID. Use zero for untagged. */
-  vlanTag?: number | null;
 }
 export const DeleteSiteLanResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -5556,7 +5924,6 @@ export const DeleteSiteLanResponse = /*@__PURE__*/ S.suspend(() =>
         T.Body("static_addressing"),
       ),
     ),
-    vlanTag: S.optional(S.NullOr(S.Number).pipe(T.Body("vlan_tag"))),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteSiteLanResponse",
@@ -5787,10 +6154,12 @@ export interface GetCf1SiteResponse {
   name: string;
   /** Identifier */
   id?: string | null;
+  /** formatdate-time */
   createdOn?: string | null;
   /** A human-provided description of the CF1 Site. */
   description?: string | null;
   location?: Cf1SitesCreateResultItemLocation | null;
+  /** formatdate-time */
   modifiedOn?: string | null;
 }
 export const GetCf1SiteResponse = /*@__PURE__*/ S.suspend(() =>
@@ -5863,11 +6232,13 @@ export const Cf1SitesRampsGetResponseMplsInterconnect =
 export interface GetCf1SiteRampResponse {
   /** Identifier */
   id: string;
+  /** formatdate-time */
   createdOn: string;
+  /** formatdate-time */
   modifiedOn: string;
   /** A human-provided name describing the ramp that should be unique within the CF1 Site. */
   name: string;
-  /** The type of network connection (ramp) linking a CF1 Site to Cloudflare's network. */
+  /** The type of network connection (ramp) linking a CF1 Site to Cloudflare’s network. */
   type: Cf1SitesRampsGetResponseType;
   /** A human-provided description of the ramp. */
   description?: string | null;
@@ -5930,78 +6301,62 @@ export const GetCfInterconnectRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetCfInterconnectRequest",
 }) as any as S.Schema<GetCfInterconnectRequest>;
 
-export type CfInterconnectsGetResponseInterconnectGre =
-  CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemGre;
-export const CfInterconnectsGetResponseInterconnectGre =
-  CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemGre;
+export type CfInterconnectsGetResponseInterconnectBgpExtraPrefixesList =
+  Array<string>;
+export const CfInterconnectsGetResponseInterconnectBgpExtraPrefixesList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<CfInterconnectsGetResponseInterconnectBgpExtraPrefixesList>;
 
-export type CfInterconnectsGetResponseInterconnectHealthCheckRate =
+export type CfInterconnectsGetResponseInterconnectBgpGre =
+  CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemBgpGre;
+export const CfInterconnectsGetResponseInterconnectBgpGre =
+  CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemBgpGre;
+
+export type CfInterconnectsGetResponseInterconnectBgpHealthCheckDirection =
+  | "unidirectional"
+  | "bidirectional";
+export const CfInterconnectsGetResponseInterconnectBgpHealthCheckDirection =
+  /*@__PURE__*/ S.String;
+
+export type CfInterconnectsGetResponseInterconnectBgpHealthCheckRate =
   | "low"
   | "mid"
   | "high";
-export const CfInterconnectsGetResponseInterconnectHealthCheckRate =
+export const CfInterconnectsGetResponseInterconnectBgpHealthCheckRate =
   /*@__PURE__*/ S.String;
 
-export type CfInterconnectsGetResponseInterconnectHealthCheckTargetMagicHealthCheckTarget =
-  CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemHealthCheckTargetMagicHealthCheckTarget;
-export const CfInterconnectsGetResponseInterconnectHealthCheckTargetMagicHealthCheckTarget =
-  CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemHealthCheckTargetMagicHealthCheckTarget;
+export type CfInterconnectsGetResponseInterconnectBgpHealthCheckTarget =
+  CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemBgpHealthCheckTarget;
+export const CfInterconnectsGetResponseInterconnectBgpHealthCheckTarget =
+  CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemBgpHealthCheckTarget;
 
-export type CfInterconnectsGetResponseInterconnectHealthCheckTarget =
+export type CfInterconnectsGetResponseInterconnectBgpHealthCheckTarget2 =
   | string
-  | CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemHealthCheckTargetMagicHealthCheckTarget;
-export const CfInterconnectsGetResponseInterconnectHealthCheckTarget =
+  | CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemBgpHealthCheckTarget;
+export const CfInterconnectsGetResponseInterconnectBgpHealthCheckTarget2 =
   /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], ["effective", "saved"]]));
 
-export type CfInterconnectsGetResponseInterconnectHealthCheckType =
+export type CfInterconnectsGetResponseInterconnectBgpHealthCheckType =
   | "reply"
   | "request";
-export const CfInterconnectsGetResponseInterconnectHealthCheckType =
+export const CfInterconnectsGetResponseInterconnectBgpHealthCheckType =
   /*@__PURE__*/ S.String;
 
-export interface CfInterconnectsGetResponseInterconnectHealthCheck {
+export interface CfInterconnectsGetResponseInterconnectBgpHealthCheck {
+  /** The direction of the flow of the healthcheck. Either unidirectional, where the probe comes to you via the interconnect and the result comes back to Cloudflare via the open Internet, or bidirectional where both the probe and result come and go via the interconnect. */
+  direction?: CfInterconnectsGetResponseInterconnectBgpHealthCheckDirection | null;
   /** Determines whether to run healthchecks for a tunnel. */
   enabled?: boolean | null;
   /** How frequent the health check is run. The default value is `mid`. */
-  rate?: CfInterconnectsGetResponseInterconnectHealthCheckRate | null;
+  rate?: CfInterconnectsGetResponseInterconnectBgpHealthCheckRate | null;
+  /** The source IPv4 address used for bidirectional health checks. Supported only for version 1.5 interconnects. It is required when `direction` is `bidirectional` and must be omitted (and is cleared) when `direction` is `unidirectional`. The address must be within RFC1918 space, the approved link-local range 169.254.240.0/20, or the Cloudflare reserved range 198.41.199.224/27. */
+  source?: string | null;
   /** The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customer_gre_endpoint address`. This field is ignored for bidirectional healthchecks as the interface_address (not assigned to the Cloudflare side of the tunnel) is used as the target. Must be in object form if the x-magic-new-hc-target header is set to true and string form if x-magic-new-hc-target is absent or set to false. */
-  target?: CfInterconnectsGetResponseInterconnectHealthCheckTarget | null;
+  target?: CfInterconnectsGetResponseInterconnectBgpHealthCheckTarget2 | null;
   /** The type of healthcheck to run, reply or request. The default value is `reply`. */
-  type?: CfInterconnectsGetResponseInterconnectHealthCheckType | null;
-}
-export const CfInterconnectsGetResponseInterconnectHealthCheck =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      enabled: S.optional(S.NullOr(S.Boolean)),
-      rate: S.optional(
-        S.NullOr(CfInterconnectsGetResponseInterconnectHealthCheckRate),
-      ),
-      target: S.optional(
-        S.NullOr(CfInterconnectsGetResponseInterconnectHealthCheckTarget),
-      ),
-      type: S.optional(
-        S.NullOr(CfInterconnectsGetResponseInterconnectHealthCheckType),
-      ),
-    }),
-  ).annotate({
-    identifier: "CfInterconnectsGetResponseInterconnectHealthCheck",
-  }) as any as S.Schema<CfInterconnectsGetResponseInterconnectHealthCheck>;
-
-export interface CfInterconnectsGetResponseInterconnect {
-  /** Identifier */
-  id?: string | null;
-  /** True if automatic stateful return routing should be enabled for a tunnel, false otherwise. Requires the `coupler_integration` account flag to be enabled; requests setting this to `true` without that flag will be rejected. */
-  automaticReturnRouting?: boolean | null;
-  /** The name of the interconnect. The name cannot share a name with other tunnels. */
-  coloName?: string | null;
-  /** The date and time the tunnel was created. */
-  createdOn?: string | null;
-  /** An optional description of the interconnect. */
-  description?: string | null;
-  /** The configuration specific to GRE interconnects. */
-  gre?: CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemGre | null;
-  healthCheck?: CfInterconnectsGetResponseInterconnectHealthCheck | null;
-  /** A 31-bit prefix (/31 in CIDR notation) supporting two hosts, one for each side of the tunnel. Select the subnet from the following private IP space: 10.0.0.0–10.255.255.255, 172.16.0.0–172.31.255.255, 192.168.0.0–192.168.255.255. */
+  type?: CfInterconnectsGetResponseInterconnectBgpHealthCheckType | null;
+  /** The IPv4 interface address for the interconnect. For MPLS Interconnects, use a /30 or /31 prefix. For GRE Interconnects, a /30 or /31 prefix may be used. Version 1.5 interconnects require a /31 prefix and may also use a prefix from the account’s authorized prefixes; otherwise, select the subnet from RFC 1918 or the approved link-local ranges. */
   interfaceAddress?: string | null;
   /** A 127 bit IPV6 prefix from within the virtual_subnet6 prefix space with the address being the first IP of the subnet and not same as the address of virtual_subnet6. Eg if virtual_subnet6 is 2606:54c1:7:0:a9fe:12d2::/127 , interface_address6 could be 2606:54c1:7:0:a9fe:12d2:1:200/127 */
   interfaceAddress6?: string | null;
@@ -6011,26 +6366,27 @@ export interface CfInterconnectsGetResponseInterconnect {
   mtu?: number | null;
   /** The name of the interconnect. The name cannot share a name with other tunnels. */
   name?: string | null;
+  /** Immutable interconnect version configured at creation time. One of: */
+  version?: string | null;
   /** An identifier that correlates this interconnect with the corresponding V2 CNI interconnect resource. */
   virtualPortReservationId?: string | null;
 }
-export const CfInterconnectsGetResponseInterconnect = /*@__PURE__*/ S.suspend(
-  () =>
+export const CfInterconnectsGetResponseInterconnectBgpHealthCheck =
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      id: S.optional(S.NullOr(S.String)),
-      automaticReturnRouting: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("automatic_return_routing")),
+      direction: S.optional(
+        S.NullOr(CfInterconnectsGetResponseInterconnectBgpHealthCheckDirection),
       ),
-      coloName: S.optional(S.NullOr(S.String).pipe(T.Body("colo_name"))),
-      createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
-      description: S.optional(S.NullOr(S.String)),
-      gre: S.optional(
-        S.NullOr(CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemGre),
+      enabled: S.optional(S.NullOr(S.Boolean)),
+      rate: S.optional(
+        S.NullOr(CfInterconnectsGetResponseInterconnectBgpHealthCheckRate),
       ),
-      healthCheck: S.optional(
-        S.NullOr(CfInterconnectsGetResponseInterconnectHealthCheck).pipe(
-          T.Body("health_check"),
-        ),
+      source: S.optional(S.NullOr(S.String)),
+      target: S.optional(
+        S.NullOr(CfInterconnectsGetResponseInterconnectBgpHealthCheckTarget2),
+      ),
+      type: S.optional(
+        S.NullOr(CfInterconnectsGetResponseInterconnectBgpHealthCheckType),
       ),
       interfaceAddress: S.optional(
         S.NullOr(S.String).pipe(T.Body("interface_address")),
@@ -6041,9 +6397,100 @@ export const CfInterconnectsGetResponseInterconnect = /*@__PURE__*/ S.suspend(
       modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
       mtu: S.optional(S.NullOr(S.Number)),
       name: S.optional(S.NullOr(S.String)),
+      version: S.optional(S.NullOr(S.String)),
       virtualPortReservationId: S.optional(
         S.NullOr(S.String).pipe(T.Body("virtual_port_reservation_id")),
       ),
+    }),
+  ).annotate({
+    identifier: "CfInterconnectsGetResponseInterconnectBgpHealthCheck",
+  }) as any as S.Schema<CfInterconnectsGetResponseInterconnectBgpHealthCheck>;
+
+export interface CfInterconnectsGetResponseInterconnectBgp {
+  /** Deprecated. Use customer_asn. */
+  deprecatedasNo?: number | null;
+  /** Read-only for v1.5; derived from interface_address. */
+  deprecatedcloudflareEndpoint?: string | null;
+  /** ASN used on the customer end of the BGP session. */
+  customerAsn?: number | null;
+  /** Read-only for v1.5; derived from interface_address. */
+  deprecatedcustomerEndpoint?: string | null;
+  /** ID of the BGP filter profile applied to routes advertised to the customer. */
+  exportFilterId?: string | null;
+  /** Prefixes in this list will be advertised to the customer device, in addition to the routes in the Magic routing table. */
+  extraPrefixes?: CfInterconnectsGetResponseInterconnectBgpExtraPrefixesList | null;
+  /** ID of the BGP filter profile applied to routes received from the customer. */
+  importFilterId?: string | null;
+  /** MD5 key to use for session authentication. */
+  md5Key?: string | null;
+  /** The name of the interconnect. The name cannot share a name with other tunnels. */
+  coloName?: string | null;
+  /** The date and time the tunnel was created. */
+  createdOn?: string | null;
+  /** An optional description of the interconnect. */
+  description?: string | null;
+  /** Omitted in responses for version 1.5 interconnects. */
+  gre?: CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemBgpGre | null;
+  healthCheck?: CfInterconnectsGetResponseInterconnectBgpHealthCheck | null;
+}
+export const CfInterconnectsGetResponseInterconnectBgp =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      deprecatedasNo: S.optional(
+        S.NullOr(S.Number).pipe(T.Body("Deprecatedas_no")),
+      ),
+      deprecatedcloudflareEndpoint: S.optional(
+        S.NullOr(S.String).pipe(T.Body("Deprecatedcloudflare_endpoint")),
+      ),
+      customerAsn: S.optional(S.NullOr(S.Number).pipe(T.Body("customer_asn"))),
+      deprecatedcustomerEndpoint: S.optional(
+        S.NullOr(S.String).pipe(T.Body("Deprecatedcustomer_endpoint")),
+      ),
+      exportFilterId: S.optional(
+        S.NullOr(S.String).pipe(T.Body("export_filter_id")),
+      ),
+      extraPrefixes: S.optional(
+        S.NullOr(
+          CfInterconnectsGetResponseInterconnectBgpExtraPrefixesList,
+        ).pipe(T.Body("extra_prefixes")),
+      ),
+      importFilterId: S.optional(
+        S.NullOr(S.String).pipe(T.Body("import_filter_id")),
+      ),
+      md5Key: S.optional(S.NullOr(S.String).pipe(T.Body("md5_key"))),
+      coloName: S.optional(S.NullOr(S.String).pipe(T.Body("colo_name"))),
+      createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
+      description: S.optional(S.NullOr(S.String)),
+      gre: S.optional(
+        S.NullOr(
+          CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemBgpGre,
+        ),
+      ),
+      healthCheck: S.optional(
+        S.NullOr(CfInterconnectsGetResponseInterconnectBgpHealthCheck).pipe(
+          T.Body("health_check"),
+        ),
+      ),
+    }),
+  ).annotate({
+    identifier: "CfInterconnectsGetResponseInterconnectBgp",
+  }) as any as S.Schema<CfInterconnectsGetResponseInterconnectBgp>;
+
+export interface CfInterconnectsGetResponseInterconnect {
+  /** Identifier */
+  id?: string | null;
+  /** True if automatic stateful return routing should be enabled for a tunnel, false otherwise. Requires the `coupler_integration` account flag to be enabled; requests setting this to `true` without that flag will be rejected. */
+  automaticReturnRouting?: boolean | null;
+  bgp?: CfInterconnectsGetResponseInterconnectBgp | null;
+}
+export const CfInterconnectsGetResponseInterconnect = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      id: S.optional(S.NullOr(S.String)),
+      automaticReturnRouting: S.optional(
+        S.NullOr(S.Boolean).pipe(T.Body("automatic_return_routing")),
+      ),
+      bgp: S.optional(S.NullOr(CfInterconnectsGetResponseInterconnectBgp)),
     }),
 ).annotate({
   identifier: "CfInterconnectsGetResponseInterconnect",
@@ -6132,6 +6579,7 @@ export interface GetConnectorResponse {
   activated: boolean;
   /** Allowed days of the week for upgrades. Default is all days. */
   interruptWindowDaysOfWeek: ConnectorsGetResponseInterruptWindowDaysOfWeekList;
+  /** maximum24 */
   interruptWindowDurationHours: number;
   /** List of dates (YYYY-MM-DD) when upgrades are blocked. */
   interruptWindowEmbargoDates: ConnectorsGetResponseInterruptWindowEmbargoDatesList;
@@ -6208,432 +6656,50 @@ export const GetConnectorEventRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetConnectorEventRequest",
 }) as any as S.Schema<GetConnectorEventRequest>;
 
-export type ConnectorsEventsGetResponseEInitK = "Init";
-export const ConnectorsEventsGetResponseEInitK = /*@__PURE__*/ S.String;
+export type ConnectorsEventsGetResponseEK =
+  | "Init"
+  | "Leave"
+  | "StartAttestation"
+  | "FinishAttestationSuccess"
+  | "FinishAttestationFailure"
+  | "StartRotateCryptKey"
+  | "FinishRotateCryptKeySuccess"
+  | "FinishRotateCryptKeyFailure"
+  | "StartRotatePki"
+  | "FinishRotatePkiSuccess"
+  | "FinishRotatePkiFailure"
+  | "StartUpgrade"
+  | "FinishUpgradeSuccess"
+  | "FinishUpgradeFailure"
+  | "Reconcile"
+  | "ConfigureCloudflaredTunnel"
+  | "RekeyInstallBoth"
+  | "RekeyStart"
+  | "RekeyRestart"
+  | "RekeyAdvance"
+  | "RekeyComplete"
+  | "RekeyReset"
+  | "HaTransition"
+  | "HaError"
+  | "HaInit"
+  | "HaLeave";
+export const ConnectorsEventsGetResponseEK = /*@__PURE__*/ S.String;
 
-export interface ConnectorsEventsGetResponseEInit {
-  /** Initialized process */
-  k: ConnectorsEventsGetResponseEInitK;
+export interface ConnectorsEventsGetResponseE {
+  /** Event kind */
+  k: ConnectorsEventsGetResponseEK;
 }
-export const ConnectorsEventsGetResponseEInit = /*@__PURE__*/ S.suspend(() =>
+export const ConnectorsEventsGetResponseE = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    k: ConnectorsEventsGetResponseEInitK,
+    k: ConnectorsEventsGetResponseEK,
   }),
 ).annotate({
-  identifier: "ConnectorsEventsGetResponseEInit",
-}) as any as S.Schema<ConnectorsEventsGetResponseEInit>;
-
-export type ConnectorsEventsGetResponseELeaveK = "Leave";
-export const ConnectorsEventsGetResponseELeaveK = /*@__PURE__*/ S.String;
-
-export interface ConnectorsEventsGetResponseELeave {
-  /** Stopped process */
-  k: ConnectorsEventsGetResponseELeaveK;
-}
-export const ConnectorsEventsGetResponseELeave = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    k: ConnectorsEventsGetResponseELeaveK,
-  }),
-).annotate({
-  identifier: "ConnectorsEventsGetResponseELeave",
-}) as any as S.Schema<ConnectorsEventsGetResponseELeave>;
-
-export type ConnectorsEventsGetResponseEStartAttestationK = "StartAttestation";
-export const ConnectorsEventsGetResponseEStartAttestationK =
-  /*@__PURE__*/ S.String;
-
-export interface ConnectorsEventsGetResponseEStartAttestation {
-  /** Started attestation */
-  k: ConnectorsEventsGetResponseEStartAttestationK;
-}
-export const ConnectorsEventsGetResponseEStartAttestation =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      k: ConnectorsEventsGetResponseEStartAttestationK,
-    }),
-  ).annotate({
-    identifier: "ConnectorsEventsGetResponseEStartAttestation",
-  }) as any as S.Schema<ConnectorsEventsGetResponseEStartAttestation>;
-
-export type ConnectorsEventsGetResponseEFinishAttestationSuccessK =
-  "FinishAttestationSuccess";
-export const ConnectorsEventsGetResponseEFinishAttestationSuccessK =
-  /*@__PURE__*/ S.String;
-
-export interface ConnectorsEventsGetResponseEFinishAttestationSuccess {
-  /** Finished attestation */
-  k: ConnectorsEventsGetResponseEFinishAttestationSuccessK;
-}
-export const ConnectorsEventsGetResponseEFinishAttestationSuccess =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      k: ConnectorsEventsGetResponseEFinishAttestationSuccessK,
-    }),
-  ).annotate({
-    identifier: "ConnectorsEventsGetResponseEFinishAttestationSuccess",
-  }) as any as S.Schema<ConnectorsEventsGetResponseEFinishAttestationSuccess>;
-
-export type ConnectorsEventsGetResponseEFinishAttestationFailureK =
-  "FinishAttestationFailure";
-export const ConnectorsEventsGetResponseEFinishAttestationFailureK =
-  /*@__PURE__*/ S.String;
-
-export interface ConnectorsEventsGetResponseEFinishAttestationFailure {
-  /** Failed attestation */
-  k: ConnectorsEventsGetResponseEFinishAttestationFailureK;
-}
-export const ConnectorsEventsGetResponseEFinishAttestationFailure =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      k: ConnectorsEventsGetResponseEFinishAttestationFailureK,
-    }),
-  ).annotate({
-    identifier: "ConnectorsEventsGetResponseEFinishAttestationFailure",
-  }) as any as S.Schema<ConnectorsEventsGetResponseEFinishAttestationFailure>;
-
-export type ConnectorsEventsGetResponseEStartRotateCryptKeyK =
-  "StartRotateCryptKey";
-export const ConnectorsEventsGetResponseEStartRotateCryptKeyK =
-  /*@__PURE__*/ S.String;
-
-export interface ConnectorsEventsGetResponseEStartRotateCryptKey {
-  /** Started crypt key rotation */
-  k: ConnectorsEventsGetResponseEStartRotateCryptKeyK;
-}
-export const ConnectorsEventsGetResponseEStartRotateCryptKey =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      k: ConnectorsEventsGetResponseEStartRotateCryptKeyK,
-    }),
-  ).annotate({
-    identifier: "ConnectorsEventsGetResponseEStartRotateCryptKey",
-  }) as any as S.Schema<ConnectorsEventsGetResponseEStartRotateCryptKey>;
-
-export type ConnectorsEventsGetResponseEFinishRotateCryptKeySuccessK =
-  "FinishRotateCryptKeySuccess";
-export const ConnectorsEventsGetResponseEFinishRotateCryptKeySuccessK =
-  /*@__PURE__*/ S.String;
-
-export interface ConnectorsEventsGetResponseEFinishRotateCryptKeySuccess {
-  /** Finished crypt key rotation */
-  k: ConnectorsEventsGetResponseEFinishRotateCryptKeySuccessK;
-}
-export const ConnectorsEventsGetResponseEFinishRotateCryptKeySuccess =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      k: ConnectorsEventsGetResponseEFinishRotateCryptKeySuccessK,
-    }),
-  ).annotate({
-    identifier: "ConnectorsEventsGetResponseEFinishRotateCryptKeySuccess",
-  }) as any as S.Schema<ConnectorsEventsGetResponseEFinishRotateCryptKeySuccess>;
-
-export type ConnectorsEventsGetResponseEFinishRotateCryptKeyFailureK =
-  "FinishRotateCryptKeyFailure";
-export const ConnectorsEventsGetResponseEFinishRotateCryptKeyFailureK =
-  /*@__PURE__*/ S.String;
-
-export interface ConnectorsEventsGetResponseEFinishRotateCryptKeyFailure {
-  /** Failed crypt key rotation */
-  k: ConnectorsEventsGetResponseEFinishRotateCryptKeyFailureK;
-}
-export const ConnectorsEventsGetResponseEFinishRotateCryptKeyFailure =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      k: ConnectorsEventsGetResponseEFinishRotateCryptKeyFailureK,
-    }),
-  ).annotate({
-    identifier: "ConnectorsEventsGetResponseEFinishRotateCryptKeyFailure",
-  }) as any as S.Schema<ConnectorsEventsGetResponseEFinishRotateCryptKeyFailure>;
-
-export type ConnectorsEventsGetResponseEStartRotatePkiK = "StartRotatePki";
-export const ConnectorsEventsGetResponseEStartRotatePkiK =
-  /*@__PURE__*/ S.String;
-
-export interface ConnectorsEventsGetResponseEStartRotatePki {
-  /** Started PKI rotation */
-  k: ConnectorsEventsGetResponseEStartRotatePkiK;
-}
-export const ConnectorsEventsGetResponseEStartRotatePki =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      k: ConnectorsEventsGetResponseEStartRotatePkiK,
-    }),
-  ).annotate({
-    identifier: "ConnectorsEventsGetResponseEStartRotatePki",
-  }) as any as S.Schema<ConnectorsEventsGetResponseEStartRotatePki>;
-
-export type ConnectorsEventsGetResponseEFinishRotatePkiSuccessK =
-  "FinishRotatePkiSuccess";
-export const ConnectorsEventsGetResponseEFinishRotatePkiSuccessK =
-  /*@__PURE__*/ S.String;
-
-export interface ConnectorsEventsGetResponseEFinishRotatePkiSuccess {
-  /** Finished PKI rotation */
-  k: ConnectorsEventsGetResponseEFinishRotatePkiSuccessK;
-}
-export const ConnectorsEventsGetResponseEFinishRotatePkiSuccess =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      k: ConnectorsEventsGetResponseEFinishRotatePkiSuccessK,
-    }),
-  ).annotate({
-    identifier: "ConnectorsEventsGetResponseEFinishRotatePkiSuccess",
-  }) as any as S.Schema<ConnectorsEventsGetResponseEFinishRotatePkiSuccess>;
-
-export type ConnectorsEventsGetResponseEFinishRotatePkiFailureK =
-  "FinishRotatePkiFailure";
-export const ConnectorsEventsGetResponseEFinishRotatePkiFailureK =
-  /*@__PURE__*/ S.String;
-
-export interface ConnectorsEventsGetResponseEFinishRotatePkiFailure {
-  /** Failed PKI rotation */
-  k: ConnectorsEventsGetResponseEFinishRotatePkiFailureK;
-}
-export const ConnectorsEventsGetResponseEFinishRotatePkiFailure =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      k: ConnectorsEventsGetResponseEFinishRotatePkiFailureK,
-    }),
-  ).annotate({
-    identifier: "ConnectorsEventsGetResponseEFinishRotatePkiFailure",
-  }) as any as S.Schema<ConnectorsEventsGetResponseEFinishRotatePkiFailure>;
-
-export type ConnectorsEventsGetResponseEStartUpgradeK = "StartUpgrade";
-export const ConnectorsEventsGetResponseEStartUpgradeK = /*@__PURE__*/ S.String;
-
-export interface ConnectorsEventsGetResponseEStartUpgrade {
-  /** Started upgrade */
-  k: ConnectorsEventsGetResponseEStartUpgradeK;
-  /** Location of upgrade bundle */
-  url: string;
-}
-export const ConnectorsEventsGetResponseEStartUpgrade = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      k: ConnectorsEventsGetResponseEStartUpgradeK,
-      url: S.String,
-    }),
-).annotate({
-  identifier: "ConnectorsEventsGetResponseEStartUpgrade",
-}) as any as S.Schema<ConnectorsEventsGetResponseEStartUpgrade>;
-
-export type ConnectorsEventsGetResponseEFinishUpgradeSuccessK =
-  "FinishUpgradeSuccess";
-export const ConnectorsEventsGetResponseEFinishUpgradeSuccessK =
-  /*@__PURE__*/ S.String;
-
-export interface ConnectorsEventsGetResponseEFinishUpgradeSuccess {
-  /** Finished upgrade */
-  k: ConnectorsEventsGetResponseEFinishUpgradeSuccessK;
-}
-export const ConnectorsEventsGetResponseEFinishUpgradeSuccess =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      k: ConnectorsEventsGetResponseEFinishUpgradeSuccessK,
-    }),
-  ).annotate({
-    identifier: "ConnectorsEventsGetResponseEFinishUpgradeSuccess",
-  }) as any as S.Schema<ConnectorsEventsGetResponseEFinishUpgradeSuccess>;
-
-export type ConnectorsEventsGetResponseEFinishUpgradeFailureK =
-  "FinishUpgradeFailure";
-export const ConnectorsEventsGetResponseEFinishUpgradeFailureK =
-  /*@__PURE__*/ S.String;
-
-export interface ConnectorsEventsGetResponseEFinishUpgradeFailure {
-  /** Failed upgrade */
-  k: ConnectorsEventsGetResponseEFinishUpgradeFailureK;
-}
-export const ConnectorsEventsGetResponseEFinishUpgradeFailure =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      k: ConnectorsEventsGetResponseEFinishUpgradeFailureK,
-    }),
-  ).annotate({
-    identifier: "ConnectorsEventsGetResponseEFinishUpgradeFailure",
-  }) as any as S.Schema<ConnectorsEventsGetResponseEFinishUpgradeFailure>;
-
-export type ConnectorsEventsGetResponseEReconcileK = "Reconcile";
-export const ConnectorsEventsGetResponseEReconcileK = /*@__PURE__*/ S.String;
-
-export interface ConnectorsEventsGetResponseEReconcile {
-  /** Reconciled */
-  k: ConnectorsEventsGetResponseEReconcileK;
-}
-export const ConnectorsEventsGetResponseEReconcile = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      k: ConnectorsEventsGetResponseEReconcileK,
-    }),
-).annotate({
-  identifier: "ConnectorsEventsGetResponseEReconcile",
-}) as any as S.Schema<ConnectorsEventsGetResponseEReconcile>;
-
-export type ConnectorsEventsGetResponseEConfigureCloudflaredTunnelK =
-  "ConfigureCloudflaredTunnel";
-export const ConnectorsEventsGetResponseEConfigureCloudflaredTunnelK =
-  /*@__PURE__*/ S.String;
-
-export interface ConnectorsEventsGetResponseEConfigureCloudflaredTunnel {
-  /** Configured Cloudflared tunnel */
-  k: ConnectorsEventsGetResponseEConfigureCloudflaredTunnelK;
-}
-export const ConnectorsEventsGetResponseEConfigureCloudflaredTunnel =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      k: ConnectorsEventsGetResponseEConfigureCloudflaredTunnelK,
-    }),
-  ).annotate({
-    identifier: "ConnectorsEventsGetResponseEConfigureCloudflaredTunnel",
-  }) as any as S.Schema<ConnectorsEventsGetResponseEConfigureCloudflaredTunnel>;
-
-export type ConnectorsEventsGetResponseERekeyInstallBothK = "RekeyInstallBoth";
-export const ConnectorsEventsGetResponseERekeyInstallBothK =
-  /*@__PURE__*/ S.String;
-
-export interface ConnectorsEventsGetResponseERekeyInstallBoth {
-  /** Installed initial inbound and outbound keys */
-  k: ConnectorsEventsGetResponseERekeyInstallBothK;
-  /** Tunnel identifier */
-  tunnelId: string;
-}
-export const ConnectorsEventsGetResponseERekeyInstallBoth =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      k: ConnectorsEventsGetResponseERekeyInstallBothK,
-      tunnelId: S.String.pipe(T.Body("tunnel_id")),
-    }),
-  ).annotate({
-    identifier: "ConnectorsEventsGetResponseERekeyInstallBoth",
-  }) as any as S.Schema<ConnectorsEventsGetResponseERekeyInstallBoth>;
-
-export type ConnectorsEventsGetResponseERekeyStartK = "RekeyStart";
-export const ConnectorsEventsGetResponseERekeyStartK = /*@__PURE__*/ S.String;
-
-export interface ConnectorsEventsGetResponseERekeyStart {
-  /** Installed new inbound key, kept old outbound */
-  k: ConnectorsEventsGetResponseERekeyStartK;
-  /** Tunnel identifier */
-  tunnelId: string;
-}
-export const ConnectorsEventsGetResponseERekeyStart = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      k: ConnectorsEventsGetResponseERekeyStartK,
-      tunnelId: S.String.pipe(T.Body("tunnel_id")),
-    }),
-).annotate({
-  identifier: "ConnectorsEventsGetResponseERekeyStart",
-}) as any as S.Schema<ConnectorsEventsGetResponseERekeyStart>;
-
-export type ConnectorsEventsGetResponseERekeyAdvanceK = "RekeyAdvance";
-export const ConnectorsEventsGetResponseERekeyAdvanceK = /*@__PURE__*/ S.String;
-
-export interface ConnectorsEventsGetResponseERekeyAdvance {
-  /** Confirmed traffic on new inbound key, swapped outbound to new */
-  k: ConnectorsEventsGetResponseERekeyAdvanceK;
-  /** Tunnel identifier */
-  tunnelId: string;
-}
-export const ConnectorsEventsGetResponseERekeyAdvance = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      k: ConnectorsEventsGetResponseERekeyAdvanceK,
-      tunnelId: S.String.pipe(T.Body("tunnel_id")),
-    }),
-).annotate({
-  identifier: "ConnectorsEventsGetResponseERekeyAdvance",
-}) as any as S.Schema<ConnectorsEventsGetResponseERekeyAdvance>;
-
-export type ConnectorsEventsGetResponseERekeyCompleteK = "RekeyComplete";
-export const ConnectorsEventsGetResponseERekeyCompleteK =
-  /*@__PURE__*/ S.String;
-
-export interface ConnectorsEventsGetResponseERekeyComplete {
-  /** Deleted old keys */
-  k: ConnectorsEventsGetResponseERekeyCompleteK;
-  /** Tunnel identifier */
-  tunnelId: string;
-}
-export const ConnectorsEventsGetResponseERekeyComplete =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      k: ConnectorsEventsGetResponseERekeyCompleteK,
-      tunnelId: S.String.pipe(T.Body("tunnel_id")),
-    }),
-  ).annotate({
-    identifier: "ConnectorsEventsGetResponseERekeyComplete",
-  }) as any as S.Schema<ConnectorsEventsGetResponseERekeyComplete>;
-
-export type ConnectorsEventsGetResponseERekeyResetK = "RekeyReset";
-export const ConnectorsEventsGetResponseERekeyResetK = /*@__PURE__*/ S.String;
-
-export interface ConnectorsEventsGetResponseERekeyReset {
-  /** Deleted all keys after receiving an unexpected key */
-  k: ConnectorsEventsGetResponseERekeyResetK;
-  /** Tunnel identifier */
-  tunnelId: string;
-}
-export const ConnectorsEventsGetResponseERekeyReset = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      k: ConnectorsEventsGetResponseERekeyResetK,
-      tunnelId: S.String.pipe(T.Body("tunnel_id")),
-    }),
-).annotate({
-  identifier: "ConnectorsEventsGetResponseERekeyReset",
-}) as any as S.Schema<ConnectorsEventsGetResponseERekeyReset>;
-
-export type ConnectorsEventsGetResponseE =
-  | ConnectorsEventsGetResponseEInit
-  | ConnectorsEventsGetResponseELeave
-  | ConnectorsEventsGetResponseEStartAttestation
-  | ConnectorsEventsGetResponseEFinishAttestationSuccess
-  | ConnectorsEventsGetResponseEFinishAttestationFailure
-  | ConnectorsEventsGetResponseEStartRotateCryptKey
-  | ConnectorsEventsGetResponseEFinishRotateCryptKeySuccess
-  | ConnectorsEventsGetResponseEFinishRotateCryptKeyFailure
-  | ConnectorsEventsGetResponseEStartRotatePki
-  | ConnectorsEventsGetResponseEFinishRotatePkiSuccess
-  | ConnectorsEventsGetResponseEFinishRotatePkiFailure
-  | ConnectorsEventsGetResponseEStartUpgrade
-  | ConnectorsEventsGetResponseEFinishUpgradeSuccess
-  | ConnectorsEventsGetResponseEFinishUpgradeFailure
-  | ConnectorsEventsGetResponseEReconcile
-  | ConnectorsEventsGetResponseEConfigureCloudflaredTunnel
-  | ConnectorsEventsGetResponseERekeyInstallBoth
-  | ConnectorsEventsGetResponseERekeyStart
-  | ConnectorsEventsGetResponseERekeyAdvance
-  | ConnectorsEventsGetResponseERekeyComplete
-  | ConnectorsEventsGetResponseERekeyReset;
-export const ConnectorsEventsGetResponseE = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
-    ["k"],
-    ["k"],
-    ["k"],
-    ["k"],
-    ["k"],
-    ["k"],
-    ["k"],
-    ["k"],
-    ["k"],
-    ["k"],
-    ["k"],
-    ["k", "url"],
-    ["k"],
-    ["k"],
-    ["k"],
-    ["k"],
-    ["k", "tunnelId"],
-    ["k", "tunnelId"],
-    ["k", "tunnelId"],
-    ["k", "tunnelId"],
-    ["k", "tunnelId"],
-  ]),
-);
+  identifier: "ConnectorsEventsGetResponseE",
+}) as any as S.Schema<ConnectorsEventsGetResponseE>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetConnectorEventResponse {
+  /** Event kind plus event-specific payload fields. */
   e: ConnectorsEventsGetResponseE;
   /** Sequence number, used to order events with the same timestamp */
   n: number;
@@ -6848,6 +6914,7 @@ export interface ConnectorsSnapshotsGetResponseInterfacesItem {
   name: string;
   /** UP/DOWN state of the network interface */
   operstate: string;
+  /** Name of the network interface */
   ipAddresses?: ConnectorsSnapshotsGetResponseInterfacesItemIpAddressesList | null;
   /** Speed of the network interface (bits per second) */
   speed?: number | null;
@@ -7033,6 +7100,10 @@ export interface ConnectorsSnapshotsGetResponseTunnelsItem {
   interfaceName: string;
   /** Tunnel identifier */
   tunnelId: string;
+  /** Tunnel round-trip latency variation in milliseconds */
+  jitterMs?: number | null;
+  /** 50th percentile tunnel round-trip latency in milliseconds */
+  latencyMs?: number | null;
   /** Public socket address returned by the NAT detector */
   natdResult?: string | null;
   /** Numeric NAT detector state (0 = detected, 1 = missing result, 2 = stale result) */
@@ -7053,6 +7124,8 @@ export const ConnectorsSnapshotsGetResponseTunnelsItem =
       healthValue: S.Number.pipe(T.Body("health_value")),
       interfaceName: S.String.pipe(T.Body("interface_name")),
       tunnelId: S.String.pipe(T.Body("tunnel_id")),
+      jitterMs: S.optional(S.NullOr(S.Number).pipe(T.Body("jitter_ms"))),
+      latencyMs: S.optional(S.NullOr(S.Number).pipe(T.Body("latency_ms"))),
       natdResult: S.optional(S.NullOr(S.String).pipe(T.Body("natd_result"))),
       natdState: S.optional(S.NullOr(S.Number).pipe(T.Body("natd_state"))),
       natdTarget: S.optional(S.NullOr(S.String).pipe(T.Body("natd_target"))),
@@ -7088,6 +7161,7 @@ export interface GetConnectorSnapshotResponse {
   t: number;
   /** Version */
   v: string;
+  /** Name of the network interface */
   bonds?: ConnectorsSnapshotsGetResponseBondsList | null;
   /** Count of processors/cores */
   cpuCount?: number | null;
@@ -7121,7 +7195,9 @@ export interface GetConnectorSnapshotResponse {
   cpuTimeUserMs?: number | null;
   /** Number of network operations applied during state transition */
   delta?: number | null;
+  /** Client ID of the device the IP Address was leased to */
   dhcpLeases?: ConnectorsSnapshotsGetResponseDhcpLeasesList | null;
+  /** I/Os currently in progress */
   disks?: ConnectorsSnapshotsGetResponseDisksList | null;
   /** Simulated number of network operations applied during state transition */
   epsilon?: number | null;
@@ -7129,6 +7205,7 @@ export interface GetConnectorSnapshotResponse {
   haState?: string | null;
   /** Numeric value associated with high availability state (0 = disabled, 1 = active, 2 = standby, 3 = stopped, 4 = fault) */
   haValue?: number | null;
+  /** Name of the network interface */
   interfaces?: ConnectorsSnapshotsGetResponseInterfacesList | null;
   /** Percentage of time over a 10 second window that all tasks were stalled */
   io_pressure_full_10s?: number | null;
@@ -7274,10 +7351,14 @@ export interface GetConnectorSnapshotResponse {
   memoryZSwapBytes?: number | null;
   /** Amount of anonymous memory stored in zswap, uncompressed */
   memoryZSwappedBytes?: number | null;
+  /** File system on disk (EXT4, NTFS, etc.) */
   mounts?: ConnectorsSnapshotsGetResponseMountsList | null;
+  /** Name of the network device */
   netdevs?: ConnectorsSnapshotsGetResponseNetdevsList | null;
   /** Platform identifier */
   platform?: string | null;
+  /** Site identifier */
+  siteId?: string | null;
   /** Number of ICMP Address Mask Reply messages received */
   snmpIcmpInAddrMaskReps?: number | null;
   /** Number of ICMP Address Mask Request messages received */
@@ -7408,7 +7489,9 @@ export interface GetConnectorSnapshotResponse {
   snmpUdpOutDatagrams?: number | null;
   /** Boottime of the system (seconds since the Unix epoch) */
   systemBootTimeS?: number | null;
+  /** Sensor identifier for the component */
   thermals?: ConnectorsSnapshotsGetResponseThermalsList | null;
+  /** Name of tunnel health state (unknown, healthy, degraded, down) */
   tunnels?: ConnectorsSnapshotsGetResponseTunnelsList | null;
   /** Sum of how much time each core has spent idle */
   uptimeIdleMs?: number | null;
@@ -7659,6 +7742,7 @@ export const GetConnectorSnapshotResponse = /*@__PURE__*/ S.suspend(() =>
     mounts: S.optional(S.NullOr(ConnectorsSnapshotsGetResponseMountsList)),
     netdevs: S.optional(S.NullOr(ConnectorsSnapshotsGetResponseNetdevsList)),
     platform: S.optional(S.NullOr(S.String)),
+    siteId: S.optional(S.NullOr(S.String).pipe(T.Body("site_id"))),
     snmpIcmpInAddrMaskReps: S.optional(
       S.NullOr(S.Number).pipe(T.Body("snmp_icmp_in_addr_mask_reps")),
     ),
@@ -7898,6 +7982,141 @@ export const GreTunnelsGetResponseGreTunnelBgpExtraPrefixesList =
     S.String,
   ) as any as S.Schema<GreTunnelsGetResponseGreTunnelBgpExtraPrefixesList>;
 
+export type GreTunnelsGetResponseGreTunnelBgpBgpStatusState =
+  | "BGP_DOWN"
+  | "BGP_UP"
+  | "BGP_ESTABLISHING";
+export const GreTunnelsGetResponseGreTunnelBgpBgpStatusState =
+  /*@__PURE__*/ S.String;
+
+export type GreTunnelsGetResponseGreTunnelBgpBgpStatusHealthCheckDirection =
+  | "unidirectional"
+  | "bidirectional";
+export const GreTunnelsGetResponseGreTunnelBgpBgpStatusHealthCheckDirection =
+  /*@__PURE__*/ S.String;
+
+export type GreTunnelsGetResponseGreTunnelBgpBgpStatusHealthCheckRate =
+  | "low"
+  | "mid"
+  | "high";
+export const GreTunnelsGetResponseGreTunnelBgpBgpStatusHealthCheckRate =
+  /*@__PURE__*/ S.String;
+
+export type GreTunnelsGetResponseGreTunnelBgpBgpStatusHealthCheckTarget =
+  CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemBgpHealthCheckTarget;
+export const GreTunnelsGetResponseGreTunnelBgpBgpStatusHealthCheckTarget =
+  CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemBgpHealthCheckTarget;
+
+export type GreTunnelsGetResponseGreTunnelBgpBgpStatusHealthCheckTarget2 =
+  | string
+  | CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemBgpHealthCheckTarget;
+export const GreTunnelsGetResponseGreTunnelBgpBgpStatusHealthCheckTarget2 =
+  /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], ["effective", "saved"]]));
+
+export type GreTunnelsGetResponseGreTunnelBgpBgpStatusHealthCheckType =
+  | "reply"
+  | "request";
+export const GreTunnelsGetResponseGreTunnelBgpBgpStatusHealthCheckType =
+  /*@__PURE__*/ S.String;
+
+export interface GreTunnelsGetResponseGreTunnelBgpBgpStatusHealthCheck {
+  /** The direction of the flow of the healthcheck. Either unidirectional, where the probe comes to you via the tunnel and the result comes back to Cloudflare via the open Internet, or bidirectional where both the probe and result come and go via the tunnel. */
+  direction?: GreTunnelsGetResponseGreTunnelBgpBgpStatusHealthCheckDirection | null;
+  /** Determines whether to run healthchecks for a tunnel. */
+  enabled?: boolean | null;
+  /** How frequent the health check is run. The default value is `mid`. */
+  rate?: GreTunnelsGetResponseGreTunnelBgpBgpStatusHealthCheckRate | null;
+  /** The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customer_gre_endpoint address`. This field is ignored for bidirectional healthchecks as the interface_address (not assigned to the Cloudflare side of the tunnel) is used as the target. Must be in object form if the x-magic-new-hc-target header is set to true and string form if x-magic-new-hc-target is absent or set to false. */
+  target?: GreTunnelsGetResponseGreTunnelBgpBgpStatusHealthCheckTarget2 | null;
+  /** The type of healthcheck to run, reply or request. The default value is `reply`. */
+  type?: GreTunnelsGetResponseGreTunnelBgpBgpStatusHealthCheckType | null;
+  /** A 127 bit IPV6 prefix from within the virtual_subnet6 prefix space with the address being the first IP of the subnet and not same as the address of virtual_subnet6. Eg if virtual_subnet6 is 2606:54c1:7:0:a9fe:12d2::/127 , interface_address6 could be 2606:54c1:7:0:a9fe:12d2:1:200/127 */
+  interfaceAddress6?: string | null;
+  /** The date and time the tunnel was last modified. */
+  modifiedOn?: string | null;
+  /** Maximum Transmission Unit (MTU) in bytes for the GRE tunnel. The minimum value is 576. */
+  mtu?: number | null;
+  /** Time To Live (TTL) in number of hops of the GRE tunnel. */
+  ttl?: number | null;
+}
+export const GreTunnelsGetResponseGreTunnelBgpBgpStatusHealthCheck =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      direction: S.optional(
+        S.NullOr(
+          GreTunnelsGetResponseGreTunnelBgpBgpStatusHealthCheckDirection,
+        ),
+      ),
+      enabled: S.optional(S.NullOr(S.Boolean)),
+      rate: S.optional(
+        S.NullOr(GreTunnelsGetResponseGreTunnelBgpBgpStatusHealthCheckRate),
+      ),
+      target: S.optional(
+        S.NullOr(GreTunnelsGetResponseGreTunnelBgpBgpStatusHealthCheckTarget2),
+      ),
+      type: S.optional(
+        S.NullOr(GreTunnelsGetResponseGreTunnelBgpBgpStatusHealthCheckType),
+      ),
+      interfaceAddress6: S.optional(
+        S.NullOr(S.String).pipe(T.Body("interface_address6")),
+      ),
+      modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
+      mtu: S.optional(S.NullOr(S.Number)),
+      ttl: S.optional(S.NullOr(S.Number)),
+    }),
+  ).annotate({
+    identifier: "GreTunnelsGetResponseGreTunnelBgpBgpStatusHealthCheck",
+  }) as any as S.Schema<GreTunnelsGetResponseGreTunnelBgpBgpStatusHealthCheck>;
+
+export interface GreTunnelsGetResponseGreTunnelBgpBgpStatus {
+  state: GreTunnelsGetResponseGreTunnelBgpBgpStatusState;
+  tcpEstablished: boolean;
+  /** formatdate-time */
+  updatedAt: string;
+  bgpState?: string | null;
+  /** formatipv4 */
+  cfSpeakerIp?: string | null;
+  /** maximum65535 */
+  cfSpeakerPort?: number | null;
+  /** formatipv4 */
+  customerSpeakerIp?: string | null;
+  /** maximum65535 */
+  customerSpeakerPort?: number | null;
+  /** The date and time the tunnel was created. */
+  createdOn?: string | null;
+  /** An optional description of the GRE tunnel. */
+  description?: string | null;
+  healthCheck?: GreTunnelsGetResponseGreTunnelBgpBgpStatusHealthCheck | null;
+}
+export const GreTunnelsGetResponseGreTunnelBgpBgpStatus =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      state: GreTunnelsGetResponseGreTunnelBgpBgpStatusState,
+      tcpEstablished: S.Boolean.pipe(T.Body("tcp_established")),
+      updatedAt: S.String.pipe(T.Body("updated_at")),
+      bgpState: S.optional(S.NullOr(S.String).pipe(T.Body("bgp_state"))),
+      cfSpeakerIp: S.optional(S.NullOr(S.String).pipe(T.Body("cf_speaker_ip"))),
+      cfSpeakerPort: S.optional(
+        S.NullOr(S.Number).pipe(T.Body("cf_speaker_port")),
+      ),
+      customerSpeakerIp: S.optional(
+        S.NullOr(S.String).pipe(T.Body("customer_speaker_ip")),
+      ),
+      customerSpeakerPort: S.optional(
+        S.NullOr(S.Number).pipe(T.Body("customer_speaker_port")),
+      ),
+      createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
+      description: S.optional(S.NullOr(S.String)),
+      healthCheck: S.optional(
+        S.NullOr(GreTunnelsGetResponseGreTunnelBgpBgpStatusHealthCheck).pipe(
+          T.Body("health_check"),
+        ),
+      ),
+    }),
+  ).annotate({
+    identifier: "GreTunnelsGetResponseGreTunnelBgpBgpStatus",
+  }) as any as S.Schema<GreTunnelsGetResponseGreTunnelBgpBgpStatus>;
+
 export interface GreTunnelsGetResponseGreTunnelBgp {
   /** ASN used on the customer end of the BGP session */
   customerAsn: number;
@@ -7909,6 +8128,7 @@ export interface GreTunnelsGetResponseGreTunnelBgp {
   importFilterId?: string | null;
   /** MD5 key to use for session authentication. */
   md5Key?: string | null;
+  bgpStatus?: GreTunnelsGetResponseGreTunnelBgpBgpStatus | null;
 }
 export const GreTunnelsGetResponseGreTunnelBgp = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -7925,106 +8145,15 @@ export const GreTunnelsGetResponseGreTunnelBgp = /*@__PURE__*/ S.suspend(() =>
       S.NullOr(S.String).pipe(T.Body("import_filter_id")),
     ),
     md5Key: S.optional(S.NullOr(S.String).pipe(T.Body("md5_key"))),
+    bgpStatus: S.optional(
+      S.NullOr(GreTunnelsGetResponseGreTunnelBgpBgpStatus).pipe(
+        T.Body("bgp_status"),
+      ),
+    ),
   }),
 ).annotate({
   identifier: "GreTunnelsGetResponseGreTunnelBgp",
 }) as any as S.Schema<GreTunnelsGetResponseGreTunnelBgp>;
-
-export type GreTunnelsGetResponseGreTunnelBgpStatusState =
-  | "BGP_DOWN"
-  | "BGP_UP"
-  | "BGP_ESTABLISHING";
-export const GreTunnelsGetResponseGreTunnelBgpStatusState =
-  /*@__PURE__*/ S.String;
-
-export interface GreTunnelsGetResponseGreTunnelBgpStatus {
-  state: GreTunnelsGetResponseGreTunnelBgpStatusState;
-  tcpEstablished: boolean;
-  updatedAt: string;
-  bgpState?: string | null;
-  cfSpeakerIp?: string | null;
-  cfSpeakerPort?: number | null;
-  customerSpeakerIp?: string | null;
-  customerSpeakerPort?: number | null;
-}
-export const GreTunnelsGetResponseGreTunnelBgpStatus = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      state: GreTunnelsGetResponseGreTunnelBgpStatusState,
-      tcpEstablished: S.Boolean.pipe(T.Body("tcp_established")),
-      updatedAt: S.String.pipe(T.Body("updated_at")),
-      bgpState: S.optional(S.NullOr(S.String).pipe(T.Body("bgp_state"))),
-      cfSpeakerIp: S.optional(S.NullOr(S.String).pipe(T.Body("cf_speaker_ip"))),
-      cfSpeakerPort: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("cf_speaker_port")),
-      ),
-      customerSpeakerIp: S.optional(
-        S.NullOr(S.String).pipe(T.Body("customer_speaker_ip")),
-      ),
-      customerSpeakerPort: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("customer_speaker_port")),
-      ),
-    }),
-).annotate({
-  identifier: "GreTunnelsGetResponseGreTunnelBgpStatus",
-}) as any as S.Schema<GreTunnelsGetResponseGreTunnelBgpStatus>;
-
-export type GreTunnelsGetResponseGreTunnelHealthCheckDirection =
-  | "unidirectional"
-  | "bidirectional";
-export const GreTunnelsGetResponseGreTunnelHealthCheckDirection =
-  /*@__PURE__*/ S.String;
-
-export type GreTunnelsGetResponseGreTunnelHealthCheckRate =
-  | "low"
-  | "mid"
-  | "high";
-export const GreTunnelsGetResponseGreTunnelHealthCheckRate =
-  /*@__PURE__*/ S.String;
-
-export type GreTunnelsGetResponseGreTunnelHealthCheckTargetMagicHealthCheckTarget =
-  CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemHealthCheckTargetMagicHealthCheckTarget;
-export const GreTunnelsGetResponseGreTunnelHealthCheckTargetMagicHealthCheckTarget =
-  CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemHealthCheckTargetMagicHealthCheckTarget;
-
-export type GreTunnelsGetResponseGreTunnelHealthCheckTarget =
-  | string
-  | CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemHealthCheckTargetMagicHealthCheckTarget;
-export const GreTunnelsGetResponseGreTunnelHealthCheckTarget =
-  /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], ["effective", "saved"]]));
-
-export type GreTunnelsGetResponseGreTunnelHealthCheckType = "reply" | "request";
-export const GreTunnelsGetResponseGreTunnelHealthCheckType =
-  /*@__PURE__*/ S.String;
-
-export interface GreTunnelsGetResponseGreTunnelHealthCheck {
-  /** The direction of the flow of the healthcheck. Either unidirectional, where the probe comes to you via the tunnel and the result comes back to Cloudflare via the open Internet, or bidirectional where both the probe and result come and go via the tunnel. */
-  direction?: GreTunnelsGetResponseGreTunnelHealthCheckDirection | null;
-  /** Determines whether to run healthchecks for a tunnel. */
-  enabled?: boolean | null;
-  /** How frequent the health check is run. The default value is `mid`. */
-  rate?: GreTunnelsGetResponseGreTunnelHealthCheckRate | null;
-  /** The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customer_gre_endpoint address`. This field is ignored for bidirectional healthchecks as the interface_address (not assigned to the Cloudflare side of the tunnel) is used as the target. Must be in object form if the x-magic-new-hc-target header is set to true and string form if x-magic-new-hc-target is absent or set to false. */
-  target?: GreTunnelsGetResponseGreTunnelHealthCheckTarget | null;
-  /** The type of healthcheck to run, reply or request. The default value is `reply`. */
-  type?: GreTunnelsGetResponseGreTunnelHealthCheckType | null;
-}
-export const GreTunnelsGetResponseGreTunnelHealthCheck =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      direction: S.optional(
-        S.NullOr(GreTunnelsGetResponseGreTunnelHealthCheckDirection),
-      ),
-      enabled: S.optional(S.NullOr(S.Boolean)),
-      rate: S.optional(S.NullOr(GreTunnelsGetResponseGreTunnelHealthCheckRate)),
-      target: S.optional(
-        S.NullOr(GreTunnelsGetResponseGreTunnelHealthCheckTarget),
-      ),
-      type: S.optional(S.NullOr(GreTunnelsGetResponseGreTunnelHealthCheckType)),
-    }),
-  ).annotate({
-    identifier: "GreTunnelsGetResponseGreTunnelHealthCheck",
-  }) as any as S.Schema<GreTunnelsGetResponseGreTunnelHealthCheck>;
 
 export interface GreTunnelsGetResponseGreTunnel {
   /** Identifier */
@@ -8040,20 +8169,6 @@ export interface GreTunnelsGetResponseGreTunnel {
   /** True if automatic stateful return routing should be enabled for a tunnel, false otherwise. Requires the `coupler_integration` account flag to be enabled; requests setting this to `true` without that flag will be rejected. */
   automaticReturnRouting?: boolean | null;
   bgp?: GreTunnelsGetResponseGreTunnelBgp | null;
-  bgpStatus?: GreTunnelsGetResponseGreTunnelBgpStatus | null;
-  /** The date and time the tunnel was created. */
-  createdOn?: string | null;
-  /** An optional description of the GRE tunnel. */
-  description?: string | null;
-  healthCheck?: GreTunnelsGetResponseGreTunnelHealthCheck | null;
-  /** A 127 bit IPV6 prefix from within the virtual_subnet6 prefix space with the address being the first IP of the subnet and not same as the address of virtual_subnet6. Eg if virtual_subnet6 is 2606:54c1:7:0:a9fe:12d2::/127 , interface_address6 could be 2606:54c1:7:0:a9fe:12d2:1:200/127 */
-  interfaceAddress6?: string | null;
-  /** The date and time the tunnel was last modified. */
-  modifiedOn?: string | null;
-  /** Maximum Transmission Unit (MTU) in bytes for the GRE tunnel. The minimum value is 576. */
-  mtu?: number | null;
-  /** Time To Live (TTL) in number of hops of the GRE tunnel. */
-  ttl?: number | null;
 }
 export const GreTunnelsGetResponseGreTunnel = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -8066,24 +8181,6 @@ export const GreTunnelsGetResponseGreTunnel = /*@__PURE__*/ S.suspend(() =>
       S.NullOr(S.Boolean).pipe(T.Body("automatic_return_routing")),
     ),
     bgp: S.optional(S.NullOr(GreTunnelsGetResponseGreTunnelBgp)),
-    bgpStatus: S.optional(
-      S.NullOr(GreTunnelsGetResponseGreTunnelBgpStatus).pipe(
-        T.Body("bgp_status"),
-      ),
-    ),
-    createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
-    description: S.optional(S.NullOr(S.String)),
-    healthCheck: S.optional(
-      S.NullOr(GreTunnelsGetResponseGreTunnelHealthCheck).pipe(
-        T.Body("health_check"),
-      ),
-    ),
-    interfaceAddress6: S.optional(
-      S.NullOr(S.String).pipe(T.Body("interface_address6")),
-    ),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-    mtu: S.optional(S.NullOr(S.Number)),
-    ttl: S.optional(S.NullOr(S.Number)),
   }),
 ).annotate({
   identifier: "GreTunnelsGetResponseGreTunnel",
@@ -8137,6 +8234,170 @@ export const IpsecTunnelsGetResponseIpsecTunnelBgpExtraPrefixesList =
     S.String,
   ) as any as S.Schema<IpsecTunnelsGetResponseIpsecTunnelBgpExtraPrefixesList>;
 
+export type IpsecTunnelsGetResponseIpsecTunnelBgpBgpStatusState =
+  | "BGP_DOWN"
+  | "BGP_UP"
+  | "BGP_ESTABLISHING";
+export const IpsecTunnelsGetResponseIpsecTunnelBgpBgpStatusState =
+  /*@__PURE__*/ S.String;
+
+export type IpsecTunnelsGetResponseIpsecTunnelBgpBgpStatusCustomRemoteIdentities =
+  IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemBgpBgpStatusCustomRemoteIdentities;
+export const IpsecTunnelsGetResponseIpsecTunnelBgpBgpStatusCustomRemoteIdentities =
+  IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemBgpBgpStatusCustomRemoteIdentities;
+
+export type IpsecTunnelsGetResponseIpsecTunnelBgpBgpStatusHealthCheckDirection =
+  | "unidirectional"
+  | "bidirectional";
+export const IpsecTunnelsGetResponseIpsecTunnelBgpBgpStatusHealthCheckDirection =
+  /*@__PURE__*/ S.String;
+
+export type IpsecTunnelsGetResponseIpsecTunnelBgpBgpStatusHealthCheckRate =
+  | "low"
+  | "mid"
+  | "high";
+export const IpsecTunnelsGetResponseIpsecTunnelBgpBgpStatusHealthCheckRate =
+  /*@__PURE__*/ S.String;
+
+export type IpsecTunnelsGetResponseIpsecTunnelBgpBgpStatusHealthCheckTarget =
+  CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemBgpHealthCheckTarget;
+export const IpsecTunnelsGetResponseIpsecTunnelBgpBgpStatusHealthCheckTarget =
+  CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemBgpHealthCheckTarget;
+
+export type IpsecTunnelsGetResponseIpsecTunnelBgpBgpStatusHealthCheckTarget2 =
+  | string
+  | CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemBgpHealthCheckTarget;
+export const IpsecTunnelsGetResponseIpsecTunnelBgpBgpStatusHealthCheckTarget2 =
+  /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], ["effective", "saved"]]));
+
+export type IpsecTunnelsGetResponseIpsecTunnelBgpBgpStatusHealthCheckType =
+  | "reply"
+  | "request";
+export const IpsecTunnelsGetResponseIpsecTunnelBgpBgpStatusHealthCheckType =
+  /*@__PURE__*/ S.String;
+
+export type IpsecTunnelsGetResponseIpsecTunnelBgpBgpStatusHealthCheckPskMetadata =
+  IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemBgpBgpStatusHealthCheckPskMetadata;
+export const IpsecTunnelsGetResponseIpsecTunnelBgpBgpStatusHealthCheckPskMetadata =
+  IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemBgpBgpStatusHealthCheckPskMetadata;
+
+export interface IpsecTunnelsGetResponseIpsecTunnelBgpBgpStatusHealthCheck {
+  /** The direction of the flow of the healthcheck. Either unidirectional, where the probe comes to you via the tunnel and the result comes back to Cloudflare via the open Internet, or bidirectional where both the probe and result come and go via the tunnel. */
+  direction?: IpsecTunnelsGetResponseIpsecTunnelBgpBgpStatusHealthCheckDirection | null;
+  /** Determines whether to run healthchecks for a tunnel. */
+  enabled?: boolean | null;
+  /** How frequent the health check is run. The default value is `mid`. */
+  rate?: IpsecTunnelsGetResponseIpsecTunnelBgpBgpStatusHealthCheckRate | null;
+  /** The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customer_gre_endpoint address`. This field is ignored for bidirectional healthchecks as the interface_address (not assigned to the Cloudflare side of the tunnel) is used as the target. Must be in object form if the x-magic-new-hc-target header is set to true and string form if x-magic-new-hc-target is absent or set to false. */
+  target?: IpsecTunnelsGetResponseIpsecTunnelBgpBgpStatusHealthCheckTarget2 | null;
+  /** The type of healthcheck to run, reply or request. The default value is `reply`. */
+  type?: IpsecTunnelsGetResponseIpsecTunnelBgpBgpStatusHealthCheckType | null;
+  /** A 127 bit IPV6 prefix from within the virtual_subnet6 prefix space with the address being the first IP of the subnet and not same as the address of virtual_subnet6. Eg if virtual_subnet6 is 2606:54c1:7:0:a9fe:12d2::/127 , interface_address6 could be 2606:54c1:7:0:a9fe:12d2:1:200/127 */
+  interfaceAddress6?: string | null;
+  /** The date and time the tunnel was last modified. */
+  modifiedOn?: string | null;
+  /** The PSK metadata that includes when the PSK was generated. */
+  pskMetadata?: IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemBgpBgpStatusHealthCheckPskMetadata | null;
+  /** If `true`, then IPsec replay protection will be supported in the Cloudflare-to-customer direction. */
+  replayProtection?: boolean | null;
+}
+export const IpsecTunnelsGetResponseIpsecTunnelBgpBgpStatusHealthCheck =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      direction: S.optional(
+        S.NullOr(
+          IpsecTunnelsGetResponseIpsecTunnelBgpBgpStatusHealthCheckDirection,
+        ),
+      ),
+      enabled: S.optional(S.NullOr(S.Boolean)),
+      rate: S.optional(
+        S.NullOr(IpsecTunnelsGetResponseIpsecTunnelBgpBgpStatusHealthCheckRate),
+      ),
+      target: S.optional(
+        S.NullOr(
+          IpsecTunnelsGetResponseIpsecTunnelBgpBgpStatusHealthCheckTarget2,
+        ),
+      ),
+      type: S.optional(
+        S.NullOr(IpsecTunnelsGetResponseIpsecTunnelBgpBgpStatusHealthCheckType),
+      ),
+      interfaceAddress6: S.optional(
+        S.NullOr(S.String).pipe(T.Body("interface_address6")),
+      ),
+      modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
+      pskMetadata: S.optional(
+        S.NullOr(
+          IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemBgpBgpStatusHealthCheckPskMetadata,
+        ).pipe(T.Body("psk_metadata")),
+      ),
+      replayProtection: S.optional(
+        S.NullOr(S.Boolean).pipe(T.Body("replay_protection")),
+      ),
+    }),
+  ).annotate({
+    identifier: "IpsecTunnelsGetResponseIpsecTunnelBgpBgpStatusHealthCheck",
+  }) as any as S.Schema<IpsecTunnelsGetResponseIpsecTunnelBgpBgpStatusHealthCheck>;
+
+export interface IpsecTunnelsGetResponseIpsecTunnelBgpBgpStatus {
+  state: IpsecTunnelsGetResponseIpsecTunnelBgpBgpStatusState;
+  tcpEstablished: boolean;
+  /** formatdate-time */
+  updatedAt: string;
+  bgpState?: string | null;
+  /** formatipv4 */
+  cfSpeakerIp?: string | null;
+  /** maximum65535 */
+  cfSpeakerPort?: number | null;
+  /** formatipv4 */
+  customerSpeakerIp?: string | null;
+  /** maximum65535 */
+  customerSpeakerPort?: number | null;
+  /** The date and time the tunnel was created. */
+  createdOn?: string | null;
+  customRemoteIdentities?: IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemBgpBgpStatusCustomRemoteIdentities | null;
+  /** The IP address assigned to the customer side of the IPsec tunnel. Not required, but must be set for proactive traceroutes to work. */
+  customerEndpoint?: string | null;
+  /** An optional description forthe IPsec tunnel. */
+  description?: string | null;
+  healthCheck?: IpsecTunnelsGetResponseIpsecTunnelBgpBgpStatusHealthCheck | null;
+}
+export const IpsecTunnelsGetResponseIpsecTunnelBgpBgpStatus =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      state: IpsecTunnelsGetResponseIpsecTunnelBgpBgpStatusState,
+      tcpEstablished: S.Boolean.pipe(T.Body("tcp_established")),
+      updatedAt: S.String.pipe(T.Body("updated_at")),
+      bgpState: S.optional(S.NullOr(S.String).pipe(T.Body("bgp_state"))),
+      cfSpeakerIp: S.optional(S.NullOr(S.String).pipe(T.Body("cf_speaker_ip"))),
+      cfSpeakerPort: S.optional(
+        S.NullOr(S.Number).pipe(T.Body("cf_speaker_port")),
+      ),
+      customerSpeakerIp: S.optional(
+        S.NullOr(S.String).pipe(T.Body("customer_speaker_ip")),
+      ),
+      customerSpeakerPort: S.optional(
+        S.NullOr(S.Number).pipe(T.Body("customer_speaker_port")),
+      ),
+      createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
+      customRemoteIdentities: S.optional(
+        S.NullOr(
+          IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemBgpBgpStatusCustomRemoteIdentities,
+        ).pipe(T.Body("custom_remote_identities")),
+      ),
+      customerEndpoint: S.optional(
+        S.NullOr(S.String).pipe(T.Body("customer_endpoint")),
+      ),
+      description: S.optional(S.NullOr(S.String)),
+      healthCheck: S.optional(
+        S.NullOr(
+          IpsecTunnelsGetResponseIpsecTunnelBgpBgpStatusHealthCheck,
+        ).pipe(T.Body("health_check")),
+      ),
+    }),
+  ).annotate({
+    identifier: "IpsecTunnelsGetResponseIpsecTunnelBgpBgpStatus",
+  }) as any as S.Schema<IpsecTunnelsGetResponseIpsecTunnelBgpBgpStatus>;
+
 export interface IpsecTunnelsGetResponseIpsecTunnelBgp {
   /** ASN used on the customer end of the BGP session */
   customerAsn: number;
@@ -8148,6 +8409,7 @@ export interface IpsecTunnelsGetResponseIpsecTunnelBgp {
   importFilterId?: string | null;
   /** MD5 key to use for session authentication. */
   md5Key?: string | null;
+  bgpStatus?: IpsecTunnelsGetResponseIpsecTunnelBgpBgpStatus | null;
 }
 export const IpsecTunnelsGetResponseIpsecTunnelBgp = /*@__PURE__*/ S.suspend(
   () =>
@@ -8165,122 +8427,15 @@ export const IpsecTunnelsGetResponseIpsecTunnelBgp = /*@__PURE__*/ S.suspend(
         S.NullOr(S.String).pipe(T.Body("import_filter_id")),
       ),
       md5Key: S.optional(S.NullOr(S.String).pipe(T.Body("md5_key"))),
+      bgpStatus: S.optional(
+        S.NullOr(IpsecTunnelsGetResponseIpsecTunnelBgpBgpStatus).pipe(
+          T.Body("bgp_status"),
+        ),
+      ),
     }),
 ).annotate({
   identifier: "IpsecTunnelsGetResponseIpsecTunnelBgp",
 }) as any as S.Schema<IpsecTunnelsGetResponseIpsecTunnelBgp>;
-
-export type IpsecTunnelsGetResponseIpsecTunnelBgpStatusState =
-  | "BGP_DOWN"
-  | "BGP_UP"
-  | "BGP_ESTABLISHING";
-export const IpsecTunnelsGetResponseIpsecTunnelBgpStatusState =
-  /*@__PURE__*/ S.String;
-
-export interface IpsecTunnelsGetResponseIpsecTunnelBgpStatus {
-  state: IpsecTunnelsGetResponseIpsecTunnelBgpStatusState;
-  tcpEstablished: boolean;
-  updatedAt: string;
-  bgpState?: string | null;
-  cfSpeakerIp?: string | null;
-  cfSpeakerPort?: number | null;
-  customerSpeakerIp?: string | null;
-  customerSpeakerPort?: number | null;
-}
-export const IpsecTunnelsGetResponseIpsecTunnelBgpStatus =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      state: IpsecTunnelsGetResponseIpsecTunnelBgpStatusState,
-      tcpEstablished: S.Boolean.pipe(T.Body("tcp_established")),
-      updatedAt: S.String.pipe(T.Body("updated_at")),
-      bgpState: S.optional(S.NullOr(S.String).pipe(T.Body("bgp_state"))),
-      cfSpeakerIp: S.optional(S.NullOr(S.String).pipe(T.Body("cf_speaker_ip"))),
-      cfSpeakerPort: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("cf_speaker_port")),
-      ),
-      customerSpeakerIp: S.optional(
-        S.NullOr(S.String).pipe(T.Body("customer_speaker_ip")),
-      ),
-      customerSpeakerPort: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("customer_speaker_port")),
-      ),
-    }),
-  ).annotate({
-    identifier: "IpsecTunnelsGetResponseIpsecTunnelBgpStatus",
-  }) as any as S.Schema<IpsecTunnelsGetResponseIpsecTunnelBgpStatus>;
-
-export type IpsecTunnelsGetResponseIpsecTunnelCustomRemoteIdentities =
-  IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemCustomRemoteIdentities;
-export const IpsecTunnelsGetResponseIpsecTunnelCustomRemoteIdentities =
-  IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemCustomRemoteIdentities;
-
-export type IpsecTunnelsGetResponseIpsecTunnelHealthCheckDirection =
-  | "unidirectional"
-  | "bidirectional";
-export const IpsecTunnelsGetResponseIpsecTunnelHealthCheckDirection =
-  /*@__PURE__*/ S.String;
-
-export type IpsecTunnelsGetResponseIpsecTunnelHealthCheckRate =
-  | "low"
-  | "mid"
-  | "high";
-export const IpsecTunnelsGetResponseIpsecTunnelHealthCheckRate =
-  /*@__PURE__*/ S.String;
-
-export type IpsecTunnelsGetResponseIpsecTunnelHealthCheckTargetMagicHealthCheckTarget =
-  CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemHealthCheckTargetMagicHealthCheckTarget;
-export const IpsecTunnelsGetResponseIpsecTunnelHealthCheckTargetMagicHealthCheckTarget =
-  CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemHealthCheckTargetMagicHealthCheckTarget;
-
-export type IpsecTunnelsGetResponseIpsecTunnelHealthCheckTarget =
-  | string
-  | CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemHealthCheckTargetMagicHealthCheckTarget;
-export const IpsecTunnelsGetResponseIpsecTunnelHealthCheckTarget =
-  /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], ["effective", "saved"]]));
-
-export type IpsecTunnelsGetResponseIpsecTunnelHealthCheckType =
-  | "reply"
-  | "request";
-export const IpsecTunnelsGetResponseIpsecTunnelHealthCheckType =
-  /*@__PURE__*/ S.String;
-
-export interface IpsecTunnelsGetResponseIpsecTunnelHealthCheck {
-  /** The direction of the flow of the healthcheck. Either unidirectional, where the probe comes to you via the tunnel and the result comes back to Cloudflare via the open Internet, or bidirectional where both the probe and result come and go via the tunnel. */
-  direction?: IpsecTunnelsGetResponseIpsecTunnelHealthCheckDirection | null;
-  /** Determines whether to run healthchecks for a tunnel. */
-  enabled?: boolean | null;
-  /** How frequent the health check is run. The default value is `mid`. */
-  rate?: IpsecTunnelsGetResponseIpsecTunnelHealthCheckRate | null;
-  /** The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customer_gre_endpoint address`. This field is ignored for bidirectional healthchecks as the interface_address (not assigned to the Cloudflare side of the tunnel) is used as the target. Must be in object form if the x-magic-new-hc-target header is set to true and string form if x-magic-new-hc-target is absent or set to false. */
-  target?: IpsecTunnelsGetResponseIpsecTunnelHealthCheckTarget | null;
-  /** The type of healthcheck to run, reply or request. The default value is `reply`. */
-  type?: IpsecTunnelsGetResponseIpsecTunnelHealthCheckType | null;
-}
-export const IpsecTunnelsGetResponseIpsecTunnelHealthCheck =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      direction: S.optional(
-        S.NullOr(IpsecTunnelsGetResponseIpsecTunnelHealthCheckDirection),
-      ),
-      enabled: S.optional(S.NullOr(S.Boolean)),
-      rate: S.optional(
-        S.NullOr(IpsecTunnelsGetResponseIpsecTunnelHealthCheckRate),
-      ),
-      target: S.optional(
-        S.NullOr(IpsecTunnelsGetResponseIpsecTunnelHealthCheckTarget),
-      ),
-      type: S.optional(
-        S.NullOr(IpsecTunnelsGetResponseIpsecTunnelHealthCheckType),
-      ),
-    }),
-  ).annotate({
-    identifier: "IpsecTunnelsGetResponseIpsecTunnelHealthCheck",
-  }) as any as S.Schema<IpsecTunnelsGetResponseIpsecTunnelHealthCheck>;
-
-export type IpsecTunnelsGetResponseIpsecTunnelPskMetadata =
-  IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemPskMetadata;
-export const IpsecTunnelsGetResponseIpsecTunnelPskMetadata =
-  IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemPskMetadata;
 
 export interface IpsecTunnelsGetResponseIpsecTunnel {
   /** Identifier */
@@ -8296,23 +8451,6 @@ export interface IpsecTunnelsGetResponseIpsecTunnel {
   /** True if automatic stateful return routing should be enabled for a tunnel, false otherwise. Requires the `coupler_integration` account flag to be enabled; requests setting this to `true` without that flag will be rejected. */
   automaticReturnRouting?: boolean | null;
   bgp?: IpsecTunnelsGetResponseIpsecTunnelBgp | null;
-  bgpStatus?: IpsecTunnelsGetResponseIpsecTunnelBgpStatus | null;
-  /** The date and time the tunnel was created. */
-  createdOn?: string | null;
-  customRemoteIdentities?: IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemCustomRemoteIdentities | null;
-  /** The IP address assigned to the customer side of the IPsec tunnel. Not required, but must be set for proactive traceroutes to work. */
-  customerEndpoint?: string | null;
-  /** An optional description forthe IPsec tunnel. */
-  description?: string | null;
-  healthCheck?: IpsecTunnelsGetResponseIpsecTunnelHealthCheck | null;
-  /** A 127 bit IPV6 prefix from within the virtual_subnet6 prefix space with the address being the first IP of the subnet and not same as the address of virtual_subnet6. Eg if virtual_subnet6 is 2606:54c1:7:0:a9fe:12d2::/127 , interface_address6 could be 2606:54c1:7:0:a9fe:12d2:1:200/127 */
-  interfaceAddress6?: string | null;
-  /** The date and time the tunnel was last modified. */
-  modifiedOn?: string | null;
-  /** The PSK metadata that includes when the PSK was generated. */
-  pskMetadata?: IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemPskMetadata | null;
-  /** If `true`, then IPsec replay protection will be supported in the Cloudflare-to-customer direction. */
-  replayProtection?: boolean | null;
 }
 export const IpsecTunnelsGetResponseIpsecTunnel = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -8327,38 +8465,6 @@ export const IpsecTunnelsGetResponseIpsecTunnel = /*@__PURE__*/ S.suspend(() =>
       S.NullOr(S.Boolean).pipe(T.Body("automatic_return_routing")),
     ),
     bgp: S.optional(S.NullOr(IpsecTunnelsGetResponseIpsecTunnelBgp)),
-    bgpStatus: S.optional(
-      S.NullOr(IpsecTunnelsGetResponseIpsecTunnelBgpStatus).pipe(
-        T.Body("bgp_status"),
-      ),
-    ),
-    createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
-    customRemoteIdentities: S.optional(
-      S.NullOr(
-        IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemCustomRemoteIdentities,
-      ).pipe(T.Body("custom_remote_identities")),
-    ),
-    customerEndpoint: S.optional(
-      S.NullOr(S.String).pipe(T.Body("customer_endpoint")),
-    ),
-    description: S.optional(S.NullOr(S.String)),
-    healthCheck: S.optional(
-      S.NullOr(IpsecTunnelsGetResponseIpsecTunnelHealthCheck).pipe(
-        T.Body("health_check"),
-      ),
-    ),
-    interfaceAddress6: S.optional(
-      S.NullOr(S.String).pipe(T.Body("interface_address6")),
-    ),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-    pskMetadata: S.optional(
-      S.NullOr(
-        IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemPskMetadata,
-      ).pipe(T.Body("psk_metadata")),
-    ),
-    replayProtection: S.optional(
-      S.NullOr(S.Boolean).pipe(T.Body("replay_protection")),
-    ),
   }),
 ).annotate({
   identifier: "IpsecTunnelsGetResponseIpsecTunnel",
@@ -8399,185 +8505,9 @@ export const GetPcapRequest = /*@__PURE__*/ S.suspend(() =>
     .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({ identifier: "GetPcapRequest" }) as any as S.Schema<GetPcapRequest>;
 
-export type PcapsGetResultPCAPFilterV1 = PcapsCreateResultPCAPFilterV1;
-export const PcapsGetResultPCAPFilterV1 = PcapsCreateResultPCAPFilterV1;
-
-export type PcapsGetResultPCAPStatus =
-  | "unknown"
-  | "success"
-  | "pending"
-  | "running"
-  | "conversion_pending"
-  | "conversion_running"
-  | "complete"
-  | "failed";
-export const PcapsGetResultPCAPStatus = /*@__PURE__*/ S.String;
-
-export type PcapsGetResultPCAPSystem = "magic-transit";
-export const PcapsGetResultPCAPSystem = /*@__PURE__*/ S.String;
-
-export type PcapsGetResultPCAPType = "simple" | "full";
-export const PcapsGetResultPCAPType = /*@__PURE__*/ S.String;
-
-export interface PcapsGetResultPCAP {
-  /** The ID for the packet capture. */
-  id?: string | null;
-  /** The packet capture filter. When this field is empty, all packets are captured. */
-  filterV1?: PcapsCreateResultPCAPFilterV1 | null;
-  /** The RFC 3339 offset timestamp from which to query backwards for packets. Must be within the last 24h. When this field is empty, defaults to time of request. */
-  offsetTime?: string | null;
-  /** The status of the packet capture request. */
-  status?: PcapsGetResultPCAPStatus | null;
-  /** The RFC 3339 timestamp when the packet capture was created. */
-  submitted?: string | null;
-  /** The system used to collect packet captures. */
-  system?: PcapsGetResultPCAPSystem | null;
-  /** The packet capture duration in seconds. */
-  timeLimit?: number | null;
-  /** The type of packet capture. `Simple` captures sampled packets, and `full` captures entire payloads and non-sampled packets. */
-  type?: PcapsGetResultPCAPType | null;
-}
-export const PcapsGetResultPCAP = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.NullOr(S.String)),
-    filterV1: S.optional(
-      S.NullOr(PcapsCreateResultPCAPFilterV1).pipe(T.Body("filter_v1")),
-    ),
-    offsetTime: S.optional(S.NullOr(S.String).pipe(T.Body("offset_time"))),
-    status: S.optional(S.NullOr(PcapsGetResultPCAPStatus)),
-    submitted: S.optional(S.NullOr(S.String)),
-    system: S.optional(S.NullOr(PcapsGetResultPCAPSystem)),
-    timeLimit: S.optional(S.NullOr(S.Number).pipe(T.Body("time_limit"))),
-    type: S.optional(S.NullOr(PcapsGetResultPCAPType)),
-  }),
-).annotate({
-  identifier: "PcapsGetResultPCAP",
-}) as any as S.Schema<PcapsGetResultPCAP>;
-
-export type PcapsGetResultMagicVisibilityPCAPsPCAPsResponseFullStatus =
-  | "unknown"
-  | "success"
-  | "pending"
-  | "running"
-  | "conversion_pending"
-  | "conversion_running"
-  | "complete"
-  | "failed";
-export const PcapsGetResultMagicVisibilityPCAPsPCAPsResponseFullStatus =
-  /*@__PURE__*/ S.String;
-
-export type PcapsGetResultMagicVisibilityPCAPsPCAPsResponseFullSystem =
-  "magic-transit";
-export const PcapsGetResultMagicVisibilityPCAPsPCAPsResponseFullSystem =
-  /*@__PURE__*/ S.String;
-
-export type PcapsGetResultMagicVisibilityPCAPsPCAPsResponseFullType =
-  | "simple"
-  | "full";
-export const PcapsGetResultMagicVisibilityPCAPsPCAPsResponseFullType =
-  /*@__PURE__*/ S.String;
-
-export interface PcapsGetResultMagicVisibilityPCAPsPCAPsResponseFull {
-  /** The ID for the packet capture. */
-  id?: string | null;
-  /** The maximum number of bytes to capture. This field only applies to `full` packet captures. */
-  byteLimit?: number | null;
-  /** The name of the data center used for the packet capture. This can be a specific colo (ord02) or a multi-colo name (ORD). This field only applies to `full` packet captures. */
-  coloName?: string | null;
-  /** The full URI for the bucket. This field only applies to `full` packet captures. */
-  destinationConf?: string | null;
-  /** An error message that describes why the packet capture failed. This field only applies to `full` packet captures. */
-  errorMessage?: string | null;
-  /** The packet capture filter. When this field is empty, all packets are captured. */
-  filterV1?: PcapsCreateResultPCAPFilterV1 | null;
-  /** The number of packets captured. */
-  packetsCaptured?: number | null;
-  /** The status of the packet capture request. */
-  status?: PcapsGetResultMagicVisibilityPCAPsPCAPsResponseFullStatus | null;
-  /** The RFC 3339 timestamp when stopping the packet capture was requested. This field only applies to `full` packet captures. */
-  stopRequested?: string | null;
-  /** The RFC 3339 timestamp when the packet capture was created. */
-  submitted?: string | null;
-  /** The system used to collect packet captures. */
-  system?: PcapsGetResultMagicVisibilityPCAPsPCAPsResponseFullSystem | null;
-  /** The packet capture duration in seconds. */
-  timeLimit?: number | null;
-  /** The type of packet capture. `Simple` captures sampled packets, and `full` captures entire payloads and non-sampled packets. */
-  type?: PcapsGetResultMagicVisibilityPCAPsPCAPsResponseFullType | null;
-}
-export const PcapsGetResultMagicVisibilityPCAPsPCAPsResponseFull =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.optional(S.NullOr(S.String)),
-      byteLimit: S.optional(S.NullOr(S.Number).pipe(T.Body("byte_limit"))),
-      coloName: S.optional(S.NullOr(S.String).pipe(T.Body("colo_name"))),
-      destinationConf: S.optional(
-        S.NullOr(S.String).pipe(T.Body("destination_conf")),
-      ),
-      errorMessage: S.optional(
-        S.NullOr(S.String).pipe(T.Body("error_message")),
-      ),
-      filterV1: S.optional(
-        S.NullOr(PcapsCreateResultPCAPFilterV1).pipe(T.Body("filter_v1")),
-      ),
-      packetsCaptured: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("packets_captured")),
-      ),
-      status: S.optional(
-        S.NullOr(PcapsGetResultMagicVisibilityPCAPsPCAPsResponseFullStatus),
-      ),
-      stopRequested: S.optional(
-        S.NullOr(S.String).pipe(T.Body("stop_requested")),
-      ),
-      submitted: S.optional(S.NullOr(S.String)),
-      system: S.optional(
-        S.NullOr(PcapsGetResultMagicVisibilityPCAPsPCAPsResponseFullSystem),
-      ),
-      timeLimit: S.optional(S.NullOr(S.Number).pipe(T.Body("time_limit"))),
-      type: S.optional(
-        S.NullOr(PcapsGetResultMagicVisibilityPCAPsPCAPsResponseFullType),
-      ),
-    }),
-  ).annotate({
-    identifier: "PcapsGetResultMagicVisibilityPCAPsPCAPsResponseFull",
-  }) as any as S.Schema<PcapsGetResultMagicVisibilityPCAPsPCAPsResponseFull>;
-
-export type PcapsGetResult =
-  | PcapsGetResultPCAP
-  | PcapsGetResultMagicVisibilityPCAPsPCAPsResponseFull;
-export const PcapsGetResult = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
-    [
-      "id",
-      "filterV1",
-      "offsetTime",
-      "status",
-      "submitted",
-      "system",
-      "timeLimit",
-      "type",
-    ],
-    [
-      "id",
-      "byteLimit",
-      "coloName",
-      "destinationConf",
-      "errorMessage",
-      "filterV1",
-      "packetsCaptured",
-      "status",
-      "stopRequested",
-      "submitted",
-      "system",
-      "timeLimit",
-      "type",
-    ],
-  ]),
-);
-
-export type GetPcapResponse = PcapsGetResult;
+export type GetPcapResponse = unknown;
 export const GetPcapResponse = /*@__PURE__*/ S.suspend(() =>
-  PcapsGetResult.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
+  S.Unknown.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetPcapResponse",
 }) as any as S.Schema<GetPcapResponse>;
@@ -8890,6 +8820,66 @@ export const SitesAclsGetResponseLan1SubnetsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SitesAclsGetResponseLan1SubnetsList>;
 
+export type SitesAclsGetResponseLan1Lan2PortRangesList = Array<string>;
+export const SitesAclsGetResponseLan1Lan2PortRangesList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<SitesAclsGetResponseLan1Lan2PortRangesList>;
+
+export type SitesAclsGetResponseLan1Lan2PortsList = Array<number>;
+export const SitesAclsGetResponseLan1Lan2PortsList = /*@__PURE__*/ S.Array(
+  S.Number,
+) as any as S.Schema<SitesAclsGetResponseLan1Lan2PortsList>;
+
+export type SitesAclsGetResponseLan1Lan2SubnetsList = Array<unknown>;
+export const SitesAclsGetResponseLan1Lan2SubnetsList = /*@__PURE__*/ S.Array(
+  S.Unknown,
+) as any as S.Schema<SitesAclsGetResponseLan1Lan2SubnetsList>;
+
+export type SitesAclsGetResponseLan1Lan2ProtocolsItem = "tcp" | "udp" | "icmp";
+export const SitesAclsGetResponseLan1Lan2ProtocolsItem = /*@__PURE__*/ S.String;
+
+export type SitesAclsGetResponseLan1Lan2ProtocolsList =
+  Array<SitesAclsGetResponseLan1Lan2ProtocolsItem>;
+export const SitesAclsGetResponseLan1Lan2ProtocolsList = /*@__PURE__*/ S.Array(
+  SitesAclsGetResponseLan1Lan2ProtocolsItem,
+) as any as S.Schema<SitesAclsGetResponseLan1Lan2ProtocolsList>;
+
+export interface SitesAclsGetResponseLan1Lan2 {
+  /** The identifier for the LAN you want to create an ACL policy with. */
+  lanId: string;
+  /** The name of the LAN based on the provided lan_id. */
+  lanName?: string | null;
+  /** Array of port ranges on the provided LAN that will be included in the ACL. If no ports or port rangess are provided, communication on any port on this LAN is allowed. */
+  portRanges?: SitesAclsGetResponseLan1Lan2PortRangesList | null;
+  /** Array of ports on the provided LAN that will be included in the ACL. If no ports or port ranges are provided, communication on any port on this LAN is allowed. */
+  ports?: SitesAclsGetResponseLan1Lan2PortsList | null;
+  /** Array of subnet IPs within the LAN that will be included in the ACL. If no subnets are provided, communication on any subnets on this LAN are allowed. */
+  subnets?: SitesAclsGetResponseLan1Lan2SubnetsList | null;
+  /** The name of the ACL. */
+  name?: string | null;
+  protocols?: SitesAclsGetResponseLan1Lan2ProtocolsList | null;
+  /** The desired traffic direction for this ACL policy. If set to “false”, the policy will allow bidirectional traffic. If set to “true”, the policy will only allow traffic in one direction. If not included in request, will default to false. */
+  unidirectional?: boolean | null;
+}
+export const SitesAclsGetResponseLan1Lan2 = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    lanId: S.String.pipe(T.Body("lan_id")),
+    lanName: S.optional(S.NullOr(S.String).pipe(T.Body("lan_name"))),
+    portRanges: S.optional(
+      S.NullOr(SitesAclsGetResponseLan1Lan2PortRangesList).pipe(
+        T.Body("port_ranges"),
+      ),
+    ),
+    ports: S.optional(S.NullOr(SitesAclsGetResponseLan1Lan2PortsList)),
+    subnets: S.optional(S.NullOr(SitesAclsGetResponseLan1Lan2SubnetsList)),
+    name: S.optional(S.NullOr(S.String)),
+    protocols: S.optional(S.NullOr(SitesAclsGetResponseLan1Lan2ProtocolsList)),
+    unidirectional: S.optional(S.NullOr(S.Boolean)),
+  }),
+).annotate({
+  identifier: "SitesAclsGetResponseLan1Lan2",
+}) as any as S.Schema<SitesAclsGetResponseLan1Lan2>;
+
 export interface SitesAclsGetResponseLan1 {
   /** The identifier for the LAN you want to create an ACL policy with. */
   lanId: string;
@@ -8901,6 +8891,7 @@ export interface SitesAclsGetResponseLan1 {
   ports?: SitesAclsGetResponseLan1PortsList | null;
   /** Array of subnet IPs within the LAN that will be included in the ACL. If no subnets are provided, communication on any subnets on this LAN are allowed. */
   subnets?: SitesAclsGetResponseLan1SubnetsList | null;
+  lan_2?: SitesAclsGetResponseLan1Lan2 | null;
 }
 export const SitesAclsGetResponseLan1 = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -8913,19 +8904,11 @@ export const SitesAclsGetResponseLan1 = /*@__PURE__*/ S.suspend(() =>
     ),
     ports: S.optional(S.NullOr(SitesAclsGetResponseLan1PortsList)),
     subnets: S.optional(S.NullOr(SitesAclsGetResponseLan1SubnetsList)),
+    lan_2: S.optional(S.NullOr(SitesAclsGetResponseLan1Lan2)),
   }),
 ).annotate({
   identifier: "SitesAclsGetResponseLan1",
 }) as any as S.Schema<SitesAclsGetResponseLan1>;
-
-export type SitesAclsGetResponseProtocolsItem = "tcp" | "udp" | "icmp";
-export const SitesAclsGetResponseProtocolsItem = /*@__PURE__*/ S.String;
-
-export type SitesAclsGetResponseProtocolsList =
-  Array<SitesAclsGetResponseProtocolsItem>;
-export const SitesAclsGetResponseProtocolsList = /*@__PURE__*/ S.Array(
-  SitesAclsGetResponseProtocolsItem,
-) as any as S.Schema<SitesAclsGetResponseProtocolsList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetSiteAclResponse {
@@ -8933,15 +8916,9 @@ export interface GetSiteAclResponse {
   id?: string | null;
   /** Description for the ACL. */
   description?: string | null;
-  /** The desired forwarding action for this ACL policy. If set to "false", the policy will forward traffic to Cloudflare. If set to "true", the policy will forward traffic locally on the Magic Connector. If not included in request, will default to false. */
+  /** The desired forwarding action for this ACL policy. If set to “false”, the policy will forward traffic to Cloudflare. If set to “true”, the policy will forward traffic locally on the Magic Connector. If not included in request, will default to false. */
   forwardLocally?: boolean | null;
   lan_1?: SitesAclsGetResponseLan1 | null;
-  lan_2?: SitesAclsGetResponseLan1 | null;
-  /** The name of the ACL. */
-  name?: string | null;
-  protocols?: SitesAclsGetResponseProtocolsList | null;
-  /** The desired traffic direction for this ACL policy. If set to "false", the policy will allow bidirectional traffic. If set to "true", the policy will only allow traffic in one direction. If not included in request, will default to false. */
-  unidirectional?: boolean | null;
 }
 export const GetSiteAclResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -8951,10 +8928,6 @@ export const GetSiteAclResponse = /*@__PURE__*/ S.suspend(() =>
       S.NullOr(S.Boolean).pipe(T.Body("forward_locally")),
     ),
     lan_1: S.optional(S.NullOr(SitesAclsGetResponseLan1)),
-    lan_2: S.optional(S.NullOr(SitesAclsGetResponseLan1)),
-    name: S.optional(S.NullOr(S.String)),
-    protocols: S.optional(S.NullOr(SitesAclsGetResponseProtocolsList)),
-    unidirectional: S.optional(S.NullOr(S.Boolean)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetSiteAclResponse",
@@ -8988,6 +8961,11 @@ export const GetSiteLanRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type SitesLansGetResponseNat = SitesLansCreateResultItemNat;
 export const SitesLansGetResponseNat = SitesLansCreateResultItemNat;
+
+export type SitesLansGetResponseRoutedSubnetsItemNat =
+  SitesLansCreateResultItemNat;
+export const SitesLansGetResponseRoutedSubnetsItemNat =
+  SitesLansCreateResultItemNat;
 
 export type SitesLansGetResponseRoutedSubnetsItem =
   SitesLansCreateResultItemRoutedSubnetsItem;
@@ -9037,7 +9015,7 @@ export const SitesLansGetResponseStaticAddressingDhcpServerDhcpOptionsItemType =
 export interface SitesLansGetResponseStaticAddressingDhcpServerDhcpOptionsItem {
   /** DHCP option number (1-254). Options 0 and 255 are reserved by RFC 2132. Options 3, 6, and 51 are not allowed because they conflict with connector-managed configuration. */
   code: number;
-  /** The type of the option value. text: a string (max 255 bytes). hex: colon-separated hex bytes (e.g. "01:04:aa:bb:cc", max 255 bytes). ip: an IPv4 address (e.g. "10.20.30.40"). byte: an unsigned integer 0-255 (1 byte). short: an unsigned integer 0-65535 (2 bytes). integer: an unsigned integer 0-4294967295 (4 bytes). */
+  /** The type of the option value. text: a string (max 255 bytes). hex: colon-separated hex bytes (e.g. “01:04:aa:bb:cc”, max 255 bytes). ip: an IPv4 address (e.g. “10.20.30.40”). byte: an unsigned integer 0-255 (1 byte). short: an unsigned integer 0-65535 (2 bytes). integer: an unsigned integer 0-4294967295 (4 bytes). */
   type: SitesLansGetResponseStaticAddressingDhcpServerDhcpOptionsItemType;
   /** The option value, interpreted according to the type field. */
   value: string;
@@ -9088,6 +9066,12 @@ export interface SitesLansGetResponseStaticAddressingDhcpServer {
   dnsServers?: SitesLansGetResponseStaticAddressingDhcpServerDnsServersList | null;
   /** Mapping of MAC addresses to IP addresses */
   reservations?: SitesLansGetResponseStaticAddressingDhcpServerReservationsMap | null;
+  /** A valid CIDR notation representing an IP range. */
+  secondaryAddress?: string | null;
+  /** A valid CIDR notation representing an IP range. */
+  virtualAddress?: string | null;
+  /** VLAN ID. Use zero for untagged. */
+  vlanTag?: number | null;
 }
 export const SitesLansGetResponseStaticAddressingDhcpServer =
   /*@__PURE__*/ S.suspend(() =>
@@ -9110,6 +9094,13 @@ export const SitesLansGetResponseStaticAddressingDhcpServer =
       reservations: S.optional(
         S.NullOr(SitesLansGetResponseStaticAddressingDhcpServerReservationsMap),
       ),
+      secondaryAddress: S.optional(
+        S.NullOr(S.String).pipe(T.Body("secondary_address")),
+      ),
+      virtualAddress: S.optional(
+        S.NullOr(S.String).pipe(T.Body("virtual_address")),
+      ),
+      vlanTag: S.optional(S.NullOr(S.Number).pipe(T.Body("vlan_tag"))),
     }),
   ).annotate({
     identifier: "SitesLansGetResponseStaticAddressingDhcpServer",
@@ -9120,10 +9111,6 @@ export interface SitesLansGetResponseStaticAddressing {
   address: string;
   dhcpRelay?: SitesLansGetResponseStaticAddressingDhcpRelay | null;
   dhcpServer?: SitesLansGetResponseStaticAddressingDhcpServer | null;
-  /** A valid CIDR notation representing an IP range. */
-  secondaryAddress?: string | null;
-  /** A valid CIDR notation representing an IP range. */
-  virtualAddress?: string | null;
 }
 export const SitesLansGetResponseStaticAddressing = /*@__PURE__*/ S.suspend(
   () =>
@@ -9138,12 +9125,6 @@ export const SitesLansGetResponseStaticAddressing = /*@__PURE__*/ S.suspend(
         S.NullOr(SitesLansGetResponseStaticAddressingDhcpServer).pipe(
           T.Body("dhcp_server"),
         ),
-      ),
-      secondaryAddress: S.optional(
-        S.NullOr(S.String).pipe(T.Body("secondary_address")),
-      ),
-      virtualAddress: S.optional(
-        S.NullOr(S.String).pipe(T.Body("virtual_address")),
       ),
     }),
 ).annotate({
@@ -9169,8 +9150,6 @@ export interface GetSiteLanResponse {
   siteId?: string | null;
   /** If the site is not configured in high availability mode, this configuration is optional (if omitted, use DHCP). However, if in high availability mode, static_address is required along with secondary and virtual address. */
   staticAddressing?: SitesLansGetResponseStaticAddressing | null;
-  /** VLAN ID. Use zero for untagged. */
-  vlanTag?: number | null;
 }
 export const GetSiteLanResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -9195,7 +9174,6 @@ export const GetSiteLanResponse = /*@__PURE__*/ S.suspend(() =>
         T.Body("static_addressing"),
       ),
     ),
-    vlanTag: S.optional(S.NullOr(S.Number).pipe(T.Body("vlan_tag"))),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetSiteLanResponse",
@@ -9295,125 +9273,94 @@ export const ListAppsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListAppsRequest",
 }) as any as S.Schema<ListAppsRequest>;
 
-export type AppsListResultItemMagicAccountAppHostnamesList = Array<string>;
-export const AppsListResultItemMagicAccountAppHostnamesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<AppsListResultItemMagicAccountAppHostnamesList>;
+export type AppsListResultItemHostnamesList = Array<string>;
+export const AppsListResultItemHostnamesList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<AppsListResultItemHostnamesList>;
 
-export type AppsListResultItemMagicAccountAppIpSubnetsList = Array<string>;
-export const AppsListResultItemMagicAccountAppIpSubnetsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<AppsListResultItemMagicAccountAppIpSubnetsList>;
+export type AppsListResultItemIpSubnetsList = Array<string>;
+export const AppsListResultItemIpSubnetsList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<AppsListResultItemIpSubnetsList>;
 
-export type AppsListResultItemMagicAccountAppSourceSubnetsList = Array<string>;
-export const AppsListResultItemMagicAccountAppSourceSubnetsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<AppsListResultItemMagicAccountAppSourceSubnetsList>;
+export type AppsListResultItemSourceSubnetsList = Array<string>;
+export const AppsListResultItemSourceSubnetsList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<AppsListResultItemSourceSubnetsList>;
 
-export interface AppsListResultItemMagicAccountApp {
+export type AppsListResultItemHostnamesList2 = Array<string>;
+export const AppsListResultItemHostnamesList2 = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<AppsListResultItemHostnamesList2>;
+
+export type AppsListResultItemIpSubnetsList2 = Array<string>;
+export const AppsListResultItemIpSubnetsList2 = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<AppsListResultItemIpSubnetsList2>;
+
+export type AppsListResultItemSourceSubnetsList2 = Array<string>;
+export const AppsListResultItemSourceSubnetsList2 = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<AppsListResultItemSourceSubnetsList2>;
+
+export interface AppsListResultItem {
   /** Magic account app ID. */
   accountAppId: string;
   /** FQDNs to associate with traffic decisions. */
-  hostnames?: AppsListResultItemMagicAccountAppHostnamesList | null;
+  hostnames?: AppsListResultItemHostnamesList | null;
   /** IPv4 CIDRs to associate with traffic decisions. (IPv6 CIDRs are currently unsupported) */
-  ipSubnets?: AppsListResultItemMagicAccountAppIpSubnetsList | null;
+  ipSubnets?: AppsListResultItemIpSubnetsList | null;
   /** Display name for the app. */
   name?: string | null;
   /** IPv4 CIDRs to associate with traffic decisions. (IPv6 CIDRs are currently unsupported) */
-  sourceSubnets?: AppsListResultItemMagicAccountAppSourceSubnetsList | null;
+  sourceSubnets?: AppsListResultItemSourceSubnetsList | null;
   /** Category of the app. */
   type?: string | null;
-}
-export const AppsListResultItemMagicAccountApp = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountAppId: S.String.pipe(T.Body("account_app_id")),
-    hostnames: S.optional(
-      S.NullOr(AppsListResultItemMagicAccountAppHostnamesList),
-    ),
-    ipSubnets: S.optional(
-      S.NullOr(AppsListResultItemMagicAccountAppIpSubnetsList).pipe(
-        T.Body("ip_subnets"),
-      ),
-    ),
-    name: S.optional(S.NullOr(S.String)),
-    sourceSubnets: S.optional(
-      S.NullOr(AppsListResultItemMagicAccountAppSourceSubnetsList).pipe(
-        T.Body("source_subnets"),
-      ),
-    ),
-    type: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "AppsListResultItemMagicAccountApp",
-}) as any as S.Schema<AppsListResultItemMagicAccountApp>;
-
-export type AppsListResultItemMagicManagedAppHostnamesList = Array<string>;
-export const AppsListResultItemMagicManagedAppHostnamesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<AppsListResultItemMagicManagedAppHostnamesList>;
-
-export type AppsListResultItemMagicManagedAppIpSubnetsList = Array<string>;
-export const AppsListResultItemMagicManagedAppIpSubnetsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<AppsListResultItemMagicManagedAppIpSubnetsList>;
-
-export type AppsListResultItemMagicManagedAppSourceSubnetsList = Array<string>;
-export const AppsListResultItemMagicManagedAppSourceSubnetsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<AppsListResultItemMagicManagedAppSourceSubnetsList>;
-
-export interface AppsListResultItemMagicManagedApp {
   /** Managed app ID. */
   managedAppId: string;
   /** FQDNs to associate with traffic decisions. */
-  hostnames?: AppsListResultItemMagicManagedAppHostnamesList | null;
+  hostnames_2?: AppsListResultItemHostnamesList2 | null;
   /** IPv4 CIDRs to associate with traffic decisions. (IPv6 CIDRs are currently unsupported) */
-  ipSubnets?: AppsListResultItemMagicManagedAppIpSubnetsList | null;
+  ip_subnets_2?: AppsListResultItemIpSubnetsList2 | null;
   /** Display name for the app. */
-  name?: string | null;
+  name_2?: string | null;
   /** IPv4 CIDRs to associate with traffic decisions. (IPv6 CIDRs are currently unsupported) */
-  sourceSubnets?: AppsListResultItemMagicManagedAppSourceSubnetsList | null;
+  source_subnets_2?: AppsListResultItemSourceSubnetsList2 | null;
   /** Category of the app. */
-  type?: string | null;
+  type_2?: string | null;
 }
-export const AppsListResultItemMagicManagedApp = /*@__PURE__*/ S.suspend(() =>
+export const AppsListResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    managedAppId: S.String.pipe(T.Body("managed_app_id")),
-    hostnames: S.optional(
-      S.NullOr(AppsListResultItemMagicManagedAppHostnamesList),
-    ),
+    accountAppId: S.String.pipe(T.Body("account_app_id")),
+    hostnames: S.optional(S.NullOr(AppsListResultItemHostnamesList)),
     ipSubnets: S.optional(
-      S.NullOr(AppsListResultItemMagicManagedAppIpSubnetsList).pipe(
-        T.Body("ip_subnets"),
-      ),
+      S.NullOr(AppsListResultItemIpSubnetsList).pipe(T.Body("ip_subnets")),
     ),
     name: S.optional(S.NullOr(S.String)),
     sourceSubnets: S.optional(
-      S.NullOr(AppsListResultItemMagicManagedAppSourceSubnetsList).pipe(
+      S.NullOr(AppsListResultItemSourceSubnetsList).pipe(
         T.Body("source_subnets"),
       ),
     ),
     type: S.optional(S.NullOr(S.String)),
+    managedAppId: S.String.pipe(T.Body("managed_app_id")),
+    hostnames_2: S.optional(
+      S.NullOr(AppsListResultItemHostnamesList2).pipe(T.Body("hostnames")),
+    ),
+    ip_subnets_2: S.optional(
+      S.NullOr(AppsListResultItemIpSubnetsList2).pipe(T.Body("ip_subnets")),
+    ),
+    name_2: S.optional(S.NullOr(S.String).pipe(T.Body("name"))),
+    source_subnets_2: S.optional(
+      S.NullOr(AppsListResultItemSourceSubnetsList2).pipe(
+        T.Body("source_subnets"),
+      ),
+    ),
+    type_2: S.optional(S.NullOr(S.String).pipe(T.Body("type"))),
   }),
 ).annotate({
-  identifier: "AppsListResultItemMagicManagedApp",
-}) as any as S.Schema<AppsListResultItemMagicManagedApp>;
-
-export type AppsListResultItem =
-  | AppsListResultItemMagicAccountApp
-  | AppsListResultItemMagicManagedApp;
-export const AppsListResultItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
-    ["accountAppId", "hostnames", "ipSubnets", "name", "sourceSubnets", "type"],
-    ["managedAppId", "hostnames", "ipSubnets", "name", "sourceSubnets", "type"],
-  ]),
-);
+  identifier: "AppsListResultItem",
+}) as any as S.Schema<AppsListResultItem>;
 
 export type AppsListResultList = Array<AppsListResultItem>;
 export const AppsListResultList = /*@__PURE__*/ S.Array(
@@ -9490,11 +9437,13 @@ export const Cf1SitesRampsListResultItemMplsInterconnect =
 export interface Cf1SitesRampsListResultItem {
   /** Identifier */
   id: string;
+  /** formatdate-time */
   createdOn: string;
+  /** formatdate-time */
   modifiedOn: string;
   /** A human-provided name describing the ramp that should be unique within the CF1 Site. */
   name: string;
-  /** The type of network connection (ramp) linking a CF1 Site to Cloudflare's network. */
+  /** The type of network connection (ramp) linking a CF1 Site to Cloudflare’s network. */
   type: Cf1SitesRampsListResultItemType;
   /** A human-provided description of the ramp. */
   description?: string | null;
@@ -9620,78 +9569,62 @@ export const ListCfInterconnectsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListCfInterconnectsRequest",
 }) as any as S.Schema<ListCfInterconnectsRequest>;
 
-export type CfInterconnectsListResponseInterconnectsItemGre =
-  CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemGre;
-export const CfInterconnectsListResponseInterconnectsItemGre =
-  CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemGre;
+export type CfInterconnectsListResponseInterconnectsItemBgpExtraPrefixesList =
+  Array<string>;
+export const CfInterconnectsListResponseInterconnectsItemBgpExtraPrefixesList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<CfInterconnectsListResponseInterconnectsItemBgpExtraPrefixesList>;
 
-export type CfInterconnectsListResponseInterconnectsItemHealthCheckRate =
+export type CfInterconnectsListResponseInterconnectsItemBgpGre =
+  CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemBgpGre;
+export const CfInterconnectsListResponseInterconnectsItemBgpGre =
+  CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemBgpGre;
+
+export type CfInterconnectsListResponseInterconnectsItemBgpHealthCheckDirection =
+  | "unidirectional"
+  | "bidirectional";
+export const CfInterconnectsListResponseInterconnectsItemBgpHealthCheckDirection =
+  /*@__PURE__*/ S.String;
+
+export type CfInterconnectsListResponseInterconnectsItemBgpHealthCheckRate =
   | "low"
   | "mid"
   | "high";
-export const CfInterconnectsListResponseInterconnectsItemHealthCheckRate =
+export const CfInterconnectsListResponseInterconnectsItemBgpHealthCheckRate =
   /*@__PURE__*/ S.String;
 
-export type CfInterconnectsListResponseInterconnectsItemHealthCheckTargetMagicHealthCheckTarget =
-  CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemHealthCheckTargetMagicHealthCheckTarget;
-export const CfInterconnectsListResponseInterconnectsItemHealthCheckTargetMagicHealthCheckTarget =
-  CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemHealthCheckTargetMagicHealthCheckTarget;
+export type CfInterconnectsListResponseInterconnectsItemBgpHealthCheckTarget =
+  CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemBgpHealthCheckTarget;
+export const CfInterconnectsListResponseInterconnectsItemBgpHealthCheckTarget =
+  CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemBgpHealthCheckTarget;
 
-export type CfInterconnectsListResponseInterconnectsItemHealthCheckTarget =
+export type CfInterconnectsListResponseInterconnectsItemBgpHealthCheckTarget2 =
   | string
-  | CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemHealthCheckTargetMagicHealthCheckTarget;
-export const CfInterconnectsListResponseInterconnectsItemHealthCheckTarget =
+  | CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemBgpHealthCheckTarget;
+export const CfInterconnectsListResponseInterconnectsItemBgpHealthCheckTarget2 =
   /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], ["effective", "saved"]]));
 
-export type CfInterconnectsListResponseInterconnectsItemHealthCheckType =
+export type CfInterconnectsListResponseInterconnectsItemBgpHealthCheckType =
   | "reply"
   | "request";
-export const CfInterconnectsListResponseInterconnectsItemHealthCheckType =
+export const CfInterconnectsListResponseInterconnectsItemBgpHealthCheckType =
   /*@__PURE__*/ S.String;
 
-export interface CfInterconnectsListResponseInterconnectsItemHealthCheck {
+export interface CfInterconnectsListResponseInterconnectsItemBgpHealthCheck {
+  /** The direction of the flow of the healthcheck. Either unidirectional, where the probe comes to you via the interconnect and the result comes back to Cloudflare via the open Internet, or bidirectional where both the probe and result come and go via the interconnect. */
+  direction?: CfInterconnectsListResponseInterconnectsItemBgpHealthCheckDirection | null;
   /** Determines whether to run healthchecks for a tunnel. */
   enabled?: boolean | null;
   /** How frequent the health check is run. The default value is `mid`. */
-  rate?: CfInterconnectsListResponseInterconnectsItemHealthCheckRate | null;
+  rate?: CfInterconnectsListResponseInterconnectsItemBgpHealthCheckRate | null;
+  /** The source IPv4 address used for bidirectional health checks. Supported only for version 1.5 interconnects. It is required when `direction` is `bidirectional` and must be omitted (and is cleared) when `direction` is `unidirectional`. The address must be within RFC1918 space, the approved link-local range 169.254.240.0/20, or the Cloudflare reserved range 198.41.199.224/27. */
+  source?: string | null;
   /** The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customer_gre_endpoint address`. This field is ignored for bidirectional healthchecks as the interface_address (not assigned to the Cloudflare side of the tunnel) is used as the target. Must be in object form if the x-magic-new-hc-target header is set to true and string form if x-magic-new-hc-target is absent or set to false. */
-  target?: CfInterconnectsListResponseInterconnectsItemHealthCheckTarget | null;
+  target?: CfInterconnectsListResponseInterconnectsItemBgpHealthCheckTarget2 | null;
   /** The type of healthcheck to run, reply or request. The default value is `reply`. */
-  type?: CfInterconnectsListResponseInterconnectsItemHealthCheckType | null;
-}
-export const CfInterconnectsListResponseInterconnectsItemHealthCheck =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      enabled: S.optional(S.NullOr(S.Boolean)),
-      rate: S.optional(
-        S.NullOr(CfInterconnectsListResponseInterconnectsItemHealthCheckRate),
-      ),
-      target: S.optional(
-        S.NullOr(CfInterconnectsListResponseInterconnectsItemHealthCheckTarget),
-      ),
-      type: S.optional(
-        S.NullOr(CfInterconnectsListResponseInterconnectsItemHealthCheckType),
-      ),
-    }),
-  ).annotate({
-    identifier: "CfInterconnectsListResponseInterconnectsItemHealthCheck",
-  }) as any as S.Schema<CfInterconnectsListResponseInterconnectsItemHealthCheck>;
-
-export interface CfInterconnectsListResponseInterconnectsItem {
-  /** Identifier */
-  id?: string | null;
-  /** True if automatic stateful return routing should be enabled for a tunnel, false otherwise. Requires the `coupler_integration` account flag to be enabled; requests setting this to `true` without that flag will be rejected. */
-  automaticReturnRouting?: boolean | null;
-  /** The name of the interconnect. The name cannot share a name with other tunnels. */
-  coloName?: string | null;
-  /** The date and time the tunnel was created. */
-  createdOn?: string | null;
-  /** An optional description of the interconnect. */
-  description?: string | null;
-  /** The configuration specific to GRE interconnects. */
-  gre?: CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemGre | null;
-  healthCheck?: CfInterconnectsListResponseInterconnectsItemHealthCheck | null;
-  /** A 31-bit prefix (/31 in CIDR notation) supporting two hosts, one for each side of the tunnel. Select the subnet from the following private IP space: 10.0.0.0–10.255.255.255, 172.16.0.0–172.31.255.255, 192.168.0.0–192.168.255.255. */
+  type?: CfInterconnectsListResponseInterconnectsItemBgpHealthCheckType | null;
+  /** The IPv4 interface address for the interconnect. For MPLS Interconnects, use a /30 or /31 prefix. For GRE Interconnects, a /30 or /31 prefix may be used. Version 1.5 interconnects require a /31 prefix and may also use a prefix from the account’s authorized prefixes; otherwise, select the subnet from RFC 1918 or the approved link-local ranges. */
   interfaceAddress?: string | null;
   /** A 127 bit IPV6 prefix from within the virtual_subnet6 prefix space with the address being the first IP of the subnet and not same as the address of virtual_subnet6. Eg if virtual_subnet6 is 2606:54c1:7:0:a9fe:12d2::/127 , interface_address6 could be 2606:54c1:7:0:a9fe:12d2:1:200/127 */
   interfaceAddress6?: string | null;
@@ -9701,25 +9634,34 @@ export interface CfInterconnectsListResponseInterconnectsItem {
   mtu?: number | null;
   /** The name of the interconnect. The name cannot share a name with other tunnels. */
   name?: string | null;
+  /** Immutable interconnect version configured at creation time. One of: */
+  version?: string | null;
   /** An identifier that correlates this interconnect with the corresponding V2 CNI interconnect resource. */
   virtualPortReservationId?: string | null;
 }
-export const CfInterconnectsListResponseInterconnectsItem =
+export const CfInterconnectsListResponseInterconnectsItemBgpHealthCheck =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      id: S.optional(S.NullOr(S.String)),
-      automaticReturnRouting: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("automatic_return_routing")),
+      direction: S.optional(
+        S.NullOr(
+          CfInterconnectsListResponseInterconnectsItemBgpHealthCheckDirection,
+        ),
       ),
-      coloName: S.optional(S.NullOr(S.String).pipe(T.Body("colo_name"))),
-      createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
-      description: S.optional(S.NullOr(S.String)),
-      gre: S.optional(
-        S.NullOr(CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemGre),
+      enabled: S.optional(S.NullOr(S.Boolean)),
+      rate: S.optional(
+        S.NullOr(
+          CfInterconnectsListResponseInterconnectsItemBgpHealthCheckRate,
+        ),
       ),
-      healthCheck: S.optional(
-        S.NullOr(CfInterconnectsListResponseInterconnectsItemHealthCheck).pipe(
-          T.Body("health_check"),
+      source: S.optional(S.NullOr(S.String)),
+      target: S.optional(
+        S.NullOr(
+          CfInterconnectsListResponseInterconnectsItemBgpHealthCheckTarget2,
+        ),
+      ),
+      type: S.optional(
+        S.NullOr(
+          CfInterconnectsListResponseInterconnectsItemBgpHealthCheckType,
         ),
       ),
       interfaceAddress: S.optional(
@@ -9731,8 +9673,101 @@ export const CfInterconnectsListResponseInterconnectsItem =
       modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
       mtu: S.optional(S.NullOr(S.Number)),
       name: S.optional(S.NullOr(S.String)),
+      version: S.optional(S.NullOr(S.String)),
       virtualPortReservationId: S.optional(
         S.NullOr(S.String).pipe(T.Body("virtual_port_reservation_id")),
+      ),
+    }),
+  ).annotate({
+    identifier: "CfInterconnectsListResponseInterconnectsItemBgpHealthCheck",
+  }) as any as S.Schema<CfInterconnectsListResponseInterconnectsItemBgpHealthCheck>;
+
+export interface CfInterconnectsListResponseInterconnectsItemBgp {
+  /** Deprecated. Use customer_asn. */
+  deprecatedasNo?: number | null;
+  /** Read-only for v1.5; derived from interface_address. */
+  deprecatedcloudflareEndpoint?: string | null;
+  /** ASN used on the customer end of the BGP session. */
+  customerAsn?: number | null;
+  /** Read-only for v1.5; derived from interface_address. */
+  deprecatedcustomerEndpoint?: string | null;
+  /** ID of the BGP filter profile applied to routes advertised to the customer. */
+  exportFilterId?: string | null;
+  /** Prefixes in this list will be advertised to the customer device, in addition to the routes in the Magic routing table. */
+  extraPrefixes?: CfInterconnectsListResponseInterconnectsItemBgpExtraPrefixesList | null;
+  /** ID of the BGP filter profile applied to routes received from the customer. */
+  importFilterId?: string | null;
+  /** MD5 key to use for session authentication. */
+  md5Key?: string | null;
+  /** The name of the interconnect. The name cannot share a name with other tunnels. */
+  coloName?: string | null;
+  /** The date and time the tunnel was created. */
+  createdOn?: string | null;
+  /** An optional description of the interconnect. */
+  description?: string | null;
+  /** Omitted in responses for version 1.5 interconnects. */
+  gre?: CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemBgpGre | null;
+  healthCheck?: CfInterconnectsListResponseInterconnectsItemBgpHealthCheck | null;
+}
+export const CfInterconnectsListResponseInterconnectsItemBgp =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      deprecatedasNo: S.optional(
+        S.NullOr(S.Number).pipe(T.Body("Deprecatedas_no")),
+      ),
+      deprecatedcloudflareEndpoint: S.optional(
+        S.NullOr(S.String).pipe(T.Body("Deprecatedcloudflare_endpoint")),
+      ),
+      customerAsn: S.optional(S.NullOr(S.Number).pipe(T.Body("customer_asn"))),
+      deprecatedcustomerEndpoint: S.optional(
+        S.NullOr(S.String).pipe(T.Body("Deprecatedcustomer_endpoint")),
+      ),
+      exportFilterId: S.optional(
+        S.NullOr(S.String).pipe(T.Body("export_filter_id")),
+      ),
+      extraPrefixes: S.optional(
+        S.NullOr(
+          CfInterconnectsListResponseInterconnectsItemBgpExtraPrefixesList,
+        ).pipe(T.Body("extra_prefixes")),
+      ),
+      importFilterId: S.optional(
+        S.NullOr(S.String).pipe(T.Body("import_filter_id")),
+      ),
+      md5Key: S.optional(S.NullOr(S.String).pipe(T.Body("md5_key"))),
+      coloName: S.optional(S.NullOr(S.String).pipe(T.Body("colo_name"))),
+      createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
+      description: S.optional(S.NullOr(S.String)),
+      gre: S.optional(
+        S.NullOr(
+          CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemBgpGre,
+        ),
+      ),
+      healthCheck: S.optional(
+        S.NullOr(
+          CfInterconnectsListResponseInterconnectsItemBgpHealthCheck,
+        ).pipe(T.Body("health_check")),
+      ),
+    }),
+  ).annotate({
+    identifier: "CfInterconnectsListResponseInterconnectsItemBgp",
+  }) as any as S.Schema<CfInterconnectsListResponseInterconnectsItemBgp>;
+
+export interface CfInterconnectsListResponseInterconnectsItem {
+  /** Identifier */
+  id?: string | null;
+  /** True if automatic stateful return routing should be enabled for a tunnel, false otherwise. Requires the `coupler_integration` account flag to be enabled; requests setting this to `true` without that flag will be rejected. */
+  automaticReturnRouting?: boolean | null;
+  bgp?: CfInterconnectsListResponseInterconnectsItemBgp | null;
+}
+export const CfInterconnectsListResponseInterconnectsItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      id: S.optional(S.NullOr(S.String)),
+      automaticReturnRouting: S.optional(
+        S.NullOr(S.Boolean).pipe(T.Body("automatic_return_routing")),
+      ),
+      bgp: S.optional(
+        S.NullOr(CfInterconnectsListResponseInterconnectsItemBgp),
       ),
     }),
   ).annotate({
@@ -9782,460 +9817,51 @@ export const ListConnectorEventLatestsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListConnectorEventLatestsRequest",
 }) as any as S.Schema<ListConnectorEventLatestsRequest>;
 
-export type ConnectorsEventsLatestListResponseItemsItemEInitK = "Init";
-export const ConnectorsEventsLatestListResponseItemsItemEInitK =
+export type ConnectorsEventsLatestListResponseItemsItemEK =
+  | "Init"
+  | "Leave"
+  | "StartAttestation"
+  | "FinishAttestationSuccess"
+  | "FinishAttestationFailure"
+  | "StartRotateCryptKey"
+  | "FinishRotateCryptKeySuccess"
+  | "FinishRotateCryptKeyFailure"
+  | "StartRotatePki"
+  | "FinishRotatePkiSuccess"
+  | "FinishRotatePkiFailure"
+  | "StartUpgrade"
+  | "FinishUpgradeSuccess"
+  | "FinishUpgradeFailure"
+  | "Reconcile"
+  | "ConfigureCloudflaredTunnel"
+  | "RekeyInstallBoth"
+  | "RekeyStart"
+  | "RekeyRestart"
+  | "RekeyAdvance"
+  | "RekeyComplete"
+  | "RekeyReset"
+  | "HaTransition"
+  | "HaError"
+  | "HaInit"
+  | "HaLeave";
+export const ConnectorsEventsLatestListResponseItemsItemEK =
   /*@__PURE__*/ S.String;
 
-export interface ConnectorsEventsLatestListResponseItemsItemEInit {
-  /** Initialized process */
-  k: ConnectorsEventsLatestListResponseItemsItemEInitK;
+export interface ConnectorsEventsLatestListResponseItemsItemE {
+  /** Event kind */
+  k: ConnectorsEventsLatestListResponseItemsItemEK;
 }
-export const ConnectorsEventsLatestListResponseItemsItemEInit =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      k: ConnectorsEventsLatestListResponseItemsItemEInitK,
-    }),
-  ).annotate({
-    identifier: "ConnectorsEventsLatestListResponseItemsItemEInit",
-  }) as any as S.Schema<ConnectorsEventsLatestListResponseItemsItemEInit>;
-
-export type ConnectorsEventsLatestListResponseItemsItemELeaveK = "Leave";
-export const ConnectorsEventsLatestListResponseItemsItemELeaveK =
-  /*@__PURE__*/ S.String;
-
-export interface ConnectorsEventsLatestListResponseItemsItemELeave {
-  /** Stopped process */
-  k: ConnectorsEventsLatestListResponseItemsItemELeaveK;
-}
-export const ConnectorsEventsLatestListResponseItemsItemELeave =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      k: ConnectorsEventsLatestListResponseItemsItemELeaveK,
-    }),
-  ).annotate({
-    identifier: "ConnectorsEventsLatestListResponseItemsItemELeave",
-  }) as any as S.Schema<ConnectorsEventsLatestListResponseItemsItemELeave>;
-
-export type ConnectorsEventsLatestListResponseItemsItemEStartAttestationK =
-  "StartAttestation";
-export const ConnectorsEventsLatestListResponseItemsItemEStartAttestationK =
-  /*@__PURE__*/ S.String;
-
-export interface ConnectorsEventsLatestListResponseItemsItemEStartAttestation {
-  /** Started attestation */
-  k: ConnectorsEventsLatestListResponseItemsItemEStartAttestationK;
-}
-export const ConnectorsEventsLatestListResponseItemsItemEStartAttestation =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      k: ConnectorsEventsLatestListResponseItemsItemEStartAttestationK,
-    }),
-  ).annotate({
-    identifier: "ConnectorsEventsLatestListResponseItemsItemEStartAttestation",
-  }) as any as S.Schema<ConnectorsEventsLatestListResponseItemsItemEStartAttestation>;
-
-export type ConnectorsEventsLatestListResponseItemsItemEFinishAttestationSuccessK =
-  "FinishAttestationSuccess";
-export const ConnectorsEventsLatestListResponseItemsItemEFinishAttestationSuccessK =
-  /*@__PURE__*/ S.String;
-
-export interface ConnectorsEventsLatestListResponseItemsItemEFinishAttestationSuccess {
-  /** Finished attestation */
-  k: ConnectorsEventsLatestListResponseItemsItemEFinishAttestationSuccessK;
-}
-export const ConnectorsEventsLatestListResponseItemsItemEFinishAttestationSuccess =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      k: ConnectorsEventsLatestListResponseItemsItemEFinishAttestationSuccessK,
-    }),
-  ).annotate({
-    identifier:
-      "ConnectorsEventsLatestListResponseItemsItemEFinishAttestationSuccess",
-  }) as any as S.Schema<ConnectorsEventsLatestListResponseItemsItemEFinishAttestationSuccess>;
-
-export type ConnectorsEventsLatestListResponseItemsItemEFinishAttestationFailureK =
-  "FinishAttestationFailure";
-export const ConnectorsEventsLatestListResponseItemsItemEFinishAttestationFailureK =
-  /*@__PURE__*/ S.String;
-
-export interface ConnectorsEventsLatestListResponseItemsItemEFinishAttestationFailure {
-  /** Failed attestation */
-  k: ConnectorsEventsLatestListResponseItemsItemEFinishAttestationFailureK;
-}
-export const ConnectorsEventsLatestListResponseItemsItemEFinishAttestationFailure =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      k: ConnectorsEventsLatestListResponseItemsItemEFinishAttestationFailureK,
-    }),
-  ).annotate({
-    identifier:
-      "ConnectorsEventsLatestListResponseItemsItemEFinishAttestationFailure",
-  }) as any as S.Schema<ConnectorsEventsLatestListResponseItemsItemEFinishAttestationFailure>;
-
-export type ConnectorsEventsLatestListResponseItemsItemEStartRotateCryptKeyK =
-  "StartRotateCryptKey";
-export const ConnectorsEventsLatestListResponseItemsItemEStartRotateCryptKeyK =
-  /*@__PURE__*/ S.String;
-
-export interface ConnectorsEventsLatestListResponseItemsItemEStartRotateCryptKey {
-  /** Started crypt key rotation */
-  k: ConnectorsEventsLatestListResponseItemsItemEStartRotateCryptKeyK;
-}
-export const ConnectorsEventsLatestListResponseItemsItemEStartRotateCryptKey =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      k: ConnectorsEventsLatestListResponseItemsItemEStartRotateCryptKeyK,
-    }),
-  ).annotate({
-    identifier:
-      "ConnectorsEventsLatestListResponseItemsItemEStartRotateCryptKey",
-  }) as any as S.Schema<ConnectorsEventsLatestListResponseItemsItemEStartRotateCryptKey>;
-
-export type ConnectorsEventsLatestListResponseItemsItemEFinishRotateCryptKeySuccessK =
-  "FinishRotateCryptKeySuccess";
-export const ConnectorsEventsLatestListResponseItemsItemEFinishRotateCryptKeySuccessK =
-  /*@__PURE__*/ S.String;
-
-export interface ConnectorsEventsLatestListResponseItemsItemEFinishRotateCryptKeySuccess {
-  /** Finished crypt key rotation */
-  k: ConnectorsEventsLatestListResponseItemsItemEFinishRotateCryptKeySuccessK;
-}
-export const ConnectorsEventsLatestListResponseItemsItemEFinishRotateCryptKeySuccess =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      k: ConnectorsEventsLatestListResponseItemsItemEFinishRotateCryptKeySuccessK,
-    }),
-  ).annotate({
-    identifier:
-      "ConnectorsEventsLatestListResponseItemsItemEFinishRotateCryptKeySuccess",
-  }) as any as S.Schema<ConnectorsEventsLatestListResponseItemsItemEFinishRotateCryptKeySuccess>;
-
-export type ConnectorsEventsLatestListResponseItemsItemEFinishRotateCryptKeyFailureK =
-  "FinishRotateCryptKeyFailure";
-export const ConnectorsEventsLatestListResponseItemsItemEFinishRotateCryptKeyFailureK =
-  /*@__PURE__*/ S.String;
-
-export interface ConnectorsEventsLatestListResponseItemsItemEFinishRotateCryptKeyFailure {
-  /** Failed crypt key rotation */
-  k: ConnectorsEventsLatestListResponseItemsItemEFinishRotateCryptKeyFailureK;
-}
-export const ConnectorsEventsLatestListResponseItemsItemEFinishRotateCryptKeyFailure =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      k: ConnectorsEventsLatestListResponseItemsItemEFinishRotateCryptKeyFailureK,
-    }),
-  ).annotate({
-    identifier:
-      "ConnectorsEventsLatestListResponseItemsItemEFinishRotateCryptKeyFailure",
-  }) as any as S.Schema<ConnectorsEventsLatestListResponseItemsItemEFinishRotateCryptKeyFailure>;
-
-export type ConnectorsEventsLatestListResponseItemsItemEStartRotatePkiK =
-  "StartRotatePki";
-export const ConnectorsEventsLatestListResponseItemsItemEStartRotatePkiK =
-  /*@__PURE__*/ S.String;
-
-export interface ConnectorsEventsLatestListResponseItemsItemEStartRotatePki {
-  /** Started PKI rotation */
-  k: ConnectorsEventsLatestListResponseItemsItemEStartRotatePkiK;
-}
-export const ConnectorsEventsLatestListResponseItemsItemEStartRotatePki =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      k: ConnectorsEventsLatestListResponseItemsItemEStartRotatePkiK,
-    }),
-  ).annotate({
-    identifier: "ConnectorsEventsLatestListResponseItemsItemEStartRotatePki",
-  }) as any as S.Schema<ConnectorsEventsLatestListResponseItemsItemEStartRotatePki>;
-
-export type ConnectorsEventsLatestListResponseItemsItemEFinishRotatePkiSuccessK =
-  "FinishRotatePkiSuccess";
-export const ConnectorsEventsLatestListResponseItemsItemEFinishRotatePkiSuccessK =
-  /*@__PURE__*/ S.String;
-
-export interface ConnectorsEventsLatestListResponseItemsItemEFinishRotatePkiSuccess {
-  /** Finished PKI rotation */
-  k: ConnectorsEventsLatestListResponseItemsItemEFinishRotatePkiSuccessK;
-}
-export const ConnectorsEventsLatestListResponseItemsItemEFinishRotatePkiSuccess =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      k: ConnectorsEventsLatestListResponseItemsItemEFinishRotatePkiSuccessK,
-    }),
-  ).annotate({
-    identifier:
-      "ConnectorsEventsLatestListResponseItemsItemEFinishRotatePkiSuccess",
-  }) as any as S.Schema<ConnectorsEventsLatestListResponseItemsItemEFinishRotatePkiSuccess>;
-
-export type ConnectorsEventsLatestListResponseItemsItemEFinishRotatePkiFailureK =
-  "FinishRotatePkiFailure";
-export const ConnectorsEventsLatestListResponseItemsItemEFinishRotatePkiFailureK =
-  /*@__PURE__*/ S.String;
-
-export interface ConnectorsEventsLatestListResponseItemsItemEFinishRotatePkiFailure {
-  /** Failed PKI rotation */
-  k: ConnectorsEventsLatestListResponseItemsItemEFinishRotatePkiFailureK;
-}
-export const ConnectorsEventsLatestListResponseItemsItemEFinishRotatePkiFailure =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      k: ConnectorsEventsLatestListResponseItemsItemEFinishRotatePkiFailureK,
-    }),
-  ).annotate({
-    identifier:
-      "ConnectorsEventsLatestListResponseItemsItemEFinishRotatePkiFailure",
-  }) as any as S.Schema<ConnectorsEventsLatestListResponseItemsItemEFinishRotatePkiFailure>;
-
-export type ConnectorsEventsLatestListResponseItemsItemEStartUpgradeK =
-  "StartUpgrade";
-export const ConnectorsEventsLatestListResponseItemsItemEStartUpgradeK =
-  /*@__PURE__*/ S.String;
-
-export interface ConnectorsEventsLatestListResponseItemsItemEStartUpgrade {
-  /** Started upgrade */
-  k: ConnectorsEventsLatestListResponseItemsItemEStartUpgradeK;
-  /** Location of upgrade bundle */
-  url: string;
-}
-export const ConnectorsEventsLatestListResponseItemsItemEStartUpgrade =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      k: ConnectorsEventsLatestListResponseItemsItemEStartUpgradeK,
-      url: S.String,
-    }),
-  ).annotate({
-    identifier: "ConnectorsEventsLatestListResponseItemsItemEStartUpgrade",
-  }) as any as S.Schema<ConnectorsEventsLatestListResponseItemsItemEStartUpgrade>;
-
-export type ConnectorsEventsLatestListResponseItemsItemEFinishUpgradeSuccessK =
-  "FinishUpgradeSuccess";
-export const ConnectorsEventsLatestListResponseItemsItemEFinishUpgradeSuccessK =
-  /*@__PURE__*/ S.String;
-
-export interface ConnectorsEventsLatestListResponseItemsItemEFinishUpgradeSuccess {
-  /** Finished upgrade */
-  k: ConnectorsEventsLatestListResponseItemsItemEFinishUpgradeSuccessK;
-}
-export const ConnectorsEventsLatestListResponseItemsItemEFinishUpgradeSuccess =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      k: ConnectorsEventsLatestListResponseItemsItemEFinishUpgradeSuccessK,
-    }),
-  ).annotate({
-    identifier:
-      "ConnectorsEventsLatestListResponseItemsItemEFinishUpgradeSuccess",
-  }) as any as S.Schema<ConnectorsEventsLatestListResponseItemsItemEFinishUpgradeSuccess>;
-
-export type ConnectorsEventsLatestListResponseItemsItemEFinishUpgradeFailureK =
-  "FinishUpgradeFailure";
-export const ConnectorsEventsLatestListResponseItemsItemEFinishUpgradeFailureK =
-  /*@__PURE__*/ S.String;
-
-export interface ConnectorsEventsLatestListResponseItemsItemEFinishUpgradeFailure {
-  /** Failed upgrade */
-  k: ConnectorsEventsLatestListResponseItemsItemEFinishUpgradeFailureK;
-}
-export const ConnectorsEventsLatestListResponseItemsItemEFinishUpgradeFailure =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      k: ConnectorsEventsLatestListResponseItemsItemEFinishUpgradeFailureK,
-    }),
-  ).annotate({
-    identifier:
-      "ConnectorsEventsLatestListResponseItemsItemEFinishUpgradeFailure",
-  }) as any as S.Schema<ConnectorsEventsLatestListResponseItemsItemEFinishUpgradeFailure>;
-
-export type ConnectorsEventsLatestListResponseItemsItemEReconcileK =
-  "Reconcile";
-export const ConnectorsEventsLatestListResponseItemsItemEReconcileK =
-  /*@__PURE__*/ S.String;
-
-export interface ConnectorsEventsLatestListResponseItemsItemEReconcile {
-  /** Reconciled */
-  k: ConnectorsEventsLatestListResponseItemsItemEReconcileK;
-}
-export const ConnectorsEventsLatestListResponseItemsItemEReconcile =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      k: ConnectorsEventsLatestListResponseItemsItemEReconcileK,
-    }),
-  ).annotate({
-    identifier: "ConnectorsEventsLatestListResponseItemsItemEReconcile",
-  }) as any as S.Schema<ConnectorsEventsLatestListResponseItemsItemEReconcile>;
-
-export type ConnectorsEventsLatestListResponseItemsItemEConfigureCloudflaredTunnelK =
-  "ConfigureCloudflaredTunnel";
-export const ConnectorsEventsLatestListResponseItemsItemEConfigureCloudflaredTunnelK =
-  /*@__PURE__*/ S.String;
-
-export interface ConnectorsEventsLatestListResponseItemsItemEConfigureCloudflaredTunnel {
-  /** Configured Cloudflared tunnel */
-  k: ConnectorsEventsLatestListResponseItemsItemEConfigureCloudflaredTunnelK;
-}
-export const ConnectorsEventsLatestListResponseItemsItemEConfigureCloudflaredTunnel =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      k: ConnectorsEventsLatestListResponseItemsItemEConfigureCloudflaredTunnelK,
-    }),
-  ).annotate({
-    identifier:
-      "ConnectorsEventsLatestListResponseItemsItemEConfigureCloudflaredTunnel",
-  }) as any as S.Schema<ConnectorsEventsLatestListResponseItemsItemEConfigureCloudflaredTunnel>;
-
-export type ConnectorsEventsLatestListResponseItemsItemERekeyInstallBothK =
-  "RekeyInstallBoth";
-export const ConnectorsEventsLatestListResponseItemsItemERekeyInstallBothK =
-  /*@__PURE__*/ S.String;
-
-export interface ConnectorsEventsLatestListResponseItemsItemERekeyInstallBoth {
-  /** Installed initial inbound and outbound keys */
-  k: ConnectorsEventsLatestListResponseItemsItemERekeyInstallBothK;
-  /** Tunnel identifier */
-  tunnelId: string;
-}
-export const ConnectorsEventsLatestListResponseItemsItemERekeyInstallBoth =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      k: ConnectorsEventsLatestListResponseItemsItemERekeyInstallBothK,
-      tunnelId: S.String.pipe(T.Body("tunnel_id")),
-    }),
-  ).annotate({
-    identifier: "ConnectorsEventsLatestListResponseItemsItemERekeyInstallBoth",
-  }) as any as S.Schema<ConnectorsEventsLatestListResponseItemsItemERekeyInstallBoth>;
-
-export type ConnectorsEventsLatestListResponseItemsItemERekeyStartK =
-  "RekeyStart";
-export const ConnectorsEventsLatestListResponseItemsItemERekeyStartK =
-  /*@__PURE__*/ S.String;
-
-export interface ConnectorsEventsLatestListResponseItemsItemERekeyStart {
-  /** Installed new inbound key, kept old outbound */
-  k: ConnectorsEventsLatestListResponseItemsItemERekeyStartK;
-  /** Tunnel identifier */
-  tunnelId: string;
-}
-export const ConnectorsEventsLatestListResponseItemsItemERekeyStart =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      k: ConnectorsEventsLatestListResponseItemsItemERekeyStartK,
-      tunnelId: S.String.pipe(T.Body("tunnel_id")),
-    }),
-  ).annotate({
-    identifier: "ConnectorsEventsLatestListResponseItemsItemERekeyStart",
-  }) as any as S.Schema<ConnectorsEventsLatestListResponseItemsItemERekeyStart>;
-
-export type ConnectorsEventsLatestListResponseItemsItemERekeyAdvanceK =
-  "RekeyAdvance";
-export const ConnectorsEventsLatestListResponseItemsItemERekeyAdvanceK =
-  /*@__PURE__*/ S.String;
-
-export interface ConnectorsEventsLatestListResponseItemsItemERekeyAdvance {
-  /** Confirmed traffic on new inbound key, swapped outbound to new */
-  k: ConnectorsEventsLatestListResponseItemsItemERekeyAdvanceK;
-  /** Tunnel identifier */
-  tunnelId: string;
-}
-export const ConnectorsEventsLatestListResponseItemsItemERekeyAdvance =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      k: ConnectorsEventsLatestListResponseItemsItemERekeyAdvanceK,
-      tunnelId: S.String.pipe(T.Body("tunnel_id")),
-    }),
-  ).annotate({
-    identifier: "ConnectorsEventsLatestListResponseItemsItemERekeyAdvance",
-  }) as any as S.Schema<ConnectorsEventsLatestListResponseItemsItemERekeyAdvance>;
-
-export type ConnectorsEventsLatestListResponseItemsItemERekeyCompleteK =
-  "RekeyComplete";
-export const ConnectorsEventsLatestListResponseItemsItemERekeyCompleteK =
-  /*@__PURE__*/ S.String;
-
-export interface ConnectorsEventsLatestListResponseItemsItemERekeyComplete {
-  /** Deleted old keys */
-  k: ConnectorsEventsLatestListResponseItemsItemERekeyCompleteK;
-  /** Tunnel identifier */
-  tunnelId: string;
-}
-export const ConnectorsEventsLatestListResponseItemsItemERekeyComplete =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      k: ConnectorsEventsLatestListResponseItemsItemERekeyCompleteK,
-      tunnelId: S.String.pipe(T.Body("tunnel_id")),
-    }),
-  ).annotate({
-    identifier: "ConnectorsEventsLatestListResponseItemsItemERekeyComplete",
-  }) as any as S.Schema<ConnectorsEventsLatestListResponseItemsItemERekeyComplete>;
-
-export type ConnectorsEventsLatestListResponseItemsItemERekeyResetK =
-  "RekeyReset";
-export const ConnectorsEventsLatestListResponseItemsItemERekeyResetK =
-  /*@__PURE__*/ S.String;
-
-export interface ConnectorsEventsLatestListResponseItemsItemERekeyReset {
-  /** Deleted all keys after receiving an unexpected key */
-  k: ConnectorsEventsLatestListResponseItemsItemERekeyResetK;
-  /** Tunnel identifier */
-  tunnelId: string;
-}
-export const ConnectorsEventsLatestListResponseItemsItemERekeyReset =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      k: ConnectorsEventsLatestListResponseItemsItemERekeyResetK,
-      tunnelId: S.String.pipe(T.Body("tunnel_id")),
-    }),
-  ).annotate({
-    identifier: "ConnectorsEventsLatestListResponseItemsItemERekeyReset",
-  }) as any as S.Schema<ConnectorsEventsLatestListResponseItemsItemERekeyReset>;
-
-export type ConnectorsEventsLatestListResponseItemsItemE =
-  | ConnectorsEventsLatestListResponseItemsItemEInit
-  | ConnectorsEventsLatestListResponseItemsItemELeave
-  | ConnectorsEventsLatestListResponseItemsItemEStartAttestation
-  | ConnectorsEventsLatestListResponseItemsItemEFinishAttestationSuccess
-  | ConnectorsEventsLatestListResponseItemsItemEFinishAttestationFailure
-  | ConnectorsEventsLatestListResponseItemsItemEStartRotateCryptKey
-  | ConnectorsEventsLatestListResponseItemsItemEFinishRotateCryptKeySuccess
-  | ConnectorsEventsLatestListResponseItemsItemEFinishRotateCryptKeyFailure
-  | ConnectorsEventsLatestListResponseItemsItemEStartRotatePki
-  | ConnectorsEventsLatestListResponseItemsItemEFinishRotatePkiSuccess
-  | ConnectorsEventsLatestListResponseItemsItemEFinishRotatePkiFailure
-  | ConnectorsEventsLatestListResponseItemsItemEStartUpgrade
-  | ConnectorsEventsLatestListResponseItemsItemEFinishUpgradeSuccess
-  | ConnectorsEventsLatestListResponseItemsItemEFinishUpgradeFailure
-  | ConnectorsEventsLatestListResponseItemsItemEReconcile
-  | ConnectorsEventsLatestListResponseItemsItemEConfigureCloudflaredTunnel
-  | ConnectorsEventsLatestListResponseItemsItemERekeyInstallBoth
-  | ConnectorsEventsLatestListResponseItemsItemERekeyStart
-  | ConnectorsEventsLatestListResponseItemsItemERekeyAdvance
-  | ConnectorsEventsLatestListResponseItemsItemERekeyComplete
-  | ConnectorsEventsLatestListResponseItemsItemERekeyReset;
 export const ConnectorsEventsLatestListResponseItemsItemE =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["k"],
-      ["k"],
-      ["k"],
-      ["k"],
-      ["k"],
-      ["k"],
-      ["k"],
-      ["k"],
-      ["k"],
-      ["k"],
-      ["k"],
-      ["k", "url"],
-      ["k"],
-      ["k"],
-      ["k"],
-      ["k"],
-      ["k", "tunnelId"],
-      ["k", "tunnelId"],
-      ["k", "tunnelId"],
-      ["k", "tunnelId"],
-      ["k", "tunnelId"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      k: ConnectorsEventsLatestListResponseItemsItemEK,
+    }),
+  ).annotate({
+    identifier: "ConnectorsEventsLatestListResponseItemsItemE",
+  }) as any as S.Schema<ConnectorsEventsLatestListResponseItemsItemE>;
 
 export interface ConnectorsEventsLatestListResponseItemsItem {
+  /** Event kind plus event-specific payload fields. */
   e: ConnectorsEventsLatestListResponseItemsItemE;
   /** Sequence number, used to order events with the same timestamp */
   n: number;
@@ -10430,6 +10056,7 @@ export interface ConnectorsListResultItem {
   activated: boolean;
   /** Allowed days of the week for upgrades. Default is all days. */
   interruptWindowDaysOfWeek: ConnectorsListResultItemInterruptWindowDaysOfWeekList;
+  /** maximum24 */
   interruptWindowDurationHours: number;
   /** List of dates (YYYY-MM-DD) when upgrades are blocked. */
   interruptWindowEmbargoDates: ConnectorsListResultItemInterruptWindowEmbargoDatesList;
@@ -10575,6 +10202,7 @@ export interface ConnectorsSnapshotsLatestListResponseItemsItemInterfacesItem {
   name: string;
   /** UP/DOWN state of the network interface */
   operstate: string;
+  /** Name of the network interface */
   ipAddresses?: ConnectorsSnapshotsLatestListResponseItemsItemInterfacesItemIpAddressesList | null;
   /** Speed of the network interface (bits per second) */
   speed?: number | null;
@@ -10663,6 +10291,7 @@ export interface ConnectorsSnapshotsLatestListResponseItemsItem {
   t: number;
   /** Version */
   v: string;
+  /** Name of the network interface */
   bonds?: ConnectorsSnapshotsLatestListResponseItemsItemBondsList | null;
   /** Count of processors/cores */
   cpuCount?: number | null;
@@ -10696,7 +10325,9 @@ export interface ConnectorsSnapshotsLatestListResponseItemsItem {
   cpuTimeUserMs?: number | null;
   /** Number of network operations applied during state transition */
   delta?: number | null;
+  /** Client ID of the device the IP Address was leased to */
   dhcpLeases?: ConnectorsSnapshotsLatestListResponseItemsItemDhcpLeasesList | null;
+  /** I/Os currently in progress */
   disks?: ConnectorsSnapshotsLatestListResponseItemsItemDisksList | null;
   /** Simulated number of network operations applied during state transition */
   epsilon?: number | null;
@@ -10704,6 +10335,7 @@ export interface ConnectorsSnapshotsLatestListResponseItemsItem {
   haState?: string | null;
   /** Numeric value associated with high availability state (0 = disabled, 1 = active, 2 = standby, 3 = stopped, 4 = fault) */
   haValue?: number | null;
+  /** Name of the network interface */
   interfaces?: ConnectorsSnapshotsLatestListResponseItemsItemInterfacesList | null;
   /** Percentage of time over a 10 second window that all tasks were stalled */
   io_pressure_full_10s?: number | null;
@@ -10849,10 +10481,14 @@ export interface ConnectorsSnapshotsLatestListResponseItemsItem {
   memoryZSwapBytes?: number | null;
   /** Amount of anonymous memory stored in zswap, uncompressed */
   memoryZSwappedBytes?: number | null;
+  /** File system on disk (EXT4, NTFS, etc.) */
   mounts?: ConnectorsSnapshotsLatestListResponseItemsItemMountsList | null;
+  /** Name of the network device */
   netdevs?: ConnectorsSnapshotsLatestListResponseItemsItemNetdevsList | null;
   /** Platform identifier */
   platform?: string | null;
+  /** Site identifier */
+  siteId?: string | null;
   /** Number of ICMP Address Mask Reply messages received */
   snmpIcmpInAddrMaskReps?: number | null;
   /** Number of ICMP Address Mask Request messages received */
@@ -10983,7 +10619,9 @@ export interface ConnectorsSnapshotsLatestListResponseItemsItem {
   snmpUdpOutDatagrams?: number | null;
   /** Boottime of the system (seconds since the Unix epoch) */
   systemBootTimeS?: number | null;
+  /** Sensor identifier for the component */
   thermals?: ConnectorsSnapshotsLatestListResponseItemsItemThermalsList | null;
+  /** Name of tunnel health state (unknown, healthy, degraded, down) */
   tunnels?: ConnectorsSnapshotsLatestListResponseItemsItemTunnelsList | null;
   /** Sum of how much time each core has spent idle */
   uptimeIdleMs?: number | null;
@@ -11243,6 +10881,7 @@ export const ConnectorsSnapshotsLatestListResponseItemsItem =
         S.NullOr(ConnectorsSnapshotsLatestListResponseItemsItemNetdevsList),
       ),
       platform: S.optional(S.NullOr(S.String)),
+      siteId: S.optional(S.NullOr(S.String).pipe(T.Body("site_id"))),
       snmpIcmpInAddrMaskReps: S.optional(
         S.NullOr(S.Number).pipe(T.Body("snmp_icmp_in_addr_mask_reps")),
       ),
@@ -11465,6 +11104,7 @@ export const ConnectorsSnapshotsLatestListResponseItemsList =
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface ListConnectorSnapshotLatestsResponse {
   count: number;
+  /** Count of failures to reclaim space */
   items: ConnectorsSnapshotsLatestListResponseItemsList;
 }
 export const ListConnectorSnapshotLatestsResponse = /*@__PURE__*/ S.suspend(
@@ -11576,6 +11216,147 @@ export const GreTunnelsListResponseGreTunnelsItemBgpExtraPrefixesList =
     S.String,
   ) as any as S.Schema<GreTunnelsListResponseGreTunnelsItemBgpExtraPrefixesList>;
 
+export type GreTunnelsListResponseGreTunnelsItemBgpBgpStatusState =
+  | "BGP_DOWN"
+  | "BGP_UP"
+  | "BGP_ESTABLISHING";
+export const GreTunnelsListResponseGreTunnelsItemBgpBgpStatusState =
+  /*@__PURE__*/ S.String;
+
+export type GreTunnelsListResponseGreTunnelsItemBgpBgpStatusHealthCheckDirection =
+  | "unidirectional"
+  | "bidirectional";
+export const GreTunnelsListResponseGreTunnelsItemBgpBgpStatusHealthCheckDirection =
+  /*@__PURE__*/ S.String;
+
+export type GreTunnelsListResponseGreTunnelsItemBgpBgpStatusHealthCheckRate =
+  | "low"
+  | "mid"
+  | "high";
+export const GreTunnelsListResponseGreTunnelsItemBgpBgpStatusHealthCheckRate =
+  /*@__PURE__*/ S.String;
+
+export type GreTunnelsListResponseGreTunnelsItemBgpBgpStatusHealthCheckTarget =
+  CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemBgpHealthCheckTarget;
+export const GreTunnelsListResponseGreTunnelsItemBgpBgpStatusHealthCheckTarget =
+  CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemBgpHealthCheckTarget;
+
+export type GreTunnelsListResponseGreTunnelsItemBgpBgpStatusHealthCheckTarget2 =
+  | string
+  | CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemBgpHealthCheckTarget;
+export const GreTunnelsListResponseGreTunnelsItemBgpBgpStatusHealthCheckTarget2 =
+  /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], ["effective", "saved"]]));
+
+export type GreTunnelsListResponseGreTunnelsItemBgpBgpStatusHealthCheckType =
+  | "reply"
+  | "request";
+export const GreTunnelsListResponseGreTunnelsItemBgpBgpStatusHealthCheckType =
+  /*@__PURE__*/ S.String;
+
+export interface GreTunnelsListResponseGreTunnelsItemBgpBgpStatusHealthCheck {
+  /** The direction of the flow of the healthcheck. Either unidirectional, where the probe comes to you via the tunnel and the result comes back to Cloudflare via the open Internet, or bidirectional where both the probe and result come and go via the tunnel. */
+  direction?: GreTunnelsListResponseGreTunnelsItemBgpBgpStatusHealthCheckDirection | null;
+  /** Determines whether to run healthchecks for a tunnel. */
+  enabled?: boolean | null;
+  /** How frequent the health check is run. The default value is `mid`. */
+  rate?: GreTunnelsListResponseGreTunnelsItemBgpBgpStatusHealthCheckRate | null;
+  /** The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customer_gre_endpoint address`. This field is ignored for bidirectional healthchecks as the interface_address (not assigned to the Cloudflare side of the tunnel) is used as the target. Must be in object form if the x-magic-new-hc-target header is set to true and string form if x-magic-new-hc-target is absent or set to false. */
+  target?: GreTunnelsListResponseGreTunnelsItemBgpBgpStatusHealthCheckTarget2 | null;
+  /** The type of healthcheck to run, reply or request. The default value is `reply`. */
+  type?: GreTunnelsListResponseGreTunnelsItemBgpBgpStatusHealthCheckType | null;
+  /** A 127 bit IPV6 prefix from within the virtual_subnet6 prefix space with the address being the first IP of the subnet and not same as the address of virtual_subnet6. Eg if virtual_subnet6 is 2606:54c1:7:0:a9fe:12d2::/127 , interface_address6 could be 2606:54c1:7:0:a9fe:12d2:1:200/127 */
+  interfaceAddress6?: string | null;
+  /** The date and time the tunnel was last modified. */
+  modifiedOn?: string | null;
+  /** Maximum Transmission Unit (MTU) in bytes for the GRE tunnel. The minimum value is 576. */
+  mtu?: number | null;
+  /** Time To Live (TTL) in number of hops of the GRE tunnel. */
+  ttl?: number | null;
+}
+export const GreTunnelsListResponseGreTunnelsItemBgpBgpStatusHealthCheck =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      direction: S.optional(
+        S.NullOr(
+          GreTunnelsListResponseGreTunnelsItemBgpBgpStatusHealthCheckDirection,
+        ),
+      ),
+      enabled: S.optional(S.NullOr(S.Boolean)),
+      rate: S.optional(
+        S.NullOr(
+          GreTunnelsListResponseGreTunnelsItemBgpBgpStatusHealthCheckRate,
+        ),
+      ),
+      target: S.optional(
+        S.NullOr(
+          GreTunnelsListResponseGreTunnelsItemBgpBgpStatusHealthCheckTarget2,
+        ),
+      ),
+      type: S.optional(
+        S.NullOr(
+          GreTunnelsListResponseGreTunnelsItemBgpBgpStatusHealthCheckType,
+        ),
+      ),
+      interfaceAddress6: S.optional(
+        S.NullOr(S.String).pipe(T.Body("interface_address6")),
+      ),
+      modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
+      mtu: S.optional(S.NullOr(S.Number)),
+      ttl: S.optional(S.NullOr(S.Number)),
+    }),
+  ).annotate({
+    identifier: "GreTunnelsListResponseGreTunnelsItemBgpBgpStatusHealthCheck",
+  }) as any as S.Schema<GreTunnelsListResponseGreTunnelsItemBgpBgpStatusHealthCheck>;
+
+export interface GreTunnelsListResponseGreTunnelsItemBgpBgpStatus {
+  state: GreTunnelsListResponseGreTunnelsItemBgpBgpStatusState;
+  tcpEstablished: boolean;
+  /** formatdate-time */
+  updatedAt: string;
+  bgpState?: string | null;
+  /** formatipv4 */
+  cfSpeakerIp?: string | null;
+  /** maximum65535 */
+  cfSpeakerPort?: number | null;
+  /** formatipv4 */
+  customerSpeakerIp?: string | null;
+  /** maximum65535 */
+  customerSpeakerPort?: number | null;
+  /** The date and time the tunnel was created. */
+  createdOn?: string | null;
+  /** An optional description of the GRE tunnel. */
+  description?: string | null;
+  healthCheck?: GreTunnelsListResponseGreTunnelsItemBgpBgpStatusHealthCheck | null;
+}
+export const GreTunnelsListResponseGreTunnelsItemBgpBgpStatus =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      state: GreTunnelsListResponseGreTunnelsItemBgpBgpStatusState,
+      tcpEstablished: S.Boolean.pipe(T.Body("tcp_established")),
+      updatedAt: S.String.pipe(T.Body("updated_at")),
+      bgpState: S.optional(S.NullOr(S.String).pipe(T.Body("bgp_state"))),
+      cfSpeakerIp: S.optional(S.NullOr(S.String).pipe(T.Body("cf_speaker_ip"))),
+      cfSpeakerPort: S.optional(
+        S.NullOr(S.Number).pipe(T.Body("cf_speaker_port")),
+      ),
+      customerSpeakerIp: S.optional(
+        S.NullOr(S.String).pipe(T.Body("customer_speaker_ip")),
+      ),
+      customerSpeakerPort: S.optional(
+        S.NullOr(S.Number).pipe(T.Body("customer_speaker_port")),
+      ),
+      createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
+      description: S.optional(S.NullOr(S.String)),
+      healthCheck: S.optional(
+        S.NullOr(
+          GreTunnelsListResponseGreTunnelsItemBgpBgpStatusHealthCheck,
+        ).pipe(T.Body("health_check")),
+      ),
+    }),
+  ).annotate({
+    identifier: "GreTunnelsListResponseGreTunnelsItemBgpBgpStatus",
+  }) as any as S.Schema<GreTunnelsListResponseGreTunnelsItemBgpBgpStatus>;
+
 export interface GreTunnelsListResponseGreTunnelsItemBgp {
   /** ASN used on the customer end of the BGP session */
   customerAsn: number;
@@ -11587,6 +11368,7 @@ export interface GreTunnelsListResponseGreTunnelsItemBgp {
   importFilterId?: string | null;
   /** MD5 key to use for session authentication. */
   md5Key?: string | null;
+  bgpStatus?: GreTunnelsListResponseGreTunnelsItemBgpBgpStatus | null;
 }
 export const GreTunnelsListResponseGreTunnelsItemBgp = /*@__PURE__*/ S.suspend(
   () =>
@@ -11604,112 +11386,15 @@ export const GreTunnelsListResponseGreTunnelsItemBgp = /*@__PURE__*/ S.suspend(
         S.NullOr(S.String).pipe(T.Body("import_filter_id")),
       ),
       md5Key: S.optional(S.NullOr(S.String).pipe(T.Body("md5_key"))),
+      bgpStatus: S.optional(
+        S.NullOr(GreTunnelsListResponseGreTunnelsItemBgpBgpStatus).pipe(
+          T.Body("bgp_status"),
+        ),
+      ),
     }),
 ).annotate({
   identifier: "GreTunnelsListResponseGreTunnelsItemBgp",
 }) as any as S.Schema<GreTunnelsListResponseGreTunnelsItemBgp>;
-
-export type GreTunnelsListResponseGreTunnelsItemBgpStatusState =
-  | "BGP_DOWN"
-  | "BGP_UP"
-  | "BGP_ESTABLISHING";
-export const GreTunnelsListResponseGreTunnelsItemBgpStatusState =
-  /*@__PURE__*/ S.String;
-
-export interface GreTunnelsListResponseGreTunnelsItemBgpStatus {
-  state: GreTunnelsListResponseGreTunnelsItemBgpStatusState;
-  tcpEstablished: boolean;
-  updatedAt: string;
-  bgpState?: string | null;
-  cfSpeakerIp?: string | null;
-  cfSpeakerPort?: number | null;
-  customerSpeakerIp?: string | null;
-  customerSpeakerPort?: number | null;
-}
-export const GreTunnelsListResponseGreTunnelsItemBgpStatus =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      state: GreTunnelsListResponseGreTunnelsItemBgpStatusState,
-      tcpEstablished: S.Boolean.pipe(T.Body("tcp_established")),
-      updatedAt: S.String.pipe(T.Body("updated_at")),
-      bgpState: S.optional(S.NullOr(S.String).pipe(T.Body("bgp_state"))),
-      cfSpeakerIp: S.optional(S.NullOr(S.String).pipe(T.Body("cf_speaker_ip"))),
-      cfSpeakerPort: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("cf_speaker_port")),
-      ),
-      customerSpeakerIp: S.optional(
-        S.NullOr(S.String).pipe(T.Body("customer_speaker_ip")),
-      ),
-      customerSpeakerPort: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("customer_speaker_port")),
-      ),
-    }),
-  ).annotate({
-    identifier: "GreTunnelsListResponseGreTunnelsItemBgpStatus",
-  }) as any as S.Schema<GreTunnelsListResponseGreTunnelsItemBgpStatus>;
-
-export type GreTunnelsListResponseGreTunnelsItemHealthCheckDirection =
-  | "unidirectional"
-  | "bidirectional";
-export const GreTunnelsListResponseGreTunnelsItemHealthCheckDirection =
-  /*@__PURE__*/ S.String;
-
-export type GreTunnelsListResponseGreTunnelsItemHealthCheckRate =
-  | "low"
-  | "mid"
-  | "high";
-export const GreTunnelsListResponseGreTunnelsItemHealthCheckRate =
-  /*@__PURE__*/ S.String;
-
-export type GreTunnelsListResponseGreTunnelsItemHealthCheckTargetMagicHealthCheckTarget =
-  CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemHealthCheckTargetMagicHealthCheckTarget;
-export const GreTunnelsListResponseGreTunnelsItemHealthCheckTargetMagicHealthCheckTarget =
-  CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemHealthCheckTargetMagicHealthCheckTarget;
-
-export type GreTunnelsListResponseGreTunnelsItemHealthCheckTarget =
-  | string
-  | CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemHealthCheckTargetMagicHealthCheckTarget;
-export const GreTunnelsListResponseGreTunnelsItemHealthCheckTarget =
-  /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], ["effective", "saved"]]));
-
-export type GreTunnelsListResponseGreTunnelsItemHealthCheckType =
-  | "reply"
-  | "request";
-export const GreTunnelsListResponseGreTunnelsItemHealthCheckType =
-  /*@__PURE__*/ S.String;
-
-export interface GreTunnelsListResponseGreTunnelsItemHealthCheck {
-  /** The direction of the flow of the healthcheck. Either unidirectional, where the probe comes to you via the tunnel and the result comes back to Cloudflare via the open Internet, or bidirectional where both the probe and result come and go via the tunnel. */
-  direction?: GreTunnelsListResponseGreTunnelsItemHealthCheckDirection | null;
-  /** Determines whether to run healthchecks for a tunnel. */
-  enabled?: boolean | null;
-  /** How frequent the health check is run. The default value is `mid`. */
-  rate?: GreTunnelsListResponseGreTunnelsItemHealthCheckRate | null;
-  /** The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customer_gre_endpoint address`. This field is ignored for bidirectional healthchecks as the interface_address (not assigned to the Cloudflare side of the tunnel) is used as the target. Must be in object form if the x-magic-new-hc-target header is set to true and string form if x-magic-new-hc-target is absent or set to false. */
-  target?: GreTunnelsListResponseGreTunnelsItemHealthCheckTarget | null;
-  /** The type of healthcheck to run, reply or request. The default value is `reply`. */
-  type?: GreTunnelsListResponseGreTunnelsItemHealthCheckType | null;
-}
-export const GreTunnelsListResponseGreTunnelsItemHealthCheck =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      direction: S.optional(
-        S.NullOr(GreTunnelsListResponseGreTunnelsItemHealthCheckDirection),
-      ),
-      enabled: S.optional(S.NullOr(S.Boolean)),
-      rate: S.optional(
-        S.NullOr(GreTunnelsListResponseGreTunnelsItemHealthCheckRate),
-      ),
-      target: S.optional(
-        S.NullOr(GreTunnelsListResponseGreTunnelsItemHealthCheckTarget),
-      ),
-      type: S.optional(
-        S.NullOr(GreTunnelsListResponseGreTunnelsItemHealthCheckType),
-      ),
-    }),
-  ).annotate({
-    identifier: "GreTunnelsListResponseGreTunnelsItemHealthCheck",
-  }) as any as S.Schema<GreTunnelsListResponseGreTunnelsItemHealthCheck>;
 
 export interface GreTunnelsListResponseGreTunnelsItem {
   /** Identifier */
@@ -11725,20 +11410,6 @@ export interface GreTunnelsListResponseGreTunnelsItem {
   /** True if automatic stateful return routing should be enabled for a tunnel, false otherwise. Requires the `coupler_integration` account flag to be enabled; requests setting this to `true` without that flag will be rejected. */
   automaticReturnRouting?: boolean | null;
   bgp?: GreTunnelsListResponseGreTunnelsItemBgp | null;
-  bgpStatus?: GreTunnelsListResponseGreTunnelsItemBgpStatus | null;
-  /** The date and time the tunnel was created. */
-  createdOn?: string | null;
-  /** An optional description of the GRE tunnel. */
-  description?: string | null;
-  healthCheck?: GreTunnelsListResponseGreTunnelsItemHealthCheck | null;
-  /** A 127 bit IPV6 prefix from within the virtual_subnet6 prefix space with the address being the first IP of the subnet and not same as the address of virtual_subnet6. Eg if virtual_subnet6 is 2606:54c1:7:0:a9fe:12d2::/127 , interface_address6 could be 2606:54c1:7:0:a9fe:12d2:1:200/127 */
-  interfaceAddress6?: string | null;
-  /** The date and time the tunnel was last modified. */
-  modifiedOn?: string | null;
-  /** Maximum Transmission Unit (MTU) in bytes for the GRE tunnel. The minimum value is 576. */
-  mtu?: number | null;
-  /** Time To Live (TTL) in number of hops of the GRE tunnel. */
-  ttl?: number | null;
 }
 export const GreTunnelsListResponseGreTunnelsItem = /*@__PURE__*/ S.suspend(
   () =>
@@ -11752,24 +11423,6 @@ export const GreTunnelsListResponseGreTunnelsItem = /*@__PURE__*/ S.suspend(
         S.NullOr(S.Boolean).pipe(T.Body("automatic_return_routing")),
       ),
       bgp: S.optional(S.NullOr(GreTunnelsListResponseGreTunnelsItemBgp)),
-      bgpStatus: S.optional(
-        S.NullOr(GreTunnelsListResponseGreTunnelsItemBgpStatus).pipe(
-          T.Body("bgp_status"),
-        ),
-      ),
-      createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
-      description: S.optional(S.NullOr(S.String)),
-      healthCheck: S.optional(
-        S.NullOr(GreTunnelsListResponseGreTunnelsItemHealthCheck).pipe(
-          T.Body("health_check"),
-        ),
-      ),
-      interfaceAddress6: S.optional(
-        S.NullOr(S.String).pipe(T.Body("interface_address6")),
-      ),
-      modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-      mtu: S.optional(S.NullOr(S.Number)),
-      ttl: S.optional(S.NullOr(S.Number)),
     }),
 ).annotate({
   identifier: "GreTunnelsListResponseGreTunnelsItem",
@@ -11828,6 +11481,175 @@ export const IpsecTunnelsListResponseIpsecTunnelsItemBgpExtraPrefixesList =
     S.String,
   ) as any as S.Schema<IpsecTunnelsListResponseIpsecTunnelsItemBgpExtraPrefixesList>;
 
+export type IpsecTunnelsListResponseIpsecTunnelsItemBgpBgpStatusState =
+  | "BGP_DOWN"
+  | "BGP_UP"
+  | "BGP_ESTABLISHING";
+export const IpsecTunnelsListResponseIpsecTunnelsItemBgpBgpStatusState =
+  /*@__PURE__*/ S.String;
+
+export type IpsecTunnelsListResponseIpsecTunnelsItemBgpBgpStatusCustomRemoteIdentities =
+  IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemBgpBgpStatusCustomRemoteIdentities;
+export const IpsecTunnelsListResponseIpsecTunnelsItemBgpBgpStatusCustomRemoteIdentities =
+  IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemBgpBgpStatusCustomRemoteIdentities;
+
+export type IpsecTunnelsListResponseIpsecTunnelsItemBgpBgpStatusHealthCheckDirection =
+  | "unidirectional"
+  | "bidirectional";
+export const IpsecTunnelsListResponseIpsecTunnelsItemBgpBgpStatusHealthCheckDirection =
+  /*@__PURE__*/ S.String;
+
+export type IpsecTunnelsListResponseIpsecTunnelsItemBgpBgpStatusHealthCheckRate =
+  | "low"
+  | "mid"
+  | "high";
+export const IpsecTunnelsListResponseIpsecTunnelsItemBgpBgpStatusHealthCheckRate =
+  /*@__PURE__*/ S.String;
+
+export type IpsecTunnelsListResponseIpsecTunnelsItemBgpBgpStatusHealthCheckTarget =
+  CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemBgpHealthCheckTarget;
+export const IpsecTunnelsListResponseIpsecTunnelsItemBgpBgpStatusHealthCheckTarget =
+  CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemBgpHealthCheckTarget;
+
+export type IpsecTunnelsListResponseIpsecTunnelsItemBgpBgpStatusHealthCheckTarget2 =
+  | string
+  | CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemBgpHealthCheckTarget;
+export const IpsecTunnelsListResponseIpsecTunnelsItemBgpBgpStatusHealthCheckTarget2 =
+  /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], ["effective", "saved"]]));
+
+export type IpsecTunnelsListResponseIpsecTunnelsItemBgpBgpStatusHealthCheckType =
+  | "reply"
+  | "request";
+export const IpsecTunnelsListResponseIpsecTunnelsItemBgpBgpStatusHealthCheckType =
+  /*@__PURE__*/ S.String;
+
+export type IpsecTunnelsListResponseIpsecTunnelsItemBgpBgpStatusHealthCheckPskMetadata =
+  IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemBgpBgpStatusHealthCheckPskMetadata;
+export const IpsecTunnelsListResponseIpsecTunnelsItemBgpBgpStatusHealthCheckPskMetadata =
+  IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemBgpBgpStatusHealthCheckPskMetadata;
+
+export interface IpsecTunnelsListResponseIpsecTunnelsItemBgpBgpStatusHealthCheck {
+  /** The direction of the flow of the healthcheck. Either unidirectional, where the probe comes to you via the tunnel and the result comes back to Cloudflare via the open Internet, or bidirectional where both the probe and result come and go via the tunnel. */
+  direction?: IpsecTunnelsListResponseIpsecTunnelsItemBgpBgpStatusHealthCheckDirection | null;
+  /** Determines whether to run healthchecks for a tunnel. */
+  enabled?: boolean | null;
+  /** How frequent the health check is run. The default value is `mid`. */
+  rate?: IpsecTunnelsListResponseIpsecTunnelsItemBgpBgpStatusHealthCheckRate | null;
+  /** The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customer_gre_endpoint address`. This field is ignored for bidirectional healthchecks as the interface_address (not assigned to the Cloudflare side of the tunnel) is used as the target. Must be in object form if the x-magic-new-hc-target header is set to true and string form if x-magic-new-hc-target is absent or set to false. */
+  target?: IpsecTunnelsListResponseIpsecTunnelsItemBgpBgpStatusHealthCheckTarget2 | null;
+  /** The type of healthcheck to run, reply or request. The default value is `reply`. */
+  type?: IpsecTunnelsListResponseIpsecTunnelsItemBgpBgpStatusHealthCheckType | null;
+  /** A 127 bit IPV6 prefix from within the virtual_subnet6 prefix space with the address being the first IP of the subnet and not same as the address of virtual_subnet6. Eg if virtual_subnet6 is 2606:54c1:7:0:a9fe:12d2::/127 , interface_address6 could be 2606:54c1:7:0:a9fe:12d2:1:200/127 */
+  interfaceAddress6?: string | null;
+  /** The date and time the tunnel was last modified. */
+  modifiedOn?: string | null;
+  /** The PSK metadata that includes when the PSK was generated. */
+  pskMetadata?: IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemBgpBgpStatusHealthCheckPskMetadata | null;
+  /** If `true`, then IPsec replay protection will be supported in the Cloudflare-to-customer direction. */
+  replayProtection?: boolean | null;
+}
+export const IpsecTunnelsListResponseIpsecTunnelsItemBgpBgpStatusHealthCheck =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      direction: S.optional(
+        S.NullOr(
+          IpsecTunnelsListResponseIpsecTunnelsItemBgpBgpStatusHealthCheckDirection,
+        ),
+      ),
+      enabled: S.optional(S.NullOr(S.Boolean)),
+      rate: S.optional(
+        S.NullOr(
+          IpsecTunnelsListResponseIpsecTunnelsItemBgpBgpStatusHealthCheckRate,
+        ),
+      ),
+      target: S.optional(
+        S.NullOr(
+          IpsecTunnelsListResponseIpsecTunnelsItemBgpBgpStatusHealthCheckTarget2,
+        ),
+      ),
+      type: S.optional(
+        S.NullOr(
+          IpsecTunnelsListResponseIpsecTunnelsItemBgpBgpStatusHealthCheckType,
+        ),
+      ),
+      interfaceAddress6: S.optional(
+        S.NullOr(S.String).pipe(T.Body("interface_address6")),
+      ),
+      modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
+      pskMetadata: S.optional(
+        S.NullOr(
+          IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemBgpBgpStatusHealthCheckPskMetadata,
+        ).pipe(T.Body("psk_metadata")),
+      ),
+      replayProtection: S.optional(
+        S.NullOr(S.Boolean).pipe(T.Body("replay_protection")),
+      ),
+    }),
+  ).annotate({
+    identifier:
+      "IpsecTunnelsListResponseIpsecTunnelsItemBgpBgpStatusHealthCheck",
+  }) as any as S.Schema<IpsecTunnelsListResponseIpsecTunnelsItemBgpBgpStatusHealthCheck>;
+
+export interface IpsecTunnelsListResponseIpsecTunnelsItemBgpBgpStatus {
+  state: IpsecTunnelsListResponseIpsecTunnelsItemBgpBgpStatusState;
+  tcpEstablished: boolean;
+  /** formatdate-time */
+  updatedAt: string;
+  bgpState?: string | null;
+  /** formatipv4 */
+  cfSpeakerIp?: string | null;
+  /** maximum65535 */
+  cfSpeakerPort?: number | null;
+  /** formatipv4 */
+  customerSpeakerIp?: string | null;
+  /** maximum65535 */
+  customerSpeakerPort?: number | null;
+  /** The date and time the tunnel was created. */
+  createdOn?: string | null;
+  customRemoteIdentities?: IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemBgpBgpStatusCustomRemoteIdentities | null;
+  /** The IP address assigned to the customer side of the IPsec tunnel. Not required, but must be set for proactive traceroutes to work. */
+  customerEndpoint?: string | null;
+  /** An optional description forthe IPsec tunnel. */
+  description?: string | null;
+  healthCheck?: IpsecTunnelsListResponseIpsecTunnelsItemBgpBgpStatusHealthCheck | null;
+}
+export const IpsecTunnelsListResponseIpsecTunnelsItemBgpBgpStatus =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      state: IpsecTunnelsListResponseIpsecTunnelsItemBgpBgpStatusState,
+      tcpEstablished: S.Boolean.pipe(T.Body("tcp_established")),
+      updatedAt: S.String.pipe(T.Body("updated_at")),
+      bgpState: S.optional(S.NullOr(S.String).pipe(T.Body("bgp_state"))),
+      cfSpeakerIp: S.optional(S.NullOr(S.String).pipe(T.Body("cf_speaker_ip"))),
+      cfSpeakerPort: S.optional(
+        S.NullOr(S.Number).pipe(T.Body("cf_speaker_port")),
+      ),
+      customerSpeakerIp: S.optional(
+        S.NullOr(S.String).pipe(T.Body("customer_speaker_ip")),
+      ),
+      customerSpeakerPort: S.optional(
+        S.NullOr(S.Number).pipe(T.Body("customer_speaker_port")),
+      ),
+      createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
+      customRemoteIdentities: S.optional(
+        S.NullOr(
+          IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemBgpBgpStatusCustomRemoteIdentities,
+        ).pipe(T.Body("custom_remote_identities")),
+      ),
+      customerEndpoint: S.optional(
+        S.NullOr(S.String).pipe(T.Body("customer_endpoint")),
+      ),
+      description: S.optional(S.NullOr(S.String)),
+      healthCheck: S.optional(
+        S.NullOr(
+          IpsecTunnelsListResponseIpsecTunnelsItemBgpBgpStatusHealthCheck,
+        ).pipe(T.Body("health_check")),
+      ),
+    }),
+  ).annotate({
+    identifier: "IpsecTunnelsListResponseIpsecTunnelsItemBgpBgpStatus",
+  }) as any as S.Schema<IpsecTunnelsListResponseIpsecTunnelsItemBgpBgpStatus>;
+
 export interface IpsecTunnelsListResponseIpsecTunnelsItemBgp {
   /** ASN used on the customer end of the BGP session */
   customerAsn: number;
@@ -11839,6 +11661,7 @@ export interface IpsecTunnelsListResponseIpsecTunnelsItemBgp {
   importFilterId?: string | null;
   /** MD5 key to use for session authentication. */
   md5Key?: string | null;
+  bgpStatus?: IpsecTunnelsListResponseIpsecTunnelsItemBgpBgpStatus | null;
 }
 export const IpsecTunnelsListResponseIpsecTunnelsItemBgp =
   /*@__PURE__*/ S.suspend(() =>
@@ -11856,122 +11679,15 @@ export const IpsecTunnelsListResponseIpsecTunnelsItemBgp =
         S.NullOr(S.String).pipe(T.Body("import_filter_id")),
       ),
       md5Key: S.optional(S.NullOr(S.String).pipe(T.Body("md5_key"))),
+      bgpStatus: S.optional(
+        S.NullOr(IpsecTunnelsListResponseIpsecTunnelsItemBgpBgpStatus).pipe(
+          T.Body("bgp_status"),
+        ),
+      ),
     }),
   ).annotate({
     identifier: "IpsecTunnelsListResponseIpsecTunnelsItemBgp",
   }) as any as S.Schema<IpsecTunnelsListResponseIpsecTunnelsItemBgp>;
-
-export type IpsecTunnelsListResponseIpsecTunnelsItemBgpStatusState =
-  | "BGP_DOWN"
-  | "BGP_UP"
-  | "BGP_ESTABLISHING";
-export const IpsecTunnelsListResponseIpsecTunnelsItemBgpStatusState =
-  /*@__PURE__*/ S.String;
-
-export interface IpsecTunnelsListResponseIpsecTunnelsItemBgpStatus {
-  state: IpsecTunnelsListResponseIpsecTunnelsItemBgpStatusState;
-  tcpEstablished: boolean;
-  updatedAt: string;
-  bgpState?: string | null;
-  cfSpeakerIp?: string | null;
-  cfSpeakerPort?: number | null;
-  customerSpeakerIp?: string | null;
-  customerSpeakerPort?: number | null;
-}
-export const IpsecTunnelsListResponseIpsecTunnelsItemBgpStatus =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      state: IpsecTunnelsListResponseIpsecTunnelsItemBgpStatusState,
-      tcpEstablished: S.Boolean.pipe(T.Body("tcp_established")),
-      updatedAt: S.String.pipe(T.Body("updated_at")),
-      bgpState: S.optional(S.NullOr(S.String).pipe(T.Body("bgp_state"))),
-      cfSpeakerIp: S.optional(S.NullOr(S.String).pipe(T.Body("cf_speaker_ip"))),
-      cfSpeakerPort: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("cf_speaker_port")),
-      ),
-      customerSpeakerIp: S.optional(
-        S.NullOr(S.String).pipe(T.Body("customer_speaker_ip")),
-      ),
-      customerSpeakerPort: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("customer_speaker_port")),
-      ),
-    }),
-  ).annotate({
-    identifier: "IpsecTunnelsListResponseIpsecTunnelsItemBgpStatus",
-  }) as any as S.Schema<IpsecTunnelsListResponseIpsecTunnelsItemBgpStatus>;
-
-export type IpsecTunnelsListResponseIpsecTunnelsItemCustomRemoteIdentities =
-  IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemCustomRemoteIdentities;
-export const IpsecTunnelsListResponseIpsecTunnelsItemCustomRemoteIdentities =
-  IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemCustomRemoteIdentities;
-
-export type IpsecTunnelsListResponseIpsecTunnelsItemHealthCheckDirection =
-  | "unidirectional"
-  | "bidirectional";
-export const IpsecTunnelsListResponseIpsecTunnelsItemHealthCheckDirection =
-  /*@__PURE__*/ S.String;
-
-export type IpsecTunnelsListResponseIpsecTunnelsItemHealthCheckRate =
-  | "low"
-  | "mid"
-  | "high";
-export const IpsecTunnelsListResponseIpsecTunnelsItemHealthCheckRate =
-  /*@__PURE__*/ S.String;
-
-export type IpsecTunnelsListResponseIpsecTunnelsItemHealthCheckTargetMagicHealthCheckTarget =
-  CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemHealthCheckTargetMagicHealthCheckTarget;
-export const IpsecTunnelsListResponseIpsecTunnelsItemHealthCheckTargetMagicHealthCheckTarget =
-  CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemHealthCheckTargetMagicHealthCheckTarget;
-
-export type IpsecTunnelsListResponseIpsecTunnelsItemHealthCheckTarget =
-  | string
-  | CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemHealthCheckTargetMagicHealthCheckTarget;
-export const IpsecTunnelsListResponseIpsecTunnelsItemHealthCheckTarget =
-  /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], ["effective", "saved"]]));
-
-export type IpsecTunnelsListResponseIpsecTunnelsItemHealthCheckType =
-  | "reply"
-  | "request";
-export const IpsecTunnelsListResponseIpsecTunnelsItemHealthCheckType =
-  /*@__PURE__*/ S.String;
-
-export interface IpsecTunnelsListResponseIpsecTunnelsItemHealthCheck {
-  /** The direction of the flow of the healthcheck. Either unidirectional, where the probe comes to you via the tunnel and the result comes back to Cloudflare via the open Internet, or bidirectional where both the probe and result come and go via the tunnel. */
-  direction?: IpsecTunnelsListResponseIpsecTunnelsItemHealthCheckDirection | null;
-  /** Determines whether to run healthchecks for a tunnel. */
-  enabled?: boolean | null;
-  /** How frequent the health check is run. The default value is `mid`. */
-  rate?: IpsecTunnelsListResponseIpsecTunnelsItemHealthCheckRate | null;
-  /** The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customer_gre_endpoint address`. This field is ignored for bidirectional healthchecks as the interface_address (not assigned to the Cloudflare side of the tunnel) is used as the target. Must be in object form if the x-magic-new-hc-target header is set to true and string form if x-magic-new-hc-target is absent or set to false. */
-  target?: IpsecTunnelsListResponseIpsecTunnelsItemHealthCheckTarget | null;
-  /** The type of healthcheck to run, reply or request. The default value is `reply`. */
-  type?: IpsecTunnelsListResponseIpsecTunnelsItemHealthCheckType | null;
-}
-export const IpsecTunnelsListResponseIpsecTunnelsItemHealthCheck =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      direction: S.optional(
-        S.NullOr(IpsecTunnelsListResponseIpsecTunnelsItemHealthCheckDirection),
-      ),
-      enabled: S.optional(S.NullOr(S.Boolean)),
-      rate: S.optional(
-        S.NullOr(IpsecTunnelsListResponseIpsecTunnelsItemHealthCheckRate),
-      ),
-      target: S.optional(
-        S.NullOr(IpsecTunnelsListResponseIpsecTunnelsItemHealthCheckTarget),
-      ),
-      type: S.optional(
-        S.NullOr(IpsecTunnelsListResponseIpsecTunnelsItemHealthCheckType),
-      ),
-    }),
-  ).annotate({
-    identifier: "IpsecTunnelsListResponseIpsecTunnelsItemHealthCheck",
-  }) as any as S.Schema<IpsecTunnelsListResponseIpsecTunnelsItemHealthCheck>;
-
-export type IpsecTunnelsListResponseIpsecTunnelsItemPskMetadata =
-  IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemPskMetadata;
-export const IpsecTunnelsListResponseIpsecTunnelsItemPskMetadata =
-  IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemPskMetadata;
 
 export interface IpsecTunnelsListResponseIpsecTunnelsItem {
   /** Identifier */
@@ -11987,23 +11703,6 @@ export interface IpsecTunnelsListResponseIpsecTunnelsItem {
   /** True if automatic stateful return routing should be enabled for a tunnel, false otherwise. Requires the `coupler_integration` account flag to be enabled; requests setting this to `true` without that flag will be rejected. */
   automaticReturnRouting?: boolean | null;
   bgp?: IpsecTunnelsListResponseIpsecTunnelsItemBgp | null;
-  bgpStatus?: IpsecTunnelsListResponseIpsecTunnelsItemBgpStatus | null;
-  /** The date and time the tunnel was created. */
-  createdOn?: string | null;
-  customRemoteIdentities?: IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemCustomRemoteIdentities | null;
-  /** The IP address assigned to the customer side of the IPsec tunnel. Not required, but must be set for proactive traceroutes to work. */
-  customerEndpoint?: string | null;
-  /** An optional description forthe IPsec tunnel. */
-  description?: string | null;
-  healthCheck?: IpsecTunnelsListResponseIpsecTunnelsItemHealthCheck | null;
-  /** A 127 bit IPV6 prefix from within the virtual_subnet6 prefix space with the address being the first IP of the subnet and not same as the address of virtual_subnet6. Eg if virtual_subnet6 is 2606:54c1:7:0:a9fe:12d2::/127 , interface_address6 could be 2606:54c1:7:0:a9fe:12d2:1:200/127 */
-  interfaceAddress6?: string | null;
-  /** The date and time the tunnel was last modified. */
-  modifiedOn?: string | null;
-  /** The PSK metadata that includes when the PSK was generated. */
-  pskMetadata?: IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemPskMetadata | null;
-  /** If `true`, then IPsec replay protection will be supported in the Cloudflare-to-customer direction. */
-  replayProtection?: boolean | null;
 }
 export const IpsecTunnelsListResponseIpsecTunnelsItem = /*@__PURE__*/ S.suspend(
   () =>
@@ -12019,38 +11718,6 @@ export const IpsecTunnelsListResponseIpsecTunnelsItem = /*@__PURE__*/ S.suspend(
         S.NullOr(S.Boolean).pipe(T.Body("automatic_return_routing")),
       ),
       bgp: S.optional(S.NullOr(IpsecTunnelsListResponseIpsecTunnelsItemBgp)),
-      bgpStatus: S.optional(
-        S.NullOr(IpsecTunnelsListResponseIpsecTunnelsItemBgpStatus).pipe(
-          T.Body("bgp_status"),
-        ),
-      ),
-      createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
-      customRemoteIdentities: S.optional(
-        S.NullOr(
-          IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemCustomRemoteIdentities,
-        ).pipe(T.Body("custom_remote_identities")),
-      ),
-      customerEndpoint: S.optional(
-        S.NullOr(S.String).pipe(T.Body("customer_endpoint")),
-      ),
-      description: S.optional(S.NullOr(S.String)),
-      healthCheck: S.optional(
-        S.NullOr(IpsecTunnelsListResponseIpsecTunnelsItemHealthCheck).pipe(
-          T.Body("health_check"),
-        ),
-      ),
-      interfaceAddress6: S.optional(
-        S.NullOr(S.String).pipe(T.Body("interface_address6")),
-      ),
-      modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-      pskMetadata: S.optional(
-        S.NullOr(
-          IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemPskMetadata,
-        ).pipe(T.Body("psk_metadata")),
-      ),
-      replayProtection: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("replay_protection")),
-      ),
     }),
 ).annotate({
   identifier: "IpsecTunnelsListResponseIpsecTunnelsItem",
@@ -12094,189 +11761,9 @@ export const ListPcapsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListPcapsRequest",
 }) as any as S.Schema<ListPcapsRequest>;
 
-export type PcapsListResultItemPCAPFilterV1 = PcapsCreateResultPCAPFilterV1;
-export const PcapsListResultItemPCAPFilterV1 = PcapsCreateResultPCAPFilterV1;
-
-export type PcapsListResultItemPCAPStatus =
-  | "unknown"
-  | "success"
-  | "pending"
-  | "running"
-  | "conversion_pending"
-  | "conversion_running"
-  | "complete"
-  | "failed";
-export const PcapsListResultItemPCAPStatus = /*@__PURE__*/ S.String;
-
-export type PcapsListResultItemPCAPSystem = "magic-transit";
-export const PcapsListResultItemPCAPSystem = /*@__PURE__*/ S.String;
-
-export type PcapsListResultItemPCAPType = "simple" | "full";
-export const PcapsListResultItemPCAPType = /*@__PURE__*/ S.String;
-
-export interface PcapsListResultItemPCAP {
-  /** The ID for the packet capture. */
-  id?: string | null;
-  /** The packet capture filter. When this field is empty, all packets are captured. */
-  filterV1?: PcapsCreateResultPCAPFilterV1 | null;
-  /** The RFC 3339 offset timestamp from which to query backwards for packets. Must be within the last 24h. When this field is empty, defaults to time of request. */
-  offsetTime?: string | null;
-  /** The status of the packet capture request. */
-  status?: PcapsListResultItemPCAPStatus | null;
-  /** The RFC 3339 timestamp when the packet capture was created. */
-  submitted?: string | null;
-  /** The system used to collect packet captures. */
-  system?: PcapsListResultItemPCAPSystem | null;
-  /** The packet capture duration in seconds. */
-  timeLimit?: number | null;
-  /** The type of packet capture. `Simple` captures sampled packets, and `full` captures entire payloads and non-sampled packets. */
-  type?: PcapsListResultItemPCAPType | null;
-}
-export const PcapsListResultItemPCAP = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.NullOr(S.String)),
-    filterV1: S.optional(
-      S.NullOr(PcapsCreateResultPCAPFilterV1).pipe(T.Body("filter_v1")),
-    ),
-    offsetTime: S.optional(S.NullOr(S.String).pipe(T.Body("offset_time"))),
-    status: S.optional(S.NullOr(PcapsListResultItemPCAPStatus)),
-    submitted: S.optional(S.NullOr(S.String)),
-    system: S.optional(S.NullOr(PcapsListResultItemPCAPSystem)),
-    timeLimit: S.optional(S.NullOr(S.Number).pipe(T.Body("time_limit"))),
-    type: S.optional(S.NullOr(PcapsListResultItemPCAPType)),
-  }),
-).annotate({
-  identifier: "PcapsListResultItemPCAP",
-}) as any as S.Schema<PcapsListResultItemPCAP>;
-
-export type PcapsListResultItemMagicVisibilityPCAPsPCAPsResponseFullStatus =
-  | "unknown"
-  | "success"
-  | "pending"
-  | "running"
-  | "conversion_pending"
-  | "conversion_running"
-  | "complete"
-  | "failed";
-export const PcapsListResultItemMagicVisibilityPCAPsPCAPsResponseFullStatus =
-  /*@__PURE__*/ S.String;
-
-export type PcapsListResultItemMagicVisibilityPCAPsPCAPsResponseFullSystem =
-  "magic-transit";
-export const PcapsListResultItemMagicVisibilityPCAPsPCAPsResponseFullSystem =
-  /*@__PURE__*/ S.String;
-
-export type PcapsListResultItemMagicVisibilityPCAPsPCAPsResponseFullType =
-  | "simple"
-  | "full";
-export const PcapsListResultItemMagicVisibilityPCAPsPCAPsResponseFullType =
-  /*@__PURE__*/ S.String;
-
-export interface PcapsListResultItemMagicVisibilityPCAPsPCAPsResponseFull {
-  /** The ID for the packet capture. */
-  id?: string | null;
-  /** The maximum number of bytes to capture. This field only applies to `full` packet captures. */
-  byteLimit?: number | null;
-  /** The name of the data center used for the packet capture. This can be a specific colo (ord02) or a multi-colo name (ORD). This field only applies to `full` packet captures. */
-  coloName?: string | null;
-  /** The full URI for the bucket. This field only applies to `full` packet captures. */
-  destinationConf?: string | null;
-  /** An error message that describes why the packet capture failed. This field only applies to `full` packet captures. */
-  errorMessage?: string | null;
-  /** The packet capture filter. When this field is empty, all packets are captured. */
-  filterV1?: PcapsCreateResultPCAPFilterV1 | null;
-  /** The number of packets captured. */
-  packetsCaptured?: number | null;
-  /** The status of the packet capture request. */
-  status?: PcapsListResultItemMagicVisibilityPCAPsPCAPsResponseFullStatus | null;
-  /** The RFC 3339 timestamp when stopping the packet capture was requested. This field only applies to `full` packet captures. */
-  stopRequested?: string | null;
-  /** The RFC 3339 timestamp when the packet capture was created. */
-  submitted?: string | null;
-  /** The system used to collect packet captures. */
-  system?: PcapsListResultItemMagicVisibilityPCAPsPCAPsResponseFullSystem | null;
-  /** The packet capture duration in seconds. */
-  timeLimit?: number | null;
-  /** The type of packet capture. `Simple` captures sampled packets, and `full` captures entire payloads and non-sampled packets. */
-  type?: PcapsListResultItemMagicVisibilityPCAPsPCAPsResponseFullType | null;
-}
-export const PcapsListResultItemMagicVisibilityPCAPsPCAPsResponseFull =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.optional(S.NullOr(S.String)),
-      byteLimit: S.optional(S.NullOr(S.Number).pipe(T.Body("byte_limit"))),
-      coloName: S.optional(S.NullOr(S.String).pipe(T.Body("colo_name"))),
-      destinationConf: S.optional(
-        S.NullOr(S.String).pipe(T.Body("destination_conf")),
-      ),
-      errorMessage: S.optional(
-        S.NullOr(S.String).pipe(T.Body("error_message")),
-      ),
-      filterV1: S.optional(
-        S.NullOr(PcapsCreateResultPCAPFilterV1).pipe(T.Body("filter_v1")),
-      ),
-      packetsCaptured: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("packets_captured")),
-      ),
-      status: S.optional(
-        S.NullOr(
-          PcapsListResultItemMagicVisibilityPCAPsPCAPsResponseFullStatus,
-        ),
-      ),
-      stopRequested: S.optional(
-        S.NullOr(S.String).pipe(T.Body("stop_requested")),
-      ),
-      submitted: S.optional(S.NullOr(S.String)),
-      system: S.optional(
-        S.NullOr(
-          PcapsListResultItemMagicVisibilityPCAPsPCAPsResponseFullSystem,
-        ),
-      ),
-      timeLimit: S.optional(S.NullOr(S.Number).pipe(T.Body("time_limit"))),
-      type: S.optional(
-        S.NullOr(PcapsListResultItemMagicVisibilityPCAPsPCAPsResponseFullType),
-      ),
-    }),
-  ).annotate({
-    identifier: "PcapsListResultItemMagicVisibilityPCAPsPCAPsResponseFull",
-  }) as any as S.Schema<PcapsListResultItemMagicVisibilityPCAPsPCAPsResponseFull>;
-
-export type PcapsListResultItem =
-  | PcapsListResultItemPCAP
-  | PcapsListResultItemMagicVisibilityPCAPsPCAPsResponseFull;
-export const PcapsListResultItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
-    [
-      "id",
-      "filterV1",
-      "offsetTime",
-      "status",
-      "submitted",
-      "system",
-      "timeLimit",
-      "type",
-    ],
-    [
-      "id",
-      "byteLimit",
-      "coloName",
-      "destinationConf",
-      "errorMessage",
-      "filterV1",
-      "packetsCaptured",
-      "status",
-      "stopRequested",
-      "submitted",
-      "system",
-      "timeLimit",
-      "type",
-    ],
-  ]),
-);
-
-export type PcapsListResultList = Array<PcapsListResultItem>;
+export type PcapsListResultList = Array<unknown>;
 export const PcapsListResultList = /*@__PURE__*/ S.Array(
-  PcapsListResultItem,
+  S.Unknown,
 ) as any as S.Schema<PcapsListResultList>;
 
 export interface ListPcapsResponse {
@@ -12440,6 +11927,74 @@ export const SitesAclsListResultItemLan1SubnetsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SitesAclsListResultItemLan1SubnetsList>;
 
+export type SitesAclsListResultItemLan1Lan2PortRangesList = Array<string>;
+export const SitesAclsListResultItemLan1Lan2PortRangesList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<SitesAclsListResultItemLan1Lan2PortRangesList>;
+
+export type SitesAclsListResultItemLan1Lan2PortsList = Array<number>;
+export const SitesAclsListResultItemLan1Lan2PortsList = /*@__PURE__*/ S.Array(
+  S.Number,
+) as any as S.Schema<SitesAclsListResultItemLan1Lan2PortsList>;
+
+export type SitesAclsListResultItemLan1Lan2SubnetsList = Array<unknown>;
+export const SitesAclsListResultItemLan1Lan2SubnetsList = /*@__PURE__*/ S.Array(
+  S.Unknown,
+) as any as S.Schema<SitesAclsListResultItemLan1Lan2SubnetsList>;
+
+export type SitesAclsListResultItemLan1Lan2ProtocolsItem =
+  | "tcp"
+  | "udp"
+  | "icmp";
+export const SitesAclsListResultItemLan1Lan2ProtocolsItem =
+  /*@__PURE__*/ S.String;
+
+export type SitesAclsListResultItemLan1Lan2ProtocolsList =
+  Array<SitesAclsListResultItemLan1Lan2ProtocolsItem>;
+export const SitesAclsListResultItemLan1Lan2ProtocolsList =
+  /*@__PURE__*/ S.Array(
+    SitesAclsListResultItemLan1Lan2ProtocolsItem,
+  ) as any as S.Schema<SitesAclsListResultItemLan1Lan2ProtocolsList>;
+
+export interface SitesAclsListResultItemLan1Lan2 {
+  /** The identifier for the LAN you want to create an ACL policy with. */
+  lanId: string;
+  /** The name of the LAN based on the provided lan_id. */
+  lanName?: string | null;
+  /** Array of port ranges on the provided LAN that will be included in the ACL. If no ports or port rangess are provided, communication on any port on this LAN is allowed. */
+  portRanges?: SitesAclsListResultItemLan1Lan2PortRangesList | null;
+  /** Array of ports on the provided LAN that will be included in the ACL. If no ports or port ranges are provided, communication on any port on this LAN is allowed. */
+  ports?: SitesAclsListResultItemLan1Lan2PortsList | null;
+  /** Array of subnet IPs within the LAN that will be included in the ACL. If no subnets are provided, communication on any subnets on this LAN are allowed. */
+  subnets?: SitesAclsListResultItemLan1Lan2SubnetsList | null;
+  /** The name of the ACL. */
+  name?: string | null;
+  protocols?: SitesAclsListResultItemLan1Lan2ProtocolsList | null;
+  /** The desired traffic direction for this ACL policy. If set to “false”, the policy will allow bidirectional traffic. If set to “true”, the policy will only allow traffic in one direction. If not included in request, will default to false. */
+  unidirectional?: boolean | null;
+}
+export const SitesAclsListResultItemLan1Lan2 = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    lanId: S.String.pipe(T.Body("lan_id")),
+    lanName: S.optional(S.NullOr(S.String).pipe(T.Body("lan_name"))),
+    portRanges: S.optional(
+      S.NullOr(SitesAclsListResultItemLan1Lan2PortRangesList).pipe(
+        T.Body("port_ranges"),
+      ),
+    ),
+    ports: S.optional(S.NullOr(SitesAclsListResultItemLan1Lan2PortsList)),
+    subnets: S.optional(S.NullOr(SitesAclsListResultItemLan1Lan2SubnetsList)),
+    name: S.optional(S.NullOr(S.String)),
+    protocols: S.optional(
+      S.NullOr(SitesAclsListResultItemLan1Lan2ProtocolsList),
+    ),
+    unidirectional: S.optional(S.NullOr(S.Boolean)),
+  }),
+).annotate({
+  identifier: "SitesAclsListResultItemLan1Lan2",
+}) as any as S.Schema<SitesAclsListResultItemLan1Lan2>;
+
 export interface SitesAclsListResultItemLan1 {
   /** The identifier for the LAN you want to create an ACL policy with. */
   lanId: string;
@@ -12451,6 +12006,7 @@ export interface SitesAclsListResultItemLan1 {
   ports?: SitesAclsListResultItemLan1PortsList | null;
   /** Array of subnet IPs within the LAN that will be included in the ACL. If no subnets are provided, communication on any subnets on this LAN are allowed. */
   subnets?: SitesAclsListResultItemLan1SubnetsList | null;
+  lan_2?: SitesAclsListResultItemLan1Lan2 | null;
 }
 export const SitesAclsListResultItemLan1 = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -12463,34 +12019,20 @@ export const SitesAclsListResultItemLan1 = /*@__PURE__*/ S.suspend(() =>
     ),
     ports: S.optional(S.NullOr(SitesAclsListResultItemLan1PortsList)),
     subnets: S.optional(S.NullOr(SitesAclsListResultItemLan1SubnetsList)),
+    lan_2: S.optional(S.NullOr(SitesAclsListResultItemLan1Lan2)),
   }),
 ).annotate({
   identifier: "SitesAclsListResultItemLan1",
 }) as any as S.Schema<SitesAclsListResultItemLan1>;
-
-export type SitesAclsListResultItemProtocolsItem = "tcp" | "udp" | "icmp";
-export const SitesAclsListResultItemProtocolsItem = /*@__PURE__*/ S.String;
-
-export type SitesAclsListResultItemProtocolsList =
-  Array<SitesAclsListResultItemProtocolsItem>;
-export const SitesAclsListResultItemProtocolsList = /*@__PURE__*/ S.Array(
-  SitesAclsListResultItemProtocolsItem,
-) as any as S.Schema<SitesAclsListResultItemProtocolsList>;
 
 export interface SitesAclsListResultItem {
   /** Identifier */
   id?: string | null;
   /** Description for the ACL. */
   description?: string | null;
-  /** The desired forwarding action for this ACL policy. If set to "false", the policy will forward traffic to Cloudflare. If set to "true", the policy will forward traffic locally on the Magic Connector. If not included in request, will default to false. */
+  /** The desired forwarding action for this ACL policy. If set to “false”, the policy will forward traffic to Cloudflare. If set to “true”, the policy will forward traffic locally on the Magic Connector. If not included in request, will default to false. */
   forwardLocally?: boolean | null;
   lan_1?: SitesAclsListResultItemLan1 | null;
-  lan_2?: SitesAclsListResultItemLan1 | null;
-  /** The name of the ACL. */
-  name?: string | null;
-  protocols?: SitesAclsListResultItemProtocolsList | null;
-  /** The desired traffic direction for this ACL policy. If set to "false", the policy will allow bidirectional traffic. If set to "true", the policy will only allow traffic in one direction. If not included in request, will default to false. */
-  unidirectional?: boolean | null;
 }
 export const SitesAclsListResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -12500,10 +12042,6 @@ export const SitesAclsListResultItem = /*@__PURE__*/ S.suspend(() =>
       S.NullOr(S.Boolean).pipe(T.Body("forward_locally")),
     ),
     lan_1: S.optional(S.NullOr(SitesAclsListResultItemLan1)),
-    lan_2: S.optional(S.NullOr(SitesAclsListResultItemLan1)),
-    name: S.optional(S.NullOr(S.String)),
-    protocols: S.optional(S.NullOr(SitesAclsListResultItemProtocolsList)),
-    unidirectional: S.optional(S.NullOr(S.Boolean)),
   }),
 ).annotate({
   identifier: "SitesAclsListResultItem",
@@ -12555,6 +12093,11 @@ export const ListSiteLansRequest = /*@__PURE__*/ S.suspend(() =>
 export type SitesLansListResultItemNat = SitesLansCreateResultItemNat;
 export const SitesLansListResultItemNat = SitesLansCreateResultItemNat;
 
+export type SitesLansListResultItemRoutedSubnetsItemNat =
+  SitesLansCreateResultItemNat;
+export const SitesLansListResultItemRoutedSubnetsItemNat =
+  SitesLansCreateResultItemNat;
+
 export type SitesLansListResultItemRoutedSubnetsItem =
   SitesLansCreateResultItemRoutedSubnetsItem;
 export const SitesLansListResultItemRoutedSubnetsItem =
@@ -12603,7 +12146,7 @@ export const SitesLansListResultItemStaticAddressingDhcpServerDhcpOptionsItemTyp
 export interface SitesLansListResultItemStaticAddressingDhcpServerDhcpOptionsItem {
   /** DHCP option number (1-254). Options 0 and 255 are reserved by RFC 2132. Options 3, 6, and 51 are not allowed because they conflict with connector-managed configuration. */
   code: number;
-  /** The type of the option value. text: a string (max 255 bytes). hex: colon-separated hex bytes (e.g. "01:04:aa:bb:cc", max 255 bytes). ip: an IPv4 address (e.g. "10.20.30.40"). byte: an unsigned integer 0-255 (1 byte). short: an unsigned integer 0-65535 (2 bytes). integer: an unsigned integer 0-4294967295 (4 bytes). */
+  /** The type of the option value. text: a string (max 255 bytes). hex: colon-separated hex bytes (e.g. “01:04:aa:bb:cc”, max 255 bytes). ip: an IPv4 address (e.g. “10.20.30.40”). byte: an unsigned integer 0-255 (1 byte). short: an unsigned integer 0-65535 (2 bytes). integer: an unsigned integer 0-4294967295 (4 bytes). */
   type: SitesLansListResultItemStaticAddressingDhcpServerDhcpOptionsItemType;
   /** The option value, interpreted according to the type field. */
   value: string;
@@ -12655,6 +12198,12 @@ export interface SitesLansListResultItemStaticAddressingDhcpServer {
   dnsServers?: SitesLansListResultItemStaticAddressingDhcpServerDnsServersList | null;
   /** Mapping of MAC addresses to IP addresses */
   reservations?: SitesLansListResultItemStaticAddressingDhcpServerReservationsMap | null;
+  /** A valid CIDR notation representing an IP range. */
+  secondaryAddress?: string | null;
+  /** A valid CIDR notation representing an IP range. */
+  virtualAddress?: string | null;
+  /** VLAN ID. Use zero for untagged. */
+  vlanTag?: number | null;
 }
 export const SitesLansListResultItemStaticAddressingDhcpServer =
   /*@__PURE__*/ S.suspend(() =>
@@ -12679,6 +12228,13 @@ export const SitesLansListResultItemStaticAddressingDhcpServer =
           SitesLansListResultItemStaticAddressingDhcpServerReservationsMap,
         ),
       ),
+      secondaryAddress: S.optional(
+        S.NullOr(S.String).pipe(T.Body("secondary_address")),
+      ),
+      virtualAddress: S.optional(
+        S.NullOr(S.String).pipe(T.Body("virtual_address")),
+      ),
+      vlanTag: S.optional(S.NullOr(S.Number).pipe(T.Body("vlan_tag"))),
     }),
   ).annotate({
     identifier: "SitesLansListResultItemStaticAddressingDhcpServer",
@@ -12689,10 +12245,6 @@ export interface SitesLansListResultItemStaticAddressing {
   address: string;
   dhcpRelay?: SitesLansListResultItemStaticAddressingDhcpRelay | null;
   dhcpServer?: SitesLansListResultItemStaticAddressingDhcpServer | null;
-  /** A valid CIDR notation representing an IP range. */
-  secondaryAddress?: string | null;
-  /** A valid CIDR notation representing an IP range. */
-  virtualAddress?: string | null;
 }
 export const SitesLansListResultItemStaticAddressing = /*@__PURE__*/ S.suspend(
   () =>
@@ -12707,12 +12259,6 @@ export const SitesLansListResultItemStaticAddressing = /*@__PURE__*/ S.suspend(
         S.NullOr(SitesLansListResultItemStaticAddressingDhcpServer).pipe(
           T.Body("dhcp_server"),
         ),
-      ),
-      secondaryAddress: S.optional(
-        S.NullOr(S.String).pipe(T.Body("secondary_address")),
-      ),
-      virtualAddress: S.optional(
-        S.NullOr(S.String).pipe(T.Body("virtual_address")),
       ),
     }),
 ).annotate({
@@ -12737,8 +12283,6 @@ export interface SitesLansListResultItem {
   siteId?: string | null;
   /** If the site is not configured in high availability mode, this configuration is optional (if omitted, use DHCP). However, if in high availability mode, static_address is required along with secondary and virtual address. */
   staticAddressing?: SitesLansListResultItemStaticAddressing | null;
-  /** VLAN ID. Use zero for untagged. */
-  vlanTag?: number | null;
 }
 export const SitesLansListResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -12763,7 +12307,6 @@ export const SitesLansListResultItem = /*@__PURE__*/ S.suspend(() =>
         T.Body("static_addressing"),
       ),
     ),
-    vlanTag: S.optional(S.NullOr(S.Number).pipe(T.Body("vlan_tag"))),
   }),
 ).annotate({
   identifier: "SitesLansListResultItem",
@@ -13062,10 +12605,26 @@ export const PatchAppResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "PatchAppResponse",
 }) as any as S.Schema<PatchAppResponse>;
 
-export type Cf1SitesUpdateRequestLocation =
-  Cf1SitesCreateRequestBodyItemLocation;
-export const Cf1SitesUpdateRequestLocation =
-  Cf1SitesCreateRequestBodyItemLocation;
+export interface Cf1SitesUpdateRequestLocation {
+  /** Latitude of the CF1 Site. */
+  lat?: number;
+  /** Longitude of the CF1 Site. */
+  long?: number;
+  /** Name of nearest town, city, or village. */
+  name?: string;
+  /** A human-provided name describing the CF1 Site that should be unique within the account. */
+  name_2?: string;
+}
+export const Cf1SitesUpdateRequestLocation = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    lat: S.optional(S.Number),
+    long: S.optional(S.Number),
+    name: S.optional(S.String),
+    name_2: S.optional(S.String.pipe(T.Body("name"))),
+  }),
+).annotate({
+  identifier: "Cf1SitesUpdateRequestLocation",
+}) as any as S.Schema<Cf1SitesUpdateRequestLocation>;
 
 export interface PatchCf1SiteRequest {
   /** Identifier */
@@ -13074,17 +12633,14 @@ export interface PatchCf1SiteRequest {
   cf1SiteId: string;
   /** A human-provided description of the CF1 Site. */
   description?: string;
-  location?: Cf1SitesCreateRequestBodyItemLocation;
-  /** A human-provided name describing the CF1 Site that should be unique within the account. */
-  name?: string;
+  location?: Cf1SitesUpdateRequestLocation;
 }
 export const PatchCf1SiteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     cf1SiteId: S.String.pipe(T.Label("cf1_site_id")),
     description: S.optional(S.String),
-    location: S.optional(Cf1SitesCreateRequestBodyItemLocation),
-    name: S.optional(S.String),
+    location: S.optional(Cf1SitesUpdateRequestLocation),
   })
     .pipe(
       T.Http({
@@ -13107,10 +12663,12 @@ export interface PatchCf1SiteResponse {
   name: string;
   /** Identifier */
   id?: string | null;
+  /** formatdate-time */
   createdOn?: string | null;
   /** A human-provided description of the CF1 Site. */
   description?: string | null;
   location?: Cf1SitesCreateResultItemLocation | null;
+  /** formatdate-time */
   modifiedOn?: string | null;
 }
 export const PatchCf1SiteResponse = /*@__PURE__*/ S.suspend(() =>
@@ -13159,6 +12717,7 @@ export interface PatchConnectorRequest {
   activated?: boolean;
   /** Allowed days of the week for upgrades. Default is all days. */
   interruptWindowDaysOfWeek?: ConnectorsEditRequestInterruptWindowDaysOfWeekList;
+  /** maximum24 */
   interruptWindowDurationHours?: number;
   /** List of dates (YYYY-MM-DD) when upgrades are blocked. */
   interruptWindowEmbargoDates?: ConnectorsEditRequestInterruptWindowEmbargoDatesList;
@@ -13258,6 +12817,7 @@ export interface PatchConnectorResponse {
   activated: boolean;
   /** Allowed days of the week for upgrades. Default is all days. */
   interruptWindowDaysOfWeek: ConnectorsEditResponseInterruptWindowDaysOfWeekList;
+  /** maximum24 */
   interruptWindowDurationHours: number;
   /** List of dates (YYYY-MM-DD) when upgrades are blocked. */
   interruptWindowEmbargoDates: ConnectorsEditResponseInterruptWindowEmbargoDatesList;
@@ -13400,6 +12960,65 @@ export const SitesAclsEditRequestLan1SubnetsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SitesAclsEditRequestLan1SubnetsList>;
 
+export type SitesAclsEditRequestLan1Lan2PortRangesList = Array<string>;
+export const SitesAclsEditRequestLan1Lan2PortRangesList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<SitesAclsEditRequestLan1Lan2PortRangesList>;
+
+export type SitesAclsEditRequestLan1Lan2PortsList = Array<number>;
+export const SitesAclsEditRequestLan1Lan2PortsList = /*@__PURE__*/ S.Array(
+  S.Number,
+) as any as S.Schema<SitesAclsEditRequestLan1Lan2PortsList>;
+
+export type SitesAclsEditRequestLan1Lan2SubnetsList = Array<unknown>;
+export const SitesAclsEditRequestLan1Lan2SubnetsList = /*@__PURE__*/ S.Array(
+  S.Unknown,
+) as any as S.Schema<SitesAclsEditRequestLan1Lan2SubnetsList>;
+
+export type SitesAclsEditRequestLan1Lan2ProtocolsItem = "tcp" | "udp" | "icmp";
+export const SitesAclsEditRequestLan1Lan2ProtocolsItem = /*@__PURE__*/ S.String;
+
+export type SitesAclsEditRequestLan1Lan2ProtocolsList = Array<
+  SitesAclsEditRequestLan1Lan2ProtocolsItem | (string & {})
+>;
+export const SitesAclsEditRequestLan1Lan2ProtocolsList = /*@__PURE__*/ S.Array(
+  SitesAclsEditRequestLan1Lan2ProtocolsItem,
+) as any as S.Schema<SitesAclsEditRequestLan1Lan2ProtocolsList>;
+
+export interface SitesAclsEditRequestLan1Lan2 {
+  /** The identifier for the LAN you want to create an ACL policy with. */
+  lanId: string;
+  /** The name of the LAN based on the provided lan_id. */
+  lanName?: string;
+  /** Array of port ranges on the provided LAN that will be included in the ACL. If no ports or port rangess are provided, communication on any port on this LAN is allowed. */
+  portRanges?: SitesAclsEditRequestLan1Lan2PortRangesList;
+  /** Array of ports on the provided LAN that will be included in the ACL. If no ports or port ranges are provided, communication on any port on this LAN is allowed. */
+  ports?: SitesAclsEditRequestLan1Lan2PortsList;
+  /** Array of subnet IPs within the LAN that will be included in the ACL. If no subnets are provided, communication on any subnets on this LAN are allowed. */
+  subnets?: SitesAclsEditRequestLan1Lan2SubnetsList;
+  /** The name of the ACL. */
+  name?: string;
+  protocols?: SitesAclsEditRequestLan1Lan2ProtocolsList;
+  /** The desired traffic direction for this ACL policy. If set to “false”, the policy will allow bidirectional traffic. If set to “true”, the policy will only allow traffic in one direction. If not included in request, will default to false. */
+  unidirectional?: boolean;
+}
+export const SitesAclsEditRequestLan1Lan2 = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    lanId: S.String.pipe(T.Body("lan_id")),
+    lanName: S.optional(S.String.pipe(T.Body("lan_name"))),
+    portRanges: S.optional(
+      SitesAclsEditRequestLan1Lan2PortRangesList.pipe(T.Body("port_ranges")),
+    ),
+    ports: S.optional(SitesAclsEditRequestLan1Lan2PortsList),
+    subnets: S.optional(SitesAclsEditRequestLan1Lan2SubnetsList),
+    name: S.optional(S.String),
+    protocols: S.optional(SitesAclsEditRequestLan1Lan2ProtocolsList),
+    unidirectional: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "SitesAclsEditRequestLan1Lan2",
+}) as any as S.Schema<SitesAclsEditRequestLan1Lan2>;
+
 export interface SitesAclsEditRequestLan1 {
   /** The identifier for the LAN you want to create an ACL policy with. */
   lanId: string;
@@ -13411,6 +13030,7 @@ export interface SitesAclsEditRequestLan1 {
   ports?: SitesAclsEditRequestLan1PortsList;
   /** Array of subnet IPs within the LAN that will be included in the ACL. If no subnets are provided, communication on any subnets on this LAN are allowed. */
   subnets?: SitesAclsEditRequestLan1SubnetsList;
+  lan_2?: SitesAclsEditRequestLan1Lan2;
 }
 export const SitesAclsEditRequestLan1 = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -13421,20 +13041,11 @@ export const SitesAclsEditRequestLan1 = /*@__PURE__*/ S.suspend(() =>
     ),
     ports: S.optional(SitesAclsEditRequestLan1PortsList),
     subnets: S.optional(SitesAclsEditRequestLan1SubnetsList),
+    lan_2: S.optional(SitesAclsEditRequestLan1Lan2),
   }),
 ).annotate({
   identifier: "SitesAclsEditRequestLan1",
 }) as any as S.Schema<SitesAclsEditRequestLan1>;
-
-export type SitesAclsEditRequestProtocolsItem = "tcp" | "udp" | "icmp";
-export const SitesAclsEditRequestProtocolsItem = /*@__PURE__*/ S.String;
-
-export type SitesAclsEditRequestProtocolsList = Array<
-  SitesAclsEditRequestProtocolsItem | (string & {})
->;
-export const SitesAclsEditRequestProtocolsList = /*@__PURE__*/ S.Array(
-  SitesAclsEditRequestProtocolsItem,
-) as any as S.Schema<SitesAclsEditRequestProtocolsList>;
 
 export interface PatchSiteAclRequest {
   /** Identifier */
@@ -13445,15 +13056,9 @@ export interface PatchSiteAclRequest {
   aclId: string;
   /** Description for the ACL. */
   description?: string;
-  /** The desired forwarding action for this ACL policy. If set to "false", the policy will forward traffic to Cloudflare. If set to "true", the policy will forward traffic locally on the Magic Connector. If not included in request, will default to false. */
+  /** The desired forwarding action for this ACL policy. If set to “false”, the policy will forward traffic to Cloudflare. If set to “true”, the policy will forward traffic locally on the Magic Connector. If not included in request, will default to false. */
   forwardLocally?: boolean;
   lan_1?: SitesAclsEditRequestLan1;
-  lan_2?: SitesAclsEditRequestLan1;
-  /** The name of the ACL. */
-  name?: string;
-  protocols?: SitesAclsEditRequestProtocolsList;
-  /** The desired traffic direction for this ACL policy. If set to "false", the policy will allow bidirectional traffic. If set to "true", the policy will only allow traffic in one direction. If not included in request, will default to false. */
-  unidirectional?: boolean;
 }
 export const PatchSiteAclRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -13463,10 +13068,6 @@ export const PatchSiteAclRequest = /*@__PURE__*/ S.suspend(() =>
     description: S.optional(S.String),
     forwardLocally: S.optional(S.Boolean.pipe(T.Body("forward_locally"))),
     lan_1: S.optional(SitesAclsEditRequestLan1),
-    lan_2: S.optional(SitesAclsEditRequestLan1),
-    name: S.optional(S.String),
-    protocols: S.optional(SitesAclsEditRequestProtocolsList),
-    unidirectional: S.optional(S.Boolean),
   })
     .pipe(
       T.Http({
@@ -13495,6 +13096,68 @@ export const SitesAclsEditResponseLan1SubnetsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SitesAclsEditResponseLan1SubnetsList>;
 
+export type SitesAclsEditResponseLan1Lan2PortRangesList = Array<string>;
+export const SitesAclsEditResponseLan1Lan2PortRangesList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<SitesAclsEditResponseLan1Lan2PortRangesList>;
+
+export type SitesAclsEditResponseLan1Lan2PortsList = Array<number>;
+export const SitesAclsEditResponseLan1Lan2PortsList = /*@__PURE__*/ S.Array(
+  S.Number,
+) as any as S.Schema<SitesAclsEditResponseLan1Lan2PortsList>;
+
+export type SitesAclsEditResponseLan1Lan2SubnetsList = Array<unknown>;
+export const SitesAclsEditResponseLan1Lan2SubnetsList = /*@__PURE__*/ S.Array(
+  S.Unknown,
+) as any as S.Schema<SitesAclsEditResponseLan1Lan2SubnetsList>;
+
+export type SitesAclsEditResponseLan1Lan2ProtocolsItem = "tcp" | "udp" | "icmp";
+export const SitesAclsEditResponseLan1Lan2ProtocolsItem =
+  /*@__PURE__*/ S.String;
+
+export type SitesAclsEditResponseLan1Lan2ProtocolsList =
+  Array<SitesAclsEditResponseLan1Lan2ProtocolsItem>;
+export const SitesAclsEditResponseLan1Lan2ProtocolsList = /*@__PURE__*/ S.Array(
+  SitesAclsEditResponseLan1Lan2ProtocolsItem,
+) as any as S.Schema<SitesAclsEditResponseLan1Lan2ProtocolsList>;
+
+export interface SitesAclsEditResponseLan1Lan2 {
+  /** The identifier for the LAN you want to create an ACL policy with. */
+  lanId: string;
+  /** The name of the LAN based on the provided lan_id. */
+  lanName?: string | null;
+  /** Array of port ranges on the provided LAN that will be included in the ACL. If no ports or port rangess are provided, communication on any port on this LAN is allowed. */
+  portRanges?: SitesAclsEditResponseLan1Lan2PortRangesList | null;
+  /** Array of ports on the provided LAN that will be included in the ACL. If no ports or port ranges are provided, communication on any port on this LAN is allowed. */
+  ports?: SitesAclsEditResponseLan1Lan2PortsList | null;
+  /** Array of subnet IPs within the LAN that will be included in the ACL. If no subnets are provided, communication on any subnets on this LAN are allowed. */
+  subnets?: SitesAclsEditResponseLan1Lan2SubnetsList | null;
+  /** The name of the ACL. */
+  name?: string | null;
+  protocols?: SitesAclsEditResponseLan1Lan2ProtocolsList | null;
+  /** The desired traffic direction for this ACL policy. If set to “false”, the policy will allow bidirectional traffic. If set to “true”, the policy will only allow traffic in one direction. If not included in request, will default to false. */
+  unidirectional?: boolean | null;
+}
+export const SitesAclsEditResponseLan1Lan2 = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    lanId: S.String.pipe(T.Body("lan_id")),
+    lanName: S.optional(S.NullOr(S.String).pipe(T.Body("lan_name"))),
+    portRanges: S.optional(
+      S.NullOr(SitesAclsEditResponseLan1Lan2PortRangesList).pipe(
+        T.Body("port_ranges"),
+      ),
+    ),
+    ports: S.optional(S.NullOr(SitesAclsEditResponseLan1Lan2PortsList)),
+    subnets: S.optional(S.NullOr(SitesAclsEditResponseLan1Lan2SubnetsList)),
+    name: S.optional(S.NullOr(S.String)),
+    protocols: S.optional(S.NullOr(SitesAclsEditResponseLan1Lan2ProtocolsList)),
+    unidirectional: S.optional(S.NullOr(S.Boolean)),
+  }),
+).annotate({
+  identifier: "SitesAclsEditResponseLan1Lan2",
+}) as any as S.Schema<SitesAclsEditResponseLan1Lan2>;
+
 export interface SitesAclsEditResponseLan1 {
   /** The identifier for the LAN you want to create an ACL policy with. */
   lanId: string;
@@ -13506,6 +13169,7 @@ export interface SitesAclsEditResponseLan1 {
   ports?: SitesAclsEditResponseLan1PortsList | null;
   /** Array of subnet IPs within the LAN that will be included in the ACL. If no subnets are provided, communication on any subnets on this LAN are allowed. */
   subnets?: SitesAclsEditResponseLan1SubnetsList | null;
+  lan_2?: SitesAclsEditResponseLan1Lan2 | null;
 }
 export const SitesAclsEditResponseLan1 = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -13518,19 +13182,11 @@ export const SitesAclsEditResponseLan1 = /*@__PURE__*/ S.suspend(() =>
     ),
     ports: S.optional(S.NullOr(SitesAclsEditResponseLan1PortsList)),
     subnets: S.optional(S.NullOr(SitesAclsEditResponseLan1SubnetsList)),
+    lan_2: S.optional(S.NullOr(SitesAclsEditResponseLan1Lan2)),
   }),
 ).annotate({
   identifier: "SitesAclsEditResponseLan1",
 }) as any as S.Schema<SitesAclsEditResponseLan1>;
-
-export type SitesAclsEditResponseProtocolsItem = "tcp" | "udp" | "icmp";
-export const SitesAclsEditResponseProtocolsItem = /*@__PURE__*/ S.String;
-
-export type SitesAclsEditResponseProtocolsList =
-  Array<SitesAclsEditResponseProtocolsItem>;
-export const SitesAclsEditResponseProtocolsList = /*@__PURE__*/ S.Array(
-  SitesAclsEditResponseProtocolsItem,
-) as any as S.Schema<SitesAclsEditResponseProtocolsList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface PatchSiteAclResponse {
@@ -13538,15 +13194,9 @@ export interface PatchSiteAclResponse {
   id?: string | null;
   /** Description for the ACL. */
   description?: string | null;
-  /** The desired forwarding action for this ACL policy. If set to "false", the policy will forward traffic to Cloudflare. If set to "true", the policy will forward traffic locally on the Magic Connector. If not included in request, will default to false. */
+  /** The desired forwarding action for this ACL policy. If set to “false”, the policy will forward traffic to Cloudflare. If set to “true”, the policy will forward traffic locally on the Magic Connector. If not included in request, will default to false. */
   forwardLocally?: boolean | null;
   lan_1?: SitesAclsEditResponseLan1 | null;
-  lan_2?: SitesAclsEditResponseLan1 | null;
-  /** The name of the ACL. */
-  name?: string | null;
-  protocols?: SitesAclsEditResponseProtocolsList | null;
-  /** The desired traffic direction for this ACL policy. If set to "false", the policy will allow bidirectional traffic. If set to "true", the policy will only allow traffic in one direction. If not included in request, will default to false. */
-  unidirectional?: boolean | null;
 }
 export const PatchSiteAclResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -13556,10 +13206,6 @@ export const PatchSiteAclResponse = /*@__PURE__*/ S.suspend(() =>
       S.NullOr(S.Boolean).pipe(T.Body("forward_locally")),
     ),
     lan_1: S.optional(S.NullOr(SitesAclsEditResponseLan1)),
-    lan_2: S.optional(S.NullOr(SitesAclsEditResponseLan1)),
-    name: S.optional(S.NullOr(S.String)),
-    protocols: S.optional(S.NullOr(SitesAclsEditResponseProtocolsList)),
-    unidirectional: S.optional(S.NullOr(S.Boolean)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchSiteAclResponse",
@@ -13567,6 +13213,11 @@ export const PatchSiteAclResponse = /*@__PURE__*/ S.suspend(() =>
 
 export type SitesLansEditRequestNat = SitesLansCreateRequestNat;
 export const SitesLansEditRequestNat = SitesLansCreateRequestNat;
+
+export type SitesLansEditRequestRoutedSubnetsItemNat =
+  SitesLansCreateRequestNat;
+export const SitesLansEditRequestRoutedSubnetsItemNat =
+  SitesLansCreateRequestNat;
 
 export type SitesLansEditRequestRoutedSubnetsItem =
   SitesLansCreateRequestRoutedSubnetsItem;
@@ -13616,7 +13267,7 @@ export const SitesLansEditRequestStaticAddressingDhcpServerDhcpOptionsItemType =
 export interface SitesLansEditRequestStaticAddressingDhcpServerDhcpOptionsItem {
   /** DHCP option number (1-254). Options 0 and 255 are reserved by RFC 2132. Options 3, 6, and 51 are not allowed because they conflict with connector-managed configuration. */
   code: number;
-  /** The type of the option value. text: a string (max 255 bytes). hex: colon-separated hex bytes (e.g. "01:04:aa:bb:cc", max 255 bytes). ip: an IPv4 address (e.g. "10.20.30.40"). byte: an unsigned integer 0-255 (1 byte). short: an unsigned integer 0-65535 (2 bytes). integer: an unsigned integer 0-4294967295 (4 bytes). */
+  /** The type of the option value. text: a string (max 255 bytes). hex: colon-separated hex bytes (e.g. “01:04:aa:bb:cc”, max 255 bytes). ip: an IPv4 address (e.g. “10.20.30.40”). byte: an unsigned integer 0-255 (1 byte). short: an unsigned integer 0-65535 (2 bytes). integer: an unsigned integer 0-4294967295 (4 bytes). */
   type:
     | SitesLansEditRequestStaticAddressingDhcpServerDhcpOptionsItemType
     | (string & {});
@@ -13669,6 +13320,12 @@ export interface SitesLansEditRequestStaticAddressingDhcpServer {
   dnsServers?: SitesLansEditRequestStaticAddressingDhcpServerDnsServersList;
   /** Mapping of MAC addresses to IP addresses */
   reservations?: SitesLansEditRequestStaticAddressingDhcpServerReservationsMap;
+  /** A valid CIDR notation representing an IP range. */
+  secondaryAddress?: string;
+  /** A valid CIDR notation representing an IP range. */
+  virtualAddress?: string;
+  /** VLAN ID. Use zero for untagged. */
+  vlanTag?: number;
 }
 export const SitesLansEditRequestStaticAddressingDhcpServer =
   /*@__PURE__*/ S.suspend(() =>
@@ -13689,6 +13346,9 @@ export const SitesLansEditRequestStaticAddressingDhcpServer =
       reservations: S.optional(
         SitesLansEditRequestStaticAddressingDhcpServerReservationsMap,
       ),
+      secondaryAddress: S.optional(S.String.pipe(T.Body("secondary_address"))),
+      virtualAddress: S.optional(S.String.pipe(T.Body("virtual_address"))),
+      vlanTag: S.optional(S.Number.pipe(T.Body("vlan_tag"))),
     }),
   ).annotate({
     identifier: "SitesLansEditRequestStaticAddressingDhcpServer",
@@ -13699,10 +13359,6 @@ export interface SitesLansEditRequestStaticAddressing {
   address: string;
   dhcpRelay?: SitesLansEditRequestStaticAddressingDhcpRelay;
   dhcpServer?: SitesLansEditRequestStaticAddressingDhcpServer;
-  /** A valid CIDR notation representing an IP range. */
-  secondaryAddress?: string;
-  /** A valid CIDR notation representing an IP range. */
-  virtualAddress?: string;
 }
 export const SitesLansEditRequestStaticAddressing = /*@__PURE__*/ S.suspend(
   () =>
@@ -13718,8 +13374,6 @@ export const SitesLansEditRequestStaticAddressing = /*@__PURE__*/ S.suspend(
           T.Body("dhcp_server"),
         ),
       ),
-      secondaryAddress: S.optional(S.String.pipe(T.Body("secondary_address"))),
-      virtualAddress: S.optional(S.String.pipe(T.Body("virtual_address"))),
     }),
 ).annotate({
   identifier: "SitesLansEditRequestStaticAddressing",
@@ -13743,8 +13397,6 @@ export interface PatchSiteLanRequest {
   routedSubnets?: SitesLansEditRequestRoutedSubnetsList;
   /** If the site is not configured in high availability mode, this configuration is optional (if omitted, use DHCP). However, if in high availability mode, static_address is required along with secondary and virtual address. */
   staticAddressing?: SitesLansEditRequestStaticAddressing;
-  /** VLAN ID. Use zero for untagged. */
-  vlanTag?: number;
 }
 export const PatchSiteLanRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -13763,7 +13415,6 @@ export const PatchSiteLanRequest = /*@__PURE__*/ S.suspend(() =>
     staticAddressing: S.optional(
       SitesLansEditRequestStaticAddressing.pipe(T.Body("static_addressing")),
     ),
-    vlanTag: S.optional(S.Number.pipe(T.Body("vlan_tag"))),
   })
     .pipe(
       T.Http({
@@ -13779,6 +13430,11 @@ export const PatchSiteLanRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type SitesLansEditResponseNat = SitesLansCreateResultItemNat;
 export const SitesLansEditResponseNat = SitesLansCreateResultItemNat;
+
+export type SitesLansEditResponseRoutedSubnetsItemNat =
+  SitesLansCreateResultItemNat;
+export const SitesLansEditResponseRoutedSubnetsItemNat =
+  SitesLansCreateResultItemNat;
 
 export type SitesLansEditResponseRoutedSubnetsItem =
   SitesLansCreateResultItemRoutedSubnetsItem;
@@ -13828,7 +13484,7 @@ export const SitesLansEditResponseStaticAddressingDhcpServerDhcpOptionsItemType 
 export interface SitesLansEditResponseStaticAddressingDhcpServerDhcpOptionsItem {
   /** DHCP option number (1-254). Options 0 and 255 are reserved by RFC 2132. Options 3, 6, and 51 are not allowed because they conflict with connector-managed configuration. */
   code: number;
-  /** The type of the option value. text: a string (max 255 bytes). hex: colon-separated hex bytes (e.g. "01:04:aa:bb:cc", max 255 bytes). ip: an IPv4 address (e.g. "10.20.30.40"). byte: an unsigned integer 0-255 (1 byte). short: an unsigned integer 0-65535 (2 bytes). integer: an unsigned integer 0-4294967295 (4 bytes). */
+  /** The type of the option value. text: a string (max 255 bytes). hex: colon-separated hex bytes (e.g. “01:04:aa:bb:cc”, max 255 bytes). ip: an IPv4 address (e.g. “10.20.30.40”). byte: an unsigned integer 0-255 (1 byte). short: an unsigned integer 0-65535 (2 bytes). integer: an unsigned integer 0-4294967295 (4 bytes). */
   type: SitesLansEditResponseStaticAddressingDhcpServerDhcpOptionsItemType;
   /** The option value, interpreted according to the type field. */
   value: string;
@@ -13880,6 +13536,12 @@ export interface SitesLansEditResponseStaticAddressingDhcpServer {
   dnsServers?: SitesLansEditResponseStaticAddressingDhcpServerDnsServersList | null;
   /** Mapping of MAC addresses to IP addresses */
   reservations?: SitesLansEditResponseStaticAddressingDhcpServerReservationsMap | null;
+  /** A valid CIDR notation representing an IP range. */
+  secondaryAddress?: string | null;
+  /** A valid CIDR notation representing an IP range. */
+  virtualAddress?: string | null;
+  /** VLAN ID. Use zero for untagged. */
+  vlanTag?: number | null;
 }
 export const SitesLansEditResponseStaticAddressingDhcpServer =
   /*@__PURE__*/ S.suspend(() =>
@@ -13904,6 +13566,13 @@ export const SitesLansEditResponseStaticAddressingDhcpServer =
           SitesLansEditResponseStaticAddressingDhcpServerReservationsMap,
         ),
       ),
+      secondaryAddress: S.optional(
+        S.NullOr(S.String).pipe(T.Body("secondary_address")),
+      ),
+      virtualAddress: S.optional(
+        S.NullOr(S.String).pipe(T.Body("virtual_address")),
+      ),
+      vlanTag: S.optional(S.NullOr(S.Number).pipe(T.Body("vlan_tag"))),
     }),
   ).annotate({
     identifier: "SitesLansEditResponseStaticAddressingDhcpServer",
@@ -13914,10 +13583,6 @@ export interface SitesLansEditResponseStaticAddressing {
   address: string;
   dhcpRelay?: SitesLansEditResponseStaticAddressingDhcpRelay | null;
   dhcpServer?: SitesLansEditResponseStaticAddressingDhcpServer | null;
-  /** A valid CIDR notation representing an IP range. */
-  secondaryAddress?: string | null;
-  /** A valid CIDR notation representing an IP range. */
-  virtualAddress?: string | null;
 }
 export const SitesLansEditResponseStaticAddressing = /*@__PURE__*/ S.suspend(
   () =>
@@ -13932,12 +13597,6 @@ export const SitesLansEditResponseStaticAddressing = /*@__PURE__*/ S.suspend(
         S.NullOr(SitesLansEditResponseStaticAddressingDhcpServer).pipe(
           T.Body("dhcp_server"),
         ),
-      ),
-      secondaryAddress: S.optional(
-        S.NullOr(S.String).pipe(T.Body("secondary_address")),
-      ),
-      virtualAddress: S.optional(
-        S.NullOr(S.String).pipe(T.Body("virtual_address")),
       ),
     }),
 ).annotate({
@@ -13963,8 +13622,6 @@ export interface PatchSiteLanResponse {
   siteId?: string | null;
   /** If the site is not configured in high availability mode, this configuration is optional (if omitted, use DHCP). However, if in high availability mode, static_address is required along with secondary and virtual address. */
   staticAddressing?: SitesLansEditResponseStaticAddressing | null;
-  /** VLAN ID. Use zero for untagged. */
-  vlanTag?: number | null;
 }
 export const PatchSiteLanResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -13989,7 +13646,6 @@ export const PatchSiteLanResponse = /*@__PURE__*/ S.suspend(() =>
         T.Body("static_addressing"),
       ),
     ),
-    vlanTag: S.optional(S.NullOr(S.Number).pipe(T.Body("vlan_tag"))),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchSiteLanResponse",
@@ -14112,9 +13768,9 @@ export const PskGenerateIpsecTunnelRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PskGenerateIpsecTunnelRequest>;
 
 export type IpsecTunnelsPskGenerateResponsePskMetadata =
-  IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemPskMetadata;
+  IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemBgpBgpStatusHealthCheckPskMetadata;
 export const IpsecTunnelsPskGenerateResponsePskMetadata =
-  IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemPskMetadata;
+  IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemBgpBgpStatusHealthCheckPskMetadata;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface PskGenerateIpsecTunnelResponse {
@@ -14123,7 +13779,7 @@ export interface PskGenerateIpsecTunnelResponse {
   /** A randomly generated or provided string for use in the IPsec tunnel. */
   psk?: string | null;
   /** The PSK metadata that includes when the PSK was generated. */
-  pskMetadata?: IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemPskMetadata | null;
+  pskMetadata?: IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemBgpBgpStatusHealthCheckPskMetadata | null;
 }
 export const PskGenerateIpsecTunnelResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -14133,7 +13789,7 @@ export const PskGenerateIpsecTunnelResponse = /*@__PURE__*/ S.suspend(() =>
     psk: S.optional(S.NullOr(S.String)),
     pskMetadata: S.optional(
       S.NullOr(
-        IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemPskMetadata,
+        IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemBgpBgpStatusHealthCheckPskMetadata,
       ).pipe(T.Body("psk_metadata")),
     ),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
@@ -14189,9 +13845,9 @@ export const PskSetIpsecTunnelRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PskSetIpsecTunnelRequest>;
 
 export type IpsecTunnelsPskSetResponseSuccessfullyAppliedPsksValuePskMetadata =
-  IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemPskMetadata;
+  IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemBgpBgpStatusHealthCheckPskMetadata;
 export const IpsecTunnelsPskSetResponseSuccessfullyAppliedPsksValuePskMetadata =
-  IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemPskMetadata;
+  IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemBgpBgpStatusHealthCheckPskMetadata;
 
 export interface IpsecTunnelsPskSetResponseSuccessfullyAppliedPsksValue {
   /** The IKE identifier used for this tunnel on the Cloudflare edge. */
@@ -14201,7 +13857,7 @@ export interface IpsecTunnelsPskSetResponseSuccessfullyAppliedPsksValue {
   /** A randomly generated or provided string for use in the IPsec tunnel. */
   psk: string;
   /** The PSK metadata that includes when the PSK was generated. */
-  pskMetadata: IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemPskMetadata;
+  pskMetadata: IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemBgpBgpStatusHealthCheckPskMetadata;
 }
 export const IpsecTunnelsPskSetResponseSuccessfullyAppliedPsksValue =
   /*@__PURE__*/ S.suspend(() =>
@@ -14210,7 +13866,7 @@ export const IpsecTunnelsPskSetResponseSuccessfullyAppliedPsksValue =
       ipsecTunnelId: S.String.pipe(T.Body("ipsec_tunnel_id")),
       psk: S.String,
       pskMetadata:
-        IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemPskMetadata.pipe(
+        IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemBgpBgpStatusHealthCheckPskMetadata.pipe(
           T.Body("psk_metadata"),
         ),
     }),
@@ -14262,63 +13918,152 @@ export const PskSetIpsecTunnelResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "PskSetIpsecTunnelResponse",
 }) as any as S.Schema<PskSetIpsecTunnelResponse>;
 
-export interface CfInterconnectsUpdateRequestGre {
+export type CfInterconnectsUpdateRequestBgpExtraPrefixesList = Array<string>;
+export const CfInterconnectsUpdateRequestBgpExtraPrefixesList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<CfInterconnectsUpdateRequestBgpExtraPrefixesList>;
+
+export interface CfInterconnectsUpdateRequestBgpGre {
   /** The IP address assigned to the Cloudflare side of the GRE tunnel created as part of the Interconnect. */
   cloudflareEndpoint?: string;
 }
-export const CfInterconnectsUpdateRequestGre = /*@__PURE__*/ S.suspend(() =>
+export const CfInterconnectsUpdateRequestBgpGre = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cloudflareEndpoint: S.optional(
       S.String.pipe(T.Body("cloudflare_endpoint")),
     ),
   }),
 ).annotate({
-  identifier: "CfInterconnectsUpdateRequestGre",
-}) as any as S.Schema<CfInterconnectsUpdateRequestGre>;
+  identifier: "CfInterconnectsUpdateRequestBgpGre",
+}) as any as S.Schema<CfInterconnectsUpdateRequestBgpGre>;
 
-export type CfInterconnectsUpdateRequestHealthCheckRate =
+export type CfInterconnectsUpdateRequestBgpHealthCheckDirection =
+  | "unidirectional"
+  | "bidirectional";
+export const CfInterconnectsUpdateRequestBgpHealthCheckDirection =
+  /*@__PURE__*/ S.String;
+
+export type CfInterconnectsUpdateRequestBgpHealthCheckRate =
   | "low"
   | "mid"
   | "high";
-export const CfInterconnectsUpdateRequestHealthCheckRate =
+export const CfInterconnectsUpdateRequestBgpHealthCheckRate =
   /*@__PURE__*/ S.String;
 
-export type CfInterconnectsUpdateRequestHealthCheckTargetMagicHealthCheckTarget =
-  GreTunnelsCreateRequestHealthCheckTargetMagicHealthCheckTarget;
-export const CfInterconnectsUpdateRequestHealthCheckTargetMagicHealthCheckTarget =
-  GreTunnelsCreateRequestHealthCheckTargetMagicHealthCheckTarget;
+export type CfInterconnectsUpdateRequestBgpHealthCheckTarget =
+  GreTunnelsCreateRequestBgpHealthCheckTarget;
+export const CfInterconnectsUpdateRequestBgpHealthCheckTarget =
+  GreTunnelsCreateRequestBgpHealthCheckTarget;
 
-export type CfInterconnectsUpdateRequestHealthCheckTarget =
+export type CfInterconnectsUpdateRequestBgpHealthCheckTarget2 =
   | string
-  | GreTunnelsCreateRequestHealthCheckTargetMagicHealthCheckTarget;
-export const CfInterconnectsUpdateRequestHealthCheckTarget =
+  | GreTunnelsCreateRequestBgpHealthCheckTarget;
+export const CfInterconnectsUpdateRequestBgpHealthCheckTarget2 =
   /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], ["effective", "saved"]]));
 
-export type CfInterconnectsUpdateRequestHealthCheckType = "reply" | "request";
-export const CfInterconnectsUpdateRequestHealthCheckType =
+export type CfInterconnectsUpdateRequestBgpHealthCheckType =
+  | "reply"
+  | "request";
+export const CfInterconnectsUpdateRequestBgpHealthCheckType =
   /*@__PURE__*/ S.String;
 
-export interface CfInterconnectsUpdateRequestHealthCheck {
+export interface CfInterconnectsUpdateRequestBgpHealthCheck {
+  /** The direction of the flow of the healthcheck. Either unidirectional, where the probe comes to you via the interconnect and the result comes back to Cloudflare via the open Internet, or bidirectional where both the probe and result come and go via the interconnect. */
+  direction?:
+    | CfInterconnectsUpdateRequestBgpHealthCheckDirection
+    | (string & {});
   /** Determines whether to run healthchecks for a tunnel. */
   enabled?: boolean;
   /** How frequent the health check is run. The default value is `mid`. */
-  rate?: CfInterconnectsUpdateRequestHealthCheckRate | (string & {});
+  rate?: CfInterconnectsUpdateRequestBgpHealthCheckRate | (string & {});
+  /** The source IPv4 address used for bidirectional health checks. Supported only for version 1.5 interconnects. It is required when `direction` is `bidirectional` and must be omitted (and is cleared) when `direction` is `unidirectional`. The address must be within RFC1918 space, the approved link-local range 169.254.240.0/20, or the Cloudflare reserved range 198.41.199.224/27. */
+  source?: string;
   /** The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customer_gre_endpoint address`. This field is ignored for bidirectional healthchecks as the interface_address (not assigned to the Cloudflare side of the tunnel) is used as the target. Must be in object form if the x-magic-new-hc-target header is set to true and string form if x-magic-new-hc-target is absent or set to false. */
-  target?: CfInterconnectsUpdateRequestHealthCheckTarget;
+  target?: CfInterconnectsUpdateRequestBgpHealthCheckTarget2;
   /** The type of healthcheck to run, reply or request. The default value is `reply`. */
-  type?: CfInterconnectsUpdateRequestHealthCheckType | (string & {});
+  type?: CfInterconnectsUpdateRequestBgpHealthCheckType | (string & {});
+  /** The IPv4 interface address for the interconnect. For MPLS Interconnects, use a /30 or /31 prefix. For GRE Interconnects, a /30 or /31 prefix may be used. Version 1.5 interconnects require a /31 prefix and may also use a prefix from the account’s authorized prefixes; otherwise, select the subnet from RFC 1918 or the approved link-local ranges. */
+  interfaceAddress?: string;
+  /** A 127 bit IPV6 prefix from within the virtual_subnet6 prefix space with the address being the first IP of the subnet and not same as the address of virtual_subnet6. Eg if virtual_subnet6 is 2606:54c1:7:0:a9fe:12d2::/127 , interface_address6 could be 2606:54c1:7:0:a9fe:12d2:1:200/127 */
+  interfaceAddress6?: string;
+  /** The Maximum Transmission Unit (MTU) in bytes for the interconnect. The minimum value is 576. */
+  mtu?: number;
+  /** The name of the interconnect. The name cannot share a name with other tunnels. */
+  name?: string;
 }
-export const CfInterconnectsUpdateRequestHealthCheck = /*@__PURE__*/ S.suspend(
-  () =>
+export const CfInterconnectsUpdateRequestBgpHealthCheck =
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
+      direction: S.optional(
+        CfInterconnectsUpdateRequestBgpHealthCheckDirection,
+      ),
       enabled: S.optional(S.Boolean),
-      rate: S.optional(CfInterconnectsUpdateRequestHealthCheckRate),
-      target: S.optional(CfInterconnectsUpdateRequestHealthCheckTarget),
-      type: S.optional(CfInterconnectsUpdateRequestHealthCheckType),
+      rate: S.optional(CfInterconnectsUpdateRequestBgpHealthCheckRate),
+      source: S.optional(S.String),
+      target: S.optional(CfInterconnectsUpdateRequestBgpHealthCheckTarget2),
+      type: S.optional(CfInterconnectsUpdateRequestBgpHealthCheckType),
+      interfaceAddress: S.optional(S.String.pipe(T.Body("interface_address"))),
+      interfaceAddress6: S.optional(
+        S.String.pipe(T.Body("interface_address6")),
+      ),
+      mtu: S.optional(S.Number),
+      name: S.optional(S.String),
     }),
+  ).annotate({
+    identifier: "CfInterconnectsUpdateRequestBgpHealthCheck",
+  }) as any as S.Schema<CfInterconnectsUpdateRequestBgpHealthCheck>;
+
+export interface CfInterconnectsUpdateRequestBgp {
+  /** Deprecated. Use customer_asn. */
+  deprecatedasNo?: number;
+  /** Read-only for v1.5; derived from interface_address. */
+  deprecatedcloudflareEndpoint?: string;
+  /** ASN used on the customer end of the BGP session. */
+  customerAsn?: number;
+  /** Read-only for v1.5; derived from interface_address. */
+  deprecatedcustomerEndpoint?: string;
+  /** ID of the BGP filter profile applied to routes advertised to the customer. */
+  exportFilterId?: string;
+  /** Prefixes in this list will be advertised to the customer device, in addition to the routes in the Magic routing table. */
+  extraPrefixes?: CfInterconnectsUpdateRequestBgpExtraPrefixesList;
+  /** ID of the BGP filter profile applied to routes received from the customer. */
+  importFilterId?: string;
+  /** MD5 key to use for session authentication. */
+  md5Key?: string;
+  /** An optional description of the interconnect. */
+  description?: string;
+  /** Not configurable for version 1.5 interconnects; supplying it returns an error. */
+  gre?: CfInterconnectsUpdateRequestBgpGre;
+  healthCheck?: CfInterconnectsUpdateRequestBgpHealthCheck;
+}
+export const CfInterconnectsUpdateRequestBgp = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    deprecatedasNo: S.optional(S.Number.pipe(T.Body("Deprecatedas_no"))),
+    deprecatedcloudflareEndpoint: S.optional(
+      S.String.pipe(T.Body("Deprecatedcloudflare_endpoint")),
+    ),
+    customerAsn: S.optional(S.Number.pipe(T.Body("customer_asn"))),
+    deprecatedcustomerEndpoint: S.optional(
+      S.String.pipe(T.Body("Deprecatedcustomer_endpoint")),
+    ),
+    exportFilterId: S.optional(S.String.pipe(T.Body("export_filter_id"))),
+    extraPrefixes: S.optional(
+      CfInterconnectsUpdateRequestBgpExtraPrefixesList.pipe(
+        T.Body("extra_prefixes"),
+      ),
+    ),
+    importFilterId: S.optional(S.String.pipe(T.Body("import_filter_id"))),
+    md5Key: S.optional(S.String.pipe(T.Body("md5_key"))),
+    description: S.optional(S.String),
+    gre: S.optional(CfInterconnectsUpdateRequestBgpGre),
+    healthCheck: S.optional(
+      CfInterconnectsUpdateRequestBgpHealthCheck.pipe(T.Body("health_check")),
+    ),
+  }),
 ).annotate({
-  identifier: "CfInterconnectsUpdateRequestHealthCheck",
-}) as any as S.Schema<CfInterconnectsUpdateRequestHealthCheck>;
+  identifier: "CfInterconnectsUpdateRequestBgp",
+}) as any as S.Schema<CfInterconnectsUpdateRequestBgp>;
 
 export interface PutCfInterconnectRequest {
   /** Identifier */
@@ -14327,19 +14072,7 @@ export interface PutCfInterconnectRequest {
   cfInterconnectId: string;
   /** True if automatic stateful return routing should be enabled for a tunnel, false otherwise. Requires the `coupler_integration` account flag to be enabled; requests setting this to `true` without that flag will be rejected. */
   automaticReturnRouting?: boolean;
-  /** An optional description of the interconnect. */
-  description?: string;
-  /** The configuration specific to GRE interconnects. */
-  gre?: CfInterconnectsUpdateRequestGre;
-  healthCheck?: CfInterconnectsUpdateRequestHealthCheck;
-  /** A 31-bit prefix (/31 in CIDR notation) supporting two hosts, one for each side of the tunnel. Select the subnet from the following private IP space: 10.0.0.0–10.255.255.255, 172.16.0.0–172.31.255.255, 192.168.0.0–192.168.255.255. */
-  interfaceAddress?: string;
-  /** A 127 bit IPV6 prefix from within the virtual_subnet6 prefix space with the address being the first IP of the subnet and not same as the address of virtual_subnet6. Eg if virtual_subnet6 is 2606:54c1:7:0:a9fe:12d2::/127 , interface_address6 could be 2606:54c1:7:0:a9fe:12d2:1:200/127 */
-  interfaceAddress6?: string;
-  /** The Maximum Transmission Unit (MTU) in bytes for the interconnect. The minimum value is 576. */
-  mtu?: number;
-  /** The name of the interconnect. The name cannot share a name with other tunnels. */
-  name?: string;
+  bgp?: CfInterconnectsUpdateRequestBgp;
   xMagicNewHcTarget?: boolean;
 }
 export const PutCfInterconnectRequest = /*@__PURE__*/ S.suspend(() =>
@@ -14349,15 +14082,7 @@ export const PutCfInterconnectRequest = /*@__PURE__*/ S.suspend(() =>
     automaticReturnRouting: S.optional(
       S.Boolean.pipe(T.Body("automatic_return_routing")),
     ),
-    description: S.optional(S.String),
-    gre: S.optional(CfInterconnectsUpdateRequestGre),
-    healthCheck: S.optional(
-      CfInterconnectsUpdateRequestHealthCheck.pipe(T.Body("health_check")),
-    ),
-    interfaceAddress: S.optional(S.String.pipe(T.Body("interface_address"))),
-    interfaceAddress6: S.optional(S.String.pipe(T.Body("interface_address6"))),
-    mtu: S.optional(S.Number),
-    name: S.optional(S.String),
+    bgp: S.optional(CfInterconnectsUpdateRequestBgp),
     xMagicNewHcTarget: S.optional(
       S.Boolean.pipe(T.Header("x-magic-new-hc-target")),
     ),
@@ -14374,84 +14099,62 @@ export const PutCfInterconnectRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "PutCfInterconnectRequest",
 }) as any as S.Schema<PutCfInterconnectRequest>;
 
-export type CfInterconnectsUpdateResponseModifiedInterconnectGre =
-  CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemGre;
-export const CfInterconnectsUpdateResponseModifiedInterconnectGre =
-  CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemGre;
+export type CfInterconnectsUpdateResponseModifiedInterconnectBgpExtraPrefixesList =
+  Array<string>;
+export const CfInterconnectsUpdateResponseModifiedInterconnectBgpExtraPrefixesList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<CfInterconnectsUpdateResponseModifiedInterconnectBgpExtraPrefixesList>;
 
-export type CfInterconnectsUpdateResponseModifiedInterconnectHealthCheckRate =
+export type CfInterconnectsUpdateResponseModifiedInterconnectBgpGre =
+  CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemBgpGre;
+export const CfInterconnectsUpdateResponseModifiedInterconnectBgpGre =
+  CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemBgpGre;
+
+export type CfInterconnectsUpdateResponseModifiedInterconnectBgpHealthCheckDirection =
+  | "unidirectional"
+  | "bidirectional";
+export const CfInterconnectsUpdateResponseModifiedInterconnectBgpHealthCheckDirection =
+  /*@__PURE__*/ S.String;
+
+export type CfInterconnectsUpdateResponseModifiedInterconnectBgpHealthCheckRate =
   | "low"
   | "mid"
   | "high";
-export const CfInterconnectsUpdateResponseModifiedInterconnectHealthCheckRate =
+export const CfInterconnectsUpdateResponseModifiedInterconnectBgpHealthCheckRate =
   /*@__PURE__*/ S.String;
 
-export type CfInterconnectsUpdateResponseModifiedInterconnectHealthCheckTargetMagicHealthCheckTarget =
-  CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemHealthCheckTargetMagicHealthCheckTarget;
-export const CfInterconnectsUpdateResponseModifiedInterconnectHealthCheckTargetMagicHealthCheckTarget =
-  CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemHealthCheckTargetMagicHealthCheckTarget;
+export type CfInterconnectsUpdateResponseModifiedInterconnectBgpHealthCheckTarget =
+  CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemBgpHealthCheckTarget;
+export const CfInterconnectsUpdateResponseModifiedInterconnectBgpHealthCheckTarget =
+  CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemBgpHealthCheckTarget;
 
-export type CfInterconnectsUpdateResponseModifiedInterconnectHealthCheckTarget =
+export type CfInterconnectsUpdateResponseModifiedInterconnectBgpHealthCheckTarget2 =
   | string
-  | CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemHealthCheckTargetMagicHealthCheckTarget;
-export const CfInterconnectsUpdateResponseModifiedInterconnectHealthCheckTarget =
+  | CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemBgpHealthCheckTarget;
+export const CfInterconnectsUpdateResponseModifiedInterconnectBgpHealthCheckTarget2 =
   /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], ["effective", "saved"]]));
 
-export type CfInterconnectsUpdateResponseModifiedInterconnectHealthCheckType =
+export type CfInterconnectsUpdateResponseModifiedInterconnectBgpHealthCheckType =
   | "reply"
   | "request";
-export const CfInterconnectsUpdateResponseModifiedInterconnectHealthCheckType =
+export const CfInterconnectsUpdateResponseModifiedInterconnectBgpHealthCheckType =
   /*@__PURE__*/ S.String;
 
-export interface CfInterconnectsUpdateResponseModifiedInterconnectHealthCheck {
+export interface CfInterconnectsUpdateResponseModifiedInterconnectBgpHealthCheck {
+  /** The direction of the flow of the healthcheck. Either unidirectional, where the probe comes to you via the interconnect and the result comes back to Cloudflare via the open Internet, or bidirectional where both the probe and result come and go via the interconnect. */
+  direction?: CfInterconnectsUpdateResponseModifiedInterconnectBgpHealthCheckDirection | null;
   /** Determines whether to run healthchecks for a tunnel. */
   enabled?: boolean | null;
   /** How frequent the health check is run. The default value is `mid`. */
-  rate?: CfInterconnectsUpdateResponseModifiedInterconnectHealthCheckRate | null;
+  rate?: CfInterconnectsUpdateResponseModifiedInterconnectBgpHealthCheckRate | null;
+  /** The source IPv4 address used for bidirectional health checks. Supported only for version 1.5 interconnects. It is required when `direction` is `bidirectional` and must be omitted (and is cleared) when `direction` is `unidirectional`. The address must be within RFC1918 space, the approved link-local range 169.254.240.0/20, or the Cloudflare reserved range 198.41.199.224/27. */
+  source?: string | null;
   /** The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customer_gre_endpoint address`. This field is ignored for bidirectional healthchecks as the interface_address (not assigned to the Cloudflare side of the tunnel) is used as the target. Must be in object form if the x-magic-new-hc-target header is set to true and string form if x-magic-new-hc-target is absent or set to false. */
-  target?: CfInterconnectsUpdateResponseModifiedInterconnectHealthCheckTarget | null;
+  target?: CfInterconnectsUpdateResponseModifiedInterconnectBgpHealthCheckTarget2 | null;
   /** The type of healthcheck to run, reply or request. The default value is `reply`. */
-  type?: CfInterconnectsUpdateResponseModifiedInterconnectHealthCheckType | null;
-}
-export const CfInterconnectsUpdateResponseModifiedInterconnectHealthCheck =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      enabled: S.optional(S.NullOr(S.Boolean)),
-      rate: S.optional(
-        S.NullOr(
-          CfInterconnectsUpdateResponseModifiedInterconnectHealthCheckRate,
-        ),
-      ),
-      target: S.optional(
-        S.NullOr(
-          CfInterconnectsUpdateResponseModifiedInterconnectHealthCheckTarget,
-        ),
-      ),
-      type: S.optional(
-        S.NullOr(
-          CfInterconnectsUpdateResponseModifiedInterconnectHealthCheckType,
-        ),
-      ),
-    }),
-  ).annotate({
-    identifier: "CfInterconnectsUpdateResponseModifiedInterconnectHealthCheck",
-  }) as any as S.Schema<CfInterconnectsUpdateResponseModifiedInterconnectHealthCheck>;
-
-export interface CfInterconnectsUpdateResponseModifiedInterconnect {
-  /** Identifier */
-  id?: string | null;
-  /** True if automatic stateful return routing should be enabled for a tunnel, false otherwise. Requires the `coupler_integration` account flag to be enabled; requests setting this to `true` without that flag will be rejected. */
-  automaticReturnRouting?: boolean | null;
-  /** The name of the interconnect. The name cannot share a name with other tunnels. */
-  coloName?: string | null;
-  /** The date and time the tunnel was created. */
-  createdOn?: string | null;
-  /** An optional description of the interconnect. */
-  description?: string | null;
-  /** The configuration specific to GRE interconnects. */
-  gre?: CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemGre | null;
-  healthCheck?: CfInterconnectsUpdateResponseModifiedInterconnectHealthCheck | null;
-  /** A 31-bit prefix (/31 in CIDR notation) supporting two hosts, one for each side of the tunnel. Select the subnet from the following private IP space: 10.0.0.0–10.255.255.255, 172.16.0.0–172.31.255.255, 192.168.0.0–192.168.255.255. */
+  type?: CfInterconnectsUpdateResponseModifiedInterconnectBgpHealthCheckType | null;
+  /** The IPv4 interface address for the interconnect. For MPLS Interconnects, use a /30 or /31 prefix. For GRE Interconnects, a /30 or /31 prefix may be used. Version 1.5 interconnects require a /31 prefix and may also use a prefix from the account’s authorized prefixes; otherwise, select the subnet from RFC 1918 or the approved link-local ranges. */
   interfaceAddress?: string | null;
   /** A 127 bit IPV6 prefix from within the virtual_subnet6 prefix space with the address being the first IP of the subnet and not same as the address of virtual_subnet6. Eg if virtual_subnet6 is 2606:54c1:7:0:a9fe:12d2::/127 , interface_address6 could be 2606:54c1:7:0:a9fe:12d2:1:200/127 */
   interfaceAddress6?: string | null;
@@ -14461,26 +14164,35 @@ export interface CfInterconnectsUpdateResponseModifiedInterconnect {
   mtu?: number | null;
   /** The name of the interconnect. The name cannot share a name with other tunnels. */
   name?: string | null;
+  /** Immutable interconnect version configured at creation time. One of: */
+  version?: string | null;
   /** An identifier that correlates this interconnect with the corresponding V2 CNI interconnect resource. */
   virtualPortReservationId?: string | null;
 }
-export const CfInterconnectsUpdateResponseModifiedInterconnect =
+export const CfInterconnectsUpdateResponseModifiedInterconnectBgpHealthCheck =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      id: S.optional(S.NullOr(S.String)),
-      automaticReturnRouting: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("automatic_return_routing")),
-      ),
-      coloName: S.optional(S.NullOr(S.String).pipe(T.Body("colo_name"))),
-      createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
-      description: S.optional(S.NullOr(S.String)),
-      gre: S.optional(
-        S.NullOr(CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemGre),
-      ),
-      healthCheck: S.optional(
+      direction: S.optional(
         S.NullOr(
-          CfInterconnectsUpdateResponseModifiedInterconnectHealthCheck,
-        ).pipe(T.Body("health_check")),
+          CfInterconnectsUpdateResponseModifiedInterconnectBgpHealthCheckDirection,
+        ),
+      ),
+      enabled: S.optional(S.NullOr(S.Boolean)),
+      rate: S.optional(
+        S.NullOr(
+          CfInterconnectsUpdateResponseModifiedInterconnectBgpHealthCheckRate,
+        ),
+      ),
+      source: S.optional(S.NullOr(S.String)),
+      target: S.optional(
+        S.NullOr(
+          CfInterconnectsUpdateResponseModifiedInterconnectBgpHealthCheckTarget2,
+        ),
+      ),
+      type: S.optional(
+        S.NullOr(
+          CfInterconnectsUpdateResponseModifiedInterconnectBgpHealthCheckType,
+        ),
       ),
       interfaceAddress: S.optional(
         S.NullOr(S.String).pipe(T.Body("interface_address")),
@@ -14491,8 +14203,102 @@ export const CfInterconnectsUpdateResponseModifiedInterconnect =
       modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
       mtu: S.optional(S.NullOr(S.Number)),
       name: S.optional(S.NullOr(S.String)),
+      version: S.optional(S.NullOr(S.String)),
       virtualPortReservationId: S.optional(
         S.NullOr(S.String).pipe(T.Body("virtual_port_reservation_id")),
+      ),
+    }),
+  ).annotate({
+    identifier:
+      "CfInterconnectsUpdateResponseModifiedInterconnectBgpHealthCheck",
+  }) as any as S.Schema<CfInterconnectsUpdateResponseModifiedInterconnectBgpHealthCheck>;
+
+export interface CfInterconnectsUpdateResponseModifiedInterconnectBgp {
+  /** Deprecated. Use customer_asn. */
+  deprecatedasNo?: number | null;
+  /** Read-only for v1.5; derived from interface_address. */
+  deprecatedcloudflareEndpoint?: string | null;
+  /** ASN used on the customer end of the BGP session. */
+  customerAsn?: number | null;
+  /** Read-only for v1.5; derived from interface_address. */
+  deprecatedcustomerEndpoint?: string | null;
+  /** ID of the BGP filter profile applied to routes advertised to the customer. */
+  exportFilterId?: string | null;
+  /** Prefixes in this list will be advertised to the customer device, in addition to the routes in the Magic routing table. */
+  extraPrefixes?: CfInterconnectsUpdateResponseModifiedInterconnectBgpExtraPrefixesList | null;
+  /** ID of the BGP filter profile applied to routes received from the customer. */
+  importFilterId?: string | null;
+  /** MD5 key to use for session authentication. */
+  md5Key?: string | null;
+  /** The name of the interconnect. The name cannot share a name with other tunnels. */
+  coloName?: string | null;
+  /** The date and time the tunnel was created. */
+  createdOn?: string | null;
+  /** An optional description of the interconnect. */
+  description?: string | null;
+  /** Omitted in responses for version 1.5 interconnects. */
+  gre?: CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemBgpGre | null;
+  healthCheck?: CfInterconnectsUpdateResponseModifiedInterconnectBgpHealthCheck | null;
+}
+export const CfInterconnectsUpdateResponseModifiedInterconnectBgp =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      deprecatedasNo: S.optional(
+        S.NullOr(S.Number).pipe(T.Body("Deprecatedas_no")),
+      ),
+      deprecatedcloudflareEndpoint: S.optional(
+        S.NullOr(S.String).pipe(T.Body("Deprecatedcloudflare_endpoint")),
+      ),
+      customerAsn: S.optional(S.NullOr(S.Number).pipe(T.Body("customer_asn"))),
+      deprecatedcustomerEndpoint: S.optional(
+        S.NullOr(S.String).pipe(T.Body("Deprecatedcustomer_endpoint")),
+      ),
+      exportFilterId: S.optional(
+        S.NullOr(S.String).pipe(T.Body("export_filter_id")),
+      ),
+      extraPrefixes: S.optional(
+        S.NullOr(
+          CfInterconnectsUpdateResponseModifiedInterconnectBgpExtraPrefixesList,
+        ).pipe(T.Body("extra_prefixes")),
+      ),
+      importFilterId: S.optional(
+        S.NullOr(S.String).pipe(T.Body("import_filter_id")),
+      ),
+      md5Key: S.optional(S.NullOr(S.String).pipe(T.Body("md5_key"))),
+      coloName: S.optional(S.NullOr(S.String).pipe(T.Body("colo_name"))),
+      createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
+      description: S.optional(S.NullOr(S.String)),
+      gre: S.optional(
+        S.NullOr(
+          CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemBgpGre,
+        ),
+      ),
+      healthCheck: S.optional(
+        S.NullOr(
+          CfInterconnectsUpdateResponseModifiedInterconnectBgpHealthCheck,
+        ).pipe(T.Body("health_check")),
+      ),
+    }),
+  ).annotate({
+    identifier: "CfInterconnectsUpdateResponseModifiedInterconnectBgp",
+  }) as any as S.Schema<CfInterconnectsUpdateResponseModifiedInterconnectBgp>;
+
+export interface CfInterconnectsUpdateResponseModifiedInterconnect {
+  /** Identifier */
+  id?: string | null;
+  /** True if automatic stateful return routing should be enabled for a tunnel, false otherwise. Requires the `coupler_integration` account flag to be enabled; requests setting this to `true` without that flag will be rejected. */
+  automaticReturnRouting?: boolean | null;
+  bgp?: CfInterconnectsUpdateResponseModifiedInterconnectBgp | null;
+}
+export const CfInterconnectsUpdateResponseModifiedInterconnect =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      id: S.optional(S.NullOr(S.String)),
+      automaticReturnRouting: S.optional(
+        S.NullOr(S.Boolean).pipe(T.Body("automatic_return_routing")),
+      ),
+      bgp: S.optional(
+        S.NullOr(CfInterconnectsUpdateResponseModifiedInterconnectBgp),
       ),
     }),
   ).annotate({
@@ -14523,27 +14329,43 @@ export const SitesAppConfigurationCreateRequestPreferredWansList =
     S.String,
   ) as any as S.Schema<SitesAppConfigurationCreateRequestPreferredWansList>;
 
+export type SitesAppConfigurationCreateRequestPreferredWansList2 =
+  Array<string>;
+export const SitesAppConfigurationCreateRequestPreferredWansList2 =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<SitesAppConfigurationCreateRequestPreferredWansList2>;
+
 export interface SitesAppConfigurationCreateRequest {
   /** Identifier */
   accountId: string;
   /** Identifier */
   siteId: string;
+  /** AccountApp object { account_app_id, breakout, preferred_wans, priority } */
+  body: unknown;
   /** Magic account app ID. */
-  accountAppId?: string;
-  /** Whether to breakout traffic to the app's endpoints directly. Null preserves default behavior. */
+  accountAppId: string;
+  /** Whether to breakout traffic to the app’s endpoints directly. Null preserves default behavior. */
   breakout?: boolean;
   /** WAN interfaces to prefer over default WANs, highest-priority first. Can only be specified for breakout rules (breakout must be true). */
   preferredWans?: SitesAppConfigurationCreateRequestPreferredWansList;
   /** Priority of traffic. 0 is default, anything greater is prioritized. (Currently only 0 and 1 are supported) */
   priority?: number;
   /** Managed app ID. */
-  managedAppId?: string;
+  managedAppId: string;
+  /** Whether to breakout traffic to the app’s endpoints directly. Null preserves default behavior. */
+  breakout_2?: boolean;
+  /** WAN interfaces to prefer over default WANs, highest-priority first. Can only be specified for breakout rules (breakout must be true). */
+  preferred_wans_2?: SitesAppConfigurationCreateRequestPreferredWansList2;
+  /** Priority of traffic. 0 is default, anything greater is prioritized. (Currently only 0 and 1 are supported) */
+  priority_2?: number;
 }
 export const SitesAppConfigurationCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     siteId: S.String.pipe(T.Label("site_id")),
-    accountAppId: S.optional(S.String.pipe(T.Body("account_app_id"))),
+    body: S.Unknown,
+    accountAppId: S.String.pipe(T.Body("account_app_id")),
     breakout: S.optional(S.Boolean),
     preferredWans: S.optional(
       SitesAppConfigurationCreateRequestPreferredWansList.pipe(
@@ -14551,7 +14373,14 @@ export const SitesAppConfigurationCreateRequest = /*@__PURE__*/ S.suspend(() =>
       ),
     ),
     priority: S.optional(S.Number),
-    managedAppId: S.optional(S.String.pipe(T.Body("managed_app_id"))),
+    managedAppId: S.String.pipe(T.Body("managed_app_id")),
+    breakout_2: S.optional(S.Boolean.pipe(T.Body("breakout"))),
+    preferred_wans_2: S.optional(
+      SitesAppConfigurationCreateRequestPreferredWansList2.pipe(
+        T.Body("preferred_wans"),
+      ),
+    ),
+    priority_2: S.optional(S.Number.pipe(T.Body("priority"))),
   })
     .pipe(
       T.Http({
@@ -14565,93 +14394,70 @@ export const SitesAppConfigurationCreateRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "SitesAppConfigurationCreateRequest",
 }) as any as S.Schema<SitesAppConfigurationCreateRequest>;
 
-export type SitesAppConfigurationCreateResultAccountAppPreferredWansList =
-  Array<string>;
-export const SitesAppConfigurationCreateResultAccountAppPreferredWansList =
+export type SitesAppConfigurationCreateResultPreferredWansList = Array<string>;
+export const SitesAppConfigurationCreateResultPreferredWansList =
   /*@__PURE__*/ S.Array(
     S.String,
-  ) as any as S.Schema<SitesAppConfigurationCreateResultAccountAppPreferredWansList>;
+  ) as any as S.Schema<SitesAppConfigurationCreateResultPreferredWansList>;
 
-export interface SitesAppConfigurationCreateResultAccountApp {
+export type SitesAppConfigurationCreateResultPreferredWansList2 = Array<string>;
+export const SitesAppConfigurationCreateResultPreferredWansList2 =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<SitesAppConfigurationCreateResultPreferredWansList2>;
+
+export interface SitesAppConfigurationCreateResult {
   /** Magic account app ID. */
   accountAppId: string;
   /** Identifier */
   id?: string | null;
-  /** Whether to breakout traffic to the app's endpoints directly. Null preserves default behavior. */
+  /** Whether to breakout traffic to the app’s endpoints directly. Null preserves default behavior. */
   breakout?: boolean | null;
   /** WAN interfaces to prefer over default WANs, highest-priority first. Can only be specified for breakout rules (breakout must be true). */
-  preferredWans?: SitesAppConfigurationCreateResultAccountAppPreferredWansList | null;
+  preferredWans?: SitesAppConfigurationCreateResultPreferredWansList | null;
   /** Priority of traffic. 0 is default, anything greater is prioritized. (Currently only 0 and 1 are supported) */
   priority?: number | null;
   /** Identifier */
   siteId?: string | null;
-}
-export const SitesAppConfigurationCreateResultAccountApp =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      accountAppId: S.String.pipe(T.Body("account_app_id")),
-      id: S.optional(S.NullOr(S.String)),
-      breakout: S.optional(S.NullOr(S.Boolean)),
-      preferredWans: S.optional(
-        S.NullOr(
-          SitesAppConfigurationCreateResultAccountAppPreferredWansList,
-        ).pipe(T.Body("preferred_wans")),
-      ),
-      priority: S.optional(S.NullOr(S.Number)),
-      siteId: S.optional(S.NullOr(S.String).pipe(T.Body("site_id"))),
-    }),
-  ).annotate({
-    identifier: "SitesAppConfigurationCreateResultAccountApp",
-  }) as any as S.Schema<SitesAppConfigurationCreateResultAccountApp>;
-
-export type SitesAppConfigurationCreateResultManagedAppPreferredWansList =
-  Array<string>;
-export const SitesAppConfigurationCreateResultManagedAppPreferredWansList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<SitesAppConfigurationCreateResultManagedAppPreferredWansList>;
-
-export interface SitesAppConfigurationCreateResultManagedApp {
   /** Managed app ID. */
   managedAppId: string;
   /** Identifier */
-  id?: string | null;
-  /** Whether to breakout traffic to the app's endpoints directly. Null preserves default behavior. */
-  breakout?: boolean | null;
+  id_2?: string | null;
+  /** Whether to breakout traffic to the app’s endpoints directly. Null preserves default behavior. */
+  breakout_2?: boolean | null;
   /** WAN interfaces to prefer over default WANs, highest-priority first. Can only be specified for breakout rules (breakout must be true). */
-  preferredWans?: SitesAppConfigurationCreateResultManagedAppPreferredWansList | null;
+  preferred_wans_2?: SitesAppConfigurationCreateResultPreferredWansList2 | null;
   /** Priority of traffic. 0 is default, anything greater is prioritized. (Currently only 0 and 1 are supported) */
-  priority?: number | null;
+  priority_2?: number | null;
   /** Identifier */
-  siteId?: string | null;
+  site_id_2?: string | null;
 }
-export const SitesAppConfigurationCreateResultManagedApp =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      managedAppId: S.String.pipe(T.Body("managed_app_id")),
-      id: S.optional(S.NullOr(S.String)),
-      breakout: S.optional(S.NullOr(S.Boolean)),
-      preferredWans: S.optional(
-        S.NullOr(
-          SitesAppConfigurationCreateResultManagedAppPreferredWansList,
-        ).pipe(T.Body("preferred_wans")),
+export const SitesAppConfigurationCreateResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountAppId: S.String.pipe(T.Body("account_app_id")),
+    id: S.optional(S.NullOr(S.String)),
+    breakout: S.optional(S.NullOr(S.Boolean)),
+    preferredWans: S.optional(
+      S.NullOr(SitesAppConfigurationCreateResultPreferredWansList).pipe(
+        T.Body("preferred_wans"),
       ),
-      priority: S.optional(S.NullOr(S.Number)),
-      siteId: S.optional(S.NullOr(S.String).pipe(T.Body("site_id"))),
-    }),
-  ).annotate({
-    identifier: "SitesAppConfigurationCreateResultManagedApp",
-  }) as any as S.Schema<SitesAppConfigurationCreateResultManagedApp>;
-
-export type SitesAppConfigurationCreateResult =
-  | SitesAppConfigurationCreateResultAccountApp
-  | SitesAppConfigurationCreateResultManagedApp;
-export const SitesAppConfigurationCreateResult = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
-    ["accountAppId", "id", "breakout", "preferredWans", "priority", "siteId"],
-    ["managedAppId", "id", "breakout", "preferredWans", "priority", "siteId"],
-  ]),
-);
+    ),
+    priority: S.optional(S.NullOr(S.Number)),
+    siteId: S.optional(S.NullOr(S.String).pipe(T.Body("site_id"))),
+    managedAppId: S.String.pipe(T.Body("managed_app_id")),
+    id_2: S.optional(S.NullOr(S.String).pipe(T.Body("id"))),
+    breakout_2: S.optional(S.NullOr(S.Boolean).pipe(T.Body("breakout"))),
+    preferred_wans_2: S.optional(
+      S.NullOr(SitesAppConfigurationCreateResultPreferredWansList2).pipe(
+        T.Body("preferred_wans"),
+      ),
+    ),
+    priority_2: S.optional(S.NullOr(S.Number).pipe(T.Body("priority"))),
+    site_id_2: S.optional(S.NullOr(S.String).pipe(T.Body("site_id"))),
+  }),
+).annotate({
+  identifier: "SitesAppConfigurationCreateResult",
+}) as any as S.Schema<SitesAppConfigurationCreateResult>;
 
 export type SitesAppConfigurationCreateResponse =
   SitesAppConfigurationCreateResult;
@@ -14690,93 +14496,70 @@ export const SitesAppConfigurationDeleteRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "SitesAppConfigurationDeleteRequest",
 }) as any as S.Schema<SitesAppConfigurationDeleteRequest>;
 
-export type SitesAppConfigurationDeleteResultAccountAppPreferredWansList =
-  Array<string>;
-export const SitesAppConfigurationDeleteResultAccountAppPreferredWansList =
+export type SitesAppConfigurationDeleteResultPreferredWansList = Array<string>;
+export const SitesAppConfigurationDeleteResultPreferredWansList =
   /*@__PURE__*/ S.Array(
     S.String,
-  ) as any as S.Schema<SitesAppConfigurationDeleteResultAccountAppPreferredWansList>;
+  ) as any as S.Schema<SitesAppConfigurationDeleteResultPreferredWansList>;
 
-export interface SitesAppConfigurationDeleteResultAccountApp {
+export type SitesAppConfigurationDeleteResultPreferredWansList2 = Array<string>;
+export const SitesAppConfigurationDeleteResultPreferredWansList2 =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<SitesAppConfigurationDeleteResultPreferredWansList2>;
+
+export interface SitesAppConfigurationDeleteResult {
   /** Magic account app ID. */
   accountAppId: string;
   /** Identifier */
   id?: string | null;
-  /** Whether to breakout traffic to the app's endpoints directly. Null preserves default behavior. */
+  /** Whether to breakout traffic to the app’s endpoints directly. Null preserves default behavior. */
   breakout?: boolean | null;
   /** WAN interfaces to prefer over default WANs, highest-priority first. Can only be specified for breakout rules (breakout must be true). */
-  preferredWans?: SitesAppConfigurationDeleteResultAccountAppPreferredWansList | null;
+  preferredWans?: SitesAppConfigurationDeleteResultPreferredWansList | null;
   /** Priority of traffic. 0 is default, anything greater is prioritized. (Currently only 0 and 1 are supported) */
   priority?: number | null;
   /** Identifier */
   siteId?: string | null;
-}
-export const SitesAppConfigurationDeleteResultAccountApp =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      accountAppId: S.String.pipe(T.Body("account_app_id")),
-      id: S.optional(S.NullOr(S.String)),
-      breakout: S.optional(S.NullOr(S.Boolean)),
-      preferredWans: S.optional(
-        S.NullOr(
-          SitesAppConfigurationDeleteResultAccountAppPreferredWansList,
-        ).pipe(T.Body("preferred_wans")),
-      ),
-      priority: S.optional(S.NullOr(S.Number)),
-      siteId: S.optional(S.NullOr(S.String).pipe(T.Body("site_id"))),
-    }),
-  ).annotate({
-    identifier: "SitesAppConfigurationDeleteResultAccountApp",
-  }) as any as S.Schema<SitesAppConfigurationDeleteResultAccountApp>;
-
-export type SitesAppConfigurationDeleteResultManagedAppPreferredWansList =
-  Array<string>;
-export const SitesAppConfigurationDeleteResultManagedAppPreferredWansList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<SitesAppConfigurationDeleteResultManagedAppPreferredWansList>;
-
-export interface SitesAppConfigurationDeleteResultManagedApp {
   /** Managed app ID. */
   managedAppId: string;
   /** Identifier */
-  id?: string | null;
-  /** Whether to breakout traffic to the app's endpoints directly. Null preserves default behavior. */
-  breakout?: boolean | null;
+  id_2?: string | null;
+  /** Whether to breakout traffic to the app’s endpoints directly. Null preserves default behavior. */
+  breakout_2?: boolean | null;
   /** WAN interfaces to prefer over default WANs, highest-priority first. Can only be specified for breakout rules (breakout must be true). */
-  preferredWans?: SitesAppConfigurationDeleteResultManagedAppPreferredWansList | null;
+  preferred_wans_2?: SitesAppConfigurationDeleteResultPreferredWansList2 | null;
   /** Priority of traffic. 0 is default, anything greater is prioritized. (Currently only 0 and 1 are supported) */
-  priority?: number | null;
+  priority_2?: number | null;
   /** Identifier */
-  siteId?: string | null;
+  site_id_2?: string | null;
 }
-export const SitesAppConfigurationDeleteResultManagedApp =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      managedAppId: S.String.pipe(T.Body("managed_app_id")),
-      id: S.optional(S.NullOr(S.String)),
-      breakout: S.optional(S.NullOr(S.Boolean)),
-      preferredWans: S.optional(
-        S.NullOr(
-          SitesAppConfigurationDeleteResultManagedAppPreferredWansList,
-        ).pipe(T.Body("preferred_wans")),
+export const SitesAppConfigurationDeleteResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountAppId: S.String.pipe(T.Body("account_app_id")),
+    id: S.optional(S.NullOr(S.String)),
+    breakout: S.optional(S.NullOr(S.Boolean)),
+    preferredWans: S.optional(
+      S.NullOr(SitesAppConfigurationDeleteResultPreferredWansList).pipe(
+        T.Body("preferred_wans"),
       ),
-      priority: S.optional(S.NullOr(S.Number)),
-      siteId: S.optional(S.NullOr(S.String).pipe(T.Body("site_id"))),
-    }),
-  ).annotate({
-    identifier: "SitesAppConfigurationDeleteResultManagedApp",
-  }) as any as S.Schema<SitesAppConfigurationDeleteResultManagedApp>;
-
-export type SitesAppConfigurationDeleteResult =
-  | SitesAppConfigurationDeleteResultAccountApp
-  | SitesAppConfigurationDeleteResultManagedApp;
-export const SitesAppConfigurationDeleteResult = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
-    ["accountAppId", "id", "breakout", "preferredWans", "priority", "siteId"],
-    ["managedAppId", "id", "breakout", "preferredWans", "priority", "siteId"],
-  ]),
-);
+    ),
+    priority: S.optional(S.NullOr(S.Number)),
+    siteId: S.optional(S.NullOr(S.String).pipe(T.Body("site_id"))),
+    managedAppId: S.String.pipe(T.Body("managed_app_id")),
+    id_2: S.optional(S.NullOr(S.String).pipe(T.Body("id"))),
+    breakout_2: S.optional(S.NullOr(S.Boolean).pipe(T.Body("breakout"))),
+    preferred_wans_2: S.optional(
+      S.NullOr(SitesAppConfigurationDeleteResultPreferredWansList2).pipe(
+        T.Body("preferred_wans"),
+      ),
+    ),
+    priority_2: S.optional(S.NullOr(S.Number).pipe(T.Body("priority"))),
+    site_id_2: S.optional(S.NullOr(S.String).pipe(T.Body("site_id"))),
+  }),
+).annotate({
+  identifier: "SitesAppConfigurationDeleteResult",
+}) as any as S.Schema<SitesAppConfigurationDeleteResult>;
 
 export type SitesAppConfigurationDeleteResponse =
   SitesAppConfigurationDeleteResult;
@@ -14804,7 +14587,7 @@ export interface SitesAppConfigurationEditRequest {
   appConfigId: string;
   /** Magic account app ID. */
   accountAppId?: string;
-  /** Whether to breakout traffic to the app's endpoints directly. Null preserves default behavior. */
+  /** Whether to breakout traffic to the app’s endpoints directly. Null preserves default behavior. */
   breakout?: boolean;
   /** Managed app ID. */
   managedAppId?: string;
@@ -14840,93 +14623,70 @@ export const SitesAppConfigurationEditRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "SitesAppConfigurationEditRequest",
 }) as any as S.Schema<SitesAppConfigurationEditRequest>;
 
-export type SitesAppConfigurationEditResultAccountAppPreferredWansList =
-  Array<string>;
-export const SitesAppConfigurationEditResultAccountAppPreferredWansList =
+export type SitesAppConfigurationEditResultPreferredWansList = Array<string>;
+export const SitesAppConfigurationEditResultPreferredWansList =
   /*@__PURE__*/ S.Array(
     S.String,
-  ) as any as S.Schema<SitesAppConfigurationEditResultAccountAppPreferredWansList>;
+  ) as any as S.Schema<SitesAppConfigurationEditResultPreferredWansList>;
 
-export interface SitesAppConfigurationEditResultAccountApp {
+export type SitesAppConfigurationEditResultPreferredWansList2 = Array<string>;
+export const SitesAppConfigurationEditResultPreferredWansList2 =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<SitesAppConfigurationEditResultPreferredWansList2>;
+
+export interface SitesAppConfigurationEditResult {
   /** Magic account app ID. */
   accountAppId: string;
   /** Identifier */
   id?: string | null;
-  /** Whether to breakout traffic to the app's endpoints directly. Null preserves default behavior. */
+  /** Whether to breakout traffic to the app’s endpoints directly. Null preserves default behavior. */
   breakout?: boolean | null;
   /** WAN interfaces to prefer over default WANs, highest-priority first. Can only be specified for breakout rules (breakout must be true). */
-  preferredWans?: SitesAppConfigurationEditResultAccountAppPreferredWansList | null;
+  preferredWans?: SitesAppConfigurationEditResultPreferredWansList | null;
   /** Priority of traffic. 0 is default, anything greater is prioritized. (Currently only 0 and 1 are supported) */
   priority?: number | null;
   /** Identifier */
   siteId?: string | null;
-}
-export const SitesAppConfigurationEditResultAccountApp =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      accountAppId: S.String.pipe(T.Body("account_app_id")),
-      id: S.optional(S.NullOr(S.String)),
-      breakout: S.optional(S.NullOr(S.Boolean)),
-      preferredWans: S.optional(
-        S.NullOr(
-          SitesAppConfigurationEditResultAccountAppPreferredWansList,
-        ).pipe(T.Body("preferred_wans")),
-      ),
-      priority: S.optional(S.NullOr(S.Number)),
-      siteId: S.optional(S.NullOr(S.String).pipe(T.Body("site_id"))),
-    }),
-  ).annotate({
-    identifier: "SitesAppConfigurationEditResultAccountApp",
-  }) as any as S.Schema<SitesAppConfigurationEditResultAccountApp>;
-
-export type SitesAppConfigurationEditResultManagedAppPreferredWansList =
-  Array<string>;
-export const SitesAppConfigurationEditResultManagedAppPreferredWansList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<SitesAppConfigurationEditResultManagedAppPreferredWansList>;
-
-export interface SitesAppConfigurationEditResultManagedApp {
   /** Managed app ID. */
   managedAppId: string;
   /** Identifier */
-  id?: string | null;
-  /** Whether to breakout traffic to the app's endpoints directly. Null preserves default behavior. */
-  breakout?: boolean | null;
+  id_2?: string | null;
+  /** Whether to breakout traffic to the app’s endpoints directly. Null preserves default behavior. */
+  breakout_2?: boolean | null;
   /** WAN interfaces to prefer over default WANs, highest-priority first. Can only be specified for breakout rules (breakout must be true). */
-  preferredWans?: SitesAppConfigurationEditResultManagedAppPreferredWansList | null;
+  preferred_wans_2?: SitesAppConfigurationEditResultPreferredWansList2 | null;
   /** Priority of traffic. 0 is default, anything greater is prioritized. (Currently only 0 and 1 are supported) */
-  priority?: number | null;
+  priority_2?: number | null;
   /** Identifier */
-  siteId?: string | null;
+  site_id_2?: string | null;
 }
-export const SitesAppConfigurationEditResultManagedApp =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      managedAppId: S.String.pipe(T.Body("managed_app_id")),
-      id: S.optional(S.NullOr(S.String)),
-      breakout: S.optional(S.NullOr(S.Boolean)),
-      preferredWans: S.optional(
-        S.NullOr(
-          SitesAppConfigurationEditResultManagedAppPreferredWansList,
-        ).pipe(T.Body("preferred_wans")),
+export const SitesAppConfigurationEditResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountAppId: S.String.pipe(T.Body("account_app_id")),
+    id: S.optional(S.NullOr(S.String)),
+    breakout: S.optional(S.NullOr(S.Boolean)),
+    preferredWans: S.optional(
+      S.NullOr(SitesAppConfigurationEditResultPreferredWansList).pipe(
+        T.Body("preferred_wans"),
       ),
-      priority: S.optional(S.NullOr(S.Number)),
-      siteId: S.optional(S.NullOr(S.String).pipe(T.Body("site_id"))),
-    }),
-  ).annotate({
-    identifier: "SitesAppConfigurationEditResultManagedApp",
-  }) as any as S.Schema<SitesAppConfigurationEditResultManagedApp>;
-
-export type SitesAppConfigurationEditResult =
-  | SitesAppConfigurationEditResultAccountApp
-  | SitesAppConfigurationEditResultManagedApp;
-export const SitesAppConfigurationEditResult = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
-    ["accountAppId", "id", "breakout", "preferredWans", "priority", "siteId"],
-    ["managedAppId", "id", "breakout", "preferredWans", "priority", "siteId"],
-  ]),
-);
+    ),
+    priority: S.optional(S.NullOr(S.Number)),
+    siteId: S.optional(S.NullOr(S.String).pipe(T.Body("site_id"))),
+    managedAppId: S.String.pipe(T.Body("managed_app_id")),
+    id_2: S.optional(S.NullOr(S.String).pipe(T.Body("id"))),
+    breakout_2: S.optional(S.NullOr(S.Boolean).pipe(T.Body("breakout"))),
+    preferred_wans_2: S.optional(
+      S.NullOr(SitesAppConfigurationEditResultPreferredWansList2).pipe(
+        T.Body("preferred_wans"),
+      ),
+    ),
+    priority_2: S.optional(S.NullOr(S.Number).pipe(T.Body("priority"))),
+    site_id_2: S.optional(S.NullOr(S.String).pipe(T.Body("site_id"))),
+  }),
+).annotate({
+  identifier: "SitesAppConfigurationEditResult",
+}) as any as S.Schema<SitesAppConfigurationEditResult>;
 
 export type SitesAppConfigurationEditResponse = SitesAppConfigurationEditResult;
 export const SitesAppConfigurationEditResponse = /*@__PURE__*/ S.suspend(() =>
@@ -14961,93 +14721,72 @@ export const SitesAppConfigurationListRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "SitesAppConfigurationListRequest",
 }) as any as S.Schema<SitesAppConfigurationListRequest>;
 
-export type SitesAppConfigurationListResultItemAccountAppPreferredWansList =
+export type SitesAppConfigurationListResultItemPreferredWansList =
   Array<string>;
-export const SitesAppConfigurationListResultItemAccountAppPreferredWansList =
+export const SitesAppConfigurationListResultItemPreferredWansList =
   /*@__PURE__*/ S.Array(
     S.String,
-  ) as any as S.Schema<SitesAppConfigurationListResultItemAccountAppPreferredWansList>;
+  ) as any as S.Schema<SitesAppConfigurationListResultItemPreferredWansList>;
 
-export interface SitesAppConfigurationListResultItemAccountApp {
+export type SitesAppConfigurationListResultItemPreferredWansList2 =
+  Array<string>;
+export const SitesAppConfigurationListResultItemPreferredWansList2 =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<SitesAppConfigurationListResultItemPreferredWansList2>;
+
+export interface SitesAppConfigurationListResultItem {
   /** Magic account app ID. */
   accountAppId: string;
   /** Identifier */
   id?: string | null;
-  /** Whether to breakout traffic to the app's endpoints directly. Null preserves default behavior. */
+  /** Whether to breakout traffic to the app’s endpoints directly. Null preserves default behavior. */
   breakout?: boolean | null;
   /** WAN interfaces to prefer over default WANs, highest-priority first. Can only be specified for breakout rules (breakout must be true). */
-  preferredWans?: SitesAppConfigurationListResultItemAccountAppPreferredWansList | null;
+  preferredWans?: SitesAppConfigurationListResultItemPreferredWansList | null;
   /** Priority of traffic. 0 is default, anything greater is prioritized. (Currently only 0 and 1 are supported) */
   priority?: number | null;
   /** Identifier */
   siteId?: string | null;
-}
-export const SitesAppConfigurationListResultItemAccountApp =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      accountAppId: S.String.pipe(T.Body("account_app_id")),
-      id: S.optional(S.NullOr(S.String)),
-      breakout: S.optional(S.NullOr(S.Boolean)),
-      preferredWans: S.optional(
-        S.NullOr(
-          SitesAppConfigurationListResultItemAccountAppPreferredWansList,
-        ).pipe(T.Body("preferred_wans")),
-      ),
-      priority: S.optional(S.NullOr(S.Number)),
-      siteId: S.optional(S.NullOr(S.String).pipe(T.Body("site_id"))),
-    }),
-  ).annotate({
-    identifier: "SitesAppConfigurationListResultItemAccountApp",
-  }) as any as S.Schema<SitesAppConfigurationListResultItemAccountApp>;
-
-export type SitesAppConfigurationListResultItemManagedAppPreferredWansList =
-  Array<string>;
-export const SitesAppConfigurationListResultItemManagedAppPreferredWansList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<SitesAppConfigurationListResultItemManagedAppPreferredWansList>;
-
-export interface SitesAppConfigurationListResultItemManagedApp {
   /** Managed app ID. */
   managedAppId: string;
   /** Identifier */
-  id?: string | null;
-  /** Whether to breakout traffic to the app's endpoints directly. Null preserves default behavior. */
-  breakout?: boolean | null;
+  id_2?: string | null;
+  /** Whether to breakout traffic to the app’s endpoints directly. Null preserves default behavior. */
+  breakout_2?: boolean | null;
   /** WAN interfaces to prefer over default WANs, highest-priority first. Can only be specified for breakout rules (breakout must be true). */
-  preferredWans?: SitesAppConfigurationListResultItemManagedAppPreferredWansList | null;
+  preferred_wans_2?: SitesAppConfigurationListResultItemPreferredWansList2 | null;
   /** Priority of traffic. 0 is default, anything greater is prioritized. (Currently only 0 and 1 are supported) */
-  priority?: number | null;
+  priority_2?: number | null;
   /** Identifier */
-  siteId?: string | null;
+  site_id_2?: string | null;
 }
-export const SitesAppConfigurationListResultItemManagedApp =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      managedAppId: S.String.pipe(T.Body("managed_app_id")),
-      id: S.optional(S.NullOr(S.String)),
-      breakout: S.optional(S.NullOr(S.Boolean)),
-      preferredWans: S.optional(
-        S.NullOr(
-          SitesAppConfigurationListResultItemManagedAppPreferredWansList,
-        ).pipe(T.Body("preferred_wans")),
+export const SitesAppConfigurationListResultItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountAppId: S.String.pipe(T.Body("account_app_id")),
+    id: S.optional(S.NullOr(S.String)),
+    breakout: S.optional(S.NullOr(S.Boolean)),
+    preferredWans: S.optional(
+      S.NullOr(SitesAppConfigurationListResultItemPreferredWansList).pipe(
+        T.Body("preferred_wans"),
       ),
-      priority: S.optional(S.NullOr(S.Number)),
-      siteId: S.optional(S.NullOr(S.String).pipe(T.Body("site_id"))),
-    }),
-  ).annotate({
-    identifier: "SitesAppConfigurationListResultItemManagedApp",
-  }) as any as S.Schema<SitesAppConfigurationListResultItemManagedApp>;
-
-export type SitesAppConfigurationListResultItem =
-  | SitesAppConfigurationListResultItemAccountApp
-  | SitesAppConfigurationListResultItemManagedApp;
-export const SitesAppConfigurationListResultItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
-    ["accountAppId", "id", "breakout", "preferredWans", "priority", "siteId"],
-    ["managedAppId", "id", "breakout", "preferredWans", "priority", "siteId"],
-  ]),
-);
+    ),
+    priority: S.optional(S.NullOr(S.Number)),
+    siteId: S.optional(S.NullOr(S.String).pipe(T.Body("site_id"))),
+    managedAppId: S.String.pipe(T.Body("managed_app_id")),
+    id_2: S.optional(S.NullOr(S.String).pipe(T.Body("id"))),
+    breakout_2: S.optional(S.NullOr(S.Boolean).pipe(T.Body("breakout"))),
+    preferred_wans_2: S.optional(
+      S.NullOr(SitesAppConfigurationListResultItemPreferredWansList2).pipe(
+        T.Body("preferred_wans"),
+      ),
+    ),
+    priority_2: S.optional(S.NullOr(S.Number).pipe(T.Body("priority"))),
+    site_id_2: S.optional(S.NullOr(S.String).pipe(T.Body("site_id"))),
+  }),
+).annotate({
+  identifier: "SitesAppConfigurationListResultItem",
+}) as any as S.Schema<SitesAppConfigurationListResultItem>;
 
 export type SitesAppConfigurationListResultList =
   Array<SitesAppConfigurationListResultItem>;
@@ -15081,7 +14820,7 @@ export interface SitesAppConfigurationUpdateRequest {
   appConfigId: string;
   /** Magic account app ID. */
   accountAppId?: string;
-  /** Whether to breakout traffic to the app's endpoints directly. Null preserves default behavior. */
+  /** Whether to breakout traffic to the app’s endpoints directly. Null preserves default behavior. */
   breakout?: boolean;
   /** Managed app ID. */
   managedAppId?: string;
@@ -15117,93 +14856,70 @@ export const SitesAppConfigurationUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "SitesAppConfigurationUpdateRequest",
 }) as any as S.Schema<SitesAppConfigurationUpdateRequest>;
 
-export type SitesAppConfigurationUpdateResultAccountAppPreferredWansList =
-  Array<string>;
-export const SitesAppConfigurationUpdateResultAccountAppPreferredWansList =
+export type SitesAppConfigurationUpdateResultPreferredWansList = Array<string>;
+export const SitesAppConfigurationUpdateResultPreferredWansList =
   /*@__PURE__*/ S.Array(
     S.String,
-  ) as any as S.Schema<SitesAppConfigurationUpdateResultAccountAppPreferredWansList>;
+  ) as any as S.Schema<SitesAppConfigurationUpdateResultPreferredWansList>;
 
-export interface SitesAppConfigurationUpdateResultAccountApp {
+export type SitesAppConfigurationUpdateResultPreferredWansList2 = Array<string>;
+export const SitesAppConfigurationUpdateResultPreferredWansList2 =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<SitesAppConfigurationUpdateResultPreferredWansList2>;
+
+export interface SitesAppConfigurationUpdateResult {
   /** Magic account app ID. */
   accountAppId: string;
   /** Identifier */
   id?: string | null;
-  /** Whether to breakout traffic to the app's endpoints directly. Null preserves default behavior. */
+  /** Whether to breakout traffic to the app’s endpoints directly. Null preserves default behavior. */
   breakout?: boolean | null;
   /** WAN interfaces to prefer over default WANs, highest-priority first. Can only be specified for breakout rules (breakout must be true). */
-  preferredWans?: SitesAppConfigurationUpdateResultAccountAppPreferredWansList | null;
+  preferredWans?: SitesAppConfigurationUpdateResultPreferredWansList | null;
   /** Priority of traffic. 0 is default, anything greater is prioritized. (Currently only 0 and 1 are supported) */
   priority?: number | null;
   /** Identifier */
   siteId?: string | null;
-}
-export const SitesAppConfigurationUpdateResultAccountApp =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      accountAppId: S.String.pipe(T.Body("account_app_id")),
-      id: S.optional(S.NullOr(S.String)),
-      breakout: S.optional(S.NullOr(S.Boolean)),
-      preferredWans: S.optional(
-        S.NullOr(
-          SitesAppConfigurationUpdateResultAccountAppPreferredWansList,
-        ).pipe(T.Body("preferred_wans")),
-      ),
-      priority: S.optional(S.NullOr(S.Number)),
-      siteId: S.optional(S.NullOr(S.String).pipe(T.Body("site_id"))),
-    }),
-  ).annotate({
-    identifier: "SitesAppConfigurationUpdateResultAccountApp",
-  }) as any as S.Schema<SitesAppConfigurationUpdateResultAccountApp>;
-
-export type SitesAppConfigurationUpdateResultManagedAppPreferredWansList =
-  Array<string>;
-export const SitesAppConfigurationUpdateResultManagedAppPreferredWansList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<SitesAppConfigurationUpdateResultManagedAppPreferredWansList>;
-
-export interface SitesAppConfigurationUpdateResultManagedApp {
   /** Managed app ID. */
   managedAppId: string;
   /** Identifier */
-  id?: string | null;
-  /** Whether to breakout traffic to the app's endpoints directly. Null preserves default behavior. */
-  breakout?: boolean | null;
+  id_2?: string | null;
+  /** Whether to breakout traffic to the app’s endpoints directly. Null preserves default behavior. */
+  breakout_2?: boolean | null;
   /** WAN interfaces to prefer over default WANs, highest-priority first. Can only be specified for breakout rules (breakout must be true). */
-  preferredWans?: SitesAppConfigurationUpdateResultManagedAppPreferredWansList | null;
+  preferred_wans_2?: SitesAppConfigurationUpdateResultPreferredWansList2 | null;
   /** Priority of traffic. 0 is default, anything greater is prioritized. (Currently only 0 and 1 are supported) */
-  priority?: number | null;
+  priority_2?: number | null;
   /** Identifier */
-  siteId?: string | null;
+  site_id_2?: string | null;
 }
-export const SitesAppConfigurationUpdateResultManagedApp =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      managedAppId: S.String.pipe(T.Body("managed_app_id")),
-      id: S.optional(S.NullOr(S.String)),
-      breakout: S.optional(S.NullOr(S.Boolean)),
-      preferredWans: S.optional(
-        S.NullOr(
-          SitesAppConfigurationUpdateResultManagedAppPreferredWansList,
-        ).pipe(T.Body("preferred_wans")),
+export const SitesAppConfigurationUpdateResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountAppId: S.String.pipe(T.Body("account_app_id")),
+    id: S.optional(S.NullOr(S.String)),
+    breakout: S.optional(S.NullOr(S.Boolean)),
+    preferredWans: S.optional(
+      S.NullOr(SitesAppConfigurationUpdateResultPreferredWansList).pipe(
+        T.Body("preferred_wans"),
       ),
-      priority: S.optional(S.NullOr(S.Number)),
-      siteId: S.optional(S.NullOr(S.String).pipe(T.Body("site_id"))),
-    }),
-  ).annotate({
-    identifier: "SitesAppConfigurationUpdateResultManagedApp",
-  }) as any as S.Schema<SitesAppConfigurationUpdateResultManagedApp>;
-
-export type SitesAppConfigurationUpdateResult =
-  | SitesAppConfigurationUpdateResultAccountApp
-  | SitesAppConfigurationUpdateResultManagedApp;
-export const SitesAppConfigurationUpdateResult = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
-    ["accountAppId", "id", "breakout", "preferredWans", "priority", "siteId"],
-    ["managedAppId", "id", "breakout", "preferredWans", "priority", "siteId"],
-  ]),
-);
+    ),
+    priority: S.optional(S.NullOr(S.Number)),
+    siteId: S.optional(S.NullOr(S.String).pipe(T.Body("site_id"))),
+    managedAppId: S.String.pipe(T.Body("managed_app_id")),
+    id_2: S.optional(S.NullOr(S.String).pipe(T.Body("id"))),
+    breakout_2: S.optional(S.NullOr(S.Boolean).pipe(T.Body("breakout"))),
+    preferred_wans_2: S.optional(
+      S.NullOr(SitesAppConfigurationUpdateResultPreferredWansList2).pipe(
+        T.Body("preferred_wans"),
+      ),
+    ),
+    priority_2: S.optional(S.NullOr(S.Number).pipe(T.Body("priority"))),
+    site_id_2: S.optional(S.NullOr(S.String).pipe(T.Body("site_id"))),
+  }),
+).annotate({
+  identifier: "SitesAppConfigurationUpdateResult",
+}) as any as S.Schema<SitesAppConfigurationUpdateResult>;
 
 export type SitesAppConfigurationUpdateResponse =
   SitesAppConfigurationUpdateResult;
@@ -15385,6 +15101,7 @@ export interface UpdateConnectorRequest {
   activated?: boolean;
   /** Allowed days of the week for upgrades. Default is all days. */
   interruptWindowDaysOfWeek?: ConnectorsUpdateRequestInterruptWindowDaysOfWeekList;
+  /** maximum24 */
   interruptWindowDurationHours?: number;
   /** List of dates (YYYY-MM-DD) when upgrades are blocked. */
   interruptWindowEmbargoDates?: ConnectorsUpdateRequestInterruptWindowEmbargoDatesList;
@@ -15484,6 +15201,7 @@ export interface UpdateConnectorResponse {
   activated: boolean;
   /** Allowed days of the week for upgrades. Default is all days. */
   interruptWindowDaysOfWeek: ConnectorsUpdateResponseInterruptWindowDaysOfWeekList;
+  /** maximum24 */
   interruptWindowDurationHours: number;
   /** List of dates (YYYY-MM-DD) when upgrades are blocked. */
   interruptWindowEmbargoDates: ConnectorsUpdateResponseInterruptWindowEmbargoDatesList;
@@ -15543,15 +15261,15 @@ export const GreTunnelsUpdateRequestHealthCheckDirection =
 export type GreTunnelsUpdateRequestHealthCheckRate = "low" | "mid" | "high";
 export const GreTunnelsUpdateRequestHealthCheckRate = /*@__PURE__*/ S.String;
 
-export type GreTunnelsUpdateRequestHealthCheckTargetMagicHealthCheckTarget =
-  GreTunnelsCreateRequestHealthCheckTargetMagicHealthCheckTarget;
-export const GreTunnelsUpdateRequestHealthCheckTargetMagicHealthCheckTarget =
-  GreTunnelsCreateRequestHealthCheckTargetMagicHealthCheckTarget;
-
 export type GreTunnelsUpdateRequestHealthCheckTarget =
-  | string
-  | GreTunnelsCreateRequestHealthCheckTargetMagicHealthCheckTarget;
+  GreTunnelsCreateRequestBgpHealthCheckTarget;
 export const GreTunnelsUpdateRequestHealthCheckTarget =
+  GreTunnelsCreateRequestBgpHealthCheckTarget;
+
+export type GreTunnelsUpdateRequestHealthCheckTarget2 =
+  | string
+  | GreTunnelsCreateRequestBgpHealthCheckTarget;
+export const GreTunnelsUpdateRequestHealthCheckTarget2 =
   /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], ["effective", "saved"]]));
 
 export type GreTunnelsUpdateRequestHealthCheckType = "reply" | "request";
@@ -15565,17 +15283,26 @@ export interface GreTunnelsUpdateRequestHealthCheck {
   /** How frequent the health check is run. The default value is `mid`. */
   rate?: GreTunnelsUpdateRequestHealthCheckRate | (string & {});
   /** The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customer_gre_endpoint address`. This field is ignored for bidirectional healthchecks as the interface_address (not assigned to the Cloudflare side of the tunnel) is used as the target. Must be in object form if the x-magic-new-hc-target header is set to true and string form if x-magic-new-hc-target is absent or set to false. */
-  target?: GreTunnelsUpdateRequestHealthCheckTarget;
+  target?: GreTunnelsUpdateRequestHealthCheckTarget2;
   /** The type of healthcheck to run, reply or request. The default value is `reply`. */
   type?: GreTunnelsUpdateRequestHealthCheckType | (string & {});
+  /** A 127 bit IPV6 prefix from within the virtual_subnet6 prefix space with the address being the first IP of the subnet and not same as the address of virtual_subnet6. Eg if virtual_subnet6 is 2606:54c1:7:0:a9fe:12d2::/127 , interface_address6 could be 2606:54c1:7:0:a9fe:12d2:1:200/127 */
+  interfaceAddress6?: string;
+  /** Maximum Transmission Unit (MTU) in bytes for the GRE tunnel. The minimum value is 576. */
+  mtu?: number;
+  /** Time To Live (TTL) in number of hops of the GRE tunnel. */
+  ttl?: number;
 }
 export const GreTunnelsUpdateRequestHealthCheck = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     direction: S.optional(GreTunnelsUpdateRequestHealthCheckDirection),
     enabled: S.optional(S.Boolean),
     rate: S.optional(GreTunnelsUpdateRequestHealthCheckRate),
-    target: S.optional(GreTunnelsUpdateRequestHealthCheckTarget),
+    target: S.optional(GreTunnelsUpdateRequestHealthCheckTarget2),
     type: S.optional(GreTunnelsUpdateRequestHealthCheckType),
+    interfaceAddress6: S.optional(S.String.pipe(T.Body("interface_address6"))),
+    mtu: S.optional(S.Number),
+    ttl: S.optional(S.Number),
   }),
 ).annotate({
   identifier: "GreTunnelsUpdateRequestHealthCheck",
@@ -15599,12 +15326,6 @@ export interface UpdateGreTunnelRequest {
   /** An optional description of the GRE tunnel. */
   description?: string;
   healthCheck?: GreTunnelsUpdateRequestHealthCheck;
-  /** A 127 bit IPV6 prefix from within the virtual_subnet6 prefix space with the address being the first IP of the subnet and not same as the address of virtual_subnet6. Eg if virtual_subnet6 is 2606:54c1:7:0:a9fe:12d2::/127 , interface_address6 could be 2606:54c1:7:0:a9fe:12d2:1:200/127 */
-  interfaceAddress6?: string;
-  /** Maximum Transmission Unit (MTU) in bytes for the GRE tunnel. The minimum value is 576. */
-  mtu?: number;
-  /** Time To Live (TTL) in number of hops of the GRE tunnel. */
-  ttl?: number;
   xMagicNewHcTarget?: boolean;
 }
 export const UpdateGreTunnelRequest = /*@__PURE__*/ S.suspend(() =>
@@ -15622,9 +15343,6 @@ export const UpdateGreTunnelRequest = /*@__PURE__*/ S.suspend(() =>
     healthCheck: S.optional(
       GreTunnelsUpdateRequestHealthCheck.pipe(T.Body("health_check")),
     ),
-    interfaceAddress6: S.optional(S.String.pipe(T.Body("interface_address6"))),
-    mtu: S.optional(S.Number),
-    ttl: S.optional(S.Number),
     xMagicNewHcTarget: S.optional(
       S.Boolean.pipe(T.Header("x-magic-new-hc-target")),
     ),
@@ -15648,6 +15366,148 @@ export const GreTunnelsUpdateResponseModifiedGreTunnelBgpExtraPrefixesList =
     S.String,
   ) as any as S.Schema<GreTunnelsUpdateResponseModifiedGreTunnelBgpExtraPrefixesList>;
 
+export type GreTunnelsUpdateResponseModifiedGreTunnelBgpBgpStatusState =
+  | "BGP_DOWN"
+  | "BGP_UP"
+  | "BGP_ESTABLISHING";
+export const GreTunnelsUpdateResponseModifiedGreTunnelBgpBgpStatusState =
+  /*@__PURE__*/ S.String;
+
+export type GreTunnelsUpdateResponseModifiedGreTunnelBgpBgpStatusHealthCheckDirection =
+  | "unidirectional"
+  | "bidirectional";
+export const GreTunnelsUpdateResponseModifiedGreTunnelBgpBgpStatusHealthCheckDirection =
+  /*@__PURE__*/ S.String;
+
+export type GreTunnelsUpdateResponseModifiedGreTunnelBgpBgpStatusHealthCheckRate =
+  | "low"
+  | "mid"
+  | "high";
+export const GreTunnelsUpdateResponseModifiedGreTunnelBgpBgpStatusHealthCheckRate =
+  /*@__PURE__*/ S.String;
+
+export type GreTunnelsUpdateResponseModifiedGreTunnelBgpBgpStatusHealthCheckTarget =
+  CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemBgpHealthCheckTarget;
+export const GreTunnelsUpdateResponseModifiedGreTunnelBgpBgpStatusHealthCheckTarget =
+  CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemBgpHealthCheckTarget;
+
+export type GreTunnelsUpdateResponseModifiedGreTunnelBgpBgpStatusHealthCheckTarget2 =
+  | string
+  | CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemBgpHealthCheckTarget;
+export const GreTunnelsUpdateResponseModifiedGreTunnelBgpBgpStatusHealthCheckTarget2 =
+  /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], ["effective", "saved"]]));
+
+export type GreTunnelsUpdateResponseModifiedGreTunnelBgpBgpStatusHealthCheckType =
+  | "reply"
+  | "request";
+export const GreTunnelsUpdateResponseModifiedGreTunnelBgpBgpStatusHealthCheckType =
+  /*@__PURE__*/ S.String;
+
+export interface GreTunnelsUpdateResponseModifiedGreTunnelBgpBgpStatusHealthCheck {
+  /** The direction of the flow of the healthcheck. Either unidirectional, where the probe comes to you via the tunnel and the result comes back to Cloudflare via the open Internet, or bidirectional where both the probe and result come and go via the tunnel. */
+  direction?: GreTunnelsUpdateResponseModifiedGreTunnelBgpBgpStatusHealthCheckDirection | null;
+  /** Determines whether to run healthchecks for a tunnel. */
+  enabled?: boolean | null;
+  /** How frequent the health check is run. The default value is `mid`. */
+  rate?: GreTunnelsUpdateResponseModifiedGreTunnelBgpBgpStatusHealthCheckRate | null;
+  /** The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customer_gre_endpoint address`. This field is ignored for bidirectional healthchecks as the interface_address (not assigned to the Cloudflare side of the tunnel) is used as the target. Must be in object form if the x-magic-new-hc-target header is set to true and string form if x-magic-new-hc-target is absent or set to false. */
+  target?: GreTunnelsUpdateResponseModifiedGreTunnelBgpBgpStatusHealthCheckTarget2 | null;
+  /** The type of healthcheck to run, reply or request. The default value is `reply`. */
+  type?: GreTunnelsUpdateResponseModifiedGreTunnelBgpBgpStatusHealthCheckType | null;
+  /** A 127 bit IPV6 prefix from within the virtual_subnet6 prefix space with the address being the first IP of the subnet and not same as the address of virtual_subnet6. Eg if virtual_subnet6 is 2606:54c1:7:0:a9fe:12d2::/127 , interface_address6 could be 2606:54c1:7:0:a9fe:12d2:1:200/127 */
+  interfaceAddress6?: string | null;
+  /** The date and time the tunnel was last modified. */
+  modifiedOn?: string | null;
+  /** Maximum Transmission Unit (MTU) in bytes for the GRE tunnel. The minimum value is 576. */
+  mtu?: number | null;
+  /** Time To Live (TTL) in number of hops of the GRE tunnel. */
+  ttl?: number | null;
+}
+export const GreTunnelsUpdateResponseModifiedGreTunnelBgpBgpStatusHealthCheck =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      direction: S.optional(
+        S.NullOr(
+          GreTunnelsUpdateResponseModifiedGreTunnelBgpBgpStatusHealthCheckDirection,
+        ),
+      ),
+      enabled: S.optional(S.NullOr(S.Boolean)),
+      rate: S.optional(
+        S.NullOr(
+          GreTunnelsUpdateResponseModifiedGreTunnelBgpBgpStatusHealthCheckRate,
+        ),
+      ),
+      target: S.optional(
+        S.NullOr(
+          GreTunnelsUpdateResponseModifiedGreTunnelBgpBgpStatusHealthCheckTarget2,
+        ),
+      ),
+      type: S.optional(
+        S.NullOr(
+          GreTunnelsUpdateResponseModifiedGreTunnelBgpBgpStatusHealthCheckType,
+        ),
+      ),
+      interfaceAddress6: S.optional(
+        S.NullOr(S.String).pipe(T.Body("interface_address6")),
+      ),
+      modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
+      mtu: S.optional(S.NullOr(S.Number)),
+      ttl: S.optional(S.NullOr(S.Number)),
+    }),
+  ).annotate({
+    identifier:
+      "GreTunnelsUpdateResponseModifiedGreTunnelBgpBgpStatusHealthCheck",
+  }) as any as S.Schema<GreTunnelsUpdateResponseModifiedGreTunnelBgpBgpStatusHealthCheck>;
+
+export interface GreTunnelsUpdateResponseModifiedGreTunnelBgpBgpStatus {
+  state: GreTunnelsUpdateResponseModifiedGreTunnelBgpBgpStatusState;
+  tcpEstablished: boolean;
+  /** formatdate-time */
+  updatedAt: string;
+  bgpState?: string | null;
+  /** formatipv4 */
+  cfSpeakerIp?: string | null;
+  /** maximum65535 */
+  cfSpeakerPort?: number | null;
+  /** formatipv4 */
+  customerSpeakerIp?: string | null;
+  /** maximum65535 */
+  customerSpeakerPort?: number | null;
+  /** The date and time the tunnel was created. */
+  createdOn?: string | null;
+  /** An optional description of the GRE tunnel. */
+  description?: string | null;
+  healthCheck?: GreTunnelsUpdateResponseModifiedGreTunnelBgpBgpStatusHealthCheck | null;
+}
+export const GreTunnelsUpdateResponseModifiedGreTunnelBgpBgpStatus =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      state: GreTunnelsUpdateResponseModifiedGreTunnelBgpBgpStatusState,
+      tcpEstablished: S.Boolean.pipe(T.Body("tcp_established")),
+      updatedAt: S.String.pipe(T.Body("updated_at")),
+      bgpState: S.optional(S.NullOr(S.String).pipe(T.Body("bgp_state"))),
+      cfSpeakerIp: S.optional(S.NullOr(S.String).pipe(T.Body("cf_speaker_ip"))),
+      cfSpeakerPort: S.optional(
+        S.NullOr(S.Number).pipe(T.Body("cf_speaker_port")),
+      ),
+      customerSpeakerIp: S.optional(
+        S.NullOr(S.String).pipe(T.Body("customer_speaker_ip")),
+      ),
+      customerSpeakerPort: S.optional(
+        S.NullOr(S.Number).pipe(T.Body("customer_speaker_port")),
+      ),
+      createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
+      description: S.optional(S.NullOr(S.String)),
+      healthCheck: S.optional(
+        S.NullOr(
+          GreTunnelsUpdateResponseModifiedGreTunnelBgpBgpStatusHealthCheck,
+        ).pipe(T.Body("health_check")),
+      ),
+    }),
+  ).annotate({
+    identifier: "GreTunnelsUpdateResponseModifiedGreTunnelBgpBgpStatus",
+  }) as any as S.Schema<GreTunnelsUpdateResponseModifiedGreTunnelBgpBgpStatus>;
+
 export interface GreTunnelsUpdateResponseModifiedGreTunnelBgp {
   /** ASN used on the customer end of the BGP session */
   customerAsn: number;
@@ -15659,6 +15519,7 @@ export interface GreTunnelsUpdateResponseModifiedGreTunnelBgp {
   importFilterId?: string | null;
   /** MD5 key to use for session authentication. */
   md5Key?: string | null;
+  bgpStatus?: GreTunnelsUpdateResponseModifiedGreTunnelBgpBgpStatus | null;
 }
 export const GreTunnelsUpdateResponseModifiedGreTunnelBgp =
   /*@__PURE__*/ S.suspend(() =>
@@ -15676,112 +15537,15 @@ export const GreTunnelsUpdateResponseModifiedGreTunnelBgp =
         S.NullOr(S.String).pipe(T.Body("import_filter_id")),
       ),
       md5Key: S.optional(S.NullOr(S.String).pipe(T.Body("md5_key"))),
+      bgpStatus: S.optional(
+        S.NullOr(GreTunnelsUpdateResponseModifiedGreTunnelBgpBgpStatus).pipe(
+          T.Body("bgp_status"),
+        ),
+      ),
     }),
   ).annotate({
     identifier: "GreTunnelsUpdateResponseModifiedGreTunnelBgp",
   }) as any as S.Schema<GreTunnelsUpdateResponseModifiedGreTunnelBgp>;
-
-export type GreTunnelsUpdateResponseModifiedGreTunnelBgpStatusState =
-  | "BGP_DOWN"
-  | "BGP_UP"
-  | "BGP_ESTABLISHING";
-export const GreTunnelsUpdateResponseModifiedGreTunnelBgpStatusState =
-  /*@__PURE__*/ S.String;
-
-export interface GreTunnelsUpdateResponseModifiedGreTunnelBgpStatus {
-  state: GreTunnelsUpdateResponseModifiedGreTunnelBgpStatusState;
-  tcpEstablished: boolean;
-  updatedAt: string;
-  bgpState?: string | null;
-  cfSpeakerIp?: string | null;
-  cfSpeakerPort?: number | null;
-  customerSpeakerIp?: string | null;
-  customerSpeakerPort?: number | null;
-}
-export const GreTunnelsUpdateResponseModifiedGreTunnelBgpStatus =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      state: GreTunnelsUpdateResponseModifiedGreTunnelBgpStatusState,
-      tcpEstablished: S.Boolean.pipe(T.Body("tcp_established")),
-      updatedAt: S.String.pipe(T.Body("updated_at")),
-      bgpState: S.optional(S.NullOr(S.String).pipe(T.Body("bgp_state"))),
-      cfSpeakerIp: S.optional(S.NullOr(S.String).pipe(T.Body("cf_speaker_ip"))),
-      cfSpeakerPort: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("cf_speaker_port")),
-      ),
-      customerSpeakerIp: S.optional(
-        S.NullOr(S.String).pipe(T.Body("customer_speaker_ip")),
-      ),
-      customerSpeakerPort: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("customer_speaker_port")),
-      ),
-    }),
-  ).annotate({
-    identifier: "GreTunnelsUpdateResponseModifiedGreTunnelBgpStatus",
-  }) as any as S.Schema<GreTunnelsUpdateResponseModifiedGreTunnelBgpStatus>;
-
-export type GreTunnelsUpdateResponseModifiedGreTunnelHealthCheckDirection =
-  | "unidirectional"
-  | "bidirectional";
-export const GreTunnelsUpdateResponseModifiedGreTunnelHealthCheckDirection =
-  /*@__PURE__*/ S.String;
-
-export type GreTunnelsUpdateResponseModifiedGreTunnelHealthCheckRate =
-  | "low"
-  | "mid"
-  | "high";
-export const GreTunnelsUpdateResponseModifiedGreTunnelHealthCheckRate =
-  /*@__PURE__*/ S.String;
-
-export type GreTunnelsUpdateResponseModifiedGreTunnelHealthCheckTargetMagicHealthCheckTarget =
-  CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemHealthCheckTargetMagicHealthCheckTarget;
-export const GreTunnelsUpdateResponseModifiedGreTunnelHealthCheckTargetMagicHealthCheckTarget =
-  CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemHealthCheckTargetMagicHealthCheckTarget;
-
-export type GreTunnelsUpdateResponseModifiedGreTunnelHealthCheckTarget =
-  | string
-  | CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemHealthCheckTargetMagicHealthCheckTarget;
-export const GreTunnelsUpdateResponseModifiedGreTunnelHealthCheckTarget =
-  /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], ["effective", "saved"]]));
-
-export type GreTunnelsUpdateResponseModifiedGreTunnelHealthCheckType =
-  | "reply"
-  | "request";
-export const GreTunnelsUpdateResponseModifiedGreTunnelHealthCheckType =
-  /*@__PURE__*/ S.String;
-
-export interface GreTunnelsUpdateResponseModifiedGreTunnelHealthCheck {
-  /** The direction of the flow of the healthcheck. Either unidirectional, where the probe comes to you via the tunnel and the result comes back to Cloudflare via the open Internet, or bidirectional where both the probe and result come and go via the tunnel. */
-  direction?: GreTunnelsUpdateResponseModifiedGreTunnelHealthCheckDirection | null;
-  /** Determines whether to run healthchecks for a tunnel. */
-  enabled?: boolean | null;
-  /** How frequent the health check is run. The default value is `mid`. */
-  rate?: GreTunnelsUpdateResponseModifiedGreTunnelHealthCheckRate | null;
-  /** The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customer_gre_endpoint address`. This field is ignored for bidirectional healthchecks as the interface_address (not assigned to the Cloudflare side of the tunnel) is used as the target. Must be in object form if the x-magic-new-hc-target header is set to true and string form if x-magic-new-hc-target is absent or set to false. */
-  target?: GreTunnelsUpdateResponseModifiedGreTunnelHealthCheckTarget | null;
-  /** The type of healthcheck to run, reply or request. The default value is `reply`. */
-  type?: GreTunnelsUpdateResponseModifiedGreTunnelHealthCheckType | null;
-}
-export const GreTunnelsUpdateResponseModifiedGreTunnelHealthCheck =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      direction: S.optional(
-        S.NullOr(GreTunnelsUpdateResponseModifiedGreTunnelHealthCheckDirection),
-      ),
-      enabled: S.optional(S.NullOr(S.Boolean)),
-      rate: S.optional(
-        S.NullOr(GreTunnelsUpdateResponseModifiedGreTunnelHealthCheckRate),
-      ),
-      target: S.optional(
-        S.NullOr(GreTunnelsUpdateResponseModifiedGreTunnelHealthCheckTarget),
-      ),
-      type: S.optional(
-        S.NullOr(GreTunnelsUpdateResponseModifiedGreTunnelHealthCheckType),
-      ),
-    }),
-  ).annotate({
-    identifier: "GreTunnelsUpdateResponseModifiedGreTunnelHealthCheck",
-  }) as any as S.Schema<GreTunnelsUpdateResponseModifiedGreTunnelHealthCheck>;
 
 export interface GreTunnelsUpdateResponseModifiedGreTunnel {
   /** Identifier */
@@ -15797,20 +15561,6 @@ export interface GreTunnelsUpdateResponseModifiedGreTunnel {
   /** True if automatic stateful return routing should be enabled for a tunnel, false otherwise. Requires the `coupler_integration` account flag to be enabled; requests setting this to `true` without that flag will be rejected. */
   automaticReturnRouting?: boolean | null;
   bgp?: GreTunnelsUpdateResponseModifiedGreTunnelBgp | null;
-  bgpStatus?: GreTunnelsUpdateResponseModifiedGreTunnelBgpStatus | null;
-  /** The date and time the tunnel was created. */
-  createdOn?: string | null;
-  /** An optional description of the GRE tunnel. */
-  description?: string | null;
-  healthCheck?: GreTunnelsUpdateResponseModifiedGreTunnelHealthCheck | null;
-  /** A 127 bit IPV6 prefix from within the virtual_subnet6 prefix space with the address being the first IP of the subnet and not same as the address of virtual_subnet6. Eg if virtual_subnet6 is 2606:54c1:7:0:a9fe:12d2::/127 , interface_address6 could be 2606:54c1:7:0:a9fe:12d2:1:200/127 */
-  interfaceAddress6?: string | null;
-  /** The date and time the tunnel was last modified. */
-  modifiedOn?: string | null;
-  /** Maximum Transmission Unit (MTU) in bytes for the GRE tunnel. The minimum value is 576. */
-  mtu?: number | null;
-  /** Time To Live (TTL) in number of hops of the GRE tunnel. */
-  ttl?: number | null;
 }
 export const GreTunnelsUpdateResponseModifiedGreTunnel =
   /*@__PURE__*/ S.suspend(() =>
@@ -15824,24 +15574,6 @@ export const GreTunnelsUpdateResponseModifiedGreTunnel =
         S.NullOr(S.Boolean).pipe(T.Body("automatic_return_routing")),
       ),
       bgp: S.optional(S.NullOr(GreTunnelsUpdateResponseModifiedGreTunnelBgp)),
-      bgpStatus: S.optional(
-        S.NullOr(GreTunnelsUpdateResponseModifiedGreTunnelBgpStatus).pipe(
-          T.Body("bgp_status"),
-        ),
-      ),
-      createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
-      description: S.optional(S.NullOr(S.String)),
-      healthCheck: S.optional(
-        S.NullOr(GreTunnelsUpdateResponseModifiedGreTunnelHealthCheck).pipe(
-          T.Body("health_check"),
-        ),
-      ),
-      interfaceAddress6: S.optional(
-        S.NullOr(S.String).pipe(T.Body("interface_address6")),
-      ),
-      modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-      mtu: S.optional(S.NullOr(S.Number)),
-      ttl: S.optional(S.NullOr(S.Number)),
     }),
   ).annotate({
     identifier: "GreTunnelsUpdateResponseModifiedGreTunnel",
@@ -15871,6 +15603,75 @@ export const IpsecTunnelsUpdateRequestBgpExtraPrefixesList =
     S.String,
   ) as any as S.Schema<IpsecTunnelsUpdateRequestBgpExtraPrefixesList>;
 
+export type IpsecTunnelsUpdateRequestBgpCustomRemoteIdentities =
+  IpsecTunnelsCreateRequestBgpCustomRemoteIdentities;
+export const IpsecTunnelsUpdateRequestBgpCustomRemoteIdentities =
+  IpsecTunnelsCreateRequestBgpCustomRemoteIdentities;
+
+export type IpsecTunnelsUpdateRequestBgpHealthCheckDirection =
+  | "unidirectional"
+  | "bidirectional";
+export const IpsecTunnelsUpdateRequestBgpHealthCheckDirection =
+  /*@__PURE__*/ S.String;
+
+export type IpsecTunnelsUpdateRequestBgpHealthCheckRate =
+  | "low"
+  | "mid"
+  | "high";
+export const IpsecTunnelsUpdateRequestBgpHealthCheckRate =
+  /*@__PURE__*/ S.String;
+
+export type IpsecTunnelsUpdateRequestBgpHealthCheckTarget =
+  GreTunnelsCreateRequestBgpHealthCheckTarget;
+export const IpsecTunnelsUpdateRequestBgpHealthCheckTarget =
+  GreTunnelsCreateRequestBgpHealthCheckTarget;
+
+export type IpsecTunnelsUpdateRequestBgpHealthCheckTarget2 =
+  | string
+  | GreTunnelsCreateRequestBgpHealthCheckTarget;
+export const IpsecTunnelsUpdateRequestBgpHealthCheckTarget2 =
+  /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], ["effective", "saved"]]));
+
+export type IpsecTunnelsUpdateRequestBgpHealthCheckType = "reply" | "request";
+export const IpsecTunnelsUpdateRequestBgpHealthCheckType =
+  /*@__PURE__*/ S.String;
+
+export interface IpsecTunnelsUpdateRequestBgpHealthCheck {
+  /** The direction of the flow of the healthcheck. Either unidirectional, where the probe comes to you via the tunnel and the result comes back to Cloudflare via the open Internet, or bidirectional where both the probe and result come and go via the tunnel. */
+  direction?: IpsecTunnelsUpdateRequestBgpHealthCheckDirection | (string & {});
+  /** Determines whether to run healthchecks for a tunnel. */
+  enabled?: boolean;
+  /** How frequent the health check is run. The default value is `mid`. */
+  rate?: IpsecTunnelsUpdateRequestBgpHealthCheckRate | (string & {});
+  /** The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customer_gre_endpoint address`. This field is ignored for bidirectional healthchecks as the interface_address (not assigned to the Cloudflare side of the tunnel) is used as the target. Must be in object form if the x-magic-new-hc-target header is set to true and string form if x-magic-new-hc-target is absent or set to false. */
+  target?: IpsecTunnelsUpdateRequestBgpHealthCheckTarget2;
+  /** The type of healthcheck to run, reply or request. The default value is `reply`. */
+  type?: IpsecTunnelsUpdateRequestBgpHealthCheckType | (string & {});
+  /** A 127 bit IPV6 prefix from within the virtual_subnet6 prefix space with the address being the first IP of the subnet and not same as the address of virtual_subnet6. Eg if virtual_subnet6 is 2606:54c1:7:0:a9fe:12d2::/127 , interface_address6 could be 2606:54c1:7:0:a9fe:12d2:1:200/127 */
+  interfaceAddress6?: string;
+  /** A randomly generated or provided string for use in the IPsec tunnel. */
+  psk?: string;
+  /** If `true`, then IPsec replay protection will be supported in the Cloudflare-to-customer direction. */
+  replayProtection?: boolean;
+}
+export const IpsecTunnelsUpdateRequestBgpHealthCheck = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      direction: S.optional(IpsecTunnelsUpdateRequestBgpHealthCheckDirection),
+      enabled: S.optional(S.Boolean),
+      rate: S.optional(IpsecTunnelsUpdateRequestBgpHealthCheckRate),
+      target: S.optional(IpsecTunnelsUpdateRequestBgpHealthCheckTarget2),
+      type: S.optional(IpsecTunnelsUpdateRequestBgpHealthCheckType),
+      interfaceAddress6: S.optional(
+        S.String.pipe(T.Body("interface_address6")),
+      ),
+      psk: S.optional(S.String),
+      replayProtection: S.optional(S.Boolean.pipe(T.Body("replay_protection"))),
+    }),
+).annotate({
+  identifier: "IpsecTunnelsUpdateRequestBgpHealthCheck",
+}) as any as S.Schema<IpsecTunnelsUpdateRequestBgpHealthCheck>;
+
 export interface IpsecTunnelsUpdateRequestBgp {
   /** ASN used on the customer end of the BGP session */
   customerAsn: number;
@@ -15882,6 +15683,12 @@ export interface IpsecTunnelsUpdateRequestBgp {
   importFilterId?: string;
   /** MD5 key to use for session authentication. */
   md5Key?: string;
+  customRemoteIdentities?: IpsecTunnelsCreateRequestBgpCustomRemoteIdentities;
+  /** The IP address assigned to the customer side of the IPsec tunnel. Not required, but must be set for proactive traceroutes to work. */
+  customerEndpoint?: string;
+  /** An optional description forthe IPsec tunnel. */
+  description?: string;
+  healthCheck?: IpsecTunnelsUpdateRequestBgpHealthCheck;
 }
 export const IpsecTunnelsUpdateRequestBgp = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -15894,63 +15701,20 @@ export const IpsecTunnelsUpdateRequestBgp = /*@__PURE__*/ S.suspend(() =>
     ),
     importFilterId: S.optional(S.String.pipe(T.Body("import_filter_id"))),
     md5Key: S.optional(S.String.pipe(T.Body("md5_key"))),
+    customRemoteIdentities: S.optional(
+      IpsecTunnelsCreateRequestBgpCustomRemoteIdentities.pipe(
+        T.Body("custom_remote_identities"),
+      ),
+    ),
+    customerEndpoint: S.optional(S.String.pipe(T.Body("customer_endpoint"))),
+    description: S.optional(S.String),
+    healthCheck: S.optional(
+      IpsecTunnelsUpdateRequestBgpHealthCheck.pipe(T.Body("health_check")),
+    ),
   }),
 ).annotate({
   identifier: "IpsecTunnelsUpdateRequestBgp",
 }) as any as S.Schema<IpsecTunnelsUpdateRequestBgp>;
-
-export type IpsecTunnelsUpdateRequestCustomRemoteIdentities =
-  IpsecTunnelsCreateRequestCustomRemoteIdentities;
-export const IpsecTunnelsUpdateRequestCustomRemoteIdentities =
-  IpsecTunnelsCreateRequestCustomRemoteIdentities;
-
-export type IpsecTunnelsUpdateRequestHealthCheckDirection =
-  | "unidirectional"
-  | "bidirectional";
-export const IpsecTunnelsUpdateRequestHealthCheckDirection =
-  /*@__PURE__*/ S.String;
-
-export type IpsecTunnelsUpdateRequestHealthCheckRate = "low" | "mid" | "high";
-export const IpsecTunnelsUpdateRequestHealthCheckRate = /*@__PURE__*/ S.String;
-
-export type IpsecTunnelsUpdateRequestHealthCheckTargetMagicHealthCheckTarget =
-  GreTunnelsCreateRequestHealthCheckTargetMagicHealthCheckTarget;
-export const IpsecTunnelsUpdateRequestHealthCheckTargetMagicHealthCheckTarget =
-  GreTunnelsCreateRequestHealthCheckTargetMagicHealthCheckTarget;
-
-export type IpsecTunnelsUpdateRequestHealthCheckTarget =
-  | string
-  | GreTunnelsCreateRequestHealthCheckTargetMagicHealthCheckTarget;
-export const IpsecTunnelsUpdateRequestHealthCheckTarget =
-  /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], ["effective", "saved"]]));
-
-export type IpsecTunnelsUpdateRequestHealthCheckType = "reply" | "request";
-export const IpsecTunnelsUpdateRequestHealthCheckType = /*@__PURE__*/ S.String;
-
-export interface IpsecTunnelsUpdateRequestHealthCheck {
-  /** The direction of the flow of the healthcheck. Either unidirectional, where the probe comes to you via the tunnel and the result comes back to Cloudflare via the open Internet, or bidirectional where both the probe and result come and go via the tunnel. */
-  direction?: IpsecTunnelsUpdateRequestHealthCheckDirection | (string & {});
-  /** Determines whether to run healthchecks for a tunnel. */
-  enabled?: boolean;
-  /** How frequent the health check is run. The default value is `mid`. */
-  rate?: IpsecTunnelsUpdateRequestHealthCheckRate | (string & {});
-  /** The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customer_gre_endpoint address`. This field is ignored for bidirectional healthchecks as the interface_address (not assigned to the Cloudflare side of the tunnel) is used as the target. Must be in object form if the x-magic-new-hc-target header is set to true and string form if x-magic-new-hc-target is absent or set to false. */
-  target?: IpsecTunnelsUpdateRequestHealthCheckTarget;
-  /** The type of healthcheck to run, reply or request. The default value is `reply`. */
-  type?: IpsecTunnelsUpdateRequestHealthCheckType | (string & {});
-}
-export const IpsecTunnelsUpdateRequestHealthCheck = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      direction: S.optional(IpsecTunnelsUpdateRequestHealthCheckDirection),
-      enabled: S.optional(S.Boolean),
-      rate: S.optional(IpsecTunnelsUpdateRequestHealthCheckRate),
-      target: S.optional(IpsecTunnelsUpdateRequestHealthCheckTarget),
-      type: S.optional(IpsecTunnelsUpdateRequestHealthCheckType),
-    }),
-).annotate({
-  identifier: "IpsecTunnelsUpdateRequestHealthCheck",
-}) as any as S.Schema<IpsecTunnelsUpdateRequestHealthCheck>;
 
 export interface UpdateIpsecTunnelRequest {
   /** Identifier */
@@ -15966,18 +15730,6 @@ export interface UpdateIpsecTunnelRequest {
   /** True if automatic stateful return routing should be enabled for a tunnel, false otherwise. Requires the `coupler_integration` account flag to be enabled; requests setting this to `true` without that flag will be rejected. */
   automaticReturnRouting?: boolean;
   bgp?: IpsecTunnelsUpdateRequestBgp;
-  customRemoteIdentities?: IpsecTunnelsCreateRequestCustomRemoteIdentities;
-  /** The IP address assigned to the customer side of the IPsec tunnel. Not required, but must be set for proactive traceroutes to work. */
-  customerEndpoint?: string;
-  /** An optional description forthe IPsec tunnel. */
-  description?: string;
-  healthCheck?: IpsecTunnelsUpdateRequestHealthCheck;
-  /** A 127 bit IPV6 prefix from within the virtual_subnet6 prefix space with the address being the first IP of the subnet and not same as the address of virtual_subnet6. Eg if virtual_subnet6 is 2606:54c1:7:0:a9fe:12d2::/127 , interface_address6 could be 2606:54c1:7:0:a9fe:12d2:1:200/127 */
-  interfaceAddress6?: string;
-  /** A randomly generated or provided string for use in the IPsec tunnel. */
-  psk?: string;
-  /** If `true`, then IPsec replay protection will be supported in the Cloudflare-to-customer direction. */
-  replayProtection?: boolean;
   xMagicNewHcTarget?: boolean;
 }
 export const UpdateIpsecTunnelRequest = /*@__PURE__*/ S.suspend(() =>
@@ -15991,19 +15743,6 @@ export const UpdateIpsecTunnelRequest = /*@__PURE__*/ S.suspend(() =>
       S.Boolean.pipe(T.Body("automatic_return_routing")),
     ),
     bgp: S.optional(IpsecTunnelsUpdateRequestBgp),
-    customRemoteIdentities: S.optional(
-      IpsecTunnelsCreateRequestCustomRemoteIdentities.pipe(
-        T.Body("custom_remote_identities"),
-      ),
-    ),
-    customerEndpoint: S.optional(S.String.pipe(T.Body("customer_endpoint"))),
-    description: S.optional(S.String),
-    healthCheck: S.optional(
-      IpsecTunnelsUpdateRequestHealthCheck.pipe(T.Body("health_check")),
-    ),
-    interfaceAddress6: S.optional(S.String.pipe(T.Body("interface_address6"))),
-    psk: S.optional(S.String),
-    replayProtection: S.optional(S.Boolean.pipe(T.Body("replay_protection"))),
     xMagicNewHcTarget: S.optional(
       S.Boolean.pipe(T.Header("x-magic-new-hc-target")),
     ),
@@ -16027,6 +15766,175 @@ export const IpsecTunnelsUpdateResponseModifiedIpsecTunnelBgpExtraPrefixesList =
     S.String,
   ) as any as S.Schema<IpsecTunnelsUpdateResponseModifiedIpsecTunnelBgpExtraPrefixesList>;
 
+export type IpsecTunnelsUpdateResponseModifiedIpsecTunnelBgpBgpStatusState =
+  | "BGP_DOWN"
+  | "BGP_UP"
+  | "BGP_ESTABLISHING";
+export const IpsecTunnelsUpdateResponseModifiedIpsecTunnelBgpBgpStatusState =
+  /*@__PURE__*/ S.String;
+
+export type IpsecTunnelsUpdateResponseModifiedIpsecTunnelBgpBgpStatusCustomRemoteIdentities =
+  IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemBgpBgpStatusCustomRemoteIdentities;
+export const IpsecTunnelsUpdateResponseModifiedIpsecTunnelBgpBgpStatusCustomRemoteIdentities =
+  IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemBgpBgpStatusCustomRemoteIdentities;
+
+export type IpsecTunnelsUpdateResponseModifiedIpsecTunnelBgpBgpStatusHealthCheckDirection =
+  | "unidirectional"
+  | "bidirectional";
+export const IpsecTunnelsUpdateResponseModifiedIpsecTunnelBgpBgpStatusHealthCheckDirection =
+  /*@__PURE__*/ S.String;
+
+export type IpsecTunnelsUpdateResponseModifiedIpsecTunnelBgpBgpStatusHealthCheckRate =
+  | "low"
+  | "mid"
+  | "high";
+export const IpsecTunnelsUpdateResponseModifiedIpsecTunnelBgpBgpStatusHealthCheckRate =
+  /*@__PURE__*/ S.String;
+
+export type IpsecTunnelsUpdateResponseModifiedIpsecTunnelBgpBgpStatusHealthCheckTarget =
+  CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemBgpHealthCheckTarget;
+export const IpsecTunnelsUpdateResponseModifiedIpsecTunnelBgpBgpStatusHealthCheckTarget =
+  CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemBgpHealthCheckTarget;
+
+export type IpsecTunnelsUpdateResponseModifiedIpsecTunnelBgpBgpStatusHealthCheckTarget2 =
+  | string
+  | CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemBgpHealthCheckTarget;
+export const IpsecTunnelsUpdateResponseModifiedIpsecTunnelBgpBgpStatusHealthCheckTarget2 =
+  /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], ["effective", "saved"]]));
+
+export type IpsecTunnelsUpdateResponseModifiedIpsecTunnelBgpBgpStatusHealthCheckType =
+  | "reply"
+  | "request";
+export const IpsecTunnelsUpdateResponseModifiedIpsecTunnelBgpBgpStatusHealthCheckType =
+  /*@__PURE__*/ S.String;
+
+export type IpsecTunnelsUpdateResponseModifiedIpsecTunnelBgpBgpStatusHealthCheckPskMetadata =
+  IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemBgpBgpStatusHealthCheckPskMetadata;
+export const IpsecTunnelsUpdateResponseModifiedIpsecTunnelBgpBgpStatusHealthCheckPskMetadata =
+  IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemBgpBgpStatusHealthCheckPskMetadata;
+
+export interface IpsecTunnelsUpdateResponseModifiedIpsecTunnelBgpBgpStatusHealthCheck {
+  /** The direction of the flow of the healthcheck. Either unidirectional, where the probe comes to you via the tunnel and the result comes back to Cloudflare via the open Internet, or bidirectional where both the probe and result come and go via the tunnel. */
+  direction?: IpsecTunnelsUpdateResponseModifiedIpsecTunnelBgpBgpStatusHealthCheckDirection | null;
+  /** Determines whether to run healthchecks for a tunnel. */
+  enabled?: boolean | null;
+  /** How frequent the health check is run. The default value is `mid`. */
+  rate?: IpsecTunnelsUpdateResponseModifiedIpsecTunnelBgpBgpStatusHealthCheckRate | null;
+  /** The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customer_gre_endpoint address`. This field is ignored for bidirectional healthchecks as the interface_address (not assigned to the Cloudflare side of the tunnel) is used as the target. Must be in object form if the x-magic-new-hc-target header is set to true and string form if x-magic-new-hc-target is absent or set to false. */
+  target?: IpsecTunnelsUpdateResponseModifiedIpsecTunnelBgpBgpStatusHealthCheckTarget2 | null;
+  /** The type of healthcheck to run, reply or request. The default value is `reply`. */
+  type?: IpsecTunnelsUpdateResponseModifiedIpsecTunnelBgpBgpStatusHealthCheckType | null;
+  /** A 127 bit IPV6 prefix from within the virtual_subnet6 prefix space with the address being the first IP of the subnet and not same as the address of virtual_subnet6. Eg if virtual_subnet6 is 2606:54c1:7:0:a9fe:12d2::/127 , interface_address6 could be 2606:54c1:7:0:a9fe:12d2:1:200/127 */
+  interfaceAddress6?: string | null;
+  /** The date and time the tunnel was last modified. */
+  modifiedOn?: string | null;
+  /** The PSK metadata that includes when the PSK was generated. */
+  pskMetadata?: IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemBgpBgpStatusHealthCheckPskMetadata | null;
+  /** If `true`, then IPsec replay protection will be supported in the Cloudflare-to-customer direction. */
+  replayProtection?: boolean | null;
+}
+export const IpsecTunnelsUpdateResponseModifiedIpsecTunnelBgpBgpStatusHealthCheck =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      direction: S.optional(
+        S.NullOr(
+          IpsecTunnelsUpdateResponseModifiedIpsecTunnelBgpBgpStatusHealthCheckDirection,
+        ),
+      ),
+      enabled: S.optional(S.NullOr(S.Boolean)),
+      rate: S.optional(
+        S.NullOr(
+          IpsecTunnelsUpdateResponseModifiedIpsecTunnelBgpBgpStatusHealthCheckRate,
+        ),
+      ),
+      target: S.optional(
+        S.NullOr(
+          IpsecTunnelsUpdateResponseModifiedIpsecTunnelBgpBgpStatusHealthCheckTarget2,
+        ),
+      ),
+      type: S.optional(
+        S.NullOr(
+          IpsecTunnelsUpdateResponseModifiedIpsecTunnelBgpBgpStatusHealthCheckType,
+        ),
+      ),
+      interfaceAddress6: S.optional(
+        S.NullOr(S.String).pipe(T.Body("interface_address6")),
+      ),
+      modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
+      pskMetadata: S.optional(
+        S.NullOr(
+          IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemBgpBgpStatusHealthCheckPskMetadata,
+        ).pipe(T.Body("psk_metadata")),
+      ),
+      replayProtection: S.optional(
+        S.NullOr(S.Boolean).pipe(T.Body("replay_protection")),
+      ),
+    }),
+  ).annotate({
+    identifier:
+      "IpsecTunnelsUpdateResponseModifiedIpsecTunnelBgpBgpStatusHealthCheck",
+  }) as any as S.Schema<IpsecTunnelsUpdateResponseModifiedIpsecTunnelBgpBgpStatusHealthCheck>;
+
+export interface IpsecTunnelsUpdateResponseModifiedIpsecTunnelBgpBgpStatus {
+  state: IpsecTunnelsUpdateResponseModifiedIpsecTunnelBgpBgpStatusState;
+  tcpEstablished: boolean;
+  /** formatdate-time */
+  updatedAt: string;
+  bgpState?: string | null;
+  /** formatipv4 */
+  cfSpeakerIp?: string | null;
+  /** maximum65535 */
+  cfSpeakerPort?: number | null;
+  /** formatipv4 */
+  customerSpeakerIp?: string | null;
+  /** maximum65535 */
+  customerSpeakerPort?: number | null;
+  /** The date and time the tunnel was created. */
+  createdOn?: string | null;
+  customRemoteIdentities?: IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemBgpBgpStatusCustomRemoteIdentities | null;
+  /** The IP address assigned to the customer side of the IPsec tunnel. Not required, but must be set for proactive traceroutes to work. */
+  customerEndpoint?: string | null;
+  /** An optional description forthe IPsec tunnel. */
+  description?: string | null;
+  healthCheck?: IpsecTunnelsUpdateResponseModifiedIpsecTunnelBgpBgpStatusHealthCheck | null;
+}
+export const IpsecTunnelsUpdateResponseModifiedIpsecTunnelBgpBgpStatus =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      state: IpsecTunnelsUpdateResponseModifiedIpsecTunnelBgpBgpStatusState,
+      tcpEstablished: S.Boolean.pipe(T.Body("tcp_established")),
+      updatedAt: S.String.pipe(T.Body("updated_at")),
+      bgpState: S.optional(S.NullOr(S.String).pipe(T.Body("bgp_state"))),
+      cfSpeakerIp: S.optional(S.NullOr(S.String).pipe(T.Body("cf_speaker_ip"))),
+      cfSpeakerPort: S.optional(
+        S.NullOr(S.Number).pipe(T.Body("cf_speaker_port")),
+      ),
+      customerSpeakerIp: S.optional(
+        S.NullOr(S.String).pipe(T.Body("customer_speaker_ip")),
+      ),
+      customerSpeakerPort: S.optional(
+        S.NullOr(S.Number).pipe(T.Body("customer_speaker_port")),
+      ),
+      createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
+      customRemoteIdentities: S.optional(
+        S.NullOr(
+          IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemBgpBgpStatusCustomRemoteIdentities,
+        ).pipe(T.Body("custom_remote_identities")),
+      ),
+      customerEndpoint: S.optional(
+        S.NullOr(S.String).pipe(T.Body("customer_endpoint")),
+      ),
+      description: S.optional(S.NullOr(S.String)),
+      healthCheck: S.optional(
+        S.NullOr(
+          IpsecTunnelsUpdateResponseModifiedIpsecTunnelBgpBgpStatusHealthCheck,
+        ).pipe(T.Body("health_check")),
+      ),
+    }),
+  ).annotate({
+    identifier: "IpsecTunnelsUpdateResponseModifiedIpsecTunnelBgpBgpStatus",
+  }) as any as S.Schema<IpsecTunnelsUpdateResponseModifiedIpsecTunnelBgpBgpStatus>;
+
 export interface IpsecTunnelsUpdateResponseModifiedIpsecTunnelBgp {
   /** ASN used on the customer end of the BGP session */
   customerAsn: number;
@@ -16038,6 +15946,7 @@ export interface IpsecTunnelsUpdateResponseModifiedIpsecTunnelBgp {
   importFilterId?: string | null;
   /** MD5 key to use for session authentication. */
   md5Key?: string | null;
+  bgpStatus?: IpsecTunnelsUpdateResponseModifiedIpsecTunnelBgpBgpStatus | null;
 }
 export const IpsecTunnelsUpdateResponseModifiedIpsecTunnelBgp =
   /*@__PURE__*/ S.suspend(() =>
@@ -16055,126 +15964,15 @@ export const IpsecTunnelsUpdateResponseModifiedIpsecTunnelBgp =
         S.NullOr(S.String).pipe(T.Body("import_filter_id")),
       ),
       md5Key: S.optional(S.NullOr(S.String).pipe(T.Body("md5_key"))),
+      bgpStatus: S.optional(
+        S.NullOr(
+          IpsecTunnelsUpdateResponseModifiedIpsecTunnelBgpBgpStatus,
+        ).pipe(T.Body("bgp_status")),
+      ),
     }),
   ).annotate({
     identifier: "IpsecTunnelsUpdateResponseModifiedIpsecTunnelBgp",
   }) as any as S.Schema<IpsecTunnelsUpdateResponseModifiedIpsecTunnelBgp>;
-
-export type IpsecTunnelsUpdateResponseModifiedIpsecTunnelBgpStatusState =
-  | "BGP_DOWN"
-  | "BGP_UP"
-  | "BGP_ESTABLISHING";
-export const IpsecTunnelsUpdateResponseModifiedIpsecTunnelBgpStatusState =
-  /*@__PURE__*/ S.String;
-
-export interface IpsecTunnelsUpdateResponseModifiedIpsecTunnelBgpStatus {
-  state: IpsecTunnelsUpdateResponseModifiedIpsecTunnelBgpStatusState;
-  tcpEstablished: boolean;
-  updatedAt: string;
-  bgpState?: string | null;
-  cfSpeakerIp?: string | null;
-  cfSpeakerPort?: number | null;
-  customerSpeakerIp?: string | null;
-  customerSpeakerPort?: number | null;
-}
-export const IpsecTunnelsUpdateResponseModifiedIpsecTunnelBgpStatus =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      state: IpsecTunnelsUpdateResponseModifiedIpsecTunnelBgpStatusState,
-      tcpEstablished: S.Boolean.pipe(T.Body("tcp_established")),
-      updatedAt: S.String.pipe(T.Body("updated_at")),
-      bgpState: S.optional(S.NullOr(S.String).pipe(T.Body("bgp_state"))),
-      cfSpeakerIp: S.optional(S.NullOr(S.String).pipe(T.Body("cf_speaker_ip"))),
-      cfSpeakerPort: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("cf_speaker_port")),
-      ),
-      customerSpeakerIp: S.optional(
-        S.NullOr(S.String).pipe(T.Body("customer_speaker_ip")),
-      ),
-      customerSpeakerPort: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("customer_speaker_port")),
-      ),
-    }),
-  ).annotate({
-    identifier: "IpsecTunnelsUpdateResponseModifiedIpsecTunnelBgpStatus",
-  }) as any as S.Schema<IpsecTunnelsUpdateResponseModifiedIpsecTunnelBgpStatus>;
-
-export type IpsecTunnelsUpdateResponseModifiedIpsecTunnelCustomRemoteIdentities =
-  IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemCustomRemoteIdentities;
-export const IpsecTunnelsUpdateResponseModifiedIpsecTunnelCustomRemoteIdentities =
-  IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemCustomRemoteIdentities;
-
-export type IpsecTunnelsUpdateResponseModifiedIpsecTunnelHealthCheckDirection =
-  | "unidirectional"
-  | "bidirectional";
-export const IpsecTunnelsUpdateResponseModifiedIpsecTunnelHealthCheckDirection =
-  /*@__PURE__*/ S.String;
-
-export type IpsecTunnelsUpdateResponseModifiedIpsecTunnelHealthCheckRate =
-  | "low"
-  | "mid"
-  | "high";
-export const IpsecTunnelsUpdateResponseModifiedIpsecTunnelHealthCheckRate =
-  /*@__PURE__*/ S.String;
-
-export type IpsecTunnelsUpdateResponseModifiedIpsecTunnelHealthCheckTargetMagicHealthCheckTarget =
-  CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemHealthCheckTargetMagicHealthCheckTarget;
-export const IpsecTunnelsUpdateResponseModifiedIpsecTunnelHealthCheckTargetMagicHealthCheckTarget =
-  CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemHealthCheckTargetMagicHealthCheckTarget;
-
-export type IpsecTunnelsUpdateResponseModifiedIpsecTunnelHealthCheckTarget =
-  | string
-  | CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemHealthCheckTargetMagicHealthCheckTarget;
-export const IpsecTunnelsUpdateResponseModifiedIpsecTunnelHealthCheckTarget =
-  /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], ["effective", "saved"]]));
-
-export type IpsecTunnelsUpdateResponseModifiedIpsecTunnelHealthCheckType =
-  | "reply"
-  | "request";
-export const IpsecTunnelsUpdateResponseModifiedIpsecTunnelHealthCheckType =
-  /*@__PURE__*/ S.String;
-
-export interface IpsecTunnelsUpdateResponseModifiedIpsecTunnelHealthCheck {
-  /** The direction of the flow of the healthcheck. Either unidirectional, where the probe comes to you via the tunnel and the result comes back to Cloudflare via the open Internet, or bidirectional where both the probe and result come and go via the tunnel. */
-  direction?: IpsecTunnelsUpdateResponseModifiedIpsecTunnelHealthCheckDirection | null;
-  /** Determines whether to run healthchecks for a tunnel. */
-  enabled?: boolean | null;
-  /** How frequent the health check is run. The default value is `mid`. */
-  rate?: IpsecTunnelsUpdateResponseModifiedIpsecTunnelHealthCheckRate | null;
-  /** The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customer_gre_endpoint address`. This field is ignored for bidirectional healthchecks as the interface_address (not assigned to the Cloudflare side of the tunnel) is used as the target. Must be in object form if the x-magic-new-hc-target header is set to true and string form if x-magic-new-hc-target is absent or set to false. */
-  target?: IpsecTunnelsUpdateResponseModifiedIpsecTunnelHealthCheckTarget | null;
-  /** The type of healthcheck to run, reply or request. The default value is `reply`. */
-  type?: IpsecTunnelsUpdateResponseModifiedIpsecTunnelHealthCheckType | null;
-}
-export const IpsecTunnelsUpdateResponseModifiedIpsecTunnelHealthCheck =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      direction: S.optional(
-        S.NullOr(
-          IpsecTunnelsUpdateResponseModifiedIpsecTunnelHealthCheckDirection,
-        ),
-      ),
-      enabled: S.optional(S.NullOr(S.Boolean)),
-      rate: S.optional(
-        S.NullOr(IpsecTunnelsUpdateResponseModifiedIpsecTunnelHealthCheckRate),
-      ),
-      target: S.optional(
-        S.NullOr(
-          IpsecTunnelsUpdateResponseModifiedIpsecTunnelHealthCheckTarget,
-        ),
-      ),
-      type: S.optional(
-        S.NullOr(IpsecTunnelsUpdateResponseModifiedIpsecTunnelHealthCheckType),
-      ),
-    }),
-  ).annotate({
-    identifier: "IpsecTunnelsUpdateResponseModifiedIpsecTunnelHealthCheck",
-  }) as any as S.Schema<IpsecTunnelsUpdateResponseModifiedIpsecTunnelHealthCheck>;
-
-export type IpsecTunnelsUpdateResponseModifiedIpsecTunnelPskMetadata =
-  IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemPskMetadata;
-export const IpsecTunnelsUpdateResponseModifiedIpsecTunnelPskMetadata =
-  IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemPskMetadata;
 
 export interface IpsecTunnelsUpdateResponseModifiedIpsecTunnel {
   /** Identifier */
@@ -16190,23 +15988,6 @@ export interface IpsecTunnelsUpdateResponseModifiedIpsecTunnel {
   /** True if automatic stateful return routing should be enabled for a tunnel, false otherwise. Requires the `coupler_integration` account flag to be enabled; requests setting this to `true` without that flag will be rejected. */
   automaticReturnRouting?: boolean | null;
   bgp?: IpsecTunnelsUpdateResponseModifiedIpsecTunnelBgp | null;
-  bgpStatus?: IpsecTunnelsUpdateResponseModifiedIpsecTunnelBgpStatus | null;
-  /** The date and time the tunnel was created. */
-  createdOn?: string | null;
-  customRemoteIdentities?: IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemCustomRemoteIdentities | null;
-  /** The IP address assigned to the customer side of the IPsec tunnel. Not required, but must be set for proactive traceroutes to work. */
-  customerEndpoint?: string | null;
-  /** An optional description forthe IPsec tunnel. */
-  description?: string | null;
-  healthCheck?: IpsecTunnelsUpdateResponseModifiedIpsecTunnelHealthCheck | null;
-  /** A 127 bit IPV6 prefix from within the virtual_subnet6 prefix space with the address being the first IP of the subnet and not same as the address of virtual_subnet6. Eg if virtual_subnet6 is 2606:54c1:7:0:a9fe:12d2::/127 , interface_address6 could be 2606:54c1:7:0:a9fe:12d2:1:200/127 */
-  interfaceAddress6?: string | null;
-  /** The date and time the tunnel was last modified. */
-  modifiedOn?: string | null;
-  /** The PSK metadata that includes when the PSK was generated. */
-  pskMetadata?: IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemPskMetadata | null;
-  /** If `true`, then IPsec replay protection will be supported in the Cloudflare-to-customer direction. */
-  replayProtection?: boolean | null;
 }
 export const IpsecTunnelsUpdateResponseModifiedIpsecTunnel =
   /*@__PURE__*/ S.suspend(() =>
@@ -16223,38 +16004,6 @@ export const IpsecTunnelsUpdateResponseModifiedIpsecTunnel =
       ),
       bgp: S.optional(
         S.NullOr(IpsecTunnelsUpdateResponseModifiedIpsecTunnelBgp),
-      ),
-      bgpStatus: S.optional(
-        S.NullOr(IpsecTunnelsUpdateResponseModifiedIpsecTunnelBgpStatus).pipe(
-          T.Body("bgp_status"),
-        ),
-      ),
-      createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
-      customRemoteIdentities: S.optional(
-        S.NullOr(
-          IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemCustomRemoteIdentities,
-        ).pipe(T.Body("custom_remote_identities")),
-      ),
-      customerEndpoint: S.optional(
-        S.NullOr(S.String).pipe(T.Body("customer_endpoint")),
-      ),
-      description: S.optional(S.NullOr(S.String)),
-      healthCheck: S.optional(
-        S.NullOr(IpsecTunnelsUpdateResponseModifiedIpsecTunnelHealthCheck).pipe(
-          T.Body("health_check"),
-        ),
-      ),
-      interfaceAddress6: S.optional(
-        S.NullOr(S.String).pipe(T.Body("interface_address6")),
-      ),
-      modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-      pskMetadata: S.optional(
-        S.NullOr(
-          IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemPskMetadata,
-        ).pipe(T.Body("psk_metadata")),
-      ),
-      replayProtection: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("replay_protection")),
       ),
     }),
   ).annotate({
@@ -16532,6 +16281,71 @@ export const SitesAclsUpdateRequestLan1SubnetsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SitesAclsUpdateRequestLan1SubnetsList>;
 
+export type SitesAclsUpdateRequestLan1Lan2PortRangesList = Array<string>;
+export const SitesAclsUpdateRequestLan1Lan2PortRangesList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<SitesAclsUpdateRequestLan1Lan2PortRangesList>;
+
+export type SitesAclsUpdateRequestLan1Lan2PortsList = Array<number>;
+export const SitesAclsUpdateRequestLan1Lan2PortsList = /*@__PURE__*/ S.Array(
+  S.Number,
+) as any as S.Schema<SitesAclsUpdateRequestLan1Lan2PortsList>;
+
+export type SitesAclsUpdateRequestLan1Lan2SubnetsList = Array<unknown>;
+export const SitesAclsUpdateRequestLan1Lan2SubnetsList = /*@__PURE__*/ S.Array(
+  S.Unknown,
+) as any as S.Schema<SitesAclsUpdateRequestLan1Lan2SubnetsList>;
+
+export type SitesAclsUpdateRequestLan1Lan2ProtocolsItem =
+  | "tcp"
+  | "udp"
+  | "icmp";
+export const SitesAclsUpdateRequestLan1Lan2ProtocolsItem =
+  /*@__PURE__*/ S.String;
+
+export type SitesAclsUpdateRequestLan1Lan2ProtocolsList = Array<
+  SitesAclsUpdateRequestLan1Lan2ProtocolsItem | (string & {})
+>;
+export const SitesAclsUpdateRequestLan1Lan2ProtocolsList =
+  /*@__PURE__*/ S.Array(
+    SitesAclsUpdateRequestLan1Lan2ProtocolsItem,
+  ) as any as S.Schema<SitesAclsUpdateRequestLan1Lan2ProtocolsList>;
+
+export interface SitesAclsUpdateRequestLan1Lan2 {
+  /** The identifier for the LAN you want to create an ACL policy with. */
+  lanId: string;
+  /** The name of the LAN based on the provided lan_id. */
+  lanName?: string;
+  /** Array of port ranges on the provided LAN that will be included in the ACL. If no ports or port rangess are provided, communication on any port on this LAN is allowed. */
+  portRanges?: SitesAclsUpdateRequestLan1Lan2PortRangesList;
+  /** Array of ports on the provided LAN that will be included in the ACL. If no ports or port ranges are provided, communication on any port on this LAN is allowed. */
+  ports?: SitesAclsUpdateRequestLan1Lan2PortsList;
+  /** Array of subnet IPs within the LAN that will be included in the ACL. If no subnets are provided, communication on any subnets on this LAN are allowed. */
+  subnets?: SitesAclsUpdateRequestLan1Lan2SubnetsList;
+  /** The name of the ACL. */
+  name?: string;
+  protocols?: SitesAclsUpdateRequestLan1Lan2ProtocolsList;
+  /** The desired traffic direction for this ACL policy. If set to “false”, the policy will allow bidirectional traffic. If set to “true”, the policy will only allow traffic in one direction. If not included in request, will default to false. */
+  unidirectional?: boolean;
+}
+export const SitesAclsUpdateRequestLan1Lan2 = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    lanId: S.String.pipe(T.Body("lan_id")),
+    lanName: S.optional(S.String.pipe(T.Body("lan_name"))),
+    portRanges: S.optional(
+      SitesAclsUpdateRequestLan1Lan2PortRangesList.pipe(T.Body("port_ranges")),
+    ),
+    ports: S.optional(SitesAclsUpdateRequestLan1Lan2PortsList),
+    subnets: S.optional(SitesAclsUpdateRequestLan1Lan2SubnetsList),
+    name: S.optional(S.String),
+    protocols: S.optional(SitesAclsUpdateRequestLan1Lan2ProtocolsList),
+    unidirectional: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "SitesAclsUpdateRequestLan1Lan2",
+}) as any as S.Schema<SitesAclsUpdateRequestLan1Lan2>;
+
 export interface SitesAclsUpdateRequestLan1 {
   /** The identifier for the LAN you want to create an ACL policy with. */
   lanId: string;
@@ -16543,6 +16357,7 @@ export interface SitesAclsUpdateRequestLan1 {
   ports?: SitesAclsUpdateRequestLan1PortsList;
   /** Array of subnet IPs within the LAN that will be included in the ACL. If no subnets are provided, communication on any subnets on this LAN are allowed. */
   subnets?: SitesAclsUpdateRequestLan1SubnetsList;
+  lan_2?: SitesAclsUpdateRequestLan1Lan2;
 }
 export const SitesAclsUpdateRequestLan1 = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -16553,20 +16368,11 @@ export const SitesAclsUpdateRequestLan1 = /*@__PURE__*/ S.suspend(() =>
     ),
     ports: S.optional(SitesAclsUpdateRequestLan1PortsList),
     subnets: S.optional(SitesAclsUpdateRequestLan1SubnetsList),
+    lan_2: S.optional(SitesAclsUpdateRequestLan1Lan2),
   }),
 ).annotate({
   identifier: "SitesAclsUpdateRequestLan1",
 }) as any as S.Schema<SitesAclsUpdateRequestLan1>;
-
-export type SitesAclsUpdateRequestProtocolsItem = "tcp" | "udp" | "icmp";
-export const SitesAclsUpdateRequestProtocolsItem = /*@__PURE__*/ S.String;
-
-export type SitesAclsUpdateRequestProtocolsList = Array<
-  SitesAclsUpdateRequestProtocolsItem | (string & {})
->;
-export const SitesAclsUpdateRequestProtocolsList = /*@__PURE__*/ S.Array(
-  SitesAclsUpdateRequestProtocolsItem,
-) as any as S.Schema<SitesAclsUpdateRequestProtocolsList>;
 
 export interface UpdateSiteAclRequest {
   /** Identifier */
@@ -16577,15 +16383,9 @@ export interface UpdateSiteAclRequest {
   aclId: string;
   /** Description for the ACL. */
   description?: string;
-  /** The desired forwarding action for this ACL policy. If set to "false", the policy will forward traffic to Cloudflare. If set to "true", the policy will forward traffic locally on the Magic Connector. If not included in request, will default to false. */
+  /** The desired forwarding action for this ACL policy. If set to “false”, the policy will forward traffic to Cloudflare. If set to “true”, the policy will forward traffic locally on the Magic Connector. If not included in request, will default to false. */
   forwardLocally?: boolean;
   lan_1?: SitesAclsUpdateRequestLan1;
-  lan_2?: SitesAclsUpdateRequestLan1;
-  /** The name of the ACL. */
-  name?: string;
-  protocols?: SitesAclsUpdateRequestProtocolsList;
-  /** The desired traffic direction for this ACL policy. If set to "false", the policy will allow bidirectional traffic. If set to "true", the policy will only allow traffic in one direction. If not included in request, will default to false. */
-  unidirectional?: boolean;
 }
 export const UpdateSiteAclRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -16595,10 +16395,6 @@ export const UpdateSiteAclRequest = /*@__PURE__*/ S.suspend(() =>
     description: S.optional(S.String),
     forwardLocally: S.optional(S.Boolean.pipe(T.Body("forward_locally"))),
     lan_1: S.optional(SitesAclsUpdateRequestLan1),
-    lan_2: S.optional(SitesAclsUpdateRequestLan1),
-    name: S.optional(S.String),
-    protocols: S.optional(SitesAclsUpdateRequestProtocolsList),
-    unidirectional: S.optional(S.Boolean),
   })
     .pipe(
       T.Http({
@@ -16627,6 +16423,74 @@ export const SitesAclsUpdateResponseLan1SubnetsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SitesAclsUpdateResponseLan1SubnetsList>;
 
+export type SitesAclsUpdateResponseLan1Lan2PortRangesList = Array<string>;
+export const SitesAclsUpdateResponseLan1Lan2PortRangesList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<SitesAclsUpdateResponseLan1Lan2PortRangesList>;
+
+export type SitesAclsUpdateResponseLan1Lan2PortsList = Array<number>;
+export const SitesAclsUpdateResponseLan1Lan2PortsList = /*@__PURE__*/ S.Array(
+  S.Number,
+) as any as S.Schema<SitesAclsUpdateResponseLan1Lan2PortsList>;
+
+export type SitesAclsUpdateResponseLan1Lan2SubnetsList = Array<unknown>;
+export const SitesAclsUpdateResponseLan1Lan2SubnetsList = /*@__PURE__*/ S.Array(
+  S.Unknown,
+) as any as S.Schema<SitesAclsUpdateResponseLan1Lan2SubnetsList>;
+
+export type SitesAclsUpdateResponseLan1Lan2ProtocolsItem =
+  | "tcp"
+  | "udp"
+  | "icmp";
+export const SitesAclsUpdateResponseLan1Lan2ProtocolsItem =
+  /*@__PURE__*/ S.String;
+
+export type SitesAclsUpdateResponseLan1Lan2ProtocolsList =
+  Array<SitesAclsUpdateResponseLan1Lan2ProtocolsItem>;
+export const SitesAclsUpdateResponseLan1Lan2ProtocolsList =
+  /*@__PURE__*/ S.Array(
+    SitesAclsUpdateResponseLan1Lan2ProtocolsItem,
+  ) as any as S.Schema<SitesAclsUpdateResponseLan1Lan2ProtocolsList>;
+
+export interface SitesAclsUpdateResponseLan1Lan2 {
+  /** The identifier for the LAN you want to create an ACL policy with. */
+  lanId: string;
+  /** The name of the LAN based on the provided lan_id. */
+  lanName?: string | null;
+  /** Array of port ranges on the provided LAN that will be included in the ACL. If no ports or port rangess are provided, communication on any port on this LAN is allowed. */
+  portRanges?: SitesAclsUpdateResponseLan1Lan2PortRangesList | null;
+  /** Array of ports on the provided LAN that will be included in the ACL. If no ports or port ranges are provided, communication on any port on this LAN is allowed. */
+  ports?: SitesAclsUpdateResponseLan1Lan2PortsList | null;
+  /** Array of subnet IPs within the LAN that will be included in the ACL. If no subnets are provided, communication on any subnets on this LAN are allowed. */
+  subnets?: SitesAclsUpdateResponseLan1Lan2SubnetsList | null;
+  /** The name of the ACL. */
+  name?: string | null;
+  protocols?: SitesAclsUpdateResponseLan1Lan2ProtocolsList | null;
+  /** The desired traffic direction for this ACL policy. If set to “false”, the policy will allow bidirectional traffic. If set to “true”, the policy will only allow traffic in one direction. If not included in request, will default to false. */
+  unidirectional?: boolean | null;
+}
+export const SitesAclsUpdateResponseLan1Lan2 = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    lanId: S.String.pipe(T.Body("lan_id")),
+    lanName: S.optional(S.NullOr(S.String).pipe(T.Body("lan_name"))),
+    portRanges: S.optional(
+      S.NullOr(SitesAclsUpdateResponseLan1Lan2PortRangesList).pipe(
+        T.Body("port_ranges"),
+      ),
+    ),
+    ports: S.optional(S.NullOr(SitesAclsUpdateResponseLan1Lan2PortsList)),
+    subnets: S.optional(S.NullOr(SitesAclsUpdateResponseLan1Lan2SubnetsList)),
+    name: S.optional(S.NullOr(S.String)),
+    protocols: S.optional(
+      S.NullOr(SitesAclsUpdateResponseLan1Lan2ProtocolsList),
+    ),
+    unidirectional: S.optional(S.NullOr(S.Boolean)),
+  }),
+).annotate({
+  identifier: "SitesAclsUpdateResponseLan1Lan2",
+}) as any as S.Schema<SitesAclsUpdateResponseLan1Lan2>;
+
 export interface SitesAclsUpdateResponseLan1 {
   /** The identifier for the LAN you want to create an ACL policy with. */
   lanId: string;
@@ -16638,6 +16502,7 @@ export interface SitesAclsUpdateResponseLan1 {
   ports?: SitesAclsUpdateResponseLan1PortsList | null;
   /** Array of subnet IPs within the LAN that will be included in the ACL. If no subnets are provided, communication on any subnets on this LAN are allowed. */
   subnets?: SitesAclsUpdateResponseLan1SubnetsList | null;
+  lan_2?: SitesAclsUpdateResponseLan1Lan2 | null;
 }
 export const SitesAclsUpdateResponseLan1 = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -16650,19 +16515,11 @@ export const SitesAclsUpdateResponseLan1 = /*@__PURE__*/ S.suspend(() =>
     ),
     ports: S.optional(S.NullOr(SitesAclsUpdateResponseLan1PortsList)),
     subnets: S.optional(S.NullOr(SitesAclsUpdateResponseLan1SubnetsList)),
+    lan_2: S.optional(S.NullOr(SitesAclsUpdateResponseLan1Lan2)),
   }),
 ).annotate({
   identifier: "SitesAclsUpdateResponseLan1",
 }) as any as S.Schema<SitesAclsUpdateResponseLan1>;
-
-export type SitesAclsUpdateResponseProtocolsItem = "tcp" | "udp" | "icmp";
-export const SitesAclsUpdateResponseProtocolsItem = /*@__PURE__*/ S.String;
-
-export type SitesAclsUpdateResponseProtocolsList =
-  Array<SitesAclsUpdateResponseProtocolsItem>;
-export const SitesAclsUpdateResponseProtocolsList = /*@__PURE__*/ S.Array(
-  SitesAclsUpdateResponseProtocolsItem,
-) as any as S.Schema<SitesAclsUpdateResponseProtocolsList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface UpdateSiteAclResponse {
@@ -16670,15 +16527,9 @@ export interface UpdateSiteAclResponse {
   id?: string | null;
   /** Description for the ACL. */
   description?: string | null;
-  /** The desired forwarding action for this ACL policy. If set to "false", the policy will forward traffic to Cloudflare. If set to "true", the policy will forward traffic locally on the Magic Connector. If not included in request, will default to false. */
+  /** The desired forwarding action for this ACL policy. If set to “false”, the policy will forward traffic to Cloudflare. If set to “true”, the policy will forward traffic locally on the Magic Connector. If not included in request, will default to false. */
   forwardLocally?: boolean | null;
   lan_1?: SitesAclsUpdateResponseLan1 | null;
-  lan_2?: SitesAclsUpdateResponseLan1 | null;
-  /** The name of the ACL. */
-  name?: string | null;
-  protocols?: SitesAclsUpdateResponseProtocolsList | null;
-  /** The desired traffic direction for this ACL policy. If set to "false", the policy will allow bidirectional traffic. If set to "true", the policy will only allow traffic in one direction. If not included in request, will default to false. */
-  unidirectional?: boolean | null;
 }
 export const UpdateSiteAclResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -16688,10 +16539,6 @@ export const UpdateSiteAclResponse = /*@__PURE__*/ S.suspend(() =>
       S.NullOr(S.Boolean).pipe(T.Body("forward_locally")),
     ),
     lan_1: S.optional(S.NullOr(SitesAclsUpdateResponseLan1)),
-    lan_2: S.optional(S.NullOr(SitesAclsUpdateResponseLan1)),
-    name: S.optional(S.NullOr(S.String)),
-    protocols: S.optional(S.NullOr(SitesAclsUpdateResponseProtocolsList)),
-    unidirectional: S.optional(S.NullOr(S.Boolean)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateSiteAclResponse",
@@ -16699,6 +16546,11 @@ export const UpdateSiteAclResponse = /*@__PURE__*/ S.suspend(() =>
 
 export type SitesLansUpdateRequestNat = SitesLansCreateRequestNat;
 export const SitesLansUpdateRequestNat = SitesLansCreateRequestNat;
+
+export type SitesLansUpdateRequestRoutedSubnetsItemNat =
+  SitesLansCreateRequestNat;
+export const SitesLansUpdateRequestRoutedSubnetsItemNat =
+  SitesLansCreateRequestNat;
 
 export type SitesLansUpdateRequestRoutedSubnetsItem =
   SitesLansCreateRequestRoutedSubnetsItem;
@@ -16748,7 +16600,7 @@ export const SitesLansUpdateRequestStaticAddressingDhcpServerDhcpOptionsItemType
 export interface SitesLansUpdateRequestStaticAddressingDhcpServerDhcpOptionsItem {
   /** DHCP option number (1-254). Options 0 and 255 are reserved by RFC 2132. Options 3, 6, and 51 are not allowed because they conflict with connector-managed configuration. */
   code: number;
-  /** The type of the option value. text: a string (max 255 bytes). hex: colon-separated hex bytes (e.g. "01:04:aa:bb:cc", max 255 bytes). ip: an IPv4 address (e.g. "10.20.30.40"). byte: an unsigned integer 0-255 (1 byte). short: an unsigned integer 0-65535 (2 bytes). integer: an unsigned integer 0-4294967295 (4 bytes). */
+  /** The type of the option value. text: a string (max 255 bytes). hex: colon-separated hex bytes (e.g. “01:04:aa:bb:cc”, max 255 bytes). ip: an IPv4 address (e.g. “10.20.30.40”). byte: an unsigned integer 0-255 (1 byte). short: an unsigned integer 0-65535 (2 bytes). integer: an unsigned integer 0-4294967295 (4 bytes). */
   type:
     | SitesLansUpdateRequestStaticAddressingDhcpServerDhcpOptionsItemType
     | (string & {});
@@ -16802,6 +16654,12 @@ export interface SitesLansUpdateRequestStaticAddressingDhcpServer {
   dnsServers?: SitesLansUpdateRequestStaticAddressingDhcpServerDnsServersList;
   /** Mapping of MAC addresses to IP addresses */
   reservations?: SitesLansUpdateRequestStaticAddressingDhcpServerReservationsMap;
+  /** A valid CIDR notation representing an IP range. */
+  secondaryAddress?: string;
+  /** A valid CIDR notation representing an IP range. */
+  virtualAddress?: string;
+  /** VLAN ID. Use zero for untagged. */
+  vlanTag?: number;
 }
 export const SitesLansUpdateRequestStaticAddressingDhcpServer =
   /*@__PURE__*/ S.suspend(() =>
@@ -16822,6 +16680,9 @@ export const SitesLansUpdateRequestStaticAddressingDhcpServer =
       reservations: S.optional(
         SitesLansUpdateRequestStaticAddressingDhcpServerReservationsMap,
       ),
+      secondaryAddress: S.optional(S.String.pipe(T.Body("secondary_address"))),
+      virtualAddress: S.optional(S.String.pipe(T.Body("virtual_address"))),
+      vlanTag: S.optional(S.Number.pipe(T.Body("vlan_tag"))),
     }),
   ).annotate({
     identifier: "SitesLansUpdateRequestStaticAddressingDhcpServer",
@@ -16832,10 +16693,6 @@ export interface SitesLansUpdateRequestStaticAddressing {
   address: string;
   dhcpRelay?: SitesLansUpdateRequestStaticAddressingDhcpRelay;
   dhcpServer?: SitesLansUpdateRequestStaticAddressingDhcpServer;
-  /** A valid CIDR notation representing an IP range. */
-  secondaryAddress?: string;
-  /** A valid CIDR notation representing an IP range. */
-  virtualAddress?: string;
 }
 export const SitesLansUpdateRequestStaticAddressing = /*@__PURE__*/ S.suspend(
   () =>
@@ -16851,8 +16708,6 @@ export const SitesLansUpdateRequestStaticAddressing = /*@__PURE__*/ S.suspend(
           T.Body("dhcp_server"),
         ),
       ),
-      secondaryAddress: S.optional(S.String.pipe(T.Body("secondary_address"))),
-      virtualAddress: S.optional(S.String.pipe(T.Body("virtual_address"))),
     }),
 ).annotate({
   identifier: "SitesLansUpdateRequestStaticAddressing",
@@ -16876,8 +16731,6 @@ export interface UpdateSiteLanRequest {
   routedSubnets?: SitesLansUpdateRequestRoutedSubnetsList;
   /** If the site is not configured in high availability mode, this configuration is optional (if omitted, use DHCP). However, if in high availability mode, static_address is required along with secondary and virtual address. */
   staticAddressing?: SitesLansUpdateRequestStaticAddressing;
-  /** VLAN ID. Use zero for untagged. */
-  vlanTag?: number;
 }
 export const UpdateSiteLanRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -16896,7 +16749,6 @@ export const UpdateSiteLanRequest = /*@__PURE__*/ S.suspend(() =>
     staticAddressing: S.optional(
       SitesLansUpdateRequestStaticAddressing.pipe(T.Body("static_addressing")),
     ),
-    vlanTag: S.optional(S.Number.pipe(T.Body("vlan_tag"))),
   })
     .pipe(
       T.Http({
@@ -16912,6 +16764,11 @@ export const UpdateSiteLanRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type SitesLansUpdateResponseNat = SitesLansCreateResultItemNat;
 export const SitesLansUpdateResponseNat = SitesLansCreateResultItemNat;
+
+export type SitesLansUpdateResponseRoutedSubnetsItemNat =
+  SitesLansCreateResultItemNat;
+export const SitesLansUpdateResponseRoutedSubnetsItemNat =
+  SitesLansCreateResultItemNat;
 
 export type SitesLansUpdateResponseRoutedSubnetsItem =
   SitesLansCreateResultItemRoutedSubnetsItem;
@@ -16961,7 +16818,7 @@ export const SitesLansUpdateResponseStaticAddressingDhcpServerDhcpOptionsItemTyp
 export interface SitesLansUpdateResponseStaticAddressingDhcpServerDhcpOptionsItem {
   /** DHCP option number (1-254). Options 0 and 255 are reserved by RFC 2132. Options 3, 6, and 51 are not allowed because they conflict with connector-managed configuration. */
   code: number;
-  /** The type of the option value. text: a string (max 255 bytes). hex: colon-separated hex bytes (e.g. "01:04:aa:bb:cc", max 255 bytes). ip: an IPv4 address (e.g. "10.20.30.40"). byte: an unsigned integer 0-255 (1 byte). short: an unsigned integer 0-65535 (2 bytes). integer: an unsigned integer 0-4294967295 (4 bytes). */
+  /** The type of the option value. text: a string (max 255 bytes). hex: colon-separated hex bytes (e.g. “01:04:aa:bb:cc”, max 255 bytes). ip: an IPv4 address (e.g. “10.20.30.40”). byte: an unsigned integer 0-255 (1 byte). short: an unsigned integer 0-65535 (2 bytes). integer: an unsigned integer 0-4294967295 (4 bytes). */
   type: SitesLansUpdateResponseStaticAddressingDhcpServerDhcpOptionsItemType;
   /** The option value, interpreted according to the type field. */
   value: string;
@@ -17013,6 +16870,12 @@ export interface SitesLansUpdateResponseStaticAddressingDhcpServer {
   dnsServers?: SitesLansUpdateResponseStaticAddressingDhcpServerDnsServersList | null;
   /** Mapping of MAC addresses to IP addresses */
   reservations?: SitesLansUpdateResponseStaticAddressingDhcpServerReservationsMap | null;
+  /** A valid CIDR notation representing an IP range. */
+  secondaryAddress?: string | null;
+  /** A valid CIDR notation representing an IP range. */
+  virtualAddress?: string | null;
+  /** VLAN ID. Use zero for untagged. */
+  vlanTag?: number | null;
 }
 export const SitesLansUpdateResponseStaticAddressingDhcpServer =
   /*@__PURE__*/ S.suspend(() =>
@@ -17037,6 +16900,13 @@ export const SitesLansUpdateResponseStaticAddressingDhcpServer =
           SitesLansUpdateResponseStaticAddressingDhcpServerReservationsMap,
         ),
       ),
+      secondaryAddress: S.optional(
+        S.NullOr(S.String).pipe(T.Body("secondary_address")),
+      ),
+      virtualAddress: S.optional(
+        S.NullOr(S.String).pipe(T.Body("virtual_address")),
+      ),
+      vlanTag: S.optional(S.NullOr(S.Number).pipe(T.Body("vlan_tag"))),
     }),
   ).annotate({
     identifier: "SitesLansUpdateResponseStaticAddressingDhcpServer",
@@ -17047,10 +16917,6 @@ export interface SitesLansUpdateResponseStaticAddressing {
   address: string;
   dhcpRelay?: SitesLansUpdateResponseStaticAddressingDhcpRelay | null;
   dhcpServer?: SitesLansUpdateResponseStaticAddressingDhcpServer | null;
-  /** A valid CIDR notation representing an IP range. */
-  secondaryAddress?: string | null;
-  /** A valid CIDR notation representing an IP range. */
-  virtualAddress?: string | null;
 }
 export const SitesLansUpdateResponseStaticAddressing = /*@__PURE__*/ S.suspend(
   () =>
@@ -17065,12 +16931,6 @@ export const SitesLansUpdateResponseStaticAddressing = /*@__PURE__*/ S.suspend(
         S.NullOr(SitesLansUpdateResponseStaticAddressingDhcpServer).pipe(
           T.Body("dhcp_server"),
         ),
-      ),
-      secondaryAddress: S.optional(
-        S.NullOr(S.String).pipe(T.Body("secondary_address")),
-      ),
-      virtualAddress: S.optional(
-        S.NullOr(S.String).pipe(T.Body("virtual_address")),
       ),
     }),
 ).annotate({
@@ -17096,8 +16956,6 @@ export interface UpdateSiteLanResponse {
   siteId?: string | null;
   /** If the site is not configured in high availability mode, this configuration is optional (if omitted, use DHCP). However, if in high availability mode, static_address is required along with secondary and virtual address. */
   staticAddressing?: SitesLansUpdateResponseStaticAddressing | null;
-  /** VLAN ID. Use zero for untagged. */
-  vlanTag?: number | null;
 }
 export const UpdateSiteLanResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -17122,7 +16980,6 @@ export const UpdateSiteLanResponse = /*@__PURE__*/ S.suspend(() =>
         T.Body("static_addressing"),
       ),
     ),
-    vlanTag: S.optional(S.NullOr(S.Number).pipe(T.Body("vlan_tag"))),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateSiteLanResponse",
@@ -17341,6 +17198,36 @@ export const bulkPutRoutes: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
+export type ConnectorsInterruptsCreateError = CloudflareOpError;
+/** Creates an interrupt for a Magic WAN Connector. */
+export const connectorsInterruptsCreate: API.OperationMethod<
+  ConnectorsInterruptsCreateRequest,
+  ConnectorsInterruptsCreateResponse,
+  ConnectorsInterruptsCreateError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ConnectorsInterruptsCreateRequest,
+  output: ConnectorsInterruptsCreateResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ConnectorsInterruptsListError = CloudflareOpError;
+/** Lists interrupts for a Magic WAN Connector. */
+export const connectorsInterruptsList: API.OperationMethod<
+  ConnectorsInterruptsListRequest,
+  ConnectorsInterruptsListResponse,
+  ConnectorsInterruptsListError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ConnectorsInterruptsListRequest,
+  output: ConnectorsInterruptsListResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+  retry: Retry.Retry,
+}));
+
 export type CreateAppError =
   | MagicWanUnauthorized
   | Forbidden
@@ -17405,7 +17292,7 @@ export const createCf1SiteRamp: API.PaginatedOperationMethod<
 ) as any;
 
 export type CreateConnectorError = CloudflareOpError;
-/** Add a connector to your account */
+/** Creates a Magic WAN Connector. */
 export const createConnector: API.OperationMethod<
   CreateConnectorRequest,
   CreateConnectorResponse,
@@ -17676,7 +17563,7 @@ export const deleteCf1SiteRamp: API.OperationMethod<
 }));
 
 export type DeleteConnectorError = CloudflareOpError;
-/** Remove a connector from your account */
+/** Deletes a Magic WAN Connector. */
 export const deleteConnector: API.OperationMethod<
   DeleteConnectorRequest,
   DeleteConnectorResponse,
@@ -17941,7 +17828,7 @@ export const getCfInterconnect: API.OperationMethod<
 }));
 
 export type GetConnectorError = CloudflareOpError;
-/** Fetch Connector */
+/** Gets a Magic WAN Connector. */
 export const getConnector: API.OperationMethod<
   GetConnectorRequest,
   GetConnectorResponse,
@@ -17956,7 +17843,7 @@ export const getConnector: API.OperationMethod<
 }));
 
 export type GetConnectorEventError = CloudflareOpError;
-/** Get Event */
+/** Gets Magic WAN Connector Telemetry Event */
 export const getConnectorEvent: API.OperationMethod<
   GetConnectorEventRequest,
   GetConnectorEventResponse,
@@ -17971,7 +17858,7 @@ export const getConnectorEvent: API.OperationMethod<
 }));
 
 export type GetConnectorSnapshotError = CloudflareOpError;
-/** Get Snapshot */
+/** Gets Magic WAN Connector Telemetry Snapshot */
 export const getConnectorSnapshot: API.OperationMethod<
   GetConnectorSnapshotRequest,
   GetConnectorSnapshotResponse,
@@ -18294,7 +18181,7 @@ export const listCfInterconnects: API.OperationMethod<
 }));
 
 export type ListConnectorEventLatestsError = CloudflareOpError;
-/** Get latest Events */
+/** Gets latest Magic WAN Connector Telemetry Events */
 export const listConnectorEventLatests: API.OperationMethod<
   ListConnectorEventLatestsRequest,
   ListConnectorEventLatestsResponse,
@@ -18309,7 +18196,7 @@ export const listConnectorEventLatests: API.OperationMethod<
 }));
 
 export type ListConnectorEventsError = CloudflareOpError;
-/** List Events */
+/** Lists Magic WAN Connector Telemetry Events */
 export const listConnectorEvents: API.OperationMethod<
   ListConnectorEventsRequest,
   ListConnectorEventsResponse,
@@ -18324,7 +18211,7 @@ export const listConnectorEvents: API.OperationMethod<
 }));
 
 export type ListConnectorsError = CloudflareOpError;
-/** List Connectors */
+/** Lists Magic WAN Connectors. */
 export const listConnectors: API.PaginatedOperationMethod<
   ListConnectorsRequest,
   ListConnectorsResponse,
@@ -18344,7 +18231,7 @@ export const listConnectors: API.PaginatedOperationMethod<
 ) as any;
 
 export type ListConnectorSnapshotLatestsError = CloudflareOpError;
-/** Get latest Snapshots */
+/** Gets latest Magic WAN Connector Telemetry Snapshots */
 export const listConnectorSnapshotLatests: API.OperationMethod<
   ListConnectorSnapshotLatestsRequest,
   ListConnectorSnapshotLatestsResponse,
@@ -18359,7 +18246,7 @@ export const listConnectorSnapshotLatests: API.OperationMethod<
 }));
 
 export type ListConnectorSnapshotsError = CloudflareOpError;
-/** List Snapshots */
+/** Lists Magic WAN Connector Telemetry Snapshots */
 export const listConnectorSnapshots: API.OperationMethod<
   ListConnectorSnapshotsRequest,
   ListConnectorSnapshotsResponse,
@@ -18426,7 +18313,7 @@ export const listPcaps: API.PaginatedOperationMethod<
   ListPcapsResponse,
   ListPcapsError,
   CloudflareOpContext,
-  PcapsListResultItem
+  unknown
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListPcapsRequest,
@@ -18615,7 +18502,7 @@ export const patchCf1Site: API.OperationMethod<
 }));
 
 export type PatchConnectorError = CloudflareOpError;
-/** Edit Connector to update specific properties or Re-provision License Key */
+/** Edits properties of a Magic WAN Connector. May be used to re-provision a license key. */
 export const patchConnector: API.OperationMethod<
   PatchConnectorRequest,
   PatchConnectorResponse,
@@ -18730,7 +18617,7 @@ export const patchSiteWan: API.OperationMethod<
 }));
 
 export type PskGenerateIpsecTunnelError = CloudflareOpError;
-/** Generates a Pre-Shared Key for a specific IPsec tunnel used in the IKE session. Use `?validate_only=true` as an optional query parameter to only run validation without persisting changes. After a PSK is generated, the PSK is immediately persisted to Cloudflare's edge and cannot be retrieved later. Store the PSK in a safe place. */
+/** Generates a Pre-Shared Key for a specific IPsec tunnel used in the IKE session. Use `?validate_only=true` as an optional query parameter to only run validation without persisting changes. After a PSK is generated, the PSK is immediately persisted to Cloudflare’s edge and cannot be retrieved later. Store the PSK in a safe place. */
 export const pskGenerateIpsecTunnel: API.OperationMethod<
   PskGenerateIpsecTunnelRequest,
   PskGenerateIpsecTunnelResponse,
@@ -18745,7 +18632,7 @@ export const pskGenerateIpsecTunnel: API.OperationMethod<
 }));
 
 export type PskSetIpsecTunnelError = CloudflareOpError;
-/** Sets Pre-Shared Keys for multiple IPsec tunnels associated with an account. Use `?validate_only=true` as an optional query parameter to only run validation without persisting changes. After PSKs are applied, they are immediately persisted to Cloudflare's edge and cannot be retrieved later. Store the PSKs in a safe place. */
+/** Sets Pre-Shared Keys for multiple IPsec tunnels associated with an account. Use `?validate_only=true` as an optional query parameter to only run validation without persisting changes. After PSKs are applied, they are immediately persisted to Cloudflare’s edge and cannot be retrieved later. Store the PSKs in a safe place. */
 export const pskSetIpsecTunnel: API.OperationMethod<
   PskSetIpsecTunnelRequest,
   PskSetIpsecTunnelResponse,
@@ -18890,7 +18777,7 @@ export const updateApp: API.OperationMethod<
 }));
 
 export type UpdateConnectorError = CloudflareOpError;
-/** Replace Connector or Re-provision License Key */
+/** Updates properties of a Magic WAN Connector. May be used to re-provision a license key. */
 export const updateConnector: API.OperationMethod<
   UpdateConnectorRequest,
   UpdateConnectorResponse,

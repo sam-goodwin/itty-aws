@@ -71,266 +71,15 @@ export class InvalidRequest
     [{ code: 7003 }],
   ) {}
 
-export type CreateRequestAct =
-  | "abuse_dmca"
-  | "abuse_trademark"
-  | "abuse_general"
-  | "abuse_phishing"
-  | "abuse_children"
-  | "abuse_threat"
-  | "abuse_registrar_whois"
-  | "abuse_ncsei";
-export const CreateRequestAct = /*@__PURE__*/ S.String;
-
-export type CreateRequestAgree = 1;
-export const CreateRequestAgree = /*@__PURE__*/ S.Number;
-
-export type CreateRequestHostNotificationEnum = "send";
-export const CreateRequestHostNotificationEnum = /*@__PURE__*/ S.String;
-
-export type CreateRequestHostNotificationAbuseGeneral = "send" | "send-anon";
-export const CreateRequestHostNotificationAbuseGeneral = /*@__PURE__*/ S.String;
-
-export type CreateRequestHostNotification =
-  | CreateRequestHostNotificationEnum
-  | (string & {})
-  | CreateRequestHostNotificationAbuseGeneral
-  | (string & {});
-export const CreateRequestHostNotification = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([[], []]),
-);
-
-export type CreateRequestOwnerNotificationEnum = "send";
-export const CreateRequestOwnerNotificationEnum = /*@__PURE__*/ S.String;
-
-export type CreateRequestOwnerNotificationAbuseGeneral = "send" | "send-anon";
-export const CreateRequestOwnerNotificationAbuseGeneral =
-  /*@__PURE__*/ S.String;
-
-export type CreateRequestOwnerNotificationAbuseChildren =
-  | "send"
-  | "send-anon"
-  | "none";
-export const CreateRequestOwnerNotificationAbuseChildren =
-  /*@__PURE__*/ S.String;
-
-export type CreateRequestOwnerNotification =
-  | CreateRequestOwnerNotificationEnum
-  | (string & {})
-  | CreateRequestOwnerNotificationAbuseGeneral
-  | (string & {})
-  | CreateRequestOwnerNotificationAbuseChildren
-  | (string & {});
-export const CreateRequestOwnerNotification = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([[], [], []]),
-);
-
-export type CreateRequestNcmecNotification = "send" | "send-anon";
-export const CreateRequestNcmecNotification = /*@__PURE__*/ S.String;
-
-export type CreateRequestRegWhoRequestRegWhoRequestType =
-  | "disclosure"
-  | "invalid_whois";
-export const CreateRequestRegWhoRequestRegWhoRequestType =
-  /*@__PURE__*/ S.String;
-
-export type CreateRequestRegWhoRequestRegWhoRequestedDataElementsItem =
-  | "registrant_name"
-  | "registrant_organization"
-  | "registrant_email"
-  | "registrant_phone"
-  | "registrant_address"
-  | "registrant_address_country"
-  | "registrant_address_postal_code"
-  | "admin_name"
-  | "admin_organization"
-  | "admin_email"
-  | "admin_phone"
-  | "admin_address"
-  | "tech_name"
-  | "tech_organization"
-  | "tech_email"
-  | "tech_phone"
-  | "tech_address";
-export const CreateRequestRegWhoRequestRegWhoRequestedDataElementsItem =
-  /*@__PURE__*/ S.String;
-
-export type CreateRequestRegWhoRequestRegWhoRequestedDataElementsList = Array<
-  CreateRequestRegWhoRequestRegWhoRequestedDataElementsItem | (string & {})
->;
-export const CreateRequestRegWhoRequestRegWhoRequestedDataElementsList =
-  /*@__PURE__*/ S.Array(
-    CreateRequestRegWhoRequestRegWhoRequestedDataElementsItem,
-  ) as any as S.Schema<CreateRequestRegWhoRequestRegWhoRequestedDataElementsList>;
-
-export type CreateRequestRegWhoRequestRegWhoRequestorType =
-  | "government"
-  | "corporation"
-  | "individual";
-export const CreateRequestRegWhoRequestRegWhoRequestorType =
-  /*@__PURE__*/ S.String;
-
-export interface CreateRequestRegWhoRequest {
-  /** Affirmation that the request is made in good faith per RDP 10.2.4. Must be true. */
-  regWhoGoodFaithAffirmation: boolean;
-  /** Agreement to process data lawfully per RDP 10.2.5. Must be true. */
-  regWhoLawfulProcessingAgreement: boolean;
-  /** Legal rights and rationale for the request per RDP 10.2.3. Required for all WHOIS requests. */
-  regWhoLegalBasis: string;
-  /** The type of WHOIS data request per RDP procedure. */
-  regWhoRequestType:
-    | CreateRequestRegWhoRequestRegWhoRequestType
-    | (string & {});
-  /** The specific WHOIS data elements being requested per RDP 10.2.2. Required for all WHOIS requests. */
-  regWhoRequestedDataElements: CreateRequestRegWhoRequestRegWhoRequestedDataElementsList;
-  /** Optional authorization statement or power of attorney per RDP 10.2.1.3. */
-  regWhoAuthorizationStatement?: string;
-  /** The nature of the requestor per RDP 10.2.1.2. */
-  regWhoRequestorType?:
-    | CreateRequestRegWhoRequestRegWhoRequestorType
-    | (string & {});
-}
-export const CreateRequestRegWhoRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    regWhoGoodFaithAffirmation: S.Boolean.pipe(
-      T.Body("reg_who_good_faith_affirmation"),
-    ),
-    regWhoLawfulProcessingAgreement: S.Boolean.pipe(
-      T.Body("reg_who_lawful_processing_agreement"),
-    ),
-    regWhoLegalBasis: S.String.pipe(T.Body("reg_who_legal_basis")),
-    regWhoRequestType: CreateRequestRegWhoRequestRegWhoRequestType.pipe(
-      T.Body("reg_who_request_type"),
-    ),
-    regWhoRequestedDataElements:
-      CreateRequestRegWhoRequestRegWhoRequestedDataElementsList.pipe(
-        T.Body("reg_who_requested_data_elements"),
-      ),
-    regWhoAuthorizationStatement: S.optional(
-      S.String.pipe(T.Body("reg_who_authorization_statement")),
-    ),
-    regWhoRequestorType: S.optional(
-      CreateRequestRegWhoRequestRegWhoRequestorType.pipe(
-        T.Body("reg_who_requestor_type"),
-      ),
-    ),
-  }),
-).annotate({
-  identifier: "CreateRequestRegWhoRequest",
-}) as any as S.Schema<CreateRequestRegWhoRequest>;
-
 export interface CreateAbuseReportRequest {
   accountId: string;
   /** The report type for submitted reports. */
   reportParam: string;
-  /** The report type for submitted reports. */
-  act: CreateRequestAct | (string & {});
-  /** Text not exceeding 100 characters. This field may be released by Cloudflare to third parties such as the Lumen Database (https://lumendatabase.org/). */
-  address1?: string;
-  /** The name of the copyright holder. Text not exceeding 60 characters. This field may be released by Cloudflare to third parties such as the Lumen Database (https://lumendatabase.org/). */
-  agentName?: string;
-  /** Can be `0` for false or `1` for true. Must be value: 1 for DMCA reports */
-  agree?: CreateRequestAgree | (number & {});
-  /** Text not exceeding 255 characters. This field may be released by Cloudflare to third parties such as the Lumen Database (https://lumendatabase.org/). */
-  city?: string;
-  /** Text not exceeding 255 characters. This field may be released by Cloudflare to third parties such as the Lumen Database (https://lumendatabase.org/). */
-  country?: string;
-  /** A valid email of the abuse reporter. This field may be released by Cloudflare to third parties such as the Lumen Database (https://lumendatabase.org/). */
-  email: string;
-  /** Should match the value provided in `email` */
-  email2: string;
-  /** Notification type based on the abuse type. NOTE: Copyright (DMCA) and Trademark reports cannot be anonymous. */
-  hostNotification?: CreateRequestHostNotification;
-  /** Text not exceeding 255 characters. This field may be released by Cloudflare to third parties such as the Lumen Database (https://lumendatabase.org/). */
-  name: string;
-  /** Text not exceeding 255 characters. This field may be released by Cloudflare to third parties such as the Lumen Database (https://lumendatabase.org/). */
-  originalWork?: string;
-  /** Notification type based on the abuse type. NOTE: Copyright (DMCA) and Trademark reports cannot be anonymous. */
-  ownerNotification: CreateRequestOwnerNotification;
-  /** Required for DMCA reports, should be same as Name. An affirmation that all information in the report is true and accurate while agreeing to the policies of Cloudflare's abuse reports */
-  signature?: string;
-  /** Text not exceeding 255 characters. This field may be released by Cloudflare to third parties such as the Lumen Database (https://lumendatabase.org/). */
-  state?: string;
-  /** A list of valid URLs separated by ‘\n’ (new line character). The list of the URLs should not exceed 250 URLs. All URLs should have the same hostname. Each URL should be unique. This field may be released by Cloudflare to third parties such as the Lumen Database (https://lumendatabase.org/). */
-  urls: string;
-  /** Any additional comments about the infringement not exceeding 2000 characters */
-  comments?: string;
-  /** Text not exceeding 100 characters. This field may be released by Cloudflare to third parties such as the Lumen Database (https://lumendatabase.org/). */
-  company?: string;
-  /** Text containing 2 characters */
-  reportedCountry?: string;
-  /** Text not exceeding 255 characters */
-  reportedUserAgent?: string;
-  /** Text not exceeding 20 characters. This field may be released by Cloudflare to third parties such as the Lumen Database (https://lumendatabase.org/). */
-  tele?: string;
-  /** Text not exceeding 255 characters */
-  title?: string;
-  /** A detailed description of the infringement, including any necessary access details and the exact steps needed to view the content, not exceeding 5000 characters. */
-  justification?: string;
-  /** Text not exceeding 1000 characters */
-  trademarkNumber?: string;
-  /** Text not exceeding 1000 characters */
-  trademarkOffice?: string;
-  /** Text not exceeding 1000 characters */
-  trademarkSymbol?: string;
-  /** A list of IP addresses separated by ‘\n’ (new line character). The list of destination IPs should not exceed 30 IP addresses. Each one of the IP addresses ought to be unique. */
-  destinationIps?: string;
-  /** A comma separated list of ports and protocols e.g. 80/TCP, 22/UDP. The total size of the field should not exceed 2000 characters. Each individual port/protocol should not exceed 100 characters. The list should not have more than 30 unique ports and protocols. */
-  portsProtocols?: string;
-  /** A list of IP addresses separated by ‘\n’ (new line character). The list of source IPs should not exceed 30 IP addresses. Each one of the IP addresses ought to be unique. */
-  sourceIps?: string;
-  /** Notification type based on the abuse type. NOTE: Copyright (DMCA) and Trademark reports cannot be anonymous. */
-  ncmecNotification?: CreateRequestNcmecNotification | (string & {});
-  /** RDP-mandated fields for registrar WHOIS data disclosure requests. */
-  regWhoRequest?: CreateRequestRegWhoRequest;
-  /** If the submitter is the target of NCSEI in the URLs of the abuse report. */
-  ncseiSubjectRepresentation?: boolean;
 }
 export const CreateAbuseReportRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     reportParam: S.String.pipe(T.Label("report_param")),
-    act: CreateRequestAct,
-    address1: S.optional(S.String),
-    agentName: S.optional(S.String.pipe(T.Body("agent_name"))),
-    agree: S.optional(CreateRequestAgree),
-    city: S.optional(S.String),
-    country: S.optional(S.String),
-    email: S.String,
-    email2: S.String,
-    hostNotification: S.optional(
-      CreateRequestHostNotification.pipe(T.Body("host_notification")),
-    ),
-    name: S.String,
-    originalWork: S.optional(S.String.pipe(T.Body("original_work"))),
-    ownerNotification: CreateRequestOwnerNotification.pipe(
-      T.Body("owner_notification"),
-    ),
-    signature: S.optional(S.String),
-    state: S.optional(S.String),
-    urls: S.String,
-    comments: S.optional(S.String),
-    company: S.optional(S.String),
-    reportedCountry: S.optional(S.String.pipe(T.Body("reported_country"))),
-    reportedUserAgent: S.optional(S.String.pipe(T.Body("reported_user_agent"))),
-    tele: S.optional(S.String),
-    title: S.optional(S.String),
-    justification: S.optional(S.String),
-    trademarkNumber: S.optional(S.String.pipe(T.Body("trademark_number"))),
-    trademarkOffice: S.optional(S.String.pipe(T.Body("trademark_office"))),
-    trademarkSymbol: S.optional(S.String.pipe(T.Body("trademark_symbol"))),
-    destinationIps: S.optional(S.String.pipe(T.Body("destination_ips"))),
-    portsProtocols: S.optional(S.String.pipe(T.Body("ports_protocols"))),
-    sourceIps: S.optional(S.String.pipe(T.Body("source_ips"))),
-    ncmecNotification: S.optional(
-      CreateRequestNcmecNotification.pipe(T.Body("ncmec_notification")),
-    ),
-    regWhoRequest: S.optional(
-      CreateRequestRegWhoRequest.pipe(T.Body("reg_who_request")),
-    ),
-    ncseiSubjectRepresentation: S.optional(
-      S.Boolean.pipe(T.Body("ncsei_subject_representation")),
-    ),
   })
     .pipe(
       T.Http({
@@ -352,6 +101,7 @@ export const CreateAbuseReportResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateAbuseReportResponse>;
 
 export interface GetRequest {
+  /** maxLength32 */
   accountId: string;
   reportParam: string;
 }
@@ -370,6 +120,44 @@ export const GetRequest = /*@__PURE__*/ S.suspend(() =>
     .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({ identifier: "GetRequest" }) as any as S.Schema<GetRequest>;
 
+export type GetResponseMitigationSummaryStatus = "accepted" | "in_review";
+export const GetResponseMitigationSummaryStatus = /*@__PURE__*/ S.String;
+
+export type GetResponseMitigationSummaryType =
+  | "PHISH"
+  | "GEN"
+  | "THREAT"
+  | "DMCA"
+  | "EMER"
+  | "TM"
+  | "REG_WHO"
+  | "NCSEI"
+  | "NETWORK";
+export const GetResponseMitigationSummaryType = /*@__PURE__*/ S.String;
+
+export interface GetResponseMitigationSummarySubmitter {
+  company?: string | null;
+  email?: string | null;
+  name?: string | null;
+  telephone?: string | null;
+}
+export const GetResponseMitigationSummarySubmitter = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      company: S.optional(S.NullOr(S.String)),
+      email: S.optional(S.NullOr(S.String)),
+      name: S.optional(S.NullOr(S.String)),
+      telephone: S.optional(S.NullOr(S.String)),
+    }),
+).annotate({
+  identifier: "GetResponseMitigationSummarySubmitter",
+}) as any as S.Schema<GetResponseMitigationSummarySubmitter>;
+
+export type GetResponseMitigationSummaryUrlsList = Array<string>;
+export const GetResponseMitigationSummaryUrlsList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<GetResponseMitigationSummaryUrlsList>;
+
 export interface GetResponseMitigationSummary {
   /** How many of the reported URLs were confirmed as abusive. */
   acceptedUrlCount: number;
@@ -381,6 +169,17 @@ export interface GetResponseMitigationSummary {
   inReviewCount: number;
   /** How many mitigations are pending their effective date. */
   pendingCount: number;
+  /** An enum value that represents the status of an abuse record */
+  status: GetResponseMitigationSummaryStatus;
+  /** The abuse report type */
+  type: GetResponseMitigationSummaryType;
+  /** Justification for the report. */
+  justification?: string | null;
+  /** Original work / Targeted brand in the alleged abuse. */
+  originalWork?: string | null;
+  /** Information about the submitter of the report. */
+  submitter?: GetResponseMitigationSummarySubmitter | null;
+  urls?: GetResponseMitigationSummaryUrlsList | null;
 }
 export const GetResponseMitigationSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -389,69 +188,27 @@ export const GetResponseMitigationSummary = /*@__PURE__*/ S.suspend(() =>
     externalHostNotified: S.Boolean.pipe(T.Body("external_host_notified")),
     inReviewCount: S.Number.pipe(T.Body("in_review_count")),
     pendingCount: S.Number.pipe(T.Body("pending_count")),
+    status: GetResponseMitigationSummaryStatus,
+    type: GetResponseMitigationSummaryType,
+    justification: S.optional(S.NullOr(S.String)),
+    originalWork: S.optional(S.NullOr(S.String).pipe(T.Body("original_work"))),
+    submitter: S.optional(S.NullOr(GetResponseMitigationSummarySubmitter)),
+    urls: S.optional(S.NullOr(GetResponseMitigationSummaryUrlsList)),
   }),
 ).annotate({
   identifier: "GetResponseMitigationSummary",
 }) as any as S.Schema<GetResponseMitigationSummary>;
 
-export type GetResponseStatus = "accepted" | "in_review";
-export const GetResponseStatus = /*@__PURE__*/ S.String;
-
-export type GetResponseType =
-  | "PHISH"
-  | "GEN"
-  | "THREAT"
-  | "DMCA"
-  | "EMER"
-  | "TM"
-  | "REG_WHO"
-  | "NCSEI"
-  | "NETWORK";
-export const GetResponseType = /*@__PURE__*/ S.String;
-
-export interface GetResponseSubmitter {
-  company?: string | null;
-  email?: string | null;
-  name?: string | null;
-  telephone?: string | null;
-}
-export const GetResponseSubmitter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    company: S.optional(S.NullOr(S.String)),
-    email: S.optional(S.NullOr(S.String)),
-    name: S.optional(S.NullOr(S.String)),
-    telephone: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "GetResponseSubmitter",
-}) as any as S.Schema<GetResponseSubmitter>;
-
-export type GetResponseUrlsList = Array<string>;
-export const GetResponseUrlsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetResponseUrlsList>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetResponse {
   /** Public facing ID of abuse report, aka abuse_rand. */
   id: string;
-  /** Creation date of report. Time in RFC 3339 format (https://www.rfc-editor.org/rfc/rfc3339.html) */
+  /** Creation date of report. Time in RFC 3339 format (<https://www.rfc-editor.org/rfc/rfc3339.html>) */
   cdate: string;
   /** Domain that relates to the report. */
   domain: string;
   /** A summary of the mitigations related to this report. */
   mitigationSummary: GetResponseMitigationSummary;
-  /** An enum value that represents the status of an abuse record */
-  status: GetResponseStatus;
-  /** The abuse report type */
-  type: GetResponseType;
-  /** Justification for the report. */
-  justification?: string | null;
-  /** Original work / Targeted brand in the alleged abuse. */
-  originalWork?: string | null;
-  /** Information about the submitter of the report. */
-  submitter?: GetResponseSubmitter | null;
-  urls?: GetResponseUrlsList | null;
 }
 export const GetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -461,12 +218,6 @@ export const GetResponse = /*@__PURE__*/ S.suspend(() =>
     mitigationSummary: GetResponseMitigationSummary.pipe(
       T.Body("mitigation_summary"),
     ),
-    status: GetResponseStatus,
-    type: GetResponseType,
-    justification: S.optional(S.NullOr(S.String)),
-    originalWork: S.optional(S.NullOr(S.String).pipe(T.Body("original_work"))),
-    submitter: S.optional(S.NullOr(GetResponseSubmitter)),
-    urls: S.optional(S.NullOr(GetResponseUrlsList)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({ identifier: "GetResponse" }) as any as S.Schema<GetResponse>;
 
@@ -494,6 +245,7 @@ export type ListRequestType =
 export const ListRequestType = /*@__PURE__*/ S.String;
 
 export interface ListAbuseReportsRequest {
+  /** maxLength32 */
   accountId: string;
   /** Returns reports created after the specified date */
   createdAfter?: string;
@@ -541,15 +293,13 @@ export const ListAbuseReportsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListAbuseReportsRequest",
 }) as any as S.Schema<ListAbuseReportsRequest>;
 
-export type ListResponseReportsItemMitigationSummary =
-  GetResponseMitigationSummary;
-export const ListResponseReportsItemMitigationSummary =
-  GetResponseMitigationSummary;
+export type ListResponseReportsItemMitigationSummaryStatus =
+  | "accepted"
+  | "in_review";
+export const ListResponseReportsItemMitigationSummaryStatus =
+  /*@__PURE__*/ S.String;
 
-export type ListResponseReportsItemStatus = "accepted" | "in_review";
-export const ListResponseReportsItemStatus = /*@__PURE__*/ S.String;
-
-export type ListResponseReportsItemType =
+export type ListResponseReportsItemMitigationSummaryType =
   | "PHISH"
   | "GEN"
   | "THREAT"
@@ -559,51 +309,84 @@ export type ListResponseReportsItemType =
   | "REG_WHO"
   | "NCSEI"
   | "NETWORK";
-export const ListResponseReportsItemType = /*@__PURE__*/ S.String;
+export const ListResponseReportsItemMitigationSummaryType =
+  /*@__PURE__*/ S.String;
 
-export type ListResponseReportsItemSubmitter = GetResponseSubmitter;
-export const ListResponseReportsItemSubmitter = GetResponseSubmitter;
+export type ListResponseReportsItemMitigationSummarySubmitter =
+  GetResponseMitigationSummarySubmitter;
+export const ListResponseReportsItemMitigationSummarySubmitter =
+  GetResponseMitigationSummarySubmitter;
 
-export type ListResponseReportsItemUrlsList = Array<string>;
-export const ListResponseReportsItemUrlsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListResponseReportsItemUrlsList>;
+export type ListResponseReportsItemMitigationSummaryUrlsList = Array<string>;
+export const ListResponseReportsItemMitigationSummaryUrlsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<ListResponseReportsItemMitigationSummaryUrlsList>;
 
-export interface ListResponseReportsItem {
-  /** Public facing ID of abuse report, aka abuse_rand. */
-  id: string;
-  /** Creation date of report. Time in RFC 3339 format (https://www.rfc-editor.org/rfc/rfc3339.html) */
-  cdate: string;
-  /** Domain that relates to the report. */
-  domain: string;
-  /** A summary of the mitigations related to this report. */
-  mitigationSummary: GetResponseMitigationSummary;
+export interface ListResponseReportsItemMitigationSummary {
+  /** How many of the reported URLs were confirmed as abusive. */
+  acceptedUrlCount: number;
+  /** How many mitigations are active. */
+  activeCount: number;
+  /** Whether the report has been forwarded to an external hosting provider. */
+  externalHostNotified: boolean;
+  /** How many mitigations are under review. */
+  inReviewCount: number;
+  /** How many mitigations are pending their effective date. */
+  pendingCount: number;
   /** An enum value that represents the status of an abuse record */
-  status: ListResponseReportsItemStatus;
+  status: ListResponseReportsItemMitigationSummaryStatus;
   /** The abuse report type */
-  type: ListResponseReportsItemType;
+  type: ListResponseReportsItemMitigationSummaryType;
   /** Justification for the report. */
   justification?: string | null;
   /** Original work / Targeted brand in the alleged abuse. */
   originalWork?: string | null;
   /** Information about the submitter of the report. */
-  submitter?: GetResponseSubmitter | null;
-  urls?: ListResponseReportsItemUrlsList | null;
+  submitter?: GetResponseMitigationSummarySubmitter | null;
+  urls?: ListResponseReportsItemMitigationSummaryUrlsList | null;
+}
+export const ListResponseReportsItemMitigationSummary = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      acceptedUrlCount: S.Number.pipe(T.Body("accepted_url_count")),
+      activeCount: S.Number.pipe(T.Body("active_count")),
+      externalHostNotified: S.Boolean.pipe(T.Body("external_host_notified")),
+      inReviewCount: S.Number.pipe(T.Body("in_review_count")),
+      pendingCount: S.Number.pipe(T.Body("pending_count")),
+      status: ListResponseReportsItemMitigationSummaryStatus,
+      type: ListResponseReportsItemMitigationSummaryType,
+      justification: S.optional(S.NullOr(S.String)),
+      originalWork: S.optional(
+        S.NullOr(S.String).pipe(T.Body("original_work")),
+      ),
+      submitter: S.optional(S.NullOr(GetResponseMitigationSummarySubmitter)),
+      urls: S.optional(
+        S.NullOr(ListResponseReportsItemMitigationSummaryUrlsList),
+      ),
+    }),
+).annotate({
+  identifier: "ListResponseReportsItemMitigationSummary",
+}) as any as S.Schema<ListResponseReportsItemMitigationSummary>;
+
+export interface ListResponseReportsItem {
+  /** Public facing ID of abuse report, aka abuse_rand. */
+  id: string;
+  /** Creation date of report. Time in RFC 3339 format (<https://www.rfc-editor.org/rfc/rfc3339.html>) */
+  cdate: string;
+  /** Domain that relates to the report. */
+  domain: string;
+  /** A summary of the mitigations related to this report. */
+  mitigationSummary: ListResponseReportsItemMitigationSummary;
 }
 export const ListResponseReportsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     cdate: S.String,
     domain: S.String,
-    mitigationSummary: GetResponseMitigationSummary.pipe(
+    mitigationSummary: ListResponseReportsItemMitigationSummary.pipe(
       T.Body("mitigation_summary"),
     ),
-    status: ListResponseReportsItemStatus,
-    type: ListResponseReportsItemType,
-    justification: S.optional(S.NullOr(S.String)),
-    originalWork: S.optional(S.NullOr(S.String).pipe(T.Body("original_work"))),
-    submitter: S.optional(S.NullOr(GetResponseSubmitter)),
-    urls: S.optional(S.NullOr(ListResponseReportsItemUrlsList)),
   }),
 ).annotate({
   identifier: "ListResponseReportsItem",
@@ -629,7 +412,8 @@ export const ListAbuseReportsResponse = /*@__PURE__*/ S.suspend(() =>
 export type MitigationsListRequestEntityType =
   | "url_pattern"
   | "account"
-  | "zone";
+  | "zone"
+  | "custom_expression";
 export const MitigationsListRequestEntityType = /*@__PURE__*/ S.String;
 
 export type MitigationsListRequestSort =
@@ -651,29 +435,8 @@ export type MitigationsListRequestStatus =
   | "removed";
 export const MitigationsListRequestStatus = /*@__PURE__*/ S.String;
 
-export type MitigationsListRequestType =
-  | "account_suspend"
-  | "copyright_interstitial"
-  | "geo_block"
-  | "legal_block"
-  | "malware_interstitial"
-  | "misleading_interstitial"
-  | "network_block"
-  | "phishing_interstitial"
-  | "playfairite_enforce"
-  | "r2_takedown_account"
-  | "r2_takedown_bucket"
-  | "r2_takedown_object"
-  | "rate_limit_cache"
-  | "redirect_video_stream"
-  | "registrar_freeze"
-  | "registrar_parking"
-  | "stream_block_account"
-  | "user_suspend"
-  | "workers_takedown_by_zone_id";
-export const MitigationsListRequestType = /*@__PURE__*/ S.String;
-
 export interface ListMitigationsRequest {
+  /** maxLength32 */
   accountId: string;
   reportId: string;
   /** Returns mitigation that were dispatched after the given date */
@@ -690,8 +453,8 @@ export interface ListMitigationsRequest {
   sort?: MitigationsListRequestSort | (string & {});
   /** Filter by the status of the mitigation. */
   status?: MitigationsListRequestStatus | (string & {});
-  /** Filter by the type of mitigation. This filter parameter can be specified multiple times to include multiple types of mitigations in the result set, e.g. ?type=rate_limit_cache&type=legal_block. */
-  type?: MitigationsListRequestType | (string & {});
+  /** Filter by the type of mitigation. This filter parameter can be specified multiple times to include multiple types of mitigations in the result set. */
+  type?: string;
 }
 export const ListMitigationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -706,7 +469,7 @@ export const ListMitigationsRequest = /*@__PURE__*/ S.suspend(() =>
     perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
     sort: S.optional(MitigationsListRequestSort.pipe(T.Query())),
     status: S.optional(MitigationsListRequestStatus.pipe(T.Query())),
-    type: S.optional(MitigationsListRequestType.pipe(T.Query())),
+    type: S.optional(S.String.pipe(T.Query())),
   })
     .pipe(
       T.Http({
@@ -723,7 +486,8 @@ export const ListMitigationsRequest = /*@__PURE__*/ S.suspend(() =>
 export type MitigationsListResponseMitigationsItemEntityType =
   | "url_pattern"
   | "account"
-  | "zone";
+  | "zone"
+  | "custom_expression";
 export const MitigationsListResponseMitigationsItemEntityType =
   /*@__PURE__*/ S.String;
 
@@ -736,33 +500,10 @@ export type MitigationsListResponseMitigationsItemStatus =
 export const MitigationsListResponseMitigationsItemStatus =
   /*@__PURE__*/ S.String;
 
-export type MitigationsListResponseMitigationsItemType =
-  | "account_suspend"
-  | "copyright_interstitial"
-  | "geo_block"
-  | "legal_block"
-  | "malware_interstitial"
-  | "misleading_interstitial"
-  | "network_block"
-  | "phishing_interstitial"
-  | "playfairite_enforce"
-  | "r2_takedown_account"
-  | "r2_takedown_bucket"
-  | "r2_takedown_object"
-  | "rate_limit_cache"
-  | "redirect_video_stream"
-  | "registrar_freeze"
-  | "registrar_parking"
-  | "stream_block_account"
-  | "user_suspend"
-  | "workers_takedown_by_zone_id";
-export const MitigationsListResponseMitigationsItemType =
-  /*@__PURE__*/ S.String;
-
 export interface MitigationsListResponseMitigationsItem {
   /** ID of remediation. */
   id: string;
-  /** Date when the mitigation will become active. Time in RFC 3339 format (https://www.rfc-editor.org/rfc/rfc3339.html) */
+  /** Date when the mitigation will become active. Time in RFC 3339 format (<https://www.rfc-editor.org/rfc/rfc3339.html>) */
   effectiveDate: string;
   entityId: string;
   /** The type of entity targeted by a mitigation. */
@@ -770,7 +511,7 @@ export interface MitigationsListResponseMitigationsItem {
   /** The status of a mitigation */
   status: MitigationsListResponseMitigationsItemStatus;
   /** The type of mitigation applied to a reported entity. */
-  type: MitigationsListResponseMitigationsItemType;
+  type: string;
 }
 export const MitigationsListResponseMitigationsItem = /*@__PURE__*/ S.suspend(
   () =>
@@ -782,7 +523,7 @@ export const MitigationsListResponseMitigationsItem = /*@__PURE__*/ S.suspend(
         T.Body("entity_type"),
       ),
       status: MitigationsListResponseMitigationsItemStatus,
-      type: MitigationsListResponseMitigationsItemType,
+      type: S.String,
     }),
 ).annotate({
   identifier: "MitigationsListResponseMitigationsItem",
@@ -832,17 +573,74 @@ export const MitigationsReviewRequestAppealsList = /*@__PURE__*/ S.Array(
   MitigationsReviewRequestAppealsItem,
 ) as any as S.Schema<MitigationsReviewRequestAppealsList>;
 
+export type MitigationsReviewRequestDataUrlsList = Array<string>;
+export const MitigationsReviewRequestDataUrlsList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<MitigationsReviewRequestDataUrlsList>;
+
+export type MitigationsReviewRequestDataType =
+  | "counter_notice"
+  | "content_removed";
+export const MitigationsReviewRequestDataType = /*@__PURE__*/ S.String;
+
+export interface MitigationsReviewRequestData {
+  city: string;
+  country: string;
+  /** formatemail */
+  email: string;
+  fullName: string;
+  jurisdictionConsent: boolean;
+  perjuryAttestation: boolean;
+  phoneNumber: string;
+  signature: string;
+  state: string;
+  streetAddress: string;
+  urls: MitigationsReviewRequestDataUrlsList;
+  zipCode: string;
+  company?: string;
+  counterNoticeResponse?: string;
+  /** The type of appeal being submitted. */
+  type?: MitigationsReviewRequestDataType | (string & {});
+}
+export const MitigationsReviewRequestData = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    city: S.String,
+    country: S.String,
+    email: S.String,
+    fullName: S.String.pipe(T.Body("full_name")),
+    jurisdictionConsent: S.Boolean.pipe(T.Body("jurisdiction_consent")),
+    perjuryAttestation: S.Boolean.pipe(T.Body("perjury_attestation")),
+    phoneNumber: S.String.pipe(T.Body("phone_number")),
+    signature: S.String,
+    state: S.String,
+    streetAddress: S.String.pipe(T.Body("street_address")),
+    urls: MitigationsReviewRequestDataUrlsList,
+    zipCode: S.String.pipe(T.Body("zip_code")),
+    company: S.optional(S.String),
+    counterNoticeResponse: S.optional(
+      S.String.pipe(T.Body("counter_notice_response")),
+    ),
+    type: S.optional(MitigationsReviewRequestDataType),
+  }),
+).annotate({
+  identifier: "MitigationsReviewRequestData",
+}) as any as S.Schema<MitigationsReviewRequestData>;
+
 export interface ReviewMitigationRequest {
+  /** maxLength32 */
   accountId: string;
   reportId: string;
   /** List of mitigations to appeal. */
-  appeals: MitigationsReviewRequestAppealsList;
+  appeals?: MitigationsReviewRequestAppealsList;
+  /** Counter-notice details supporting an appeal. */
+  data?: MitigationsReviewRequestData;
 }
 export const ReviewMitigationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     reportId: S.String.pipe(T.Label("report_id")),
-    appeals: MitigationsReviewRequestAppealsList,
+    appeals: S.optional(MitigationsReviewRequestAppealsList),
+    data: S.optional(MitigationsReviewRequestData),
   })
     .pipe(
       T.Http({
@@ -859,7 +657,8 @@ export const ReviewMitigationRequest = /*@__PURE__*/ S.suspend(() =>
 export type MitigationsReviewResultItemEntityType =
   | "url_pattern"
   | "account"
-  | "zone";
+  | "zone"
+  | "custom_expression";
 export const MitigationsReviewResultItemEntityType = /*@__PURE__*/ S.String;
 
 export type MitigationsReviewResultItemStatus =
@@ -870,32 +669,13 @@ export type MitigationsReviewResultItemStatus =
   | "removed";
 export const MitigationsReviewResultItemStatus = /*@__PURE__*/ S.String;
 
-export type MitigationsReviewResultItemType =
-  | "account_suspend"
-  | "copyright_interstitial"
-  | "geo_block"
-  | "legal_block"
-  | "malware_interstitial"
-  | "misleading_interstitial"
-  | "network_block"
-  | "phishing_interstitial"
-  | "playfairite_enforce"
-  | "r2_takedown_account"
-  | "r2_takedown_bucket"
-  | "r2_takedown_object"
-  | "rate_limit_cache"
-  | "redirect_video_stream"
-  | "registrar_freeze"
-  | "registrar_parking"
-  | "stream_block_account"
-  | "user_suspend"
-  | "workers_takedown_by_zone_id";
+export type MitigationsReviewResultItemType = "counter_notice";
 export const MitigationsReviewResultItemType = /*@__PURE__*/ S.String;
 
 export interface MitigationsReviewResultItem {
   /** ID of remediation. */
   id: string;
-  /** Date when the mitigation will become active. Time in RFC 3339 format (https://www.rfc-editor.org/rfc/rfc3339.html) */
+  /** Date when the mitigation will become active. Time in RFC 3339 format (<https://www.rfc-editor.org/rfc/rfc3339.html>) */
   effectiveDate: string;
   entityId: string;
   /** The type of entity targeted by a mitigation. */
@@ -903,7 +683,9 @@ export interface MitigationsReviewResultItem {
   /** The status of a mitigation */
   status: MitigationsReviewResultItemStatus;
   /** The type of mitigation applied to a reported entity. */
-  type: MitigationsReviewResultItemType;
+  type: string;
+  /** }' */
+  type_2: MitigationsReviewResultItemType;
 }
 export const MitigationsReviewResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -914,7 +696,8 @@ export const MitigationsReviewResultItem = /*@__PURE__*/ S.suspend(() =>
       T.Body("entity_type"),
     ),
     status: MitigationsReviewResultItemStatus,
-    type: MitigationsReviewResultItemType,
+    type: S.String,
+    type_2: MitigationsReviewResultItemType.pipe(T.Body("type")),
   }),
 ).annotate({
   identifier: "MitigationsReviewResultItem",
@@ -941,7 +724,7 @@ export const ReviewMitigationResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ReviewMitigationResponse>;
 
 export type CreateAbuseReportError = InvalidRequest | CloudflareOpError;
-/** Submit the Abuse Report of a particular type */
+/** Submit an abuse report of a particular type. Requires the abuse-reports entitlement on the account (Enterprise accounts have it by default; other accounts must request access) and an API token with the Account > Abuse Reports > Edit permission. If the account is not entitled, the request is rejected with an HTTP 401 response (see below). */
 export const createAbuseReport: API.OperationMethod<
   CreateAbuseReportRequest,
   CreateAbuseReportResponse,

@@ -101,67 +101,28 @@ export class NotFound
     [{ code: 3000 }],
   ) {}
 
-export type IndexesCreateRequestConfigIndexDimensionConfigurationMetric =
-  | "cosine"
-  | "euclidean"
-  | "dot-product";
-export const IndexesCreateRequestConfigIndexDimensionConfigurationMetric =
-  /*@__PURE__*/ S.String;
+export type IndexesCreateRequestMetric = "cosine" | "euclidean" | "dot-product";
+export const IndexesCreateRequestMetric = /*@__PURE__*/ S.String;
 
-export interface IndexesCreateRequestConfigIndexDimensionConfiguration {
-  /** Specifies the number of dimensions for the index */
-  dimensions: number;
-  /** Specifies the type of metric to use calculating distance. */
-  metric:
-    | IndexesCreateRequestConfigIndexDimensionConfigurationMetric
-    | (string & {});
-}
-export const IndexesCreateRequestConfigIndexDimensionConfiguration =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      dimensions: S.Number,
-      metric: IndexesCreateRequestConfigIndexDimensionConfigurationMetric,
-    }),
-  ).annotate({
-    identifier: "IndexesCreateRequestConfigIndexDimensionConfiguration",
-  }) as any as S.Schema<IndexesCreateRequestConfigIndexDimensionConfiguration>;
-
-export type IndexesCreateRequestConfigVectorizeIndexPresetConfigurationPreset =
+export type IndexesCreateRequestPreset =
   | "@cf/baai/bge-small-en-v1.5"
   | "@cf/baai/bge-base-en-v1.5"
   | "@cf/baai/bge-large-en-v1.5"
   | "openai/text-embedding-ada-002"
   | "cohere/embed-multilingual-v2.0";
-export const IndexesCreateRequestConfigVectorizeIndexPresetConfigurationPreset =
-  /*@__PURE__*/ S.String;
-
-export interface IndexesCreateRequestConfigVectorizeIndexPresetConfiguration {
-  /** Specifies the preset to use for the index. */
-  preset:
-    | IndexesCreateRequestConfigVectorizeIndexPresetConfigurationPreset
-    | (string & {});
-}
-export const IndexesCreateRequestConfigVectorizeIndexPresetConfiguration =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      preset: IndexesCreateRequestConfigVectorizeIndexPresetConfigurationPreset,
-    }),
-  ).annotate({
-    identifier: "IndexesCreateRequestConfigVectorizeIndexPresetConfiguration",
-  }) as any as S.Schema<IndexesCreateRequestConfigVectorizeIndexPresetConfiguration>;
-
-export type IndexesCreateRequestConfig =
-  | IndexesCreateRequestConfigIndexDimensionConfiguration
-  | IndexesCreateRequestConfigVectorizeIndexPresetConfiguration;
-export const IndexesCreateRequestConfig = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([["dimensions", "metric"], ["preset"]]),
-);
+export const IndexesCreateRequestPreset = /*@__PURE__*/ S.String;
 
 export interface CreateIndexRequest {
   /** Identifier */
   accountId: string;
   /** Specifies the type of configuration to use for the index. */
-  config: IndexesCreateRequestConfig;
+  config: unknown;
+  /** Specifies the number of dimensions for the index */
+  dimensions: number;
+  /** Specifies the type of metric to use calculating distance. */
+  metric: IndexesCreateRequestMetric | (string & {});
+  /** Specifies the preset to use for the index. */
+  preset: IndexesCreateRequestPreset | (string & {});
   name: string;
   /** Specifies the description of the index. */
   description?: string;
@@ -169,7 +130,10 @@ export interface CreateIndexRequest {
 export const CreateIndexRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
-    config: IndexesCreateRequestConfig,
+    config: S.Unknown,
+    dimensions: S.Number,
+    metric: IndexesCreateRequestMetric,
+    preset: IndexesCreateRequestPreset,
     name: S.String,
     description: S.optional(S.String),
   })
@@ -865,7 +829,7 @@ export interface IndexesQueryResponseMatchesItem {
   id?: string | null;
   metadata?: unknown | null;
   namespace?: string | null;
-  /** The score of the vector according to the index's distance metric */
+  /** The score of the vector according to the index’s distance metric */
   score?: number | null;
   values?: IndexesQueryResponseMatchesItemValuesList | null;
 }

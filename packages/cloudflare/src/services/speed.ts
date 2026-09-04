@@ -162,6 +162,163 @@ export type PagesTestsCreateResponseDesktopReportState =
 export const PagesTestsCreateResponseDesktopReportState =
   /*@__PURE__*/ S.String;
 
+export type PagesTestsCreateResponseDesktopReportMobileReportDeviceType =
+  | "DESKTOP"
+  | "MOBILE";
+export const PagesTestsCreateResponseDesktopReportMobileReportDeviceType =
+  /*@__PURE__*/ S.String;
+
+export type PagesTestsCreateResponseDesktopReportMobileReportErrorCode =
+  | "NOT_REACHABLE"
+  | "DNS_FAILURE"
+  | "NOT_HTML"
+  | "LIGHTHOUSE_TIMEOUT"
+  | "UNKNOWN";
+export const PagesTestsCreateResponseDesktopReportMobileReportErrorCode =
+  /*@__PURE__*/ S.String;
+
+export interface PagesTestsCreateResponseDesktopReportMobileReportError {
+  /** The error code of the Lighthouse result. */
+  code?: PagesTestsCreateResponseDesktopReportMobileReportErrorCode | null;
+  /** Detailed error message. */
+  detail?: string | null;
+  /** The final URL displayed to the user. */
+  finalDisplayedUrl?: string | null;
+}
+export const PagesTestsCreateResponseDesktopReportMobileReportError =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      code: S.optional(
+        S.NullOr(PagesTestsCreateResponseDesktopReportMobileReportErrorCode),
+      ),
+      detail: S.optional(S.NullOr(S.String)),
+      finalDisplayedUrl: S.optional(S.NullOr(S.String)),
+    }),
+  ).annotate({
+    identifier: "PagesTestsCreateResponseDesktopReportMobileReportError",
+  }) as any as S.Schema<PagesTestsCreateResponseDesktopReportMobileReportError>;
+
+export type PagesTestsCreateResponseDesktopReportMobileReportState =
+  | "RUNNING"
+  | "COMPLETE"
+  | "FAILED";
+export const PagesTestsCreateResponseDesktopReportMobileReportState =
+  /*@__PURE__*/ S.String;
+
+export type PagesTestsCreateResponseDesktopReportMobileReportRegionValue =
+  | "asia-east1"
+  | "asia-northeast1"
+  | "asia-northeast2"
+  | "asia-south1"
+  | "asia-southeast1"
+  | "australia-southeast1"
+  | "europe-north1"
+  | "europe-southwest1"
+  | "europe-west1"
+  | "europe-west2"
+  | "europe-west3"
+  | "europe-west4"
+  | "europe-west8"
+  | "europe-west9"
+  | "me-west1"
+  | "southamerica-east1"
+  | "us-central1"
+  | "us-east1"
+  | "us-east4"
+  | "us-south1"
+  | "us-west1";
+export const PagesTestsCreateResponseDesktopReportMobileReportRegionValue =
+  /*@__PURE__*/ S.String;
+
+export interface PagesTestsCreateResponseDesktopReportMobileReportRegion {
+  label?: string | null;
+  /** A test region. */
+  value?: PagesTestsCreateResponseDesktopReportMobileReportRegionValue | null;
+}
+export const PagesTestsCreateResponseDesktopReportMobileReportRegion =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      label: S.optional(S.NullOr(S.String)),
+      value: S.optional(
+        S.NullOr(PagesTestsCreateResponseDesktopReportMobileReportRegionValue),
+      ),
+    }),
+  ).annotate({
+    identifier: "PagesTestsCreateResponseDesktopReportMobileReportRegion",
+  }) as any as S.Schema<PagesTestsCreateResponseDesktopReportMobileReportRegion>;
+
+export type PagesTestsCreateResponseDesktopReportMobileReportScheduleFrequency =
+  | "DAILY"
+  | "WEEKLY";
+export const PagesTestsCreateResponseDesktopReportMobileReportScheduleFrequency =
+  /*@__PURE__*/ S.String;
+
+export interface PagesTestsCreateResponseDesktopReportMobileReport {
+  /** Cumulative Layout Shift. */
+  cls?: number | null;
+  /** The type of device. */
+  deviceType?: PagesTestsCreateResponseDesktopReportMobileReportDeviceType | null;
+  error?: PagesTestsCreateResponseDesktopReportMobileReportError | null;
+  /** First Contentful Paint. */
+  fcp?: number | null;
+  /** The URL to the full Lighthouse JSON report. */
+  jsonReportUrl?: string | null;
+  /** Largest Contentful Paint. */
+  lcp?: number | null;
+  /** The Lighthouse performance score. */
+  performanceScore?: number | null;
+  /** Speed Index. */
+  si?: number | null;
+  /** The state of the Lighthouse report. */
+  state?: PagesTestsCreateResponseDesktopReportMobileReportState | null;
+  /** Total Blocking Time. */
+  tbt?: number | null;
+  /** Time To First Byte. */
+  ttfb?: number | null;
+  /** Time To Interactive. */
+  tti?: number | null;
+  /** A test region with a label. */
+  region?: PagesTestsCreateResponseDesktopReportMobileReportRegion | null;
+  /** The frequency of the test. */
+  scheduleFrequency?: PagesTestsCreateResponseDesktopReportMobileReportScheduleFrequency | null;
+  /** A URL. */
+  url?: string | null;
+}
+export const PagesTestsCreateResponseDesktopReportMobileReport =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      cls: S.optional(S.NullOr(S.Number)),
+      deviceType: S.optional(
+        S.NullOr(PagesTestsCreateResponseDesktopReportMobileReportDeviceType),
+      ),
+      error: S.optional(
+        S.NullOr(PagesTestsCreateResponseDesktopReportMobileReportError),
+      ),
+      fcp: S.optional(S.NullOr(S.Number)),
+      jsonReportUrl: S.optional(S.NullOr(S.String)),
+      lcp: S.optional(S.NullOr(S.Number)),
+      performanceScore: S.optional(S.NullOr(S.Number)),
+      si: S.optional(S.NullOr(S.Number)),
+      state: S.optional(
+        S.NullOr(PagesTestsCreateResponseDesktopReportMobileReportState),
+      ),
+      tbt: S.optional(S.NullOr(S.Number)),
+      ttfb: S.optional(S.NullOr(S.Number)),
+      tti: S.optional(S.NullOr(S.Number)),
+      region: S.optional(
+        S.NullOr(PagesTestsCreateResponseDesktopReportMobileReportRegion),
+      ),
+      scheduleFrequency: S.optional(
+        S.NullOr(
+          PagesTestsCreateResponseDesktopReportMobileReportScheduleFrequency,
+        ),
+      ),
+      url: S.optional(S.NullOr(S.String)),
+    }),
+  ).annotate({
+    identifier: "PagesTestsCreateResponseDesktopReportMobileReport",
+  }) as any as S.Schema<PagesTestsCreateResponseDesktopReportMobileReport>;
+
 export interface PagesTestsCreateResponseDesktopReport {
   /** Cumulative Layout Shift. */
   cls?: number | null;
@@ -186,6 +343,8 @@ export interface PagesTestsCreateResponseDesktopReport {
   ttfb?: number | null;
   /** Time To Interactive. */
   tti?: number | null;
+  /** The Lighthouse report. */
+  mobileReport?: PagesTestsCreateResponseDesktopReportMobileReport | null;
 }
 export const PagesTestsCreateResponseDesktopReport = /*@__PURE__*/ S.suspend(
   () =>
@@ -204,127 +363,43 @@ export const PagesTestsCreateResponseDesktopReport = /*@__PURE__*/ S.suspend(
       tbt: S.optional(S.NullOr(S.Number)),
       ttfb: S.optional(S.NullOr(S.Number)),
       tti: S.optional(S.NullOr(S.Number)),
+      mobileReport: S.optional(
+        S.NullOr(PagesTestsCreateResponseDesktopReportMobileReport),
+      ),
     }),
 ).annotate({
   identifier: "PagesTestsCreateResponseDesktopReport",
 }) as any as S.Schema<PagesTestsCreateResponseDesktopReport>;
 
-export type PagesTestsCreateResponseRegionValue =
-  | "asia-east1"
-  | "asia-northeast1"
-  | "asia-northeast2"
-  | "asia-south1"
-  | "asia-southeast1"
-  | "australia-southeast1"
-  | "europe-north1"
-  | "europe-southwest1"
-  | "europe-west1"
-  | "europe-west2"
-  | "europe-west3"
-  | "europe-west4"
-  | "europe-west8"
-  | "europe-west9"
-  | "me-west1"
-  | "southamerica-east1"
-  | "us-central1"
-  | "us-east1"
-  | "us-east4"
-  | "us-south1"
-  | "us-west1";
-export const PagesTestsCreateResponseRegionValue = /*@__PURE__*/ S.String;
-
-export interface PagesTestsCreateResponseRegion {
-  label?: string | null;
-  /** A test region. */
-  value?: PagesTestsCreateResponseRegionValue | null;
-}
-export const PagesTestsCreateResponseRegion = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    label: S.optional(S.NullOr(S.String)),
-    value: S.optional(S.NullOr(PagesTestsCreateResponseRegionValue)),
-  }),
-).annotate({
-  identifier: "PagesTestsCreateResponseRegion",
-}) as any as S.Schema<PagesTestsCreateResponseRegion>;
-
-export type PagesTestsCreateResponseScheduleFrequency = "DAILY" | "WEEKLY";
-export const PagesTestsCreateResponseScheduleFrequency = /*@__PURE__*/ S.String;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreatePageTestResponse {
   /** UUID. */
   id?: string | null;
+  /** formatdate-time */
   date?: string | null;
   /** The Lighthouse report. */
   desktopReport?: PagesTestsCreateResponseDesktopReport | null;
-  /** The Lighthouse report. */
-  mobileReport?: PagesTestsCreateResponseDesktopReport | null;
-  /** A test region with a label. */
-  region?: PagesTestsCreateResponseRegion | null;
-  /** The frequency of the test. */
-  scheduleFrequency?: PagesTestsCreateResponseScheduleFrequency | null;
-  /** A URL. */
-  url?: string | null;
 }
 export const CreatePageTestResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.NullOr(S.String)),
     date: S.optional(S.NullOr(S.String)),
     desktopReport: S.optional(S.NullOr(PagesTestsCreateResponseDesktopReport)),
-    mobileReport: S.optional(S.NullOr(PagesTestsCreateResponseDesktopReport)),
-    region: S.optional(S.NullOr(PagesTestsCreateResponseRegion)),
-    scheduleFrequency: S.optional(
-      S.NullOr(PagesTestsCreateResponseScheduleFrequency),
-    ),
-    url: S.optional(S.NullOr(S.String)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreatePageTestResponse",
 }) as any as S.Schema<CreatePageTestResponse>;
-
-export type ScheduleCreateRequestFrequency = "DAILY" | "WEEKLY";
-export const ScheduleCreateRequestFrequency = /*@__PURE__*/ S.String;
-
-export type ScheduleCreateRequestRegion =
-  | "asia-east1"
-  | "asia-northeast1"
-  | "asia-northeast2"
-  | "asia-south1"
-  | "asia-southeast1"
-  | "australia-southeast1"
-  | "europe-north1"
-  | "europe-southwest1"
-  | "europe-west1"
-  | "europe-west2"
-  | "europe-west3"
-  | "europe-west4"
-  | "europe-west8"
-  | "europe-west9"
-  | "me-west1"
-  | "southamerica-east1"
-  | "us-central1"
-  | "us-east1"
-  | "us-east4"
-  | "us-south1"
-  | "us-west1";
-export const ScheduleCreateRequestRegion = /*@__PURE__*/ S.String;
 
 export interface CreateScheduleRequest {
   /** Identifier. */
   zoneId: string;
   /** A URL. */
   url: string;
-  /** The frequency of the scheduled test. Defaults to WEEKLY for free plans, DAILY for paid plans. */
-  frequency?: ScheduleCreateRequestFrequency | (string & {});
-  /** A test region. */
-  region?: ScheduleCreateRequestRegion | (string & {});
 }
 export const CreateScheduleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     url: S.String.pipe(T.Label()),
-    frequency: S.optional(ScheduleCreateRequestFrequency.pipe(T.Query())),
-    region: S.optional(ScheduleCreateRequestRegion.pipe(T.Query())),
   })
     .pipe(
       T.Http({
@@ -341,42 +416,18 @@ export const CreateScheduleRequest = /*@__PURE__*/ S.suspend(() =>
 export type ScheduleCreateResponseScheduleFrequency = "DAILY" | "WEEKLY";
 export const ScheduleCreateResponseScheduleFrequency = /*@__PURE__*/ S.String;
 
-export type ScheduleCreateResponseScheduleRegion =
-  | "asia-east1"
-  | "asia-northeast1"
-  | "asia-northeast2"
-  | "asia-south1"
-  | "asia-southeast1"
-  | "australia-southeast1"
-  | "europe-north1"
-  | "europe-southwest1"
-  | "europe-west1"
-  | "europe-west2"
-  | "europe-west3"
-  | "europe-west4"
-  | "europe-west8"
-  | "europe-west9"
-  | "me-west1"
-  | "southamerica-east1"
-  | "us-central1"
-  | "us-east1"
-  | "us-east4"
-  | "us-south1"
-  | "us-west1";
-export const ScheduleCreateResponseScheduleRegion = /*@__PURE__*/ S.String;
-
 export interface ScheduleCreateResponseSchedule {
   /** The frequency of the test. */
   frequency?: ScheduleCreateResponseScheduleFrequency | null;
   /** A test region. */
-  region?: ScheduleCreateResponseScheduleRegion | null;
+  region?: string | null;
   /** A URL. */
   url?: string | null;
 }
 export const ScheduleCreateResponseSchedule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     frequency: S.optional(S.NullOr(ScheduleCreateResponseScheduleFrequency)),
-    region: S.optional(S.NullOr(ScheduleCreateResponseScheduleRegion)),
+    region: S.optional(S.NullOr(S.String)),
     url: S.optional(S.NullOr(S.String)),
   }),
 ).annotate({
@@ -389,18 +440,9 @@ export type ScheduleCreateResponseTestDesktopReportDeviceType =
 export const ScheduleCreateResponseTestDesktopReportDeviceType =
   /*@__PURE__*/ S.String;
 
-export type ScheduleCreateResponseTestDesktopReportErrorCode =
-  | "NOT_REACHABLE"
-  | "DNS_FAILURE"
-  | "NOT_HTML"
-  | "LIGHTHOUSE_TIMEOUT"
-  | "UNKNOWN";
-export const ScheduleCreateResponseTestDesktopReportErrorCode =
-  /*@__PURE__*/ S.String;
-
 export interface ScheduleCreateResponseTestDesktopReportError {
   /** The error code of the Lighthouse result. */
-  code?: ScheduleCreateResponseTestDesktopReportErrorCode | null;
+  code?: string | null;
   /** Detailed error message. */
   detail?: string | null;
   /** The final URL displayed to the user. */
@@ -409,9 +451,7 @@ export interface ScheduleCreateResponseTestDesktopReportError {
 export const ScheduleCreateResponseTestDesktopReportError =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      code: S.optional(
-        S.NullOr(ScheduleCreateResponseTestDesktopReportErrorCode),
-      ),
+      code: S.optional(S.NullOr(S.String)),
       detail: S.optional(S.NullOr(S.String)),
       finalDisplayedUrl: S.optional(S.NullOr(S.String)),
     }),
@@ -431,6 +471,7 @@ export interface ScheduleCreateResponseTestDesktopReport {
   cls?: number | null;
   /** The type of device. */
   deviceType?: ScheduleCreateResponseTestDesktopReportDeviceType | null;
+  /** The error code of the Lighthouse result. */
   error?: ScheduleCreateResponseTestDesktopReportError | null;
   /** First Contentful Paint. */
   fcp?: number | null;
@@ -473,39 +514,81 @@ export const ScheduleCreateResponseTestDesktopReport = /*@__PURE__*/ S.suspend(
   identifier: "ScheduleCreateResponseTestDesktopReport",
 }) as any as S.Schema<ScheduleCreateResponseTestDesktopReport>;
 
-export type ScheduleCreateResponseTestRegionValue =
-  | "asia-east1"
-  | "asia-northeast1"
-  | "asia-northeast2"
-  | "asia-south1"
-  | "asia-southeast1"
-  | "australia-southeast1"
-  | "europe-north1"
-  | "europe-southwest1"
-  | "europe-west1"
-  | "europe-west2"
-  | "europe-west3"
-  | "europe-west4"
-  | "europe-west8"
-  | "europe-west9"
-  | "me-west1"
-  | "southamerica-east1"
-  | "us-central1"
-  | "us-east1"
-  | "us-east4"
-  | "us-south1"
-  | "us-west1";
-export const ScheduleCreateResponseTestRegionValue = /*@__PURE__*/ S.String;
+export type ScheduleCreateResponseTestMobileReportDeviceType =
+  | "DESKTOP"
+  | "MOBILE";
+export const ScheduleCreateResponseTestMobileReportDeviceType =
+  /*@__PURE__*/ S.String;
+
+export type ScheduleCreateResponseTestMobileReportError =
+  ScheduleCreateResponseTestDesktopReportError;
+export const ScheduleCreateResponseTestMobileReportError =
+  ScheduleCreateResponseTestDesktopReportError;
+
+export type ScheduleCreateResponseTestMobileReportState =
+  | "RUNNING"
+  | "COMPLETE"
+  | "FAILED";
+export const ScheduleCreateResponseTestMobileReportState =
+  /*@__PURE__*/ S.String;
+
+export interface ScheduleCreateResponseTestMobileReport {
+  /** Cumulative Layout Shift. */
+  cls?: number | null;
+  /** The type of device. */
+  deviceType?: ScheduleCreateResponseTestMobileReportDeviceType | null;
+  /** The error code of the Lighthouse result. */
+  error?: ScheduleCreateResponseTestDesktopReportError | null;
+  /** First Contentful Paint. */
+  fcp?: number | null;
+  /** The URL to the full Lighthouse JSON report. */
+  jsonReportUrl?: string | null;
+  /** Largest Contentful Paint. */
+  lcp?: number | null;
+  /** The Lighthouse performance score. */
+  performanceScore?: number | null;
+  /** Speed Index. */
+  si?: number | null;
+  /** The state of the Lighthouse report. */
+  state?: ScheduleCreateResponseTestMobileReportState | null;
+  /** Total Blocking Time. */
+  tbt?: number | null;
+  /** Time To First Byte. */
+  ttfb?: number | null;
+  /** Time To Interactive. */
+  tti?: number | null;
+}
+export const ScheduleCreateResponseTestMobileReport = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      cls: S.optional(S.NullOr(S.Number)),
+      deviceType: S.optional(
+        S.NullOr(ScheduleCreateResponseTestMobileReportDeviceType),
+      ),
+      error: S.optional(S.NullOr(ScheduleCreateResponseTestDesktopReportError)),
+      fcp: S.optional(S.NullOr(S.Number)),
+      jsonReportUrl: S.optional(S.NullOr(S.String)),
+      lcp: S.optional(S.NullOr(S.Number)),
+      performanceScore: S.optional(S.NullOr(S.Number)),
+      si: S.optional(S.NullOr(S.Number)),
+      state: S.optional(S.NullOr(ScheduleCreateResponseTestMobileReportState)),
+      tbt: S.optional(S.NullOr(S.Number)),
+      ttfb: S.optional(S.NullOr(S.Number)),
+      tti: S.optional(S.NullOr(S.Number)),
+    }),
+).annotate({
+  identifier: "ScheduleCreateResponseTestMobileReport",
+}) as any as S.Schema<ScheduleCreateResponseTestMobileReport>;
 
 export interface ScheduleCreateResponseTestRegion {
   label?: string | null;
   /** A test region. */
-  value?: ScheduleCreateResponseTestRegionValue | null;
+  value?: string | null;
 }
 export const ScheduleCreateResponseTestRegion = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     label: S.optional(S.NullOr(S.String)),
-    value: S.optional(S.NullOr(ScheduleCreateResponseTestRegionValue)),
+    value: S.optional(S.NullOr(S.String)),
   }),
 ).annotate({
   identifier: "ScheduleCreateResponseTestRegion",
@@ -522,7 +605,7 @@ export interface ScheduleCreateResponseTest {
   /** The Lighthouse report. */
   desktopReport?: ScheduleCreateResponseTestDesktopReport | null;
   /** The Lighthouse report. */
-  mobileReport?: ScheduleCreateResponseTestDesktopReport | null;
+  mobileReport?: ScheduleCreateResponseTestMobileReport | null;
   /** A test region with a label. */
   region?: ScheduleCreateResponseTestRegion | null;
   /** The frequency of the test. */
@@ -537,7 +620,7 @@ export const ScheduleCreateResponseTest = /*@__PURE__*/ S.suspend(() =>
     desktopReport: S.optional(
       S.NullOr(ScheduleCreateResponseTestDesktopReport),
     ),
-    mobileReport: S.optional(S.NullOr(ScheduleCreateResponseTestDesktopReport)),
+    mobileReport: S.optional(S.NullOr(ScheduleCreateResponseTestMobileReport)),
     region: S.optional(S.NullOr(ScheduleCreateResponseTestRegion)),
     scheduleFrequency: S.optional(
       S.NullOr(ScheduleCreateResponseTestScheduleFrequency),
@@ -552,6 +635,7 @@ export const ScheduleCreateResponseTest = /*@__PURE__*/ S.suspend(() =>
 export interface CreateScheduleResponse {
   /** The test schedule. */
   schedule?: ScheduleCreateResponseSchedule | null;
+  /** UUID. */
   test?: ScheduleCreateResponseTest | null;
 }
 export const CreateScheduleResponse = /*@__PURE__*/ S.suspend(() =>
@@ -752,6 +836,163 @@ export type PagesTestsGetResponseDesktopReportState =
   | "FAILED";
 export const PagesTestsGetResponseDesktopReportState = /*@__PURE__*/ S.String;
 
+export type PagesTestsGetResponseDesktopReportMobileReportDeviceType =
+  | "DESKTOP"
+  | "MOBILE";
+export const PagesTestsGetResponseDesktopReportMobileReportDeviceType =
+  /*@__PURE__*/ S.String;
+
+export type PagesTestsGetResponseDesktopReportMobileReportErrorCode =
+  | "NOT_REACHABLE"
+  | "DNS_FAILURE"
+  | "NOT_HTML"
+  | "LIGHTHOUSE_TIMEOUT"
+  | "UNKNOWN";
+export const PagesTestsGetResponseDesktopReportMobileReportErrorCode =
+  /*@__PURE__*/ S.String;
+
+export interface PagesTestsGetResponseDesktopReportMobileReportError {
+  /** The error code of the Lighthouse result. */
+  code?: PagesTestsGetResponseDesktopReportMobileReportErrorCode | null;
+  /** Detailed error message. */
+  detail?: string | null;
+  /** The final URL displayed to the user. */
+  finalDisplayedUrl?: string | null;
+}
+export const PagesTestsGetResponseDesktopReportMobileReportError =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      code: S.optional(
+        S.NullOr(PagesTestsGetResponseDesktopReportMobileReportErrorCode),
+      ),
+      detail: S.optional(S.NullOr(S.String)),
+      finalDisplayedUrl: S.optional(S.NullOr(S.String)),
+    }),
+  ).annotate({
+    identifier: "PagesTestsGetResponseDesktopReportMobileReportError",
+  }) as any as S.Schema<PagesTestsGetResponseDesktopReportMobileReportError>;
+
+export type PagesTestsGetResponseDesktopReportMobileReportState =
+  | "RUNNING"
+  | "COMPLETE"
+  | "FAILED";
+export const PagesTestsGetResponseDesktopReportMobileReportState =
+  /*@__PURE__*/ S.String;
+
+export type PagesTestsGetResponseDesktopReportMobileReportRegionValue =
+  | "asia-east1"
+  | "asia-northeast1"
+  | "asia-northeast2"
+  | "asia-south1"
+  | "asia-southeast1"
+  | "australia-southeast1"
+  | "europe-north1"
+  | "europe-southwest1"
+  | "europe-west1"
+  | "europe-west2"
+  | "europe-west3"
+  | "europe-west4"
+  | "europe-west8"
+  | "europe-west9"
+  | "me-west1"
+  | "southamerica-east1"
+  | "us-central1"
+  | "us-east1"
+  | "us-east4"
+  | "us-south1"
+  | "us-west1";
+export const PagesTestsGetResponseDesktopReportMobileReportRegionValue =
+  /*@__PURE__*/ S.String;
+
+export interface PagesTestsGetResponseDesktopReportMobileReportRegion {
+  label?: string | null;
+  /** A test region. */
+  value?: PagesTestsGetResponseDesktopReportMobileReportRegionValue | null;
+}
+export const PagesTestsGetResponseDesktopReportMobileReportRegion =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      label: S.optional(S.NullOr(S.String)),
+      value: S.optional(
+        S.NullOr(PagesTestsGetResponseDesktopReportMobileReportRegionValue),
+      ),
+    }),
+  ).annotate({
+    identifier: "PagesTestsGetResponseDesktopReportMobileReportRegion",
+  }) as any as S.Schema<PagesTestsGetResponseDesktopReportMobileReportRegion>;
+
+export type PagesTestsGetResponseDesktopReportMobileReportScheduleFrequency =
+  | "DAILY"
+  | "WEEKLY";
+export const PagesTestsGetResponseDesktopReportMobileReportScheduleFrequency =
+  /*@__PURE__*/ S.String;
+
+export interface PagesTestsGetResponseDesktopReportMobileReport {
+  /** Cumulative Layout Shift. */
+  cls?: number | null;
+  /** The type of device. */
+  deviceType?: PagesTestsGetResponseDesktopReportMobileReportDeviceType | null;
+  error?: PagesTestsGetResponseDesktopReportMobileReportError | null;
+  /** First Contentful Paint. */
+  fcp?: number | null;
+  /** The URL to the full Lighthouse JSON report. */
+  jsonReportUrl?: string | null;
+  /** Largest Contentful Paint. */
+  lcp?: number | null;
+  /** The Lighthouse performance score. */
+  performanceScore?: number | null;
+  /** Speed Index. */
+  si?: number | null;
+  /** The state of the Lighthouse report. */
+  state?: PagesTestsGetResponseDesktopReportMobileReportState | null;
+  /** Total Blocking Time. */
+  tbt?: number | null;
+  /** Time To First Byte. */
+  ttfb?: number | null;
+  /** Time To Interactive. */
+  tti?: number | null;
+  /** A test region with a label. */
+  region?: PagesTestsGetResponseDesktopReportMobileReportRegion | null;
+  /** The frequency of the test. */
+  scheduleFrequency?: PagesTestsGetResponseDesktopReportMobileReportScheduleFrequency | null;
+  /** A URL. */
+  url?: string | null;
+}
+export const PagesTestsGetResponseDesktopReportMobileReport =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      cls: S.optional(S.NullOr(S.Number)),
+      deviceType: S.optional(
+        S.NullOr(PagesTestsGetResponseDesktopReportMobileReportDeviceType),
+      ),
+      error: S.optional(
+        S.NullOr(PagesTestsGetResponseDesktopReportMobileReportError),
+      ),
+      fcp: S.optional(S.NullOr(S.Number)),
+      jsonReportUrl: S.optional(S.NullOr(S.String)),
+      lcp: S.optional(S.NullOr(S.Number)),
+      performanceScore: S.optional(S.NullOr(S.Number)),
+      si: S.optional(S.NullOr(S.Number)),
+      state: S.optional(
+        S.NullOr(PagesTestsGetResponseDesktopReportMobileReportState),
+      ),
+      tbt: S.optional(S.NullOr(S.Number)),
+      ttfb: S.optional(S.NullOr(S.Number)),
+      tti: S.optional(S.NullOr(S.Number)),
+      region: S.optional(
+        S.NullOr(PagesTestsGetResponseDesktopReportMobileReportRegion),
+      ),
+      scheduleFrequency: S.optional(
+        S.NullOr(
+          PagesTestsGetResponseDesktopReportMobileReportScheduleFrequency,
+        ),
+      ),
+      url: S.optional(S.NullOr(S.String)),
+    }),
+  ).annotate({
+    identifier: "PagesTestsGetResponseDesktopReportMobileReport",
+  }) as any as S.Schema<PagesTestsGetResponseDesktopReportMobileReport>;
+
 export interface PagesTestsGetResponseDesktopReport {
   /** Cumulative Layout Shift. */
   cls?: number | null;
@@ -776,6 +1017,8 @@ export interface PagesTestsGetResponseDesktopReport {
   ttfb?: number | null;
   /** Time To Interactive. */
   tti?: number | null;
+  /** The Lighthouse report. */
+  mobileReport?: PagesTestsGetResponseDesktopReportMobileReport | null;
 }
 export const PagesTestsGetResponseDesktopReport = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -793,79 +1036,28 @@ export const PagesTestsGetResponseDesktopReport = /*@__PURE__*/ S.suspend(() =>
     tbt: S.optional(S.NullOr(S.Number)),
     ttfb: S.optional(S.NullOr(S.Number)),
     tti: S.optional(S.NullOr(S.Number)),
+    mobileReport: S.optional(
+      S.NullOr(PagesTestsGetResponseDesktopReportMobileReport),
+    ),
   }),
 ).annotate({
   identifier: "PagesTestsGetResponseDesktopReport",
 }) as any as S.Schema<PagesTestsGetResponseDesktopReport>;
 
-export type PagesTestsGetResponseRegionValue =
-  | "asia-east1"
-  | "asia-northeast1"
-  | "asia-northeast2"
-  | "asia-south1"
-  | "asia-southeast1"
-  | "australia-southeast1"
-  | "europe-north1"
-  | "europe-southwest1"
-  | "europe-west1"
-  | "europe-west2"
-  | "europe-west3"
-  | "europe-west4"
-  | "europe-west8"
-  | "europe-west9"
-  | "me-west1"
-  | "southamerica-east1"
-  | "us-central1"
-  | "us-east1"
-  | "us-east4"
-  | "us-south1"
-  | "us-west1";
-export const PagesTestsGetResponseRegionValue = /*@__PURE__*/ S.String;
-
-export interface PagesTestsGetResponseRegion {
-  label?: string | null;
-  /** A test region. */
-  value?: PagesTestsGetResponseRegionValue | null;
-}
-export const PagesTestsGetResponseRegion = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    label: S.optional(S.NullOr(S.String)),
-    value: S.optional(S.NullOr(PagesTestsGetResponseRegionValue)),
-  }),
-).annotate({
-  identifier: "PagesTestsGetResponseRegion",
-}) as any as S.Schema<PagesTestsGetResponseRegion>;
-
-export type PagesTestsGetResponseScheduleFrequency = "DAILY" | "WEEKLY";
-export const PagesTestsGetResponseScheduleFrequency = /*@__PURE__*/ S.String;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetPageTestResponse {
   /** UUID. */
   id?: string | null;
+  /** formatdate-time */
   date?: string | null;
   /** The Lighthouse report. */
   desktopReport?: PagesTestsGetResponseDesktopReport | null;
-  /** The Lighthouse report. */
-  mobileReport?: PagesTestsGetResponseDesktopReport | null;
-  /** A test region with a label. */
-  region?: PagesTestsGetResponseRegion | null;
-  /** The frequency of the test. */
-  scheduleFrequency?: PagesTestsGetResponseScheduleFrequency | null;
-  /** A URL. */
-  url?: string | null;
 }
 export const GetPageTestResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.NullOr(S.String)),
     date: S.optional(S.NullOr(S.String)),
     desktopReport: S.optional(S.NullOr(PagesTestsGetResponseDesktopReport)),
-    mobileReport: S.optional(S.NullOr(PagesTestsGetResponseDesktopReport)),
-    region: S.optional(S.NullOr(PagesTestsGetResponseRegion)),
-    scheduleFrequency: S.optional(
-      S.NullOr(PagesTestsGetResponseScheduleFrequency),
-    ),
-    url: S.optional(S.NullOr(S.String)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetPageTestResponse",
@@ -1030,35 +1222,7 @@ export type AvailabilitiesListResponseQuotaScheduleQuotasPerPlan =
 export const AvailabilitiesListResponseQuotaScheduleQuotasPerPlan =
   AvailabilitiesListResponseQuotaQuotasPerPlan;
 
-export interface AvailabilitiesListResponseQuota {
-  /** Cloudflare plan. */
-  plan?: string | null;
-  /** The number of tests available per plan. */
-  quotasPerPlan?: AvailabilitiesListResponseQuotaQuotasPerPlan | null;
-  /** The number of remaining schedules available. */
-  remainingSchedules?: number | null;
-  /** The number of remaining tests available. */
-  remainingTests?: number | null;
-  /** The number of schedules available per plan. */
-  scheduleQuotasPerPlan?: AvailabilitiesListResponseQuotaQuotasPerPlan | null;
-}
-export const AvailabilitiesListResponseQuota = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    plan: S.optional(S.NullOr(S.String)),
-    quotasPerPlan: S.optional(
-      S.NullOr(AvailabilitiesListResponseQuotaQuotasPerPlan),
-    ),
-    remainingSchedules: S.optional(S.NullOr(S.Number)),
-    remainingTests: S.optional(S.NullOr(S.Number)),
-    scheduleQuotasPerPlan: S.optional(
-      S.NullOr(AvailabilitiesListResponseQuotaQuotasPerPlan),
-    ),
-  }),
-).annotate({
-  identifier: "AvailabilitiesListResponseQuota",
-}) as any as S.Schema<AvailabilitiesListResponseQuota>;
-
-export type AvailabilitiesListResponseRegionsItemValue =
+export type AvailabilitiesListResponseQuotaRegionsItemValue =
   | "asia-east1"
   | "asia-northeast1"
   | "asia-northeast2"
@@ -1080,128 +1244,300 @@ export type AvailabilitiesListResponseRegionsItemValue =
   | "us-east4"
   | "us-south1"
   | "us-west1";
-export const AvailabilitiesListResponseRegionsItemValue =
+export const AvailabilitiesListResponseQuotaRegionsItemValue =
   /*@__PURE__*/ S.String;
 
-export interface AvailabilitiesListResponseRegionsItem {
+export interface AvailabilitiesListResponseQuotaRegionsItem {
   label?: string | null;
   /** A test region. */
-  value?: AvailabilitiesListResponseRegionsItemValue | null;
+  value?: AvailabilitiesListResponseQuotaRegionsItemValue | null;
 }
-export const AvailabilitiesListResponseRegionsItem = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      label: S.optional(S.NullOr(S.String)),
-      value: S.optional(S.NullOr(AvailabilitiesListResponseRegionsItemValue)),
-    }),
-).annotate({
-  identifier: "AvailabilitiesListResponseRegionsItem",
-}) as any as S.Schema<AvailabilitiesListResponseRegionsItem>;
-
-export type AvailabilitiesListResponseRegionsList =
-  Array<AvailabilitiesListResponseRegionsItem>;
-export const AvailabilitiesListResponseRegionsList = /*@__PURE__*/ S.Array(
-  AvailabilitiesListResponseRegionsItem,
-) as any as S.Schema<AvailabilitiesListResponseRegionsList>;
-
-export interface AvailabilitiesListResponseRegionsPerPlanBusinessItem {
-  label?: string | null;
-  /** A test region. */
-  value?: string | null;
-}
-export const AvailabilitiesListResponseRegionsPerPlanBusinessItem =
+export const AvailabilitiesListResponseQuotaRegionsItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       label: S.optional(S.NullOr(S.String)),
-      value: S.optional(S.NullOr(S.String)),
+      value: S.optional(
+        S.NullOr(AvailabilitiesListResponseQuotaRegionsItemValue),
+      ),
     }),
   ).annotate({
-    identifier: "AvailabilitiesListResponseRegionsPerPlanBusinessItem",
-  }) as any as S.Schema<AvailabilitiesListResponseRegionsPerPlanBusinessItem>;
+    identifier: "AvailabilitiesListResponseQuotaRegionsItem",
+  }) as any as S.Schema<AvailabilitiesListResponseQuotaRegionsItem>;
 
-export type AvailabilitiesListResponseRegionsPerPlanBusinessList =
-  Array<AvailabilitiesListResponseRegionsPerPlanBusinessItem>;
-export const AvailabilitiesListResponseRegionsPerPlanBusinessList =
-  /*@__PURE__*/ S.Array(
-    AvailabilitiesListResponseRegionsPerPlanBusinessItem,
-  ) as any as S.Schema<AvailabilitiesListResponseRegionsPerPlanBusinessList>;
+export type AvailabilitiesListResponseQuotaRegionsList =
+  Array<AvailabilitiesListResponseQuotaRegionsItem>;
+export const AvailabilitiesListResponseQuotaRegionsList = /*@__PURE__*/ S.Array(
+  AvailabilitiesListResponseQuotaRegionsItem,
+) as any as S.Schema<AvailabilitiesListResponseQuotaRegionsList>;
 
-export type AvailabilitiesListResponseRegionsPerPlanEnterpriseItem =
-  AvailabilitiesListResponseRegionsPerPlanBusinessItem;
-export const AvailabilitiesListResponseRegionsPerPlanEnterpriseItem =
-  AvailabilitiesListResponseRegionsPerPlanBusinessItem;
+export type AvailabilitiesListResponseQuotaRegionsPerPlanBusinessItemValue =
+  | "asia-east1"
+  | "asia-northeast1"
+  | "asia-northeast2"
+  | "asia-south1"
+  | "asia-southeast1"
+  | "australia-southeast1"
+  | "europe-north1"
+  | "europe-southwest1"
+  | "europe-west1"
+  | "europe-west2"
+  | "europe-west3"
+  | "europe-west4"
+  | "europe-west8"
+  | "europe-west9"
+  | "me-west1"
+  | "southamerica-east1"
+  | "us-central1"
+  | "us-east1"
+  | "us-east4"
+  | "us-south1"
+  | "us-west1";
+export const AvailabilitiesListResponseQuotaRegionsPerPlanBusinessItemValue =
+  /*@__PURE__*/ S.String;
 
-export type AvailabilitiesListResponseRegionsPerPlanEnterpriseList =
-  Array<AvailabilitiesListResponseRegionsPerPlanBusinessItem>;
-export const AvailabilitiesListResponseRegionsPerPlanEnterpriseList =
-  /*@__PURE__*/ S.Array(
-    AvailabilitiesListResponseRegionsPerPlanBusinessItem,
-  ) as any as S.Schema<AvailabilitiesListResponseRegionsPerPlanEnterpriseList>;
-
-export type AvailabilitiesListResponseRegionsPerPlanFreeItem =
-  AvailabilitiesListResponseRegionsPerPlanBusinessItem;
-export const AvailabilitiesListResponseRegionsPerPlanFreeItem =
-  AvailabilitiesListResponseRegionsPerPlanBusinessItem;
-
-export type AvailabilitiesListResponseRegionsPerPlanFreeList =
-  Array<AvailabilitiesListResponseRegionsPerPlanBusinessItem>;
-export const AvailabilitiesListResponseRegionsPerPlanFreeList =
-  /*@__PURE__*/ S.Array(
-    AvailabilitiesListResponseRegionsPerPlanBusinessItem,
-  ) as any as S.Schema<AvailabilitiesListResponseRegionsPerPlanFreeList>;
-
-export type AvailabilitiesListResponseRegionsPerPlanProItem =
-  AvailabilitiesListResponseRegionsPerPlanBusinessItem;
-export const AvailabilitiesListResponseRegionsPerPlanProItem =
-  AvailabilitiesListResponseRegionsPerPlanBusinessItem;
-
-export type AvailabilitiesListResponseRegionsPerPlanProList =
-  Array<AvailabilitiesListResponseRegionsPerPlanBusinessItem>;
-export const AvailabilitiesListResponseRegionsPerPlanProList =
-  /*@__PURE__*/ S.Array(
-    AvailabilitiesListResponseRegionsPerPlanBusinessItem,
-  ) as any as S.Schema<AvailabilitiesListResponseRegionsPerPlanProList>;
-
-export interface AvailabilitiesListResponseRegionsPerPlan {
-  business?: AvailabilitiesListResponseRegionsPerPlanBusinessList | null;
-  enterprise?: AvailabilitiesListResponseRegionsPerPlanEnterpriseList | null;
-  free?: AvailabilitiesListResponseRegionsPerPlanFreeList | null;
-  pro?: AvailabilitiesListResponseRegionsPerPlanProList | null;
+export interface AvailabilitiesListResponseQuotaRegionsPerPlanBusinessItem {
+  label?: string | null;
+  /** A test region. */
+  value?: AvailabilitiesListResponseQuotaRegionsPerPlanBusinessItemValue | null;
 }
-export const AvailabilitiesListResponseRegionsPerPlan = /*@__PURE__*/ S.suspend(
-  () =>
+export const AvailabilitiesListResponseQuotaRegionsPerPlanBusinessItem =
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      business: S.optional(
-        S.NullOr(AvailabilitiesListResponseRegionsPerPlanBusinessList),
-      ),
-      enterprise: S.optional(
-        S.NullOr(AvailabilitiesListResponseRegionsPerPlanEnterpriseList),
-      ),
-      free: S.optional(
-        S.NullOr(AvailabilitiesListResponseRegionsPerPlanFreeList),
-      ),
-      pro: S.optional(
-        S.NullOr(AvailabilitiesListResponseRegionsPerPlanProList),
+      label: S.optional(S.NullOr(S.String)),
+      value: S.optional(
+        S.NullOr(
+          AvailabilitiesListResponseQuotaRegionsPerPlanBusinessItemValue,
+        ),
       ),
     }),
+  ).annotate({
+    identifier: "AvailabilitiesListResponseQuotaRegionsPerPlanBusinessItem",
+  }) as any as S.Schema<AvailabilitiesListResponseQuotaRegionsPerPlanBusinessItem>;
+
+export type AvailabilitiesListResponseQuotaRegionsPerPlanBusinessList =
+  Array<AvailabilitiesListResponseQuotaRegionsPerPlanBusinessItem>;
+export const AvailabilitiesListResponseQuotaRegionsPerPlanBusinessList =
+  /*@__PURE__*/ S.Array(
+    AvailabilitiesListResponseQuotaRegionsPerPlanBusinessItem,
+  ) as any as S.Schema<AvailabilitiesListResponseQuotaRegionsPerPlanBusinessList>;
+
+export type AvailabilitiesListResponseQuotaRegionsPerPlanEnterpriseItemValue =
+  | "asia-east1"
+  | "asia-northeast1"
+  | "asia-northeast2"
+  | "asia-south1"
+  | "asia-southeast1"
+  | "australia-southeast1"
+  | "europe-north1"
+  | "europe-southwest1"
+  | "europe-west1"
+  | "europe-west2"
+  | "europe-west3"
+  | "europe-west4"
+  | "europe-west8"
+  | "europe-west9"
+  | "me-west1"
+  | "southamerica-east1"
+  | "us-central1"
+  | "us-east1"
+  | "us-east4"
+  | "us-south1"
+  | "us-west1";
+export const AvailabilitiesListResponseQuotaRegionsPerPlanEnterpriseItemValue =
+  /*@__PURE__*/ S.String;
+
+export interface AvailabilitiesListResponseQuotaRegionsPerPlanEnterpriseItem {
+  label?: string | null;
+  /** A test region. */
+  value?: AvailabilitiesListResponseQuotaRegionsPerPlanEnterpriseItemValue | null;
+}
+export const AvailabilitiesListResponseQuotaRegionsPerPlanEnterpriseItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      label: S.optional(S.NullOr(S.String)),
+      value: S.optional(
+        S.NullOr(
+          AvailabilitiesListResponseQuotaRegionsPerPlanEnterpriseItemValue,
+        ),
+      ),
+    }),
+  ).annotate({
+    identifier: "AvailabilitiesListResponseQuotaRegionsPerPlanEnterpriseItem",
+  }) as any as S.Schema<AvailabilitiesListResponseQuotaRegionsPerPlanEnterpriseItem>;
+
+export type AvailabilitiesListResponseQuotaRegionsPerPlanEnterpriseList =
+  Array<AvailabilitiesListResponseQuotaRegionsPerPlanEnterpriseItem>;
+export const AvailabilitiesListResponseQuotaRegionsPerPlanEnterpriseList =
+  /*@__PURE__*/ S.Array(
+    AvailabilitiesListResponseQuotaRegionsPerPlanEnterpriseItem,
+  ) as any as S.Schema<AvailabilitiesListResponseQuotaRegionsPerPlanEnterpriseList>;
+
+export type AvailabilitiesListResponseQuotaRegionsPerPlanFreeItemValue =
+  | "asia-east1"
+  | "asia-northeast1"
+  | "asia-northeast2"
+  | "asia-south1"
+  | "asia-southeast1"
+  | "australia-southeast1"
+  | "europe-north1"
+  | "europe-southwest1"
+  | "europe-west1"
+  | "europe-west2"
+  | "europe-west3"
+  | "europe-west4"
+  | "europe-west8"
+  | "europe-west9"
+  | "me-west1"
+  | "southamerica-east1"
+  | "us-central1"
+  | "us-east1"
+  | "us-east4"
+  | "us-south1"
+  | "us-west1";
+export const AvailabilitiesListResponseQuotaRegionsPerPlanFreeItemValue =
+  /*@__PURE__*/ S.String;
+
+export interface AvailabilitiesListResponseQuotaRegionsPerPlanFreeItem {
+  label?: string | null;
+  /** A test region. */
+  value?: AvailabilitiesListResponseQuotaRegionsPerPlanFreeItemValue | null;
+}
+export const AvailabilitiesListResponseQuotaRegionsPerPlanFreeItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      label: S.optional(S.NullOr(S.String)),
+      value: S.optional(
+        S.NullOr(AvailabilitiesListResponseQuotaRegionsPerPlanFreeItemValue),
+      ),
+    }),
+  ).annotate({
+    identifier: "AvailabilitiesListResponseQuotaRegionsPerPlanFreeItem",
+  }) as any as S.Schema<AvailabilitiesListResponseQuotaRegionsPerPlanFreeItem>;
+
+export type AvailabilitiesListResponseQuotaRegionsPerPlanFreeList =
+  Array<AvailabilitiesListResponseQuotaRegionsPerPlanFreeItem>;
+export const AvailabilitiesListResponseQuotaRegionsPerPlanFreeList =
+  /*@__PURE__*/ S.Array(
+    AvailabilitiesListResponseQuotaRegionsPerPlanFreeItem,
+  ) as any as S.Schema<AvailabilitiesListResponseQuotaRegionsPerPlanFreeList>;
+
+export type AvailabilitiesListResponseQuotaRegionsPerPlanProItemValue =
+  | "asia-east1"
+  | "asia-northeast1"
+  | "asia-northeast2"
+  | "asia-south1"
+  | "asia-southeast1"
+  | "australia-southeast1"
+  | "europe-north1"
+  | "europe-southwest1"
+  | "europe-west1"
+  | "europe-west2"
+  | "europe-west3"
+  | "europe-west4"
+  | "europe-west8"
+  | "europe-west9"
+  | "me-west1"
+  | "southamerica-east1"
+  | "us-central1"
+  | "us-east1"
+  | "us-east4"
+  | "us-south1"
+  | "us-west1";
+export const AvailabilitiesListResponseQuotaRegionsPerPlanProItemValue =
+  /*@__PURE__*/ S.String;
+
+export interface AvailabilitiesListResponseQuotaRegionsPerPlanProItem {
+  label?: string | null;
+  /** A test region. */
+  value?: AvailabilitiesListResponseQuotaRegionsPerPlanProItemValue | null;
+}
+export const AvailabilitiesListResponseQuotaRegionsPerPlanProItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      label: S.optional(S.NullOr(S.String)),
+      value: S.optional(
+        S.NullOr(AvailabilitiesListResponseQuotaRegionsPerPlanProItemValue),
+      ),
+    }),
+  ).annotate({
+    identifier: "AvailabilitiesListResponseQuotaRegionsPerPlanProItem",
+  }) as any as S.Schema<AvailabilitiesListResponseQuotaRegionsPerPlanProItem>;
+
+export type AvailabilitiesListResponseQuotaRegionsPerPlanProList =
+  Array<AvailabilitiesListResponseQuotaRegionsPerPlanProItem>;
+export const AvailabilitiesListResponseQuotaRegionsPerPlanProList =
+  /*@__PURE__*/ S.Array(
+    AvailabilitiesListResponseQuotaRegionsPerPlanProItem,
+  ) as any as S.Schema<AvailabilitiesListResponseQuotaRegionsPerPlanProList>;
+
+export interface AvailabilitiesListResponseQuotaRegionsPerPlan {
+  business?: AvailabilitiesListResponseQuotaRegionsPerPlanBusinessList | null;
+  enterprise?: AvailabilitiesListResponseQuotaRegionsPerPlanEnterpriseList | null;
+  free?: AvailabilitiesListResponseQuotaRegionsPerPlanFreeList | null;
+  pro?: AvailabilitiesListResponseQuotaRegionsPerPlanProList | null;
+}
+export const AvailabilitiesListResponseQuotaRegionsPerPlan =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      business: S.optional(
+        S.NullOr(AvailabilitiesListResponseQuotaRegionsPerPlanBusinessList),
+      ),
+      enterprise: S.optional(
+        S.NullOr(AvailabilitiesListResponseQuotaRegionsPerPlanEnterpriseList),
+      ),
+      free: S.optional(
+        S.NullOr(AvailabilitiesListResponseQuotaRegionsPerPlanFreeList),
+      ),
+      pro: S.optional(
+        S.NullOr(AvailabilitiesListResponseQuotaRegionsPerPlanProList),
+      ),
+    }),
+  ).annotate({
+    identifier: "AvailabilitiesListResponseQuotaRegionsPerPlan",
+  }) as any as S.Schema<AvailabilitiesListResponseQuotaRegionsPerPlan>;
+
+export interface AvailabilitiesListResponseQuota {
+  /** Cloudflare plan. */
+  plan?: string | null;
+  /** The number of tests available per plan. */
+  quotasPerPlan?: AvailabilitiesListResponseQuotaQuotasPerPlan | null;
+  /** The number of remaining schedules available. */
+  remainingSchedules?: number | null;
+  /** The number of remaining tests available. */
+  remainingTests?: number | null;
+  /** The number of schedules available per plan. */
+  scheduleQuotasPerPlan?: AvailabilitiesListResponseQuotaQuotasPerPlan | null;
+  regions?: AvailabilitiesListResponseQuotaRegionsList | null;
+  /** Available regions. */
+  regionsPerPlan?: AvailabilitiesListResponseQuotaRegionsPerPlan | null;
+}
+export const AvailabilitiesListResponseQuota = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    plan: S.optional(S.NullOr(S.String)),
+    quotasPerPlan: S.optional(
+      S.NullOr(AvailabilitiesListResponseQuotaQuotasPerPlan),
+    ),
+    remainingSchedules: S.optional(S.NullOr(S.Number)),
+    remainingTests: S.optional(S.NullOr(S.Number)),
+    scheduleQuotasPerPlan: S.optional(
+      S.NullOr(AvailabilitiesListResponseQuotaQuotasPerPlan),
+    ),
+    regions: S.optional(S.NullOr(AvailabilitiesListResponseQuotaRegionsList)),
+    regionsPerPlan: S.optional(
+      S.NullOr(AvailabilitiesListResponseQuotaRegionsPerPlan),
+    ),
+  }),
 ).annotate({
-  identifier: "AvailabilitiesListResponseRegionsPerPlan",
-}) as any as S.Schema<AvailabilitiesListResponseRegionsPerPlan>;
+  identifier: "AvailabilitiesListResponseQuota",
+}) as any as S.Schema<AvailabilitiesListResponseQuota>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface ListAvailabilitiesResponse {
   quota?: AvailabilitiesListResponseQuota | null;
-  regions?: AvailabilitiesListResponseRegionsList | null;
-  /** Available regions. */
-  regionsPerPlan?: AvailabilitiesListResponseRegionsPerPlan | null;
 }
 export const ListAvailabilitiesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     quota: S.optional(S.NullOr(AvailabilitiesListResponseQuota)),
-    regions: S.optional(S.NullOr(AvailabilitiesListResponseRegionsList)),
-    regionsPerPlan: S.optional(
-      S.NullOr(AvailabilitiesListResponseRegionsPerPlan),
-    ),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListAvailabilitiesResponse",
@@ -1311,6 +1647,172 @@ export type PagesListResultItemTestsItemDesktopReportState =
 export const PagesListResultItemTestsItemDesktopReportState =
   /*@__PURE__*/ S.String;
 
+export type PagesListResultItemTestsItemDesktopReportMobileReportDeviceType =
+  | "DESKTOP"
+  | "MOBILE";
+export const PagesListResultItemTestsItemDesktopReportMobileReportDeviceType =
+  /*@__PURE__*/ S.String;
+
+export type PagesListResultItemTestsItemDesktopReportMobileReportErrorCode =
+  | "NOT_REACHABLE"
+  | "DNS_FAILURE"
+  | "NOT_HTML"
+  | "LIGHTHOUSE_TIMEOUT"
+  | "UNKNOWN";
+export const PagesListResultItemTestsItemDesktopReportMobileReportErrorCode =
+  /*@__PURE__*/ S.String;
+
+export interface PagesListResultItemTestsItemDesktopReportMobileReportError {
+  /** The error code of the Lighthouse result. */
+  code?: PagesListResultItemTestsItemDesktopReportMobileReportErrorCode | null;
+  /** Detailed error message. */
+  detail?: string | null;
+  /** The final URL displayed to the user. */
+  finalDisplayedUrl?: string | null;
+}
+export const PagesListResultItemTestsItemDesktopReportMobileReportError =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      code: S.optional(
+        S.NullOr(
+          PagesListResultItemTestsItemDesktopReportMobileReportErrorCode,
+        ),
+      ),
+      detail: S.optional(S.NullOr(S.String)),
+      finalDisplayedUrl: S.optional(S.NullOr(S.String)),
+    }),
+  ).annotate({
+    identifier: "PagesListResultItemTestsItemDesktopReportMobileReportError",
+  }) as any as S.Schema<PagesListResultItemTestsItemDesktopReportMobileReportError>;
+
+export type PagesListResultItemTestsItemDesktopReportMobileReportState =
+  | "RUNNING"
+  | "COMPLETE"
+  | "FAILED";
+export const PagesListResultItemTestsItemDesktopReportMobileReportState =
+  /*@__PURE__*/ S.String;
+
+export type PagesListResultItemTestsItemDesktopReportMobileReportRegionValue =
+  | "asia-east1"
+  | "asia-northeast1"
+  | "asia-northeast2"
+  | "asia-south1"
+  | "asia-southeast1"
+  | "australia-southeast1"
+  | "europe-north1"
+  | "europe-southwest1"
+  | "europe-west1"
+  | "europe-west2"
+  | "europe-west3"
+  | "europe-west4"
+  | "europe-west8"
+  | "europe-west9"
+  | "me-west1"
+  | "southamerica-east1"
+  | "us-central1"
+  | "us-east1"
+  | "us-east4"
+  | "us-south1"
+  | "us-west1";
+export const PagesListResultItemTestsItemDesktopReportMobileReportRegionValue =
+  /*@__PURE__*/ S.String;
+
+export interface PagesListResultItemTestsItemDesktopReportMobileReportRegion {
+  label?: string | null;
+  /** A test region. */
+  value?: PagesListResultItemTestsItemDesktopReportMobileReportRegionValue | null;
+}
+export const PagesListResultItemTestsItemDesktopReportMobileReportRegion =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      label: S.optional(S.NullOr(S.String)),
+      value: S.optional(
+        S.NullOr(
+          PagesListResultItemTestsItemDesktopReportMobileReportRegionValue,
+        ),
+      ),
+    }),
+  ).annotate({
+    identifier: "PagesListResultItemTestsItemDesktopReportMobileReportRegion",
+  }) as any as S.Schema<PagesListResultItemTestsItemDesktopReportMobileReportRegion>;
+
+export type PagesListResultItemTestsItemDesktopReportMobileReportScheduleFrequency =
+  | "DAILY"
+  | "WEEKLY";
+export const PagesListResultItemTestsItemDesktopReportMobileReportScheduleFrequency =
+  /*@__PURE__*/ S.String;
+
+export interface PagesListResultItemTestsItemDesktopReportMobileReport {
+  /** Cumulative Layout Shift. */
+  cls?: number | null;
+  /** The type of device. */
+  deviceType?: PagesListResultItemTestsItemDesktopReportMobileReportDeviceType | null;
+  error?: PagesListResultItemTestsItemDesktopReportMobileReportError | null;
+  /** First Contentful Paint. */
+  fcp?: number | null;
+  /** The URL to the full Lighthouse JSON report. */
+  jsonReportUrl?: string | null;
+  /** Largest Contentful Paint. */
+  lcp?: number | null;
+  /** The Lighthouse performance score. */
+  performanceScore?: number | null;
+  /** Speed Index. */
+  si?: number | null;
+  /** The state of the Lighthouse report. */
+  state?: PagesListResultItemTestsItemDesktopReportMobileReportState | null;
+  /** Total Blocking Time. */
+  tbt?: number | null;
+  /** Time To First Byte. */
+  ttfb?: number | null;
+  /** Time To Interactive. */
+  tti?: number | null;
+  /** A test region with a label. */
+  region?: PagesListResultItemTestsItemDesktopReportMobileReportRegion | null;
+  /** The frequency of the test. */
+  scheduleFrequency?: PagesListResultItemTestsItemDesktopReportMobileReportScheduleFrequency | null;
+  /** A URL. */
+  url?: string | null;
+  /** A URL. */
+  url_2?: string | null;
+}
+export const PagesListResultItemTestsItemDesktopReportMobileReport =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      cls: S.optional(S.NullOr(S.Number)),
+      deviceType: S.optional(
+        S.NullOr(
+          PagesListResultItemTestsItemDesktopReportMobileReportDeviceType,
+        ),
+      ),
+      error: S.optional(
+        S.NullOr(PagesListResultItemTestsItemDesktopReportMobileReportError),
+      ),
+      fcp: S.optional(S.NullOr(S.Number)),
+      jsonReportUrl: S.optional(S.NullOr(S.String)),
+      lcp: S.optional(S.NullOr(S.Number)),
+      performanceScore: S.optional(S.NullOr(S.Number)),
+      si: S.optional(S.NullOr(S.Number)),
+      state: S.optional(
+        S.NullOr(PagesListResultItemTestsItemDesktopReportMobileReportState),
+      ),
+      tbt: S.optional(S.NullOr(S.Number)),
+      ttfb: S.optional(S.NullOr(S.Number)),
+      tti: S.optional(S.NullOr(S.Number)),
+      region: S.optional(
+        S.NullOr(PagesListResultItemTestsItemDesktopReportMobileReportRegion),
+      ),
+      scheduleFrequency: S.optional(
+        S.NullOr(
+          PagesListResultItemTestsItemDesktopReportMobileReportScheduleFrequency,
+        ),
+      ),
+      url: S.optional(S.NullOr(S.String)),
+      url_2: S.optional(S.NullOr(S.String).pipe(T.Body("url"))),
+    }),
+  ).annotate({
+    identifier: "PagesListResultItemTestsItemDesktopReportMobileReport",
+  }) as any as S.Schema<PagesListResultItemTestsItemDesktopReportMobileReport>;
+
 export interface PagesListResultItemTestsItemDesktopReport {
   /** Cumulative Layout Shift. */
   cls?: number | null;
@@ -1335,6 +1837,8 @@ export interface PagesListResultItemTestsItemDesktopReport {
   ttfb?: number | null;
   /** Time To Interactive. */
   tti?: number | null;
+  /** The Lighthouse report. */
+  mobileReport?: PagesListResultItemTestsItemDesktopReportMobileReport | null;
 }
 export const PagesListResultItemTestsItemDesktopReport =
   /*@__PURE__*/ S.suspend(() =>
@@ -1357,29 +1861,21 @@ export const PagesListResultItemTestsItemDesktopReport =
       tbt: S.optional(S.NullOr(S.Number)),
       ttfb: S.optional(S.NullOr(S.Number)),
       tti: S.optional(S.NullOr(S.Number)),
+      mobileReport: S.optional(
+        S.NullOr(PagesListResultItemTestsItemDesktopReportMobileReport),
+      ),
     }),
   ).annotate({
     identifier: "PagesListResultItemTestsItemDesktopReport",
   }) as any as S.Schema<PagesListResultItemTestsItemDesktopReport>;
 
-export type PagesListResultItemTestsItemScheduleFrequency = "DAILY" | "WEEKLY";
-export const PagesListResultItemTestsItemScheduleFrequency =
-  /*@__PURE__*/ S.String;
-
 export interface PagesListResultItemTestsItem {
   /** UUID. */
   id?: string | null;
+  /** formatdate-time */
   date?: string | null;
   /** The Lighthouse report. */
   desktopReport?: PagesListResultItemTestsItemDesktopReport | null;
-  /** The Lighthouse report. */
-  mobileReport?: PagesListResultItemTestsItemDesktopReport | null;
-  /** A test region with a label. */
-  region?: PagesListResultItemRegion | null;
-  /** The frequency of the test. */
-  scheduleFrequency?: PagesListResultItemTestsItemScheduleFrequency | null;
-  /** A URL. */
-  url?: string | null;
 }
 export const PagesListResultItemTestsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1388,14 +1884,6 @@ export const PagesListResultItemTestsItem = /*@__PURE__*/ S.suspend(() =>
     desktopReport: S.optional(
       S.NullOr(PagesListResultItemTestsItemDesktopReport),
     ),
-    mobileReport: S.optional(
-      S.NullOr(PagesListResultItemTestsItemDesktopReport),
-    ),
-    region: S.optional(S.NullOr(PagesListResultItemRegion)),
-    scheduleFrequency: S.optional(
-      S.NullOr(PagesListResultItemTestsItemScheduleFrequency),
-    ),
-    url: S.optional(S.NullOr(S.String)),
   }),
 ).annotate({
   identifier: "PagesListResultItemTestsItem",
@@ -1412,8 +1900,6 @@ export interface PagesListResultItem {
   /** The frequency of the test. */
   scheduleFrequency?: PagesListResultItemScheduleFrequency | null;
   tests?: PagesListResultItemTestsList | null;
-  /** A URL. */
-  url?: string | null;
 }
 export const PagesListResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1422,7 +1908,6 @@ export const PagesListResultItem = /*@__PURE__*/ S.suspend(() =>
       S.NullOr(PagesListResultItemScheduleFrequency),
     ),
     tests: S.optional(S.NullOr(PagesListResultItemTestsList)),
-    url: S.optional(S.NullOr(S.String)),
   }),
 ).annotate({
   identifier: "PagesListResultItem",
@@ -1478,6 +1963,7 @@ export interface ListPageTestsRequest {
   /** A URL. */
   url: string;
   page?: number;
+  /** maximum50 */
   perPage?: number;
   /** A test region. */
   region?: PagesTestsListRequestRegion | (string & {});
@@ -1545,6 +2031,163 @@ export type PagesTestsListResultItemDesktopReportState =
 export const PagesTestsListResultItemDesktopReportState =
   /*@__PURE__*/ S.String;
 
+export type PagesTestsListResultItemDesktopReportMobileReportDeviceType =
+  | "DESKTOP"
+  | "MOBILE";
+export const PagesTestsListResultItemDesktopReportMobileReportDeviceType =
+  /*@__PURE__*/ S.String;
+
+export type PagesTestsListResultItemDesktopReportMobileReportErrorCode =
+  | "NOT_REACHABLE"
+  | "DNS_FAILURE"
+  | "NOT_HTML"
+  | "LIGHTHOUSE_TIMEOUT"
+  | "UNKNOWN";
+export const PagesTestsListResultItemDesktopReportMobileReportErrorCode =
+  /*@__PURE__*/ S.String;
+
+export interface PagesTestsListResultItemDesktopReportMobileReportError {
+  /** The error code of the Lighthouse result. */
+  code?: PagesTestsListResultItemDesktopReportMobileReportErrorCode | null;
+  /** Detailed error message. */
+  detail?: string | null;
+  /** The final URL displayed to the user. */
+  finalDisplayedUrl?: string | null;
+}
+export const PagesTestsListResultItemDesktopReportMobileReportError =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      code: S.optional(
+        S.NullOr(PagesTestsListResultItemDesktopReportMobileReportErrorCode),
+      ),
+      detail: S.optional(S.NullOr(S.String)),
+      finalDisplayedUrl: S.optional(S.NullOr(S.String)),
+    }),
+  ).annotate({
+    identifier: "PagesTestsListResultItemDesktopReportMobileReportError",
+  }) as any as S.Schema<PagesTestsListResultItemDesktopReportMobileReportError>;
+
+export type PagesTestsListResultItemDesktopReportMobileReportState =
+  | "RUNNING"
+  | "COMPLETE"
+  | "FAILED";
+export const PagesTestsListResultItemDesktopReportMobileReportState =
+  /*@__PURE__*/ S.String;
+
+export type PagesTestsListResultItemDesktopReportMobileReportRegionValue =
+  | "asia-east1"
+  | "asia-northeast1"
+  | "asia-northeast2"
+  | "asia-south1"
+  | "asia-southeast1"
+  | "australia-southeast1"
+  | "europe-north1"
+  | "europe-southwest1"
+  | "europe-west1"
+  | "europe-west2"
+  | "europe-west3"
+  | "europe-west4"
+  | "europe-west8"
+  | "europe-west9"
+  | "me-west1"
+  | "southamerica-east1"
+  | "us-central1"
+  | "us-east1"
+  | "us-east4"
+  | "us-south1"
+  | "us-west1";
+export const PagesTestsListResultItemDesktopReportMobileReportRegionValue =
+  /*@__PURE__*/ S.String;
+
+export interface PagesTestsListResultItemDesktopReportMobileReportRegion {
+  label?: string | null;
+  /** A test region. */
+  value?: PagesTestsListResultItemDesktopReportMobileReportRegionValue | null;
+}
+export const PagesTestsListResultItemDesktopReportMobileReportRegion =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      label: S.optional(S.NullOr(S.String)),
+      value: S.optional(
+        S.NullOr(PagesTestsListResultItemDesktopReportMobileReportRegionValue),
+      ),
+    }),
+  ).annotate({
+    identifier: "PagesTestsListResultItemDesktopReportMobileReportRegion",
+  }) as any as S.Schema<PagesTestsListResultItemDesktopReportMobileReportRegion>;
+
+export type PagesTestsListResultItemDesktopReportMobileReportScheduleFrequency =
+  | "DAILY"
+  | "WEEKLY";
+export const PagesTestsListResultItemDesktopReportMobileReportScheduleFrequency =
+  /*@__PURE__*/ S.String;
+
+export interface PagesTestsListResultItemDesktopReportMobileReport {
+  /** Cumulative Layout Shift. */
+  cls?: number | null;
+  /** The type of device. */
+  deviceType?: PagesTestsListResultItemDesktopReportMobileReportDeviceType | null;
+  error?: PagesTestsListResultItemDesktopReportMobileReportError | null;
+  /** First Contentful Paint. */
+  fcp?: number | null;
+  /** The URL to the full Lighthouse JSON report. */
+  jsonReportUrl?: string | null;
+  /** Largest Contentful Paint. */
+  lcp?: number | null;
+  /** The Lighthouse performance score. */
+  performanceScore?: number | null;
+  /** Speed Index. */
+  si?: number | null;
+  /** The state of the Lighthouse report. */
+  state?: PagesTestsListResultItemDesktopReportMobileReportState | null;
+  /** Total Blocking Time. */
+  tbt?: number | null;
+  /** Time To First Byte. */
+  ttfb?: number | null;
+  /** Time To Interactive. */
+  tti?: number | null;
+  /** A test region with a label. */
+  region?: PagesTestsListResultItemDesktopReportMobileReportRegion | null;
+  /** The frequency of the test. */
+  scheduleFrequency?: PagesTestsListResultItemDesktopReportMobileReportScheduleFrequency | null;
+  /** A URL. */
+  url?: string | null;
+}
+export const PagesTestsListResultItemDesktopReportMobileReport =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      cls: S.optional(S.NullOr(S.Number)),
+      deviceType: S.optional(
+        S.NullOr(PagesTestsListResultItemDesktopReportMobileReportDeviceType),
+      ),
+      error: S.optional(
+        S.NullOr(PagesTestsListResultItemDesktopReportMobileReportError),
+      ),
+      fcp: S.optional(S.NullOr(S.Number)),
+      jsonReportUrl: S.optional(S.NullOr(S.String)),
+      lcp: S.optional(S.NullOr(S.Number)),
+      performanceScore: S.optional(S.NullOr(S.Number)),
+      si: S.optional(S.NullOr(S.Number)),
+      state: S.optional(
+        S.NullOr(PagesTestsListResultItemDesktopReportMobileReportState),
+      ),
+      tbt: S.optional(S.NullOr(S.Number)),
+      ttfb: S.optional(S.NullOr(S.Number)),
+      tti: S.optional(S.NullOr(S.Number)),
+      region: S.optional(
+        S.NullOr(PagesTestsListResultItemDesktopReportMobileReportRegion),
+      ),
+      scheduleFrequency: S.optional(
+        S.NullOr(
+          PagesTestsListResultItemDesktopReportMobileReportScheduleFrequency,
+        ),
+      ),
+      url: S.optional(S.NullOr(S.String)),
+    }),
+  ).annotate({
+    identifier: "PagesTestsListResultItemDesktopReportMobileReport",
+  }) as any as S.Schema<PagesTestsListResultItemDesktopReportMobileReport>;
+
 export interface PagesTestsListResultItemDesktopReport {
   /** Cumulative Layout Shift. */
   cls?: number | null;
@@ -1569,6 +2212,8 @@ export interface PagesTestsListResultItemDesktopReport {
   ttfb?: number | null;
   /** Time To Interactive. */
   tti?: number | null;
+  /** The Lighthouse report. */
+  mobileReport?: PagesTestsListResultItemDesktopReportMobileReport | null;
 }
 export const PagesTestsListResultItemDesktopReport = /*@__PURE__*/ S.suspend(
   () =>
@@ -1587,78 +2232,27 @@ export const PagesTestsListResultItemDesktopReport = /*@__PURE__*/ S.suspend(
       tbt: S.optional(S.NullOr(S.Number)),
       ttfb: S.optional(S.NullOr(S.Number)),
       tti: S.optional(S.NullOr(S.Number)),
+      mobileReport: S.optional(
+        S.NullOr(PagesTestsListResultItemDesktopReportMobileReport),
+      ),
     }),
 ).annotate({
   identifier: "PagesTestsListResultItemDesktopReport",
 }) as any as S.Schema<PagesTestsListResultItemDesktopReport>;
 
-export type PagesTestsListResultItemRegionValue =
-  | "asia-east1"
-  | "asia-northeast1"
-  | "asia-northeast2"
-  | "asia-south1"
-  | "asia-southeast1"
-  | "australia-southeast1"
-  | "europe-north1"
-  | "europe-southwest1"
-  | "europe-west1"
-  | "europe-west2"
-  | "europe-west3"
-  | "europe-west4"
-  | "europe-west8"
-  | "europe-west9"
-  | "me-west1"
-  | "southamerica-east1"
-  | "us-central1"
-  | "us-east1"
-  | "us-east4"
-  | "us-south1"
-  | "us-west1";
-export const PagesTestsListResultItemRegionValue = /*@__PURE__*/ S.String;
-
-export interface PagesTestsListResultItemRegion {
-  label?: string | null;
-  /** A test region. */
-  value?: PagesTestsListResultItemRegionValue | null;
-}
-export const PagesTestsListResultItemRegion = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    label: S.optional(S.NullOr(S.String)),
-    value: S.optional(S.NullOr(PagesTestsListResultItemRegionValue)),
-  }),
-).annotate({
-  identifier: "PagesTestsListResultItemRegion",
-}) as any as S.Schema<PagesTestsListResultItemRegion>;
-
-export type PagesTestsListResultItemScheduleFrequency = "DAILY" | "WEEKLY";
-export const PagesTestsListResultItemScheduleFrequency = /*@__PURE__*/ S.String;
-
 export interface PagesTestsListResultItem {
   /** UUID. */
   id?: string | null;
+  /** formatdate-time */
   date?: string | null;
   /** The Lighthouse report. */
   desktopReport?: PagesTestsListResultItemDesktopReport | null;
-  /** The Lighthouse report. */
-  mobileReport?: PagesTestsListResultItemDesktopReport | null;
-  /** A test region with a label. */
-  region?: PagesTestsListResultItemRegion | null;
-  /** The frequency of the test. */
-  scheduleFrequency?: PagesTestsListResultItemScheduleFrequency | null;
-  /** A URL. */
-  url?: string | null;
 }
 export const PagesTestsListResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.NullOr(S.String)),
     date: S.optional(S.NullOr(S.String)),
     desktopReport: S.optional(S.NullOr(PagesTestsListResultItemDesktopReport)),
-    mobileReport: S.optional(S.NullOr(PagesTestsListResultItemDesktopReport)),
-    region: S.optional(S.NullOr(PagesTestsListResultItemRegion)),
-    scheduleFrequency: S.optional(
-      S.NullOr(PagesTestsListResultItemScheduleFrequency),
-    ),
-    url: S.optional(S.NullOr(S.String)),
   }),
 ).annotate({
   identifier: "PagesTestsListResultItem",
@@ -1722,9 +2316,11 @@ export interface TrendPageRequest {
   metrics: string;
   /** A test region. */
   region: PagesTrendRequestRegion | (string & {});
+  /** formatdate-time */
   start: string;
   /** The timezone of the start and end timestamps. */
   tz: string;
+  /** formatdate-time */
   end?: string;
 }
 export const TrendPageRequest = /*@__PURE__*/ S.suspend(() =>

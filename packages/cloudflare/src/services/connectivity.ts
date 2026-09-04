@@ -72,182 +72,13 @@ export class VpcTunnelNotFound
     [{ code: 5101, message: { includes: "Tunnel ID Not Found" } }],
   ) {}
 
-export interface DirectoryServicesCreateRequestHostInfraIPv4HostNetwork {
-  tunnelId: string;
-}
-export const DirectoryServicesCreateRequestHostInfraIPv4HostNetwork =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      tunnelId: S.String.pipe(T.Body("tunnel_id")),
-    }),
-  ).annotate({
-    identifier: "DirectoryServicesCreateRequestHostInfraIPv4HostNetwork",
-  }) as any as S.Schema<DirectoryServicesCreateRequestHostInfraIPv4HostNetwork>;
-
-export interface DirectoryServicesCreateRequestHostInfraIPv4Host {
-  ipv4: string;
-  network: DirectoryServicesCreateRequestHostInfraIPv4HostNetwork;
-}
-export const DirectoryServicesCreateRequestHostInfraIPv4Host =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ipv4: S.String,
-      network: DirectoryServicesCreateRequestHostInfraIPv4HostNetwork,
-    }),
-  ).annotate({
-    identifier: "DirectoryServicesCreateRequestHostInfraIPv4Host",
-  }) as any as S.Schema<DirectoryServicesCreateRequestHostInfraIPv4Host>;
-
-export type DirectoryServicesCreateRequestHostInfraIPv6HostNetwork =
-  DirectoryServicesCreateRequestHostInfraIPv4HostNetwork;
-export const DirectoryServicesCreateRequestHostInfraIPv6HostNetwork =
-  DirectoryServicesCreateRequestHostInfraIPv4HostNetwork;
-
-export interface DirectoryServicesCreateRequestHostInfraIPv6Host {
-  ipv6: string;
-  network: DirectoryServicesCreateRequestHostInfraIPv4HostNetwork;
-}
-export const DirectoryServicesCreateRequestHostInfraIPv6Host =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ipv6: S.String,
-      network: DirectoryServicesCreateRequestHostInfraIPv4HostNetwork,
-    }),
-  ).annotate({
-    identifier: "DirectoryServicesCreateRequestHostInfraIPv6Host",
-  }) as any as S.Schema<DirectoryServicesCreateRequestHostInfraIPv6Host>;
-
-export type DirectoryServicesCreateRequestHostInfraDualStackHostNetwork =
-  DirectoryServicesCreateRequestHostInfraIPv4HostNetwork;
-export const DirectoryServicesCreateRequestHostInfraDualStackHostNetwork =
-  DirectoryServicesCreateRequestHostInfraIPv4HostNetwork;
-
-export interface DirectoryServicesCreateRequestHostInfraDualStackHost {
-  ipv4: string;
-  ipv6: string;
-  network: DirectoryServicesCreateRequestHostInfraIPv4HostNetwork;
-}
-export const DirectoryServicesCreateRequestHostInfraDualStackHost =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ipv4: S.String,
-      ipv6: S.String,
-      network: DirectoryServicesCreateRequestHostInfraIPv4HostNetwork,
-    }),
-  ).annotate({
-    identifier: "DirectoryServicesCreateRequestHostInfraDualStackHost",
-  }) as any as S.Schema<DirectoryServicesCreateRequestHostInfraDualStackHost>;
-
-export type DirectoryServicesCreateRequestHostInfraHostnameHostResolverNetworkResolverIpsList =
-  Array<string>;
-export const DirectoryServicesCreateRequestHostInfraHostnameHostResolverNetworkResolverIpsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<DirectoryServicesCreateRequestHostInfraHostnameHostResolverNetworkResolverIpsList>;
-
-export interface DirectoryServicesCreateRequestHostInfraHostnameHostResolverNetwork {
-  tunnelId: string;
-  resolverIps?: DirectoryServicesCreateRequestHostInfraHostnameHostResolverNetworkResolverIpsList;
-}
-export const DirectoryServicesCreateRequestHostInfraHostnameHostResolverNetwork =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      tunnelId: S.String.pipe(T.Body("tunnel_id")),
-      resolverIps: S.optional(
-        DirectoryServicesCreateRequestHostInfraHostnameHostResolverNetworkResolverIpsList.pipe(
-          T.Body("resolver_ips"),
-        ),
-      ),
-    }),
-  ).annotate({
-    identifier:
-      "DirectoryServicesCreateRequestHostInfraHostnameHostResolverNetwork",
-  }) as any as S.Schema<DirectoryServicesCreateRequestHostInfraHostnameHostResolverNetwork>;
-
-export interface DirectoryServicesCreateRequestHostInfraHostnameHost {
-  hostname: string;
-  resolverNetwork: DirectoryServicesCreateRequestHostInfraHostnameHostResolverNetwork;
-}
-export const DirectoryServicesCreateRequestHostInfraHostnameHost =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      hostname: S.String,
-      resolverNetwork:
-        DirectoryServicesCreateRequestHostInfraHostnameHostResolverNetwork.pipe(
-          T.Body("resolver_network"),
-        ),
-    }),
-  ).annotate({
-    identifier: "DirectoryServicesCreateRequestHostInfraHostnameHost",
-  }) as any as S.Schema<DirectoryServicesCreateRequestHostInfraHostnameHost>;
-
-export type DirectoryServicesCreateRequestHost =
-  | DirectoryServicesCreateRequestHostInfraIPv4Host
-  | DirectoryServicesCreateRequestHostInfraIPv6Host
-  | DirectoryServicesCreateRequestHostInfraDualStackHost
-  | DirectoryServicesCreateRequestHostInfraHostnameHost;
-export const DirectoryServicesCreateRequestHost = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
-    ["ipv4", "network"],
-    ["ipv6", "network"],
-    ["ipv4", "ipv6", "network"],
-    ["hostname", "resolverNetwork"],
-  ]),
-);
-
-export type DirectoryServicesCreateRequestType = "tcp" | "http";
-export const DirectoryServicesCreateRequestType = /*@__PURE__*/ S.String;
-
-export interface DirectoryServicesCreateRequestTlsSettings {
-  /** TLS certificate verification mode for the connection to the origin. */
-  certVerificationMode: string;
-}
-export const DirectoryServicesCreateRequestTlsSettings =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      certVerificationMode: S.String.pipe(T.Body("cert_verification_mode")),
-    }),
-  ).annotate({
-    identifier: "DirectoryServicesCreateRequestTlsSettings",
-  }) as any as S.Schema<DirectoryServicesCreateRequestTlsSettings>;
-
-export type DirectoryServicesCreateRequestAppProtocol = "postgresql" | "mysql";
-export const DirectoryServicesCreateRequestAppProtocol = /*@__PURE__*/ S.String;
-
 export interface CreateDirectoryServiceRequest {
   /** Account identifier */
   accountId: string;
-  host: DirectoryServicesCreateRequestHost;
-  name: string;
-  type: DirectoryServicesCreateRequestType | (string & {});
-  createdAt?: string;
-  httpPort?: number;
-  httpsPort?: number;
-  serviceId?: string;
-  /** TLS settings for a connectivity service. */
-  tlsSettings?: DirectoryServicesCreateRequestTlsSettings;
-  updatedAt?: string;
-  appProtocol?: DirectoryServicesCreateRequestAppProtocol | (string & {});
-  tcpPort?: number;
 }
 export const CreateDirectoryServiceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
-    host: DirectoryServicesCreateRequestHost,
-    name: S.String,
-    type: DirectoryServicesCreateRequestType,
-    createdAt: S.optional(S.String.pipe(T.Body("created_at"))),
-    httpPort: S.optional(S.Number.pipe(T.Body("http_port"))),
-    httpsPort: S.optional(S.Number.pipe(T.Body("https_port"))),
-    serviceId: S.optional(S.String.pipe(T.Body("service_id"))),
-    tlsSettings: S.optional(
-      DirectoryServicesCreateRequestTlsSettings.pipe(T.Body("tls_settings")),
-    ),
-    updatedAt: S.optional(S.String.pipe(T.Body("updated_at"))),
-    appProtocol: S.optional(
-      DirectoryServicesCreateRequestAppProtocol.pipe(T.Body("app_protocol")),
-    ),
-    tcpPort: S.optional(S.Number.pipe(T.Body("tcp_port"))),
   })
     .pipe(
       T.Http({
@@ -261,161 +92,16 @@ export const CreateDirectoryServiceRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateDirectoryServiceRequest",
 }) as any as S.Schema<CreateDirectoryServiceRequest>;
 
-export type DirectoryServicesCreateResultInfraHTTPServiceConfigHostInfraIPv4HostNetwork =
-  DirectoryServicesCreateRequestHostInfraIPv4HostNetwork;
-export const DirectoryServicesCreateResultInfraHTTPServiceConfigHostInfraIPv4HostNetwork =
-  DirectoryServicesCreateRequestHostInfraIPv4HostNetwork;
-
-export type DirectoryServicesCreateResultInfraHTTPServiceConfigHostInfraIPv4Host =
-  DirectoryServicesCreateRequestHostInfraIPv4Host;
-export const DirectoryServicesCreateResultInfraHTTPServiceConfigHostInfraIPv4Host =
-  DirectoryServicesCreateRequestHostInfraIPv4Host;
-
-export type DirectoryServicesCreateResultInfraHTTPServiceConfigHostInfraIPv6HostNetwork =
-  DirectoryServicesCreateRequestHostInfraIPv4HostNetwork;
-export const DirectoryServicesCreateResultInfraHTTPServiceConfigHostInfraIPv6HostNetwork =
-  DirectoryServicesCreateRequestHostInfraIPv4HostNetwork;
-
-export type DirectoryServicesCreateResultInfraHTTPServiceConfigHostInfraIPv6Host =
-  DirectoryServicesCreateRequestHostInfraIPv6Host;
-export const DirectoryServicesCreateResultInfraHTTPServiceConfigHostInfraIPv6Host =
-  DirectoryServicesCreateRequestHostInfraIPv6Host;
-
-export type DirectoryServicesCreateResultInfraHTTPServiceConfigHostInfraDualStackHostNetwork =
-  DirectoryServicesCreateRequestHostInfraIPv4HostNetwork;
-export const DirectoryServicesCreateResultInfraHTTPServiceConfigHostInfraDualStackHostNetwork =
-  DirectoryServicesCreateRequestHostInfraIPv4HostNetwork;
-
-export type DirectoryServicesCreateResultInfraHTTPServiceConfigHostInfraDualStackHost =
-  DirectoryServicesCreateRequestHostInfraDualStackHost;
-export const DirectoryServicesCreateResultInfraHTTPServiceConfigHostInfraDualStackHost =
-  DirectoryServicesCreateRequestHostInfraDualStackHost;
-
-export type DirectoryServicesCreateResultInfraHTTPServiceConfigHostInfraHostnameHostResolverNetworkResolverIpsList =
-  Array<string>;
-export const DirectoryServicesCreateResultInfraHTTPServiceConfigHostInfraHostnameHostResolverNetworkResolverIpsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<DirectoryServicesCreateResultInfraHTTPServiceConfigHostInfraHostnameHostResolverNetworkResolverIpsList>;
-
-export interface DirectoryServicesCreateResultInfraHTTPServiceConfigHostInfraHostnameHostResolverNetwork {
-  tunnelId: string;
-  resolverIps?: DirectoryServicesCreateResultInfraHTTPServiceConfigHostInfraHostnameHostResolverNetworkResolverIpsList | null;
-}
-export const DirectoryServicesCreateResultInfraHTTPServiceConfigHostInfraHostnameHostResolverNetwork =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      tunnelId: S.String.pipe(T.Body("tunnel_id")),
-      resolverIps: S.optional(
-        S.NullOr(
-          DirectoryServicesCreateResultInfraHTTPServiceConfigHostInfraHostnameHostResolverNetworkResolverIpsList,
-        ).pipe(T.Body("resolver_ips")),
-      ),
-    }),
-  ).annotate({
-    identifier:
-      "DirectoryServicesCreateResultInfraHTTPServiceConfigHostInfraHostnameHostResolverNetwork",
-  }) as any as S.Schema<DirectoryServicesCreateResultInfraHTTPServiceConfigHostInfraHostnameHostResolverNetwork>;
-
-export interface DirectoryServicesCreateResultInfraHTTPServiceConfigHostInfraHostnameHost {
-  hostname: string;
-  resolverNetwork: DirectoryServicesCreateResultInfraHTTPServiceConfigHostInfraHostnameHostResolverNetwork;
-}
-export const DirectoryServicesCreateResultInfraHTTPServiceConfigHostInfraHostnameHost =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      hostname: S.String,
-      resolverNetwork:
-        DirectoryServicesCreateResultInfraHTTPServiceConfigHostInfraHostnameHostResolverNetwork.pipe(
-          T.Body("resolver_network"),
-        ),
-    }),
-  ).annotate({
-    identifier:
-      "DirectoryServicesCreateResultInfraHTTPServiceConfigHostInfraHostnameHost",
-  }) as any as S.Schema<DirectoryServicesCreateResultInfraHTTPServiceConfigHostInfraHostnameHost>;
-
-export type DirectoryServicesCreateResultInfraHTTPServiceConfigHost =
-  | DirectoryServicesCreateRequestHostInfraIPv4Host
-  | DirectoryServicesCreateRequestHostInfraIPv6Host
-  | DirectoryServicesCreateRequestHostInfraDualStackHost
-  | DirectoryServicesCreateResultInfraHTTPServiceConfigHostInfraHostnameHost;
-export const DirectoryServicesCreateResultInfraHTTPServiceConfigHost =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["ipv4", "network"],
-      ["ipv6", "network"],
-      ["ipv4", "ipv6", "network"],
-      ["hostname", "resolverNetwork"],
-    ]),
-  );
-
-export type DirectoryServicesCreateResultType = "tcp" | "http";
-export const DirectoryServicesCreateResultType = /*@__PURE__*/ S.String;
-
-export type DirectoryServicesCreateResultInfraHTTPServiceConfigTlsSettings =
-  DirectoryServicesCreateRequestTlsSettings;
-export const DirectoryServicesCreateResultInfraHTTPServiceConfigTlsSettings =
-  DirectoryServicesCreateRequestTlsSettings;
-
-export type DirectoryServicesCreateResultInfraTCPServiceConfigAppProtocol =
-  | "postgresql"
-  | "mysql";
-export const DirectoryServicesCreateResultInfraTCPServiceConfigAppProtocol =
-  /*@__PURE__*/ S.String;
-
-export interface DirectoryServicesCreateResult {
-  host: DirectoryServicesCreateResultInfraHTTPServiceConfigHost;
-  name: string;
-  type: DirectoryServicesCreateResultType;
-  createdAt?: string | null;
-  httpPort?: number | null;
-  httpsPort?: number | null;
-  serviceId?: string | null;
-  /** TLS settings for a connectivity service. */
-  tlsSettings?: DirectoryServicesCreateRequestTlsSettings | null;
-  updatedAt?: string | null;
-  appProtocol?: DirectoryServicesCreateResultInfraTCPServiceConfigAppProtocol | null;
-  tcpPort?: number | null;
-}
-export const DirectoryServicesCreateResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    host: DirectoryServicesCreateResultInfraHTTPServiceConfigHost,
-    name: S.String,
-    type: DirectoryServicesCreateResultType,
-    createdAt: S.optional(S.NullOr(S.String).pipe(T.Body("created_at"))),
-    httpPort: S.optional(S.NullOr(S.Number).pipe(T.Body("http_port"))),
-    httpsPort: S.optional(S.NullOr(S.Number).pipe(T.Body("https_port"))),
-    serviceId: S.optional(S.NullOr(S.String).pipe(T.Body("service_id"))),
-    tlsSettings: S.optional(
-      S.NullOr(DirectoryServicesCreateRequestTlsSettings).pipe(
-        T.Body("tls_settings"),
-      ),
-    ),
-    updatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("updated_at"))),
-    appProtocol: S.optional(
-      S.NullOr(
-        DirectoryServicesCreateResultInfraTCPServiceConfigAppProtocol,
-      ).pipe(T.Body("app_protocol")),
-    ),
-    tcpPort: S.optional(S.NullOr(S.Number).pipe(T.Body("tcp_port"))),
-  }),
-).annotate({
-  identifier: "DirectoryServicesCreateResult",
-}) as any as S.Schema<DirectoryServicesCreateResult>;
-
-export type CreateDirectoryServiceResponse = DirectoryServicesCreateResult;
+export type CreateDirectoryServiceResponse = unknown;
 export const CreateDirectoryServiceResponse = /*@__PURE__*/ S.suspend(() =>
-  DirectoryServicesCreateResult.pipe(
-    T.EnvelopePayloadRoot(),
-    T.KeyDictionary(KEY_DICTIONARY),
-  ),
+  S.Unknown.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateDirectoryServiceResponse",
 }) as any as S.Schema<CreateDirectoryServiceResponse>;
 
 export interface DeleteDirectoryServiceRequest {
   accountId: string;
+  /** formatuuid */
   serviceId: string;
 }
 export const DeleteDirectoryServiceRequest = /*@__PURE__*/ S.suspend(() =>
@@ -444,6 +130,7 @@ export const DeleteDirectoryServiceResponse = /*@__PURE__*/ S.suspend(() =>
 
 export interface GetDirectoryServiceRequest {
   accountId: string;
+  /** formatuuid */
   serviceId: string;
 }
 export const GetDirectoryServiceRequest = /*@__PURE__*/ S.suspend(() =>
@@ -463,108 +150,8 @@ export const GetDirectoryServiceRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetDirectoryServiceRequest",
 }) as any as S.Schema<GetDirectoryServiceRequest>;
 
-export type DirectoryServicesGetResultInfraHTTPServiceConfigHostInfraIPv4HostNetwork =
-  DirectoryServicesCreateRequestHostInfraIPv4HostNetwork;
-export const DirectoryServicesGetResultInfraHTTPServiceConfigHostInfraIPv4HostNetwork =
-  DirectoryServicesCreateRequestHostInfraIPv4HostNetwork;
-
-export type DirectoryServicesGetResultInfraHTTPServiceConfigHostInfraIPv4Host =
-  DirectoryServicesCreateRequestHostInfraIPv4Host;
-export const DirectoryServicesGetResultInfraHTTPServiceConfigHostInfraIPv4Host =
-  DirectoryServicesCreateRequestHostInfraIPv4Host;
-
-export type DirectoryServicesGetResultInfraHTTPServiceConfigHostInfraIPv6HostNetwork =
-  DirectoryServicesCreateRequestHostInfraIPv4HostNetwork;
-export const DirectoryServicesGetResultInfraHTTPServiceConfigHostInfraIPv6HostNetwork =
-  DirectoryServicesCreateRequestHostInfraIPv4HostNetwork;
-
-export type DirectoryServicesGetResultInfraHTTPServiceConfigHostInfraIPv6Host =
-  DirectoryServicesCreateRequestHostInfraIPv6Host;
-export const DirectoryServicesGetResultInfraHTTPServiceConfigHostInfraIPv6Host =
-  DirectoryServicesCreateRequestHostInfraIPv6Host;
-
-export type DirectoryServicesGetResultInfraHTTPServiceConfigHostInfraDualStackHostNetwork =
-  DirectoryServicesCreateRequestHostInfraIPv4HostNetwork;
-export const DirectoryServicesGetResultInfraHTTPServiceConfigHostInfraDualStackHostNetwork =
-  DirectoryServicesCreateRequestHostInfraIPv4HostNetwork;
-
-export type DirectoryServicesGetResultInfraHTTPServiceConfigHostInfraDualStackHost =
-  DirectoryServicesCreateRequestHostInfraDualStackHost;
-export const DirectoryServicesGetResultInfraHTTPServiceConfigHostInfraDualStackHost =
-  DirectoryServicesCreateRequestHostInfraDualStackHost;
-
-export type DirectoryServicesGetResultInfraHTTPServiceConfigHostInfraHostnameHostResolverNetworkResolverIpsList =
-  Array<string>;
-export const DirectoryServicesGetResultInfraHTTPServiceConfigHostInfraHostnameHostResolverNetworkResolverIpsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<DirectoryServicesGetResultInfraHTTPServiceConfigHostInfraHostnameHostResolverNetworkResolverIpsList>;
-
-export interface DirectoryServicesGetResultInfraHTTPServiceConfigHostInfraHostnameHostResolverNetwork {
-  tunnelId: string;
-  resolverIps?: DirectoryServicesGetResultInfraHTTPServiceConfigHostInfraHostnameHostResolverNetworkResolverIpsList | null;
-}
-export const DirectoryServicesGetResultInfraHTTPServiceConfigHostInfraHostnameHostResolverNetwork =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      tunnelId: S.String.pipe(T.Body("tunnel_id")),
-      resolverIps: S.optional(
-        S.NullOr(
-          DirectoryServicesGetResultInfraHTTPServiceConfigHostInfraHostnameHostResolverNetworkResolverIpsList,
-        ).pipe(T.Body("resolver_ips")),
-      ),
-    }),
-  ).annotate({
-    identifier:
-      "DirectoryServicesGetResultInfraHTTPServiceConfigHostInfraHostnameHostResolverNetwork",
-  }) as any as S.Schema<DirectoryServicesGetResultInfraHTTPServiceConfigHostInfraHostnameHostResolverNetwork>;
-
-export interface DirectoryServicesGetResultInfraHTTPServiceConfigHostInfraHostnameHost {
-  hostname: string;
-  resolverNetwork: DirectoryServicesGetResultInfraHTTPServiceConfigHostInfraHostnameHostResolverNetwork;
-}
-export const DirectoryServicesGetResultInfraHTTPServiceConfigHostInfraHostnameHost =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      hostname: S.String,
-      resolverNetwork:
-        DirectoryServicesGetResultInfraHTTPServiceConfigHostInfraHostnameHostResolverNetwork.pipe(
-          T.Body("resolver_network"),
-        ),
-    }),
-  ).annotate({
-    identifier:
-      "DirectoryServicesGetResultInfraHTTPServiceConfigHostInfraHostnameHost",
-  }) as any as S.Schema<DirectoryServicesGetResultInfraHTTPServiceConfigHostInfraHostnameHost>;
-
-export type DirectoryServicesGetResultInfraHTTPServiceConfigHost =
-  | DirectoryServicesCreateRequestHostInfraIPv4Host
-  | DirectoryServicesCreateRequestHostInfraIPv6Host
-  | DirectoryServicesCreateRequestHostInfraDualStackHost
-  | DirectoryServicesGetResultInfraHTTPServiceConfigHostInfraHostnameHost;
-export const DirectoryServicesGetResultInfraHTTPServiceConfigHost =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["ipv4", "network"],
-      ["ipv6", "network"],
-      ["ipv4", "ipv6", "network"],
-      ["hostname", "resolverNetwork"],
-    ]),
-  );
-
 export type DirectoryServicesGetResultType = "tcp" | "http";
 export const DirectoryServicesGetResultType = /*@__PURE__*/ S.String;
-
-export type DirectoryServicesGetResultInfraHTTPServiceConfigTlsSettings =
-  DirectoryServicesCreateRequestTlsSettings;
-export const DirectoryServicesGetResultInfraHTTPServiceConfigTlsSettings =
-  DirectoryServicesCreateRequestTlsSettings;
-
-export type DirectoryServicesGetResultInfraTCPServiceConfigAppProtocol =
-  | "postgresql"
-  | "mysql";
-export const DirectoryServicesGetResultInfraTCPServiceConfigAppProtocol =
-  /*@__PURE__*/ S.String;
 
 export interface DirectoryServicesGetResult {
   host: DirectoryServicesGetResultInfraHTTPServiceConfigHost;
@@ -575,7 +162,7 @@ export interface DirectoryServicesGetResult {
   httpsPort?: number | null;
   serviceId?: string | null;
   /** TLS settings for a connectivity service. */
-  tlsSettings?: DirectoryServicesCreateRequestTlsSettings | null;
+  tlsSettings?: DirectoryServicesGetResultInfraHTTPServiceConfigTlsSettings | null;
   updatedAt?: string | null;
   appProtocol?: DirectoryServicesGetResultInfraTCPServiceConfigAppProtocol | null;
   tcpPort?: number | null;
@@ -590,9 +177,9 @@ export const DirectoryServicesGetResult = /*@__PURE__*/ S.suspend(() =>
     httpsPort: S.optional(S.NullOr(S.Number).pipe(T.Body("https_port"))),
     serviceId: S.optional(S.NullOr(S.String).pipe(T.Body("service_id"))),
     tlsSettings: S.optional(
-      S.NullOr(DirectoryServicesCreateRequestTlsSettings).pipe(
-        T.Body("tls_settings"),
-      ),
+      S.NullOr(
+        DirectoryServicesGetResultInfraHTTPServiceConfigTlsSettings,
+      ).pipe(T.Body("tls_settings")),
     ),
     updatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("updated_at"))),
     appProtocol: S.optional(
@@ -647,108 +234,8 @@ export const ListDirectoryServicesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListDirectoryServicesRequest",
 }) as any as S.Schema<ListDirectoryServicesRequest>;
 
-export type DirectoryServicesListResultItemInfraHTTPServiceConfigHostInfraIPv4HostNetwork =
-  DirectoryServicesCreateRequestHostInfraIPv4HostNetwork;
-export const DirectoryServicesListResultItemInfraHTTPServiceConfigHostInfraIPv4HostNetwork =
-  DirectoryServicesCreateRequestHostInfraIPv4HostNetwork;
-
-export type DirectoryServicesListResultItemInfraHTTPServiceConfigHostInfraIPv4Host =
-  DirectoryServicesCreateRequestHostInfraIPv4Host;
-export const DirectoryServicesListResultItemInfraHTTPServiceConfigHostInfraIPv4Host =
-  DirectoryServicesCreateRequestHostInfraIPv4Host;
-
-export type DirectoryServicesListResultItemInfraHTTPServiceConfigHostInfraIPv6HostNetwork =
-  DirectoryServicesCreateRequestHostInfraIPv4HostNetwork;
-export const DirectoryServicesListResultItemInfraHTTPServiceConfigHostInfraIPv6HostNetwork =
-  DirectoryServicesCreateRequestHostInfraIPv4HostNetwork;
-
-export type DirectoryServicesListResultItemInfraHTTPServiceConfigHostInfraIPv6Host =
-  DirectoryServicesCreateRequestHostInfraIPv6Host;
-export const DirectoryServicesListResultItemInfraHTTPServiceConfigHostInfraIPv6Host =
-  DirectoryServicesCreateRequestHostInfraIPv6Host;
-
-export type DirectoryServicesListResultItemInfraHTTPServiceConfigHostInfraDualStackHostNetwork =
-  DirectoryServicesCreateRequestHostInfraIPv4HostNetwork;
-export const DirectoryServicesListResultItemInfraHTTPServiceConfigHostInfraDualStackHostNetwork =
-  DirectoryServicesCreateRequestHostInfraIPv4HostNetwork;
-
-export type DirectoryServicesListResultItemInfraHTTPServiceConfigHostInfraDualStackHost =
-  DirectoryServicesCreateRequestHostInfraDualStackHost;
-export const DirectoryServicesListResultItemInfraHTTPServiceConfigHostInfraDualStackHost =
-  DirectoryServicesCreateRequestHostInfraDualStackHost;
-
-export type DirectoryServicesListResultItemInfraHTTPServiceConfigHostInfraHostnameHostResolverNetworkResolverIpsList =
-  Array<string>;
-export const DirectoryServicesListResultItemInfraHTTPServiceConfigHostInfraHostnameHostResolverNetworkResolverIpsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<DirectoryServicesListResultItemInfraHTTPServiceConfigHostInfraHostnameHostResolverNetworkResolverIpsList>;
-
-export interface DirectoryServicesListResultItemInfraHTTPServiceConfigHostInfraHostnameHostResolverNetwork {
-  tunnelId: string;
-  resolverIps?: DirectoryServicesListResultItemInfraHTTPServiceConfigHostInfraHostnameHostResolverNetworkResolverIpsList | null;
-}
-export const DirectoryServicesListResultItemInfraHTTPServiceConfigHostInfraHostnameHostResolverNetwork =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      tunnelId: S.String.pipe(T.Body("tunnel_id")),
-      resolverIps: S.optional(
-        S.NullOr(
-          DirectoryServicesListResultItemInfraHTTPServiceConfigHostInfraHostnameHostResolverNetworkResolverIpsList,
-        ).pipe(T.Body("resolver_ips")),
-      ),
-    }),
-  ).annotate({
-    identifier:
-      "DirectoryServicesListResultItemInfraHTTPServiceConfigHostInfraHostnameHostResolverNetwork",
-  }) as any as S.Schema<DirectoryServicesListResultItemInfraHTTPServiceConfigHostInfraHostnameHostResolverNetwork>;
-
-export interface DirectoryServicesListResultItemInfraHTTPServiceConfigHostInfraHostnameHost {
-  hostname: string;
-  resolverNetwork: DirectoryServicesListResultItemInfraHTTPServiceConfigHostInfraHostnameHostResolverNetwork;
-}
-export const DirectoryServicesListResultItemInfraHTTPServiceConfigHostInfraHostnameHost =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      hostname: S.String,
-      resolverNetwork:
-        DirectoryServicesListResultItemInfraHTTPServiceConfigHostInfraHostnameHostResolverNetwork.pipe(
-          T.Body("resolver_network"),
-        ),
-    }),
-  ).annotate({
-    identifier:
-      "DirectoryServicesListResultItemInfraHTTPServiceConfigHostInfraHostnameHost",
-  }) as any as S.Schema<DirectoryServicesListResultItemInfraHTTPServiceConfigHostInfraHostnameHost>;
-
-export type DirectoryServicesListResultItemInfraHTTPServiceConfigHost =
-  | DirectoryServicesCreateRequestHostInfraIPv4Host
-  | DirectoryServicesCreateRequestHostInfraIPv6Host
-  | DirectoryServicesCreateRequestHostInfraDualStackHost
-  | DirectoryServicesListResultItemInfraHTTPServiceConfigHostInfraHostnameHost;
-export const DirectoryServicesListResultItemInfraHTTPServiceConfigHost =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["ipv4", "network"],
-      ["ipv6", "network"],
-      ["ipv4", "ipv6", "network"],
-      ["hostname", "resolverNetwork"],
-    ]),
-  );
-
 export type DirectoryServicesListResultItemType = "tcp" | "http";
 export const DirectoryServicesListResultItemType = /*@__PURE__*/ S.String;
-
-export type DirectoryServicesListResultItemInfraHTTPServiceConfigTlsSettings =
-  DirectoryServicesCreateRequestTlsSettings;
-export const DirectoryServicesListResultItemInfraHTTPServiceConfigTlsSettings =
-  DirectoryServicesCreateRequestTlsSettings;
-
-export type DirectoryServicesListResultItemInfraTCPServiceConfigAppProtocol =
-  | "postgresql"
-  | "mysql";
-export const DirectoryServicesListResultItemInfraTCPServiceConfigAppProtocol =
-  /*@__PURE__*/ S.String;
 
 export interface DirectoryServicesListResultItem {
   host: DirectoryServicesListResultItemInfraHTTPServiceConfigHost;
@@ -759,7 +246,7 @@ export interface DirectoryServicesListResultItem {
   httpsPort?: number | null;
   serviceId?: string | null;
   /** TLS settings for a connectivity service. */
-  tlsSettings?: DirectoryServicesCreateRequestTlsSettings | null;
+  tlsSettings?: DirectoryServicesListResultItemInfraHTTPServiceConfigTlsSettings | null;
   updatedAt?: string | null;
   appProtocol?: DirectoryServicesListResultItemInfraTCPServiceConfigAppProtocol | null;
   tcpPort?: number | null;
@@ -774,9 +261,9 @@ export const DirectoryServicesListResultItem = /*@__PURE__*/ S.suspend(() =>
     httpsPort: S.optional(S.NullOr(S.Number).pipe(T.Body("https_port"))),
     serviceId: S.optional(S.NullOr(S.String).pipe(T.Body("service_id"))),
     tlsSettings: S.optional(
-      S.NullOr(DirectoryServicesCreateRequestTlsSettings).pipe(
-        T.Body("tls_settings"),
-      ),
+      S.NullOr(
+        DirectoryServicesListResultItemInfraHTTPServiceConfigTlsSettings,
+      ).pipe(T.Body("tls_settings")),
     ),
     updatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("updated_at"))),
     appProtocol: S.optional(
@@ -811,137 +298,14 @@ export const ListDirectoryServicesResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListDirectoryServicesResponse",
 }) as any as S.Schema<ListDirectoryServicesResponse>;
 
-export type DirectoryServicesUpdateRequestHostInfraIPv4HostNetwork =
-  DirectoryServicesCreateRequestHostInfraIPv4HostNetwork;
-export const DirectoryServicesUpdateRequestHostInfraIPv4HostNetwork =
-  DirectoryServicesCreateRequestHostInfraIPv4HostNetwork;
-
-export type DirectoryServicesUpdateRequestHostInfraIPv4Host =
-  DirectoryServicesCreateRequestHostInfraIPv4Host;
-export const DirectoryServicesUpdateRequestHostInfraIPv4Host =
-  DirectoryServicesCreateRequestHostInfraIPv4Host;
-
-export type DirectoryServicesUpdateRequestHostInfraIPv6HostNetwork =
-  DirectoryServicesCreateRequestHostInfraIPv4HostNetwork;
-export const DirectoryServicesUpdateRequestHostInfraIPv6HostNetwork =
-  DirectoryServicesCreateRequestHostInfraIPv4HostNetwork;
-
-export type DirectoryServicesUpdateRequestHostInfraIPv6Host =
-  DirectoryServicesCreateRequestHostInfraIPv6Host;
-export const DirectoryServicesUpdateRequestHostInfraIPv6Host =
-  DirectoryServicesCreateRequestHostInfraIPv6Host;
-
-export type DirectoryServicesUpdateRequestHostInfraDualStackHostNetwork =
-  DirectoryServicesCreateRequestHostInfraIPv4HostNetwork;
-export const DirectoryServicesUpdateRequestHostInfraDualStackHostNetwork =
-  DirectoryServicesCreateRequestHostInfraIPv4HostNetwork;
-
-export type DirectoryServicesUpdateRequestHostInfraDualStackHost =
-  DirectoryServicesCreateRequestHostInfraDualStackHost;
-export const DirectoryServicesUpdateRequestHostInfraDualStackHost =
-  DirectoryServicesCreateRequestHostInfraDualStackHost;
-
-export type DirectoryServicesUpdateRequestHostInfraHostnameHostResolverNetworkResolverIpsList =
-  Array<string>;
-export const DirectoryServicesUpdateRequestHostInfraHostnameHostResolverNetworkResolverIpsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<DirectoryServicesUpdateRequestHostInfraHostnameHostResolverNetworkResolverIpsList>;
-
-export interface DirectoryServicesUpdateRequestHostInfraHostnameHostResolverNetwork {
-  tunnelId: string;
-  resolverIps?: DirectoryServicesUpdateRequestHostInfraHostnameHostResolverNetworkResolverIpsList;
-}
-export const DirectoryServicesUpdateRequestHostInfraHostnameHostResolverNetwork =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      tunnelId: S.String.pipe(T.Body("tunnel_id")),
-      resolverIps: S.optional(
-        DirectoryServicesUpdateRequestHostInfraHostnameHostResolverNetworkResolverIpsList.pipe(
-          T.Body("resolver_ips"),
-        ),
-      ),
-    }),
-  ).annotate({
-    identifier:
-      "DirectoryServicesUpdateRequestHostInfraHostnameHostResolverNetwork",
-  }) as any as S.Schema<DirectoryServicesUpdateRequestHostInfraHostnameHostResolverNetwork>;
-
-export interface DirectoryServicesUpdateRequestHostInfraHostnameHost {
-  hostname: string;
-  resolverNetwork: DirectoryServicesUpdateRequestHostInfraHostnameHostResolverNetwork;
-}
-export const DirectoryServicesUpdateRequestHostInfraHostnameHost =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      hostname: S.String,
-      resolverNetwork:
-        DirectoryServicesUpdateRequestHostInfraHostnameHostResolverNetwork.pipe(
-          T.Body("resolver_network"),
-        ),
-    }),
-  ).annotate({
-    identifier: "DirectoryServicesUpdateRequestHostInfraHostnameHost",
-  }) as any as S.Schema<DirectoryServicesUpdateRequestHostInfraHostnameHost>;
-
-export type DirectoryServicesUpdateRequestHost =
-  | DirectoryServicesCreateRequestHostInfraIPv4Host
-  | DirectoryServicesCreateRequestHostInfraIPv6Host
-  | DirectoryServicesCreateRequestHostInfraDualStackHost
-  | DirectoryServicesUpdateRequestHostInfraHostnameHost;
-export const DirectoryServicesUpdateRequestHost = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
-    ["ipv4", "network"],
-    ["ipv6", "network"],
-    ["ipv4", "ipv6", "network"],
-    ["hostname", "resolverNetwork"],
-  ]),
-);
-
-export type DirectoryServicesUpdateRequestType = "tcp" | "http";
-export const DirectoryServicesUpdateRequestType = /*@__PURE__*/ S.String;
-
-export type DirectoryServicesUpdateRequestTlsSettings =
-  DirectoryServicesCreateRequestTlsSettings;
-export const DirectoryServicesUpdateRequestTlsSettings =
-  DirectoryServicesCreateRequestTlsSettings;
-
-export type DirectoryServicesUpdateRequestAppProtocol = "postgresql" | "mysql";
-export const DirectoryServicesUpdateRequestAppProtocol = /*@__PURE__*/ S.String;
-
 export interface UpdateDirectoryServiceRequest {
   accountId: string;
   serviceId: string;
-  host: DirectoryServicesUpdateRequestHost;
-  name: string;
-  type: DirectoryServicesUpdateRequestType | (string & {});
-  createdAt?: string;
-  httpPort?: number;
-  httpsPort?: number;
-  /** TLS settings for a connectivity service. */
-  tlsSettings?: DirectoryServicesCreateRequestTlsSettings;
-  updatedAt?: string;
-  appProtocol?: DirectoryServicesUpdateRequestAppProtocol | (string & {});
-  tcpPort?: number;
 }
 export const UpdateDirectoryServiceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     serviceId: S.String.pipe(T.Label("service_id")),
-    host: DirectoryServicesUpdateRequestHost,
-    name: S.String,
-    type: DirectoryServicesUpdateRequestType,
-    createdAt: S.optional(S.String.pipe(T.Body("created_at"))),
-    httpPort: S.optional(S.Number.pipe(T.Body("http_port"))),
-    httpsPort: S.optional(S.Number.pipe(T.Body("https_port"))),
-    tlsSettings: S.optional(
-      DirectoryServicesCreateRequestTlsSettings.pipe(T.Body("tls_settings")),
-    ),
-    updatedAt: S.optional(S.String.pipe(T.Body("updated_at"))),
-    appProtocol: S.optional(
-      DirectoryServicesUpdateRequestAppProtocol.pipe(T.Body("app_protocol")),
-    ),
-    tcpPort: S.optional(S.Number.pipe(T.Body("tcp_port"))),
   })
     .pipe(
       T.Http({
@@ -955,155 +319,9 @@ export const UpdateDirectoryServiceRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateDirectoryServiceRequest",
 }) as any as S.Schema<UpdateDirectoryServiceRequest>;
 
-export type DirectoryServicesUpdateResultInfraHTTPServiceConfigHostInfraIPv4HostNetwork =
-  DirectoryServicesCreateRequestHostInfraIPv4HostNetwork;
-export const DirectoryServicesUpdateResultInfraHTTPServiceConfigHostInfraIPv4HostNetwork =
-  DirectoryServicesCreateRequestHostInfraIPv4HostNetwork;
-
-export type DirectoryServicesUpdateResultInfraHTTPServiceConfigHostInfraIPv4Host =
-  DirectoryServicesCreateRequestHostInfraIPv4Host;
-export const DirectoryServicesUpdateResultInfraHTTPServiceConfigHostInfraIPv4Host =
-  DirectoryServicesCreateRequestHostInfraIPv4Host;
-
-export type DirectoryServicesUpdateResultInfraHTTPServiceConfigHostInfraIPv6HostNetwork =
-  DirectoryServicesCreateRequestHostInfraIPv4HostNetwork;
-export const DirectoryServicesUpdateResultInfraHTTPServiceConfigHostInfraIPv6HostNetwork =
-  DirectoryServicesCreateRequestHostInfraIPv4HostNetwork;
-
-export type DirectoryServicesUpdateResultInfraHTTPServiceConfigHostInfraIPv6Host =
-  DirectoryServicesCreateRequestHostInfraIPv6Host;
-export const DirectoryServicesUpdateResultInfraHTTPServiceConfigHostInfraIPv6Host =
-  DirectoryServicesCreateRequestHostInfraIPv6Host;
-
-export type DirectoryServicesUpdateResultInfraHTTPServiceConfigHostInfraDualStackHostNetwork =
-  DirectoryServicesCreateRequestHostInfraIPv4HostNetwork;
-export const DirectoryServicesUpdateResultInfraHTTPServiceConfigHostInfraDualStackHostNetwork =
-  DirectoryServicesCreateRequestHostInfraIPv4HostNetwork;
-
-export type DirectoryServicesUpdateResultInfraHTTPServiceConfigHostInfraDualStackHost =
-  DirectoryServicesCreateRequestHostInfraDualStackHost;
-export const DirectoryServicesUpdateResultInfraHTTPServiceConfigHostInfraDualStackHost =
-  DirectoryServicesCreateRequestHostInfraDualStackHost;
-
-export type DirectoryServicesUpdateResultInfraHTTPServiceConfigHostInfraHostnameHostResolverNetworkResolverIpsList =
-  Array<string>;
-export const DirectoryServicesUpdateResultInfraHTTPServiceConfigHostInfraHostnameHostResolverNetworkResolverIpsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<DirectoryServicesUpdateResultInfraHTTPServiceConfigHostInfraHostnameHostResolverNetworkResolverIpsList>;
-
-export interface DirectoryServicesUpdateResultInfraHTTPServiceConfigHostInfraHostnameHostResolverNetwork {
-  tunnelId: string;
-  resolverIps?: DirectoryServicesUpdateResultInfraHTTPServiceConfigHostInfraHostnameHostResolverNetworkResolverIpsList | null;
-}
-export const DirectoryServicesUpdateResultInfraHTTPServiceConfigHostInfraHostnameHostResolverNetwork =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      tunnelId: S.String.pipe(T.Body("tunnel_id")),
-      resolverIps: S.optional(
-        S.NullOr(
-          DirectoryServicesUpdateResultInfraHTTPServiceConfigHostInfraHostnameHostResolverNetworkResolverIpsList,
-        ).pipe(T.Body("resolver_ips")),
-      ),
-    }),
-  ).annotate({
-    identifier:
-      "DirectoryServicesUpdateResultInfraHTTPServiceConfigHostInfraHostnameHostResolverNetwork",
-  }) as any as S.Schema<DirectoryServicesUpdateResultInfraHTTPServiceConfigHostInfraHostnameHostResolverNetwork>;
-
-export interface DirectoryServicesUpdateResultInfraHTTPServiceConfigHostInfraHostnameHost {
-  hostname: string;
-  resolverNetwork: DirectoryServicesUpdateResultInfraHTTPServiceConfigHostInfraHostnameHostResolverNetwork;
-}
-export const DirectoryServicesUpdateResultInfraHTTPServiceConfigHostInfraHostnameHost =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      hostname: S.String,
-      resolverNetwork:
-        DirectoryServicesUpdateResultInfraHTTPServiceConfigHostInfraHostnameHostResolverNetwork.pipe(
-          T.Body("resolver_network"),
-        ),
-    }),
-  ).annotate({
-    identifier:
-      "DirectoryServicesUpdateResultInfraHTTPServiceConfigHostInfraHostnameHost",
-  }) as any as S.Schema<DirectoryServicesUpdateResultInfraHTTPServiceConfigHostInfraHostnameHost>;
-
-export type DirectoryServicesUpdateResultInfraHTTPServiceConfigHost =
-  | DirectoryServicesCreateRequestHostInfraIPv4Host
-  | DirectoryServicesCreateRequestHostInfraIPv6Host
-  | DirectoryServicesCreateRequestHostInfraDualStackHost
-  | DirectoryServicesUpdateResultInfraHTTPServiceConfigHostInfraHostnameHost;
-export const DirectoryServicesUpdateResultInfraHTTPServiceConfigHost =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["ipv4", "network"],
-      ["ipv6", "network"],
-      ["ipv4", "ipv6", "network"],
-      ["hostname", "resolverNetwork"],
-    ]),
-  );
-
-export type DirectoryServicesUpdateResultType = "tcp" | "http";
-export const DirectoryServicesUpdateResultType = /*@__PURE__*/ S.String;
-
-export type DirectoryServicesUpdateResultInfraHTTPServiceConfigTlsSettings =
-  DirectoryServicesCreateRequestTlsSettings;
-export const DirectoryServicesUpdateResultInfraHTTPServiceConfigTlsSettings =
-  DirectoryServicesCreateRequestTlsSettings;
-
-export type DirectoryServicesUpdateResultInfraTCPServiceConfigAppProtocol =
-  | "postgresql"
-  | "mysql";
-export const DirectoryServicesUpdateResultInfraTCPServiceConfigAppProtocol =
-  /*@__PURE__*/ S.String;
-
-export interface DirectoryServicesUpdateResult {
-  host: DirectoryServicesUpdateResultInfraHTTPServiceConfigHost;
-  name: string;
-  type: DirectoryServicesUpdateResultType;
-  createdAt?: string | null;
-  httpPort?: number | null;
-  httpsPort?: number | null;
-  serviceId?: string | null;
-  /** TLS settings for a connectivity service. */
-  tlsSettings?: DirectoryServicesCreateRequestTlsSettings | null;
-  updatedAt?: string | null;
-  appProtocol?: DirectoryServicesUpdateResultInfraTCPServiceConfigAppProtocol | null;
-  tcpPort?: number | null;
-}
-export const DirectoryServicesUpdateResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    host: DirectoryServicesUpdateResultInfraHTTPServiceConfigHost,
-    name: S.String,
-    type: DirectoryServicesUpdateResultType,
-    createdAt: S.optional(S.NullOr(S.String).pipe(T.Body("created_at"))),
-    httpPort: S.optional(S.NullOr(S.Number).pipe(T.Body("http_port"))),
-    httpsPort: S.optional(S.NullOr(S.Number).pipe(T.Body("https_port"))),
-    serviceId: S.optional(S.NullOr(S.String).pipe(T.Body("service_id"))),
-    tlsSettings: S.optional(
-      S.NullOr(DirectoryServicesCreateRequestTlsSettings).pipe(
-        T.Body("tls_settings"),
-      ),
-    ),
-    updatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("updated_at"))),
-    appProtocol: S.optional(
-      S.NullOr(
-        DirectoryServicesUpdateResultInfraTCPServiceConfigAppProtocol,
-      ).pipe(T.Body("app_protocol")),
-    ),
-    tcpPort: S.optional(S.NullOr(S.Number).pipe(T.Body("tcp_port"))),
-  }),
-).annotate({
-  identifier: "DirectoryServicesUpdateResult",
-}) as any as S.Schema<DirectoryServicesUpdateResult>;
-
-export type UpdateDirectoryServiceResponse = DirectoryServicesUpdateResult;
+export type UpdateDirectoryServiceResponse = unknown;
 export const UpdateDirectoryServiceResponse = /*@__PURE__*/ S.suspend(() =>
-  DirectoryServicesUpdateResult.pipe(
-    T.EnvelopePayloadRoot(),
-    T.KeyDictionary(KEY_DICTIONARY),
-  ),
+  S.Unknown.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateDirectoryServiceResponse",
 }) as any as S.Schema<UpdateDirectoryServiceResponse>;
@@ -1113,7 +331,7 @@ export type CreateDirectoryServiceError =
   | VpcTunnelNotFound
   | Forbidden
   | CloudflareOpError;
-/** Create Workers VPC connectivity service */
+/** Creates a new Workers VPC connectivity service in the account. */
 export const createDirectoryService: API.OperationMethod<
   CreateDirectoryServiceRequest,
   CreateDirectoryServiceResponse,
@@ -1137,7 +355,7 @@ export type DeleteDirectoryServiceError =
   | VpcServiceNotFound
   | Forbidden
   | CloudflareOpError;
-/** Delete Workers VPC connectivity service */
+/** Removes a single Workers VPC connectivity service by its ID. */
 export const deleteDirectoryService: API.OperationMethod<
   DeleteDirectoryServiceRequest,
   DeleteDirectoryServiceResponse,
@@ -1160,7 +378,7 @@ export type GetDirectoryServiceError =
   | VpcServiceNotFound
   | Forbidden
   | CloudflareOpError;
-/** Get Workers VPC connectivity service */
+/** Fetches a single Workers VPC connectivity service by its ID. */
 export const getDirectoryService: API.OperationMethod<
   GetDirectoryServiceRequest,
   GetDirectoryServiceResponse,
@@ -1180,7 +398,7 @@ export const getDirectoryService: API.OperationMethod<
 }));
 
 export type ListDirectoryServicesError = Forbidden | CloudflareOpError;
-/** List Workers VPC connectivity services */
+/** Lists the Workers VPC connectivity services in the account. */
 export const listDirectoryServices: API.PaginatedOperationMethod<
   ListDirectoryServicesRequest,
   ListDirectoryServicesResponse,
@@ -1211,7 +429,7 @@ export type UpdateDirectoryServiceError =
   | VpcTunnelNotFound
   | Forbidden
   | CloudflareOpError;
-/** Update Workers VPC connectivity service */
+/** Updates an existing Workers VPC connectivity service by its ID. */
 export const updateDirectoryService: API.OperationMethod<
   UpdateDirectoryServiceRequest,
   UpdateDirectoryServiceResponse,
