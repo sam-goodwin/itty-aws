@@ -5,6 +5,7 @@
  *   machines  OpenAPI  specs/spec-mirror-fly-io/specs/openapi.json
  *             → .generated-specs/machines.json
  *             patches: patches/*.patch.json then patches/machines/*.patch.json
+ *             operationNaming: verbNoun (not JSON-pointer patches)
  *
  *   sprites   OpenAPI  specs/sprites/openapi.json (hand-authored; no
  *             published OpenAPI at api.sprites.dev)
@@ -38,6 +39,7 @@ import {
   isStaleTargetError,
   type PatchFile,
 } from "@distilled.cloud/core/json-patch";
+import { MACHINES_OPERATION_NAMES } from "./machines-operation-ids.ts";
 
 const root = `${import.meta.dir}/..`;
 const patchesRoot = path.join(root, "patches");
@@ -90,7 +92,6 @@ await runOpenApiConvert({
       name: "machines",
       specPath: "specs/spec-mirror-fly-io/specs/openapi.json",
       preprocess: (spec) => {
-        let staleOps = 0;
         const badPatches: string[] = [];
         for (const { file, parsed } of machinesPatches) {
           const label = path.relative(patchesRoot, file);
@@ -100,9 +101,8 @@ await runOpenApiConvert({
             } catch (e) {
               const msg = e instanceof Error ? e.message : String(e);
               if (isStaleTargetError(msg)) {
-                staleOps++;
-                console.warn(
-                  `   ⚠️  stale: machines/${label} [${patchOp.op} ${patchOp.path}]`,
+                badPatches.push(
+                  `${label} [${patchOp.op} ${patchOp.path}]: stale target (${msg})`,
                 );
               } else {
                 badPatches.push(
@@ -115,13 +115,12 @@ await runOpenApiConvert({
         if (badPatches.length) {
           for (const b of badPatches) console.error(`❌ bad patch: ${b}`);
           throw new Error(
-            `${badPatches.length} malformed patch operation(s) — fix or remove them`,
+            `${badPatches.length} machines patch operation(s) failed — fix the JSON pointers (paths are /v1/… on the spec-mirror) or delete the patch`,
           );
         }
         if (machinesPatches.length > 0) {
           console.log(
-            `   applied ${machinesPatches.length} OpenAPI patch file(s) (flat + patches/machines)` +
-              (staleOps ? `, ${staleOps} stale op(s) skipped` : ""),
+            `   applied ${machinesPatches.length} OpenAPI patch file(s) (flat + patches/machines)`,
           );
         }
       },
@@ -134,6 +133,8 @@ await runOpenApiConvert({
     statusToErrorClass: STATUS_TO_ERROR,
     defaultErrorStatuses: DEFAULT_ERROR_STATUSES,
     skipDeprecated: true,
+    operationNaming: "verbNoun",
+    operationNames: MACHINES_OPERATION_NAMES,
   },
 });
 
@@ -314,12 +315,29 @@ const addonsResult = convertGraphQLToSmithy({
       } catch (error) {
         const msg = error instanceof Error ? error.message : String(error);
         if (isStaleTargetError(msg)) {
-          console.warn(`   ⚠️  stale addons patch ${file}: ${msg}`);
-          continue;
+          throw new Error(`stale addons patch ${file}: ${msg}`);
         }
         throw error;
       }
     }
+  }
+  let sensitive = 0;
+  for (const def of Object.values(addonsResult.model.shapes ?? {}) as any[]) {
+    if (def?.type !== "structure") continue;
+    for (const [name, member] of Object.entries(def.members ?? {}) as any[]) {
+      if (name === "password" || name === "publicUrl") {
+        member.traits = {
+          ...(member.traits ?? {}),
+          "smithy.api#sensitive": {},
+        };
+        sensitive++;
+      }
+    }
+  }
+  if (sensitive) {
+    console.log(
+      `   stamped smithy.api#sensitive on ${sensitive} add-on secret member(s)`,
+    );
   }
 }
 

@@ -144,10 +144,22 @@ Iterate on `convert.ts` (spec → Smithy) and `generate.ts` (Smithy → TS)
 separately: `pnpm --filter @distilled.cloud/<pkg> run convert` stops after the
 Smithy models, which is usually where the interesting bugs are.
 
-Patches go in `packages/<pkg>/patches/` as RFC-6902 `*.patch.json` and apply
-to the **OpenAPI document**, before conversion. A package that patches there
-passes `patchesDir: false` to `runGeneratorCli` so the Smithy-model patch
-chain stays off. Patch the spec, not the generated TypeScript.
+Patches go in `packages/<pkg>/patches/` as RFC-6902 `*.json` and apply in
+**convert**, so `.generated-specs` is the patched Smithy model. OpenAPI
+pointers (`/paths`, `/components`) run on the spec before conversion;
+Smithy pointers (`/shapes`, `/metadata`) run on the model after. generate
+does not patch — it only compiles the committed models.
+**Stale patch pointers fail the run** (they used to warn-and-skip, which is
+how Fly's whole chain vanished after the spec-mirror prefixed paths with
+`/v1`). Pass `onStalePatch: "warn"` only if you truly want skip.
+
+Operation **names** are convert policy, not patches. Pass
+`operationNaming: "verbNoun"` on `runOpenApiConvert` so go-swagger
+`Apps_list` / `Apps_show` become `listApps` / `getApp` in the Smithy model
+(and the SDK). Irregulars go in `operationNames` (lookup by `"METHOD path"`,
+then operationId) — PUT vs PATCH that share an upstream id need the path
+key. Do not RFC-6902-patch `/paths/~1foo/get/operationId`; those break when
+upstream adds a prefix. Patch the spec, not the generated TypeScript.
 
 ## Step 6 — wire the submodule
 
