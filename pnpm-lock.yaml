@@ -1004,17 +1004,11 @@ importers:
         version: link:../core
       effect:
         specifier: 'catalog:'
-        version: 4.0.0
+        version: 4.0.5
     devDependencies:
-      '@effect/platform-bun':
-        specifier: 'catalog:'
-        version: 4.0.0(effect@4.0.0)
-      '@types/bun':
-        specifier: 'catalog:'
-        version: 1.3.14
       '@types/node':
         specifier: 'catalog:'
-        version: 26.2.0
+        version: 26.6.5
 
   packages/meilisearch:
     dependencies:
