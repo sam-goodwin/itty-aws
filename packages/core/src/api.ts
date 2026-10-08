@@ -186,22 +186,34 @@ const applyRetry = (
 ): Effect.Effect<any, any, any> =>
   retryKey === undefined
     ? base
-    : Effect.flatMap(Effect.serviceOption(retryKey), (opt) =>
-        Effect.gen(function* () {
-          const lastError = yield* Ref.make<unknown>(undefined);
+    : // Run once with no retry machinery; build it only after a failure the
+      // policy retries. Most calls succeed first time, and a Ref + schedule
+      // per call is a large share of a mocked call's cost.
+      Effect.catch(base, (error) =>
+        Effect.flatMap(Effect.serviceOption(retryKey), (opt) => {
           // No policy in context -> makeDefault (transient/throttling/server
           // errors, capped exponential backoff + jitter, honors server
           // retryAfter hints). Mirrors the distilled client.
           const policy = Option.isSome(opt) ? opt.value : makeDefault;
-          const opts = typeof policy === "function" ? policy(lastError) : policy;
-          if (!opts.while) return yield* base;
-          return yield* base.pipe(
-            Effect.tapError((e) => Ref.set(lastError, e)),
-            Effect.retry({
+          return Effect.flatMap(Ref.make<unknown>(error), (lastError) => {
+            const opts = typeof policy === "function" ? policy(lastError) : policy;
+            if (!opts.while || !opts.while(error)) return Effect.fail(error);
+            // The first "attempt" replays the failure we already have, so the
+            // schedule's first delay comes before the next request, exactly
+            // as if the whole call had run under Effect.retry.
+            let replay = true;
+            const attempt = Effect.suspend(() => {
+              if (replay) {
+                replay = false;
+                return Effect.fail(error);
+              }
+              return Effect.tapError(base, (e) => Ref.set(lastError, e));
+            });
+            return Effect.retry(attempt, {
               while: (e: unknown) => opts.while!(e),
               ...(opts.schedule ? { schedule: opts.schedule as any } : {}),
-            }),
-          );
+            });
+          });
         }),
       );
 
@@ -243,24 +255,18 @@ const stateOf = (op: unknown): OperationState => (op as Record<symbol, Operation
 const callOperation = (state: OperationState, input: unknown): Effect.Effect<any, any, any> =>
   Effect.suspend(() => {
     const { cfg, inputAst, outputAst } = prepare(state);
-    const call = Effect.flatMap(protocolContext(cfg.protocol), (protocolCtx) =>
-      Effect.gen(function* () {
-        const protocol = yield* Protocol;
-        const client = yield* HttpClient.HttpClient;
-        const request = yield* protocol.encode({
-          input,
-          inputAst,
-          config: cfg,
-        });
-        const response = yield* client.execute(request);
-        return yield* protocol.decode({
-          response,
-          outputAst,
-          errors: cfg.errors ?? [],
-          config: cfg,
-        });
-      }).pipe(Effect.provideContext(protocolCtx)),
-    );
+    // A plain flatMap chain: no generator, and the protocol is read from its
+    // cached context instead of being provided around the call.
+    const call = Effect.flatMap(protocolContext(cfg.protocol), (protocolCtx) => {
+      const protocol = Context.get(protocolCtx, Protocol);
+      return Effect.flatMap(HttpClient.HttpClient, (client) =>
+        Effect.flatMap(protocol.encode({ input, inputAst, config: cfg }), (request) =>
+          Effect.flatMap(client.execute(request), (response) =>
+            protocol.decode({ response, outputAst, errors: cfg.errors ?? [], config: cfg }),
+          ),
+        ),
+      );
+    });
     return applyRetry(call, cfg.retry);
   });
 

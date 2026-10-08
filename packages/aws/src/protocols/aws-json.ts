@@ -91,7 +91,7 @@ function createAwsJsonProtocol(version: "1.0" | "1.1"): Protocol {
     }
 
     return {
-      serializeRequest: Effect.fn(function* (input: unknown) {
+      serializeRequest: Effect.fnUntraced(function* (input: unknown) {
         // Encode the input via schema - handles all transformations
         const encoded = yield* encodeInput(input).pipe(
           Effect.mapError((err) => new ParseError({ message: err.message })),
@@ -112,7 +112,7 @@ function createAwsJsonProtocol(version: "1.0" | "1.1"): Protocol {
         return request;
       }),
 
-      deserializeResponse: Effect.fn(function* (response: Response) {
+      deserializeResponse: Effect.fnUntraced(function* (response: Response) {
         // Handle streaming output (event stream)
         if (streamingOutputProp && response.body) {
           if (streamingOutputProp.isEventStream) {
@@ -156,7 +156,7 @@ function createAwsJsonProtocol(version: "1.0" | "1.1"): Protocol {
         return {};
       }),
 
-      deserializeError: Effect.fn(function* (response: Response) {
+      deserializeError: Effect.fnUntraced(function* (response: Response) {
         // Read body as text
         const bodyText = yield* readStreamAsText(response.body);
 

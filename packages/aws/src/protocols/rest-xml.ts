@@ -155,7 +155,7 @@ export const restXmlProtocol: Protocol = (operation: Operation): ProtocolHandler
   }
 
   return {
-    serializeRequest: Effect.fn(function* (input: unknown) {
+    serializeRequest: Effect.fnUntraced(function* (input: unknown) {
       // Encode the input via schema - handles all transformations
       const encoded = yield* encodeInput(input).pipe(
         Effect.mapError((err) => new ParseError({ message: err.message })),
@@ -200,7 +200,7 @@ export const restXmlProtocol: Protocol = (operation: Operation): ProtocolHandler
       return request;
     }),
 
-    deserializeResponse: Effect.fn(function* (response: Response) {
+    deserializeResponse: Effect.fnUntraced(function* (response: Response) {
       const result: Record<string, unknown> = {};
 
       // Extract HTTP response status code if bound to a property
@@ -300,7 +300,7 @@ export const restXmlProtocol: Protocol = (operation: Operation): ProtocolHandler
       return result;
     }),
 
-    deserializeError: Effect.fn(
+    deserializeError: Effect.fnUntraced(
       function* (response: Response) {
         // Read body as text
         const bodyText = yield* readStreamAsText(response.body);

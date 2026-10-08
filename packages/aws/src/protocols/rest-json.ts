@@ -168,7 +168,7 @@ export const restJson1Protocol: Protocol = (operation: Operation): ProtocolHandl
   );
 
   return {
-    serializeRequest: Effect.fn(function* (input: unknown) {
+    serializeRequest: Effect.fnUntraced(function* (input: unknown) {
       const encoded = yield* encodeInput(input).pipe(
         Effect.mapError((err) => new ParseError({ message: err.message })),
       );
@@ -264,7 +264,7 @@ export const restJson1Protocol: Protocol = (operation: Operation): ProtocolHandl
       return request;
     }),
 
-    deserializeResponse: Effect.fn(function* (response: Response) {
+    deserializeResponse: Effect.fnUntraced(function* (response: Response) {
       const result: Record<string, unknown> = {};
 
       // Extract HTTP response status code if bound to a property
@@ -353,7 +353,7 @@ export const restJson1Protocol: Protocol = (operation: Operation): ProtocolHandl
       return result;
     }),
 
-    deserializeError: Effect.fn(function* (response: Response) {
+    deserializeError: Effect.fnUntraced(function* (response: Response) {
       // Read body as text
       const bodyText = yield* readStreamAsText(response.body);
 

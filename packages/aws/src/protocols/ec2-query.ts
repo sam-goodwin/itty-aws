@@ -53,7 +53,7 @@ export const ec2QueryProtocol: Protocol = (operation: Operation): ProtocolHandle
   const version = getServiceVersion(inputAst) ?? "";
 
   return {
-    serializeRequest: Effect.fn(function* (input: unknown) {
+    serializeRequest: Effect.fnUntraced(function* (input: unknown) {
       // Encode the input via schema - handles all transformations
       // (TimestampFormat -> ISO 8601 strings, etc.)
       const encoded = yield* encodeInput(input).pipe(
@@ -80,7 +80,7 @@ export const ec2QueryProtocol: Protocol = (operation: Operation): ProtocolHandle
       return request;
     }),
 
-    deserializeResponse: Effect.fn(function* (response: Response) {
+    deserializeResponse: Effect.fnUntraced(function* (response: Response) {
       const result: Record<string, unknown> = {};
 
       // Read body as text
@@ -106,7 +106,7 @@ export const ec2QueryProtocol: Protocol = (operation: Operation): ProtocolHandle
       return result;
     }),
 
-    deserializeError: Effect.fn(function* (response: Response) {
+    deserializeError: Effect.fnUntraced(function* (response: Response) {
       // Read body as text
       const bodyText = yield* readStreamAsText(response.body);
 

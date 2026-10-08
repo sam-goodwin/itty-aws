@@ -54,7 +54,7 @@ export const makeRequestBuilder = (operation: Operation, options?: RequestBuilde
   const idempotencyTokenProps = findIdempotencyTokenProps(inputSchema);
 
   // Return a function that builds requests
-  return Effect.fn(function* (input: unknown) {
+  return Effect.fnUntraced(function* (input: unknown) {
     // Fill in any undefined idempotency tokens with generated UUIDs
     const filledInput = fillIdempotencyTokens(input, idempotencyTokenProps);
 

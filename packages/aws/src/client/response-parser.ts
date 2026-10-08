@@ -157,7 +157,7 @@ export const makeResponseParser = <A>(
 
   // Return a function that parses responses
   // @ts-expect-error
-  return Effect.fn(function* (response: Response) {
+  return Effect.fnUntraced(function* (response: Response) {
     // Success path
     if (response.status >= 200 && response.status < 300) {
       const deserialized = (yield* protocol.deserializeResponse(response)) as

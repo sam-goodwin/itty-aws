@@ -101,7 +101,7 @@ export const makeEndpointResolver = (operation: Operation) => {
   const staticContextParams = getStaticContextParams(inputAst);
 
   // Return a function that resolves endpoints and adjusts request
-  return Effect.fn(function* (resolverInput: EndpointResolverInput) {
+  return Effect.fnUntraced(function* (resolverInput: EndpointResolverInput) {
     const { input, region, request } = resolverInput;
 
     // Build endpoint params from input + region
