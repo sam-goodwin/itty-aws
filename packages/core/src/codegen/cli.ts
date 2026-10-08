@@ -16,6 +16,7 @@ import { Flag } from "effect/cli";
 import { Command } from "effect/cli";
 import * as FileSystem from "effect/FileSystem";
 import * as Path from "effect/Path";
+import { dedupeSchemas } from "./dedupe.ts";
 import { barrel } from "./emit.ts";
 import { formatGenerated } from "./format.ts";
 import { stampGeneratedAt } from "./generated-at.ts";
@@ -191,8 +192,10 @@ export const runGeneratorCli = (options: GeneratorCliOptions): void => {
           // Every nested call in a top-level initializer gets a PURE marker,
           // so one unused schema cannot pin others in a consumer's bundle.
           // Latin-1-only source halves the heap V8 keeps for the module text.
+          // Structurally identical schemas become aliases of one schema.
           const code = toLatin1(
-            annotateNestedCalls(generated.code, `${resource}.ts`),
+            dedupeSchemas(annotateNestedCalls(generated.code, `${resource}.ts`), `${resource}.ts`)
+              .code,
             `${resource}.ts`,
           );
 
