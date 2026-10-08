@@ -22,6 +22,7 @@
  */
 export * from "effect/Schema";
 
+import { pipeArguments } from "effect/Pipeable";
 import * as S from "effect/Schema";
 
 export type AnyFn = (...args: any[]) => any;
@@ -49,9 +50,9 @@ export const Null: any = S.Null;
 export const Void: any = S.Void;
 export const Any: any = S.Any;
 
-// NOTE: `Schema` / `Codec` (types) and `TaggedError` are intentionally NOT
-// overridden -- they flow through `export *` with real types so cast targets and
-// typed error classes stay precise.
+// NOTE: `Schema` / `Codec` (types) are intentionally NOT overridden -- they
+// flow through `export *` with real types so cast targets stay precise.
+// `TaggedError` is overridden with the same type (see "Lazy error classes").
 
 //#region Lazy schemas
 
@@ -140,5 +141,124 @@ const lazy = (build: () => S.Top, annotations?: Annotations): S.Top => {
 const lazySuspend = (f: () => S.Top): S.Top => lazy(() => S.suspend(f));
 const lazyArray = (item: S.Top): S.Top => lazy(() => S.Array(item));
 const lazyRecord = (key: S.Top, value: S.Top): S.Top => lazy(() => S.Record(key as any, value));
+
+//#endregion
+
+//#region Lazy error classes
+
+/**
+ * `S.TaggedError` whose Effect class is built on first use instead of at
+ * import.
+ *
+ * Every error class Effect builds carries its own copies of about fifteen
+ * static methods plus a tagged struct schema: about 4.6 KB per class, and
+ * AWS EC2 alone declares 248 of them. This returns a small constructor that
+ * stands in for the class until something needs it -- constructing an
+ * instance, or a schema static such as `ast` / `fields` / `make`. Then it
+ * builds the real class with `S.TaggedError` and puts it underneath: the
+ * lazy class's prototype starts inheriting from the real prototype, and
+ * statics forward to the real class with `this` bound to the lazy class, so
+ * decoding produces instances of the lazy class (and of its subclasses).
+ *
+ * `pipe` (used to attach error categories), `identifier` and the schema
+ * marker answer without building. Instances behave as before: same
+ * `_tag`, fields, validation, `instanceof`, stack and `Effect.catchTag`.
+ */
+const lazyErrorKey = Symbol.for("@distilled.cloud/core/schema/lazyError");
+
+interface LazyErrorState {
+  readonly identifier: string | undefined;
+  readonly args: ReadonlyArray<unknown>;
+  readonly lazy: Function;
+  real?: Function;
+}
+
+const SchemaTypeId = "~effect/Schema/Schema";
+
+// The base every Effect error class extends (`core.Error`, a yieldable Error).
+const ErrorBase: Function = Object.getPrototypeOf(S.TaggedError()("Probe", {}));
+
+const realErrorClass = (cls: Function): Function => {
+  const state = (cls as unknown as Record<symbol, LazyErrorState>)[lazyErrorKey];
+  if (!state.real) {
+    const real = (S.TaggedError as Function)(state.identifier)(...state.args) as Function;
+    state.real = real;
+    Object.setPrototypeOf(state.lazy.prototype, real.prototype);
+  }
+  return state.real;
+};
+
+/** Effect's class statics that need the real class. */
+const FORWARDED_STATICS = [
+  "ast",
+  "fields",
+  "make",
+  "makeOption",
+  "makeEffect",
+  "annotate",
+  "annotateKey",
+  "check",
+  "rebuild",
+  "extend",
+  "mapFields",
+];
+
+const LazyErrorStatics: object = Object.create(ErrorBase, {
+  [SchemaTypeId]: { value: SchemaTypeId, configurable: true },
+  identifier: {
+    configurable: true,
+    get(this: Record<symbol, LazyErrorState>) {
+      const state = this[lazyErrorKey];
+      return state.identifier ?? state.args[0];
+    },
+  },
+  pipe: {
+    configurable: true,
+    writable: true,
+    value(this: unknown) {
+      return pipeArguments(this, arguments);
+    },
+  },
+  ...Object.fromEntries(
+    FORWARDED_STATICS.map((name) => [
+      name,
+      {
+        configurable: true,
+        get(this: Function) {
+          let owner: object | null = realErrorClass(this);
+          let descriptor: PropertyDescriptor | undefined;
+          while (owner && !(descriptor = Object.getOwnPropertyDescriptor(owner, name))) {
+            owner = Object.getPrototypeOf(owner);
+          }
+          if (!descriptor) return undefined;
+          if (descriptor.get) return descriptor.get.call(this);
+          return typeof descriptor.value === "function"
+            ? descriptor.value.bind(this)
+            : descriptor.value;
+        },
+      },
+    ]),
+  ),
+});
+
+const lazyTaggedError =
+  (identifier?: string) =>
+  (...args: ReadonlyArray<unknown>): Function => {
+    function LazyTaggedError(this: unknown, input?: unknown, options?: unknown) {
+      if (!new.target) throw new TypeError("Class constructor cannot be invoked without 'new'");
+      return Reflect.construct(realErrorClass(new.target), [input, options], new.target);
+    }
+    Object.setPrototypeOf(LazyTaggedError, LazyErrorStatics);
+    LazyTaggedError.prototype = Object.create(ErrorBase.prototype, {
+      constructor: { value: LazyTaggedError, writable: true, configurable: true },
+    });
+    const state: LazyErrorState = { identifier, args, lazy: LazyTaggedError };
+    Object.defineProperty(LazyTaggedError, lazyErrorKey, { value: state });
+    return LazyTaggedError;
+  };
+
+export const TaggedError: typeof S.TaggedError = (
+  typeof ErrorBase === "function" ? lazyTaggedError : S.TaggedError
+) as typeof S.TaggedError;
 
 //#endregion
