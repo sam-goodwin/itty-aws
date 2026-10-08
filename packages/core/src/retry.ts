@@ -7,7 +7,6 @@
  * so that callers can install a blanket retry policy at the layer level
  * for that SDK without wrapping every call with `Effect.retry`.
  */
-import * as Config from "effect/Config";
 import * as Context from "effect/Context";
 import * as Duration from "effect/Duration";
 import * as Effect from "effect/Effect";
@@ -120,30 +119,41 @@ export const ServerRetryHintCapMs = Context.Service<number>(
 export const serverRetryHintCapLayer = (capMs: number) =>
   Layer.succeed(ServerRetryHintCapMs, capMs);
 
-const serverRetryHintCapMsConfig: Config.Config<number> = Config.String(
-  ENV_SERVER_RETRY_HINT_CAP_MS,
-).pipe(
-  Config.map((raw) => {
-    if (raw === "") return DEFAULT_SERVER_RETRY_HINT_CAP_MS;
-    const n = Number(raw);
-    if (!Number.isFinite(n) || n < 0) return DEFAULT_SERVER_RETRY_HINT_CAP_MS;
-    return Math.trunc(n);
-  }),
-  Config.withDefault(DEFAULT_SERVER_RETRY_HINT_CAP_MS),
-);
-
 /**
  * Effective cap when neither {@link ServerRetryHintCapMs} nor
  * `DISTILLED_SERVER_RETRY_HINT_CAP_MS` is set: {@link DEFAULT_SERVER_RETRY_HINT_CAP_MS}.
  *
- * Reads the `DISTILLED_SERVER_RETRY_HINT_CAP_MS` environment variable via
- * Effect's {@link Config} (must be a non-negative finite number; invalid
- * values fall back to the default).
+ * Reads the `DISTILLED_SERVER_RETRY_HINT_CAP_MS` environment variable (must
+ * be a non-negative finite number; invalid values fall back to the default).
+ * It reads `process.env` directly: Effect's `Config` would add about 5 KB
+ * gzip to every bundle for this one optional knob. Use
+ * {@link ServerRetryHintCapMs} to set the cap from code.
  */
 export const readServerRetryHintCapMsFromEnv = (): number =>
-  Effect.runSync(
-    serverRetryHintCapMsConfig.pipe(Effect.orElseSucceed(() => DEFAULT_SERVER_RETRY_HINT_CAP_MS)),
+  parseCapMs(
+    (globalThis as { process?: { env?: Record<string, string | undefined> } }).process?.env?.[
+      ENV_SERVER_RETRY_HINT_CAP_MS
+    ],
   );
+
+const parseCapMs = (raw: string | undefined): number => {
+  if (raw === undefined || raw === "") return DEFAULT_SERVER_RETRY_HINT_CAP_MS;
+  const n = Number(raw);
+  return Number.isFinite(n) && n >= 0 ? Math.trunc(n) : DEFAULT_SERVER_RETRY_HINT_CAP_MS;
+};
+
+/**
+ * The `ConfigProvider` the caller provided, looked up by its context key.
+ * Importing `effect/Config` / `effect/ConfigProvider` to read one optional
+ * env var would add about 5 KB gzip to every bundle; a provider object
+ * carries its own `load`, so neither module is needed.
+ */
+const CONFIG_PROVIDER_KEY = "effect/ConfigProvider";
+interface ProvidedConfigProvider {
+  readonly load: (
+    path: ReadonlyArray<string>,
+  ) => Effect.Effect<{ readonly _tag: string; readonly value?: string } | undefined, unknown>;
+}
 
 const resolveServerRetryHintCapMs = (): Effect.Effect<number, never, never> =>
   Effect.gen(function* () {
@@ -152,9 +162,14 @@ const resolveServerRetryHintCapMs = (): Effect.Effect<number, never, never> =>
       const n = fromLayer.value;
       if (Number.isFinite(n) && n >= 0) return Math.trunc(n);
     }
-    return yield* serverRetryHintCapMsConfig.pipe(
-      Effect.orElseSucceed(() => DEFAULT_SERVER_RETRY_HINT_CAP_MS),
-    );
+    const provider = (yield* Effect.context<never>()).mapUnsafe.get(CONFIG_PROVIDER_KEY) as
+      | ProvidedConfigProvider
+      | undefined;
+    if (!provider) return readServerRetryHintCapMsFromEnv();
+    const node = yield* provider
+      .load([ENV_SERVER_RETRY_HINT_CAP_MS])
+      .pipe(Effect.orElseSucceed(() => undefined));
+    return parseCapMs(node?._tag === "Value" ? node.value : undefined);
   });
 
 /**
