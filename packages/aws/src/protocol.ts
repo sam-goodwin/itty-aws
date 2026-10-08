@@ -45,8 +45,14 @@ import * as Endpoint from "./endpoint.ts";
 import * as Region from "./region.ts";
 import { makeEndpointResolver } from "./rules-engine/endpoint-resolver.ts";
 import * as SigV4 from "./sigv4.ts";
-import { getAwsApiService, getAwsAuthSigv2, getAwsAuthSigv4 } from "./traits.ts";
-import { getIdentifier } from "./util/ast.ts";
+import {
+  getAwsApiService,
+  getAwsAuthSigv2,
+  getAwsAuthSigv4,
+  hasHttpPayload,
+  isStreamingType,
+} from "./traits.ts";
+import { getIdentifier, getPropertySignatures } from "./util/ast.ts";
 
 /**
  * Context (requirements) shared by every generated AWS operation.
@@ -71,6 +77,12 @@ interface Prepared {
   readonly sigv2: unknown;
   readonly serviceSdkId: string | undefined;
   readonly resolveEndpoint: ReturnType<typeof makeEndpointResolver>;
+  /**
+   * The output has no streaming or payload member, so the body is only ever
+   * read as text: read it as text directly instead of piping it through an
+   * Effect Stream and a web ReadableStream.
+   */
+  readonly textBody: boolean;
 }
 
 // Keyed by the operation config object, which API.make memoizes per
@@ -107,6 +119,9 @@ const prepare = (config: API.ProtocolOperationConfig): Prepared => {
     sigv2: getAwsAuthSigv2(inputAst),
     serviceSdkId,
     resolveEndpoint: makeEndpointResolver(op),
+    textBody: getPropertySignatures(op.output.ast).every(
+      (prop) => !hasHttpPayload(prop) && !isStreamingType(prop.type),
+    ),
   };
   preparedOps.set(config, prepared);
   return prepared;
@@ -136,12 +151,8 @@ const encode = ({
       resolveEndpoint: rulesResolver,
     } = prepare(config);
 
-    yield* Effect.logDebug("Payload", input);
-
     // Serialize the input (protocol serializer + annotation middleware)
     const request = yield* buildRequest(input);
-
-    yield* Effect.logDebug("Built Request", request);
 
     const credentials = yield* yield* Credentials.Credentials;
     // The region the credentials authenticated against, unless this scope
@@ -459,9 +470,7 @@ const decode = ({
   readonly config: API.ProtocolOperationConfig;
 }) =>
   Effect.gen(function* () {
-    const { parseResponse } = prepare(config);
-
-    yield* Effect.logDebug("Raw Response Status", response.status);
+    const { parseResponse, textBody } = prepare(config);
 
     const responseHeaders = response.headers as Record<string, string>;
 
@@ -472,8 +481,12 @@ const decode = ({
     const isEmptyBody =
       response.request.method === "HEAD" || contentLength === "0" || response.status === 204;
     const responseBody = isEmptyBody
-      ? new ReadableStream<Uint8Array>({ start: (c) => c.close() })
-      : yield* Stream.toReadableStreamEffect(response.stream);
+      ? textBody
+        ? ""
+        : new ReadableStream<Uint8Array>({ start: (c) => c.close() })
+      : textBody
+        ? yield* response.text
+        : yield* Stream.toReadableStreamEffect(response.stream);
 
     // Parse the response: success -> protocol deserialization + schema
     // decoding (+ event streams); error -> typed error matching.
@@ -488,8 +501,6 @@ const decode = ({
         return Effect.void;
       }),
     );
-
-    yield* Effect.logDebug("Parsed Response", parsed);
 
     return parsed;
   });
