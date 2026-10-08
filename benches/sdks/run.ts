@@ -110,6 +110,9 @@ if (opts.build || missingLib.length > 0) {
     `build: tsc -b (${missingLib.length ? `lib/ missing for ${missingLib.slice(0, 5).join(", ")}…` : "--build"})`,
   );
   const res = await run(join(REPO, "node_modules", ".bin", "tsc"), ["-b"], { cwd: REPO });
+  // Same post-build step `pnpm build` runs, when this checkout has it.
+  if (res.code === 0 && existsSync(join(REPO, "scripts", "strip-lib-docs.ts")))
+    await run("node", [join(REPO, "scripts", "strip-lib-docs.ts")], { cwd: REPO });
   if (res.code !== 0) {
     console.error(res.stdout.slice(-4000), res.stderr.slice(-4000));
     process.exit(1);
